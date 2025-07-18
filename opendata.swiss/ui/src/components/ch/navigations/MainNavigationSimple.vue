@@ -1,3 +1,20 @@
+
+
+<script setup lang="ts">
+
+import type { MenuItem } from '@/model/menu-item';
+
+const props = withDefaults(
+  defineProps<{
+    menuItems?: MenuItem[]
+  }>(),
+  {
+    menuItems: () => []
+  }
+)
+
+
+</script>
 <template>
   <nav
     id="main-navigation"
@@ -5,28 +22,14 @@
     aria-label="Main"
   >
     <ul class="menu-desktop">
-      <li>
-        <a href="javascript:alert('link')">
-          <span>Alle</span>
-        </a>
-      </li>
-      <li>
-        <a href="javascript:alert('link)" class="active">
-          <span>Corona</span>
-        </a>
-      </li>
-      <li>
-        <a href="javascript:alert('link')">
-          <span>Bürgerrecht</span>
-        </a>
-      </li>
-      <li>
-        <a href="javascript:alert('link')">
-          <span>Ukraine</span>
-        </a>
+      <li v-for="item in props.menuItems" :key="item.to">
+        <RouterLink
+          :to="item.to"
+          active-class="active"
+        >
+          <span>{{ item.label }}</span>
+        </RouterLink>
       </li>
     </ul>
   </nav>
 </template>
-
-<script setup lang="ts"></script>

@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import SvgIcon from '../components/SvgIcon.vue'
+import { computed } from 'vue'
+
+const props = defineProps({
+  context: {
+    type: String,
+    required: true,
+    validator: (prop) => ['desktop', 'mobile'].includes(prop as string),
+  },
+  // Allow disabling active navigation item highlighting for pages like shopping cart
+  showActiveNavigation: {
+    type: Boolean,
+  },
+})
+
+const mainNavigationClass = computed(() => {
+  let base = `main-navigation `
+  if (props.context) base += `main-navigation--${props.context} `
+  return base
+})
+</script>
+
+
 <template>
   <nav id="main-navigation" :class="mainNavigationClass" aria-label="Main">
     <ul>
@@ -12,9 +36,14 @@
           </RouterLink>
       </li>
        <li>
-          <RouterLink to="datasets" active-class="active" :aria-current="showActiveNavigation ? 'page' : false">
-            <span>Datasets RT</span>
-          </RouterLink>
+         <a
+          href="javascript:void(0)"
+          role="button"
+          class="navy__has-children"
+          :aria-current="showActiveNavigation"
+        >
+            <span>my menu</span>
+        </a>
       </li>
       <li>
         <a href="javascript:alert('link')">
@@ -143,26 +172,3 @@
     </ul>
   </nav>
 </template>
-
-<script setup lang="ts">
-import SvgIcon from '../components/SvgIcon.vue'
-import { computed } from 'vue'
-
-const props = defineProps({
-  context: {
-    type: String,
-    required: true,
-    validator: (prop) => ['desktop', 'mobile'].includes(prop as string),
-  },
-  // Allow disabling active navigation item highlighting for pages like shopping cart
-  showActiveNavigation: {
-    type: Boolean,
-  },
-})
-
-const mainNavigationClass = computed(() => {
-  let base = `main-navigation `
-  if (props.context) base += `main-navigation--${props.context} `
-  return base
-})
-</script>

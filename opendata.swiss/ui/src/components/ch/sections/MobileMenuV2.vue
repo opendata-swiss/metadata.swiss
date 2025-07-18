@@ -1,3 +1,131 @@
+
+
+<script setup lang="ts">
+import { useLayoutStore } from '../../../store/layout'
+import Btn from '../components/Btn.vue'
+import SvgIcon from '../components/SvgIcon.vue'
+import CarouselNavigation from '../navigations/CarouselNavigation.vue'
+import MetaNavigationMobile from '../navigations/MobileMetaNavigation.vue'
+import TopBarNavigation from '../navigations/TopBarNavigation.vue'
+import { v4 as uuidv4 } from 'uuid'
+import { reactive, ref, onMounted, nextTick, onUnmounted } from 'vue'
+
+const carouselNavId = ref('')
+const useStickyPlaceholder = ref(false)
+const initialNavBarOffset = ref(0)
+const currentLevel = ref(2)
+const menuTitles = reactive([
+  'Hauptmenü',
+  'Dienstleistungen',
+  'Geodienste',
+  'Darstellungsdienste',
+])
+
+const props = defineProps({
+  isSticky: {
+    type: Boolean,
+    default: () => false,
+  },
+  isSimplePage: {
+    type: Boolean,
+    default: () => false,
+  },
+})
+
+const handleHeaderPlaceholder = function () {
+  const header = document.getElementById('mobile-menu-header') as HTMLElement
+  const titleContainer = document.getElementById(
+    `mobile-menu-v2-header-title-container__level-${currentLevel.value}`,
+  ) as HTMLElement
+  const currentLevelEl = document.getElementById(
+    `mobile-menu-v2__level-${currentLevel.value}`,
+  ) as HTMLElement
+  currentLevelEl.style.borderTopWidth = `${titleContainer.clientHeight}px`
+  header.style.height = `${titleContainer.clientHeight}px`
+}
+
+const scrollToTop = function () {
+  const scrollTarget = document.getElementById('scroll-target') as HTMLElement
+  scrollTarget.scrollIntoView({ behavior: 'smooth' })
+}
+
+const showLevel = async function (level: number) {
+  currentLevel.value = level
+  document.body.classList.remove(
+    'show-level-0',
+    'show-level-1',
+    'show-level-2',
+    'show-level-3',
+    'show-level-4',
+    'show-level-5',
+    'show-level-6',
+    'show-level-7',
+  )
+  document.body.classList.add(`show-level-${level}`)
+
+  await nextTick()
+
+  scrollToTop()
+  handleHeaderPlaceholder()
+}
+
+const closeMenu = function () {
+  handleHeaderPlaceholder()
+  useLayoutStore().toggleMobileMenu()
+}
+
+const resizeWindow = function () {
+  const topHeader = document.getElementById('top-header-id') as HTMLElement
+  const topBar = document.getElementById('top-bar') as HTMLElement
+  initialNavBarOffset.value =
+    topHeader.offsetTop + topHeader.clientHeight - topBar?.clientHeight
+  handleScroll()
+}
+
+const handleScroll = function () {
+  const topBar = document.getElementById('top-bar') as HTMLElement
+  const navBar = document.getElementById('mobile-menu-id') as HTMLElement
+  if (initialNavBarOffset.value < window.scrollY) {
+    useStickyPlaceholder.value = true
+    // Set height on placeholder to avoid jump when navigation is set to sticky
+    const stickyPlaceholder = document.getElementById(
+      'stickyPlaceholder',
+    ) as HTMLElement
+    stickyPlaceholder.style.height = `${navBar.clientHeight}px`
+
+    navBar.style.top = `${topBar.clientHeight}px`
+    navBar.classList.add('mobile-menu-sticky-navigation')
+    navBar.classList.remove('mobile-menu-navigation-bar')
+  } else {
+    navBar.style.top = ''
+    useStickyPlaceholder.value = false
+    navBar.classList.remove('mobile-menu-sticky-navigation')
+    navBar.classList.add('mobile-menu-navigation-bar')
+  }
+}
+
+onMounted(() => {
+  if (props.isSticky) {
+    window.addEventListener('scroll', handleScroll)
+    resizeWindow()
+    window.addEventListener('resize', resizeWindow)
+  }
+  if (props.isSimplePage) {
+    carouselNavId.value = uuidv4()
+    return
+  }
+  handleHeaderPlaceholder()
+  window.addEventListener('resize', handleHeaderPlaceholder)
+})
+
+onUnmounted(() => {
+  if (props.isSticky) {
+    window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', resizeWindow)
+  }
+  window.removeEventListener('resize', handleHeaderPlaceholder)
+})
+</script>
 <template>
   <div v-if="isSimplePage">
     <div id="mobile-menu-id" class="mobile-menu-navigation-bar">
@@ -86,7 +214,7 @@
                   <SvgIcon icon="ArrowRight" size="lg" />
                 </a>
               </li>
-              <li>  
+              <li>
                 <a href="javascript:alert('link')"> Forschung und Lehre </a>
               </li>
               <li>
@@ -233,122 +361,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useLayoutStore } from '../../../store/layout'
-import Btn from '../components/Btn.vue'
-import SvgIcon from '../components/SvgIcon.vue'
-import CarouselNavigation from '../navigations/CarouselNavigation.vue'
-import MetaNavigationMobile from '../navigations/MobileMetaNavigation.vue'
-import TopBarNavigation from '../navigations/TopBarNavigation.vue'
-import { v4 as uuidv4 } from 'uuid'
-import { reactive, ref, onMounted, nextTick } from 'vue'
-
-const carouselNavId = ref('')
-const useStickyPlaceholder = ref(false)
-const initialNavBarOffset = ref(0)
-const currentLevel = ref(2)
-const menuTitles = reactive([
-  'Hauptmenü',
-  'Dienstleistungen',
-  'Geodienste',
-  'Darstellungsdienste',
-])
-
-const props = defineProps({
-  isSticky: {
-    type: Boolean,
-    default: () => false,
-  },
-  isSimplePage: {
-    type: Boolean,
-    default: () => false,
-  },
-})
-
-const handleHeaderPlaceholder = function () {
-  const header = document.getElementById('mobile-menu-header') as HTMLElement
-  const titleContainer = document.getElementById(
-    `mobile-menu-v2-header-title-container__level-${currentLevel.value}`,
-  ) as HTMLElement
-  const currentLevelEl = document.getElementById(
-    `mobile-menu-v2__level-${currentLevel.value}`,
-  ) as HTMLElement
-  currentLevelEl.style.borderTopWidth = `${titleContainer.clientHeight}px`
-  header.style.height = `${titleContainer.clientHeight}px`
-}
-
-const scrollToTop = function () {
-  const scrollTarget = document.getElementById('scroll-target') as HTMLElement
-  scrollTarget.scrollIntoView({ behavior: 'smooth' })
-}
-
-const showLevel = async function (level: number) {
-  currentLevel.value = level
-  document.body.classList.remove(
-    'show-level-0',
-    'show-level-1',
-    'show-level-2',
-    'show-level-3',
-    'show-level-4',
-    'show-level-5',
-    'show-level-6',
-    'show-level-7',
-  )
-  document.body.classList.add(`show-level-${level}`)
-
-  await nextTick()
-
-  scrollToTop()
-  handleHeaderPlaceholder()
-}
-
-const closeMenu = function () {
-  handleHeaderPlaceholder()
-  useLayoutStore().toggleMobileMenu()
-}
-
-const resizeWindow = function () {
-  const topHeader = document.getElementById('top-header-id') as HTMLElement
-  const topBar = document.getElementById('top-bar') as HTMLElement
-  initialNavBarOffset.value =
-    topHeader.offsetTop + topHeader.clientHeight - topBar?.clientHeight
-  handleScroll()
-}
-
-const handleScroll = function () {
-  const topBar = document.getElementById('top-bar') as HTMLElement
-  const navBar = document.getElementById('mobile-menu-id') as HTMLElement
-  if (initialNavBarOffset.value < window.scrollY) {
-    useStickyPlaceholder.value = true
-    // Set height on placeholder to avoid jump when navigation is set to sticky
-    const stickyPlaceholder = document.getElementById(
-      'stickyPlaceholder',
-    ) as HTMLElement
-    stickyPlaceholder.style.height = `${navBar.clientHeight}px`
-
-    navBar.style.top = `${topBar.clientHeight}px`
-    navBar.classList.add('mobile-menu-sticky-navigation')
-    navBar.classList.remove('mobile-menu-navigation-bar')
-  } else {
-    navBar.style.top = ''
-    useStickyPlaceholder.value = false
-    navBar.classList.remove('mobile-menu-sticky-navigation')
-    navBar.classList.add('mobile-menu-navigation-bar')
-  }
-}
-
-onMounted(() => {
-  if (props.isSticky) {
-    window.addEventListener('scroll', handleScroll)
-    resizeWindow()
-    window.addEventListener('resize', resizeWindow)
-  }
-  if (props.isSimplePage) {
-    carouselNavId.value = uuidv4()
-    return
-  }
-  handleHeaderPlaceholder()
-  window.addEventListener('resize', handleHeaderPlaceholder)
-})
-</script>

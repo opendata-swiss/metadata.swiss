@@ -9,10 +9,12 @@
 </template>
 
 <script setup lang="ts">
+
 defineProps({
   isOpen: {
     type: Boolean,
     default: false,
   },
 })
+
 </script>

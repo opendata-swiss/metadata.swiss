@@ -1,33 +1,5 @@
-<template>
-  <div id="desktop-menu" class="desktop-menu">
-    <div id="desktop-menu__overlay" class="desktop-menu__overlay hidden" />
-    <div>
-      <div id="desktop-navigation-id">
-        <div class="container container--flex">
-          <MainNavigationSimple v-if="isSimplePage" />
-          <MainNavigation
-            v-else
-            :showActiveNavigation="showActiveNavigation"
-            context="desktop"
-          />
-          <div id="desktop-menu__drawer" class="desktop-menu__drawer hidden">
-            <button id="desktop-menu-closer" class="desktop-menu__close">
-              <span>Schliessen</span>
-              <SvgIcon icon="Cancel" />
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- invisible Placeholder to avoid jump when navigation is set to sticky -->
-      <div
-        v-if="useStickyPlaceholder"
-        id="sticky-desktop-navigation-placeholder"
-      />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
+import type { MenuItem } from '@/model/menu-item.js'
 import MenuMore from '../../../scripts/MenuMore.js'
 import Navy from '../../../scripts/Navy.js'
 import SvgIcon from '../components/SvgIcon.vue'
@@ -51,6 +23,10 @@ const props = defineProps({
   isSticky: {
     type: Boolean,
     default: () => false,
+  },
+  menuItems: {
+    type: Array as () => MenuItem[],
+    default: () => [],
   },
 })
 
@@ -117,3 +93,33 @@ onMounted(async () => {
   }
 })
 </script>
+
+
+<template>
+  <div id="desktop-menu" class="desktop-menu">
+    <div id="desktop-menu__overlay" class="desktop-menu__overlay hidden" />
+    <div>
+      <div id="desktop-navigation-id">
+        <div class="container container--flex">
+          <MainNavigationSimple :menuItems="props.menuItems" v-if="isSimplePage" />
+          <MainNavigation
+            v-else
+            :showActiveNavigation="showActiveNavigation"
+            context="desktop"
+          />
+          <div id="desktop-menu__drawer" class="desktop-menu__drawer hidden">
+            <button id="desktop-menu-closer" class="desktop-menu__close">
+              <span>Schliessen</span>
+              <SvgIcon icon="Cancel" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- invisible Placeholder to avoid jump when navigation is set to sticky -->
+      <div
+        v-if="useStickyPlaceholder"
+        id="sticky-desktop-navigation-placeholder"
+      />
+    </div>
+  </div>
+</template>

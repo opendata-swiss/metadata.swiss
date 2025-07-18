@@ -2,13 +2,13 @@
   <nav class="meta-navigation meta-navigation--mobile" aria-label="Meta">
     <ul>
       <li>
-        <a href="#" class="meta-navigation__item"> Jobs </a>
+        <a href="#" class="meta-navigation__item"> mobile meta nav Jobs </a>
       </li>
       <li>
-        <a href="#" class="meta-navigation__item"> Kontakt </a>
+        <a href="#" class="meta-navigation__item"> mobile meta nav Kontakt </a>
       </li>
       <li>
-        <a href="#" class="meta-navigation__item"> Medien </a>
+        <a href="#" class="meta-navigation__item"> mobile meta nav Medien </a>
       </li>
     </ul>
   </nav>
