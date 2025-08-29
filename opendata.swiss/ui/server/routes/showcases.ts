@@ -27,6 +27,7 @@ export default defineEventHandler(async (event) => {
   }
 })
 
-function stripMarkdown(md: string) {
-  return remark().use(strip).process(md.replace(frontMatterPattern, '').trim())
+async function stripMarkdown(md: string) {
+  const stripped = await remark().use(strip).process(md.replace(frontMatterPattern, '').trim())
+  return stripped.value
 }
