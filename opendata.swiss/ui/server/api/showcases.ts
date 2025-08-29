@@ -15,6 +15,22 @@ interface AggregateShowcase {
   text: Record<string, string | undefined>
 }
 
+const ldContext = ['https://schema.org', {
+  id: 'identifier',
+  categories: { '@type': '@id' },
+  datasets: {
+    '@id': 'exampleOfWork',
+  },
+  title: {
+    '@container': '@language',
+  },
+  description: {
+    '@container': '@language',
+  },
+  text: {
+    '@container': '@language',
+  }
+}];
 export default defineEventHandler(async (event) => {
   const showcases = await queryCollection(event, 'showcases')
     .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image')
@@ -47,22 +63,7 @@ export default defineEventHandler(async (event) => {
   }, Promise.resolve<AggregateShowcase[]>([]))
 
   return {
-    '@context': ['https://schema.org', {
-      id: 'identifier',
-      categories: { '@type': '@id' },
-      datasets: {
-        '@id': 'hasPart',
-      },
-      title: {
-        '@container': '@language',
-      },
-      description: {
-        '@container': '@language',
-      },
-      text: {
-        '@container': '@language',
-      }
-    }],
+    '@context': ldContext,
     '@graph': await aggregatedShowcases
   }
 })
