@@ -28,6 +28,7 @@
 
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount } from 'vue'
+import { useRoute, useRouter } from 'vue-router';
 
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue';
@@ -35,6 +36,11 @@ import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
 import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
+const route = useRoute()
+const router = useRouter()
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
@@ -57,6 +63,24 @@ function handleResize() {
 }
 
 onMounted(() => {
+
+  // Check if the first path segment matches a supported locale
+  const supportedLocales = ['de', 'en', 'fr', 'it'] // adjust as needed
+  const pathSegments = route.path.split('/').filter(Boolean)
+  if (pathSegments.length === 0) {
+    // If there's no path segment, redirect to the default locale
+    router.replace({
+      path: `/${locale.value}${route.fullPath.startsWith('/') ? '' : '/'}${route.fullPath}`
+    })
+  } else {
+    const hasLocale = supportedLocales.includes(pathSegments[0] ?? '')
+
+  if (!hasLocale) {
+    router.replace({
+      path: `/${locale.value}${route.fullPath.startsWith('/') ? '' : '/'}${route.fullPath}`
+    })
+  }
+  }
   window.addEventListener('resize', handleResize)
   handleResize()
 })
@@ -69,7 +93,6 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-const { progress } = useLoadingIndicator()
 
 </script>
 
