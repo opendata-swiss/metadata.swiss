@@ -26,7 +26,7 @@
           </p>
          </div>
          <div class="card__footer__action">
-              <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: props.item.getId }, query: searchParams }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
+              <NuxtLinkLocale :to="{ name: 'dataset-datasetId', params: { datasetId: props.item.getId }, query: searchParams }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon icon--base icon--ArrowRight btn__icon">
                   <path xmlns="http://www.w3.org/2000/svg" d="m16.444 19.204 4.066-7.044-4.066-7.044-.65.375 3.633 6.294h-15.187v.75h15.187l-3.633 6.294z" />
                </svg>

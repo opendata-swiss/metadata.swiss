@@ -33,7 +33,7 @@ const breadcrumbs = computed(() => {
     homePage,
     {
       title: t('message.header.navigation.datasets'),
-      path: '/datasets',
+      path: '/dataset',
     },
   ]
 
@@ -41,7 +41,7 @@ const breadcrumbs = computed(() => {
     result.push({
       title: t('message.dataset_search.search_results'),
       route: {
-        path: '/datasets',
+        path: '/dataset',
         query: Object.fromEntries(new URLSearchParams(decodeURIComponent(route.query.search)))
       }
     })
@@ -50,7 +50,7 @@ const breadcrumbs = computed(() => {
   result.push({
     title: resultEnhanced.value?.getTitle,
     path: {
-      name: 'datasets-datasetId',
+      name: 'dataset-datasetId',
       params: { datasetId: datasetId.value },
     },
   })

@@ -151,7 +151,7 @@ const datasetBreadcrumb = computed<BreadcrumbItem>(() => {
   const bc = {
     id: 'datasets',
     title: t('message.header.navigation.datasets'),
-    route: '/datasets'
+    route: '/dataset'
   }
   return bc
 })

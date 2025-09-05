@@ -36,7 +36,7 @@ const _breadcrumbs = [
   await homePageBreadcrumb(locale),
   {
     title: t('message.header.navigation.datasets'),
-    path: '/datasets',
+    path: '/dataset',
   },
   {
     title: resultEnhanced.value?.getTitle,

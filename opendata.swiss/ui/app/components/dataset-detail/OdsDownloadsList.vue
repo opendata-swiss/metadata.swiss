@@ -9,7 +9,7 @@
             <p class="meta-info download-item__meta-info"><span class="meta-info__item">{{ distribution.format ? distribution.format : distribution.title }}</span><span class="meta-info__item">{{ distribution.languages.join(', ') }}</span></p>
           </div>
       </a>
-<NuxtLink :to="`${props.dataset.getId}/distribution/${distribution.id}`">ocho</NuxtLink>
+<NuxtLink :to="`${props.dataset.getId}/resource/${distribution.id}`">ocho</NuxtLink>
     </li>
   </ul>
 </template>

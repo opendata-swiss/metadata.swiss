@@ -22,7 +22,7 @@
       <span class="meta-info__item" style="color:red">{{(props.item.getOdsFormats ?? []).map(f => f.label ).join(', ') }}</span>
     </template>
     <template #footer-action>
-      <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: props.item.getId }, query: searchParams }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
+      <NuxtLinkLocale :to="{ name: 'dataset-datasetId', params: { datasetId: props.item.getId }, query: searchParams }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
         <SvgIcon icon="ArrowRight" role="btn" />
         <span class="btn__text">Weiterlesen</span>
       </NuxtLinkLocale>
