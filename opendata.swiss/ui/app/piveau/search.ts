@@ -1,3 +1,4 @@
+import z from 'zod'
 import { schemaDataset } from '@piveau/sdk-core'
 import { dcatApDataset, defineHubSearch } from '@piveau/sdk-vue'
 import { getKeywords } from './get-keywords'
@@ -26,6 +27,25 @@ export function useDatasetsSearch() {
       ...base(dataset, localeInstance),
       getKeywords: getKeywords(dataset, localeInstance),
       getOdsFormats: getOdsFormats(dataset)
+    }
+  })
+}
+
+export function useVocabularySearch() {
+  return defineHubSearch({
+    baseUrl: 'https://piveau-hub-search-ln.zazukoians.org/',
+    index: 'vocabulary',
+    schema: z.object({
+      pref_label: z.map(z.string(), z.string()),
+      id: z.string(),
+      resource: z.string(),
+      in_scheme: z.string(),
+      index: z.string(),
+    }),
+  }, (resource, localeInstance) => {
+    return {
+      ...resource,
+      pref_label: resource.pref_label[localeInstance.currentLocale],
     }
   })
 }

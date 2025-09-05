@@ -44,9 +44,15 @@
        <template #option="option">
         <span>
           {{ option.title }}
-          <span style="float: right; color: #888;">({{ option.count }})</span>
+          <span v-if="option.count" style="float: right; color: #888;">({{ option.count }})</span>
         </span>
       </template>
+        <template
+          #selected-option="option"
+        >
+          {{ option.title }}
+          <input type="hidden" :name="name" :value="option.id">
+        </template>
       </VSelect>
       <div class="select__icon">
         <svg role="presentation" aria-hidden="true" viewBox="0 0 24 24">
@@ -226,3 +232,9 @@ watch(
   }
 )
 </script>
+
+<style scoped>
+input.vs__selected {
+  cursor: default;
+}
+</style>
