@@ -3,7 +3,7 @@
     <section class="section section--py">
       <div class="container">
         <ClientOnly>
-          <form method="post" ref="newShowcaseForm">
+          <form method="post" ref="newShowcaseForm" action="/api/new-showcase">
             <div class="form__group__input">
               <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch"/>
               <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français"/>
