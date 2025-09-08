@@ -11,8 +11,8 @@
               <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English"/>
             </div>
             <div class="form__group">
-              <OdsInput id="website" label="Website" />
-              <OdsMultiSelect id="category" name="category" label="Categories" :options="dataThemes" />
+              <OdsInput id="url" label="Website" />
+              <OdsMultiSelect id="categories" name="categories" label="Categories" :options="dataThemes" />
               <OdsSelect id="type" name="type" label="Type" required>
                 <option value="application">Application</option>
                 <option value="data_visualization">Data Visualization</option>
@@ -51,7 +51,7 @@ const search = useSearch({
 
 const dataThemes = computed(() => {
   return search.getSearchResultsEnhanced.value.map(item => ({
-    id: item.id,
+    id: item.resource,
     title: item.pref_label
   }))
 })
@@ -60,6 +60,20 @@ useSeoMeta({title: 'New Showcase | opendata.swiss'})
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
 function submit() {
-  console.dir(newShowcaseForm.value)
+  fetch('/api/showcases', {
+    method: 'POST',
+    body: new FormData(newShowcaseForm.value!)
+  }).then(response => {
+    if (response.ok) {
+      alert('Showcase submitted successfully!')
+      if (newShowcaseForm.value) {
+        newShowcaseForm.value.reset()
+      }
+    } else {
+      alert('Error submitting showcase.')
+    }
+  }).catch(() => {
+    alert('Error submitting showcase.')
+  })
 }
 </script>
