@@ -28,17 +28,32 @@
             "search_results": "Résultats de recherche",
             "show_filters": "Afficher les filtres",
             "hide_filters": "Masquer les filtres",
-            "sort": "Trier par"
+            "sort": "Trier par",
+            "sort_by": {
+                "relevance": "par pertinence",
+                "date_modified_desc": "par date de modification (plus récent d'abord)",
+                "date_modified_asc": "par date de modification (plus ancien d'abord)",
+                "title_asc": "par titre (a-z)",
+                "title_desc": "par titre (z-a)"
+            }
         },
         "dataset_detail": {
             "dataset": "Jeu de données",
+            "catalog": "Catalogue",
+            "this_dataset_record": "Cette entrée de jeu de données a été",
+            "accrual_periodicity": "Fréquence de mise à jour",
+            "show_catalog_entry": "Afficher l’entrée du catalogue",
+            "hide_catalog_entry": "Masquer l’entrée du catalogue",
             "distribution": "Distribution",
             "additional_information": "Informations supplémentaires",
-            "published_on": "Publié le",
-            "modified_on": "Dernière mise à jour le",
+            "published_on": "Publié",
+            "created_on": "Créé",
+            "modified_on": "Dernière mise à jour",
             "categories": "Catégories",
             "download": "Télécharger",
-            "go_to_resource": "Aller à la ressource"
+            "go_to_resource": "Aller à la ressource",
+            "show_raw": "Afficher la date brute",
+            "show_relative": "Afficher le temps relatif"
         },
         "showcase": {
             "type": {

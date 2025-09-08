@@ -13,14 +13,13 @@ import OdsPagination from "../../app/components/OdsPagination.vue";
 import OdsDatasetList from "../../app/components/dataset/OdsDatasetList.vue";
 import OdsFilterPanel from "../../app/components/dataset/OdsFilterPanel.vue";
 import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
+import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
 
 const { t, locale} = useI18n()
 
-
 const router = useRouter()
 const route = useRoute()
-
 
 // Create a record of refs for each facet in ACTIVE_FACETS
 const facetRefs = Object.fromEntries(
@@ -54,15 +53,33 @@ function resetSearch() {
   piveauQueryParams.page = 0
 }
 
+const sortOptions = computed(() => {
+  const currentLocale = locale.value;
+  return [
+    { value: `relevance`, text: t('message.dataset_search.sort_by.relevance') },
+    { value: `title.${currentLocale}+asc`, text: t('message.dataset_search.sort_by.title_asc') },
+    { value: `title.${currentLocale}+dsc`, text: t('message.dataset_search.sort_by.title_desc') },
+    { value: `modified+desc`, text: t('message.dataset_search.sort_by.date_modified_desc') },
+    { value: `modified+asc`, text: t('message.dataset_search.sort_by.date_modified_asc') },
+  ]
+})
+const selectedSort = ref<string>(typeof route.query.sort === 'string' ? route.query.sort.replace(/ /g, '+') : '')
+
+watch(selectedSort, (sortString) => {
+  // use the route to update the query parameters
+  router.push({ query: { ...route.query, sort: sortString } });
+})
 
 const piveauQueryParams: SearchParamsBase = reactive({
   limit: 10,
   page: route.query.page ? Number(route.query.page) - 1 : 0,
-  q: Array.isArray(route.query.q) ? route.query.q.join(' ') : route.query.q || ''
+  q: Array.isArray(route.query.q) ? route.query.q.join(' ') : route.query.q || '',
+  sort: 'relevance'
 })
 
-const { useSearch } = useDatasetsSearch()
+const { useSearch} = useDatasetsSearch()
 const {
+  query,
   isFetching,
   getSearchResultsEnhanced,
   getSearchResultsCount,
@@ -70,15 +87,15 @@ const {
   getAvailableFacetsLocalized
 } = useSearch({
   queryParams: toRefs(piveauQueryParams),
-  selectedFacets: facetRefs
-
-
+  selectedFacets: facetRefs,
 })
+
+const { suspense } = query
 
 const LIST_TYPE_KEY = 'datasets-list-type';
 const getInitialListType = () => {
   const stored = typeof window !== 'undefined' ? window.localStorage.getItem(LIST_TYPE_KEY) : null;
-  return stored === 'list' ? 'list' : 'card';
+  return stored === 'card' ? 'card' : 'list';
 };
 const listType = ref<'card' | 'list'>(getInitialListType());
 
@@ -89,7 +106,6 @@ watch(listType, (newType) => {
 });
 
 const availableFacets = getAvailableFacetsLocalized(locale.value);
-
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
   const facets = availableFacets.value.filter(f => ACTIVE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
@@ -108,7 +124,6 @@ function goToPage(newPage: number | string, query = route.query) {
   router.push({
     name: route.name,
     query: { ...query, ...facetsQuery, page },
-//    hash: '#search-results',
   })
   scrollToResults();
 
@@ -122,8 +137,8 @@ function scrollToResults() {
 }
 
 function scrollOnPaging(event: PointerEvent) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  if((event.target as any).localName === 'svg') {
+  const element = event.target as Element;
+  if(element && (element.localName === 'svg' || element.localName === 'path' || element.localName === 'a' )) {
     scrollToResults();
     }
   }
@@ -133,7 +148,6 @@ const onSearch = () => goToPage(1, { q: searchInput.value })
 
 const homeBreadcrumb = await homePageBreadcrumb(locale)
 const datasetBreadcrumb = computed<BreadcrumbItem>(() => {
-
   const bc = {
     id: 'datasets',
     title: t('message.header.navigation.datasets'),
@@ -147,6 +161,7 @@ const resultBreadcrumb = computed<BreadcrumbItem | null>(() => {
   const hasFacetFilters = Object.keys(facetRefs).some(facet => facetRefs[facet].value.length > 0)
   const hasOtherQueryParams = Object.keys(route.query).length > 1 || (route.query.q && route.query.q !== '')
   if (notFirstPage || hasOtherQueryParams || hasFacetFilters) {
+
     const resultBc =  {
       id: 'search-results',
       title: t('message.dataset_search.search_results'),
@@ -172,9 +187,6 @@ const breadcrumbs = computed<BreadcrumbItem[]>(() => {
   ]
 })
 
-
-
-
 watch(() => route.query.page, (newPage) => {
   piveauQueryParams.page = newPage ? Number(newPage) - 1 : 0
 })
@@ -198,6 +210,14 @@ watch(() => route.query.q, (searchTerm) => {
   piveauQueryParams.q = searchInput.value
 })
 
+watch(() => route.query.sort, (sortTerm) => {
+  if (sortTerm) {
+    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+      piveauQueryParams.sort = selectedSort.value
+
+  }
+})
+
 onMounted(() => {
   syncFacetsFromRoute()
 
@@ -218,6 +238,7 @@ onMounted(() => {
   })
 })
 
+await suspense()
 
 </script>
 
@@ -271,34 +292,18 @@ onMounted(() => {
       <div class="container gap--responsive">
          <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
             <div class="search-results__header">
-               <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
-               <div class="search-results__header__right">
-                  <div class="form__group__select">
-                     <!---->
-                     <div class="select select--bare">
-                        <select id="select-6" class="input--outline input--sm" name="select-name">
-                           <option :disabled="true" :selected="true">{{ t('message.dataset_search.sort') }}</option>
-                           <option>nach Relevanz</option>
-                           <option>by date (increasing)</option>
-                           <option>by date (decreasing)</option>
-                           <option>...</option>
-                        </select>
-                        <div class="select__icon">
-                           <svg role="presentation" aria-hidden="true" viewBox="0 0 24 24">
-                              <path d="m5.706 10.015 6.669 3.85 6.669-3.85.375.649-7.044 4.067-7.044-4.067z" />
-                           </svg>
-                        </div>
-                     </div>
-                  </div>
+              <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
+                <div class="search-results__header__right">
+                  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
                   <div class="separator separator--vertical" />
-                  <OdsListCardToggle v-model="listType" />
-               </div>
-            </div>
+                    <OdsListCardToggle v-model="listType" />
+                </div>
+              </div>
             <h2 class="sr-only">Results list</h2>
-            <div v-if="isFetching" class="is-fetching">
+           <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
-            </div>
-            <OdsDatasetList v-else :items="getSearchResultsEnhanced" :list-type="listType" :search-params="route.query" />
+            </div>-->
+            <OdsDatasetList :items="getSearchResultsEnhanced" :list-type="listType" :search-params="route.query" />
             <div class="pagination pagination--right">
               <OdsPagination
                 :current-page="(Number(route.query.page  ?? 1) )"
@@ -322,7 +327,7 @@ onMounted(() => {
                 />
             </div>
 
-         <div class="notification notification--info">
+            <div class="notification notification--info">
                <SvgIcon icon="InfoCircle" role="notification" />
                <div class="notification__content">
                   <div class="text--bold">Haben Sie nicht gefunden wonach Sie suchen?</div>

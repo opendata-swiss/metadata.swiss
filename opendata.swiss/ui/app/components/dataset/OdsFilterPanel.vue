@@ -17,7 +17,7 @@
 
   </OdsButton>
 
-
+  <ClientOnly>
     <div v-show="showFilters" class="search__filters__drawer">
       <OdsMultiSelect
         v-for="facet in props.facets"
@@ -29,6 +29,7 @@
         @update:model-value="handleFacetChange(facet, $event)"
       />
     </div>
+  </ClientOnly>
 
 </template>
 

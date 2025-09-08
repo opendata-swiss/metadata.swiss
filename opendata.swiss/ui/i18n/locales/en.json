@@ -28,17 +28,32 @@
             "search_results": "Search results",
             "show_filters": "Show filters",
             "hide_filters": "Hide filters",
-            "sort": "Sort by"
+            "sort": "Sort by",
+            "sort_by": {
+                "relevance": "by relevance",
+                "date_modified_desc": "by date modified (newest first)",
+                "date_modified_asc": "by date modified (oldest first)",
+                "title_asc": "by title (a-z)",
+                "title_desc": "by title (z-a)"
+            }
         },
         "dataset_detail": {
             "dataset": "Dataset",
+            "catalog": "Catalog",
+            "this_dataset_record": "This dataset record has been",
+            "accrual_periodicity": "Update frequency",
+            "show_catalog_entry": "Show catalog entry",
+            "hide_catalog_entry": "Hide catalog entry",
             "distribution": "Distribution",
             "additional_information": "Additional information",
-            "published_on": "Published on",
-            "modified_on": "Last updated on",
+            "published_on": "Published",
+            "created_on": "Created",
+            "modified_on": "Last updated ",
             "categories": "Categories",
             "download": "Download",
-            "go_to_resource": "Go to resource"
+            "go_to_resource": "Go to resource",
+            "show_raw": "Show raw date",
+            "show_relative": "Show relative time"
         },
         "showcase": {
             "type": {

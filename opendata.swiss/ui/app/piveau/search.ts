@@ -1,10 +1,10 @@
 import z from 'zod'
-import { schemaDataset } from '@piveau/sdk-core'
+import { schemaDataset, } from '@piveau/sdk-core'
 import { dcatApDataset, defineHubSearch } from '@piveau/sdk-vue'
 import { getKeywords } from './get-keywords'
 import { getOdsFormats } from './get-ods-formats'
-
-
+import { getOdsCatalogInfo } from './get-ods-catalog-info'
+import { getOdsAccrualPeriodicity } from './get-ods-accrual-periodicity'
 
 // export const ACTIVE_FACETS = ['categories', 'publisher', 'catalog', 'format', 'license', 'keywords']
 export const ACTIVE_FACETS = ['catalog', 'categories', 'publisher', 'format', 'license', 'keywords']
@@ -26,7 +26,9 @@ export function useDatasetsSearch() {
     return {
       ...base(dataset, localeInstance),
       getKeywords: getKeywords(dataset, localeInstance),
-      getOdsFormats: getOdsFormats(dataset)
+      getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
+      getOdsFormats: getOdsFormats(dataset),
+      getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset)
     }
   })
 }

@@ -22,7 +22,7 @@
                 :to="item.to"
                 active-class="active"
                 :aria-label="t(item.label)"
-                @click.native="emitRequestClose"
+                @click="emitRequestClose"
               >
                 <span>{{t(item.label)}}</span>
               </NuxtLinkLocale><div/>

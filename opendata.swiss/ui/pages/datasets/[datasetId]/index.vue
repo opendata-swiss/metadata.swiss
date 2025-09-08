@@ -9,8 +9,14 @@ import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetai
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDownloadsList from '../../../app/components/dataset-detail/OdsDownloadsList.vue'
-import { useI18n } from 'vue-i18n';
+import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 
+import { useI18n } from 'vue-i18n';
+const md = `
+::alert
+Hello MDC
+::
+`
 const { locale, t } = useI18n();
 const route = useRoute()
 const router = useRouter()
@@ -62,9 +68,10 @@ const breadcrumbs = computed(() => {
    <section class="hero hero--default">
       <div class="container container--grid gap--responsive">
          <div class="hero__content">
-            <p class="meta-info"><span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span><span class="meta-info__item">{{ t('message.dataset_detail.published_on') }} {{ resultEnhanced?.getCreated }} </span><span class="meta-info__item">{{ t('message.dataset_detail.modified_on') }} {{ resultEnhanced?.getModified }} </span></p>
+            <OdsDatasetMetaInfo :dataset="resultEnhanced" />
             <h1 class="hero__title"> {{ resultEnhanced?.getTitle }} </h1>
             <h2 class="hero__subtitle"> {{ resultEnhanced?.getDescription }} </h2>
+            <pre>{{ resultEnhanced?.getDescription }}</pre>
             <!----><!---->
             <aside class="authors">
                <div class="disc-images" aria-hidden="true">
