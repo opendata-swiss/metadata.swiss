@@ -1,6 +1,9 @@
 import vuetify, {transformAssetUrls} from 'vite-plugin-vuetify'
 
 import {resolve} from 'node:path'
+import * as path from "node:path";
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -35,6 +38,11 @@ export default defineNuxtConfig({
           searchDepth: 3,
         }
       }
+    }
+  },
+  runtimeConfig: {
+    public: {
+      contentRoot: path.resolve(__dirname, 'content')
     }
   },
   components: {

@@ -30,13 +30,15 @@
     "rimraf": "^6.0.1",
     "sass-embedded": "^1.89.2",
     "sharp": "^0.34.3",
+    "slugify": "^1.6.6",
     "swiper": "^11.2.10",
     "uuid": "^11.1.0",
     "vue": "^3.5.17",
     "vue-i18n": "^11.1.10",
     "vue-inline-svg": "^4.0.1",
     "vue-router": "^4.5.1",
-    "vue-select": "^4.0.0-beta.6"
+    "vue-select": "^4.0.0-beta.6",
+    "yaml": "^2.8.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.0.1",
