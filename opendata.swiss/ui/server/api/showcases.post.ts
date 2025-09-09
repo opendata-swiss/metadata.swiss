@@ -33,7 +33,7 @@ export default defineEventHandler(async (event) => {
     // contentRoot = `${checkoutPath}/content`
     throw new Error('Saving to GitHub not implemented yet.')
   } else {
-    ({public: {contentRoot}} = useRuntimeConfig())
+    ({ public: { contentRoot } } = useRuntimeConfig())
   }
 
   const body = await readMultipartFormData(event) as PayloadData
@@ -76,6 +76,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
+  // TODO: choose to save to GitHub or locally based on environment
   await save(showcase, contentRoot)
 
   if (process.env.NODE_ENV === 'production') {
@@ -106,7 +107,7 @@ interface Setter {
 function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, value: ShowcaseTranslation[K] | Setter) {
   for (const language of languages) {
     if(typeof value === 'function') {
-      value(showcase[language])
+     value(showcase[language])
     } else {
       showcase[language][key] = value
     }
