@@ -68,8 +68,11 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  // TODO: choose to save to GitHub or locally based on environment
-  await save(showcase, contentRoot)
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('Saving to GitHub not implemented yet.')
+  } else {
+    await save(showcase, contentRoot)
+  }
 
   return { message: 'Showcase submission received successfully.' };
 });
