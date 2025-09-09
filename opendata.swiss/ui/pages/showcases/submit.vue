@@ -14,7 +14,7 @@
         <pre>{{ submissionError }}</pre>
 
         <template #buttons>
-          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"></OdsButton>
+          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
         </template>
       </OdsNotificationBanner>
     </template>
@@ -22,12 +22,15 @@
     <section class="section section--py">
       <div class="container">
         <ClientOnly>
-          <form method="post" ref="newShowcaseForm" action="/api/new-showcase">
+          <form ref="newShowcaseForm" method="post" action="/api/new-showcase">
             <div class="form__group__input">
               <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch"/>
               <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français"/>
               <OdsInput id="title-it" label="Title (IT)" placeholder="Titolo in Italiano"/>
               <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English"/>
+            </div>
+            <div class="form__group__input">
+              <OdsInput id="image" type="file" label="Image" />
             </div>
             <div class="form__group">
               <OdsInput id="url" label="Website" />
@@ -47,7 +50,7 @@
               <OdsTextarea id="body-en" label="Body (EN)" placeholder="Description in English" />
             </div>
             <div class="form__group">
-              <OdsButton variant="outline-negative" title="Submit" @click="submit"></OdsButton>
+              <OdsButton variant="outline-negative" title="Submit" @click="submit"/>
             </div>
           </form>
         </ClientOnly>
