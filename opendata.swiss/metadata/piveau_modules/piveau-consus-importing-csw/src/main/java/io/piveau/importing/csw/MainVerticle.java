@@ -8,8 +8,6 @@ import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpClientOptions;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.http.RequestOptions;
-import io.vertx.core.buffer.Buffer;
 import io.vertx.core.Future;
 
 import org.jdom2.Document;
@@ -52,7 +50,7 @@ public class MainVerticle extends AbstractVerticle {
         String cqlFilter = config.getJsonObject("config", new JsonObject()).getString("cql", null);
 
         if (cswUrl == null) {
-            pipeContext.fail(new Throwable("CSW URL is missing in the pipe configuration."));
+            pipeContext.setFailure("CSW URL is missing in the pipe configuration.");
             return;
         }
 
@@ -95,7 +93,6 @@ public class MainVerticle extends AbstractVerticle {
 
                     if (records.isEmpty()) {
                         System.out.println("No records found to import.");
-                        pipeContext.success();
                         return;
                     }
 
@@ -108,12 +105,11 @@ public class MainVerticle extends AbstractVerticle {
                     }
 
                     // Complete the pipe after all records have been forwarded.
-                    pipeContext.success();
 
                 } catch (JDOMException | IOException e) {
-                    pipeContext.fail(new Throwable("Failed to parse XML response: " + e.getMessage()));
+                    pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
                 }
             })
-            .onFailure(pipeContext::fail);
+            .onFailure(cause -> pipeContext.setFailure(cause.getMessage()));
     }
 }
