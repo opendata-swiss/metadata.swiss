@@ -1,4 +1,5 @@
-import { ShowcasesCollectionItem } from '@nuxt/content'
+/* eslint-disable no-fallthrough */
+import type {ShowcasesCollectionItem} from '@nuxt/content'
 import type {MultiPartData} from "h3";
 import slugify from "slugify";
 import * as fs from 'node:fs/promises'
@@ -41,9 +42,10 @@ export default defineEventHandler(async (event) => {
         showcase.slug = slugify(data.toString(), { lower: true, locale: 'de' })
       case 'title-fr':
       case 'title-en':
-      case 'title-it':
+      case 'title-it': {
         const language = /^title-(?<lang>\w\w)$/.exec(name)?.groups?.lang as Language
         showcase[language].title = data.toString()
+      }
         break
       case 'url':
       case "type":
