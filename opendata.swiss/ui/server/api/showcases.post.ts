@@ -26,7 +26,15 @@ const empty =  (): ShowcaseTranslation => ({
 })
 
 export default defineEventHandler(async (event) => {
-  const { public: { contentRoot } } = useRuntimeConfig();
+  let contentRoot: string
+
+  if (process.env.NODE_ENV === 'production') {
+    // TODO: clone repo, get path to content
+    // contentRoot = `${checkoutPath}/content`
+    throw new Error('Saving to GitHub not implemented yet.')
+  } else {
+    ({public: {contentRoot}} = useRuntimeConfig())
+  }
 
   const body = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
@@ -68,10 +76,11 @@ export default defineEventHandler(async (event) => {
     }
   }
 
+  await save(showcase, contentRoot)
+
   if (process.env.NODE_ENV === 'production') {
+    // TODO: commit and push to repo
     throw new Error('Saving to GitHub not implemented yet.')
-  } else {
-    await save(showcase, contentRoot)
   }
 
   return { message: 'Showcase submission received successfully.' };
@@ -97,7 +106,7 @@ interface Setter {
 function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, value: ShowcaseTranslation[K] | Setter) {
   for (const language of languages) {
     if(typeof value === 'function') {
-     value(showcase[language])
+      value(showcase[language])
     } else {
       showcase[language][key] = value
     }
