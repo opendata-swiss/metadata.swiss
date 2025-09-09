@@ -1,5 +1,24 @@
 <template>
   <OdsPage :page="{ title: 'New Showcase' }">
+    <template #header>
+      <OdsNotificationBanner :open="success === true" type="success">
+        Your showcase has been submitted
+
+        <template #buttons>
+          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"></OdsButton>
+        </template>
+      </OdsNotificationBanner>
+      <OdsNotificationBanner :open="success === false" type="error">
+        Failed to submit showcase.
+
+        <pre>{{ submissionError }}</pre>
+
+        <template #buttons>
+          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"></OdsButton>
+        </template>
+      </OdsNotificationBanner>
+    </template>
+
     <section class="section section--py">
       <div class="container">
         <ClientOnly>
@@ -41,6 +60,7 @@
 import { ref } from 'vue'
 import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
 import {useVocabularySearch} from "../../app/piveau/search";
+import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
 
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
@@ -58,6 +78,9 @@ const dataThemes = computed(() => {
 
 useSeoMeta({title: 'New Showcase | opendata.swiss'})
 
+const success = ref<boolean | null>(null)
+const submissionError = ref<string | null>(null)
+
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
 function submit() {
   fetch('/api/showcases', {
@@ -65,15 +88,24 @@ function submit() {
     body: new FormData(newShowcaseForm.value!)
   }).then(response => {
     if (response.ok) {
-      alert('Showcase submitted successfully!')
+      success.value = true
       if (newShowcaseForm.value) {
         newShowcaseForm.value.reset()
       }
     } else {
-      alert('Error submitting showcase.')
+      submissionError.value = `Server responded with: ${response.status} - ${response.statusText}`
+      success.value = false
     }
-  }).catch(() => {
-    alert('Error submitting showcase.')
+  }).catch((e) => {
+    submissionError.value = `${e.message}\n${e.stack}`
+    success.value = false
+  }).finally(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   })
+}
+
+function closeMessages() {
+  success.value = null
+  submissionError.value = null
 }
 </script>
