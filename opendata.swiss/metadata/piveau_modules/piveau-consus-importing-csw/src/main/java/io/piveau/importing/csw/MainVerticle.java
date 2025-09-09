@@ -112,4 +112,10 @@ public class MainVerticle extends AbstractVerticle {
             })
             .onFailure(cause -> pipeContext.setFailure(cause.getMessage()));
     }
+
+
+    // Setter for the HTTP client to facilitate testing with a mock client.
+    public void setClient(HttpClient client) {
+        this.client = client;
+    }
 }
