@@ -1,0 +1,3 @@
+[submodule "piveau-docker-compose"]
+	path = piveau-docker-compose
+	url = git@gitlab.com:piveau/delivery/piveau-docker-compose.git
