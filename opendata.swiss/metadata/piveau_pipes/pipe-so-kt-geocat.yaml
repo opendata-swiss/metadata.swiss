@@ -1,0 +1,33 @@
+header:
+  id: e86fb7e3-7a44-4f72-8dec-f638f1d96ec9
+  name: so-kt-geocat
+  title: SO-Kt - Geocat Harvester
+  context: DEU
+  transport: payload
+  version: "1.0.0"
+body:
+  segments:
+    - header:
+        name: piveau-consus-importing-rdf
+        segmentNumber: 1
+        title: Importing RDF
+        processed: false
+      body:
+        config:
+          address: "https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw?SERVICE=CSW&REQUEST=GetCapabilities"
+          catalogue: so-kt-geocat
+          accept: application/xml
+          inputFormat: application/xml
+          preProcessing: true
+    - header:
+        name: piveau-consus-transforming-js
+        segmentNumber: 2
+        title: Transforming js
+        processed: false
+      body:
+        config:
+          single: true
+          scriptType: localFile
+          path: debug.js
+          params:
+            defaultLanguage: en

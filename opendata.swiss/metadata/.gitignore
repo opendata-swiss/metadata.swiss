@@ -2,4 +2,4 @@
 
 
 # Maven build output
-/target/
+**/target/
