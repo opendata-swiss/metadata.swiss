@@ -30,7 +30,7 @@
               <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English"/>
             </div>
             <div class="form__group__input">
-              <OdsInput id="image" type="file" label="Image" />
+              <OdsInput id="image" type="file" label="Image" accept="image/*" />
             </div>
             <div class="form__group">
               <OdsInput id="url" label="Website" />

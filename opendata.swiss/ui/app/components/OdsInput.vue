@@ -17,6 +17,7 @@
       :autocomplete="autocomplete"
       :readonly="readonly"
       :required="required"
+      :accept="accept"
       @input.stop="onInput"
     />
     <div
@@ -128,6 +129,10 @@ const props = defineProps({
     type: Boolean,
     default: () => false,
   },
+  accept: {
+    type: String,
+    default: () => undefined,
+  }
 })
 
 const classes = computed(() => {
