@@ -1,0 +1,9 @@
+.env
+
+
+# Maven build output
+**/target/
+
+*.lst
+
+piveau-docker-compose

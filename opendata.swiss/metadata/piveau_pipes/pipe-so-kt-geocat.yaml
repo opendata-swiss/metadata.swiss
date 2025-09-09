@@ -8,16 +8,14 @@ header:
 body:
   segments:
     - header:
-        name: piveau-consus-importing-rdf
+        name: piveau-consus-importing-csw
         segmentNumber: 1
-        title: Importing RDF
+        title: Importing CSW
         processed: false
       body:
         config:
           address: "https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw?SERVICE=CSW&REQUEST=GetCapabilities"
           catalogue: so-kt-geocat
-          accept: application/xml
-          inputFormat: application/xml
           preProcessing: true
     - header:
         name: piveau-consus-transforming-js
