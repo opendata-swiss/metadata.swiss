@@ -1,7 +1,0 @@
-.env
-
-
-# Maven build output
-**/target/
-
-*.lst

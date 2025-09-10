@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
+import io.vertx.core.Launcher; // <-- Add this import
+import java.util.Arrays;      // <-- Add this import
+
 public class MainVerticle extends AbstractVerticle {
 
     private PipeConnector pipeConnector;
@@ -117,5 +120,11 @@ public class MainVerticle extends AbstractVerticle {
     // Setter for the HTTP client to facilitate testing with a mock client.
     public void setClient(HttpClient client) {
         this.client = client;
+    }
+
+    public static void main(String[] args) {
+        String[] params = Arrays.copyOf(args, args.length + 1);
+        params[params.length - 1] = MainVerticle.class.getName();
+        Launcher.executeCommand("run", params);
     }
 }
