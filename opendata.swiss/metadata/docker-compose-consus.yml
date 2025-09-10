@@ -24,7 +24,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms200m -Xmx500m
     volumes:
-      - ./scripts:/usr/verticles/piveau_scripts
+      - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
     image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:5.0.2
@@ -47,6 +47,8 @@ services:
     environment:
       - JAVA_OPTS=-Xms100m -Xmx200m
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+    volumes:
+      - ./piveau_pipes:/usr/verticles/pipes
 
   piveau-consus-importing-csw:
       build: piveau_modules/piveau-consus-importing-csw
