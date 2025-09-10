@@ -4,11 +4,7 @@ package io.piveau.importing.csw;
 import io.piveau.pipe.connector.PipeConnector;
 import io.piveau.pipe.PipeContext;
 import io.vertx.core.AbstractVerticle;
-//import io.vertx.core.http.HttpClient;
-import io.vertx.core.http.HttpClientOptions;
-//import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
-import io.vertx.core.Future;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -16,18 +12,23 @@ import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
-import io.vertx.core.Launcher; // <-- Add this import
-import java.util.Arrays;      // <-- Add this import
-
+import io.vertx.core.Launcher;
+import java.util.Arrays;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
+
+
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -104,11 +105,16 @@ public class MainVerticle extends AbstractVerticle {
 
                     for (Element record : records) {
                         String xmlString = new XMLOutputter().outputString(record);
-                        pipeContext.setResult(xmlString).forward();
+                        JSONObject jsonObject = XML.toJSONObject(xmlString);
+                        String jsonString = jsonObject.toString(4);
+
+                        pipeContext.setResult(jsonString).forward();
                     }
 
                 } catch (JDOMException | IOException e) {
                     pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
+                } catch (JSONException e) {
+                    pipeContext.setFailure("Failed to convert XML to JSON: " + e.getMessage());
                 }
 
 
@@ -123,7 +129,6 @@ public class MainVerticle extends AbstractVerticle {
             e.printStackTrace();
         }
 
-        // Fetch the raw XML content from the CSW endpoint.
         //client.request(HttpMethod.GET, requestUrl)
         //    .compose(request -> {
         //        request.setFollowRedirects(false);
