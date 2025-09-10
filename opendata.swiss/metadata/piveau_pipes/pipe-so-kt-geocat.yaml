@@ -14,7 +14,7 @@ body:
         processed: false
       body:
         config:
-          address: "https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw?SERVICE=CSW&REQUEST=GetCapabilities"
+          address: "https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw"
           catalogue: so-kt-geocat
           preProcessing: true
     - header:

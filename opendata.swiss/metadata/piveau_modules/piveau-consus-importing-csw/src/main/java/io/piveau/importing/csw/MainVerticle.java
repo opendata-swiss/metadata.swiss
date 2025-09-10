@@ -4,9 +4,9 @@ package io.piveau.importing.csw;
 import io.piveau.pipe.connector.PipeConnector;
 import io.piveau.pipe.PipeContext;
 import io.vertx.core.AbstractVerticle;
-import io.vertx.core.http.HttpClient;
+//import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpClientOptions;
-import io.vertx.core.http.HttpMethod;
+//import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.Future;
 
@@ -23,6 +23,11 @@ import java.util.List;
 
 import io.vertx.core.Launcher; // <-- Add this import
 import java.util.Arrays;      // <-- Add this import
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -41,56 +46,52 @@ public class MainVerticle extends AbstractVerticle {
             })
             .onFailure(Throwable::printStackTrace);
 
-        // Initialize a standard Vert.x HTTP client for fetching data.
-        HttpClientOptions options = new HttpClientOptions().setSsl(true).setTrustAll(true);
-        client = vertx.createHttpClient(options);
     }
 
     private void handlePipe(PipeContext pipeContext) {
         // Get the URL from the pipe's configuration.
         JsonObject config = pipeContext.getConfig();
-        String cswUrl = config.getString("url");
+        String cswUrl = config.getString("address");
         String cqlFilter = config.getJsonObject("config", new JsonObject()).getString("cql", null);
+        String typeNames = config.getJsonObject("config", new JsonObject()).getString("typeNames", "dcat");
 
         if (cswUrl == null) {
             pipeContext.setFailure("CSW URL is missing in the pipe configuration.");
             return;
         }
 
-        // Construct the CSW GetRecords request URL.
-        String requestUrl = cswUrl + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full";
+        String requestUrl = cswUrl + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
+        requestUrl += "&typeNames=" + typeNames;
+
         if (cqlFilter != null) {
             // Note: CSW uses a filter parameter, which might need proper encoding.
             // This is a simplified example.
             requestUrl += "&constraintlanguage=CQL_TEXT&constraint=" + cqlFilter;
         }
 
-        // Fetch the raw XML content from the CSW endpoint.
-        client.request(HttpMethod.GET, requestUrl)
-            .compose(request -> {
-                request.setFollowRedirects(true);
-                return request.send();
-            })
-            .compose(response -> {
-                if (response.statusCode() == 200) {
-                    return response.body();
-                } else {
-                    return Future.failedFuture("Failed to fetch data: " + response.statusMessage());
-                }
-            })
-            .onSuccess(buffer -> {
-                // Parse the XML response.
-                String xmlContent = buffer.toString();
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(requestUrl))
+                .build();
+
+        System.out.println(requestUrl);
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            if (response.statusCode() == 200) {
+                System.out.println("Successfully fetched XML:");
+                System.out.println("-------------------------");
+
                 try {
+
+                    String xmlContent = response.body();
                     SAXBuilder saxBuilder = new SAXBuilder();
                     Document document = saxBuilder.build(new StringReader(xmlContent));
                     Element rootElement = document.getRootElement();
 
-                    // Define the necessary XML namespaces for ISO 19139 and CSW.
                     Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
-                    Namespace gmdNamespace = Namespace.getNamespace("gmd", "http://www.isotc211.org/2005/gmd");
 
-                    // The core logic: find all <csw:Record> elements.
+                    // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>/<csw:Record>
                     List<Element> records = rootElement.getChild("SearchResults", cswNamespace)
                                                          .getChildren("Record", cswNamespace);
 
@@ -99,21 +100,78 @@ public class MainVerticle extends AbstractVerticle {
                         return;
                     }
 
-                    // For each record, pass it as a separate payload to the next segment (the transformer).
+                    System.out.println("Found " + records.size() + " records to forward.");
+
                     for (Element record : records) {
-                        // Extract the raw XML of the record and send it to the next pipe segment.
-                        // The transformer will then convert this XML to RDF.
                         String xmlString = new XMLOutputter().outputString(record);
                         pipeContext.setResult(xmlString).forward();
                     }
 
-                    // Complete the pipe after all records have been forwarded.
-
                 } catch (JDOMException | IOException e) {
                     pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
                 }
-            })
-            .onFailure(cause -> pipeContext.setFailure(cause.getMessage()));
+
+
+            } else {
+                System.err.println("Error: Received status code " + response.statusCode());
+                System.err.println("Response Body:");
+                System.err.println(response.body());
+            }
+
+        } catch (Exception e) {
+            System.err.println("An error occurred during the HTTP request:");
+            e.printStackTrace();
+        }
+
+        // Fetch the raw XML content from the CSW endpoint.
+        //client.request(HttpMethod.GET, requestUrl)
+        //    .compose(request -> {
+        //        request.setFollowRedirects(false);
+        //        return request.send();
+        //    })
+        //    .compose(response -> {
+        //        if (response.statusCode() == 200) {
+        //            return response.body();
+        //        } else {
+        //            return Future.failedFuture("Failed to fetch data: " + response.statusMessage());
+        //        }
+        //    })
+        //    .onSuccess(buffer -> {
+        //        // Parse the XML response.
+        //        String xmlContent = buffer.toString();
+        //        try {
+        //            SAXBuilder saxBuilder = new SAXBuilder();
+        //            Document document = saxBuilder.build(new StringReader(xmlContent));
+        //            Element rootElement = document.getRootElement();
+//
+        //            // Define the necessary XML namespaces for ISO 19139 and CSW.
+        //            Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
+        //            Namespace gmdNamespace = Namespace.getNamespace("gmd", "http://www.isotc211.org/2005/gmd");
+//
+        //            // The core logic: find all <csw:Record> elements.
+        //            List<Element> records = rootElement.getChild("SearchResults", cswNamespace)
+        //                                                 .getChildren("Record", cswNamespace);
+//
+        //            if (records.isEmpty()) {
+        //                System.out.println("No records found to import.");
+        //                return;
+        //            }
+//
+        //            // For each record, pass it as a separate payload to the next segment (the transformer).
+        //            for (Element record : records) {
+        //                // Extract the raw XML of the record and send it to the next pipe segment.
+        //                // The transformer will then convert this XML to RDF.
+        //                String xmlString = new XMLOutputter().outputString(record);
+        //                pipeContext.setResult(xmlString).forward();
+        //            }
+//
+        //            // Complete the pipe after all records have been forwarded.
+//
+        //        } catch (JDOMException | IOException e) {
+        //            pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
+        //        }
+        //    })
+        //    .onFailure(cause -> pipeContext.setFailure(cause.getMessage()));
     }
 
 
