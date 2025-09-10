@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const contentRoot = `${rootDir}/content`
-  const imageRoot = `${rootDir}/public/img`
+  const imageRoot = `${rootDir}/public/img/uploads`
 
   const body = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
