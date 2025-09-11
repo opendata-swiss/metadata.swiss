@@ -7,9 +7,8 @@ backend:
   base_url: https://gitlab.zazuko.com
   auth_endpoint: oauth/authorize
 
-# These lines should *not* be indented
-media_folder: "public/img" # Media files will be stored in the repo under static/images/uploads
-public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
 
 i18n:
   structure: multiple_files

@@ -11,7 +11,10 @@ export const APP_NAVIGATION_ITEMS: OdsNavTabItem[] = [
   },
   {
     label: 'message.header.navigation.showcases',
-    to: '/showcases'
+    to: '/showcases',
+    subMenu: [
+      { label: 'message.header.navigation.showcase_submit', to: '/showcases/new' }
+    ]
   },
   {
     label: 'message.header.navigation.blog',
