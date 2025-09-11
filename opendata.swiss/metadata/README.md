@@ -7,6 +7,7 @@
 - `piveau_catalogues/`: Piveau catalogues
 - `piveau_pipes/`: Piveau pipes
 - `piveau_scripts/`: Piveau scripts
+- `piveau_vocabularies/`: Piveau vocabularies
 
 ### Other resources
 
