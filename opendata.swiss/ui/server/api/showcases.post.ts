@@ -1,4 +1,3 @@
-/* eslint-disable no-fallthrough */
 import type {ShowcasesCollectionItem} from '@nuxt/content'
 import type {MultiPartData} from "h3";
 import slugify from "slugify";
@@ -26,15 +25,18 @@ const empty =  (): ShowcaseTranslation => ({
 })
 
 export default defineEventHandler(async (event) => {
-  let contentRoot: string
+  let rootDir: string
 
   if (process.env.NODE_ENV === 'production') {
     // TODO: clone repo, get path to content
-    // contentRoot = `${checkoutPath}/content`
+    // rootDir = checkoutPath
     throw new Error('Saving to GitHub not implemented yet.')
   } else {
-    ({ public: { contentRoot } } = useRuntimeConfig())
+    ({ public: { rootDir } } = useRuntimeConfig())
   }
+
+  const contentRoot = `${rootDir}/content`
+  const imageRoot = `${rootDir}/public/img/uploads`
 
   const body = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
@@ -44,10 +46,12 @@ export default defineEventHandler(async (event) => {
     en: empty()
   }
 
+  const titleDe = body.find(field => field.name === 'title-de')?.data?.toString()
+  showcase.slug = slugify(titleDe!, { lower: true, locale: 'de' })
+
   for (const { name, data } of body) {
     switch (name) {
       case 'title-de':
-        showcase.slug = slugify(data.toString(), { lower: true, locale: 'de' })
       case 'title-fr':
       case 'title-en':
       case 'title-it': {
@@ -72,6 +76,11 @@ export default defineEventHandler(async (event) => {
         toAll(showcase, 'categories', (translation) => {
           translation.categories!.push(data.toString())
         })
+        break
+      case "image": {
+        const imagePath = `${imageRoot}/${showcase.slug}-image.jpg`
+        await fs.writeFile(imagePath, data)
+      }
         break
     }
   }

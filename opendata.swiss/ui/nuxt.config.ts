@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      contentRoot: path.resolve(__dirname, 'content')
+      rootDir: __dirname
     }
   },
   components: {
