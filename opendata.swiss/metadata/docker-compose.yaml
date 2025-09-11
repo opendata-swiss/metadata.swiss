@@ -34,7 +34,7 @@ services:
         condition: service_healthy
     environment:
       - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
-      - PIVEAU_HUB_SEARCH_ES_CONFIG={"host":"elasticsearch","port":9200}
+      - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms1g -Xmx2g
 
