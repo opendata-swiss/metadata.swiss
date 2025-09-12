@@ -52,6 +52,10 @@ const breadcrumbs = computed(() => {
 
   return result
 })
+
+useSeoMeta({
+  title: `${resultEnhanced.value?.getTitle} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
+})
 </script>
 
 <template>
