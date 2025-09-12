@@ -242,6 +242,10 @@ onMounted(() => {
 
 await suspense()
 
+useSeoMeta({
+  title: `${t('message.header.navigation.datasets')} | opendata.swiss`,
+})
+
 </script>
 
 <template>

@@ -8,6 +8,7 @@ import { useDatasetsSearch } from '../../../../app/piveau/search.js'
 import { homePageBreadcrumb } from "../../../../app/composables/breadcrumbs.js";
 import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue';
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
+import OdsBreadcrumbs from "../../../../app/components/OdsBreadcrumbs.vue";
 import OdsButton from "../../../../app/components/OdsButton.vue";
 const { locale, t } = useI18n();
 
@@ -33,7 +34,7 @@ const node = computed(() => {
   return rootNode
 })
 
-const _breadcrumbs = [
+const breadcrumbs = [
   await homePageBreadcrumb(locale),
   {
     title: t('message.header.navigation.datasets'),
@@ -41,13 +42,26 @@ const _breadcrumbs = [
   },
   {
     title: resultEnhanced.value?.getTitle,
-    path: route.path,
+    path: {
+      name: 'datasets-datasetId',
+      params: { datasetId: datasetId.value },
+    },
+  },
+  {
+    title: distribution.value?.title
   }
 ]
+
+useSeoMeta({
+  title: `${distribution.value?.title} | ${resultEnhanced.value?.getTitle} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
+})
 </script>
 
 <template>
   <main v-if="isSuccess && distribution" id="main-content">
+    <header id="main-header">
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    </header>
     <section class="hero hero--default">
       <div class="container container--grid gap--responsive">
         <div class="hero__content">
