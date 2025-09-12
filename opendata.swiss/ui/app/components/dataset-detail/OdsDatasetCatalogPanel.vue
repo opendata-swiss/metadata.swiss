@@ -100,6 +100,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import type { Dataset } from '~/model/dataset'
 import OdsButton from '../OdsButton.vue'
+import SvgIcon from "~/components/SvgIcon.vue";
 
 const { locale, t } = useI18n()
 

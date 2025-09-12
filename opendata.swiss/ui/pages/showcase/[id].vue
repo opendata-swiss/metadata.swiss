@@ -3,6 +3,9 @@ import OdsPage from "../../app/components/OdsPage.vue"
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import OdsInfoBlock from "../../app/components/OdsInfoBlock.vue";
 import OdsTagItem from "../../app/components/OdsTagItem.vue";
+import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
+import OdsCard from "../../app/components/OdsCard.vue";
+import OdsButton from "../../app/components/OdsButton.vue";
 
 const route = useRoute()
 const { locale, t } = useI18n()
