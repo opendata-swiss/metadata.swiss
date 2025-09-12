@@ -7,6 +7,7 @@
 - `piveau_catalogues/`: Piveau catalogues
 - `piveau_pipes/`: Piveau pipes
 - `piveau_scripts/`: Piveau scripts
+- `piveau_vocabularies/`: Piveau vocabularies
 
 ### Other resources
 
@@ -34,6 +35,15 @@ To create the catalogues, run:
 ```sh
 ./scripts/catalogues.sh
 ```
+
+To install the default vocabularies, open the shell at [http://localhost:8085/shell.html](http://localhost:8085/shell.html) and run `installVocabularies`.
+
+To add custom vocabularies, run:
+
+```sh
+./scripts/vocabularies.sh
+```
+
 
 And to trigger a harvest, run:
 

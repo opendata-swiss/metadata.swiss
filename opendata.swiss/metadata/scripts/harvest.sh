@@ -2,7 +2,7 @@
 
 # Automatically export all variables
 set -a
-source .env
+. ./.env
 set +a
 
 set -eu
