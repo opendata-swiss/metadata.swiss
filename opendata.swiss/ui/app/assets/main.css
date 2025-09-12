@@ -1,7 +1,6 @@
 @import './base.css';
 @import './swiss/designsystem/1.0.36.css';
 @import './ods/ods_vuetify.scss';
-@import './page.css';
 
 @layer base {
   .body--ods-brand {
