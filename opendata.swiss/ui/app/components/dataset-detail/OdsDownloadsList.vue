@@ -16,6 +16,7 @@
 
 <script setup lang="ts">
 import type { Dataset } from '~/model/dataset';
+import SvgIcon from "~/components/SvgIcon.vue";
 
 interface Props {
   dataset: Dataset

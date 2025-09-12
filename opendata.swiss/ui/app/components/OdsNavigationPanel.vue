@@ -8,7 +8,7 @@
           <li v-if="menuStack.length > 0" style="border-bottom: none;" @click="goBack">
             <a style="padding-top: 12px; padding-bottom: 12px;">
               <span>
-                <SvgIcon icon="ArrowLeft" size="lg"></SvgIcon>
+                <SvgIcon icon="ArrowLeft" size="lg"/>
               </span>
             </a>
           </li>
@@ -46,6 +46,7 @@
 import { ref, computed } from 'vue'
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item';
 import { useI18n } from 'vue-i18n';
+import SvgIcon from "~/components/SvgIcon.vue";
 
 const emit = defineEmits(['requestClose']);
 const { t } = useI18n();

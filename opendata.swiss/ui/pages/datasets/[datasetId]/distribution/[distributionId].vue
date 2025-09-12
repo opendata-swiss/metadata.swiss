@@ -8,6 +8,7 @@ import { useDatasetsSearch } from '../../../../app/piveau/search.js'
 import { homePageBreadcrumb } from "../../../../app/composables/breadcrumbs.js";
 import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue';
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
+import OdsButton from "../../../../app/components/OdsButton.vue";
 const { locale, t } = useI18n();
 
 const route = useRoute()

@@ -11,6 +11,7 @@ import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import { useI18n } from 'vue-i18n';
+import OdsButton from "../../../app/components/OdsButton.vue";
 
 const { locale, t } = useI18n();
 const route = useRoute()
@@ -164,7 +165,7 @@ const breadcrumbs = computed(() => {
                          icon-only
                          @click="router.back()"
                          icon="ArrowRight"
-                         title="Weiterlesen"></OdsButton>
+                         title="Weiterlesen"/>
                      </div>
                   </div>
                </div>
