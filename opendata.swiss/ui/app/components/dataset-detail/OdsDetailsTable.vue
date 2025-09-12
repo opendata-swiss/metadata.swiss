@@ -18,6 +18,7 @@
 
 import type { PropertyTableEntry, PropertyTableEntryNode } from '@piveau/sdk-vue';
 import { computed } from 'vue'
+import OdsInfoBlock from "~/components/OdsInfoBlock.vue";
 
 interface TableEntry {
   id: string;

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import OdsCard from "~/components/OdsCard.vue";
+import SvgIcon from "~/components/SvgIcon.vue";
+
 const { t } = useI18n()
 
 const { toc } = defineProps({

@@ -35,6 +35,8 @@
 import type { Dataset } from '~/model/dataset';
 
 import { useI18n } from 'vue-i18n'
+import OdsCard from "~/components/OdsCard.vue";
+import SvgIcon from "~/components/SvgIcon.vue";
 
 const { t, locale } = useI18n()
 interface Props {

@@ -7,6 +7,8 @@
 
 <script setup lang="ts">
 
+import OdsTagItem from "~/components/OdsTagItem.vue";
+
 const props = defineProps<{
   link: string
   label: string
