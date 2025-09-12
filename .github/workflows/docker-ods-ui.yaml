@@ -5,6 +5,7 @@ on:
     paths:
       - "opendata.swiss/ui/**" # Only trigger if files in the ui directory change
       - ".github/workflows/docker-ods-ui.yaml" # Trigger also if this workflow file is changed
+      - ".github/workflows/previews-ods-ui.yaml" # Trigger also if the previews workflow file is changed
 
 jobs:
   docker:
@@ -53,7 +54,7 @@ jobs:
         with:
           context: ./opendata.swiss/ui
           file: ./opendata.swiss/ui/Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           platforms: |

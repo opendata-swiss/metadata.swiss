@@ -1,0 +1,103 @@
+name: "[UI] Handle previews on PR"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+    paths:
+      - "opendata.swiss/ui/**" # Only trigger if files in the ui directory change
+      - ".github/workflows/previews-ods-ui.yaml" # Trigger also if this workflow file is changed
+      - ".github/workflows/docker-ods-ui.yaml" # Trigger also if the docker workflow file is changed
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        # Fetch the full history for the branch to be able to get the short SHA
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: v1.33.0
+
+      - name: Set up Kustomize
+        uses: imranismail/setup-kustomize@v2
+
+      - name: Configure some variables
+        id: vars
+        run: |
+          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          echo "branch=${GITHUB_HEAD_REF}" >> $GITHUB_OUTPUT
+
+      - name: Configure cluster context
+        run: |
+          kubectl config set-cluster default "--server=${K8S_API_URL}" --insecure-skip-tls-verify=true
+          kubectl config set-credentials default "--token=${K8S_TOKEN}"
+          kubectl config set-context default --cluster=default --namespace=piveau-previews --user=default
+          kubectl config use-context default
+        env:
+          K8S_API_URL: ${{ secrets.K8S_API_URL }}
+          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
+
+      - name: Generate manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          kustomize edit set nameprefix "${{ steps.vars.outputs.branch }}-"
+          kustomize edit add patch \
+            --group networking.k8s.io \
+            --version v1 \
+            --kind Ingress \
+            --name piveau-ui \
+            --patch '[
+              {"op": "replace", "path": "/spec/tls/0/secretName", "value": "${{ steps.vars.outputs.branch }}-prev-tls"},
+              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org"},
+              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org"}
+            ]'
+          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
+          kustomize edit set label "app.kubernetes.io/instance:${{ steps.vars.outputs.branch }}"
+          kustomize build | tee manifest.yaml
+
+      - name: Apply manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        if: github.event.action != 'closed'
+        run: |
+          kubectl apply -f manifest.yaml
+
+      # Handle preview URL comment on the PR
+      - name: Find Comment
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: "github-actions[bot]"
+          body-includes: Your preview environment is deployed
+      - name: Show preview URL directly on the PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Your preview environment is deployed! 🚀
+            **URL:** https://${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org/
+            **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
+
+      - name: Delete manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        if: github.event.action == 'closed'
+        continue-on-error: true
+        run: |
+          kubectl delete -f manifest.yaml

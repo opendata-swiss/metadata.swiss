@@ -5,11 +5,9 @@ metadata:
 spec:
   template:
     spec:
-      imagePullSecrets:
-        - name: piveau-ui-pull-secret
       containers:
         - name: piveau-ui
-          image: registry.zazuko.com/docker/lindas-next-piveau-js
+          image: ghcr.io/opendata-swiss/ods-ui
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
