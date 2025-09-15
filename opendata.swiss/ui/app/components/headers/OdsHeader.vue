@@ -89,7 +89,7 @@ function isChildPage({ to }: OdsNavTabItem) {
           <NuxtLinkLocale :class="{ active: isChildPage(item) }" :to="item.to"><span> {{ t(item.label) }}</span></NuxtLinkLocale>
         </li>
         <li  v-if="item.subMenu"  class="tab">
-          <v-menu>
+          <v-menu open-on-hover>
               <template #activator="{ props: menuProps }">
                 <a v-bind="menuProps" :class="{ active: selectedTab === index }"><span>{{ t(item.label) }}</span></a>
               </template>
