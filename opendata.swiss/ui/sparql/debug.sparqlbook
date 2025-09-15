@@ -1,0 +1,8 @@
+[
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "# [endpoint=https://piveau-trifid.zazukoians.org/query]\nPREFIX dcterms: <http://purl.org/dc/terms/>\n\nSELECT * WHERE {\n ?s    dcterms:modified ?modified .\n ?s dcterms:accrualPeriodicity ?frequency .\n ?s dcterms:title ?title .\n}\nLIMIT 20",
+    "metadata": {}
+  }
+]

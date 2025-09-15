@@ -8,7 +8,8 @@
     <p>{{ item.getDescription }} </p>
     <template #bottom-meta>
       <span class="meta-info__item">{{ props.item.getPublisher?.name }}</span>
-      <span class="meta-info__item">{{ props.item.getModified ? props.item.getModified  : '' }}</span>
+      <span v-if="props.item.getIssued" class="meta-info__item"><NuxtTime :datetime="props.item.getIssued" :locale="locale"  /></span>
+      <span v-if="props.item.getModified" class="meta-info__item"><NuxtTime :datetime="props.item.getModified" :locale="locale"  /></span>
     </template>
     <template #icons>
       <SvgIcon icon="Youtube" size="xl" />
@@ -35,7 +36,7 @@ import type { Dataset } from '~/model/dataset';
 
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 interface Props {
   item: Dataset
   searchParams?: Record<string, string>

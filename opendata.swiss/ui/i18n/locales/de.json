@@ -26,17 +26,35 @@
             "search_button": "Suchen",
             "search_results": "Suchergebnisse",
             "show_filters": "Filter anzeigen",
-            "sort": "Sortieren"
+            "hide_filters": "Filter ausblenden",
+            "sort": "Sortieren",
+            "sort_by": {
+                "relevance": "nach Relevanz sortieren",
+                "date_modified_desc": "nach Datum zuletzt geändert (neueste zuerst)",
+                "date_modified_asc": "nach Datum zuletzt geändert (älteste zuerst)",
+                "title_asc": "nach Titel sortieren (a-z)",
+                "title_desc": "nach Titel sortieren (z-a)"
+            }
         },
         "dataset_detail": {
             "dataset": "Datensatz",
-            "distribution": "Verteilung",
+            "catalog": "Katalog",
+            "this_dataset_record": "Dieser Datensatz-Eintrag wurde",
+            "accrual_periodicity": "Aktualisierungsfrequenz",
+            "show_catalog_entry": "Katalogeintrag anzeigen",
+            "hide_catalog_entry": "Katalogeintrag ausblenden",
+            "distribution": "Distribution",
+            "distributions": "Distributionen",
             "additional_information": "Zusätzliche Informationen",
-            "published_on": "publiziert am",
-            "modified_on": "zuletzt aktualisiert am",
+            "published_on": "Publiziert",
+            "created_on": "Erstellt",
+            "modified_on": "Zuletzt aktualisiert",
             "categories": "Kategorien",
             "download": "Download",
-            "go_to_resource": "Gehe zur Ressource"
+            "go_to_resource": "Gehe zur Ressource",
+            "show_raw": "Datum anzeigen",
+            "show_relative": "Relative Zeit anzeigen",
+            "details": "Details"
         },
         "showcase": {
             "type": {
@@ -44,7 +62,9 @@
             },
             "categories": "Kategorien",
             "tags": "Tags",
-            "submitted_by": "Übermittelt von"
+            "submitted_by": "Übermittelt von",
+            "externalLink": "Externer Link",
+            "open": "Website starten"
         },
         "terms_of_use": {
             "ods_open": {

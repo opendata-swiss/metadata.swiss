@@ -5,3 +5,5 @@
 Dockerfile
 .output/
 node_modules/
+.vscode/
+k8s/

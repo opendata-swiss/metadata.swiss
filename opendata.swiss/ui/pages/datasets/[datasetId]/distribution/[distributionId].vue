@@ -114,12 +114,7 @@ const _breadcrumbs = [
     </section>
     <section class="section publication-back-button-section">
       <div class="container">
-        <a class="btn btn--outline btn--sm btn--icon-left btn--back" aria-label="false"  @click="router.back()">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon icon--base icon--ArrowLeft btn__icon">
-            <path xmlns="http://www.w3.org/2000/svg" d="m8.306 5.116-4.066 7.044 4.066 7.044.65-.375-3.633-6.294h15.187v-.75h-15.187l3.633-6.294z"></path>
-          </svg>
-          <span class="btn__text">Zurück</span>
-        </a>
+        <OdsButton title="Zurück" icon="ArrowLeft" class="btn--back" @click="router.back()" />
       </div>
     </section>
     <pre>{{ distribution }}</pre>

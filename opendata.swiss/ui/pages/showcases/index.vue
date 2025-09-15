@@ -38,7 +38,7 @@ function firstParagraph(showcase) {
 }
 
 function showcaseId(showcase) {
-  return showcase.id.replace(/.*?([^/]+)\.de\.md$/, '$1')
+  return showcase.id.replace(/.*?([^/]+)\.\w\w\.md$/, '$1')
 }
 </script>
 

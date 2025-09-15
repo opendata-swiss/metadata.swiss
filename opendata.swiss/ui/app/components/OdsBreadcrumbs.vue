@@ -1,7 +1,17 @@
-<script setup>
+<script setup lang="ts">
+import type { PropType } from 'vue'
+import type { RouteLocationNamedI18n } from 'vue-router'
+
+export interface BreadcrumbItem {
+  id: string,
+  title: string
+  route?: RouteLocationNamedI18n<string | number | symbol>
+  path?: string
+}
+
 const { breadcrumbs } = defineProps({
   breadcrumbs: {
-    type: Array,
+    type: Array as PropType<BreadcrumbItem[]>,
     required: true
   }
 })

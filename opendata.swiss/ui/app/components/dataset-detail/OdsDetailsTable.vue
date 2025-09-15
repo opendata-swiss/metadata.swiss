@@ -4,7 +4,7 @@
     <OdsInfoBlock :title="row.label">
       <div v-if="row.type === 'value'">{{ row.value }}</div>
       <div v-if="row.type === 'href'">
-        <OdsExternalLink v-if="row.href && row.href.startsWith('http')" :href="row.href">{{ row.value }}</OdsExternalLink>
+        <a v-if="row.href && row.href.startsWith('http')" :href="row.href" class="link--external">{{ row.value }}</a>
         <a v-if="row.href && !row.href.startsWith('http')" :href="row.href">{{ row.value }}</a>
       </div>
     </OdsInfoBlock>
@@ -17,10 +17,7 @@
 <script setup lang="ts">
 
 import type { PropertyTableEntry, PropertyTableEntryNode } from '@piveau/sdk-vue';
-import OdsExternalLink from '@/components/ExternalLink.vue'
 import { computed } from 'vue'
-
-
 
 interface TableEntry {
   id: string;

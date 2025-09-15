@@ -5,7 +5,12 @@
    <!---->
    <div class="card__content">
       <div class="card__body">
-         <p class="meta-info"><span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span><span class="meta-info__item">12. April 2022</span></p>
+        <p class="meta-info">
+          <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
+          <span class="meta-info__item">{{ props.item.getPublisher?.name }}</span>
+          <span v-if="props.item.getIssued" class="meta-info__item"><NuxtTime :datetime="props.item.getIssued" :locale="locale"  /></span>
+          <span v-if="props.item.getModified" class="meta-info__item"><NuxtTime :datetime="props.item.getModified" :locale="locale"  /></span>
+        </p>
          <div class="card__title">
             <h3>{{ props.item.getTitle }}</h3>
          </div>
@@ -40,11 +45,12 @@
 import type { Dataset } from '~/model/dataset';
 import { useI18n } from 'vue-i18n';
 
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 interface Props {
   item: Dataset
   searchParams?: Record<string, string>
 }
 const props = defineProps<Props>()
+
 </script>

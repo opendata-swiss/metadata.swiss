@@ -1,0 +1,10 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://piveau.io/id/catalogue/opendata-swiss>
+    a dcat:Catalog ;
+    dct:language <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dct:title "opendata.swiss"@en ;
+    dct:description "Open Data Portal Switzerland"@en ;
+    dct:type "ckan"^^xsd:string .

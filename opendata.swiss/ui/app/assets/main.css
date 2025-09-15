@@ -28,3 +28,8 @@
     --color-secondary-900: #1F2937;
   }
 }
+
+/* "Fixes" vuetify which collides with swiss design */
+button {
+  border-style: solid !important;
+}

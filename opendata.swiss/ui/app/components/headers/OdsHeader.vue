@@ -64,7 +64,7 @@ function isChildPage({ to }: OdsNavTabItem) {
   <div id="top-header-id" class="top-header">
     <div class="container container--flex">
       <div class="logo" to="/" aria-label="Home">
-        <NuxtLinkLocale class="logo" to="/" aria-label="Home"><LogoSmall/></NuxtLinkLocale>
+        <NuxtLinkLocale class="logo" to="/" aria-label="Home"><LogoSmall style="margin-right:4px;"/></NuxtLinkLocale>
         <NuxtLinkLocale class="logo" to="/" aria-label="Home"><NamedLogo/></NuxtLinkLocale>
       <div class="logo__separator" role="separator" aria-hidden="true"/>
       <div class="logo-title__container">

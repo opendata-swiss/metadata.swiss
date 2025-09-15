@@ -4,7 +4,7 @@ file will be provided inline. */
 
 <template>
   <NuxtImg
-    src="/img/logo.png"
+    src="/img/logo.svg"
     :alt="t('message.header.ods_logo')"
     :title="t('message.header.ods_logo')"
     class="logo__freebrand" />
