@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+  <csw:SearchStatus timestamp="2025-09-10T12:23:47.053Z" />
+  <csw:SearchResults numberOfRecordsMatched="53" numberOfRecordsReturned="10" elementSet="full" nextRecord="11">
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>08224a7c-0098-c6b5-e063-5015630aae5a</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Lärmempfindlichkeit</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Verkehr</dc:subject>
+      <dc:subject>Lärm</dc:subject>
+      <dc:subject>Schall</dc:subject>
+      <dc:subject>environment_EnvironmentalProtection</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-11-10</dct:modified>
+      <dct:abstract>Die Empfindlichkeitsstufen gemäss Lärmschutzverordnung vom 15.12.1986 (LSV) bezeichnen die einzuhaltenden Lärmgrenzwerte. Zusätzlich zu den ordentlichen Werten (Grundnutzung) sind die Gebiete mit Höhereinstufungen (Lockerung aufgrund der Lärmvorbelastung) und Planungswerten (strengere Bestimmungen infolge Einzonung oder Erschliessung nach 1986) ersichtlich. Unter "Planungswert Hinweis" sind Gebiete erfasst, in welchen aufgrund der Aktenlage (Einzonung oder Erschliessung erst nach 1986) die Planungswerte höchstwahrscheinlich einzuhalten sind, jedoch noch kein formeller Beschluss dazu vorliegt. Flächen der Zone für öffentliche Bauten ohne Höhereinstufung sind der Empfindlichkeitsstufe II zugeordnet. Der Schiessplatz Ohrbühl hat als Grundeinstufung die Empfindlichkeitsstufe IV.</dct:abstract>
+      <dc:description>Die Empfindlichkeitsstufen gemäss Lärmschutzverordnung vom 15.12.1986 (LSV) bezeichnen die einzuhaltenden Lärmgrenzwerte. Zusätzlich zu den ordentlichen Werten (Grundnutzung) sind die Gebiete mit Höhereinstufungen (Lockerung aufgrund der Lärmvorbelastung) und Planungswerten (strengere Bestimmungen infolge Einzonung oder Erschliessung nach 1986) ersichtlich. Unter "Planungswert Hinweis" sind Gebiete erfasst, in welchen aufgrund der Aktenlage (Einzonung oder Erschliessung erst nach 1986) die Planungswerte höchstwahrscheinlich einzuhalten sind, jedoch noch kein formeller Beschluss dazu vorliegt. Flächen der Zone für öffentliche Bauten ohne Höhereinstufung sind der Empfindlichkeitsstufe II zugeordnet. Der Schiessplatz Ohrbühl hat als Grundeinstufung die Empfindlichkeitsstufe IV.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.44864336620819 8.657536176708149</ows:LowerCorner>
+        <ows:UpperCorner>47.54907027546774 8.808928197398147</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=Laermempfindlichkeitsstufen_OEREB</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="Laermempfindlichkeitsstufen_OEREB" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/Laermempfindlichkeitsstufen_OEREB?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>26ce5464-e2e7-2203-e063-5015630a5606</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>WT_VP_V_PARKKARTENZONEN_TBL</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Blaue Zone; öffentliche Parkierung; Parkkarten; Parkbewilligung; Parkgebühren</dc:subject>
+      <dc:subject>Parkkartenzone</dc:subject>
+      <dc:subject>Zentrumszone</dc:subject>
+      <dc:subject>Quartierzentren</dc:subject>
+      <dc:subject>transportation</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2024-11-13</dct:modified>
+      <dct:abstract>Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren</dct:abstract>
+      <dc:description>Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46737612403396 8.684624826118306</ows:LowerCorner>
+        <ows:UpperCorner>47.528499592340886 8.774547596972035</ows:UpperCorner>
+      </ows:BoundingBox>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>0b254869-1786-edd3-e063-5015630add48</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Konzession</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Unterhalt</dc:subject>
+      <dc:subject>Strassen</dc:subject>
+      <dc:subject>Konzessionen</dc:subject>
+      <dc:subject>utilitiesCommunication</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-09-25</dct:modified>
+      <dct:abstract>Die Stadt Winterthur kann Rechte an Private abgeben. Dies erfolgt in Form von Konzessionen. Das sind z.B. Parkplätze, private Leitungsquerungen, Fremdnutzung von Anlagen. Es besteht eine Verknüpfung zu den Verträgen ins Dokumentenmanagementsystem.</dct:abstract>
+      <dc:description>Die Stadt Winterthur kann Rechte an Private abgeben. Dies erfolgt in Form von Konzessionen. Das sind z.B. Parkplätze, private Leitungsquerungen, Fremdnutzung von Anlagen. Es besteht eine Verknüpfung zu den Verträgen ins Dokumentenmanagementsystem.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.4640200546457 8.689508405905288</ows:LowerCorner>
+        <ows:UpperCorner>47.52540336012006 8.787410748837564</ows:UpperCorner>
+      </ows:BoundingBox>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>0822efb6-2098-e9c4-e063-5015630a5f14</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>DSP Naturschutzlinie</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Naturschutzinventar</dc:subject>
+      <dc:subject>Landschaftsschutzinventar</dc:subject>
+      <dc:subject>environment</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2022-12-31</dct:modified>
+      <dct:abstract>Das Natur- und Landschaftsschutzinventar der Stadt Winterthur beinhaltet Natur- und Landschaftsschutzobjekte. Naturschutzobjekte sind Nassstandorte, Trockenstandorte, Gruben und Ödflächen. Als Landschaftsschutzobjekte geführt werden Hecken, Bäche, Einzelbäume, Geologisches Objekte, Aussichtspunkte und Aussichtslagen. Die Abgrenzung der Landschaftsschutzobjekte erfolgte nicht parzellenscharf. Das Inventar wird vom Stadtrat festgesetzt und ist behördenverbindlich, beinhaltet somit ohne weitere Massnahmen keine öffentlich-rechtlichen Eigentumsbeschränkungen.</dct:abstract>
+      <dc:description>Das Natur- und Landschaftsschutzinventar der Stadt Winterthur beinhaltet Natur- und Landschaftsschutzobjekte. Naturschutzobjekte sind Nassstandorte, Trockenstandorte, Gruben und Ödflächen. Als Landschaftsschutzobjekte geführt werden Hecken, Bäche, Einzelbäume, Geologisches Objekte, Aussichtspunkte und Aussichtslagen. Die Abgrenzung der Landschaftsschutzobjekte erfolgte nicht parzellenscharf. Das Inventar wird vom Stadtrat festgesetzt und ist behördenverbindlich, beinhaltet somit ohne weitere Massnahmen keine öffentlich-rechtlichen Eigentumsbeschränkungen.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.45956326316043 8.658197746715748</ows:LowerCorner>
+        <ows:UpperCorner>47.54858808261585 8.798873271717644</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=NaturLandschaftsschutzinventar</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="NaturLandschaftsschutzinventar" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/NaturLandschaftsschutzinventar?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>06befacf-2909-276b-e063-5015630afa40</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Nateco_Baum</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Baum</dc:subject>
+      <dc:subject>Stadtgrün</dc:subject>
+      <dc:subject>environment</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-11-10</dct:modified>
+      <dct:abstract>Der Baumkataster der Stadt Winterthur beinhaltet alle Bäume, die von Stadtgrün Winterthur gepflegt und unterhalten werden. Neben der Baumbezeichnung ist auch der wissenschaftliche Name und das Pflanzjahr verfügbar.</dct:abstract>
+      <dc:description>Der Baumkataster der Stadt Winterthur beinhaltet alle Bäume, die von Stadtgrün Winterthur gepflegt und unterhalten werden. Neben der Baumbezeichnung ist auch der wissenschaftliche Name und das Pflanzjahr verfügbar.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.461673946530254 8.661846843889352</ows:LowerCorner>
+        <ows:UpperCorner>47.54119083515857 8.797344388157146</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=Baumkataster</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="Baumkataster" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/Baumkataster?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>08227c10-f55a-d427-e063-5015630a0511</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Gemeinde Polygon</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Stadtgrenze</dc:subject>
+      <dc:subject>Grenze</dc:subject>
+      <dc:subject>boundaries</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2022-12-31</dct:modified>
+      <dct:abstract>Das gesamte Gemeindegebiet der Stadt Winterthur als Flächenobjekt.</dct:abstract>
+      <dc:description>Das gesamte Gemeindegebiet der Stadt Winterthur als Flächenobjekt.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.44864336620819 8.657536176708149</ows:LowerCorner>
+        <ows:UpperCorner>47.54907027546774 8.808928197398147</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch/</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>0b254869-1782-edd3-e063-5015630add48</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Sammelstellen-Container</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Entsorgung</dc:subject>
+      <dc:subject>Abfall</dc:subject>
+      <dc:subject>utilitiesCommunication</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-09-25</dct:modified>
+      <dct:abstract>Die Abfall-Sammelstellencontainer im Winterthurer Stadtgebiet.</dct:abstract>
+      <dc:description>Die Abfall-Sammelstellencontainer im Winterthurer Stadtgebiet.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46524604492259 8.684245156881074</ows:LowerCorner>
+        <ows:UpperCorner>47.51823322889306 8.770300109352346</ows:UpperCorner>
+      </ows:BoundingBox>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>06bec1b7-b1b7-0af3-e063-5015630a123a</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Inventar schutzwürdiger Bauten</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Denkmal</dc:subject>
+      <dc:subject>Baukunst</dc:subject>
+      <dc:subject>Kulturgut</dc:subject>
+      <dc:subject>structure</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-11-09</dct:modified>
+      <dct:abstract>Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.</dct:abstract>
+      <dc:description>Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46083552955398 8.661368547439784</ows:LowerCorner>
+        <ows:UpperCorner>47.54122996510385 8.803023751850432</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=InventarSchutzwuerdigerBauten</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="InventarSchutzwuerdigerBauten" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/InventarSchutzwuerdigerBauten?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>0956cb52-59a2-75e6-e063-5015630af58b</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Mauersegler</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Gebäudebrüter</dc:subject>
+      <dc:subject>environment</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-10-31</dct:modified>
+      <dct:abstract>Gebäudebrütende Arten wie Mauersegler und ihre Nester sind gemäss kantonalem Jagdgesetz und dem Natur- und Heimatschutzgesetz geschützt.</dct:abstract>
+      <dc:description>Gebäudebrütende Arten wie Mauersegler und ihre Nester sind gemäss kantonalem Jagdgesetz und dem Natur- und Heimatschutzgesetz geschützt.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46212298448158 8.684701749647946</ows:LowerCorner>
+        <ows:UpperCorner>47.540840544579716 8.779883721574084</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch/mini?topic=Gebaeudebrueter&amp;scale=25000&amp;x=2697683.24&amp;y=1261842.82&amp;back=Hintergrundkarte_LK_AV_Situationsplan</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="Gebaeudebrueter" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/Gebaeudebrueter?request=GetCapabilities=WMS</dc:URI>
+      <dc:URI protocol="OGC:WFS" name="ms:Segler" description="Web Feature Services WFS">https://stadtplan.winterthur.ch/wms/Gebaeudebrueter?service=WFS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>06bed2c1-6070-1924-e063-5015630ac570</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Kommunaler Energieplan</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Heizung</dc:subject>
+      <dc:subject>utilitiesCommunication_Energy</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-02-01</dct:modified>
+      <dct:abstract>Mit der durch den Stadtrat beschlossenen Umsetzungsplanung des Energie- und Klimakonzepts 2050 und dem neuen, durch das Volk vorgegebene Klimaziel netto null Tonnen CO2 bis 2040 muss die Wärmeversorgung der Stadt Winterthur mit erneuerbaren Energien erfolgen. Der kommunale Energieplan zeigt auf, welche erneuerbaren Energieträger für die jeweiligen Gebiete geplant sind. Dazu wird zwischen nummerierten Prioritätsgebieten «P» (=Gebiete mit bestehenden Wärmenetzen), Eignungsgebieten «E» (=Gebiete ohne geplante Wärmenetze) und zwischen Gebieten mit vorgesehenen Wärmenetzen «V» unterschieden. Der kommunale Energieplan wurde per 31.10.2022 durch das Stadtparlament genehmigt und tritt auf den 01.02.2023 in Kraft.</dct:abstract>
+      <dc:description>Mit der durch den Stadtrat beschlossenen Umsetzungsplanung des Energie- und Klimakonzepts 2050 und dem neuen, durch das Volk vorgegebene Klimaziel netto null Tonnen CO2 bis 2040 muss die Wärmeversorgung der Stadt Winterthur mit erneuerbaren Energien erfolgen. Der kommunale Energieplan zeigt auf, welche erneuerbaren Energieträger für die jeweiligen Gebiete geplant sind. Dazu wird zwischen nummerierten Prioritätsgebieten «P» (=Gebiete mit bestehenden Wärmenetzen), Eignungsgebieten «E» (=Gebiete ohne geplante Wärmenetze) und zwischen Gebieten mit vorgesehenen Wärmenetzen «V» unterschieden. Der kommunale Energieplan wurde per 31.10.2022 durch das Stadtparlament genehmigt und tritt auf den 01.02.2023 in Kraft.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46080538206589 8.661122501345433</ows:LowerCorner>
+        <ows:UpperCorner>47.543355264240496 8.803447547196047</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=KommunalerEnergieplan</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="KommunalerEnergieplan" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/KommunalerEnergieplan?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+  </csw:SearchResults>
+</csw:GetRecordsResponse>
+
+<!--
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:URI
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:date
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:description
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:format
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:identifier
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:language
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:subject
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:title
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:type
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:abstract
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:modified
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:LowerCorner
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:UpperCorner
+-->

@@ -29,4 +29,4 @@ body:
           scriptType: localFile
           path: debug.js
           params:
-            defaultLanguage: en
+            defaultLanguage: de
