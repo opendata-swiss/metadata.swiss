@@ -92,24 +92,25 @@ public class MainVerticle extends AbstractVerticle {
 
                     Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
 
-                    // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>/<csw:Record>
-                    List<Element> records = rootElement.getChild("SearchResults", cswNamespace)
-                                                         .getChildren("Record", cswNamespace);
+                    // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>
+                    Element records = rootElement.getChild("SearchResults", cswNamespace);
 
-                    if (records.isEmpty()) {
+                    Integer recordsCount = records.getAttributeValue("numberOfRecordsMatched") != null ?
+                            Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched")) : 0;
+                    if (recordsCount == 0) {
                         System.out.println("No records found to import.");
                         return;
                     }
 
-                    System.out.println("Found " + records.size() + " records to forward.");
+                    System.out.println("Found " + recordsCount + " records to forward.");
 
-                    for (Element record : records) {
-                        String xmlString = new XMLOutputter().outputString(record);
-                        JSONObject jsonObject = XML.toJSONObject(xmlString);
-                        String jsonString = jsonObject.toString(4);
 
-                        pipeContext.setResult(jsonString).forward();
-                    }
+                    String xmlString = new XMLOutputter().outputString(records);
+                    JSONObject jsonObject = XML.toJSONObject(xmlString);
+                    String jsonString = jsonObject.toString(4);
+
+                    pipeContext.setResult(jsonString).forward();
+
 
                 } catch (JDOMException | IOException e) {
                     pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
@@ -129,54 +130,6 @@ public class MainVerticle extends AbstractVerticle {
             e.printStackTrace();
         }
 
-        //client.request(HttpMethod.GET, requestUrl)
-        //    .compose(request -> {
-        //        request.setFollowRedirects(false);
-        //        return request.send();
-        //    })
-        //    .compose(response -> {
-        //        if (response.statusCode() == 200) {
-        //            return response.body();
-        //        } else {
-        //            return Future.failedFuture("Failed to fetch data: " + response.statusMessage());
-        //        }
-        //    })
-        //    .onSuccess(buffer -> {
-        //        // Parse the XML response.
-        //        String xmlContent = buffer.toString();
-        //        try {
-        //            SAXBuilder saxBuilder = new SAXBuilder();
-        //            Document document = saxBuilder.build(new StringReader(xmlContent));
-        //            Element rootElement = document.getRootElement();
-//
-        //            // Define the necessary XML namespaces for ISO 19139 and CSW.
-        //            Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
-        //            Namespace gmdNamespace = Namespace.getNamespace("gmd", "http://www.isotc211.org/2005/gmd");
-//
-        //            // The core logic: find all <csw:Record> elements.
-        //            List<Element> records = rootElement.getChild("SearchResults", cswNamespace)
-        //                                                 .getChildren("Record", cswNamespace);
-//
-        //            if (records.isEmpty()) {
-        //                System.out.println("No records found to import.");
-        //                return;
-        //            }
-//
-        //            // For each record, pass it as a separate payload to the next segment (the transformer).
-        //            for (Element record : records) {
-        //                // Extract the raw XML of the record and send it to the next pipe segment.
-        //                // The transformer will then convert this XML to RDF.
-        //                String xmlString = new XMLOutputter().outputString(record);
-        //                pipeContext.setResult(xmlString).forward();
-        //            }
-//
-        //            // Complete the pipe after all records have been forwarded.
-//
-        //        } catch (JDOMException | IOException e) {
-        //            pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
-        //        }
-        //    })
-        //    .onFailure(cause -> pipeContext.setFailure(cause.getMessage()));
     }
 
 
