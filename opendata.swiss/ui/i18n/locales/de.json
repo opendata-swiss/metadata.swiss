@@ -44,7 +44,8 @@
             "accrual_periodicity": "Aktualisierungsfrequenz",
             "show_catalog_entry": "Katalogeintrag anzeigen",
             "hide_catalog_entry": "Katalogeintrag ausblenden",
-            "distribution": "Verteilung",
+            "distribution": "Distribution",
+            "distributions": "Distributionen",
             "additional_information": "Zusätzliche Informationen",
             "published_on": "Publiziert",
             "created_on": "Erstellt",
@@ -53,7 +54,8 @@
             "download": "Download",
             "go_to_resource": "Gehe zur Ressource",
             "show_raw": "Datum anzeigen",
-            "show_relative": "Relative Zeit anzeigen"
+            "show_relative": "Relative Zeit anzeigen",
+            "details": "Details"
         },
         "showcase": {
             "type": {

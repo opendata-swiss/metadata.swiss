@@ -114,7 +114,7 @@ const _breadcrumbs = [
     </section>
     <section class="section publication-back-button-section">
       <div class="container">
-        <OdsButton title="Zurück" icon="ArrowLeft" @click="router.back()" class="btn--back"></OdsButton>
+        <OdsButton title="Zurück" icon="ArrowLeft" class="btn--back" @click="router.back()" />
       </div>
     </section>
     <pre>{{ distribution }}</pre>

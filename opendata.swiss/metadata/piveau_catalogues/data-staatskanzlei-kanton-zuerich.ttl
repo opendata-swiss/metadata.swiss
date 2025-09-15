@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<https://example.eu/id/catalogue/staatskanzlei-kanton-zuerich>
+rdf:type            dcat:Catalog ;
+dcterms:modified    "2019-12-06T10:08:14Z"^^xsd:dateTime ;
+dcterms:type "ckan"^^xsd:string ;
+dcterms:description "Open Data Portal Staatskanzelei Kanton Zürich"@de ;
+dcterms:language    <http://publications.europa.eu/resource/authority/language/GER> ;
+dcterms:publisher   [ a             foaf:Agent ;
+foaf:homepage <https://www.zh.ch/de/staatskanzlei.html> ;
+foaf:name     "Staatskanzlei Kanton Zürich" ] ;
+dcterms:spatial     <http://publications.europa.eu/resource/authority/country/CHE> ;
+dcterms:title       "Data Staatskanzelei Kanton Zürich"@de .

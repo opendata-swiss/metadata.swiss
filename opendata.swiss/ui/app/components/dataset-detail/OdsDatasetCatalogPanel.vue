@@ -1,23 +1,27 @@
 <template>
   <div class="wrapper">
   <div class="button-container">
-      {{ t('message.dataset_detail.catalog') }}
+    <span>
+ {{ t('message.dataset_detail.catalog') }}
+    </span>
 
   <OdsButton
     variant="link"
     :title="showCatalogInfo ? t('message.dataset_detail.hide_catalog_entry') : t('message.dataset_detail.show_catalog_entry')"
     :aria-label="showCatalogInfo ? t('message.dataset_detail.hide_catalog_entry') : t('message.dataset_detail.show_catalog_entry')"
     size="sm"
-    icon-only
+    icon-right
     @click="showCatalogInfo = !showCatalogInfo"
   >
           {{ showCatalogInfo ? props.dataset.getOdsCatalogInfo.title : props.dataset.getOdsCatalogInfo.title }}
 
+          <template #icon>
     <SvgIcon
       icon="ChevronDown"
       role="btn"
       :class="{ 'rotated': showCatalogInfo }"
     />
+          </template>
 
   </OdsButton>
 </div>
@@ -124,6 +128,7 @@ function toggleRaw() {
 .button-container {
   display: flex;
   flex-direction: row;
+  gap: 6px;
   align-items: center;
   justify-content: flex-start;
 

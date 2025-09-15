@@ -8,15 +8,10 @@ import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
 import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
-import OdsDownloadsList from '../../../app/components/dataset-detail/OdsDownloadsList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
-
+import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import { useI18n } from 'vue-i18n';
-const md = `
-::alert
-Hello MDC
-::
-`
+
 const { locale, t } = useI18n();
 const route = useRoute()
 const router = useRouter()
@@ -70,8 +65,7 @@ const breadcrumbs = computed(() => {
          <div class="hero__content">
             <OdsDatasetMetaInfo :dataset="resultEnhanced" />
             <h1 class="hero__title"> {{ resultEnhanced?.getTitle }} </h1>
-            <h2 class="hero__subtitle"> {{ resultEnhanced?.getDescription }} </h2>
-            <pre>{{ resultEnhanced?.getDescription }}</pre>
+            <MDC :value="resultEnhanced?.getDescription ?? ''" />
             <!----><!---->
             <aside class="authors">
                <div class="disc-images" aria-hidden="true">
@@ -88,17 +82,15 @@ const breadcrumbs = computed(() => {
    <section class="section">
       <div class="container container--grid gap--responsive">
          <div class="container__main vertical-spacing">
-
             <div class="container__mobile">
-               <div class="box">
-                  <h2 class="h5">Download</h2>
-                  <OdsDownloadsList :dataset="resultEnhanced" />
-               </div>
                <div class="box">
                   <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
                   <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
                </div>
             </div>
+            <h2 class="h2">{{ t('message.dataset_detail.distributions') }}</h2>
+            <OdsDistributionList :dataset="resultEnhanced" />
+
             <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
             <OdsDetailsTable :root-node="node"/>
             <div>
@@ -111,20 +103,17 @@ const breadcrumbs = computed(() => {
          <div class="hidden container__aside md:block">
             <div id="aside-content" class="sticky sticky--top">
                <div class="box">
-                  <h2 class="h5">{{ t('message.dataset_detail.go_to_resource') }}</h2>
-                  <OdsDownloadsList :dataset="resultEnhanced"/>
-               </div>
-               <div class="box">
                   <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
                   <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
                </div>
             </div>
          </div>
       </div>
+
    </section>
    <section class="section publication-back-button-section">
       <div class="container">
-        <OdsButton title="Zurück" icon="ArrowLeft" @click="router.back()" variant="outline" class="btn--back" size="sm"></OdsButton>
+        <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" size="sm" @click="router.back()" />
       </div>
    </section>
    <section class="section bg--secondary-50">
@@ -150,7 +139,7 @@ const breadcrumbs = computed(() => {
                          variant="outline"
                          icon-only
                          icon="ArrowRight"
-                         title="Weiterlesen"></OdsButton>
+                         title="Weiterlesen" />
                      </div>
                   </div>
                </div>
@@ -182,6 +171,8 @@ const breadcrumbs = computed(() => {
             </div>
          </div>
       </div>
+
+
    </section>
    <pre>{{ resultEnhanced }}</pre>
   </main>

@@ -5,16 +5,16 @@
     :title="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
     :aria-label="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
     size="sm"
-    icon-only
     @click="showFilters = !showFilters"
   >
-    <SvgIcon
-      icon="ChevronDown"
-      role="btn"
-      :class="{ 'rotated': showFilters }"
-    />
-        {{ showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters') }}
-
+    <template #icon>
+      <SvgIcon
+        icon="ChevronDown"
+        role="btn"
+        :class="{ 'rotated': showFilters }"
+      />
+    </template>
+    {{ showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters') }}
   </OdsButton>
 
   <ClientOnly>

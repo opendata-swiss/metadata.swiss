@@ -45,6 +45,7 @@
             "show_catalog_entry": "Show catalog entry",
             "hide_catalog_entry": "Hide catalog entry",
             "distribution": "Distribution",
+            "distributions": "Distributions",
             "additional_information": "Additional information",
             "published_on": "Published",
             "created_on": "Created",
@@ -53,7 +54,8 @@
             "download": "Download",
             "go_to_resource": "Go to resource",
             "show_raw": "Show raw date",
-            "show_relative": "Show relative time"
+            "show_relative": "Show relative time",
+            "details": "Details"
         },
         "showcase": {
             "type": {

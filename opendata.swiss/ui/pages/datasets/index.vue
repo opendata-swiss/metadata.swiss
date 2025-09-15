@@ -273,11 +273,10 @@ await suspense()
                 variant="bare"
                 :title="t('message.dataset_search.search_button')"
                 size="lg"
+                icon="Search"
                 icon-only
                 @click="onSearch"
-              >
-                <SvgIcon icon="Search" role="btn" />
-              </OdsButton>
+              />
             </div>
          </div>
          <div class="search__filters">

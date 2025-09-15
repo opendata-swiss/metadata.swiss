@@ -1,0 +1,154 @@
+services:
+  ##########################
+  # docker-compose-hub.yml #
+  ##########################
+  piveau-hub-repo:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-repo:3.2.19
+    container_name: piveau-hub-repo
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8081:8080
+      - 8085:8085
+      - 5002:5000
+    environment:
+      - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
+      - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
+      - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
+      - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-hub-search:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.1.20
+    container_name: piveau-hub-search
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8084:8080
+      - 8086:8081
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
+      - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
+      - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-hub-ui:
+    image: registry.gitlab.com/piveau/hub/piveau-hub-ui:v1.16.6
+    container_name: piveau-hub-ui
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8080:8080
+    environment:
+      - VITE_METADATA_TITLE=LINDASnext
+      - VITE_API_BASE_URL=http://localhost:8084/
+      - VITE_API_HUB_URL=http://localhost:8081/
+      - VITE_AUTHENTICATION_KEYCLOAK_REALM=${VITE_AUTHENTICATION_KEYCLOAK_REALM}
+      - VITE_AUTHENTICATION_KEYCLOAK_URL=${VITE_AUTHENTICATION_KEYCLOAK_URL}
+      - VITE_AUTHENTICATION_KEYCLOAK_CLIENT_ID=${VITE_AUTHENTICATION_KEYCLOAK_CLIENT_ID}
+      - VITE_ROUTING_ROUTER_OPTIONS_BASE=/
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.3
+    container_name: elasticsearch
+    logging:
+      options:
+        max-size: "50m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: curl -s -f http://elasticsearch:9200/_cat/health >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms2G -Xmx4G
+    volumes:
+      - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
+
+  virtuoso:
+    image: openlink/virtuoso-opensource-7:7.2.13-alpine
+    container_name: virtuoso
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8890:8890
+      - 1111:1111
+    environment:
+      - DBA_PASSWORD=dba
+      - VIRT_PARAMETERS_NUMBEROFBUFFERS=170000
+      - VIRT_PARAMETERS_MAXDIRTYBUFFERS=130000
+      - VIRT_PARAMETERS_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_MAXCLIENTCONNECTIONS=100
+    volumes:
+      - ./volumes/virtuoso-data:/database
+
+  #############################
+  # docker-compose-consus.yml #
+  #############################
+  piveau-consus-importing-rdf:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.8.9
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+
+  piveau-consus-importing-ckan:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+
+  piveau-consus-transforming-js:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.0.1
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+    volumes:
+      - ./piveau_scripts:/usr/verticles/scripts
+
+  piveau-consus-exporting-hub:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:5.0.2
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx1g
+      - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
+
+  piveau-consus-scheduling:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:3.0.1
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - "8090:8080"
+      - "8095:8085"
+      - "5001:5000" # Just make it also work for macOS
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+      - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+    volumes:
+      - ./piveau_pipes:/usr/verticles/pipes

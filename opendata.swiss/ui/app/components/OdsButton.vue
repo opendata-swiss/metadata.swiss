@@ -5,17 +5,22 @@
   :aria-label="title"
   :title="title"
   >
-    <SvgIcon v-if="icon" :icon="icon" :size="size" class="btn__icon"></SvgIcon>
+    <slot name="icon">
+      <SvgIcon v-if="icon" :icon="icon" :size="size" class="btn__icon" />
+    </slot>
     <span class="btn__text">
       <a v-if="href" :href="href" >
         <slot>{{ title }}</slot>
       </a>
       <slot v-else>{{ title }}</slot>
     </span>
+
   </button>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 const { title, iconOnly = false, ...props } = defineProps<{
   title?: string
   variant?: 'outline' | 'bare' | 'filled' | 'outline-negative' | 'bare-negative' | 'link' | 'link-negative'

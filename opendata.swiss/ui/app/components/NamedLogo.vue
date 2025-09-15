@@ -1,6 +1,6 @@
 <template>
   <NuxtImg
-    src="/img/logo_horizontal.png"
+    src="/img/logo_horizontal.svg"
     :alt="t('message.header.ods_logo')"
     :title="t('message.header.ods_logo')"
     class="logo__freebrand"
