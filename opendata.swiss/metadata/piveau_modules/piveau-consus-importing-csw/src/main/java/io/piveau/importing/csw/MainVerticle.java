@@ -105,11 +105,15 @@ public class MainVerticle extends AbstractVerticle {
                     System.out.println("Found " + recordsCount + " records to forward.");
 
 
-                    String xmlString = new XMLOutputter().outputString(records);
-                    JSONObject jsonObject = XML.toJSONObject(xmlString);
-                    String jsonString = jsonObject.toString(4);
+                    List<Element> recordsList = records.getChildren("Record", cswNamespace);
+                    for (Element record : recordsList) {
+                        String xmlString = new XMLOutputter().outputString(record);
+                        JSONObject jsonObject = XML.toJSONObject(xmlString);
+                        String jsonString = jsonObject.toString(4);
 
-                    pipeContext.setResult(jsonString).forward();
+                        pipeContext.setResult(jsonString).forward();
+                    }
+
 
 
                 } catch (JDOMException | IOException e) {

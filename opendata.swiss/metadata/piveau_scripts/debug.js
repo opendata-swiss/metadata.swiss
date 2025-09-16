@@ -1,23 +1,14 @@
-function transforming(jsonBody) {
+function transforming(input){
 
 
-  let input;
-  try {
-    if (typeof jsonBody === 'string') {
-      input = JSON.parse(jsonBody);
-    } else {
-      input = jsonBody;
+    if (typeof input === 'string') {
+      input = JSON.parse(input);
     }
 
-    console.log("Successfully loaded input for transformation");
-    //outputString = JSON.stringify(input, null, 2)
-    //console.log(outputString); // Pretty-print the object
-  } catch (e) {
-    // If the input is not valid JSON, fail gracefully.
-    console.error("Failed to parse or process input:", e);
-  }
 
-
+  input = input["csw:Record"]
+  console.log("input:");
+  console.log(JSON.stringify(input, null, 2));
 
   let output = dcatapContext;
 
@@ -52,19 +43,16 @@ function transforming(jsonBody) {
 
   output.distribution = [];
 
-  //for (let i = 0; i < input["csw:SearchResults"]["csw:Record"].slice(0,1); i++) {
 
-    let resource = input["csw:SearchResults"]["csw:Record"][0];
+    let resource = input;
 
-    let i = 0
     let id
     if (resource["dc:identifier"]) {
       id = resource["dc:identifier"]
     } else {
-      id = i
+      id = 0
     }
 
-    output.identifier = id
     let record_language
     if (resource["dc:language"]) {
       if (resource["dc:language"] === "ger") {
@@ -84,7 +72,7 @@ function transforming(jsonBody) {
         "@id": encodeURI("https://example.eu/set/distribution/" + id)
       }],
       "description": [{
-        "@value": "Distribution description " + i,
+        "@value": "Distribution description " + id,
         "@language": params.defaultLanguage
       }],
       "title": [
@@ -97,7 +85,6 @@ function transforming(jsonBody) {
     };
 
     dist.format = "CSV"//resource["dc:format"][0]
-    dist.id = mapSingleLiteral(id)
     dist.language = record_language
     dist.issued = resource["dct:modified"]
     dist.mediaType = "text/csv"
@@ -114,7 +101,6 @@ function transforming(jsonBody) {
       dist.issued = resource.modified
     }
     output.distribution.push(dist);
-  //}
 
   console.log("Transformed output:");
 
@@ -122,6 +108,7 @@ function transforming(jsonBody) {
 
   console.log(JSON.stringify(outputWithoutContext, null, 2));
 
+  console.log("Transformation completed successfully. Returning output.");
   return output
 }
 

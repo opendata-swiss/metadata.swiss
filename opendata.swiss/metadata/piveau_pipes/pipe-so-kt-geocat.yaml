@@ -2,7 +2,7 @@ header:
   id: e86fb7e3-7a44-4f72-8dec-f638f1d96ec9
   name: so-kt-geocat
   title: SO-Kt - Geocat Harvester
-  context: DEU
+  context: piveau
   transport: payload
   version: "1.0.0"
 body:
@@ -30,3 +30,9 @@ body:
           path: debug.js
           params:
             defaultLanguage: de
+    - header:
+        name: piveau-consus-exporting-hub
+        segmentNumber: 3
+        title: Exporting hub
+        processed: false
+      body: {}
