@@ -38,7 +38,7 @@ const ldContext = {
     '@container': '@language',
   },
   text: {
-    '@id': dcterms.description.value,
+    '@id': schema.text.value,
     '@container': '@language',
   },
   image: schema.image.value,
