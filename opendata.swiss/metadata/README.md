@@ -25,7 +25,7 @@ Then, you will need to create a `.env` file, based on the `.env.example` file, a
 Finally, you can start the stack with:
 
 ```sh
-docker-compose up -d # You can ignore the `-d` to see the logs in real time
+docker compose up -d # You can ignore the `-d` to see the logs in real time
 ```
 
 You can open the UI at [http://localhost:8080](http://localhost:8080).
@@ -62,5 +62,5 @@ To remove the catalogues, run:
 To stop the stack, run:
 
 ```sh
-docker-compose down
+docker compose down
 ```
