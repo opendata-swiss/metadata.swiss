@@ -7,7 +7,7 @@ const stemPattern = /^showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
 interface AggregateShowcase {
   id: string
-  '@type': 'CreativeWork'
+  '@type': 'Showcase'
   title: Record<string, string | undefined>
   image: string | undefined
   description: Record<string, string | undefined>
@@ -18,7 +18,7 @@ interface AggregateShowcase {
 }
 
 const ldContext = {
-  '@base': 'http://example.org/',
+  '@base': 'https://example.org/',
   id: '@id',
   label: rdfs.label.value,
   categories: {
@@ -57,7 +57,7 @@ export default defineEventHandler(async (event) => {
     if (!aggregate) {
       aggregate = {
         id: stem,
-        '@type': 'CreativeWork',
+        '@type': 'Showcase',
         title: {},
         image: showcase.image,
         description: {},
