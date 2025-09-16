@@ -10,7 +10,7 @@ interface AggregateShowcase {
   '@type': 'Showcase'
   title: Record<string, string | undefined>
   image: string | undefined
-  description: Record<string, string | undefined>
+  abstract: Record<string, string | undefined>
   categories: string[]
   datasets: Array<{ id: string; label: string }>
   text: Record<string, string | undefined>
@@ -33,8 +33,8 @@ const ldContext = {
     '@id': dcterms.title.value,
     '@container': '@language',
   },
-  description: {
-    '@id': dcterms.description.value,
+  abstract: {
+    '@id': dcterms.abstract.value,
     '@container': '@language',
   },
   text: {
@@ -60,7 +60,7 @@ export default defineEventHandler(async (event) => {
         '@type': 'Showcase',
         title: {},
         image: showcase.image,
-        description: {},
+        abstract: {},
         categories: showcase.categories || [],
         datasets: showcase.datasets || [],
         text: {},
@@ -70,7 +70,7 @@ export default defineEventHandler(async (event) => {
     }
 
     aggregate.title[lang] = showcase.title || undefined
-    aggregate.description[lang] = showcase.description || undefined
+    aggregate.abstract[lang] = showcase.description || undefined
     aggregate.text[lang] =  await stripMarkdown(showcase.rawbody) || undefined
 
     return arr
