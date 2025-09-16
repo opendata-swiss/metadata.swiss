@@ -33,6 +33,7 @@
     "pinia": "^3.0.3",
     "react-bootstrap-typeahead": "^6.4.1",
     "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
     "rimraf": "^6.0.1",
     "sass-embedded": "^1.89.2",
     "sharp": "^0.34.3",

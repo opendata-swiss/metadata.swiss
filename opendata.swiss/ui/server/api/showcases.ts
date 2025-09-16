@@ -1,8 +1,8 @@
 import {remark} from 'remark'
 import strip from 'strip-markdown'
+import remarkFrontmatter from "remark-frontmatter";
 import {dcat, dcterms, rdfs, schema} from "@tpluscode/rdf-ns-builders";
 
-const frontMatterPattern = /^---[\s\S]*---/
 const stemPattern = /^showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
 interface AggregateShowcase {
@@ -83,6 +83,9 @@ export default defineEventHandler(async (event) => {
 })
 
 async function stripMarkdown(md: string) {
-  const stripped = await remark().use(strip).process(md.replace(frontMatterPattern, '').trim())
+  const stripped = await remark()
+    .use(strip)
+    .use(remarkFrontmatter)
+    .process(md)
   return stripped.value.toString()
 }
