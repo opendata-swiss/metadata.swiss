@@ -1,0 +1,1107 @@
+Attaching to piveau-consus-exporting-hub-1, piveau-consus-importing-ckan-1, piveau-consus-importing-csw-1, piveau-consus-importing-rdf-1, piveau-consus-scheduling-1, piveau-consus-transforming-js-1
+piveau-consus-importing-csw-1    | 10:22:43.919 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-importing-csw-1    | 10:22:44.437 [vert.x-eventloop-thread-2] INFO  org.ehcache.core.EhcacheManager - Cache 'runCache' created in EhcacheManager.
+piveau-consus-transforming-js-1  | 2025-09-17 10:22:44,438 [vert.x-eventloop-thread-2] INFO  org.ehcache.core.EhcacheManager - Cache 'repo-verticle' created in EhcacheManager.
+piveau-consus-importing-ckan-1   | 2025-09-17 10:22:44,663 [vert.x-eventloop-thread-4] INFO  org.ehcache.core.EhcacheManager - Cache 'runCache' created in EhcacheManager.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:44,784 [vert.x-eventloop-thread-1] INFO  io.piveau.scheduling.MainVerticle - {
+piveau-consus-scheduling-1       |   "PIVEAU_SHELL_CONFIG" : {
+piveau-consus-scheduling-1       |     "telnet" : { },
+piveau-consus-scheduling-1       |     "http" : { }
+piveau-consus-scheduling-1       |   }
+piveau-consus-scheduling-1       | }
+piveau-consus-scheduling-1       | 2025-09-17 10:22:44,797 [vert.x-worker-thread-1] WARN  io.piveau.pipe.ServiceDiscovery - Empty service discovery configured!
+piveau-consus-scheduling-1       | 2025-09-17 10:22:44,798 [vert.x-worker-thread-1] WARN  io.piveau.pipe.PiveauCluster - No pipe repositories configured!
+piveau-consus-importing-rdf-1    | 2025-09-17 10:22:44,920 [vert.x-eventloop-thread-4] INFO  org.ehcache.core.EhcacheManager - Cache 'runCache' created in EhcacheManager.
+piveau-consus-transforming-js-1  | 2025-09-17 10:22:44,968 [vert.x-eventloop-thread-3] INFO  org.ehcache.core.EhcacheManager - Cache 'runCache' created in EhcacheManager.
+piveau-consus-importing-csw-1    | Custom CSW Importer started successfully.
+piveau-consus-exporting-hub-1    | 2025-09-17 10:22:45,139 [vert.x-eventloop-thread-4] INFO  org.ehcache.core.EhcacheManager - Cache 'runCache' created in EhcacheManager.
+piveau-consus-importing-ckan-1   | 2025-09-17 10:22:45,326 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-importing-rdf-1    | 2025-09-17 10:22:45,464 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-transforming-js-1  | 2025-09-17 10:22:45,603 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-exporting-hub-1    | 2025-09-17 10:22:45,608 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,040 [vert.x-worker-thread-9] INFO  org.quartz.impl.StdSchedulerFactory - Using ConnectionProvider class 'org.quartz.utils.C3p0PoolingConnectionProvider' for data source 'QuartzDB'
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,133 [vert.x-worker-thread-9] INFO  org.quartz.impl.StdSchedulerFactory - Using default implementation for ThreadExecutor
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,139 [vert.x-worker-thread-9] INFO  o.quartz.core.SchedulerSignalerImpl - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,139 [vert.x-worker-thread-9] INFO  org.quartz.core.QuartzScheduler - Quartz Scheduler v.2.3.2 created.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Using thread monitor-based data access locking (synchronization).
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - JobStoreTX initialized.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  org.quartz.core.QuartzScheduler - Scheduler meta-data: Quartz Scheduler (v2.3.2) 'QuartzScheduler' with instanceId 'NON_CLUSTERED'
+piveau-consus-scheduling-1       |   Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+piveau-consus-scheduling-1       |   NOT STARTED.
+piveau-consus-scheduling-1       |   Currently in standby mode.
+piveau-consus-scheduling-1       |   Number of jobs executed: 0
+piveau-consus-scheduling-1       |   Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+piveau-consus-scheduling-1       |   Using job-store 'org.quartz.impl.jdbcjobstore.JobStoreTX' - which supports persistence. and is not clustered.
+piveau-consus-scheduling-1       | 
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler 'QuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  org.quartz.impl.StdSchedulerFactory - Quartz scheduler version: 2.3.2
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,140 [vert.x-worker-thread-9] INFO  org.quartz.core.QuartzScheduler - JobFactory set to: io.piveau.scheduling.quartz.VertxJobFactory@3305dc65
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,187 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Freed 0 triggers from 'acquired' / 'blocked' state.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,194 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Recovering 0 jobs that were in-progress at the time of the last shut-down.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,194 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Recovery complete.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,195 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Removed 0 'complete' triggers.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,195 [vert.x-worker-thread-9] INFO  o.q.impl.jdbcjobstore.JobStoreTX - Removed 0 stale fired job entries.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,196 [vert.x-worker-thread-9] INFO  org.quartz.core.QuartzScheduler - Scheduler QuartzScheduler_$_NON_CLUSTERED started.
+piveau-consus-scheduling-1       | 2025-09-17 10:22:46,356 [vert.x-eventloop-thread-0] INFO  i.v.c.i.l.c.VertxIsolatedDeployer - Succeeded in deploying verticle
+piveau-consus-importing-csw-1    | https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results&typeNames=dcat
+piveau-consus-importing-csw-1    | Successfully fetched XML:
+piveau-consus-importing-csw-1    | -------------------------
+piveau-consus-importing-csw-1    | Found 53 records to forward.
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2024-11-13",
+piveau-consus-transforming-js-1  |   "dc:description": "Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren",
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Blaue Zone; öffentliche Parkierung; Parkkarten; Parkbewilligung; Parkgebühren",
+piveau-consus-transforming-js-1  |     "Parkkartenzone",
+piveau-consus-transforming-js-1  |     "Zentrumszone",
+piveau-consus-transforming-js-1  |     "Quartierzentren",
+piveau-consus-transforming-js-1  |     "transportation"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "WT_VP_V_PARKKARTENZONEN_TBL",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "26ce5464-e2e7-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.46737612403396 8.684624826118306",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.528499592340886 8.774547596972035",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "26ce5464-e2e7-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/26ce5464-e2e7-2203-e063-5015630a5606"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 26ce5464-e2e7-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2024-11-13",
+piveau-consus-transforming-js-1  |   "modified": "2024-11-13"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,849 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2023-09-25",
+piveau-consus-transforming-js-1  |   "dc:description": "Die Stadt Winterthur kann Rechte an Private abgeben. Dies erfolgt in Form von Konzessionen. Das sind z.B. Parkplätze, private Leitungsquerungen, Fremdnutzung von Anlagen. Es besteht eine Verknüpfung zu den Verträgen ins Dokumentenmanagementsystem.",
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Unterhalt",
+piveau-consus-transforming-js-1  |     "Strassen",
+piveau-consus-transforming-js-1  |     "Konzessionen",
+piveau-consus-transforming-js-1  |     "utilitiesCommunication"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Die Stadt Winterthur kann Rechte an Private abgeben. Dies erfolgt in Form von Konzessionen. Das sind z.B. Parkplätze, private Leitungsquerungen, Fremdnutzung von Anlagen. Es besteht eine Verknüpfung zu den Verträgen ins Dokumentenmanagementsystem.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Konzession",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "0b254869-1786-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.4640200546457 8.689508405905288",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.52540336012006 8.787410748837564",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "0b254869-1786-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/0b254869-1786-edd3-e063-5015630add48"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 0b254869-1786-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2023-09-25",
+piveau-consus-transforming-js-1  |   "modified": "2023-09-25"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,867 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2022-12-31",
+piveau-consus-transforming-js-1  |   "dc:description": "Das Natur- und Landschaftsschutzinventar der Stadt Winterthur beinhaltet Natur- und Landschaftsschutzobjekte. Naturschutzobjekte sind Nassstandorte, Trockenstandorte, Gruben und Ödflächen. Als Landschaftsschutzobjekte geführt werden Hecken, Bäche, Einzelbäume, Geologisches Objekte, Aussichtspunkte und Aussichtslagen. Die Abgrenzung der Landschaftsschutzobjekte erfolgte nicht parzellenscharf. Das Inventar wird vom Stadtrat festgesetzt und ist behördenverbindlich, beinhaltet somit ohne weitere Massnahmen keine öffentlich-rechtlichen Eigentumsbeschränkungen.",
+piveau-consus-transforming-js-1  |   "dc:URI": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |       "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |       "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch?topic=NaturLandschaftsschutzinventar"
+piveau-consus-transforming-js-1  |     },
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "OGC:WMS",
+piveau-consus-transforming-js-1  |       "name": "NaturLandschaftsschutzinventar",
+piveau-consus-transforming-js-1  |       "description": "Web Map Services WMS",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch/wms/NaturLandschaftsschutzinventar?service=WMS&request=GetCapabilities"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Naturschutzinventar",
+piveau-consus-transforming-js-1  |     "Landschaftsschutzinventar",
+piveau-consus-transforming-js-1  |     "environment"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Das Natur- und Landschaftsschutzinventar der Stadt Winterthur beinhaltet Natur- und Landschaftsschutzobjekte. Naturschutzobjekte sind Nassstandorte, Trockenstandorte, Gruben und Ödflächen. Als Landschaftsschutzobjekte geführt werden Hecken, Bäche, Einzelbäume, Geologisches Objekte, Aussichtspunkte und Aussichtslagen. Die Abgrenzung der Landschaftsschutzobjekte erfolgte nicht parzellenscharf. Das Inventar wird vom Stadtrat festgesetzt und ist behördenverbindlich, beinhaltet somit ohne weitere Massnahmen keine öffentlich-rechtlichen Eigentumsbeschränkungen.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "DSP Naturschutzlinie",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "0822efb6-2098-e9c4-e063-5015630a5f14",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.45956326316043 8.658197746715748",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54858808261585 8.798873271717644",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "0822efb6-2098-e9c4-e063-5015630a5f14",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/0822efb6-2098-e9c4-e063-5015630a5f14"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 0822efb6-2098-e9c4-e063-5015630a5f14",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2022-12-31",
+piveau-consus-transforming-js-1  |   "modified": "2022-12-31"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,890 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2023-11-10",
+piveau-consus-transforming-js-1  |   "dc:description": "Der Baumkataster der Stadt Winterthur beinhaltet alle Bäume, die von Stadtgrün Winterthur gepflegt und unterhalten werden. Neben der Baumbezeichnung ist auch der wissenschaftliche Name und das Pflanzjahr verfügbar.",
+piveau-consus-transforming-js-1  |   "dc:URI": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |       "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |       "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch?topic=Baumkataster"
+piveau-consus-transforming-js-1  |     },
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "OGC:WMS",
+piveau-consus-transforming-js-1  |       "name": "Baumkataster",
+piveau-consus-transforming-js-1  |       "description": "Web Map Services WMS",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch/wms/Baumkataster?service=WMS&request=GetCapabilities"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Baum",
+piveau-consus-transforming-js-1  |     "Stadtgrün",
+piveau-consus-transforming-js-1  |     "environment"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Der Baumkataster der Stadt Winterthur beinhaltet alle Bäume, die von Stadtgrün Winterthur gepflegt und unterhalten werden. Neben der Baumbezeichnung ist auch der wissenschaftliche Name und das Pflanzjahr verfügbar.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Nateco_Baum",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "06befacf-2909-276b-e063-5015630afa40",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.461673946530254 8.661846843889352",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54119083515857 8.797344388157146",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "06befacf-2909-276b-e063-5015630afa40",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/06befacf-2909-276b-e063-5015630afa40"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 06befacf-2909-276b-e063-5015630afa40",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2023-11-10",
+piveau-consus-transforming-js-1  |   "modified": "2023-11-10"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,903 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2022-12-31",
+piveau-consus-transforming-js-1  |   "dc:description": "Das gesamte Gemeindegebiet der Stadt Winterthur als Flächenobjekt.",
+piveau-consus-transforming-js-1  |   "dc:URI": {
+piveau-consus-transforming-js-1  |     "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |     "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |     "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |     "content": "https://stadtplan.winterthur.ch/"
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Stadtgrenze",
+piveau-consus-transforming-js-1  |     "Grenze",
+piveau-consus-transforming-js-1  |     "boundaries"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Das gesamte Gemeindegebiet der Stadt Winterthur als Flächenobjekt.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Gemeinde Polygon",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "08227c10-f55a-d427-e063-5015630a0511",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.44864336620819 8.657536176708149",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54907027546774 8.808928197398147",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "08227c10-f55a-d427-e063-5015630a0511",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/08227c10-f55a-d427-e063-5015630a0511"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 08227c10-f55a-d427-e063-5015630a0511",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2022-12-31",
+piveau-consus-transforming-js-1  |   "modified": "2022-12-31"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,914 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2024-11-13",
+piveau-consus-transforming-js-1  |   "dc:description": "Schwachstellenanalyse; Velo linear",
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Schwachstellen Velo linear",
+piveau-consus-transforming-js-1  |     "transportation"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Schwachstellenanalyse; Velo linear",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "WT_WVP_SW_VELO_LINIE",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "26ce5464-e2ec-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.45730637080753 8.67759175126335",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.53815161113235 8.792479440797553",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "26ce5464-e2ec-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/26ce5464-e2ec-2203-e063-5015630a5606"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 26ce5464-e2ec-2203-e063-5015630a5606",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2024-11-13",
+piveau-consus-transforming-js-1  |   "modified": "2024-11-13"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,924 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2023-09-25",
+piveau-consus-transforming-js-1  |   "dc:description": "Die Abfall-Sammelstellencontainer im Winterthurer Stadtgebiet.",
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Entsorgung",
+piveau-consus-transforming-js-1  |     "Abfall",
+piveau-consus-transforming-js-1  |     "utilitiesCommunication"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Die Abfall-Sammelstellencontainer im Winterthurer Stadtgebiet.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Sammelstellen-Container",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "0b254869-1782-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.46524604492259 8.684245156881074",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.51823322889306 8.770300109352346",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "0b254869-1782-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/0b254869-1782-edd3-e063-5015630add48"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 0b254869-1782-edd3-e063-5015630add48",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2023-09-25",
+piveau-consus-transforming-js-1  |   "modified": "2023-09-25"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,931 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2025-03-05",
+piveau-consus-transforming-js-1  |   "dc:description": "Der Datensatz umfasst klar definierte, nicht überlappende Polygonflächen, die das Stadtgebiet von Winterthur in verschiedene Abschnitte gliedern und eine strukturierte Basis für polizeiliche Suchaktionen oder andere Einsatzplanungen bieten. Durch diese Einteilung lassen sich Zuständigkeiten effizient organisieren, Ressourcen schnell verteilen und bei Bedarf grossflächige Suchvorgänge präzise koordinieren. Die Sektoreneinteilung basiert auf den geografischen Gegebenheiten der Stadt Winterthur, ergänzt durch polizeiliche Erfahrungswerte und Einsatzerfordernisse. Für die Erstellung und fortlaufende Pflege der Daten werden amtliche Vermessungsgrundlagen herangezogen. In diesen Datensätzen sind für jeden Sektor eindeutige Kennungen hinterlegt, damit innerhalb der Stadtpolizei eine reibungslose Kommunikation und Koordination erfolgen kann. Da die Genauigkeit der Kartengrundlagen im Bereich der amtlichen Vermessung liegt, decken die Sektoren sämtliche relevanten Bereiche ab und erlauben eine verlässliche Planung selbst kleinräumiger Einsatzszenarien. Um die Aktualität zu gewährleisten, wird der Datensatz regelmässig überprüft und bei veränderten Einsatzanforderungen oder städtischen Entwicklungen angepasst.",
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Polizei",
+piveau-consus-transforming-js-1  |     "Suchsektor",
+piveau-consus-transforming-js-1  |     "intelligenceMilitary"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Der Datensatz umfasst klar definierte, nicht überlappende Polygonflächen, die das Stadtgebiet von Winterthur in verschiedene Abschnitte gliedern und eine strukturierte Basis für polizeiliche Suchaktionen oder andere Einsatzplanungen bieten. Durch diese Einteilung lassen sich Zuständigkeiten effizient organisieren, Ressourcen schnell verteilen und bei Bedarf grossflächige Suchvorgänge präzise koordinieren. Die Sektoreneinteilung basiert auf den geografischen Gegebenheiten der Stadt Winterthur, ergänzt durch polizeiliche Erfahrungswerte und Einsatzerfordernisse. Für die Erstellung und fortlaufende Pflege der Daten werden amtliche Vermessungsgrundlagen herangezogen. In diesen Datensätzen sind für jeden Sektor eindeutige Kennungen hinterlegt, damit innerhalb der Stadtpolizei eine reibungslose Kommunikation und Koordination erfolgen kann. Da die Genauigkeit der Kartengrundlagen im Bereich der amtlichen Vermessung liegt, decken die Sektoren sämtliche relevanten Bereiche ab und erlauben eine verlässliche Planung selbst kleinräumiger Einsatzszenarien. Um die Aktualität zu gewährleisten, wird der Datensatz regelmässig überprüft und bei veränderten Einsatzanforderungen oder städtischen Entwicklungen angepasst.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Stadtpolizei Suchsektoren",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "2f946483-523a-f1a9-e063-5015630a2760",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.46294627859669 8.671882540270982",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.52376313086784 8.781672609080058",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "2f946483-523a-f1a9-e063-5015630a2760",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/2f946483-523a-f1a9-e063-5015630a2760"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 2f946483-523a-f1a9-e063-5015630a2760",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2025-03-05",
+piveau-consus-transforming-js-1  |   "modified": "2025-03-05"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,940 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2022-12-31",
+piveau-consus-transforming-js-1  |   "dc:description": "Die administrativen Gebiete für die Zuständigkeiten der Baukontrolle in der Stadt Winterthur.",
+piveau-consus-transforming-js-1  |   "dc:URI": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |       "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |       "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch?topic=BeratungBaukontrolle"
+piveau-consus-transforming-js-1  |     },
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "OGC:WMS",
+piveau-consus-transforming-js-1  |       "name": "BeratungBaukontrolle",
+piveau-consus-transforming-js-1  |       "description": "Web Map Services WMS",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch/wms/BeratungBaukontrolle?service=WMS&request=GetCapabilities"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Bauwesen",
+piveau-consus-transforming-js-1  |     "boundaries"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Die administrativen Gebiete für die Zuständigkeiten der Baukontrolle in der Stadt Winterthur.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Gebietseinteilung Baukontrolle",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "06be594e-0b17-f603-e063-5015630a6c55",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.44864336919263 8.657536176708149",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54907027546774 8.80892794551565",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "06be594e-0b17-f603-e063-5015630a6c55",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/06be594e-0b17-f603-e063-5015630a6c55"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 06be594e-0b17-f603-e063-5015630a6c55",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2022-12-31",
+piveau-consus-transforming-js-1  |   "modified": "2022-12-31"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,947 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2023-11-09",
+piveau-consus-transforming-js-1  |   "dc:description": "Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.",
+piveau-consus-transforming-js-1  |   "dc:URI": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |       "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |       "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch?topic=InventarSchutzwuerdigerBauten"
+piveau-consus-transforming-js-1  |     },
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "OGC:WMS",
+piveau-consus-transforming-js-1  |       "name": "InventarSchutzwuerdigerBauten",
+piveau-consus-transforming-js-1  |       "description": "Web Map Services WMS",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch/wms/InventarSchutzwuerdigerBauten?service=WMS&request=GetCapabilities"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Denkmal",
+piveau-consus-transforming-js-1  |     "Baukunst",
+piveau-consus-transforming-js-1  |     "Kulturgut",
+piveau-consus-transforming-js-1  |     "structure"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Inventar schutzwürdiger Bauten",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.46083552955398 8.661368547439784",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54122996510385 8.803023751850432",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/06bec1b7-b1b7-0af3-e063-5015630a123a"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2023-11-09",
+piveau-consus-transforming-js-1  |   "modified": "2023-11-09"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,965 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-transforming-js-1  | input:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "dct:modified": "2023-11-09",
+piveau-consus-transforming-js-1  |   "dc:description": "Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.",
+piveau-consus-transforming-js-1  |   "dc:URI": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "MAP:Preview",
+piveau-consus-transforming-js-1  |       "name": "Stadtplan Winterthur",
+piveau-consus-transforming-js-1  |       "description": "Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch?topic=InventarSchutzwuerdigerBauten"
+piveau-consus-transforming-js-1  |     },
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "protocol": "OGC:WMS",
+piveau-consus-transforming-js-1  |       "name": "InventarSchutzwuerdigerBauten",
+piveau-consus-transforming-js-1  |       "description": "Web Map Services WMS",
+piveau-consus-transforming-js-1  |       "content": "https://stadtplan.winterthur.ch/wms/InventarSchutzwuerdigerBauten?service=WMS&request=GetCapabilities"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "dc:language": "ger",
+piveau-consus-transforming-js-1  |   "dc:subject": [
+piveau-consus-transforming-js-1  |     "Denkmal",
+piveau-consus-transforming-js-1  |     "Baukunst",
+piveau-consus-transforming-js-1  |     "Kulturgut",
+piveau-consus-transforming-js-1  |     "structure"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:geonet": "http://www.fao.org/geonetwork",
+piveau-consus-transforming-js-1  |   "dc:format": [
+piveau-consus-transforming-js-1  |     "SDF",
+piveau-consus-transforming-js-1  |     "SDF"
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "xmlns:dct": "http://purl.org/dc/terms/",
+piveau-consus-transforming-js-1  |   "dct:abstract": "Gemäss kantonalem Planungs- und Baugesetz (PBG) § 203 sind über schutzwürdige Baudenkmäler Inventare zu führen. Es wird unterschieden zwischen Baudenkmälern von kantonaler und kommunaler Bedeutung. Während die Baudirektion des Kantons für die Baudenkmäler von kantonaler (überkommunaler) Bedeutung zuständig ist, ist die Stadt Winterthur für diejenigen von kommunaler Bedeutung verantwortlich. Das kommunale Inventar schutzwürdiger Baudenkmäler wurde vom Stadtrat Winterthur am 22. März 2006 – im Sinne einer Revision des bestehenden Inventars – neu festgesetzt. Am 5. Juni 2013 hat der Stadtrat eine Inventarergänzung von Bauten und Freiräumen der Nachkriegszeit bis 1980 festgesetzt.Schutzobjekte sind gemäss § 203 PBG 'Ortskerne, Quartiere, Strassen und Plätze, Gebäudegruppen, Gebäude und Teile sowie Zugehör von solchen, die als wichtige Zeugen einer politischen, wirtschaftlichen sozialen oder baukünstlerischen Epoche erhaltenswürdig sind oder die Landschaften und Siedlungen wesentlich mitprägen, samt der für ihre Wirkung wesentlichen Umgebung.' Das Inventar ist in erster Linie ein Hinweisinventar, welches das Baubewilligungsverfahren erleichtern soll. Nur die im Inventar aufgeführten Objekte werden im Rahmen des Verfahrens von der Denkmalpflege geprüft. Im Inventar sind sowohl die bereits formell geschützten wie die potenziell schutzwürdigen Bauten aufgeführt. In der Inventarliste sind sowohl die schutzwürdigen Baudenkmäler von kantonaler wie von kommunaler Bedeutung aufgeführt.",
+piveau-consus-transforming-js-1  |   "xmlns:csw": "http://www.opengis.net/cat/csw/2.0.2",
+piveau-consus-transforming-js-1  |   "dc:type": "dataset",
+piveau-consus-transforming-js-1  |   "dc:date": "2025-09-16",
+piveau-consus-transforming-js-1  |   "dc:title": "Inventar schutzwürdiger Bauten",
+piveau-consus-transforming-js-1  |   "xmlns:ows": "http://www.opengis.net/ows",
+piveau-consus-transforming-js-1  |   "dc:identifier": "06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |   "xmlns:dc": "http://purl.org/dc/elements/1.1/",
+piveau-consus-transforming-js-1  |   "ows:BoundingBox": {
+piveau-consus-transforming-js-1  |     "ows:LowerCorner": "47.46083552955398 8.661368547439784",
+piveau-consus-transforming-js-1  |     "ows:UpperCorner": "47.54122996510385 8.803023751850432",
+piveau-consus-transforming-js-1  |     "crs": "urn:ogc:def:crs:EPSG:6.6:4326"
+piveau-consus-transforming-js-1  |   }
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformed output:
+piveau-consus-transforming-js-1  | {
+piveau-consus-transforming-js-1  |   "@type": "Dataset",
+piveau-consus-transforming-js-1  |   "title": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test title",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "description": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@value": "Test description",
+piveau-consus-transforming-js-1  |       "@language": "de"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "publisher": {
+piveau-consus-transforming-js-1  |     "@type": "Agent",
+piveau-consus-transforming-js-1  |     "name": "Test name",
+piveau-consus-transforming-js-1  |     "type": {
+piveau-consus-transforming-js-1  |       "@id": "http://purl.org/adms/publishertype/NationalAuthority"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   },
+piveau-consus-transforming-js-1  |   "distribution": [
+piveau-consus-transforming-js-1  |     {
+piveau-consus-transforming-js-1  |       "@type": "Distribution",
+piveau-consus-transforming-js-1  |       "identifier": "06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |       "accessUrl": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "https://example.eu/set/distribution/06bec1b7-b1b7-0af3-e063-5015630a123a"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "description": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Distribution description 06bec1b7-b1b7-0af3-e063-5015630a123a",
+piveau-consus-transforming-js-1  |           "@language": "de"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "title": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@value": "Data",
+piveau-consus-transforming-js-1  |           "@language": "en"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "format": [
+piveau-consus-transforming-js-1  |         {
+piveau-consus-transforming-js-1  |           "@id": "http://publications.europa.eu/resource/authority/file-type/SDF"
+piveau-consus-transforming-js-1  |         }
+piveau-consus-transforming-js-1  |       ],
+piveau-consus-transforming-js-1  |       "language": "de",
+piveau-consus-transforming-js-1  |       "mediaType": "text/csv",
+piveau-consus-transforming-js-1  |       "license": "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
+piveau-consus-transforming-js-1  |     }
+piveau-consus-transforming-js-1  |   ],
+piveau-consus-transforming-js-1  |   "issued": "2023-11-09",
+piveau-consus-transforming-js-1  |   "modified": "2023-11-09"
+piveau-consus-transforming-js-1  | }
+piveau-consus-transforming-js-1  | Transformation completed successfully. Returning output.
+piveau-consus-transforming-js-1  | 2025-09-17 10:23:03,975 [vert.x-worker-thread-2] INFO  p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-transforming-js] Transformation finished: {}
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,583 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,586 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,587 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,588 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})
+piveau-consus-exporting-hub-1    | 2025-09-17 10:23:04,588 [vert.x-eventloop-thread-2] ERROR p.e86fb7e3-7a44-4f72-8dec-f638f1d96ec9 - so-kt-geocat~7b8a6502-b0a2-4c3f-8949-83145f3db390 [so-kt-geocat (piveau)] [piveau-consus-exporting-hub] 404 - Not Found ({})

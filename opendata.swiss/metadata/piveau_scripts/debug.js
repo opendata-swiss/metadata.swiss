@@ -64,6 +64,11 @@ function transforming(input){
       record_language = params.default_language;
     }
 
+    let format = resource["dc:format"];
+
+    if (Array.isArray(format)) {
+      format = format[0];
+    }
 
     let dist = {
       "@type": "Distribution",
@@ -80,13 +85,17 @@ function transforming(input){
           "@value": "Data",
           "@language": "en"
         }
-      ]
+      ],
+      "format": [{
+        "@id": encodeURI(decodeURI("http://publications.europa.eu/resource/authority/file-type/" + format))
+      }],
 
     };
 
-    dist.format = "CSV"//resource["dc:format"][0]
+
     dist.language = record_language
-    dist.issued = resource["dct:modified"]
+    output.issued = resource["dct:modified"]
+    output.modified = resource["dct:modified"]
     dist.mediaType = "text/csv"
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
@@ -97,9 +106,6 @@ function transforming(input){
       }];
     }
 
-    if (resource.modified) {
-      dist.issued = resource.modified
-    }
     output.distribution.push(dist);
 
   console.log("Transformed output:");
