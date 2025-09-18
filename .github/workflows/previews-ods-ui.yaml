@@ -116,6 +116,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           context: Preview deployed
+          description: It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
           status: success
           targetUrl: https://${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org/
 
