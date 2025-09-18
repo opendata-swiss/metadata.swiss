@@ -2,8 +2,16 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 import { resolve } from 'node:path'
 
+const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL} = process.env
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      PIVEAU_HUB_REPO_URL,
+      PIVEAU_HUB_SEARCH_URL
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: [
