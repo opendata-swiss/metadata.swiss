@@ -49,7 +49,7 @@ export default defineContentConfig({
         image: z.string().optional(),
         url: z.string().optional(),
         categories: z.array(z.string()).optional(),
-        type: z.string().optional(),
+        type: z.string(),
         datasets: z.array(z.object({
           id: z.string(),
           label: z.string(),

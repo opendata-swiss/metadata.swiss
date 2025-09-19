@@ -163,6 +163,7 @@ collections:
         name: url
         widget: string
         i18n: duplicate
+        required: false
       - label: Category
         name: categories
         widget: piveau-vocabulary

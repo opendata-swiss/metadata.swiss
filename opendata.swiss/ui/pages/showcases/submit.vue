@@ -2,10 +2,10 @@
   <OdsPage :page="{ title: 'New Showcase' }">
     <template #header>
       <OdsNotificationBanner :open="success === true" type="success">
-        Your showcase has been submitted
+        The showcase has been submitted
 
         <template #buttons>
-          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"></OdsButton>
+          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
         </template>
       </OdsNotificationBanner>
       <OdsNotificationBanner :open="success === false" type="error">
@@ -22,15 +22,15 @@
     <section class="section section--py">
       <div class="container">
         <ClientOnly>
-          <form ref="newShowcaseForm" method="post" action="/api/new-showcase">
+          <form ref="newShowcaseForm" method="post" @submit="submit">
             <div class="form__group__input">
-              <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch"/>
-              <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français"/>
-              <OdsInput id="title-it" label="Title (IT)" placeholder="Titolo in Italiano"/>
-              <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English"/>
+              <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch" required />
+              <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français" required />
+              <OdsInput id="title-it" label="Title (IT)" placeholder="Titolo in Italiano" required />
+              <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English" required />
             </div>
             <div class="form__group__input">
-              <OdsInput id="image" type="file" label="Image" accept="image/*" />
+              <OdsInput id="image" type="file" label="Image" accept="image/*" required />
             </div>
             <div class="form__group">
               <OdsInput id="url" label="Website" />
@@ -44,13 +44,13 @@
               <OdsInput id="tags" label="Tags" />
             </div>
             <div class="form__group">
-              <OdsTextarea id="body-de" label="Body (DE)" placeholder="Beschreibung auf Deutsch" />
-              <OdsTextarea id="body-fr" label="Body (FR)" placeholder="Description en Français" />
-              <OdsTextarea id="body-it" label="Body (IT)" placeholder="Descrizione in Italiano" />
-              <OdsTextarea id="body-en" label="Body (EN)" placeholder="Description in English" />
+              <OdsTextarea id="body-de" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
+              <OdsTextarea id="body-fr" label="Body (FR)" placeholder="Description en Français" required />
+              <OdsTextarea id="body-it" label="Body (IT)" placeholder="Descrizione in Italiano" required />
+              <OdsTextarea id="body-en" label="Body (EN)" placeholder="Description in English" required />
             </div>
             <div class="form__group">
-              <OdsButton variant="outline-negative" title="Submit" @click="submit"/>
+              <OdsButton submit variant="outline-negative" title="Submit" />
             </div>
           </form>
         </ClientOnly>
@@ -64,6 +64,11 @@ import { ref } from 'vue'
 import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
 import {useVocabularySearch} from "../../app/piveau/search";
 import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
+import OdsTextarea from "../../app/components/OdsTextarea.vue";
+import OdsButton from "../../app/components/OdsButton.vue";
+import OdsInput from "../../app/components/OdsInput.vue";
+import OdsSelect from "../../app/components/OdsSelect.vue";
+import OdsPage from "../../app/components/OdsPage.vue";
 
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
@@ -85,7 +90,7 @@ const success = ref<boolean | null>(null)
 const submissionError = ref<string | null>(null)
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
-function submit() {
+function submit(e: Event) {
   fetch('/api/showcases', {
     method: 'POST',
     body: new FormData(newShowcaseForm.value!)
@@ -105,6 +110,8 @@ function submit() {
   }).finally(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   })
+
+  e.preventDefault()
 }
 
 function closeMessages() {
