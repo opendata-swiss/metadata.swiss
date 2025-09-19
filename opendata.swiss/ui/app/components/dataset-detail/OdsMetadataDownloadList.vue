@@ -22,8 +22,8 @@
 import { useI18n } from 'vue-i18n';
 import SvgIcon from '../SvgIcon.vue';
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter';
-import { PIVEAU_HUB_REPO_URL } from '~/constants/piveau-endpoints';
 
+const { PIVEAU_HUB_REPO_URL } = useRuntimeConfig().public
 const { t } = useI18n();
 
 const props = defineProps({
