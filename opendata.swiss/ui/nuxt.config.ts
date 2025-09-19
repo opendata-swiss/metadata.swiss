@@ -45,19 +45,21 @@ export default defineNuxtConfig({
       rootDir: __dirname
     }
   },
-  components: {
-    global: true,
-    dirs: [
-      '~/components',
-      '~/components/content',
-    ]
-  },
   mdc: {
     components: {
       map: {
-        a: 'OdsProseA', // Map <a> tags to the OdsProseA component
+        a: 'OdsProseA',
+        h2: 'OdsProseH2',
+        h3: 'OdsProseH3',
+        h4: 'OdsProseH4',
       }
     }
+  },
+  components: {
+    global: true,
+    dirs: [
+      '~/components/content',
+    ]
   },
   build: {
     transpile: ['vuetify', 'form-data'],

@@ -41,7 +41,7 @@
             "dataset": "Jeu de données",
             "catalog": "Catalogue",
             "this_dataset_record": "Cette entrée de jeu de données a été",
-            "accrual_periodicity": "Fréquence de mise à jour",
+            "frequency": "Fréquence de mise à jour",
             "show_catalog_entry": "Afficher l’entrée du catalogue",
             "hide_catalog_entry": "Masquer l’entrée du catalogue",
             "distribution": "Distribution",
@@ -55,7 +55,10 @@
             "go_to_resource": "Aller à la ressource",
             "show_raw": "Afficher la date brute",
             "show_relative": "Afficher le temps relatif",
-            "details": "Détails"
+            "details": "Détails",
+            "released": "Publié",
+            "metadata_download": "Télécharger les métadonnées",
+            "metadata": "Métadonnées"
         },
         "showcase": {
             "type": {

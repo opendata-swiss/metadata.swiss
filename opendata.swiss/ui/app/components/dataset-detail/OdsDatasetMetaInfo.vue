@@ -1,79 +1,56 @@
 <template>
-      <span class="dataset-label">{{ t('message.dataset_detail.dataset') }}</span>
-
+  <span class="dataset-label">{{ t('message.dataset_detail.dataset') }}</span>
   <p class="meta-info">
     <span
-      v-if="props.dataset.getCreated"
+      v-if="props.dataset.releaseDate"
       class="meta-info__item"
-      style="cursor: pointer"
-      :title="showRaw ? t('message.dataset_detail.show_relative') : t('message.dataset_detail.show_raw')"
-      :aria-label="showRaw ? t('message.dataset_detail.show_relative') : t('message.dataset_detail.show_raw')"
-      @click="toggleRaw"
     >
-      {{ t('message.dataset_detail.published_on') }}
-      <NuxtTime
-        :datetime="new Date(props.dataset.getCreated)"
-        :locale="locale"
-        :relative="!showRaw"
-      />
+      {{ t('message.dataset_detail.released') }}
+      <OdsRelativeDateToggle :date="props.dataset.releaseDate" />
     </span>
     <span
-      v-if="props.dataset.getModified"
+      v-if="props.dataset.modificationDate"
       class="meta-info__item"
-      style="cursor: pointer"
-      :title="showRaw ? t('message.dataset_detail.show_relative') : t('message.dataset_detail.show_raw')"
-      :aria-label="showRaw ? t('message.dataset_detail.show_relative') : t('message.dataset_detail.show_raw')"
-      @click="toggleRaw"
     >
       {{ t('message.dataset_detail.modified_on') }}
-      <NuxtTime
-        :datetime="new Date(props.dataset.getModified)"
-        :locale="locale"
-        :relative="!showRaw"
-      />
+      <OdsRelativeDateToggle :date="props.dataset.modificationDate" />
     </span>
      <span
-      v-if="props.dataset.getOdsAccrualPeriodicity"
+      v-if="props.dataset.frequency"
       class="meta-info__item"
     >
-      {{ t('message.dataset_detail.accrual_periodicity') }} <a class="link--external" :href="props.dataset.getOdsAccrualPeriodicity.resource">{{ props.dataset.getOdsAccrualPeriodicity.label }}</a>
+      {{ t('message.dataset_detail.frequency') }}
+      <a class="link--external" target="_blank" :href="props.dataset.frequency.resource">{{ props.dataset.frequency.label }}</a>
     </span>
   </p>
-  <p class="meta-info catalog-meta-info">
-      <OdsDatasetCatalogPanel style="display: inline;" :dataset="props.dataset" />
-  </p>
-
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import type { Dataset } from '~/model/dataset'
-import OdsDatasetCatalogPanel from './OdsDatasetCatalogPanel.vue'
+import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
+import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
 
-const { locale, t } = useI18n()
+const { t } = useI18n()
 
-const showRaw = ref(false)
 
 const props = defineProps({
   dataset: {
-    type: Object as () => Dataset,
+    type: Object as PropType<DcatApChV2DatasetAdapter>,
     required: true
   }
 })
 
-function toggleRaw() {
-  showRaw.value = !showRaw.value
-}
 </script>
 
 <style lang="scss" scoped>
+
 .catalog-meta-info {
   margin-top: 0 !important;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+
 .dataset-label {
   position: relative;
   background-color: #e6f0fa;

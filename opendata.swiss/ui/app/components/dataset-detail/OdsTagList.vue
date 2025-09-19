@@ -1,6 +1,6 @@
 <template>
 <ul class="list list--flex list--wrap">
-  <li v-for="(c, index) in props.tags" :key="index">
+  <li v-for="c in props.tags" :key="c.resource">
     <OdsKeywordTag :link="c.resource" :label="c.label.en ?? ''" />
   </li>
 </ul>
@@ -11,7 +11,11 @@
 import OdsKeywordTag from '@/components/dataset-detail/OdsKeywordTag.vue'
 
 import type { Category } from '@piveau/sdk-core';
-const props = defineProps<{
-  tags: Category[]
-}>()
+const props = defineProps({
+  tags: {
+    type: Array as PropType<Category[]>,
+    required: true
+  }
+});
+
 </script>

@@ -1,4 +1,6 @@
 <script setup>
+import OdsToc from "~/components/OdsToc.vue";
+
 const { page } = defineProps({
   page: {
     type: Object,

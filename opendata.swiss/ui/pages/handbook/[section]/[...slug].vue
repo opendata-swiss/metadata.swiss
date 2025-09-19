@@ -2,6 +2,7 @@
 import OdsBreadcrumbs from "~/components/OdsBreadcrumbs.vue";
 import toProperCase from "~/lib/toProperCase.js";
 import { loadHandbookBreadcrumb } from "~/lib/breadcrumbs";
+import OdsPage from "../../../app/components/OdsPage.vue";
 
 const { locale, t } = useI18n();
 const route = useRoute()

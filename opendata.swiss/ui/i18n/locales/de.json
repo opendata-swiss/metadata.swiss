@@ -41,7 +41,7 @@
             "dataset": "Datensatz",
             "catalog": "Katalog",
             "this_dataset_record": "Dieser Datensatz-Eintrag wurde",
-            "accrual_periodicity": "Aktualisierungsfrequenz",
+            "frequency": "Aktualisierungsfrequenz",
             "show_catalog_entry": "Katalogeintrag anzeigen",
             "hide_catalog_entry": "Katalogeintrag ausblenden",
             "distribution": "Distribution",
@@ -55,7 +55,10 @@
             "go_to_resource": "Gehe zur Ressource",
             "show_raw": "Datum anzeigen",
             "show_relative": "Relative Zeit anzeigen",
-            "details": "Details"
+            "details": "Details",
+            "released": "Veröffentlicht",
+            "metadata_download": "Metadaten herunterladen",
+            "metadata": "Metadaten"
         },
         "showcase": {
             "type": {

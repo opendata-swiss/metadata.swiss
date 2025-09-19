@@ -35,9 +35,23 @@ import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
 import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
+import { useI18n } from 'vue-i18n';
+import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
+
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
+
+const { locale } = useI18n();
+
+const { setLocale, currentLocale} = piveauLocale();
+
+watch(locale, (newLocale) => {
+  if (newLocale !== (currentLocale as Ref<string>).value) {
+    setLocale(newLocale) // set the piveau locale
+  }
+}, { immediate: true }
+)
 
 useHead({
   bodyAttrs: {

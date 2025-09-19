@@ -41,7 +41,7 @@
             "dataset": "Dataset",
             "catalog": "Catalog",
             "this_dataset_record": "This dataset record has been",
-            "accrual_periodicity": "Update frequency",
+            "frequency": "Update frequency",
             "show_catalog_entry": "Show catalog entry",
             "hide_catalog_entry": "Hide catalog entry",
             "distribution": "Distribution",
@@ -55,7 +55,10 @@
             "go_to_resource": "Go to resource",
             "show_raw": "Show raw date",
             "show_relative": "Show relative time",
-            "details": "Details"
+            "details": "Details",
+            "released": "Released",
+            "metadata_download": "Download metadata",
+            "metadata": "Metadata"
         },
         "showcase": {
             "type": {

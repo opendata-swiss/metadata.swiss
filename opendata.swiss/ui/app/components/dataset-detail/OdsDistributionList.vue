@@ -1,57 +1,34 @@
 <template>
-  <OdsDistributionListItem v-for="item in items" :key="item.id" :item="item" :dataset-id="props.dataset.getId" />
+  <div class="ods-distribution-list">
+    <OdsDistributionListItem v-for="dist in props.distributions" :key="dist.id" :distribution="dist" class="list-element" />
+  </div>
 </template>
 
 <script setup lang="ts">
 
-import { computed } from 'vue'
-
-import { useI18n } from 'vue-i18n'
-
-import type { Dataset } from '~/model/dataset';
-import OdsDistributionListItem, { type DistributionListItem } from './OdsDistributionListItem.vue';
-import type { PropertyTableEntryBase, PropertyTableEntryNode } from '@piveau/sdk-vue';
-
-const { locale } = useI18n()
+import OdsDistributionListItem from './OdsDistributionListItem.vue';
+import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter';
 
 
 const props = defineProps({
-  dataset: {
-    type: Object as PropType<Dataset>,
+  distributions: {
+    type: Array as PropType<DcatApChV2DistributionAdapter[]>,
     required: true
   }
 })
 
-const items = computed<DistributionListItem[]>(() => {
-  const distributions = props.dataset.getDistributions
-  return (distributions || []).map(d => {
-    const propertyTable = d.getPropertyTable ?? []
-    const byteSize = findByteSize(propertyTable)
-    return {
-    id: d.id ?? '',
-    title: d.title ?? '',
-    description: d.description ?? '',
-    format: d.format ?? '',
-    modified: d.modified ?? '',
-    created: d.created ?? '',
-    issued: d.issued ?? '',
-    accessUrls: d.accessUrls || [],
-    downloadUrls: d.downloadUrls || [],
-    languages: d.languages || [],
-    byteSize
-  }}).sort((a, b) => a.title.localeCompare(b.title, locale.value))
-})
+</script>
 
-function findByteSize(table: PropertyTableEntryNode[] | undefined): string {
-  const byteSizeNode = table?.find(entry => entry.id === 'byteSize')
-  if(!byteSizeNode) {
-    return ''
-  }
-  const valueEntry = byteSizeNode.data?.find((entry: PropertyTableEntryBase) => entry.id === 'byteSize_value')
-  if(!valueEntry) {
-    return ''
-  }
-  return valueEntry.data as string
+
+<style lang="scss" scoped>
+
+.ods-distribution-list {
+  display: flex;
+  flex-direction: column;
 }
 
-</script>
+.list-element {
+  height: 105px;
+}
+
+</style>

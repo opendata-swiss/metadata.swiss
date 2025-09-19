@@ -1,6 +1,9 @@
 <script setup>
 import OdsPage from "../../app/components/OdsPage.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
+import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
+import OdsCard from "../../app/components/OdsCard.vue";
+import SvgIcon from "../../app/components/SvgIcon.vue";
 
 const { locale, t } = useI18n()
 const breadcrumbs = [

@@ -2,6 +2,7 @@
 import OdsBreadcrumbs from "../app/components/OdsBreadcrumbs.vue";
 import { useBreadcrumbs } from "../app/composables/breadcrumbs";
 import { loadPageBreadcrumb } from "../app/lib/breadcrumbs";
+import OdsPage from "../app/components/OdsPage.vue";
 
 const route = useRoute()
 const { locale } = useI18n()

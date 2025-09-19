@@ -1,7 +1,6 @@
 <template>
     <div class="ods-license">
       <h2 class="download-item__title">{{ t(`message.terms_of_use.ods_${termsName}.title`) }}</h2>
-
       <img
         :src="imageSrc"
         :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
@@ -56,6 +55,7 @@ const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.png`
   flex-direction: column;
 
 }
+
 img {
     height: 100%;
 

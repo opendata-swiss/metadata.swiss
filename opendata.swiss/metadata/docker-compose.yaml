@@ -13,6 +13,7 @@ services:
       - 8085:8085
       - 5002:5000
     environment:
+      - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}

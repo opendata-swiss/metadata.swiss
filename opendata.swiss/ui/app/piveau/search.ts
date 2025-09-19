@@ -5,6 +5,7 @@ import { getKeywords } from './get-keywords'
 import { getOdsFormats } from './get-ods-formats'
 import { getOdsCatalogInfo } from './get-ods-catalog-info'
 import { getOdsAccrualPeriodicity } from './get-ods-accrual-periodicity'
+import { PIVEAU_HUB_SEARCH_URL } from '~/constants/piveau-endpoints'
 
 // export const ACTIVE_FACETS = ['categories', 'publisher', 'catalog', 'format', 'license', 'keywords']
 export const ACTIVE_FACETS = ['catalog', 'categories', 'publisher', 'format', 'license', 'keywords']
@@ -14,7 +15,7 @@ export const ACTIVE_FACETS = ['catalog', 'categories', 'publisher', 'format', 'l
  */
 export function useDatasetsSearch() {
   return defineHubSearch({
-    baseUrl: 'https://piveau-hub-search-ln.zazukoians.org/',
+    baseUrl: PIVEAU_HUB_SEARCH_URL,
     index: 'dataset',
     indexDetails: 'datasets',
     facets: ACTIVE_FACETS,

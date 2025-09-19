@@ -15,6 +15,9 @@ import OdsFilterPanel from "../../app/components/dataset/OdsFilterPanel.vue";
 import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
 import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
+import SvgIcon from "../../app/components/SvgIcon.vue";
+import OdsButton from "../../app/components/OdsButton.vue";
+import { useSeoMeta } from 'nuxt/app';
 
 const { t, locale} = useI18n()
 
@@ -236,6 +239,11 @@ onMounted(() => {
       }
     })
   })
+})
+
+
+useSeoMeta({
+  title: `${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
 
 await suspense()

@@ -1,6 +1,7 @@
 <script setup>
 import OdsPage from "../../../app/components/OdsPage.vue";
 import {homePageBreadcrumb} from "../../../app/composables/breadcrumbs";
+import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
 
 const route = useRoute()
 const { locale, t } = useI18n()
