@@ -1,8 +1,9 @@
 import type {ShowcasesCollectionItem} from '@nuxt/content'
-import type {MultiPartData} from "h3";
+import type {H3Event, MultiPartData} from "h3";
 import slugify from "slugify";
 import * as fs from 'node:fs/promises'
 import * as yaml from 'yaml'
+import showcaseSchema from '../../src/schema/showcase.js'
 
 const languages = ['en', 'fr', 'de', 'it'] as const
 
@@ -85,15 +86,17 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  // TODO: choose to save to GitHub or locally based on environment
-  await save(showcase, contentRoot)
+  return validate(event, showcase) || (async () => {
+    // TODO: choose to save to GitHub or locally based on environment
+    await save(showcase, contentRoot)
 
-  if (process.env.NODE_ENV === 'production') {
-    // TODO: commit and push to repo
-    throw new Error('Saving to GitHub not implemented yet.')
-  }
+    if (process.env.NODE_ENV === 'production') {
+      // TODO: commit and push to repo
+      throw new Error('Saving to GitHub not implemented yet.')
+    }
 
-  return { message: 'Showcase submission received successfully.' };
+    return { message: 'Showcase submission received successfully.' };
+  })()
 });
 
 function save(showcase: Showcase, contentRoot: string) {
@@ -119,6 +122,16 @@ function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, 
      value(showcase[language])
     } else {
       showcase[language][key] = value
+    }
+  }
+}
+
+function validate(event: H3Event, showcase: Showcase) {
+  for (const language of languages) {
+    const { error } = showcaseSchema.safeParse(showcase[language])
+    if (error) {
+      event.node.res.statusCode = 400
+      return error.issues
     }
   }
 }

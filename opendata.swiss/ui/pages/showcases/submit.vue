@@ -70,6 +70,8 @@ import OdsInput from "../../app/components/OdsInput.vue";
 import OdsSelect from "../../app/components/OdsSelect.vue";
 import OdsPage from "../../app/components/OdsPage.vue";
 
+const { locale } = useI18n()
+
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
   queryParams: {
@@ -93,7 +95,10 @@ const newShowcaseForm = ref<HTMLFormElement | null>(null)
 function submit(e: Event) {
   fetch('/api/showcases', {
     method: 'POST',
-    body: new FormData(newShowcaseForm.value!)
+    body: new FormData(newShowcaseForm.value!),
+    headers: {
+      'Accept-Language': locale.value,
+    }
   }).then(response => {
     if (response.ok) {
       success.value = true

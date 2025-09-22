@@ -85,6 +85,9 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/admin/': 'http://localhost:5173/admin/',
-    }
+    },
+    plugins: [
+      '~~/server/plugins/zod-locale',
+    ]
   }
 })
