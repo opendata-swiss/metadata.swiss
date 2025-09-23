@@ -12,6 +12,11 @@
         Failed to submit showcase.
 
         <pre>{{ submissionError }}</pre>
+        <ul>
+          <li v-for="issue in submissionValidationIssues" :key="issue.path.join('-')">
+            {{ issue.path.join('.')}}: {{ issue.message }}
+          </li>
+        </ul>
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
@@ -61,6 +66,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { $ZodIssue as ZodIssue } from "zod/v4/core";
 import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
 import {useVocabularySearch} from "../../app/piveau/search";
 import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
@@ -90,33 +96,39 @@ useSeoMeta({title: 'New Showcase | opendata.swiss'})
 
 const success = ref<boolean | null>(null)
 const submissionError = ref<string | null>(null)
+const submissionValidationIssues = ref<ZodIssue[]>([])
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
-function submit(e: Event) {
-  fetch('/api/showcases', {
-    method: 'POST',
-    body: new FormData(newShowcaseForm.value!),
-    headers: {
-      'Accept-Language': locale.value,
-    }
-  }).then(response => {
+async function submit(e: Event) {
+  e.preventDefault()
+
+  try {
+    const response = await fetch('/api/showcases', {
+      method: 'POST',
+      body: new FormData(newShowcaseForm.value!),
+      headers: {
+        'Accept-Language': locale.value,
+      }
+    })
     if (response.ok) {
       success.value = true
       if (newShowcaseForm.value) {
         newShowcaseForm.value.reset()
       }
+    } else if (response.status === 400) {
+      submissionError.value = 'Form contains invalid data:'
+      submissionValidationIssues.value = await response.json()
+      success.value = false
     } else {
       submissionError.value = `Server responded with: ${response.status} - ${response.statusText}`
       success.value = false
     }
-  }).catch((e) => {
+  } catch (e) {
     submissionError.value = `${e.message}\n${e.stack}`
     success.value = false
-  }).finally(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  })
-
-  e.preventDefault()
+  } finally {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 }
 
 function closeMessages() {
