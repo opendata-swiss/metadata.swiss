@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n';
 
@@ -7,7 +7,7 @@ import { useDatasetsSearch } from '../../../app/piveau/search'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
 
 import { homePageBreadcrumb } from "../../../app/composables/breadcrumbs";
-import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
+import OdsBreadcrumbs, { type BreadcrumbItem } from "../../../app/components/OdsBreadcrumbs.vue";
 import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
@@ -16,8 +16,8 @@ import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistr
 import OdsButton from '../../../app/components/OdsButton.vue';
 import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
-
 import { useSeoMeta } from 'nuxt/app';
+import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage';
 
 const { locale, t } = useI18n();
 const route = useRoute()
@@ -38,9 +38,18 @@ const dataset = computed(() => {
 
 const distributions = computed(() => (dataset.value?.distributions ?? []).sort((a, b) => a.title.localeCompare(b.title)))
 
+const searchBreadcrumb = ref<BreadcrumbItem | null>(null)
+
 
 const homePage = await homePageBreadcrumb(locale)
 const breadcrumbs = computed(() => {
+  if (import.meta.client) {
+    const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId);
+    if (storedBreadcrumbs) {
+      return storedBreadcrumbs;
+    }
+  }
+
   const result = [
     homePage,
     {
@@ -49,17 +58,9 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-  if(route.query.search || typeof route.query.search === 'string') {
-    const searchQuery = Array.isArray(route.query.search) ? route.query.search[0] : route.query.search;
-    result.push({
-      title: t('message.dataset_search.search_results'),
-      route: {
-        path: '/datasets',
-        query: searchQuery
-          ? Object.fromEntries(new URLSearchParams(decodeURIComponent(searchQuery)))
-          : {}
-      }
-    })
+
+  if (searchBreadcrumb.value) {
+    result.push(searchBreadcrumb.value);
   }
 
   result.push({
@@ -70,6 +71,11 @@ const breadcrumbs = computed(() => {
     },
   })
 
+  if (import.meta.client) {
+    storeDatasetBreadcrumbInSessionStorage(datasetId, result);
+  }
+
+
   return result
 })
 
@@ -79,6 +85,30 @@ useSeoMeta({
 })
 
 
+
+watch(() => route.query.search,
+  () => {
+    if (import.meta.client) {
+      const { search, ...rest } = route.query;
+      router.replace({ query: rest });
+      if(search && typeof search === 'string') {
+        searchBreadcrumb.value = {
+          id: 'search',
+          title: t('message.dataset_search.search_results'),
+          route: {
+            path: '/datasets',
+            query: search
+              ? Object.fromEntries(new URLSearchParams(decodeURIComponent(search)))
+              : {}
+          }
+        }
+      }
+
+    }
+    }
+, { immediate: true }
+)
+
 await suspense()
 
 </script>
@@ -86,7 +116,9 @@ await suspense()
 <template>
   <div v-if="isSuccess && dataset">
   <header id="main-header">
-    <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    <ClientOnly>
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    </ClientOnly>
   </header>
   <main id="main-content">
    <section class="hero hero--default">
@@ -159,5 +191,13 @@ await suspense()
 </template>
 
 <style lang="scss" scoped>
-
+#main-header {
+  // avoid layout shift from ssr to csr
+   @media (min-width: 1024px) {
+    min-height: 65.5px;
+  }
+  @media (min-width: 1280px) {
+    min-height: 73.5px;
+  }
+}
 </style>

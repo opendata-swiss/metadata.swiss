@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 
 import LanguageSelector from '../LanguageSelector.vue';
+import OdsButton from '../OdsButton.vue';
+
 
 import { useI18n } from 'vue-i18n'
 
@@ -38,28 +40,31 @@ const emit = defineEmits<{
             <div class="top-bar__btn"/>
             <div class="top-bar__right">
                 <div v-if="props.enableAuthentication">
-                  <v-btn
+                  <OdsButton
                       v-if="props.authenticated"
-                      variant="plain"
-                      append-icon="mdi:mdi-logout"
+                      icon="Logout"
+                      variant="bare"
+                      size="sm"
                       :title="t('message.top_header.logout')"
-                      :aria-label="t('message.top_header..logout')"
+                      :aria-label="t('message.top_header.logout')"
+                      icon-right
                       @click="loginOrLogout"
                   >
-                      {{ props.username ? props.username : t('message.top_header.logout')}}
+                    <span>{{ props.username ? props.username : t('message.top_header.logout')}}</span>
+                  </OdsButton>
 
-                  </v-btn>
-                  <v-btn
+                  <OdsButton
                       v-if="!props.authenticated"
-                      variant="plain"
-                      append-icon="mdi:mdi-login"
+                      icon="Login"
+                      variant="bare"
+                      size="sm"
                       :title="t('message.top_header.login')"
                       :aria-label="t('message.top_header.login')"
+                      icon-right
                       @click="loginOrLogout"
                   >
-                      {{ t('message.top_header.login') }}
-
-                  </v-btn>
+                    <span>{{ t('message.top_header.login') }}</span>
+                  </OdsButton>
                 </div>
 
                <div class="language-selector">

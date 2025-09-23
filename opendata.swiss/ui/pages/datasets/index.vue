@@ -18,6 +18,7 @@ import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
 import SvgIcon from "../../app/components/SvgIcon.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
 import { useSeoMeta } from 'nuxt/app';
+import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 
 const { t, locale} = useI18n()
 
@@ -28,6 +29,10 @@ const route = useRoute()
 const facetRefs = Object.fromEntries(
   ACTIVE_FACETS.map(facet => [facet, ref<string[]>([])])
 );
+
+if(import.meta.client) {
+  clearDatasetBreadcrumbFromSessionStorage()
+}
 
 function syncFacetsFromRoute() {
   ACTIVE_FACETS.forEach(facet => {
@@ -252,20 +257,19 @@ await suspense()
 
 <template>
   <div>
+    <header id="main-header">
+        <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    </header>
 
-  <header id="main-header">
-    <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-  </header>
+    <main id="main-content">
 
- <main id="main-content">
+    <!-- search panel -->
+      <section class="section section--default bg--secondary-50">
 
-  <!-- search panel -->
-   <section class="section section--default bg--secondary-50">
+        <div class="container">
 
-      <div class="container">
-
-         <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
-         <div class="search search--large search--page-result">
+          <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
+          <div class="search search--large search--page-result">
             <div class="search__group">
                <input
                 id="search-input"
