@@ -16,6 +16,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
@@ -31,6 +34,8 @@ import java.net.http.HttpResponse;
 
 
 public class MainVerticle extends AbstractVerticle {
+
+    private static final String CATALOGUE_INFO_FIELD_NAME = "catalogue";
 
     private PipeConnector pipeConnector;
     private HttpClient client;
@@ -106,12 +111,26 @@ public class MainVerticle extends AbstractVerticle {
 
 
                     List<Element> recordsList = records.getChildren("Record", cswNamespace);
+
+
+
+                    int counter = 0;
                     for (Element record : recordsList) {
+                        ObjectNode dataInfo = new ObjectMapper().createObjectNode()
+                            .put("total", recordsCount)
+                            .put("current", counter)
+                            .put("identifier", "test")
+                            .put(CATALOGUE_INFO_FIELD_NAME, pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
+
                         String xmlString = new XMLOutputter().outputString(record);
                         JSONObject jsonObject = XML.toJSONObject(xmlString);
                         String jsonString = jsonObject.toString(4);
 
-                        pipeContext.setResult(jsonString).forward();
+                        pipeContext.setResult(jsonString, "application/json", dataInfo).forward();
+                        pipeContext.log().info("Dataset imported: {}", dataInfo);
+
+                        counter++;
+
                     }
 
 
