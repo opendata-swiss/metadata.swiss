@@ -66,93 +66,104 @@ public class MainVerticle extends AbstractVerticle {
             return;
         }
 
-        String requestUrl = cswUrl + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
-        requestUrl += "&typeNames=" + typeNames;
-
-        if (cqlFilter != null) {
-            // Note: CSW uses a filter parameter, which might need proper encoding.
-            // This is a simplified example.
-            requestUrl += "&constraintlanguage=CQL_TEXT&constraint=" + cqlFilter;
-        }
+        Integer startPosition = 1;
+        Integer totalRecords = -1; // Sentinel value: not yet known
+        Integer recordsFetched = 0;
 
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(requestUrl))
-                .build();
 
-        System.out.println(requestUrl);
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        do {
+            String requestUrl = cswUrl + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
 
-            if (response.statusCode() == 200) {
-                System.out.println("Successfully fetched XML:");
-                System.out.println("-------------------------");
+            requestUrl += "&typeNames=" + typeNames;
+            requestUrl += "&startPosition=" + startPosition;
 
-                try {
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(requestUrl))
+                    .build();
 
-                    String xmlContent = response.body();
-                    SAXBuilder saxBuilder = new SAXBuilder();
-                    Document document = saxBuilder.build(new StringReader(xmlContent));
-                    Element rootElement = document.getRootElement();
+            System.out.println(requestUrl);
+            try {
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-                    Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
-                    Namespace dcNamespace = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
+                if (response.statusCode() == 200) {
+                    System.out.println("Successfully fetched XML:");
+                    System.out.println("-------------------------");
 
-                    // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>
-                    Element records = rootElement.getChild("SearchResults", cswNamespace);
+                    try {
 
-                    Integer recordsCount = records.getAttributeValue("numberOfRecordsMatched") != null ?
-                            Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched")) : 0;
-                    if (recordsCount == 0) {
-                        System.out.println("No records found to import.");
-                        return;
+                        String xmlContent = response.body();
+                        SAXBuilder saxBuilder = new SAXBuilder();
+                        Document document = saxBuilder.build(new StringReader(xmlContent));
+                        Element rootElement = document.getRootElement();
+
+                        Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
+                        Namespace dcNamespace = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
+
+                        // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>
+                        Element records = rootElement.getChild("SearchResults", cswNamespace);
+
+                        if (totalRecords == -1) { // This only runs on the first iteration
+                            totalRecords = records.getAttributeValue("numberOfRecordsMatched") != null ?
+                                        Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched")) : 0;
+                            System.out.println("Total records to import: " + totalRecords);
+
+                            if (totalRecords == 0) {
+                                System.out.println("No records found to import.");
+                                break;
+                            }
+                        }
+
+                        System.out.println("Found " + totalRecords + " records to forward.");
+
+
+                        List<Element> recordsList = records.getChildren("Record", cswNamespace);
+                        Integer recordsOnThisPage = recordsList.size();
+
+                        recordsFetched += recordsOnThisPage;
+                        startPosition += recordsOnThisPage;
+
+                        int counter = 0;
+                        for (Element record : recordsList) {
+                            ObjectNode dataInfo = new ObjectMapper().createObjectNode()
+                                .put("total", totalRecords)
+                                .put("current", startPosition + counter)
+                                .put("identifier", record.getChildText("identifier", dcNamespace))
+                                .put(CATALOGUE_INFO_FIELD_NAME, pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
+
+                            String xmlString = new XMLOutputter().outputString(record);
+                            JSONObject jsonObject = XML.toJSONObject(xmlString);
+                            String jsonString = jsonObject.toString(4);
+
+                            pipeContext.setResult(jsonString, "application/json", dataInfo).forward();
+                            pipeContext.log().info("Dataset imported: {}", dataInfo);
+
+                            counter++;
+
+                        }
+
+
+
+                    } catch (JDOMException | IOException e) {
+                        pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
+                    } catch (JSONException e) {
+                        pipeContext.setFailure("Failed to convert XML to JSON: " + e.getMessage());
                     }
 
-                    System.out.println("Found " + recordsCount + " records to forward.");
 
-
-                    List<Element> recordsList = records.getChildren("Record", cswNamespace);
-
-
-
-                    int counter = 0;
-                    for (Element record : recordsList) {
-                        ObjectNode dataInfo = new ObjectMapper().createObjectNode()
-                            .put("total", recordsCount)
-                            .put("current", counter)
-                            .put("identifier", record.getChildText("identifier", dcNamespace))
-                            .put(CATALOGUE_INFO_FIELD_NAME, pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
-
-                        String xmlString = new XMLOutputter().outputString(record);
-                        JSONObject jsonObject = XML.toJSONObject(xmlString);
-                        String jsonString = jsonObject.toString(4);
-
-                        pipeContext.setResult(jsonString, "application/json", dataInfo).forward();
-                        pipeContext.log().info("Dataset imported: {}", dataInfo);
-
-                        counter++;
-
-                    }
-
-
-
-                } catch (JDOMException | IOException e) {
-                    pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
-                } catch (JSONException e) {
-                    pipeContext.setFailure("Failed to convert XML to JSON: " + e.getMessage());
+                } else {
+                    System.err.println("Error: Received status code " + response.statusCode());
+                    System.err.println("Response Body:");
+                    System.err.println(response.body());
                 }
 
-
-            } else {
-                System.err.println("Error: Received status code " + response.statusCode());
-                System.err.println("Response Body:");
-                System.err.println(response.body());
+            } catch (Exception e) {
+                System.err.println("An error occurred during the HTTP request:");
+                e.printStackTrace();
             }
 
-        } catch (Exception e) {
-            System.err.println("An error occurred during the HTTP request:");
-            e.printStackTrace();
-        }
+        } while (totalRecords > 0 && recordsFetched < totalRecords);
+
 
     }
 
