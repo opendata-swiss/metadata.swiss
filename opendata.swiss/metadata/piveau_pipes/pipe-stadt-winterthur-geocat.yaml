@@ -1,7 +1,7 @@
 header:
-  id: e86fb7e3-7a44-4f72-8dec-f638f1d96ec9
-  name: so-kt-geocat
-  title: SO-Kt - Geocat Harvester
+  id: 51ffc9d5-bf18-4bb4-9b26-ad9b45a60e14
+  name: stadt-winterthur-geocat
+  title: Stadt Winterthur - Geocat Harvester
   context: piveau
   transport: payload
   version: "1.0.0"
@@ -16,7 +16,7 @@ body:
         config:
           address: "https://www.geocat.ch/geonetwork/stadt-winterthur/ger/csw"
           typeNames: "dcat"
-          catalogue: so-kt-geocat
+          catalogue: stadt-winterthur-geocat
           preProcessing: true
     - header:
         name: piveau-consus-transforming-js

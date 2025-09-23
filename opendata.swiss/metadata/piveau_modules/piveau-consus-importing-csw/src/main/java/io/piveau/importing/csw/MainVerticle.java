@@ -96,6 +96,7 @@ public class MainVerticle extends AbstractVerticle {
                     Element rootElement = document.getRootElement();
 
                     Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
+                    Namespace dcNamespace = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
 
                     // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>
                     Element records = rootElement.getChild("SearchResults", cswNamespace);
@@ -119,7 +120,7 @@ public class MainVerticle extends AbstractVerticle {
                         ObjectNode dataInfo = new ObjectMapper().createObjectNode()
                             .put("total", recordsCount)
                             .put("current", counter)
-                            .put("identifier", "test")
+                            .put("identifier", record.getChildText("identifier", dcNamespace))
                             .put(CATALOGUE_INFO_FIELD_NAME, pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
 
                         String xmlString = new XMLOutputter().outputString(record);
