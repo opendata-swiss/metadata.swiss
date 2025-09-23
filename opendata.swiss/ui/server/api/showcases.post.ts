@@ -83,6 +83,9 @@ export default defineEventHandler(async (event) => {
         uploads.push(fs.writeFile.bind(null, imagePath, data))
       }
         break
+      default:
+        console.warn(`Unknown field: ${name}`)
+        break
     }
   }
 
