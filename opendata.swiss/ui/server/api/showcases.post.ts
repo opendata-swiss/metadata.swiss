@@ -39,6 +39,7 @@ export default defineEventHandler(async (event) => {
   const contentRoot = `${rootDir}/content`
   const imageRoot = `${rootDir}/public/img/uploads`
 
+  const uploads: Array<() => Promise<void>> = []
   const body = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
     it: empty(),
@@ -46,7 +47,6 @@ export default defineEventHandler(async (event) => {
     fr: empty(),
     en: empty()
   }
-
   const titleDe = body.find(field => field.name === 'title-de')?.data?.toString()
   showcase.slug = slugify(titleDe!, { lower: true, locale: 'de' })
 
@@ -80,7 +80,7 @@ export default defineEventHandler(async (event) => {
         break
       case "image": {
         const imagePath = `${imageRoot}/${showcase.slug}-image.jpg`
-        await fs.writeFile(imagePath, data)
+        uploads.push(fs.writeFile.bind(null, imagePath, data))
       }
         break
     }
@@ -88,7 +88,7 @@ export default defineEventHandler(async (event) => {
 
   return validate(event, showcase) || (async () => {
     // TODO: choose to save to GitHub or locally based on environment
-    await save(showcase, contentRoot)
+    await save(showcase, uploads, contentRoot)
 
     if (process.env.NODE_ENV === 'production') {
       // TODO: commit and push to repo
@@ -99,17 +99,19 @@ export default defineEventHandler(async (event) => {
   })()
 });
 
-function save(showcase: Showcase, contentRoot: string) {
+function save(showcase: Showcase, uploads: Array<() => Promise<void>>, contentRoot: string) {
   const { slug } = showcase
 
-  return Promise.all(languages.map(language => {
+  const writeContent = languages.map(language => {
     const path = `${contentRoot}/showcases/${slug}.${language}.md`
 
     const { body, ...meta } = showcase[language]
     const frontMatter = yaml.stringify(meta)
 
     return fs.writeFile(path, `---\n${frontMatter}---\n${body}`)
-  }))
+  })
+
+  return Promise.all([...writeContent, ...uploads.map(upload => upload())])
 }
 
 interface Setter {
