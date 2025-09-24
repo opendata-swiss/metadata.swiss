@@ -27,7 +27,7 @@ body:
         config:
           single: true
           scriptType: localFile
-          path: debug.js
+          path: stadt-winterthur-geocat-transform.js
           params:
             defaultLanguage: de
     - header:
