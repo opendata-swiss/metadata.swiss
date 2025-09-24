@@ -1,5 +1,6 @@
 <template>
-  <InlineSvg v-if="svgSrc" :src="svgSrc" :class="['icon', 'icon--base', ...iconClasses]" />
+  <span v-if="showPlaceholder" :class="['icon', 'icon--base', ...iconClasses, $attrs.class]" style="aspect-ratio: 1;" />
+  <InlineSvg v-if="svgSrc" :src="svgSrc" :class="['icon', 'icon--base', ...iconClasses, $attrs.class]" @loaded="hidePlaceholder" />
 </template>
 
 <script setup lang="ts">
@@ -17,6 +18,7 @@ const props = defineProps<PropTypes>()
 
 const svgSrc = ref('')
 
+const showPlaceholder = ref(true)
 const iconClasses = computed(() => {
   function * generate() {
     if (props.size) yield `icon--${props.size}`
@@ -27,6 +29,10 @@ const iconClasses = computed(() => {
 
   return [...generate()]
 })
+
+function hidePlaceholder() {
+  showPlaceholder.value = false
+}
 
 watchEffect(async () => {
   // TODO: check if this works in production. Not consistent in dev
