@@ -5,8 +5,16 @@ import * as path from "node:path";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
+const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL} = process.env
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      PIVEAU_HUB_REPO_URL,
+      PIVEAU_HUB_SEARCH_URL
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: [

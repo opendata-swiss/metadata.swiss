@@ -19,10 +19,5 @@ logs
 .fleet
 .idea
 
-# Local env files
-.env
-.env.*
-!.env.example
-
 # ignore images from uploads folder
 public/img/uploads/
