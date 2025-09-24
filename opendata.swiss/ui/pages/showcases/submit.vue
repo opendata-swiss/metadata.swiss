@@ -27,7 +27,7 @@
     <section class="section section--py">
       <div class="container">
         <ClientOnly>
-          <form ref="newShowcaseForm" method="post" @submit="submit">
+          <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
             <div class="form__group__input">
               <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch" required />
               <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français" required />
