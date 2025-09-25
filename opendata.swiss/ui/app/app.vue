@@ -1,29 +1,24 @@
 <template>
-    <main id="main-content">
-      <NuxtLayout>
-        <v-app>
-          <Transition name="shrink-header">
-            <OdsTopHeader
-              v-if="!isMobileMenuOpen"
-              :enable-authentication="true"
-              :authenticated="false"
-              :username="undefined"
-            />
-          </Transition>
-          <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
-          <v-main>
-              <Transition name="fade-content">
-                <div v-if="!isMobileMenuOpen" style="min-height: calc(100vh - 128px);">
-                  <NuxtPage :page-key="route => route.path" />
-                </div>
-              </Transition>
-          </v-main>
-          <OdsFooter />
-          <OdsBottomFooter />
-        </v-app>
-      </NuxtLayout>
-    </main>
-
+  <main id="main-content">
+    <NuxtLayout>
+      <Transition name="shrink-header">
+        <OdsTopHeader
+          v-if="!isMobileMenuOpen"
+          :enable-authentication="true"
+          :authenticated="false"
+          :username="undefined"
+        />
+      </Transition>
+      <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
+      <Transition name="fade-content">
+        <div v-if="!isMobileMenuOpen" style="min-height: calc(100dvh - 128px);">
+          <NuxtPage :page-key="route => route.path" />
+        </div>
+      </Transition>
+      <OdsFooter />
+      <OdsBottomFooter />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">

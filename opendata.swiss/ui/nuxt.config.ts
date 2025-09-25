@@ -1,5 +1,3 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
 import { resolve } from 'node:path'
 import * as path from "node:path";
 
@@ -23,11 +21,6 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/image',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        config.plugins?.push(vuetify({ autoImport: true }))
-      })
-    },
   ],
   css: [
     '~/assets/main.css',
@@ -70,14 +63,7 @@ export default defineNuxtConfig({
     ]
   },
   build: {
-    transpile: ['vuetify', 'form-data'],
-  },
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
+    transpile: ['form-data'],
   },
   plugins: [],
   i18n: {

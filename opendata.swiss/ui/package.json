@@ -47,13 +47,9 @@
     "zod": "^4"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^7.0.1",
-    "@mdi/font": "^7.4.47",
     "@types/vue-select": "^3.16.8",
     "decap-server": "^3.3.0",
     "vite-plugin-node-polyfills": "^0.24.0",
-    "vite-plugin-static-copy": "^3.1.1",
-    "vite-plugin-vuetify": "^2.1.1",
-    "vuetify": "^3.9.2"
+    "vite-plugin-static-copy": "^3.1.1"
   }
 }

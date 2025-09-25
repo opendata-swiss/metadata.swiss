@@ -43,7 +43,7 @@ const emit = defineEmits<{
                   <OdsButton
                       v-if="props.authenticated"
                       icon="Logout"
-                      variant="bare"
+                      variant="bare-negative"
                       size="sm"
                       :title="t('message.top_header.logout')"
                       :aria-label="t('message.top_header.logout')"
@@ -56,7 +56,7 @@ const emit = defineEmits<{
                   <OdsButton
                       v-if="!props.authenticated"
                       icon="Login"
-                      variant="bare"
+                      variant="bare-negative"
                       size="sm"
                       :title="t('message.top_header.login')"
                       :aria-label="t('message.top_header.login')"

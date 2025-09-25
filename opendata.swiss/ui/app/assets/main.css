@@ -1,6 +1,5 @@
 @import './base.css';
 @import './swiss/designsystem/1.0.36.css';
-@import './ods/ods_vuetify.scss';
 
 @layer base {
   .body--ods-brand {
@@ -26,11 +25,6 @@
     --color-secondary-800: #242424;
     --color-secondary-900: #1F2937;
   }
-}
-
-/* "Fixes" vuetify which collides with swiss design */
-button {
-  border-style: solid !important;
 }
 
 .form__group__input:has(> *:user-invalid), .form__group__select:has(> select:invalid) {
