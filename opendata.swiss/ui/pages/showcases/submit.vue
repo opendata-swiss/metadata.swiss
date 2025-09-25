@@ -39,7 +39,7 @@
             </div>
             <div class="form__group">
               <OdsInput id="url" label="Website" />
-              <OdsMultiSelect id="categories" name="categories" label="Categories" :options="dataThemes" />
+              <OdsMultiSelect id="categories" name="categories" label="Categories" :options="dataThemes" :close-on-select="false" />
               <OdsSelect id="type" name="type" label="Type" required>
                 <option value="application">Application</option>
                 <option value="data_visualization">Data Visualization</option>
@@ -47,6 +47,14 @@
                 <option value="blog_and_media_articles">Blog/Article</option>
               </OdsSelect>
               <OdsInput id="tags" label="Tags" placeholder="Enter tags separated by commas" />
+            </div>
+            <div class="form__group">
+              <OdsMultiSelect
+                id="datasets"
+                label="Datasets"
+                :load-options="searchDatasets"
+                :close-on-select="false"
+                :options="datasets" />
             </div>
             <div class="form__group">
               <OdsTextarea id="body-de" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
@@ -65,10 +73,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import {reactive, ref, toRefs} from 'vue'
 import type { $ZodIssue as ZodIssue } from "zod/v4/core";
+import type { SearchParamsBase } from '@piveau/sdk-core'
+import {debounce} from 'perfect-debounce'
 import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
-import {useVocabularySearch} from "../../app/piveau/search";
+import {useDatasetsSearch, useVocabularySearch} from "../../app/piveau/search";
 import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
 import OdsTextarea from "../../app/components/OdsTextarea.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
@@ -135,4 +145,28 @@ function closeMessages() {
   success.value = null
   submissionError.value = null
 }
+
+const searchTerm = ref()
+const datasetQueryParams: SearchParamsBase = reactive({
+  limit: 10,
+  q: searchTerm,
+  sort: 'relevance'
+})
+const { useSearch: datasetSearch } = useDatasetsSearch()
+const { query, getSearchResultsEnhanced } = datasetSearch({
+  queryParams: toRefs(datasetQueryParams)
+})
+const searchDatasets = debounce(async (arg: string, loading: (arg: boolean) => void) => {
+  loading(true)
+  searchTerm.value = arg
+  await query.suspense()
+  loading(false)
+}, 300)
+
+const datasets = computed(() => {
+  return getSearchResultsEnhanced.value.map(item => ({
+    id: item.getId,
+    title: item.getTitle,
+  }))
+})
 </script>

@@ -20,6 +20,9 @@
         :name="name"
         label="title"
         :reduce="(option: Item) => option.id"
+        @search="loadOptions!"
+        :filterable="!!loadOptions"
+        :close-on-select="closeOnSelect"
 
         :selectable="
           (option: Item) =>
@@ -93,6 +96,13 @@ const emit =defineEmits<{
 }>()
 
 const props = defineProps({
+  loadOptions: {
+    type: Function
+  },
+  closeOnSelect: {
+    type: Boolean,
+    default: () => false,
+  },
   bare: {
     type: Boolean,
     default: () => false,
