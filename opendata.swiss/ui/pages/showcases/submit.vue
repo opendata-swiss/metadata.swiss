@@ -46,7 +46,7 @@
                 <option value="event">Event</option>
                 <option value="blog_and_media_articles">Blog/Article</option>
               </OdsSelect>
-              <OdsInput id="tags" label="Tags" />
+              <OdsInput id="tags" label="Tags" placeholder="Enter tags separated by commas" />
             </div>
             <div class="form__group">
               <OdsTextarea id="body-de" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
