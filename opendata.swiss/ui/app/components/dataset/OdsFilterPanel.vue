@@ -25,9 +25,19 @@
         :facet="facet"
         :options="facet.items"
         :label="facet.title"
-        :selected="facetRefs[facet.id]?.value"
+        :model-value="facets.filter(f => f.id === facet.id).shift()?.items.filter(item => facetRefs[facet.id]?.value.includes(item.id)) || []"
         @update:model-value="handleFacetChange(facet, $event)"
-      />
+      >
+        <template #option="option">
+          <span>
+            {{ option.title }}
+            <span style="float: right; color: #888;">({{ option.count }})</span>
+          </span>
+        </template>
+        <template #selected-option="option">
+          {{ option.title }}
+        </template>
+      </OdsMultiSelect>
     </div>
   </ClientOnly>
 
@@ -41,6 +51,12 @@ import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 import OdsMultiSelect from './OdsMultiSelect.vue';
 import OdsButton from '../OdsButton.vue';
 import SvgIcon from "~/components/SvgIcon.vue";
+
+interface Item {
+  id: string;
+  title: string | undefined;
+  count: number;
+}
 
 const props = defineProps({
   facets: {
@@ -56,7 +72,8 @@ const props = defineProps({
 const { t } = useI18n()
 const showFilters = ref(false)
 
-function handleFacetChange(facet: SearchResultFacetGroupLocalized, value: string[]) {
+function handleFacetChange(facet: SearchResultFacetGroupLocalized, items: Item[]) {
+  const value = items.map(i => i.id)
   currentFilters.value.set(facet.id, value)
   if (props.facetRefs[facet.id]) {
     props.facetRefs[facet.id]!.value = value

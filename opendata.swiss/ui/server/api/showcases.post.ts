@@ -4,11 +4,12 @@ import slugify from "slugify";
 import * as fs from 'node:fs/promises'
 import * as yaml from 'yaml'
 import showcaseSchema from '../../src/schema/showcase.js'
+import {match, P} from "ts-pattern";
 
 const languages = ['en', 'fr', 'de', 'it'] as const
 
 type Language = typeof languages[number]
-type Translated<FieldName extends string> = `${FieldName}-${Language}`
+type Translated<FieldName extends string> = `${FieldName}[${Language}]`
 type FormDataFieldNames = keyof ShowcasesCollectionItem | Translated<'title'> | Translated<'body'>
 type ShowcaseTranslation = Omit<Partial<ShowcasesCollectionItem>, 'body'> & {
   body?: string
@@ -37,7 +38,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const contentRoot = `${rootDir}/content`
-  const imageRoot = `${rootDir}/public/img/uploads`
+  const imageRoot = `/img/uploads`
 
   const uploads: Array<() => Promise<void>> = []
   const body = await readMultipartFormData(event) as PayloadData
@@ -47,46 +48,55 @@ export default defineEventHandler(async (event) => {
     fr: empty(),
     en: empty()
   }
-  const titleDe = body.find(field => field.name === 'title-de')?.data?.toString()
+  const titleDe = body.find(field => field.name === 'title[de]')?.data?.toString()
   showcase.slug = slugify(titleDe!, { lower: true, locale: 'de' })
 
   for (const { name, data } of body) {
-    switch (name) {
-      case 'title-de':
-      case 'title-fr':
-      case 'title-en':
-      case 'title-it': {
-        const language = /^title-(?<lang>\w\w)$/.exec(name)?.groups?.lang as Language
+    match(name)
+      .with(P.string.startsWith('title'), () => {
+        const language = /^title\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
         showcase[language].title = data.toString()
-      }
-        break
-      case 'url':
-      case "type":
-        toAll(showcase, name, data.toString())
-        break
-      case "body-de":
-      case "body-en":
-      case "body-it":
-      case "body-fr":
+      })
+      .with(P.union('url', 'type'), (urlOrType) => {
+        const value = data.toString()
+        if (value) {
+          toAll(showcase, urlOrType, value)
+        }
+      })
+      .with(P.string.startsWith('body'), () => {
         toAll(showcase, 'body', data.toString())
-        break
-      case "tags":
-        toAll(showcase, 'tags', data.toString().split(',').map(tag => tag.trim()))
-        break
-      case "categories":
+      })
+      .with('tags', () => {
+        const tags = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+        if(tags.length > 0) {
+          toAll(showcase, 'tags', tags)
+        }
+      })
+      .with('categories', () => {
         toAll(showcase, 'categories', (translation) => {
-          translation.categories!.push(data.toString())
+          const category = data.toString().trim()
+          if (category) {
+            translation.categories!.push(category)
+          }
         })
-        break
-      case "image": {
+      })
+      .with('image', () => {
         const imagePath = `${imageRoot}/${showcase.slug}-image.jpg`
-        uploads.push(fs.writeFile.bind(null, imagePath, data))
-      }
-        break
-      default:
+        uploads.push(fs.writeFile.bind(null, `${rootDir}/public/${imagePath}`, data))
+        toAll(showcase, 'image', imagePath)
+      })
+      .with(P.string.startsWith('datasets'), () => {
+        const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
+        if(id) {
+          const label = data.toString()
+          toAll(showcase, 'datasets', translation => {
+            translation.datasets!.push({id, label})
+          })
+        }
+      })
+      .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
-        break
-    }
+      })
   }
 
   return validate(event, showcase) || (async () => {
