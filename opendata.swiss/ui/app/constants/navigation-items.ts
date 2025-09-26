@@ -11,7 +11,7 @@ export const APP_NAVIGATION_ITEMS: OdsNavTabItem[] = [
   },
   {
     label: 'message.header.navigation.showcases',
-    to: '/showcases'
+    to: '/showcases',
   },
   {
     label: 'message.header.navigation.blog',

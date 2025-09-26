@@ -5,9 +5,8 @@ backend:
 
 publish_mode: editorial_workflow
 
-# These lines should *not* be indented
-media_folder: "public/img" # Media files will be stored in the repo under static/images/uploads
-public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
 
 i18n:
   structure: multiple_files
@@ -164,6 +163,7 @@ collections:
         name: url
         widget: string
         i18n: duplicate
+        required: false
       - label: Category
         name: categories
         widget: piveau-vocabulary
