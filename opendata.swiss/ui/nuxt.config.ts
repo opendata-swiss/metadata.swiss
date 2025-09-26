@@ -9,6 +9,7 @@ const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL} = process.env
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
+      rootDir: __dirname,
       PIVEAU_HUB_REPO_URL,
       PIVEAU_HUB_SEARCH_URL
     }
@@ -39,11 +40,6 @@ export default defineNuxtConfig({
           searchDepth: 3,
         },
       }
-    }
-  },
-  runtimeConfig: {
-    public: {
-      rootDir: __dirname
     }
   },
   mdc: {
