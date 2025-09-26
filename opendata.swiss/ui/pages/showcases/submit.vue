@@ -29,17 +29,25 @@
         <ClientOnly>
           <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
             <div class="form__group__input">
-              <OdsInput id="title-de" label="Title (DE)" placeholder="Titel auf Deutsch" required />
-              <OdsInput id="title-fr" label="Title (FR)" placeholder="Titre en Français" required />
-              <OdsInput id="title-it" label="Title (IT)" placeholder="Titolo in Italiano" required />
-              <OdsInput id="title-en" label="Title (EN)" placeholder="Title in English" required />
+              <OdsInput id="title[de]" label="Title (DE)" placeholder="Titel auf Deutsch" required />
+              <OdsInput id="title[fr]" label="Title (FR)" placeholder="Titre en Français" required />
+              <OdsInput id="title[it]" label="Title (IT)" placeholder="Titolo in Italiano" required />
+              <OdsInput id="title[en]" label="Title (EN)" placeholder="Title in English" required />
             </div>
             <div class="form__group__input">
               <OdsInput id="image" type="file" label="Image" accept="image/*" required />
             </div>
             <div class="form__group">
               <OdsInput id="url" label="Website" />
-              <OdsMultiSelect id="categories" name="categories" label="Categories" :options="dataThemes" :close-on-select="false" />
+              <OdsMultiSelect label="Categories" :options="dataThemes" :close-on-select="false">
+                <template #no-options>
+                  type to search categories...
+                </template>
+                <template #selected-option="option" >
+                  {{ option.title }}
+                  <input type="hidden" name="categories" :value="option.id">
+                </template>
+              </OdsMultiSelect>
               <OdsSelect id="type" name="type" label="Type" required>
                 <option value="application">Application</option>
                 <option value="data_visualization">Data Visualization</option>
@@ -54,13 +62,22 @@
                 label="Datasets"
                 :load-options="searchDatasets"
                 :close-on-select="false"
-                :options="datasets" />
+                :options="datasets"
+              >
+                <template #no-options>
+                  type to search datasets...
+                </template>
+                <template #selected-option="option" >
+                  {{ option.title }}
+                  <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
+                </template>
+              </OdsMultiSelect>
             </div>
             <div class="form__group">
-              <OdsTextarea id="body-de" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
-              <OdsTextarea id="body-fr" label="Body (FR)" placeholder="Description en Français" required />
-              <OdsTextarea id="body-it" label="Body (IT)" placeholder="Descrizione in Italiano" required />
-              <OdsTextarea id="body-en" label="Body (EN)" placeholder="Description in English" required />
+              <OdsTextarea id="body[de]" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
+              <OdsTextarea id="body[fr]" label="Body (FR)" placeholder="Description en Français" required />
+              <OdsTextarea id="body[it]" label="Body (IT)" placeholder="Descrizione in Italiano" required />
+              <OdsTextarea id="body[en]" label="Body (EN)" placeholder="Description in English" required />
             </div>
             <div class="form__group">
               <OdsButton submit variant="outline-negative" title="Submit" />
@@ -156,17 +173,20 @@ const { useSearch: datasetSearch } = useDatasetsSearch()
 const { query, getSearchResultsEnhanced } = datasetSearch({
   queryParams: toRefs(datasetQueryParams)
 })
-const searchDatasets = debounce(async (arg: string, loading: (arg: boolean) => void) => {
+
+const datasets = ref([] as { id: string; title: string }[])
+const searchDatasets = debounce(async function (arg: string, loading: (arg: boolean) => void) {
+  if(arg.length === 0) {
+    return
+  }
+
   loading(true)
   searchTerm.value = arg
   await query.suspense()
+  datasets.value = getSearchResultsEnhanced.value.map(dataset => ({
+    id: dataset.getId,
+    title: dataset.getTitle,
+  }))
   loading(false)
 }, 300)
-
-const datasets = computed(() => {
-  return getSearchResultsEnhanced.value.map(item => ({
-    id: item.getId,
-    title: item.getTitle,
-  }))
-})
 </script>
