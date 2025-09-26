@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import {computed, onMounted, reactive, ref, toRefs, watch} from 'vue'
+import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 
-import {useRoute, useRouter} from 'vue-router'
-import {useI18n} from 'vue-i18n'
+import { useRoute, useRouter} from 'vue-router'
+import { useI18n } from 'vue-i18n'
 
-import type {SearchParamsBase} from '@piveau/sdk-core'
-import type {SearchResultFacetGroupLocalized} from '@piveau/sdk-vue';
+import type { SearchParamsBase } from '@piveau/sdk-core'
+import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 
-import {ACTIVE_FACETS, useDatasetsSearch} from '../../app/piveau/search'
-import OdsBreadcrumbs, {type BreadcrumbItem} from "../../app/components/OdsBreadcrumbs.vue";
+import { useDatasetsSearch, ACTIVE_FACETS } from '../../app/piveau/search'
+import OdsBreadcrumbs, { type BreadcrumbItem } from "../../app/components/OdsBreadcrumbs.vue";
 import OdsPagination from "../../app/components/OdsPagination.vue";
 import OdsDatasetList from "../../app/components/dataset/OdsDatasetList.vue";
 import OdsFilterPanel from "../../app/components/dataset/OdsFilterPanel.vue";
@@ -17,8 +17,8 @@ import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
 import SvgIcon from "../../app/components/SvgIcon.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
-import {useSeoMeta} from 'nuxt/app';
-import {clearDatasetBreadcrumbFromSessionStorage} from './[datasetId]/breadcrumb-session-stoage';
+import { useSeoMeta } from 'nuxt/app';
+import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 
 const { t, locale} = useI18n()
 
@@ -88,6 +88,7 @@ const piveauQueryParams: SearchParamsBase = reactive({
 const { useSearch} = useDatasetsSearch()
 const {
   query,
+  isFetching,
   getSearchResultsEnhanced,
   getSearchResultsCount,
   getSearchResultsPagesCount,
@@ -115,7 +116,8 @@ watch(listType, (newType) => {
 const availableFacets = getAvailableFacetsLocalized(locale.value);
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
-  return availableFacets.value.filter(f => ACTIVE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
+  const facets = availableFacets.value.filter(f => ACTIVE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
+  return facets
 });
 
 function goToPage(newPage: number | string, query = route.query) {
