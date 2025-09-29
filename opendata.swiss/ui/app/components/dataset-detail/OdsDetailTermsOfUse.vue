@@ -1,11 +1,11 @@
 <template>
     <div class="ods-license">
       <h2 class="download-item__title">{{ t(`message.terms_of_use.ods_${termsName}.title`) }}</h2>
-
       <img
         :src="imageSrc"
         :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
-        :title="t(`message.terms_of_use.ods_${termsName}.title`)">
+        :title="t(`message.terms_of_use.ods_${termsName}.title`)"
+        class="ods-terms-of-use_image">
     </div>
 
   <ul>
@@ -45,7 +45,8 @@ const termsName = computed(() => {
 
 });
 
-const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.png`);
+const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`);
+
 </script>
 
 <style lang="scss" scoped>
@@ -56,6 +57,7 @@ const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.png`
   flex-direction: column;
 
 }
+
 img {
     height: 100%;
 
@@ -71,5 +73,9 @@ li {
   list-style-type: none;
   margin-bottom: 0;
   margin-top: 44px !important;
+}
+
+.ods-terms-of-use_image {
+  height: 156px;
 }
 </style>

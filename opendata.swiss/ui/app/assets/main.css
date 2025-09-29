@@ -1,7 +1,5 @@
 @import './base.css';
 @import './swiss/designsystem/1.0.36.css';
-@import './ods/ods_vuetify.scss';
-@import './page.css';
 
 @layer base {
   .body--ods-brand {
@@ -29,7 +27,7 @@
   }
 }
 
-/* "Fixes" vuetify which collides with swiss design */
-button {
-  border-style: solid !important;
+/* Fix MultiSelect background color */
+.v-select {
+  background-color: white;
 }

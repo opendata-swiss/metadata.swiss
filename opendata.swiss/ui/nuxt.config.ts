@@ -1,9 +1,15 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
 import { resolve } from 'node:path'
+
+const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL } = process.env
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      PIVEAU_HUB_REPO_URL,
+      PIVEAU_HUB_SEARCH_URL
+    }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: [
@@ -12,11 +18,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/image',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        config.plugins?.push(vuetify({ autoImport: true }))
-      })
-    },
+    '@nuxt/icon'
   ],
   css: [
     '~/assets/main.css',
@@ -37,29 +39,24 @@ export default defineNuxtConfig({
       }
     }
   },
-  components: {
-    global: true,
-    dirs: [
-      '~/components',
-      '~/components/content',
-    ]
-  },
   mdc: {
     components: {
       map: {
-        a: 'OdsProseA', // Map <a> tags to the OdsProseA component
+        a: 'OdsProseA',
+        h2: 'OdsProseH2',
+        h3: 'OdsProseH3',
+        h4: 'OdsProseH4',
       }
     }
   },
-  build: {
-    transpile: ['vuetify', 'form-data'],
+  components: {
+    global: true,
+    dirs: [
+      '~/components/content',
+    ]
   },
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
+  build: {
+    transpile: ['form-data'],
   },
   plugins: [],
   i18n: {
@@ -76,5 +73,15 @@ export default defineNuxtConfig({
     devProxy: {
       '/admin/': 'http://localhost:5173/admin/',
     }
+  },
+  icon: {
+    mode: 'svg',
+    customCollections: [
+      {
+        prefix: 'ods',
+        dir: './app/assets/icons',
+        normalizeIconName: false
+      },
+    ],
   }
 })

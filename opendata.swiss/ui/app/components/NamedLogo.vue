@@ -3,6 +3,7 @@
     src="/img/logo_horizontal.svg"
     :alt="t('message.header.ods_logo')"
     :title="t('message.header.ods_logo')"
+    fetchpriority="high"
     class="logo__freebrand"
   />
 </template>

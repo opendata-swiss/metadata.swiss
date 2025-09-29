@@ -1,29 +1,24 @@
 <template>
-    <main id="main-content">
-      <NuxtLayout>
-        <v-app>
-          <Transition name="shrink-header">
-            <OdsTopHeader
-              v-if="!isMobileMenuOpen"
-              :enable-authentication="true"
-              :authenticated="false"
-              :username="undefined"
-            />
-          </Transition>
-          <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
-          <v-main>
-              <Transition name="fade-content">
-                <div v-if="!isMobileMenuOpen" style="min-height: calc(100vh - 128px);">
-                  <NuxtPage :page-key="route => route.path" />
-                </div>
-              </Transition>
-          </v-main>
-          <OdsFooter />
-          <OdsBottomFooter />
-        </v-app>
-      </NuxtLayout>
-    </main>
-
+  <main id="main-content">
+    <NuxtLayout>
+      <Transition name="shrink-header">
+        <OdsTopHeader
+          v-if="!isMobileMenuOpen"
+          :enable-authentication="true"
+          :authenticated="false"
+          :username="undefined"
+        />
+      </Transition>
+      <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
+      <Transition name="fade-content">
+        <div v-if="!isMobileMenuOpen" style="min-height: calc(100dvh - 128px);">
+          <NuxtPage :page-key="route => route.path" />
+        </div>
+      </Transition>
+      <OdsFooter />
+      <OdsBottomFooter />
+    </NuxtLayout>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -35,9 +30,23 @@ import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
 import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
+import { useI18n } from 'vue-i18n';
+import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
+
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
+
+const { locale } = useI18n();
+
+const { setLocale, currentLocale} = piveauLocale();
+
+watch(locale, (newLocale) => {
+  if (newLocale !== (currentLocale as Ref<string>).value) {
+    setLocale(newLocale) // set the piveau locale
+  }
+}, { immediate: true }
+)
 
 useHead({
   bodyAttrs: {

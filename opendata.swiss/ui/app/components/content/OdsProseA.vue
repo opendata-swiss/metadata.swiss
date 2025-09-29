@@ -1,22 +1,7 @@
 <template>
-    <NuxtLink
-    v-if="isExternal"
-    :href="props.href"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="link--external">
+  <NuxtLink v-bind="linkProps">
     <slot />
   </NuxtLink>
-
-  <NuxtLinkLocale
-    v-else
-    :href="props.href"
-    :target="props.target"
-    :class="{ 'link--external': isExternal }"
-  >
-    <slot />
-  </NuxtLinkLocale>
-
 </template>
 
 <script setup lang="ts">
@@ -36,7 +21,7 @@ const props = defineProps({
   }
 })
 
-const isExternal = computed(() => {
+const isExternal = (() =>{
   if (!props.href) {
     return false
   }
@@ -52,5 +37,17 @@ const isExternal = computed(() => {
   }
 
   return false
-});
+})()
+
+const linkProps = computed(() => {
+  if (!isExternal) {
+    return props
+  }
+
+  return {
+    ...props,
+    rel: 'noopener noreferrer',
+    class: 'link--external'
+  }
+})
 </script>

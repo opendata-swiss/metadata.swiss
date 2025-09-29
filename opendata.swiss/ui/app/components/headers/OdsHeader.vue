@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
+import OdsDropdownMenu from '@/components/OdsDropdownMenu.vue';
 import { useI18n } from 'vue-i18n';
 
 import type { OdsNavTabItem } from '@/components/headers/model/ods-nav-tab-item';
@@ -8,7 +9,6 @@ import LogoSmall from '@/components/LogoSmall.vue';
 import BurgerButton from '@/components/BurgerButton.vue';
 import OdsNavigationPanel from '@/components/OdsNavigationPanel.vue';
 import { NuxtLinkLocale } from '#components';
-const localePath = useLocalePath()
 
 const { locale } = useI18n()
 const route = useRoute();
@@ -32,13 +32,8 @@ const emit = defineEmits<{
 
 const { t } = useI18n();
 
-const selectedTab = ref<number | null>(null);
 const menuOpen = ref(false);
 
-
-function setCurrentItemToMenuItem (tabIndex: number) {
-   selectedTab.value = tabIndex;
-}
 
 watch(menuOpen, (val) => {
   emit('mobileMenuStateChange', val);
@@ -50,12 +45,21 @@ function closeMobileMenu() {
   emit('mobileMenuStateChange', false);
 }
 
-function isChildPage({ to }: OdsNavTabItem) {
-  if(to === '/') {
+function isChildPage(item: OdsNavTabItem): boolean {
+  if(item.to === '/') {
     return route.path === `/${locale.value}`
   }
+  if(!item.subMenu || item.subMenu.length < 1 ) {
+      return typeof item.to === 'string' && route.path.startsWith(`/${locale.value}${item.to}`)
+  }
+  return isChildPageOfSubMenu(item);
+}
 
-  return to && route.path.startsWith(`/${locale.value}${to}`)
+function isChildPageOfSubMenu(item: OdsNavTabItem) {
+  if(item.subMenu) {
+    return item.subMenu.some(subItem => isChildPage(subItem));
+  }
+  return false;
 }
 </script>
 
@@ -83,28 +87,19 @@ function isChildPage({ to }: OdsNavTabItem) {
     <div class="container container--flex">
       <nav id="main-navigation" class="main-navigation main-navigation--desktop">
       <ul>
-        <template v-for="(item, index) in props.navigationItems" :key="item.label">
+        <template v-for="item in props.navigationItems" :key="item.label">
         <!-- a normal tab -->
-        <li v-if="!item.subMenu"  class="tab" @click="setCurrentItemToMenuItem(index)">
+        <li v-if="!item.subMenu" class="tab">
           <NuxtLinkLocale :class="{ active: isChildPage(item) }" :to="item.to"><span> {{ t(item.label) }}</span></NuxtLinkLocale>
         </li>
-        <li  v-if="item.subMenu"  class="tab">
-          <v-menu>
-              <template #activator="{ props: menuProps }">
-                <a v-bind="menuProps" :class="{ active: selectedTab === index }"><span>{{ t(item.label) }}</span></a>
-              </template>
-              <v-list>
-                <v-list-item
-                  v-for="subItem in item.subMenu"
-                  :key="subItem.label"
-                  :to="localePath(subItem.to as string)"
-                  @click="setCurrentItemToMenuItem(index)"
-                >
-                  {{ t(subItem.label) }}
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </li>
+
+        <li v-if="item.subMenu" class="tab">
+          <OdsDropdownMenu
+            :label="item.label"
+            :menu="item"
+            :class="isChildPage(item) ? 'active' : ''"
+          />
+        </li>
 
         </template>
       </ul>
