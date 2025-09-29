@@ -352,20 +352,15 @@ function transforming(input) {
         ]
 
 
-    const wkt_points = geojson_points.map(([lon, lat]) => `${lon} ${lat}`);
-
     output.spatial = {
         "@type": "Location", "http://www.w3.org/ns/locn#geometry": [
             {
-                "@value": `{\"type\": \"Polygon\", \"coordinates\": ${JSON.stringify(geojson_points)}`,
+                "@value": `{\"type\": \"Polygon\", \"coordinates\": [${JSON.stringify(geojson_points)}]}`,
                 "@type": "https://replacement.io/assignments/media-types/application/vnd.geo+json"
-            },
-            {
-                "@value": `POLYGON((${wkt_points.join(', ')}))`,
-                "@type": "http://replacement.io/schemas/virtrdf#Geometry"
             }
         ]
     };
+    console.log(output.spatial[1])
 
     dist.language = record_language
     output.issued = `${input["dct:modified"]}T00:00:00`;
@@ -379,7 +374,7 @@ function transforming(input) {
 
     const { "@context": context, ...outputWithoutContext } = output;
 
-    console.log(JSON.stringify(outputWithoutContext, null, 2));
+    //console.log(JSON.stringify(outputWithoutContext, null, 2));
 
     console.log("Transformation completed successfully. Returning output.");
     return output
