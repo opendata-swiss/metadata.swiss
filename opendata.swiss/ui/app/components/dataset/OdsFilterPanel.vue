@@ -5,16 +5,16 @@
     :title="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
     :aria-label="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
     size="sm"
-    icon-only
     @click="showFilters = !showFilters"
   >
-    <SvgIcon
-      icon="ChevronDown"
-      role="btn"
-      :class="{ 'rotated': showFilters }"
-    />
-        {{ showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters') }}
-
+    <template #icon>
+      <SvgIcon
+        icon="ChevronDown"
+        role="btn"
+        :class="{ 'rotated': showFilters }"
+      />
+    </template>
+    {{ showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters') }}
   </OdsButton>
 
   <ClientOnly>
@@ -29,6 +29,9 @@
         @update:model-value="handleFacetChange(facet, $event)"
       />
     </div>
+    <div v-show="!showFilters" class="filters__active">
+      <OdsActiveFilters :facets="props.facets" :facet-refs="facetRefs" @reset-all-facets="emit('reset-all-facets')" />
+    </div>
   </ClientOnly>
 
 </template>
@@ -40,6 +43,8 @@ import { useI18n } from 'vue-i18n'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 import OdsMultiSelect from './OdsMultiSelect.vue';
 import OdsButton from '../OdsButton.vue';
+import OdsActiveFilters from './OdsActiveFilters.vue';
+import SvgIcon from "~/components/SvgIcon.vue";
 
 const props = defineProps({
   facets: {
@@ -51,6 +56,10 @@ const props = defineProps({
     required: true,
   }
 })
+
+const emit = defineEmits<{
+  (e: 'reset-all-facets'): void
+}>();
 
 const { t } = useI18n()
 const showFilters = ref(false)

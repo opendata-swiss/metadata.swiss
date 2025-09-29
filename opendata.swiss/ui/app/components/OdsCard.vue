@@ -55,3 +55,9 @@ const classes = computed(() => {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.card {
+  height: fit-content;
+}
+</style>

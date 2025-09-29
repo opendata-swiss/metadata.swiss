@@ -2,25 +2,26 @@
   <OdsButton
     variant="bare"
     :title="t('message.ods-list-card-toggle.card_view')"
+    :aria-label="t('message.ods-list-card-toggle.card_view')"
     size="sm"
+    icon="List"
     icon-only
     @click="updateListType('list')"
-  >
-    <SvgIcon icon="List" role="btn" />
-  </OdsButton>
+  />
   <OdsButton
     variant="bare"
     :title="t('message.ods-list-card-toggle.card_view')"
+    :aria-label="t('message.ods-list-card-toggle.card_view')"
     size="sm"
+    icon="Apps"
     icon-only
     @click="updateListType('card')"
-  >
-    <SvgIcon icon="Apps" role="btn" />
-  </OdsButton>
+  />
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import OdsButton from "~/components/OdsButton.vue";
 
 const { t } = useI18n()
 

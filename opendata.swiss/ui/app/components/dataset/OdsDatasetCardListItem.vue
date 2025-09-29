@@ -1,5 +1,5 @@
 <template>
-  <OdsCard :title="props.item.getTitle" type="universal" clickable>
+  <OdsCard :title="props.item.getTitle ?? ''" type="universal" clickable class="strech-card">
     <template #top-meta>
       <div>
         <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
@@ -35,6 +35,8 @@
 import type { Dataset } from '~/model/dataset';
 
 import { useI18n } from 'vue-i18n'
+import OdsCard from "~/components/OdsCard.vue";
+import SvgIcon from "~/components/SvgIcon.vue";
 
 const { t, locale } = useI18n()
 interface Props {
@@ -46,3 +48,9 @@ const props = defineProps<Props>()
 
 
 </script>
+
+<style scoped lang="scss">
+.strech-card {
+  height: 100%;
+}
+</style>

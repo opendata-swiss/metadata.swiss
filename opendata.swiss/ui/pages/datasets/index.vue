@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 
-import { useRoute, useRouter} from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import type { LocationQueryValue } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
 import type { SearchParamsBase } from '@piveau/sdk-core'
@@ -15,33 +16,56 @@ import OdsFilterPanel from "../../app/components/dataset/OdsFilterPanel.vue";
 import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
 import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
+import SvgIcon from "../../app/components/SvgIcon.vue";
+import OdsButton from "../../app/components/OdsButton.vue";
+import { useSeoMeta } from 'nuxt/app';
+import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 
 const { t, locale} = useI18n()
 
 const router = useRouter()
 const route = useRoute()
 
-// Create a record of refs for each facet in ACTIVE_FACETS
-const facetRefs = Object.fromEntries(
-  ACTIVE_FACETS.map(facet => [facet, ref<string[]>([])])
+// 1. Main reactive object for your logic/UI
+const selectedFacets = reactive(
+  Object.fromEntries(ACTIVE_FACETS.map(facet => [facet, [] as string[]]))
 );
 
+
+// 2. facetRefs for useSearch API (syncs with selectedFacets)
+const facetRefs = Object.fromEntries(
+  ACTIVE_FACETS.map(facet => [facet, computed({
+    get: () => selectedFacets[facet],
+    set: (val: string[]) => { selectedFacets[facet] = val }
+  })])
+);
+
+
+// 3. Use selectedFacets everywhere in your code and UI
+function resetAllFacets() {
+  for (const key in selectedFacets){
+    selectedFacets[key] = [];
+  }
+  // Reset the 'facets' query parameter
+  const query = { ...route.query }
+  if (query.page && query.page !== '1') {
+    query.page = '1'; // Reset page to 1 if facets are restored from route
+  }
+  query['facets'] = encodeURIComponent(JSON.stringify({}))
+  router.push({ query })
+}
+
+
+
+if(import.meta.client) {
+  clearDatasetBreadcrumbFromSessionStorage()
+}
+
 function syncFacetsFromRoute() {
+  const facetsFromQuerry = getSearchParamsWithFacets(route.query)
   ACTIVE_FACETS.forEach(facet => {
-    const val = route.query[facet]
-    if (val) {
-      let arr: string[] = [];
-      if (Array.isArray(val)) {
-        arr = val.filter((v): v is string => typeof v === 'string');
-      } else if (typeof val === 'string' && val.includes(',')) {
-        arr = val.split(',').map(v => v.trim()).filter(Boolean);
-      } else if (val) {
-        arr = [String(val)];
-      }
-      facetRefs[facet].value = arr;
-    } else {
-      facetRefs[facet].value = [];
-    }
+    const newVal = facetsFromQuerry[facet] || [];
+    facetRefs[facet].value = newVal;
   })
 }
 
@@ -52,6 +76,7 @@ function resetSearch() {
   })
   piveauQueryParams.page = 0
 }
+
 
 const sortOptions = computed(() => {
   const currentLocale = locale.value;
@@ -172,6 +197,14 @@ const resultBreadcrumb = computed<BreadcrumbItem | null>(() => {
   return null
 })
 
+function getSearchParamsWithFacets(query: {[x: string]: LocationQueryValue | LocationQueryValue[]}) {
+    const facetsValue = decodeURIComponent(query.facets as string || '');
+    if (Array.isArray(facetsValue)) {
+      return { }  as Record<string, string[]>
+    }
+    return facetsValue ? JSON.parse(String(facetsValue)) as Record<string, string[]> : {} as Record<string, string[]>
+}
+
 const breadcrumbs = computed<BreadcrumbItem[]>(() => {
   const lastBreadcrumb = resultBreadcrumb.value
   if (lastBreadcrumb === null) {
@@ -196,7 +229,7 @@ watch(() => route.query, (queryParam) => {
    // query params are empty
    resetSearch()
   } else {
-    syncFacetsFromRoute()
+   // syncFacetsFromRoute()
   }
 
 })
@@ -224,18 +257,33 @@ onMounted(() => {
   ACTIVE_FACETS.forEach(facet => {
     watch(facetRefs[facet], (newVal) => {
       const query = { ...route.query }
+      const facetsFromQuerry = getSearchParamsWithFacets(query)
       // only set the facet if it has changed
-      const hasFacetChanged = JSON.stringify(query[(facet)] ?? []) !== JSON.stringify(newVal)
+      const hasFacetChanged = JSON.stringify(facetsFromQuerry[facet] ?? []) !== JSON.stringify(newVal)
 
       if (hasFacetChanged) {
-        query[facet] = newVal
+        facetsFromQuerry[facet] = newVal
         if (query.page && query.page !== '1') {
           query.page = '1'; // Reset page to 1 if facets are restored from route
         }
+        if(newVal.length === 0) {
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+          delete facetsFromQuerry[facet]
+        }
+        query['facets'] = encodeURIComponent(JSON.stringify(facetsFromQuerry))
         router.push({ query })
       }
     })
   })
+})
+
+watch(facetRefs , () => {
+  console.log('facetRefs changed', facetRefs.value);
+}, { deep: true })
+
+
+useSeoMeta({
+  title: `${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
 
 await suspense()
@@ -244,20 +292,19 @@ await suspense()
 
 <template>
   <div>
+    <header id="main-header">
+        <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    </header>
 
-  <header id="main-header">
-    <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-  </header>
+    <main id="main-content">
 
- <main id="main-content">
+    <!-- search panel -->
+      <section class="section section--default bg--secondary-50">
 
-  <!-- search panel -->
-   <section class="section section--default bg--secondary-50">
+        <div class="container">
 
-      <div class="container">
-
-         <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
-         <div class="search search--large search--page-result">
+          <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
+          <div class="search search--large search--page-result">
             <div class="search__group">
                <input
                 id="search-input"
@@ -273,15 +320,14 @@ await suspense()
                 variant="bare"
                 :title="t('message.dataset_search.search_button')"
                 size="lg"
+                icon="Search"
                 icon-only
                 @click="onSearch"
-              >
-                <SvgIcon icon="Search" role="btn" />
-              </OdsButton>
+              />
             </div>
          </div>
          <div class="search__filters">
-           <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" />
+           <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
          </div>
          <div class="filters__active" />
       </div>

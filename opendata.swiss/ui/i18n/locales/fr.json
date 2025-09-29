@@ -15,7 +15,8 @@
                 "what_is_ods": "Qu'est-ce qu'opendata.swiss?",
                 "terms_of_use": "Conditions d'utilisation",
                 "handbook": "Manuel",
-                "showcases": "Showcases"
+                "showcases": "Showcases",
+                "close": "Fermer"
             }
         },
         "ods_toc": {
@@ -26,6 +27,7 @@
             "search_button": "Rechercher",
             "search_results": "Résultats de recherche",
             "show_filters": "Afficher les filtres",
+            "reset_filters": "Réinitialiser les filtres",
             "hide_filters": "Masquer les filtres",
             "sort": "Trier par",
             "sort_by": {
@@ -40,10 +42,11 @@
             "dataset": "Jeu de données",
             "catalog": "Catalogue",
             "this_dataset_record": "Cette entrée de jeu de données a été",
-            "accrual_periodicity": "Fréquence de mise à jour",
+            "frequency": "Fréquence de mise à jour",
             "show_catalog_entry": "Afficher l’entrée du catalogue",
             "hide_catalog_entry": "Masquer l’entrée du catalogue",
             "distribution": "Distribution",
+            "distributions": "Distributions",
             "additional_information": "Informations supplémentaires",
             "published_on": "Publié",
             "created_on": "Créé",
@@ -52,7 +55,11 @@
             "download": "Télécharger",
             "go_to_resource": "Aller à la ressource",
             "show_raw": "Afficher la date brute",
-            "show_relative": "Afficher le temps relatif"
+            "show_relative": "Afficher le temps relatif",
+            "details": "Détails",
+            "released": "Publié",
+            "metadata_download": "Télécharger les métadonnées",
+            "metadata": "Métadonnées"
         },
         "showcase": {
             "type": {

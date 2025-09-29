@@ -11,26 +11,28 @@
                 <h3>{{t('message.ods-footer.block_2.title') }}</h3>
                 <div class="footer-information__social">
                  <a class="footer__link" href="https://www.facebook.com/people/opendataswiss/61558495974785/" target="_blank">
-                      <v-icon icon="fa:fa-brands fa-facebook-f" class="icon icon--base footer-information__icon" />
+                      <SvgIcon icon="Facebook" class="icon icon--base footer-information__icon" />
                       Facebook
                   </a>
                  <a class="footer__link" href="https://www.linkedin.com/showcase/opendata-swiss/" target="_blank">
-                  <v-icon icon="fa:fa-brands fa-linkedin"  class="icon icon--base footer-information__icon"/>
-                  Linkedin</a>
+                  <SvgIcon icon="LinkedIn" class="icon icon--base footer-information__icon"/>
+                  LinkedIn</a>
                  <a class="footer__link"  href="https://www.instagram.com/opendata.swiss/" target="_blank">
-                  <v-icon icon="fa:fa-brands fa-instagram" class="icon icon--base footer-information__icon" />Instagram</a>
+                  <SvgIcon icon="Instagram" class="icon icon--base footer-information__icon" />Instagram</a>
                  <a class="footer__link"  href="https://x.com/opendataswiss" target="_blank">
-                  <v-icon icon="fa:fa-brands fa-x-twitter" class="icon icon--base footer-information__icon" />𝕏</a>
+                  <SvgIcon icon="Twitter" class="icon icon--base footer-information__icon" />𝕏</a>
               </div>
-               <v-btn
-                :href="t('message.ods-footer.block_2.news_mail_href')"
-                target="_blank"
-                rounded="0"
-                variant="outlined"
-                append-icon="mdi:mdi-arrow-right"
-                :title="t('message.ods-footer.block_2.news_mail_aria_label')"
-                :aria-label="t('message.ods-footer.block_2.news_mail_aria_label')"
-                ><strong>NewsMail</strong></v-btn>
+                <OdsButton
+                  :title="t('message.ods-footer.block_2.news_mail_aria_label')"
+                  :aria-label="t('message.ods-footer.block_2.news_mail_aria_label')"
+                  icon="ArrowRight"
+                  icon-right
+                  size="sm"
+                  variant="outline-negative"
+                  @click="openLink(t('message.ods-footer.block_2.news_mail_href'))  "
+                >
+                  <span >NewsMail</span>
+                </OdsButton>
             </div>
 
             <div class="footer-information__entry">
@@ -46,8 +48,16 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import OdsButton from '../OdsButton.vue'
+import SvgIcon from '../SvgIcon.vue'
+
 
 const { t } = useI18n()
+
+function openLink(url: string) {
+  window.open(url, '_blank')
+
+}
 
 </script>
 

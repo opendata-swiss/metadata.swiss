@@ -1,34 +1,55 @@
 <script setup lang="ts">
-import { definePropertyNode } from '@piveau/sdk-vue'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n';
+
 import { useDatasetsSearch } from '../../../app/piveau/search'
+import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
+
 import { homePageBreadcrumb } from "../../../app/composables/breadcrumbs";
-import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
+import OdsBreadcrumbs, { type BreadcrumbItem } from "../../../app/components/OdsBreadcrumbs.vue";
 import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
-import OdsDownloadsList from '../../../app/components/dataset-detail/OdsDownloadsList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
+import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
+import OdsButton from '../../../app/components/OdsButton.vue';
+import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
+import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
+import { useSeoMeta } from 'nuxt/app';
+import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage';
 
-import { useI18n } from 'vue-i18n';
-const md = `
-::alert
-Hello MDC
-::
-`
 const { locale, t } = useI18n();
 const route = useRoute()
 const router = useRouter()
-const datasetId = computed(() => route.params.datasetId as string)
+const datasetId = route.params.datasetId as string
 
 const { useResource } = useDatasetsSearch()
-const { isSuccess, resultEnhanced } = useResource(datasetId)
+const { query, isSuccess, resultEnhanced } = useResource(datasetId)
 
-const node = computed(() => definePropertyNode({ id: 'root', data: resultEnhanced.value?.getPropertyTable }, { compact: true, maxDepth: 2 }))
+const { suspense } = query
+
+const dataset = computed(() => {
+  if (!resultEnhanced.value) {
+    return undefined
+  }
+  return new DcatApChV2DatasetAdapter(resultEnhanced.value)
+})
+
+const distributions = computed(() => (dataset.value?.distributions ?? []).sort((a, b) => a.title.localeCompare(b.title)))
+
+const searchBreadcrumb = ref<BreadcrumbItem | null>(null)
+
 
 const homePage = await homePageBreadcrumb(locale)
 const breadcrumbs = computed(() => {
+  if (import.meta.client) {
+    const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId);
+    if (storedBreadcrumbs) {
+      return storedBreadcrumbs;
+    }
+  }
+
   const result = [
     homePage,
     {
@@ -37,48 +58,82 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-  if(route.query.search || typeof route.query.search === 'string') {
-    result.push({
-      title: t('message.dataset_search.search_results'),
-      route: {
-        path: '/datasets',
-        query: Object.fromEntries(new URLSearchParams(decodeURIComponent(route.query.search)))
-      }
-    })
+
+  if (searchBreadcrumb.value) {
+    result.push(searchBreadcrumb.value);
   }
 
   result.push({
     title: resultEnhanced.value?.getTitle,
     path: {
       name: 'datasets-datasetId',
-      params: { datasetId: datasetId.value },
+      params: { datasetId: datasetId },
     },
   })
 
+  if (import.meta.client) {
+    storeDatasetBreadcrumbInSessionStorage(datasetId, result);
+  }
+
+
   return result
 })
+
+
+useSeoMeta({
+  title: () => `${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`
+})
+
+
+
+watch(() => route.query.search,
+  () => {
+    if (import.meta.client) {
+      const { search, ...rest } = route.query;
+      router.replace({ query: rest });
+      if(search && typeof search === 'string') {
+        searchBreadcrumb.value = {
+          id: 'search',
+          title: t('message.dataset_search.search_results'),
+          route: {
+            path: '/datasets',
+            query: search
+              ? Object.fromEntries(new URLSearchParams(decodeURIComponent(search)))
+              : {}
+          }
+        }
+      }
+
+    }
+    }
+, { immediate: true }
+)
+
+await suspense()
+
 </script>
 
 <template>
-  <div v-if="isSuccess">
+  <div v-if="isSuccess && dataset">
   <header id="main-header">
-    <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    <ClientOnly>
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+    </ClientOnly>
   </header>
   <main id="main-content">
    <section class="hero hero--default">
       <div class="container container--grid gap--responsive">
          <div class="hero__content">
-            <OdsDatasetMetaInfo :dataset="resultEnhanced" />
-            <h1 class="hero__title"> {{ resultEnhanced?.getTitle }} </h1>
-            <h2 class="hero__subtitle"> {{ resultEnhanced?.getDescription }} </h2>
-            <pre>{{ resultEnhanced?.getDescription }}</pre>
+            <OdsDatasetMetaInfo :dataset="dataset" />
+            <h1 class="hero__title"> {{ dataset.title }} </h1>
+            <MDC :value="dataset.description" />
             <!----><!---->
-            <aside class="authors">
-               <div class="disc-images" aria-hidden="true">
-                  <div class="disc-image"><img src="https://picsum.photos/120/120/?image=29" :title="resultEnhanced?.getPublisher?.name ?? ''"></div>
-               </div>
-               <address class="authors__names">
-                <a class="link author__name" href="#">{{ resultEnhanced?.getPublisher?.name }}</a>
+            <aside v-if="dataset.publisher" class="authors">
+              <div class="disc-images" aria-hidden="true">
+                <div class="disc-image"><img src="https://picsum.photos/120/120/?image=29" :title="dataset.publisher.name"></div>
+              </div>
+              <address class="authors__names">
+                <a class="link author__name link--external" target="_blank" :href="dataset.publisher.resource">{{ dataset.publisher.name }}</a>
               </address>
             </aside>
          </div>
@@ -88,107 +143,61 @@ const breadcrumbs = computed(() => {
    <section class="section">
       <div class="container container--grid gap--responsive">
          <div class="container__main vertical-spacing">
-
             <div class="container__mobile">
                <div class="box">
-                  <h2 class="h5">Download</h2>
-                  <OdsDownloadsList :dataset="resultEnhanced" />
-               </div>
-               <div class="box">
                   <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
-                  <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
+                  <OdsDetailTermsOfUse v-for="value in dataset.licenses" :key="value" :name="value" />
                </div>
             </div>
+            <h2 class="h2">{{ t('message.dataset_detail.distributions') }}</h2>
+            <OdsDistributionList :distributions="distributions" />
+
             <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
-            <OdsDetailsTable :root-node="node"/>
+            <OdsDetailsTable :table-entries="dataset.propertyTable"/>
             <div>
                <h2 class="h2">{{ t('message.dataset_detail.categories') }}</h2>
                <div>
                   <OdsTagList :tags="resultEnhanced?.getCategories ?? []" />
                </div>
             </div>
+            <div v-if="dataset.catalog" >
+              <h2 class="h2">{{ t('message.dataset_detail.catalog') }}</h2>
+              <OdsDatasetCatalogPanel :dataset="dataset" />
+            </div>
          </div>
          <div class="hidden container__aside md:block">
             <div id="aside-content" class="sticky sticky--top">
                <div class="box">
-                  <h2 class="h5">{{ t('message.dataset_detail.go_to_resource') }}</h2>
-                  <OdsDownloadsList :dataset="resultEnhanced"/>
-               </div>
-               <div class="box">
                   <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
                   <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
                </div>
+                 <div class="box">
+                  <h2 class="h5">{{ t(`message.dataset_detail.metadata_download`) }}</h2>
+                  <OdsMetadataDownloadList :dataset="dataset" />
+               </div>
             </div>
          </div>
       </div>
    </section>
+
    <section class="section publication-back-button-section">
       <div class="container">
-        <OdsButton title="Zurück" icon="ArrowLeft" @click="router.back()" variant="outline" class="btn--back" size="sm"></OdsButton>
+        <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" size="sm" @click="router.back()" />
       </div>
    </section>
-   <section class="section bg--secondary-50">
-      <div class="container">
-         <h2 class="section__title">Das könnte Sie auch interessieren</h2>
-         <div class="grid grid--responsive-cols-3 gap--responsive">
-            <div class="card card--universal card--clickable">
-               <!----><!---->
-               <div class="card__content">
-                  <div class="card__body">
-                     <p class="meta-info"><span class="meta-info__item">Bericht</span><span class="meta-info__item">03. März 2000</span></p>
-                     <div class="card__title">
-                        <h3>Auswirkungen von Corona auf die Schweizer Gesellschaft</h3>
-                     </div>
-                     <p> Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
-                     <div class="card__image"><img src="https://swiss.github.io/designsystem/images/publication-cover.png" alt="cat"></div>
-                     <p class="meta-info"><span class="meta-info__item">PDF</span><span class="meta-info__item">3.8 Mb</span><span class="meta-info__item">102 Seiten</span><span class="meta-info__item">Deutsch</span></p>
-                  </div>
-                  <div class="card__footer card__footer--icon-only">
-                     <!---->
-                     <div class="card__footer__action">
-                       <OdsButton
-                         variant="outline"
-                         icon-only
-                         icon="ArrowRight"
-                         title="Weiterlesen"></OdsButton>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="card card--universal card--clickable">
-               <!----><!---->
-               <div class="card__content">
-                  <div class="card__body">
-                     <p class="meta-info"><span class="meta-info__item">Bericht</span><span class="meta-info__item">03. März 2000</span></p>
-                     <div class="card__title">
-                        <h3>Auswirkungen von Corona auf die Schweizer Gesellschaft</h3>
-                     </div>
-                     <p> Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
-                     <div class="card__image"><img src="https://swiss.github.io/designsystem/images/publication-cover.png" alt="cat"></div>
-                     <p class="meta-info"><span class="meta-info__item">PDF</span><span class="meta-info__item">3.8 Mb</span><span class="meta-info__item">102 Seiten</span><span class="meta-info__item">Deutsch</span></p>
-                  </div>
-                  <div class="card__footer card__footer--icon-only">
-                     <!---->
-                     <div class="card__footer__action">
-                       <OdsButton
-                         variant="outline"
-                         icon-only
-                         @click="router.back()"
-                         icon="ArrowRight"
-                         title="Weiterlesen"></OdsButton>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <pre>{{ resultEnhanced }}</pre>
   </main>
 </div>
 
 </template>
 
 <style lang="scss" scoped>
-
+#main-header {
+  // avoid layout shift from ssr to csr
+   @media (min-width: 1024px) {
+    min-height: 65.5px;
+  }
+  @media (min-width: 1280px) {
+    min-height: 73.5px;
+  }
+}
 </style>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { RouteLocationNamedI18n } from 'vue-router'
+import SvgIcon from "~/components/SvgIcon.vue";
 
 export interface BreadcrumbItem {
   id: string,

@@ -2,7 +2,7 @@ import type { Dataset } from "@piveau/sdk-core";
 import type { LocaleInstance } from "@piveau/sdk-vue";
 import { toValue } from "vue";
 
-interface Catalog {
+export interface Catalog {
   id: string;
   modified: string;
   issued: string;

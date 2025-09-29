@@ -5,15 +5,18 @@ metadata:
 spec:
   template:
     spec:
-      imagePullSecrets:
-        - name: piveau-ui-pull-secret
       containers:
         - name: piveau-ui
-          image: registry.zazuko.com/docker/lindas-next-piveau-js
+          image: ghcr.io/opendata-swiss/ods-ui
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 80
+          env:
+            - name: PIVEAU_HUB_SEARCH_URL
+              value: https://piveau-hub-search-ln.zazukoians.org/
+            - name: PIVEAU_HUB_REPO_URL
+              value: https://piveau-hub-repo-ln.zazukoians.org/
           resources:
             limits:
               memory: 2Gi

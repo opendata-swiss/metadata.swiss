@@ -15,7 +15,8 @@
                 "what_is_ods": "Cos'è opendata.swiss?",
                 "terms_of_use": "Termini di utilizzo",
                 "handbook": "Manuale",
-                "showcases": "Showcases"
+                "showcases": "Showcases",
+                "close": "Chiudi"
             }
         },
         "ods_toc": {
@@ -26,6 +27,7 @@
             "search_button": "Cerca",
             "search_results": "Risultati della ricerca",
             "show_filters": "Mostra filtri",
+            "reset_filters": "Reimposta filtri",
             "hide_filters": "Nascondi filtri",
             "sort": "Ordina per",
             "sort_by": {
@@ -40,10 +42,11 @@
             "dataset": "Set di dati",
             "catalog": "Catalogo",
             "this_dataset_record": "Questo record del set di dati è stato",
-            "accrual_periodicity": "Frequenza di aggiornamento",
+            "frequency": "Frequenza di aggiornamento",
             "show_catalog_entry": "Mostra la voce di catalogo",
             "hide_catalog_entry": "Nascondi la voce di catalogo",
             "distribution": "Distribuzione",
+            "distributions": "Distribuzioni",
             "additional_information": "Informazioni aggiuntive",
             "published_on": "Pubblicato",
             "created_on": "Creato",
@@ -52,7 +55,11 @@
             "download": "Scarica",
             "go_to_resource": "Vai alla risorsa",
             "show_raw": "Mostra data grezza",
-            "show_relative": "Mostra tempo relativo"
+            "show_relative": "Mostra tempo relativo",
+            "details": "Dettagli",
+            "released": "Rilasciato",
+            "metadata_download": "Scarica i metadati",
+            "metadata": "Metadati"
         },
         "showcase": {
             "type": {

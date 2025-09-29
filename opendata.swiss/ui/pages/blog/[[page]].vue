@@ -2,6 +2,9 @@
 import OdsPage from "../../app/components/OdsPage.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import SvgIcon from "../../app/components/SvgIcon.vue";
+import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
+import OdsCard from "../../app/components/OdsCard.vue";
+import OdsPagination from "../../app/components/OdsPagination.vue";
 
 const route = useRoute()
 const {locale, t} = useI18n()
