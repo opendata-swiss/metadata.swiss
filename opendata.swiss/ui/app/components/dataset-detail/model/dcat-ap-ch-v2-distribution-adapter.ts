@@ -63,7 +63,7 @@ export class DcatApChV2DistributionAdapter {
    *
    */
   get description() {
-    return this.#distribution?.description || this.#dataset.description || '';
+    return (this.#distribution?.description ?? '').replaceAll(/\r\n/g, '\n').trim() || this.#dataset.description || '';
   }
 
   /**

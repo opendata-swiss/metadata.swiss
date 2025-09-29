@@ -42,7 +42,8 @@ const termsName = computed(() => {
 
 });
 
-const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.png`);
+const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`);
+
 </script>
 
 <style lang="scss" scoped>

@@ -3,7 +3,7 @@ import * as path from "node:path";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL} = process.env
+const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL } = process.env
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/image',
+    '@nuxt/icon'
   ],
   css: [
     '~/assets/main.css',
@@ -79,5 +80,15 @@ export default defineNuxtConfig({
     plugins: [
       '~~/server/plugins/zod-locale',
     ]
+  },
+  icon: {
+    mode: 'svg',
+    customCollections: [
+      {
+        prefix: 'ods',
+        dir: './app/assets/icons',
+        normalizeIconName: false
+      },
+    ],
   }
 })
