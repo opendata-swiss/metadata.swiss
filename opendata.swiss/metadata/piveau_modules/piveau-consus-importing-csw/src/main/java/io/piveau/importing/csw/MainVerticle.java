@@ -30,6 +30,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 
@@ -38,7 +41,7 @@ public class MainVerticle extends AbstractVerticle {
     private static final String CATALOGUE_INFO_FIELD_NAME = "catalogue";
 
     private PipeConnector pipeConnector;
-    private HttpClient client;
+    private static final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
 
     @Override
     public void start() {
@@ -48,7 +51,7 @@ public class MainVerticle extends AbstractVerticle {
                 this.pipeConnector = connector;
                 // Handle a pipe instance when it is received.
                 connector.handlePipe(this::handlePipe);
-                System.out.println("Custom CSW Importer started successfully.");
+                logger.info("Custom CSW Importer started successfully.");
             })
             .onFailure(Throwable::printStackTrace);
 
@@ -58,7 +61,7 @@ public class MainVerticle extends AbstractVerticle {
         // Get the URL from the pipe's configuration.
         JsonObject config = pipeContext.getConfig();
         String cswUrl = config.getString("address");
-        String cqlFilter = config.getJsonObject("config", new JsonObject()).getString("cql", null);
+
         String typeNames = config.getJsonObject("config", new JsonObject()).getString("typeNames", "dcat");
 
         if (cswUrl == null) {
@@ -82,13 +85,13 @@ public class MainVerticle extends AbstractVerticle {
                     .uri(URI.create(requestUrl))
                     .build();
 
-            System.out.println(requestUrl);
+            logger.info(requestUrl);
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
                 if (response.statusCode() == 200) {
-                    System.out.println("Successfully fetched XML:");
-                    System.out.println("-------------------------");
+                    logger.info("Successfully fetched XML:");
+                    logger.info("-------------------------");
 
                     try {
 
@@ -106,15 +109,15 @@ public class MainVerticle extends AbstractVerticle {
                         if (totalRecords == -1) { // This only runs on the first iteration
                             totalRecords = records.getAttributeValue("numberOfRecordsMatched") != null ?
                                         Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched")) : 0;
-                            System.out.println("Total records to import: " + totalRecords);
+                            logger.info("Total records to import: " + totalRecords);
 
                             if (totalRecords == 0) {
-                                System.out.println("No records found to import.");
+                                logger.info("No records found to import.");
                                 break;
                             }
                         }
 
-                        System.out.println("Found " + totalRecords + " records to forward.");
+                        logger.info("Found " + totalRecords + " records to forward.");
 
 
                         List<Element> recordsList = records.getChildren("Record", cswNamespace);
@@ -152,13 +155,13 @@ public class MainVerticle extends AbstractVerticle {
 
 
                 } else {
-                    System.err.println("Error: Received status code " + response.statusCode());
-                    System.err.println("Response Body:");
-                    System.err.println(response.body());
+                    logger.error("Error: Received status code " + response.statusCode());
+                    logger.error("Response Body:");
+                    logger.error(response.body());
                 }
 
             } catch (Exception e) {
-                System.err.println("An error occurred during the HTTP request:");
+                logger.error("An error occurred during the HTTP request:");
                 e.printStackTrace();
             }
 
@@ -168,6 +171,7 @@ public class MainVerticle extends AbstractVerticle {
     }
 
 
+    private HttpClient client;
     // Setter for the HTTP client to facilitate testing with a mock client.
     public void setClient(HttpClient client) {
         this.client = client;
