@@ -57,7 +57,7 @@ services:
       - ./piveau_pipes:/usr/verticles/pipes
 
   piveau-consus-importing-csw:
-      build: piveau_modules/piveau-consus-importing-csw
+      build: ../../piveau_modules/piveau-consus-importing-csw
       image: piveau/piveau-consus-importing-csw:local-build
       logging:
         options:

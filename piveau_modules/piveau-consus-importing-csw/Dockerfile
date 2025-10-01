@@ -2,7 +2,7 @@ FROM eclipse-temurin:21-jdk
 
 # Use environment variables for easier configuration
 ENV VERTICLE_HOME=/usr/verticles
-ENV VERTICLE_FILE=piveau-consus-importing-csw-1.0.0-SNAPSHOT.jar
+ENV VERTICLE_FILE=piveau-consus-importing-csw.jar
 
 # Set up work directory and a non-root user for security
 EXPOSE 8080
