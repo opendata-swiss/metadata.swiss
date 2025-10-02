@@ -53,18 +53,7 @@ export default defineEventHandler(async (event) => {
   showcase.slug = slugify(titleDe!, {lower: true, locale: 'de'})
 
   if (process.env.GITHUB_OWNER) {
-    const auth = process.env.GITHUB_APP_ID ? {
-      appId: parseInt(process.env.GITHUB_APP_ID),
-      privateKey: process.env.GITHUB_APP_PRIVATE_KEY!,
-      installationId: process.env.GITHUB_APP_INSTALLATION_ID!
-    } : process.env.GITHUB_TOKEN!
-
-    storage = git(showcase.slug!, {
-      auth,
-      owner: process.env.GITHUB_OWNER,
-      repo: process.env.GITHUB_REPO!,
-      baseBranch: process.env.GITHUB_BASE_BRANCH!,
-    })
+    storage = git(showcase.slug!)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
       event.node.res.statusCode = 409

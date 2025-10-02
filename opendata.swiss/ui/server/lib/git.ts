@@ -2,23 +2,29 @@ import type {RestEndpointMethodTypes} from "@octokit/rest";
 import {Octokit} from "@octokit/rest";
 import {createAppAuth} from "@octokit/auth-app";
 
-type Config = {
-  auth: string | {
-    appId: number;
-    privateKey: string;
-    installationId: string;
-  }
-  owner: string;
-  repo: string;
-  baseBranch: string;
-}
-
 const BASE_PATH = 'opendata.swiss/ui'
 
-export default function (slug: string, {auth, owner, repo, baseBranch}: Config) {
+function getAuth() {
+  if (process.env.GITHUB_APP_ID) {
+    return {
+      appId: parseInt(process.env.GITHUB_APP_ID),
+      privateKey: process.env.GITHUB_APP_PRIVATE_KEY!,
+      installationId: process.env.GITHUB_APP_INSTALLATION_ID!
+    }
+  }
+
+  return process.env.GITHUB_TOKEN!
+}
+
+export default function (slug: string) {
   let baseSha: string;
   const prBranch = `submitted-showcase/${slug}`;
 
+  const owner = process.env.GITHUB_OWNER!
+  const repo = process.env.GITHUB_REPO!
+  const baseBranch = process.env.GITHUB_BASE_BRANCH!
+
+  const auth = getAuth();
   const octokit = new Octokit({
     authStrategy: typeof auth === 'string' ? undefined : createAppAuth,
     auth
