@@ -1,4 +1,7 @@
 import { resolve } from 'node:path'
+import * as path from "node:path";
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL } = process.env
 
@@ -6,6 +9,7 @@ const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL } = process.env
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
+      rootDir: __dirname,
       PIVEAU_HUB_REPO_URL,
       PIVEAU_HUB_SEARCH_URL
     }
@@ -72,7 +76,10 @@ export default defineNuxtConfig({
   nitro: {
     devProxy: {
       '/admin/': 'http://localhost:5173/admin/',
-    }
+    },
+    plugins: [
+      '~~/server/plugins/zod-locale',
+    ]
   },
   icon: {
     mode: 'svg',

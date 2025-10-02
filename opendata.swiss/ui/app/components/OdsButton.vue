@@ -1,15 +1,15 @@
 <template>
   <button
-  type="button"
-  :class="['btn', 'btn--base', classes]"
-  :aria-label="title"
-  :title="title"
+    :type="!submit ? 'button' : undefined"
+    :class="['btn', 'btn--base', classes]"
+    :aria-label="title"
+    :title="title"
   >
     <slot name="icon">
-      <SvgIcon v-if="icon" :icon="icon" :size="size" class="btn__icon" />
+      <SvgIcon v-if="icon" :icon="icon" :size="size" class="btn__icon"/>
     </slot>
     <span class="btn__text">
-      <a v-if="href" :href="href" >
+      <a v-if="href" :href="href">
         <slot>{{ title }}</slot>
       </a>
       <slot v-else>{{ title }}</slot>
@@ -30,6 +30,7 @@ const { title, iconOnly = false, ...props } = defineProps<{
   iconRight?: boolean
   icon?: string
   href?: string
+  submit?: boolean
 }>()
 
 const classes = computed(() => {
