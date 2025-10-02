@@ -130,5 +130,18 @@
                 "title": "Weitere Informationen"
             }
         }
+    },
+    "server": {
+        "api": {
+            "showcases": {
+                "post": {
+                    "error": {
+                        "submission_exists": "Eine Einreichung mit exakt demselben deutschen Titel existiert bereits.",
+                        "unspecified_error": "Ein nicht näher bezeichneter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+                    },
+                    "success": "Ihre Einreichung ist eingegangen und wird überprüft."
+                }
+            }
+        }
     }
 }

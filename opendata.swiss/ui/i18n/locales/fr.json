@@ -130,5 +130,18 @@
                 "title": "Plus d'informations"
             }
         }
+    },
+    "server": {
+        "api": {
+            "showcases": {
+                "post": {
+                    "error": {
+                        "submission_exists": "Une soumission avec exactement le même titre en allemand existe déjà.",
+                        "unspecified_error": "Une erreur s'est produite lors de la soumission. Veuillez réessayer plus tard."
+                    },
+                    "success": "Votre demande a été reçue et est en cours de traitement."
+                }
+            }
+        }
     }
 }

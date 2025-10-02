@@ -1,10 +1,11 @@
 import type {ShowcasesCollectionItem} from '@nuxt/content'
 import type {H3Event, MultiPartData} from "h3";
 import slugify from "slugify";
-import * as fs from 'node:fs/promises'
 import * as yaml from 'yaml'
 import showcaseSchema from '../../src/schema/showcase.js'
 import {match, P} from "ts-pattern";
+import git from "~~/server/lib/git";
+import fs from "~~/server/lib/fs";
 
 const languages = ['en', 'fr', 'de', 'it'] as const
 
@@ -26,19 +27,19 @@ const empty =  (): ShowcaseTranslation => ({
   tags: []
 })
 
+interface ShowcaseStorage {
+  prepare?(): Promise<boolean>
+  writeFile(path: string, contents: string | Buffer): Promise<void>
+  finalize(): Promise<boolean>
+  rollback?(): Promise<void>
+}
+
 export default defineEventHandler(async (event) => {
-  let rootDir: string
+  const t = await useTranslation(event)
 
-  if (process.env.NODE_ENV === 'production') {
-    // TODO: clone repo, get path to content
-    // rootDir = checkoutPath
-    throw new Error('Saving to GitHub not implemented yet.')
-  } else {
-    ({ public: { rootDir } } = useRuntimeConfig())
-  }
+  let storage: ShowcaseStorage | undefined
 
-  const contentRoot = `${rootDir}/content`
-  const imageRoot = `/img/uploads`
+  const imageRoot = `img/uploads`
 
   const uploads: Array<() => Promise<void>> = []
   const body = await readMultipartFormData(event) as PayloadData
@@ -49,9 +50,33 @@ export default defineEventHandler(async (event) => {
     en: empty()
   }
   const titleDe = body.find(field => field.name === 'title[de]')?.data?.toString()
-  showcase.slug = slugify(titleDe!, { lower: true, locale: 'de' })
+  showcase.slug = slugify(titleDe!, {lower: true, locale: 'de'})
 
-  for (const { name, data } of body) {
+  if (process.env.GITHUB_OWNER) {
+    const auth = process.env.GITHUB_APP_ID ? {
+      appId: parseInt(process.env.GITHUB_APP_ID),
+      privateKey: process.env.GITHUB_PRIVATE_KEY!
+    } : process.env.GITHUB_TOKEN!
+
+    storage = git(showcase.slug!, {
+      auth,
+      owner: process.env.GITHUB_OWNER,
+      repo: process.env.GITHUB_REPO!,
+      baseBranch: process.env.GITHUB_BASE_BRANCH!,
+    })
+    const branchCreated = await storage.prepare?.()
+    if (!branchCreated) {
+      event.node.res.statusCode = 409
+      return {
+        error: t('server.api.showcases.post.error.submission_exists')
+      }
+    }
+  } else {
+    const {public: {rootDir}} = useRuntimeConfig()
+    storage = fs(rootDir)
+  }
+
+  for (const {name, data} of body) {
     match(name)
       .with(P.string.startsWith('title'), () => {
         const language = /^title\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
@@ -68,7 +93,7 @@ export default defineEventHandler(async (event) => {
       })
       .with('tags', () => {
         const tags = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
-        if(tags.length > 0) {
+        if (tags.length > 0) {
           toAll(showcase, 'tags', tags)
         }
       })
@@ -82,12 +107,12 @@ export default defineEventHandler(async (event) => {
       })
       .with('image', () => {
         const imagePath = `${imageRoot}/${showcase.slug}-image.jpg`
-        uploads.push(fs.writeFile.bind(null, `${rootDir}/public/${imagePath}`, data))
+        uploads.push(storage!.writeFile.bind(null, `public/${imagePath}`, data))
         toAll(showcase, 'image', imagePath)
       })
       .with(P.string.startsWith('datasets'), () => {
-        const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
-        if(id) {
+        const {id} = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
+        if (id) {
           const label = data.toString()
           toAll(showcase, 'datasets', translation => {
             translation.datasets!.push({id, label})
@@ -97,34 +122,37 @@ export default defineEventHandler(async (event) => {
       .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
       })
-  }
-
-  return validate(event, showcase) || (async () => {
-    // TODO: choose to save to GitHub or locally based on environment
-    await save(showcase, uploads, contentRoot)
-
-    if (process.env.NODE_ENV === 'production') {
-      // TODO: commit and push to repo
-      throw new Error('Saving to GitHub not implemented yet.')
     }
 
-    return { message: 'Showcase submission received successfully.' };
+  return validate(event, showcase) || (async () => {
+    const success = await save(showcase, uploads, storage)
+
+    if(success) {
+      return {
+        message: t('server.api.showcases.post.success')
+      };
+    }
+    event.node.res.statusCode = 500
+    return {
+      error:  t('server.api.showcases.post.error.unspecified_error')
+    };
   })()
 });
 
-function save(showcase: Showcase, uploads: Array<() => Promise<void>>, contentRoot: string) {
+async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, storage: ShowcaseStorage) {
   const { slug } = showcase
 
   const writeContent = languages.map(language => {
-    const path = `${contentRoot}/showcases/${slug}.${language}.md`
+    const path = `content/showcases/${slug}.${language}.md`
 
     const { body, ...meta } = showcase[language]
     const frontMatter = yaml.stringify(meta)
 
-    return fs.writeFile(path, `---\n${frontMatter}---\n${body}`)
+    return storage.writeFile(path, `---\n${frontMatter}---\n${body}`)
   })
 
-  return Promise.all([...writeContent, ...uploads.map(upload => upload())])
+  await Promise.all([...writeContent, ...uploads.map(upload => upload())])
+  return storage.finalize?.()
 }
 
 interface Setter {

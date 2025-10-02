@@ -20,6 +20,19 @@ yarn install
 bun install
 ```
 
+And create a `.env`:
+
+```bash
+PIVEAU_HUB_SEARCH_URL=https://piveau-hub-search-ln.zazukoians.org/
+PIVEAU_HUB_REPO_URL=https://piveau-hub-repo-ln.zazukoians.org/
+GITHUB_OWNER=zazukoians
+GITHUB_REPO=metadata.swiss
+GITHUB_BASE_BRANCH=main
+GITHUB_TOKEN=
+```
+
+The personal access token requires contents and pull request permissions.
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
@@ -39,6 +52,16 @@ bun run dev
 ```
 
 ## Production
+
+Set the environment variables:
+
+- `PIVEAU_HUB_SEARCH_URL`
+- `PIVEAU_HUB_REPO_URL`
+- `GITHUB_APP_ID`
+- `GITHUB_APP_PRIVATE_KEY`
+- `GITHUB_OWNER`
+- `GITHUB_REPO`
+- `GITHUB_BASE_BRANCH`
 
 Build the application for production:
 

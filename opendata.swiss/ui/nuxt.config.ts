@@ -70,7 +70,10 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'fr', name: 'Francais', file: 'fr.json' },
       { code: 'it', name: 'Itlaliano', file: 'it.json' },
-    ]
+    ],
+    experimental: {
+      localeDetector: 'localeDetector.ts'
+    }
   },
   nitro: {
     devProxy: {

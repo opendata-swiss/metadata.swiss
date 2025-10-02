@@ -12,11 +12,14 @@
         Failed to submit showcase.
 
         <pre>{{ submissionError }}</pre>
-        <ul>
+        <ul v-if="Array.isArray(submissionValidationIssues)">
           <li v-for="issue in submissionValidationIssues" :key="issue.path.join('-')">
             {{ issue.path.join('.')}}: {{ issue.message }}
           </li>
         </ul>
+        <p v-else>
+          {{ submissionValidationIssues.error }}
+        </p>
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
@@ -123,7 +126,7 @@ useSeoMeta({title: 'New Showcase | opendata.swiss'})
 
 const success = ref<boolean | null>(null)
 const submissionError = ref<string | null>(null)
-const submissionValidationIssues = ref<ZodIssue[]>([])
+const submissionValidationIssues = ref<{ error: string } | ZodIssue[]>([])
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
 async function submit(e: Event) {
@@ -142,7 +145,7 @@ async function submit(e: Event) {
       if (newShowcaseForm.value) {
         newShowcaseForm.value.reset()
       }
-    } else if (response.status === 400) {
+    } else if (response.status === 400 || response.status === 409) {
       submissionError.value = 'Form contains invalid data:'
       submissionValidationIssues.value = await response.json()
       success.value = false
