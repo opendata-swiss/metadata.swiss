@@ -55,7 +55,8 @@ export default defineEventHandler(async (event) => {
   if (process.env.GITHUB_OWNER) {
     const auth = process.env.GITHUB_APP_ID ? {
       appId: parseInt(process.env.GITHUB_APP_ID),
-      privateKey: process.env.GITHUB_PRIVATE_KEY!
+      privateKey: process.env.GITHUB_APP_PRIVATE_KEY!,
+      installationId: process.env.GITHUB_APP_INSTALLATION_ID!
     } : process.env.GITHUB_TOKEN!
 
     storage = git(showcase.slug!, {

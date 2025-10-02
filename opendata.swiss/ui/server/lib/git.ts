@@ -6,6 +6,7 @@ type Config = {
   auth: string | {
     appId: number;
     privateKey: string;
+    installationId: string;
   }
   owner: string;
   repo: string;

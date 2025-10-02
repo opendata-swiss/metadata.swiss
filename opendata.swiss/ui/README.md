@@ -59,9 +59,12 @@ Set the environment variables:
 - `PIVEAU_HUB_REPO_URL`
 - `GITHUB_APP_ID`
 - `GITHUB_APP_PRIVATE_KEY`
+- `GITHUB_APP_INSTALLATION_ID`
 - `GITHUB_OWNER`
 - `GITHUB_REPO`
 - `GITHUB_BASE_BRANCH`
+
+The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 
 Build the application for production:
 
