@@ -31,3 +31,7 @@
 .v-select {
   background-color: white;
 }
+
+.form__group__input:has(> *:user-invalid), .form__group__select:has(> select:invalid) {
+  color: #b20000;
+}
