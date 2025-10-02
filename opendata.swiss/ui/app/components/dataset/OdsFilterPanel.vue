@@ -39,6 +39,9 @@
         </template>
       </OdsMultiSelect>
     </div>
+    <div v-show="!showFilters" class="filters__active">
+      <OdsActiveFilters :facets="props.facets" :facet-refs="facetRefs" @reset-all-facets="emit('reset-all-facets')" />
+    </div>
   </ClientOnly>
 
 </template>
@@ -50,6 +53,7 @@ import { useI18n } from 'vue-i18n'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 import OdsMultiSelect from './OdsMultiSelect.vue';
 import OdsButton from '../OdsButton.vue';
+import OdsActiveFilters from './OdsActiveFilters.vue';
 import SvgIcon from "~/components/SvgIcon.vue";
 
 interface Item {
@@ -68,6 +72,10 @@ const props = defineProps({
     required: true,
   }
 })
+
+const emit = defineEmits<{
+  (e: 'reset-all-facets'): void
+}>();
 
 const { t } = useI18n()
 const showFilters = ref(false)

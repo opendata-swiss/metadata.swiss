@@ -1,10 +1,9 @@
 <template>
-  <InlineSvg v-if="svgSrc" :src="svgSrc" :class="['icon', 'icon--base', ...iconClasses]" />
+  <Icon :name="iconName" :class="['icon', 'icon--base', ...iconClasses]" />
 </template>
 
 <script setup lang="ts">
-import InlineSvg from 'vue-inline-svg'
-import { computed, ref, watchEffect } from 'vue'
+import { computed } from 'vue'
 
 interface PropTypes {
   icon: string,
@@ -14,8 +13,6 @@ interface PropTypes {
 }
 
 const props = defineProps<PropTypes>()
-
-const svgSrc = ref('')
 
 const iconClasses = computed(() => {
   function * generate() {
@@ -28,14 +25,8 @@ const iconClasses = computed(() => {
   return [...generate()]
 })
 
-watchEffect(async () => {
-  // TODO: check if this works in production. Not consistent in dev
-  if (!props.icon) {
-    svgSrc.value = ''
-    return
-  }
-  svgSrc.value = (
-    await import(`~/assets/icons/${props.icon}.svg`)
-  ).default
+const iconName = computed(() => {
+  const name = props.icon ? `ods:${props.icon}` : ''
+  return name
 })
 </script>

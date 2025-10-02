@@ -28,6 +28,7 @@
             "search_button": "Cerca",
             "search_results": "Risultati della ricerca",
             "show_filters": "Mostra filtri",
+            "reset_filters": "Reimposta filtri",
             "hide_filters": "Nascondi filtri",
             "sort": "Ordina per",
             "sort_by": {
