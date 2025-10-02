@@ -12,6 +12,8 @@ type Config = {
   baseBranch: string;
 }
 
+const BASE_PATH = 'opendata.swiss/ui'
+
 export default function (slug: string, {auth, owner, repo, baseBranch}: Config) {
   let baseSha: string;
   const prBranch = `submitted-showcase/${slug}`;
@@ -63,7 +65,7 @@ export default function (slug: string, {auth, owner, repo, baseBranch}: Config) 
       });
 
       tree.push({
-        path,
+        path: `${BASE_PATH}/${path}`,
         type: 'blob',
         mode: '100644',
         sha: blob.data.sha
