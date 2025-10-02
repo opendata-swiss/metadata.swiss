@@ -10,7 +10,7 @@
     <div :class="selectWrapperClasses">
       <VSelect
         :id="getUniqueId('multi-select')"
-        v-model="currentSelected"
+        v-model="selected"
         :multiple="multiple"
         :placeholder="placeholder"
         :class="selectClasses"
@@ -19,39 +19,29 @@
         :options="options"
         :name="name"
         label="title"
-        :reduce="(option: Item) => option.id"
-
-        :selectable="
-          (option: Item) =>
-            !excluded.includes(option.id) &&
-            (selectLimit
-              ? !currentSelected || currentSelected.length < selectLimit
-              : true)
-        "
-        @update:model-value="emitNewValues"
+        :filterable="!!loadOptions"
+        :close-on-select="closeOnSelect"
+        @search="loadOptions!"
       >
+        <template #no-options>
+          <slot name="no-options"/>
+        </template>
         <!-- Workaround for required validation -->
         <template #search="{ attributes, events }">
           <input
             class="vs__search"
             :required="
-              required && (!currentSelected || currentSelected.length === 0)
+              required && (!selected || selected.length === 0)
             "
             v-bind="attributes as any"
             v-on="events"
           >
         </template>
-       <template #option="option">
-        <span>
-          {{ option.title }}
-          <span v-if="option.count" style="float: right; color: #888;">({{ option.count }})</span>
-        </span>
-      </template>
-        <template
-          #selected-option="option"
-        >
-          {{ option.title }}
-          <input type="hidden" :name="name" :value="option.id">
+        <template #option="option">
+          <slot name="option" v-bind="option" />
+        </template>
+        <template #selected-option="option">
+          <slot name="selected-option" v-bind="option" />
         </template>
       </VSelect>
       <div class="select__icon">
@@ -74,25 +64,26 @@
 
 <script setup lang="ts">
 import VSelect from 'vue-select'
-import { ref, computed, onMounted, h, watch } from 'vue'
+import { ref, computed, onMounted, h } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
 
-interface Item {
-  id: string;
-  title: string | undefined;
-  count: number;
-}
-
 const selectId = ref('')
-const currentSelected = ref([] as string[])
+const selected = defineModel({
+  type: Array as () => unknown[],
+  default: () => [],
+})
 const Deselect = { render: () => h('span', '×') }
 const OpenIndicator = { render: () => h('span') }
 
-const emit =defineEmits<{
-  (e: 'update:modelValue', value: string[]): void
-}>()
-
 const props = defineProps({
+  loadOptions: {
+    type: Function,
+    default: () => undefined,
+  },
+  closeOnSelect: {
+    type: Boolean,
+    default: () => true,
+  },
   bare: {
     type: Boolean,
     default: () => false,
@@ -138,11 +129,7 @@ const props = defineProps({
     default: () => undefined,
   },
   options: {
-    type: Array< Item>,
-    default: () => [],
-  },
-  selected: {
-    type: Array<string>,
+    type: Array<unknown>,
     default: () => [],
   },
   multiple: {
@@ -213,24 +200,9 @@ const getUniqueId = function (text = '') {
   return `${text}-${selectId.value}`
 }
 
-function emitNewValues() {
-  emit('update:modelValue', currentSelected.value)
-}
-
 onMounted(() => {
-  // Set initial selected element
-  currentSelected.value = props.selected
   selectId.value = uuidv4()
 })
-
-
-
-watch(
-  () => props.selected,
-  (newVal) => {
-    currentSelected.value = newVal
-  }
-)
 </script>
 
 <style scoped>
