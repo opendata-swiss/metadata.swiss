@@ -1,41 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2">
-    <csw:SearchResults numberOfRecordsMatched="2" numberOfRecordsReturned="2" elementSet="full" nextRecord="0">
-        <csw:Record>
-            <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
-                <gmd:fileIdentifier>
-                    <gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">record-1-identifier</gco:CharacterString>
-                </gmd:fileIdentifier>
-                <gmd:identificationInfo>
-                    <gmd:MD_DataIdentification>
-                        <gmd:citation>
-                            <gmd:CI_Citation>
-                                <gmd:title>
-                                    <gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">First Test Record</gco:CharacterString>
-                                </gmd:title>
-                            </gmd:CI_Citation>
-                        </gmd:citation>
-                    </gmd:MD_DataIdentification>
-                </gmd:identificationInfo>
-            </gmd:MD_Metadata>
-        </csw:Record>
-        <csw:Record>
-            <gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd">
-                <gmd:fileIdentifier>
-                    <gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">record-2-identifier</gco:CharacterString>
-                </gmd:fileIdentifier>
-                <gmd:identificationInfo>
-                    <gmd:MD_DataIdentification>
-                        <gmd:citation>
-                            <gmd:CI_Citation>
-                                <gmd:title>
-                                    <gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Second Test Record</gco:CharacterString>
-                                </gmd:title>
-                            </gmd:CI_Citation>
-                        </gmd:citation>
-                    </gmd:MD_DataIdentification>
-                </gmd:identificationInfo>
-            </gmd:MD_Metadata>
-        </csw:Record>
-    </csw:SearchResults>
+<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+  <csw:SearchStatus timestamp="2025-09-10T12:23:47.053Z" />
+  <csw:SearchResults numberOfRecordsMatched="53" numberOfRecordsReturned="10" elementSet="full" nextRecord="11">
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>08224a7c-0098-c6b5-e063-5015630aae5a</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>Lärmempfindlichkeit</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Verkehr</dc:subject>
+      <dc:subject>Lärm</dc:subject>
+      <dc:subject>Schall</dc:subject>
+      <dc:subject>environment_EnvironmentalProtection</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2023-11-10</dct:modified>
+      <dct:abstract>Die Empfindlichkeitsstufen gemäss Lärmschutzverordnung vom 15.12.1986 (LSV) bezeichnen die einzuhaltenden Lärmgrenzwerte. Zusätzlich zu den ordentlichen Werten (Grundnutzung) sind die Gebiete mit Höhereinstufungen (Lockerung aufgrund der Lärmvorbelastung) und Planungswerten (strengere Bestimmungen infolge Einzonung oder Erschliessung nach 1986) ersichtlich. Unter "Planungswert Hinweis" sind Gebiete erfasst, in welchen aufgrund der Aktenlage (Einzonung oder Erschliessung erst nach 1986) die Planungswerte höchstwahrscheinlich einzuhalten sind, jedoch noch kein formeller Beschluss dazu vorliegt. Flächen der Zone für öffentliche Bauten ohne Höhereinstufung sind der Empfindlichkeitsstufe II zugeordnet. Der Schiessplatz Ohrbühl hat als Grundeinstufung die Empfindlichkeitsstufe IV.</dct:abstract>
+      <dc:description>Die Empfindlichkeitsstufen gemäss Lärmschutzverordnung vom 15.12.1986 (LSV) bezeichnen die einzuhaltenden Lärmgrenzwerte. Zusätzlich zu den ordentlichen Werten (Grundnutzung) sind die Gebiete mit Höhereinstufungen (Lockerung aufgrund der Lärmvorbelastung) und Planungswerten (strengere Bestimmungen infolge Einzonung oder Erschliessung nach 1986) ersichtlich. Unter "Planungswert Hinweis" sind Gebiete erfasst, in welchen aufgrund der Aktenlage (Einzonung oder Erschliessung erst nach 1986) die Planungswerte höchstwahrscheinlich einzuhalten sind, jedoch noch kein formeller Beschluss dazu vorliegt. Flächen der Zone für öffentliche Bauten ohne Höhereinstufung sind der Empfindlichkeitsstufe II zugeordnet. Der Schiessplatz Ohrbühl hat als Grundeinstufung die Empfindlichkeitsstufe IV.</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.44864336620819 8.657536176708149</ows:LowerCorner>
+        <ows:UpperCorner>47.54907027546774 8.808928197398147</ows:UpperCorner>
+      </ows:BoundingBox>
+      <dc:URI protocol="MAP:Preview" name="Stadtplan Winterthur" description="Link zum Datensatz im Internet-Stadtplan der Stadt Winterthur">https://stadtplan.winterthur.ch?topic=Laermempfindlichkeitsstufen_OEREB</dc:URI>
+      <dc:URI protocol="OGC:WMS" name="Laermempfindlichkeitsstufen_OEREB" description="Web Map Services WMS">https://stadtplan.winterthur.ch/wms/Laermempfindlichkeitsstufen_OEREB?service=WMS&amp;request=GetCapabilities</dc:URI>
+    </csw:Record>
+    <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:ows="http://www.opengis.net/ows" xmlns:dct="http://purl.org/dc/terms/">
+      <dc:identifier>26ce5464-e2e7-2203-e063-5015630a5606</dc:identifier>
+      <dc:date>2025-09-09</dc:date>
+      <dc:title>WT_VP_V_PARKKARTENZONEN_TBL</dc:title>
+      <dc:type>dataset</dc:type>
+      <dc:subject>Blaue Zone; öffentliche Parkierung; Parkkarten; Parkbewilligung; Parkgebühren</dc:subject>
+      <dc:subject>Parkkartenzone</dc:subject>
+      <dc:subject>Zentrumszone</dc:subject>
+      <dc:subject>Quartierzentren</dc:subject>
+      <dc:subject>transportation</dc:subject>
+      <dc:format>SDF</dc:format>
+      <dct:modified>2024-11-13</dct:modified>
+      <dct:abstract>Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren</dct:abstract>
+      <dc:description>Beschriftung von: Parkbewilligung der öffentlichen Parkplätze mit entsprechenden Gebührenreglementen. Aufgeteilt in Parkkartenzonen und Zentrumszonen und Quartierzentren</dc:description>
+      <dc:language>ger</dc:language>
+      <dc:format>SDF</dc:format>
+      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG:6.6:4326">
+        <ows:LowerCorner>47.46737612403396 8.684624826118306</ows:LowerCorner>
+        <ows:UpperCorner>47.528499592340886 8.774547596972035</ows:UpperCorner>
+      </ows:BoundingBox>
+    </csw:Record>
+  </csw:SearchResults>
 </csw:GetRecordsResponse>
+
+<!--
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:URI
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:date
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:description
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:format
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:identifier
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:language
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:subject
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:title
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:type
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:abstract
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:modified
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:LowerCorner
+csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:UpperCorner
+-->

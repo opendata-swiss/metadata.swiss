@@ -305,7 +305,7 @@ function transforming(input) {
         "identifier": id,
         "description": [{
             "@value": input.description,
-            "@language": params.defaultLanguage
+            "@language": record_language
         }],
         "title": [
             {
@@ -360,7 +360,6 @@ function transforming(input) {
             }
         ]
     };
-    console.log(output.spatial[1])
 
     dist.language = record_language
     output.issued = `${input["dct:modified"]}T00:00:00`;
@@ -370,10 +369,10 @@ function transforming(input) {
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    console.log("Transformed output:");
-
-    const { "@context": context, ...outputWithoutContext } = output;
-
+    //console.log("Transformed output:");
+    //
+    //const { "@context": context, ...outputWithoutContext } = output;
+    //
     //console.log(JSON.stringify(outputWithoutContext, null, 2));
 
     console.log("Transformation completed successfully. Returning output.");
