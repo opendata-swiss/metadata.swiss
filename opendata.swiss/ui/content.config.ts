@@ -1,4 +1,6 @@
-import { defineCollection, defineContentConfig, z } from '@nuxt/content'
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
+import showcase from "./src/schema/showcase.js";
 
 export default defineContentConfig({
   collections: {
@@ -43,19 +45,7 @@ export default defineContentConfig({
     showcases: defineCollection({
       source: 'showcases/*.md',
       type: 'page',
-      schema: z.object({
-        active: z.boolean(),
-        title: z.string(),
-        image: z.string().optional(),
-        url: z.string().optional(),
-        categories: z.array(z.string()).optional(),
-        type: z.string().optional(),
-        datasets: z.array(z.object({
-          id: z.string(),
-          label: z.string(),
-        })).optional(),
-        tags: z.array(z.string()).optional(),
-      })
+      schema: showcase,
     })
   }
 })
