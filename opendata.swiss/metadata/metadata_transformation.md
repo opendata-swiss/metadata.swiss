@@ -16,7 +16,8 @@ The following fields are fetched from geocat.ch APIs:
 |`csw:GetRecordsResponse/csw:SearchResults/csw:Record/dc:type`|unused||
 |`csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:abstract`|unused||
 |`csw:GetRecordsResponse/csw:SearchResults/csw:Record/dct:modified`|`dct:issued`<br>`dct:modified`|`dcat:Dataset`|
-|`csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox`|`dct:spatial`|`dcat:Dataset`|
+|`csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:LowerCorner`|`dct:spatial`|`dcat:Dataset`|
+|`csw:GetRecordsResponse/csw:SearchResults/csw:Record/ows:BoundingBox/ows:UpperCorner`|`dct:spatial`|`dcat:Dataset`|
 
 
 Where in .xml files:
