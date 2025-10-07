@@ -9,6 +9,7 @@
   "scripts": {
     "decap": "rimraf public/admin && (cd ../..; decap-server) & vite src/admin",
     "dev": "nuxt dev",
+    "test": "api-tuner --base-iri http://localhost:3000",
     "prebuild": "vite build src/admin --emptyOutDir",
     "build": "nuxt build",
     "generate": "nuxt generate",
@@ -53,6 +54,7 @@
   },
   "devDependencies": {
     "@types/vue-select": "^3.16.8",
+    "api-tuner": "^0.4.1",
     "decap-server": "^3.3.0",
     "vite-plugin-node-polyfills": "^0.24.0",
     "vite-plugin-static-copy": "^3.1.1"
