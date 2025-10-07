@@ -3,7 +3,7 @@ services:
   # docker-compose-hub.yml #
   ##########################
   piveau-hub-repo:
-    image: piveau/hub-repo:3.3.26
+    image: piveau/hub-repo:3.3.28
     container_name: piveau-hub-repo
     logging:
       options:
@@ -22,7 +22,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.2.0
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.2.2
     container_name: piveau-hub-search
     logging:
       options:
