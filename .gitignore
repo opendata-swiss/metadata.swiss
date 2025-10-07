@@ -10,3 +10,5 @@
 
 *.pyc
 __pycache__/
+
+opendata.swiss/metadata/piveau_pipes/
