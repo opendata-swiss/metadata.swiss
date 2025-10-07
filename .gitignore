@@ -7,3 +7,6 @@
 *.lst
 *.log
 *.json
+
+*.pyc
+__pycache__/
