@@ -8,3 +8,8 @@ Check what what are you using
 
 Install dependencies
 `poetry install`
+
+# Run it
+This code generates pipes for all geoharvesters on CKAN repository
+
+`python -m meta_harvester`
