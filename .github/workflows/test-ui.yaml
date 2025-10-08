@@ -24,9 +24,9 @@ jobs:
 
       - uses: fabasoad/setup-prolog-action@v1
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v5
         with:
-          node-version: 'lts'
+          node-version: 'lts/*'
 
       - run: npm ci
         working-directory: opendata.swiss/ui
