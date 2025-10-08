@@ -1,0 +1,38 @@
+name: "[UI] Tests"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - closed
+    paths:
+      - "opendata.swiss/ui/**"
+      - ".github/workflows/test-ui.yaml" # Trigger also if this workflow file is changed
+
+jobs:
+  api-tests:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v5
+
+      - uses: fabasoad/setup-prolog-action@v1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 'lts'
+
+      - run: npm ci
+        working-directory: opendata.swiss/ui
+
+      - run: npm run dev &
+        working-directory: opendata.swiss/ui
+
+      - run: npm test -- --silent
+        working-directory: opendata.swiss/ui
