@@ -37,7 +37,7 @@ interface ShowcaseStorage {
 export default defineEventHandler(async (event) => {
   const t = await useTranslation(event)
 
-  let storage: ShowcaseStorage | undefined
+  let storage: ShowcaseStorage
 
   const imageRoot = `img/uploads`
 
@@ -114,7 +114,14 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-  return validate(event, showcase) || (async () => {
+  const errors = validate(event, showcase)
+
+  if (errors) {
+    await storage.rollback?.()
+    return errors
+  }
+
+  return (async () => {
     const success = await save(showcase, uploads, storage)
 
     if(success) {
