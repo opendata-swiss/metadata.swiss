@@ -12,5 +12,5 @@ export default z.object({
     label: z.string(),
   })).optional(),
   tags: z.array(z.string()).optional(),
-  rawbody: z.string(),
+  rawbody: z.string().optional(),
 })
