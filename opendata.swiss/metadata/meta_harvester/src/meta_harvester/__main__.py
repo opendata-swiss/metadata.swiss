@@ -1,9 +1,14 @@
+import logging
 from pathlib import Path
 from typing import Union
 
 import yaml
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD
+from requests.exceptions import HTTPError
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 from .api_clients import CkanClient, PiveauClient
 
@@ -24,7 +29,7 @@ def to_dict(value: Union[str, dict]) -> dict:
         try:
             return json.loads(value)
         except json.JSONDecodeError:
-            print(f"Error: Could not decode JSON string: {value}")
+            logger.error(f"Could not decode JSON string: {value}")
             return {}
     return {}
 
@@ -55,7 +60,7 @@ def generate_pipe(
     with open(output_file, "w") as file:
         yaml.dump(data, file, sort_keys=False, indent=2)
 
-    print(f"Successfully generated '{output_file}'")
+    logger.info(f"Successfully generated '{output_file}'")
 
 
 def generate_catalogue_metadata(
@@ -108,7 +113,7 @@ def generate_catalogue_metadata(
 
     output_file = Path(CATALOGUES_PATH) / f"{catalogue_name}.ttl"
     g.serialize(destination=output_file, format="turtle")
-    print(f"Successfully generated RDF triples and saved to '{output_file}'")
+    logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
     return output_file
 
@@ -122,8 +127,14 @@ def main():
 
     piveau_client = PiveauClient()
 
-    for id in ids[0:2]:
-        details = ckan_client.get_harvester_details_by_id(id)
+    for id in ids:
+        try:
+            details = ckan_client.get_harvester_details_by_id(id)
+        except HTTPError as e:
+            if e.response.status_code == 403:
+                logger.warning(f"Access forbidden for harvester ID {id}. Omitting this catalogue.")
+                continue
+
         url = details["url"].split("?")[0]
 
         generate_pipe(
@@ -141,13 +152,13 @@ def main():
         )
 
 
-        #piveau_client.create_catalogue(
-        #    name=catalogue_name, metadata_file=metadata_file
-        #)
-
-        piveau_client.delete_catalogue(
-            name=catalogue_name
+        piveau_client.create_catalogue(
+            name=catalogue_name, metadata_file=metadata_file
         )
+
+        #piveau_client.delete_catalogue(
+        #    name=catalogue_name
+        #)
 
 
 # --- Example Usage ---
