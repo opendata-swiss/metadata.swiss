@@ -34,5 +34,8 @@ jobs:
       - run: npm run dev &
         working-directory: opendata.swiss/ui
 
+      - run: npx wait-on http://localhost:3000 -t 30s
+        working-directory: opendata.swiss/ui
+
       - run: npm test -- --silent
         working-directory: opendata.swiss/ui
