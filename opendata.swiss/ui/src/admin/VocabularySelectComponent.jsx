@@ -41,7 +41,7 @@ export default class VocabularySelectComponent extends PiveauSearchComponent {
     const res = await fetch(url)
     const { result: { results }} = await res.json()
 
-    return results.map(({pref_label, id}) => ({label: pref_label.de, value: id}))
+    return results.map(({pref_label, resource}) => ({label: pref_label.de, value: resource}))
   })
 
   state = {

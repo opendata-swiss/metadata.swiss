@@ -3,7 +3,7 @@ services:
   # docker-compose-hub.yml #
   ##########################
   piveau-hub-repo:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-repo:3.2.19
+    image: piveau/hub-repo:3.3.28
     container_name: piveau-hub-repo
     logging:
       options:
@@ -13,16 +13,17 @@ services:
       - 8085:8085
       - 5002:5000
     environment:
-      - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
+      - OTEL_SDK_DISABLED=true
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
+      - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.1.20
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.2.2
     container_name: piveau-hub-search
     logging:
       options:
@@ -34,6 +35,7 @@ services:
       elasticsearch:
         condition: service_healthy
     environment:
+      - OTEL_SDK_DISABLED=true
       - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
       - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
@@ -57,7 +59,7 @@ services:
       - VITE_ROUTING_ROUTER_OPTIONS_BASE=/
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.3
     container_name: elasticsearch
     logging:
       options:
@@ -75,6 +77,7 @@ services:
       - 9200:9200
       - 9300:9300
     environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - bootstrap.memory_lock=true
       - discovery.type=single-node
       - xpack.security.enabled=false
@@ -82,34 +85,71 @@ services:
     volumes:
       - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
 
-  virtuoso:
-    image: openlink/virtuoso-opensource-7:7.2.13-alpine
-    container_name: virtuoso
+  graphdb:
+    image: ontotext/graphdb:10.8.8
+    container_name: graphdb
     logging:
       options:
         max-size: "50m"
     ports:
-      - 8890:8890
-      - 1111:1111
-    environment:
-      - DBA_PASSWORD=dba
-      - VIRT_PARAMETERS_NUMBEROFBUFFERS=170000
-      - VIRT_PARAMETERS_MAXDIRTYBUFFERS=130000
-      - VIRT_PARAMETERS_SERVERTHREADS=100
-      - VIRT_HTTPSERVER_SERVERTHREADS=100
-      - VIRT_HTTPSERVER_MAXCLIENTCONNECTIONS=100
+      - 7200:7200
+    command:
+      - -Xms2g
+      - -Xmx5g
+      - -Ddefault.min.distinct.threshold=512m
     volumes:
-      - ./volumes/virtuoso-data:/database
+      - ./volumes/graphdb-data:/opt/graphdb/dist/data
+
+  graphdb-create-repo:
+    image: curlimages/curl:latest
+    container_name: graphdb-create-repo
+    depends_on:
+      graphdb:
+        condition: service_started
+    command:
+      - /config/setup.sh
+    volumes:
+      - ./config/graphdb:/config:ro
+    restart: "no"
+
+  mitmproxy:
+    image: mitmproxy/mitmproxy:12.1.1
+    container_name: mitmproxy
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8888:8888
+      - 8889:8889
+    command:
+      - mitmweb
+      - --mode
+      - reverse:http://graphdb:7200/
+      - --listen-port
+      - "8888"
+      - --web-host
+      - "0.0.0.0"
+      - --web-port
+      - "8889"
+      - --set
+      - web_password=mitm
+      - -s
+      - /scripts/strip_timeout.py
+      - -s
+      - /scripts/digest_to_basic.py
+    volumes:
+      - ./config/mitmproxy:/scripts
 
   #############################
   # docker-compose-consus.yml #
   #############################
   piveau-consus-importing-rdf:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.8.9
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.9.2
     logging:
       options:
         max-size: "50m"
     environment:
+      - OTEL_SDK_DISABLED=true
       - JAVA_OPTS=-Xms200m -Xmx500m
 
   piveau-consus-importing-ckan:
@@ -118,29 +158,32 @@ services:
       options:
         max-size: "50m"
     environment:
+      - OTEL_SDK_DISABLED=true
       - JAVA_OPTS=-Xms100m -Xmx200m
 
   piveau-consus-transforming-js:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.0.1
+    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.0.4
     logging:
       options:
         max-size: "50m"
     environment:
+      - OTEL_SDK_DISABLED=true
       - JAVA_OPTS=-Xms200m -Xmx500m
     volumes:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:5.0.2
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.0
     logging:
       options:
         max-size: "50m"
     environment:
+      - OTEL_SDK_DISABLED=true
       - JAVA_OPTS=-Xms200m -Xmx1g
       - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
 
   piveau-consus-scheduling:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:3.0.1
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:3.0.20
     logging:
       options:
         max-size: "50m"
@@ -149,6 +192,7 @@ services:
       - "8095:8085"
       - "5001:5000" # Just make it also work for macOS
     environment:
+      - OTEL_SDK_DISABLED=true
       - JAVA_OPTS=-Xms100m -Xmx200m
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
     volumes:
