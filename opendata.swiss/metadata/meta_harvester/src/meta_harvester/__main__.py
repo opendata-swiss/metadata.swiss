@@ -108,9 +108,6 @@ def generate_catalogue_metadata(
     g.add((catalogue_uri, DCTERMS.created, Literal(created, datatype=XSD.dateTime)))
     g.add((catalogue_uri, DCTERMS.modified, Literal(modified, datatype=XSD.dateTime)))
 
-    # TODO: clarify default language logic. Also: do we need it?
-    g.add((catalogue_uri, DCTERMS.language, EU_LANG.GER))
-
     output_file = Path(CATALOGUES_PATH) / f"{catalogue_name}.ttl"
     g.serialize(destination=output_file, format="turtle")
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
