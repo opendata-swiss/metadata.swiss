@@ -115,7 +115,7 @@ export default function (slug: string) {
           base: baseBranch,
         })
 
-        logger.info(`Created pull request '${owner}/${repo}#${pr.data.issue_url}'`)
+        logger.info(`Created pull request '${pr.data.issue_url}'`)
       } catch (error) {
         logger.error('Failed to create PR')
         logger.error(error)
@@ -126,6 +126,7 @@ export default function (slug: string) {
     },
     async rollback() {
       try {
+        logger.info(`Rolling back changes, deleting branch '${prBranch}'`)
         await octokit.git.deleteRef({
           owner,
           repo,

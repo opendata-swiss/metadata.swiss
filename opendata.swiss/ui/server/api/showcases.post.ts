@@ -121,20 +121,21 @@ export default defineEventHandler(async (event) => {
   const errors = validate(event, showcase)
 
   if (errors) {
+    logger.info('Validation failed. Reverting showcase submission.')
     await storage.rollback?.()
     return errors
   }
 
-  if (await save(showcase, uploads, storage)) {
+  if (!await save(showcase, uploads, storage)) {
     await storage.rollback?.()
+    event.node.res.statusCode = 500
     return {
-      message: t('server.api.showcases.post.success')
+      error: t('server.api.showcases.post.error.unspecified_error')
     };
   }
 
-  event.node.res.statusCode = 500
   return {
-    error:  t('server.api.showcases.post.error.unspecified_error')
+    message: t('server.api.showcases.post.success')
   };
 });
 
