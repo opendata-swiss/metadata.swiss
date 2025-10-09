@@ -17,6 +17,8 @@ function getAuth() {
 }
 
 export default function (slug: string) {
+  const logger = console
+
   let baseSha: string;
   const prBranch = `submitted-showcase/${slug}`;
 
@@ -35,23 +37,26 @@ export default function (slug: string) {
   return {
     async prepare() {
       try {
-      const gotBranch = await octokit.repos.getBranch({
-        owner,
-        repo,
-        branch: baseBranch,
-      });
-      baseSha = gotBranch.data.commit.sha;
+        logger.info(`Getting base branch`)
+        const gotBranch = await octokit.repos.getBranch({
+          owner,
+          repo,
+          branch: baseBranch,
+        });
+        baseSha = gotBranch.data.commit.sha;
 
-      await octokit.git.createRef({
-        owner,
-        repo,
-        branch: baseBranch,
-        ref: `refs/heads/${prBranch}`,
-        sha: baseSha,
-      });
+        logger.info(`Creating branch '${prBranch}'`)
+        await octokit.git.createRef({
+          owner,
+          repo,
+          branch: baseBranch,
+          ref: `refs/heads/${prBranch}`,
+          sha: baseSha,
+        });
       } catch (error: any) {
-        console.error(error)
+        logger.error('Error preparing git storage')
         if (error.status === 422) {
+          logger.error(error)
           return false
         } else {
           throw error
@@ -102,15 +107,18 @@ export default function (slug: string) {
           sha: newCommit.data.sha,
         })
 
-        await octokit.pulls.create({
+        const pr = await octokit.pulls.create({
           owner,
           repo,
           title: `New showcase submission: ${slug}`,
           head: prBranch,
           base: baseBranch,
         })
+
+        logger.info(`Created pull request '${owner}/${repo}#${pr.data.issue_url}'`)
       } catch (error) {
-        console.error(error)
+        logger.error('Failed to create PR')
+        logger.error(error)
         return false
       }
 
@@ -124,7 +132,8 @@ export default function (slug: string) {
           ref: `heads/${prBranch}`,
         })
       } catch (e) {
-        console.log(e)
+        logger.warn('Failed to delete branch on rollback')
+        logger.warn(e)
       }
     }
   }

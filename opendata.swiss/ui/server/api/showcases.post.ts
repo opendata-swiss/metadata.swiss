@@ -35,6 +35,8 @@ interface ShowcaseStorage {
 }
 
 export default defineEventHandler(async (event) => {
+  const logger = console
+
   const t = await useTranslation(event)
 
   let storage: ShowcaseStorage
@@ -61,9 +63,11 @@ export default defineEventHandler(async (event) => {
         error: t('server.api.showcases.post.error.submission_exists')
       }
     }
+    logger.info('Initialized git storage backend')
   } else {
     const {public: {rootDir}} = useRuntimeConfig()
     storage = fs(rootDir)
+    logger.info('Initialized filesystem storage backend')
   }
 
   for (const {name, data} of body) {
