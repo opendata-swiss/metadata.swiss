@@ -131,5 +131,18 @@
                 "title": "Ulteriori informazioni"
             }
         }
+    },
+    "server": {
+        "api": {
+            "showcases": {
+                "post": {
+                    "error": {
+                        "submission_exists": "Esiste già una segnalazione con lo stesso titolo in tedesco.",
+                        "unspecified_error": "Si è verificato un errore imprevisto. Riprova più tardi."
+                    },
+                    "success": "La tua richiesta è stata ricevuta ed è in attesa di revisione."
+                }
+            }
+        }
     }
 }
