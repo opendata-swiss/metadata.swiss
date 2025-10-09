@@ -115,6 +115,13 @@ export default function (slug: string) {
           base: baseBranch,
         })
 
+        await octokit.issues.addLabels({
+          owner,
+          repo,
+          issue_number: pr.data.number,
+          labels: ['decap-cms/draft']
+        })
+
         logger.info(`Created pull request '${pr.data.issue_url}'`)
       } catch (error) {
         logger.error('Failed to create PR')
