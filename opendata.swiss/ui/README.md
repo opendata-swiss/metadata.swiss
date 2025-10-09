@@ -23,8 +23,8 @@ bun install
 And create a `.env`:
 
 ```bash
-PIVEAU_HUB_SEARCH_URL=https://piveau-hub-search-ln.zazukoians.org/
-PIVEAU_HUB_REPO_URL=https://piveau-hub-repo-ln.zazukoians.org/
+NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=https://piveau-hub-search-ln.zazukoians.org/
+NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=https://piveau-hub-repo-ln.zazukoians.org/
 GITHUB_OWNER=zazukoians
 GITHUB_REPO=metadata.swiss
 GITHUB_BASE_BRANCH=main
@@ -55,8 +55,8 @@ bun run dev
 
 Set the environment variables:
 
-- `PIVEAU_HUB_SEARCH_URL`
-- `PIVEAU_HUB_REPO_URL`
+- `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
+- `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
 - `GITHUB_APP_ID`
 - `GITHUB_APP_PRIVATE_KEY`
 - `GITHUB_APP_INSTALLATION_ID`

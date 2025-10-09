@@ -13,7 +13,7 @@ export const ACTIVE_FACETS = ['catalog', 'categories', 'publisher', 'format', 'l
  * Returns a piveau hub-search query definition for DCAT-AP datasets
  */
 export function useDatasetsSearch() {
-  const baseUrl = useRuntimeConfig().public.PIVEAU_HUB_SEARCH_URL as string
+  const baseUrl = useRuntimeConfig().public.piveauHubSearchUrl as string
 
   return defineHubSearch({
     baseUrl,

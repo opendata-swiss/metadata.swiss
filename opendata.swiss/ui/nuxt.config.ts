@@ -1,17 +1,15 @@
-import { resolve } from 'node:path'
-import * as path from "node:path";
+import * as path from 'node:path'
+import {resolve} from 'node:path'
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-
-const { PIVEAU_HUB_REPO_URL, PIVEAU_HUB_SEARCH_URL } = process.env
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       rootDir: __dirname,
-      PIVEAU_HUB_REPO_URL,
-      PIVEAU_HUB_SEARCH_URL
+      piveauHubRepoUrl: undefined,
+      piveauHubSearchUrl: undefined
     }
   },
   compatibilityDate: '2025-07-15',
