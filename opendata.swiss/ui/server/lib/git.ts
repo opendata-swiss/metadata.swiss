@@ -122,7 +122,7 @@ export default function (slug: string) {
           labels: ['decap-cms/draft']
         })
 
-        logger.info(`Created pull request '${pr.data.issue_url}'`)
+        logger.info(`Created pull request '${owner}/${repo}#${pr.data.number}'`)
       } catch (error) {
         logger.error('Failed to create PR')
         logger.error(error)
