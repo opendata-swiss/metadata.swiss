@@ -19,5 +19,7 @@ logs
 .fleet
 .idea
 
+.env
+
 # ignore images from uploads folder
 public/img/uploads/

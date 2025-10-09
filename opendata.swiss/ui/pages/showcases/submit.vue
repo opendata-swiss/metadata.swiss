@@ -12,11 +12,14 @@
         Failed to submit showcase.
 
         <pre>{{ submissionError }}</pre>
-        <ul>
+        <ul v-if="Array.isArray(submissionValidationIssues)">
           <li v-for="issue in submissionValidationIssues" :key="issue.path.join('-')">
             {{ issue.path.join('.')}}: {{ issue.message }}
           </li>
         </ul>
+        <p v-else>
+          {{ submissionValidationIssues.error }}
+        </p>
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
@@ -80,7 +83,18 @@
               <OdsTextarea id="body[en]" label="Body (EN)" placeholder="Description in English" required />
             </div>
             <div class="form__group">
-              <OdsButton submit variant="outline-negative" title="Submit" />
+              <OdsButton
+                submit
+                variant="outline-negative"
+                title="Submit"
+                icon-right
+                :style="submitting ? 'pointer-events: none; cursor: wait' : ''"
+              >
+                <template #icon>
+                  <SvgIcon v-if="submitting" icon="Spinner" class="btn__icon btn__icon--spin"  />
+                  <SvgIcon v-else icon="Checkmark" class="btn__icon"/>
+                </template>
+              </OdsButton>
             </div>
           </form>
         </ClientOnly>
@@ -102,6 +116,7 @@ import OdsButton from "../../app/components/OdsButton.vue";
 import OdsInput from "../../app/components/OdsInput.vue";
 import OdsSelect from "../../app/components/OdsSelect.vue";
 import OdsPage from "../../app/components/OdsPage.vue";
+import SvgIcon from "../../app/components/SvgIcon.vue";
 
 const { locale } = useI18n()
 
@@ -121,15 +136,21 @@ const dataThemes = computed(() => {
 
 useSeoMeta({title: 'New Showcase | opendata.swiss'})
 
+const submitting = ref(false)
 const success = ref<boolean | null>(null)
 const submissionError = ref<string | null>(null)
-const submissionValidationIssues = ref<ZodIssue[]>([])
+const submissionValidationIssues = ref<{ error: string } | ZodIssue[]>([])
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
 async function submit(e: Event) {
   e.preventDefault()
 
+  if (submitting.value) {
+    return
+  }
+
   try {
+    submitting.value = true
     const response = await fetch('/api/showcases', {
       method: 'POST',
       body: new FormData(newShowcaseForm.value!),
@@ -142,7 +163,7 @@ async function submit(e: Event) {
       if (newShowcaseForm.value) {
         newShowcaseForm.value.reset()
       }
-    } else if (response.status === 400) {
+    } else if (response.status === 400 || response.status === 409) {
       submissionError.value = 'Form contains invalid data:'
       submissionValidationIssues.value = await response.json()
       success.value = false
@@ -155,6 +176,7 @@ async function submit(e: Event) {
     success.value = false
   } finally {
     window.scrollTo({top: 0, behavior: 'smooth'})
+    submitting.value = false
   }
 }
 
@@ -190,3 +212,13 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
   loading(false)
 }, 300)
 </script>
+
+<style scoped>
+.btn__icon--spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
