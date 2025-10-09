@@ -10,7 +10,10 @@ function sourcesFor(include: string) {
   if(process.env.NODE_ENV === 'development') {
     // During development, include test sources
     sources.push({
-      include: `test/${include}`,
+      include: `.test/${include}`,
+    })
+    sources.push({
+      include: `.local/${include}`,
     })
   }
 
