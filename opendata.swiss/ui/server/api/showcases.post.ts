@@ -100,8 +100,8 @@ export default defineEventHandler(async (event) => {
         })
       })
       .with('image', () => {
-        const imagePath = `${imageRoot}/${showcase.slug}-image.jpg`
-        uploads.push(storage!.writeFile.bind(null, `public/${imagePath}`, data))
+        const imagePath = `/${imageRoot}/${showcase.slug}-image.jpg`
+        uploads.push(storage!.writeFile.bind(null, `public${imagePath}`, data))
         toAll(showcase, 'image', imagePath)
       })
       .with(P.string.startsWith('datasets'), () => {
