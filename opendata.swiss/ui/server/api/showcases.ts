@@ -2,8 +2,9 @@ import {remark} from 'remark'
 import strip from 'strip-markdown'
 import remarkFrontmatter from "remark-frontmatter";
 import {dcat, dcterms, rdfs, schema} from "@tpluscode/rdf-ns-builders";
+import type {ShowcasesCollectionItem} from "@nuxt/content";
 
-const stemPattern = /^showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
+const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
 interface AggregateShowcase {
   id: string
@@ -12,13 +13,12 @@ interface AggregateShowcase {
   image: string | undefined
   abstract: Record<string, string | undefined>
   categories: string[]
-  datasets: Array<{ id: string; label: string }>
+  datasets: Array<{ identifier: string; label: string }>
   text: Record<string, string | undefined>
   tag: string[]
 }
 
 const ldContext = {
-  '@base': 'https://example.org/',
   id: '@id',
   label: rdfs.label.value,
   categories: {
@@ -41,30 +41,33 @@ const ldContext = {
     '@id': schema.text.value,
     '@container': '@language',
   },
+  identifier: dcterms.identifier.value,
   image: schema.image.value,
   tag: dcat.keyword.value,
 };
 export default defineEventHandler(async (event) => {
-  const showcases = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image')
+  const showcases: ShowcasesCollectionItem[] = await queryCollection(event, 'showcases')
+    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags')
+    .where('active', '=', true)
     .all()
 
   const aggregatedShowcases = showcases.reduce(async (promise, showcase) => {
     const arr = await promise
 
     const { stem, lang } = showcase.stem.match(stemPattern)?.groups || {}
-    let aggregate = arr.find(({ id }) => id === stem)
+    const id = `showcase/${stem}`
+    let aggregate = arr.find((agg) => agg.id === id)
     if (!aggregate) {
       aggregate = {
-        id: stem,
+        id,
         '@type': 'Showcase',
         title: {},
         image: showcase.image,
         abstract: {},
         categories: showcase.categories || [],
-        datasets: showcase.datasets || [],
+        datasets: mapDatasets(showcase.datasets) || [],
         text: {},
-        tag: [],
+        tag: showcase.tags || [],
       }
       arr.push(aggregate)
     }
@@ -76,11 +79,23 @@ export default defineEventHandler(async (event) => {
     return arr
   }, Promise.resolve<AggregateShowcase[]>([]))
 
-  return {
-    '@context': ldContext,
+  return event.respondWith(new Response(JSON.stringify({
+    '@context': [
+      {'@base': 'http://localhost:3000/'},
+      ldContext
+    ],
     '@graph': await aggregatedShowcases
-  }
+  }), {
+    headers: { 'Content-Type': 'application/ld+json' }
+  }))
 })
+
+function mapDatasets(datasets: ShowcasesCollectionItem['datasets'] | undefined) {
+  return datasets?.map((ds) => ({
+    identifier: ds.id,
+    label: ds.label,
+  })) || []
+}
 
 async function stripMarkdown(md: string) {
   const stripped = await remark()

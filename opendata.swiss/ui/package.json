@@ -9,6 +9,8 @@
   "scripts": {
     "decap": "rimraf public/admin && (cd ../..; decap-server) & vite src/admin",
     "dev": "nuxt dev",
+    "api-tuner": "api-tuner --base-iri http://localhost:3000",
+    "test": "npm run api-tuner -- server/tests/*.n3",
     "prebuild": "vite build src/admin --emptyOutDir",
     "build": "nuxt build",
     "generate": "nuxt generate",
@@ -46,6 +48,8 @@
     "swiper": "^11.2.10",
     "ts-pattern": "^5.8.0",
     "uuid": "^11.1.0",
+    "vite-plugin-node-polyfills": "^0.24.0",
+    "vite-plugin-static-copy": "^3.1.1",
     "vue": "^3.5.17",
     "vue-i18n": "^11.1.10",
     "vue-router": "^4.5.1",
@@ -55,8 +59,7 @@
   },
   "devDependencies": {
     "@types/vue-select": "^3.16.8",
-    "decap-server": "^3.3.0",
-    "vite-plugin-node-polyfills": "^0.24.0",
-    "vite-plugin-static-copy": "^3.1.1"
+    "api-tuner": "^0.4.2",
+    "decap-server": "^3.3.0"
   }
 }

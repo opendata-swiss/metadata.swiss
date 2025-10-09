@@ -3,7 +3,8 @@ import * as fs from "node:fs/promises";
 export default function (rootDir: string) {
   return {
     writeFile(path: string, contents: string | Buffer) {
-      return fs.writeFile(`${rootDir}/${path}`, contents);
+      const localPath = path.replace('content', 'content/.local')
+      return fs.writeFile(`${rootDir}/${localPath}`, contents);
     },
 
     async finalize() {
