@@ -111,15 +111,21 @@ export default function (slug: string) {
         })
       } catch (error) {
         console.error(error)
+        return false
+      }
+
+      return true
+    },
+    async rollback() {
+      try {
         await octokit.git.deleteRef({
           owner,
           repo,
           ref: `heads/${prBranch}`,
         })
-        return false
+      } catch (e) {
+        console.log(e)
       }
-
-      return true
     }
   }
 }

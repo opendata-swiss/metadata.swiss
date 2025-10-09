@@ -121,19 +121,17 @@ export default defineEventHandler(async (event) => {
     return errors
   }
 
-  return (async () => {
-    const success = await save(showcase, uploads, storage)
-
-    if(success) {
-      return {
-        message: t('server.api.showcases.post.success')
-      };
-    }
-    event.node.res.statusCode = 500
+  if (await save(showcase, uploads, storage)) {
+    await storage.rollback?.()
     return {
-      error:  t('server.api.showcases.post.error.unspecified_error')
+      message: t('server.api.showcases.post.success')
     };
-  })()
+  }
+
+  event.node.res.statusCode = 500
+  return {
+    error:  t('server.api.showcases.post.error.unspecified_error')
+  };
 });
 
 async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, storage: ShowcaseStorage) {
