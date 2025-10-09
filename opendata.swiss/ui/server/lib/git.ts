@@ -20,7 +20,7 @@ export default function (slug: string) {
   const logger = console
 
   let baseSha: string;
-  const prBranch = `submitted-showcase/${slug}`;
+  const prBranch = `cms/Showcases/${slug}`;
 
   const owner = process.env.GITHUB_OWNER!
   const repo = process.env.GITHUB_REPO!
