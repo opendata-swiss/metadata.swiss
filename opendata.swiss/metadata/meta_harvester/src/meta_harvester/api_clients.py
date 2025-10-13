@@ -109,6 +109,7 @@ class CkanClient:
 class PiveauClient:
 
     HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
+    PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
     API_KEY = os.getenv("API_KEY_HUB", "yourRepoApiKey")
 
     def create_catalogue(self, name: str, metadata_file: str) -> None:
@@ -154,3 +155,22 @@ class PiveauClient:
         print(
             f"Successfully deleted catalogue '{name}'. Status: {response.status_code}"
         )
+
+    def trigger_pipe(self, pipe_name: str) -> None:
+        """
+        Triggers a specific pipe to run immediately.
+
+        Args:
+            pipe_name (str): The name of the pipe to trigger.
+        """
+
+
+        url = f"{self.PIVEAU_PIPES_ENDPOINT}/pipes/{pipe_name}/triggers/immediateTrigger"
+        headers = {"Content-Type": "application/json"}
+        payload = {"status": "enabled", "id": "immediateTrigger"}
+
+        session = requests_retry_session()
+        response = session.put(url, headers=headers, json=payload)
+        response.raise_for_status()
+
+        print(f"Successfully triggered pipe '{pipe_name}'. Status: {response.status_code}")

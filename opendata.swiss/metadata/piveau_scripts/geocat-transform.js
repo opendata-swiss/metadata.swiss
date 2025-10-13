@@ -369,12 +369,12 @@ function transforming(input) {
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    //console.log("Transformed output:");
-    //
-    //const { "@context": context, ...outputWithoutContext } = output;
-    //
-    //console.log(JSON.stringify(outputWithoutContext, null, 2));
+    console.log("Transformed output:");
 
-    console.log("Transformation completed successfully. Returning output.");
+    //const { "@context": context, ...outputWithoutContext } = output;
+//
+    //console.log(JSON.stringify(outputWithoutContext, null, 2));
+//
+    //console.log("Transformation completed successfully. Returning output.");
     return output
 }
