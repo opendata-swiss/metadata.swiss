@@ -91,5 +91,8 @@ export default defineNuxtConfig({
         normalizeIconName: false
       },
     ],
-  }
+  },
+  routeRules: {
+    "*/showcases/submit": { ssr: false },
+  },
 })

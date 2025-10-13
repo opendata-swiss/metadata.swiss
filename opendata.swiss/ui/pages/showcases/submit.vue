@@ -29,15 +29,14 @@
 
     <section class="section section--py">
       <div class="container">
-        <ClientOnly>
           <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
-            <div class="form__group__input">
+            <div class="form__group">
               <OdsInput id="title[de]" label="Title (DE)" placeholder="Titel auf Deutsch" required />
               <OdsInput id="title[fr]" label="Title (FR)" placeholder="Titre en Français" required />
               <OdsInput id="title[it]" label="Title (IT)" placeholder="Titolo in Italiano" required />
               <OdsInput id="title[en]" label="Title (EN)" placeholder="Title in English" required />
             </div>
-            <div class="form__group__input">
+            <div class="form__group">
               <OdsInput id="image" type="file" label="Image" accept="image/*" required />
             </div>
             <div class="form__group">
@@ -77,10 +76,10 @@
               </OdsMultiSelect>
             </div>
             <div class="form__group">
-              <OdsTextarea id="body[de]" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
-              <OdsTextarea id="body[fr]" label="Body (FR)" placeholder="Description en Français" required />
-              <OdsTextarea id="body[it]" label="Body (IT)" placeholder="Descrizione in Italiano" required />
-              <OdsTextarea id="body[en]" label="Body (EN)" placeholder="Description in English" required />
+              <ToastMarkdownEditor id="body[de]" label="Body (DE)" required />
+              <ToastMarkdownEditor id="body[fr]" label="Body (FR)" required />
+              <ToastMarkdownEditor id="body[it]" label="Body (IT)" required />
+              <ToastMarkdownEditor id="body[en]" label="Body (EN)" required />
             </div>
             <div class="form__group">
               <OdsButton
@@ -97,7 +96,6 @@
               </OdsButton>
             </div>
           </form>
-        </ClientOnly>
       </div>
     </section>
   </OdsPage>
@@ -117,6 +115,8 @@ import OdsInput from "../../app/components/OdsInput.vue";
 import OdsSelect from "../../app/components/OdsSelect.vue";
 import OdsPage from "../../app/components/OdsPage.vue";
 import SvgIcon from "../../app/components/SvgIcon.vue";
+import ToastMarkdownEditor from "../../app/components/ToastMarkdownEditor.vue";
+import OdsFormField from "../../app/components/OdsFormField.vue";
 
 const { locale } = useI18n()
 
