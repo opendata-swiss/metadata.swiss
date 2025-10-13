@@ -3,7 +3,7 @@ import Editor from '@toast-ui/editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import OdsFormField from "~/components/OdsFormField.vue";
 
-defineProps({
+const { autofocus } = defineProps({
   id: {
     type: String,
     default: ''
@@ -22,6 +22,10 @@ defineProps({
     required: false,
     default: '',
   },
+  autofocus: {
+    type: Boolean,
+    default: false
+  },
 });
 const emit = defineEmits(['update:modelValue']);
 const editor = ref();
@@ -34,6 +38,7 @@ onMounted(() => {
     height: '500px',
     initialEditType: 'wysiwyg',
     previewStyle: 'vertical',
+    autofocus,
     events: {
       change: () => {
         const markdown = e.getMarkdown();
