@@ -1,12 +1,5 @@
 <template>
-  <div class="form__group__select">
-    <label
-      v-if="label"
-      :for="getUniqueId('multi-select')"
-      :class="labelClasses"
-    >
-      {{ label }}
-    </label>
+  <OdsFormField :for="getUniqueId('multi-select')" :label="label" type="select" :required="required">
     <div :class="selectWrapperClasses">
       <VSelect
         :id="getUniqueId('multi-select')"
@@ -59,13 +52,14 @@
     >
       {{ message }}
     </div>
-  </div>
+  </OdsFormField>
 </template>
 
 <script setup lang="ts">
 import VSelect from 'vue-select'
 import { ref, computed, onMounted, h } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
+import OdsFormField from "~/components/OdsFormField.vue";
 
 const selectId = ref('')
 const selected = defineModel({

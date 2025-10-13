@@ -1,8 +1,5 @@
 <template>
-  <div class="form__group__input">
-    <label v-if="label" :for="id" :class="labelClasses">
-      {{ label }}
-    </label>
+  <OdsFormField :for="id" :label="label" :required="required">
     <textarea
       :id="id"
       :class="classes"
@@ -21,11 +18,12 @@
     >
       {{ message }}
     </div>
-  </div>
+  </OdsFormField>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
+import OdsFormField from "~/components/OdsFormField.vue";
 
 const props = defineProps({
   variant: {
@@ -96,14 +94,6 @@ const classes = computed(() => {
   if (props.size) base += `input--${props.size} `
   if (props.messageType) base += `input--${props.messageType} `
   if (!props.resizable) base += 'textarea--public'
-  return base
-})
-
-const labelClasses = computed(() => {
-  let base = ''
-  if (props.variant === 'negative') base += `text--negative `
-  if (props.size) base += `text--${props.size} `
-  if (props.required) base += `text--asterisk `
   return base
 })
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <div class="form__group__input">
-    <label v-if="label" :for="id" :class="labelClasses">
-      {{ label }}<span v-if="required" class="form__group__required" />
-    </label>
+  <OdsFormField :for="id" :label="label" :required="required">
     <input
       :id="id"
       :type="type"
@@ -27,11 +24,12 @@
     >
       {{ message }}
     </div>
-  </div>
+  </OdsFormField>
 </template>
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
+import OdsFormField from "~/components/OdsFormField.vue";
 
 const props = defineProps({
   type: {

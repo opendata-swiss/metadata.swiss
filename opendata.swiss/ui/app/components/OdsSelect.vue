@@ -1,8 +1,5 @@
 <template>
-  <div class="form__group__select">
-    <label v-if="label" :for="id" :class="labelClasses">
-      {{ label }}<span v-if="required" class="form__group__required" />
-    </label>
+  <OdsFormField type="select" :for="id" :label="label" :required="required">
     <div :class="selectWrapperClasses">
       <select
     :id="id"
@@ -29,11 +26,12 @@
     >
       {{ message }}
     </div>
-  </div>
+  </OdsFormField>
 </template>
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
+import OdsFormField from "~/components/OdsFormField.vue";
 
 const props = defineProps({
   modelValue: {
