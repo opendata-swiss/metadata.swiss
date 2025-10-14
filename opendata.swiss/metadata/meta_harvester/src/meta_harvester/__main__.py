@@ -36,6 +36,36 @@ def to_dict(value: Union[str, dict]) -> dict:
             return {}
     return {}
 
+def delete_catalogues(catalogue_names: list[str]):
+    """
+    Deletes one or more catalogues from the piveau-hub-repo.
+    """
+    piveau_client = PiveauClient()
+    for name in catalogue_names:
+        logger.info(f"Attempting to delete catalogue: {name}")
+        piveau_client.delete_catalogue(name=name)
+
+
+def create_catalogues(catalogue_names: list[str]):
+    """
+    Creates or recreates one or more catalogues in the piveau-hub-repo.
+    For each name, it derives the metadata file path from the CATALOGUES_PATH.
+    If a catalogue exists, it is deleted first.
+    """
+    piveau_client = PiveauClient()
+    for name in catalogue_names:
+        metadata_file = Path(CATALOGUES_PATH) / f"{name}.ttl"
+        if not metadata_file.is_file():
+            logger.error(
+                f"Metadata file for '{name}' not found at '{metadata_file}'. Skipping."
+            )
+            continue
+
+        logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
+
+        piveau_client.delete_catalogue(name=name)
+        piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
+
 
 def generate_pipe(
     id: str,
@@ -118,13 +148,30 @@ def generate_catalogue_metadata(
 
     return output_file
 
+def create_all_catalogues():
+    """
+    Creates/recreates all catalogues from the .ttl files found in the local directory.
+    """
+    catalogue_dir = Path(CATALOGUES_PATH)
+    if not catalogue_dir.is_dir():
+        logger.error(f"Catalogues directory not found: {CATALOGUES_PATH}")
+        return
+
+    catalogue_files = list(catalogue_dir.glob("*.ttl"))
+    if not catalogue_files:
+        logger.warning(f"No catalogue files (.ttl) found in '{CATALOGUES_PATH}'.")
+        return
+
+    logger.info(f"Found {len(catalogue_files)} catalogues to create/recreate.")
+    catalogue_names = [f.stem for f in catalogue_files]
+    create_catalogues(catalogue_names)
+
 def generate_pipes_and_catalogues():
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
     """
     ckan_client = CkanClient()
-    piveau_client = PiveauClient()
 
     try:
         ids = ckan_client.get_geoharvesters_ids()
@@ -159,7 +206,7 @@ def generate_pipes_and_catalogues():
         )
 
         organization = to_dict(details.get("organization", {}))
-        metadata_file = generate_catalogue_metadata(
+        generate_catalogue_metadata(
             catalogue_name=catalogue_name,
             org_titles=to_dict(organization.get("title", "{}")),
             org_descriptions=to_dict(organization.get("description", "{}")),
@@ -168,15 +215,15 @@ def generate_pipes_and_catalogues():
             homepage="https://example.com",
         )
 
-        piveau_client.create_catalogue(
-            name=catalogue_name, metadata_file=metadata_file
-        )
+        create_catalogues([catalogue_name])
 
 
 def run_pipes(pipe_names: list = None):
     """
     Triggers piveau pipes to run. If no names are provided,
     triggers all pipes found in the PIPES_PATH directory.
+
+
     """
     piveau_client = PiveauClient()
 
@@ -197,6 +244,43 @@ def run_pipes(pipe_names: list = None):
     for name in pipe_names:
         piveau_client.trigger_pipe(pipe_name=name)
 
+def generate_all_pipes():
+    """
+    Fetches all geoharvesters from CKAN and generates corresponding pipe files.
+    """
+    ckan_client = CkanClient()
+    try:
+        ids = ckan_client.get_geoharvesters_ids()
+        logger.info(f"Collected {len(ids)} geoharvester(s) from CKAN.")
+    except HTTPError as e:
+        logger.error(f"Failed to fetch harvester IDs from CKAN: {e}")
+        return
+
+    logger.info("Generating all pipe definition files...")
+    for id in ids:
+        try:
+            details = ckan_client.get_harvester_details_by_id(id)
+        except HTTPError as e:
+            if e.response.status_code == 403:
+                logger.warning(
+                    f"Access forbidden for harvester ID {id}. Omitting this pipe."
+                )
+            else:
+                logger.error(f"HTTP error for harvester ID {id}: {e}. Skipping.")
+            continue
+
+        url = details["url"].split("?")[0]
+        catalogue_name = details["name"].replace("-geocat-harvester", "")
+
+        generate_pipe(
+            id=id,
+            name=details["name"],
+            catalogue=catalogue_name,
+            title=details["title"],
+            http_client=url,
+        )
+    logger.info("Finished generating pipe files.")
+
 def main():
     # Load .env file for environment variables
     load_dotenv()
@@ -210,6 +294,14 @@ def main():
     )
     parser_generate.set_defaults(func=generate_pipes_and_catalogues)
 
+    parser_generate_pipes = subparsers.add_parser(
+        "generate-all-pipes", help="Generate all pipe definition files from CKAN."
+    )
+    parser_generate_pipes.set_defaults(func=generate_all_pipes)
+
+    # Sub-command for running pipes
+    parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
+
     # Sub-command for running pipes
     parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
     parser_run.add_argument(
@@ -219,11 +311,40 @@ def main():
     )
     parser_run.set_defaults(func=run_pipes)
 
+    parser_delete = subparsers.add_parser(
+        "delete-catalogues", help="Delete catalogues by name."
+    )
+    parser_delete.add_argument(
+        "names", nargs="+", help="A list of catalogue names to delete."
+    )
+    parser_delete.set_defaults(func=delete_catalogues)
+
+
+    parser_create = subparsers.add_parser(
+        "create-catalogues", help="Create or recreate catalogues from files."
+    )
+    parser_create.add_argument(
+        "names",
+        nargs="+",
+        help="A list of catalogue names to create. The script will look for a corresponding .ttl file.",
+    )
+    parser_create.add_argument(
+        "file", help="The path to the .ttl metadata file for the catalogue."
+    )
+    parser_create.set_defaults(func=create_catalogues)
+
+    parser_create_all = subparsers.add_parser(
+        "create-all-catalogues",
+        help="Create or recreate all catalogues from local .ttl files.",
+    )
+    parser_create_all.set_defaults(func=create_all_catalogues)
+
     args = parser.parse_args()
 
-    # Execute the function associated with the chosen command
     if args.command == "run-pipes":
         args.func(pipe_names=args.pipes)
+    elif args.command in ["delete-catalogues", "create-catalogues"]:
+        args.func(catalogue_names=args.names)
     else:
         args.func()
 

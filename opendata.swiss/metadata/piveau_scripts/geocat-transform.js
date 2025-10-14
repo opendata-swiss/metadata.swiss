@@ -247,6 +247,18 @@ function transforming(input) {
         }
     };
 
+    const languageMap = {
+        "ger": "de",
+        "fra": "fr",
+        "fre": "fr",
+        "ita": "it",
+        "eng": "en",
+        "de": "de",
+        "fr": "fr",
+        "it": "it",
+        "en": "en"
+    };
+
     // Required
     output["@type"] = "Dataset";
 
@@ -282,13 +294,13 @@ function transforming(input) {
         id = 0
     }
 
-    let record_language
+    let record_language;
     if (input["dc:language"]) {
-        if (input["dc:language"] === "ger") {
-            record_language = "de"
-        } else {
-            record_language = input["dc:language"];
+        const langCode = Array.isArray(input["dc:language"]) ? input["dc:language"][0] : input["dc:language"];
+        if (!(langCode in languageMap)) {
+            console.log(langCode + " not in language map, using as is.");
         }
+        record_language = languageMap[langCode] || langCode;
     } else {
         record_language = params.default_language;
     }
@@ -337,44 +349,51 @@ function transforming(input) {
         });
     }
 
-    const minLat = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[0]);
-    const minLon = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[1]);
-    const maxLat = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[0]);
-    const maxLon = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[1]);
+    console.log(id)
+    if (input["ows:BoundingBox"]) {
+        if (input["ows:BoundingBox"]["ows:LowerCorner"] && input["ows:BoundingBox"]["ows:UpperCorner"]) {
+            const minLat = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[0]);
+            const minLon = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[1]);
+            const maxLat = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[0]);
+            const maxLon = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[1]);
 
-    const geojson_points =
-        [
-            [minLon, minLat],
-            [maxLon, minLat],
-            [maxLon, maxLat],
-            [minLon, maxLat],
-            [minLon, minLat]
-        ]
+            const geojson_points =
+                [
+                    [minLon, minLat],
+                    [maxLon, minLat],
+                    [maxLon, maxLat],
+                    [minLon, maxLat],
+                    [minLon, minLat]
+                ]
 
 
-    output.spatial = {
-        "@type": "Location", "http://www.w3.org/ns/locn#geometry": [
-            {
-                "@value": `{\"type\": \"Polygon\", \"coordinates\": [${JSON.stringify(geojson_points)}]}`,
-                "@type": "https://replacement.io/assignments/media-types/application/vnd.geo+json"
-            }
-        ]
-    };
+            output.spatial = {
+                "@type": "Location", "http://www.w3.org/ns/locn#geometry": [
+                    {
+                        "@value": `{\"type\": \"Polygon\", \"coordinates\": [${JSON.stringify(geojson_points)}]}`,
+                        "@type": "https://replacement.io/assignments/media-types/application/vnd.geo+json"
+                    }
+                ]
+            };
+        }
+    }
 
     dist.language = record_language
-    output.issued = `${input["dct:modified"]}T00:00:00`;
-    output.modified = `${input["dct:modified"]}T00:00:00`;
+    if (input["dct:modified"]) {
+        output.issued = `${input["dct:modified"]}T00:00:00`;
+        output.modified = `${input["dct:modified"]}T00:00:00`;
+    }
 
     dist.mediaType = input["dc:format"];
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    console.log("Transformed output:");
-
+    //console.log("Transformed output:");
+    //
     //const { "@context": context, ...outputWithoutContext } = output;
-//
+    //
     //console.log(JSON.stringify(outputWithoutContext, null, 2));
-//
-    //console.log("Transformation completed successfully. Returning output.");
+
+    console.log("Transformation completed successfully. Returning output.");
     return output
 }

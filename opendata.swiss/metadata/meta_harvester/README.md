@@ -85,22 +85,18 @@ python -m meta_harvester run-pipes <pipe-name-1> <pipe-name-2> ...
 **Example:**
 
 ```bash
-python -m meta_harvester run-pipes aargau-geocat-harvester bs-geocat-harvester
+python -m meta_harvester run-pipes aargau-kt-geocat-harvester bs-geocat-harvester
 ```
 
 
 ## TODO:
 * test on scale - run all pipes
+* test cli commands
 
-* add cli command (within main.py) for:
-- creating all catalogues
-- creating all pipes
-- creating single catalogue
-- deleting all catalogues
-- deleting single catalogue
+*add cli command for creating catalogue AND providing a file (optional)
 
 * add unit tests
-* add publisher website ---> needs fetching it from organizations api (["result"]["url"]): https://ckan.opendata.swiss/api/3/action/organization_show?id=cnai
+* add publisher name and website ---> needs fetching it from organizations api (["result"]["url"]): https://ckan.opendata.swiss/api/3/action/organization_show?id=cnai
 
 * clean code - remove overwritten pipes and catalogues
 * clean code - logger instead of print
