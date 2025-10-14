@@ -166,7 +166,7 @@ def create_all_catalogues():
     catalogue_names = [f.stem for f in catalogue_files]
     create_catalogues(catalogue_names)
 
-def generate_pipes_and_catalogues():
+def generate_pipe_and_catalogue_files():
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
@@ -215,8 +215,6 @@ def generate_pipes_and_catalogues():
             homepage="https://example.com",
         )
 
-        create_catalogues([catalogue_name])
-
 
 def run_pipes(pipe_names: list = None):
     """
@@ -234,14 +232,14 @@ def run_pipes(pipe_names: list = None):
             logging.error(f"Pipes directory not found: {PIPES_PATH}")
             return
         # Get the name from the filename without the .yaml extension
-        pipe_names = [p.stem for p in pipe_dir.glob("*.yaml")]
+        pipe_names = sorted([p.stem for p in pipe_dir.glob("*.yaml")])
 
     if not pipe_names:
         logging.warning("No pipes found to trigger.")
         return
 
     logging.info(f"Triggering {len(pipe_names)} pipe(s)...")
-    for name in pipe_names:
+    for name in pipe_names[1:2]:
         piveau_client.trigger_pipe(pipe_name=name)
 
 def generate_all_pipes():
@@ -292,7 +290,7 @@ def main():
     parser_generate = subparsers.add_parser(
         "generate", help="Generate all pipes and catalogues from CKAN."
     )
-    parser_generate.set_defaults(func=generate_pipes_and_catalogues)
+    parser_generate.set_defaults(func=generate_pipe_and_catalogue_files)
 
     parser_generate_pipes = subparsers.add_parser(
         "generate-all-pipes", help="Generate all pipe definition files from CKAN."
@@ -302,8 +300,6 @@ def main():
     # Sub-command for running pipes
     parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
 
-    # Sub-command for running pipes
-    parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
     parser_run.add_argument(
         "pipes",
         nargs="*",

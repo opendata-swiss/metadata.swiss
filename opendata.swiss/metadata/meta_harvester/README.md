@@ -45,11 +45,9 @@ The script will automatically load these variables when executed.
 
 ## CLI Commands
 
+### `generate`
 
-
-### Generate catalogues and pipes
-
-Fetches all geoharvesters from the configured CKAN instance, generates the necessary configuration files, and uploads the catalogue metadata.
+Fetches all geoharvesters from the configured CKAN instance, generates the necessary pipe and catalogue files, and uploads the catalogue metadata to the hub.
 
 **Usage:**
 
@@ -57,41 +55,57 @@ Fetches all geoharvesters from the configured CKAN instance, generates the neces
 python -m meta_harvester generate
 ```
 
-Or, if you need to define environment variables:
+### `generate-all-pipes`
+
+Fetches all geoharvesters from CKAN and generates just the pipe definition files (e.g., `aargau-kt-geocat-harvester.yaml`) in the `piveau_pipes/` directory. This does not create or upload catalogue metadata.
+
+**Usage:**
+
 ```bash
-API_KEY_HUB=yourRepoApiKey HUB_REPO_ENDPOINT=http://localhost:8081 python -m meta_harvester
+python -m meta_harvester generate-all-pipes
 ```
 
-### Run pipes
+### `run-pipes`
 
 Triggers one or more piveau pipes to execute immediately.
 
 **Usage:**
-
-**1. Run all pipes:**
-If no specific pipe names are provided, the script will discover all `.yaml` files in the `piveau_pipes/` directory and trigger each one.
-
-```bash
-python -m meta_harvester run-pipes
-```
-
-**2. Run specific pipes:**
-You can provide a space-separated list of pipe names to trigger only those specific pipes.
-
-```bash
-python -m meta_harvester run-pipes <pipe-name-1> <pipe-name-2> ...
-```
-
-**Example:**
-
 ```bash
 python -m meta_harvester run-pipes aargau-kt-geocat-harvester bs-geocat-harvester
 ```
 
+### Catalogue Management
+
+#### `create-catalogues`
+Creates or recreates one or more catalogues in the piveau-hub. The command finds the corresponding `.ttl` file in the `piveau_catalogues/` directory based on the provided name.
+
+**Usage:**
+```bash
+python -m meta_harvester create-catalogues <name1> <name2> ...
+```
+
+#### `create-all-catalogues`
+Scans the `piveau_catalogues/` directory and creates or recreates every catalogue for which a `.ttl` file is found.
+
+**Usage:**
+```bash
+python -m meta_harvester create-all-catalogues
+```
+
+#### `delete-catalogues`
+Deletes one or more catalogues from the piveau-hub.
+
+**Usage:**
+```bash
+python -m meta_harvester delete-catalogues <name1> <name2> ...
+```
 
 ## TODO:
 * test on scale - run all pipes
 * test cli commands
+* add functionality: delete catalogues - delete all catalogues in piveau
+* add functionality: load catalogue, and execute pipe -> for 1x and for all
+
 
 *add cli command for creating catalogue AND providing a file (optional)
 
