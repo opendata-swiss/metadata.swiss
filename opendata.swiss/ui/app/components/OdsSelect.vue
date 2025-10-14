@@ -104,15 +104,6 @@ const selectClasses = computed(() => {
   return base
 })
 
-const labelClasses = computed(() => {
-  let base = ''
-  if (props.variant === 'negative') base += `text--negative `
-  if (props.size) base += `text--${props.size} `
-  if (props.hideLabel) base += `sr-only `
-  if (props.required) base += `text--asterisk `
-  return base
-})
-
 const handleChange = function (e: Event) {
   const el = e.target as HTMLSelectElement
   props.onSelect(el.value)
