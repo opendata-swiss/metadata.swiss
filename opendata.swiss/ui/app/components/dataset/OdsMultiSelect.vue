@@ -171,25 +171,6 @@ const selectClasses = computed(() => {
   return classes.join(' ')
 })
 
-const labelClasses = computed(() => {
-  const classes = []
-
-  if (props.variant === 'negative') {
-    classes.push('text--negative')
-  }
-  if (props.size) {
-    classes.push(`text--${props.size}`)
-  }
-  if (props.hideLabel) {
-    classes.push('sr-only')
-  }
-  if (props.required) {
-    classes.push('text--asterisk')
-  }
-
-  return classes.join(' ')
-})
-
 const getUniqueId = function (text = '') {
   return `${text}-${selectId.value}`
 }
