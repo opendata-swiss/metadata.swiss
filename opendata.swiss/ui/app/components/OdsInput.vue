@@ -141,13 +141,4 @@ const classes = computed(() => {
   if (props.type === 'submit') base += 'input--submit'
   return base
 })
-
-const labelClasses = computed(() => {
-  let base = ''
-  if (props.variant === 'negative') base += `text--negative `
-  if (props.size) base += `text--${props.size} `
-  if (props.hideLabel) base += `sr-only `
-  if (props.required) base += `text--asterisk `
-  return base
-})
 </script>
