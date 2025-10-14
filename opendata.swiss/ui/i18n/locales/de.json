@@ -59,7 +59,8 @@
             "details": "Details",
             "released": "Veröffentlicht",
             "metadata_download": "Metadaten herunterladen",
-            "metadata": "Metadaten"
+            "metadata": "Metadaten",
+            "keywords": "Schlagwörter"
         },
         "showcase": {
             "type": {

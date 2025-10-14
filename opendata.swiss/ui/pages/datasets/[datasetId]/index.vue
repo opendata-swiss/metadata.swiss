@@ -154,10 +154,16 @@ await suspense()
 
             <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
             <OdsDetailsTable :table-entries="dataset.propertyTable"/>
-            <div>
+            <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
                <h2 class="h2">{{ t('message.dataset_detail.categories') }}</h2>
                <div>
-                  <OdsTagList :tags="resultEnhanced?.getCategories ?? []" />
+                  <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
+               </div>
+            </div>
+            <div v-if="dataset.keywords.length > 0">
+               <h2 class="h2">{{ t('message.dataset_detail.keywords') }}</h2>
+               <div>
+                  <OdsTagList :tags="dataset.keywords" />
                </div>
             </div>
             <div v-if="dataset.catalog" >
@@ -187,6 +193,7 @@ await suspense()
    </section>
   </main>
 </div>
+
 
 </template>
 

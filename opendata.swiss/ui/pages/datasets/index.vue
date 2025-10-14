@@ -20,7 +20,7 @@ import SvgIcon from "../../app/components/SvgIcon.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
 import { useSeoMeta } from 'nuxt/app';
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
-
+import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
 const { t, locale} = useI18n()
 
 const router = useRouter()
@@ -114,6 +114,16 @@ const {
   queryParams: toRefs(piveauQueryParams),
   selectedFacets: facetRefs,
 })
+
+
+const datasets = computed(() => {
+  const result = getSearchResultsEnhanced.value;
+  if (!result) {
+    return [];
+  }
+  return getSearchResultsEnhanced.value.map(item => new DcatApChV2DatasetAdapter(item))
+})
+
 
 const { suspense } = query
 
@@ -349,7 +359,7 @@ await suspense()
            <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
             </div>-->
-            <OdsDatasetList :items="getSearchResultsEnhanced" :list-type="listType" :search-params="route.query" />
+            <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
             <div class="pagination pagination--right">
               <OdsPagination
                 :current-page="(Number(route.query.page  ?? 1) )"
@@ -387,6 +397,7 @@ await suspense()
          </div>
       </div>
    </section>
+   <pre>{{ getSearchResultsEnhanced }}</pre>
 </main>
 
 </div>
