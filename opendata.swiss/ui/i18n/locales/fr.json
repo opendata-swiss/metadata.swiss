@@ -60,7 +60,8 @@
             "details": "Détails",
             "released": "Publié",
             "metadata_download": "Télécharger les métadonnées",
-            "metadata": "Métadonnées"
+            "metadata": "Métadonnées",
+            "keywords": "Mots-clés"
         },
         "showcase": {
             "type": {
