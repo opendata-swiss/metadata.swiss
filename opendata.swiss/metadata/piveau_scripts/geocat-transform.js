@@ -263,21 +263,6 @@ function transforming(input) {
     output["@type"] = "Dataset";
 
 
-    output.title = [
-        {
-            "@value": input["dc:title"],
-            "@language": params.defaultLanguage
-        }
-    ];
-
-    output.description = [
-        {
-            "@value": input["dc:description"],
-            "@language": params.defaultLanguage
-        }
-    ];
-
-
     output.publisher = {
         "@type": "Agent",
         "name": "Stadt Winterthur",
@@ -315,21 +300,38 @@ function transforming(input) {
     let dist = {
         "@type": "Distribution",
         "identifier": id,
-        "description": [{
-            "@value": input.description,
-            "@language": record_language
-        }],
-        "title": [
-            {
-                "@value": input.title,
-                "@language": record_language
-            }
-        ],
         "format": [{
             "@id": encodeURI("http://publications.europa.eu/input/authority/file-type/" + format)
         }],
 
     };
+
+    if (input["dc:title"]) {
+        output.title = [
+        {
+            "@value": input["dc:title"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.title = output.title;
+
+    }
+
+    if (input["dc:description"]) {
+        output.description = [
+        {
+            "@value": input["dc:description"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.description = output.description;
+
+    } else if (input["dc:abstract"]) {
+        output.description = [
+        {
+            "@value": input["dc:abstract"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.description = output.description;
+    }
 
     if (input["dc:URI"]) {
         if (!Array.isArray(input["dc:URI"])) {
@@ -342,14 +344,19 @@ function transforming(input) {
 
     }
     output.keyword = [];
-    for (const tag of input["dc:subject"]) {
-        output.keyword.push({
-            "@value": tag,
-            "@language": record_language
-        });
+    if (input["dc:subject"]) {
+        const subjects = Array.isArray(input["dc:subject"]) ? input["dc:subject"] : [input["dc:subject"]];
+
+        for (const tag of subjects) {
+            if (typeof tag === 'string' && tag.trim()) {
+                output.keyword.push({
+                    "@value": tag,
+                    "@language": record_language
+                });
+            }
+        }
     }
 
-    console.log(id)
     if (input["ows:BoundingBox"]) {
         if (input["ows:BoundingBox"]["ows:LowerCorner"] && input["ows:BoundingBox"]["ows:UpperCorner"]) {
             const minLat = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[0]);
@@ -388,11 +395,11 @@ function transforming(input) {
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    console.log("Transformed output:");
-
-    const { "@context": context, ...outputWithoutContext } = output;
-
-    console.log(JSON.stringify(outputWithoutContext, null, 2));
+    //console.log("Transformed output:");
+//
+    //const { "@context": context, ...outputWithoutContext } = output;
+//
+    //console.log(JSON.stringify(outputWithoutContext, null, 2));
 
     console.log("Transformation completed successfully. Returning output.");
     return output

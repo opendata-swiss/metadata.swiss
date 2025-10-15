@@ -63,7 +63,9 @@ def create_catalogues(catalogue_names: list[str]):
 
         logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
 
-        piveau_client.delete_catalogue(name=name)
+
+        # TODO: check if catalogue exists
+        # piveau_client.delete_catalogue(name=name)
         piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
 
 
@@ -239,7 +241,7 @@ def run_pipes(pipe_names: list = None):
         return
 
     logging.info(f"Triggering {len(pipe_names)} pipe(s)...")
-    for name in pipe_names[1:2]:
+    for name in pipe_names[2:5]:
         piveau_client.trigger_pipe(pipe_name=name)
 
 def generate_all_pipes():
