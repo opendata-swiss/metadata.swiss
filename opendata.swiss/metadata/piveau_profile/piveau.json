@@ -1,0 +1,51 @@
+{
+  "version": "1",
+  "id": "opendata-swiss",
+  "core": [
+    {
+      "id": "dataset",
+      "description": "A representation of a dataset",
+      "path": "dcat-ap-ch.hub.shapes.ttl",
+      "name": "dataset",
+      "shapeUri": "http://data.europa.eu/r5r/Dataset_Shape"
+    },
+    {
+      "id": "catalog",
+      "description": "A representation of a catalogue",
+      "path": "dcat-ap-ch.hub.shapes.ttl",
+      "name": "catalog",
+      "shapeUri": "http://data.europa.eu/r5r/Catalog_Shape"
+    }
+  ],
+  "resources": [
+    {
+      "id": "showcase",
+      "description": "A representation of a showcase",
+      "path": "showcase.hub.shapes.ttl",
+      "name": "showcase",
+      "inCatalogue": true,
+      "typeUri":  "https://example.org/Showcase",
+      "shapeUri": "https://example.org/Showcase_Shape",
+      "searchSettings": {
+        "max_agg_size": 50,
+        "max_result_window": 10000,
+        "facets": [
+            {
+              "name": "categories",
+              "title": "Categories",
+              "path": "categories"
+            }, {
+              "name": "keywords",
+              "title": "Keywords",
+              "path": "keywords"
+            }, {
+              "name": "type",
+              "title": "Type",
+              "path": "type"
+            }
+        ],
+        "searchParams": []
+      }
+    }
+  ]
+}

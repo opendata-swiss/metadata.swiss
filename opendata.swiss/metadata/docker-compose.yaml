@@ -14,6 +14,9 @@ services:
       - 5002:5000
     environment:
       - OTEL_SDK_DISABLED=true
+      - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
+      - PIVEAU_PROFILE=${PIVEAU_PROFILE}
+      - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
@@ -21,6 +24,8 @@ services:
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - JAVA_OPTS=-Xms1g -Xmx2g
+    volumes:
+      - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
     image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.2.2
@@ -31,15 +36,21 @@ services:
     ports:
       - 8084:8080
       - 8086:8081
+      - 5003:5000
     depends_on:
       elasticsearch:
         condition: service_healthy
     environment:
       - OTEL_SDK_DISABLED=true
+      - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
+      - PIVEAU_PROFILE=${PIVEAU_PROFILE}
       - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
+      - PIVEAU_HUB_SEARCH_CLI_CONFIG={"http":{},"telnet":{}}
       - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms1g -Xmx2g
+    volumes:
+      - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-ui:
     image: registry.gitlab.com/piveau/hub/piveau-hub-ui:v1.16.6
