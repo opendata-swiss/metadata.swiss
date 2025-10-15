@@ -208,3 +208,10 @@ services:
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
     volumes:
       - ./piveau_pipes:/usr/verticles/pipes
+
+
+  piveau-consus-patching:
+    image: piveau-consus-patching
+    logging:
+      options:
+        max-size: "50m"
