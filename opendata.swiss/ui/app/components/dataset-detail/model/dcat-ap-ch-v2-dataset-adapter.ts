@@ -38,7 +38,7 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the title (see 2.3 Multilingualism).
    */
   get title(): string {
-    return this.#dataset?.getTitle ?? this.id;
+    return this.#dataset.getTitle ?? this.id;
   }
 
   /**
@@ -57,7 +57,7 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the description (see 2.3 Multilingualism). On the user interface of data portals, the content of the element whose language corresponds to the display language selected by the user is displayed.
    */
   get description(): string | undefined {
-    return (this.#dataset?.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim();
+    return (this.#dataset.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim();
   }
 
   /**
