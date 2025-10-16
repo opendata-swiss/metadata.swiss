@@ -1,3 +1,6 @@
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX piveau: <https://piveau.eu/ns/voc#>
 PREFIX theme: <http://voc.odw.tw/theme/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -39,6 +42,44 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> dcat:theme theme:SOCI, theme:REGI.
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#types>
+  a earl:TestCase ;
+  rdfs:label "RDF types are correct" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+        ?body log:includes {
+          </showcase/showcase> a dcat:Dataset .
+        }
+    } tuner:assertThat "Showcase must have type dcat:Dataset" .
+
+    {
+        ?body log:includes {
+          </showcase/showcase> a piveau:CustomResource .
+        }
+    } tuner:assertThat "Showcase must have type piveau:CustomResource" .
+  } ;
+.
+
+<#identifier>
+  a earl:TestCase ;
+  rdfs:label "Sets slug as dcterms:identifier" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:identifier "showcase" .
       } .
     }!tuner:assertThat .
   } ;
