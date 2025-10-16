@@ -1,0 +1,119 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix ex: <https://example.org/> .
+
+_:languages
+    rdf:first "de" ;
+    rdf:rest ( "en" "fr" "it" ) ;
+.
+
+ex:Showcase_Shape a sh:NodeShape ;
+    sh:targetClass ex:Showcase ;
+    sh:name "Showcase"@en ;
+    sh:property [
+          sh:maxCount 1 ;
+          pv:mappingClass "StandardText" ;
+          pv:mappingName "id"
+      ], [
+          sh:maxCount 1 ;
+          pv:mappingClass "Nested" ;
+          pv:mappingName "catalog" ;
+          pv:mappingProperty [
+                          sh:minCount 1 ;
+                          sh:maxCount 1 ;
+                          pv:mappingClass "StandardText" ;
+                          pv:mappingName "id"
+                      ]
+      ], [
+          sh:maxCount 1 ;
+          pv:mappingClass "Nested" ;
+          pv:mappingName "catalog_record" ;
+          pv:mappingProperty [
+                          sh:maxCount 1 ;
+                          pv:mappingClass "DateTime" ;
+                          pv:mappingName "issued"
+                      ], [
+                          sh:maxCount 1 ;
+                          pv:mappingClass "DateTime" ;
+                          pv:mappingName "modified"
+                      ]
+      ], [
+          sh:minCount 1 ;
+          sh:maxCount 4 ;
+          sh:uniqueLang true ;
+          sh:languageIn _:languages ;
+          sh:nodeKind sh:Literal ;
+          sh:path schema:text ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "SimpleMultiLangTitle" ;
+          pv:mappingName "text"
+      ], [
+          sh:minCount 1 ;
+          sh:maxCount 4 ;
+          sh:uniqueLang true ;
+          sh:languageIn _:languages ;
+          sh:nodeKind sh:Literal ;
+          sh:path dct:abstract ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "SimpleMultiLangTitle" ;
+          pv:mappingName "abstract"
+      ], [
+          sh:minCount 4 ;
+          sh:maxCount 4 ;
+          sh:uniqueLang true ;
+          sh:languageIn _:languages ;
+          sh:nodeKind sh:Literal ;
+          sh:path dct:title ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "SimpleMultiLangTitle" ;
+          pv:mappingName "title"
+      ], [
+          sh:maxCount 1 ;
+          sh:minCount 1 ;
+          sh:path dcat:contactPoint ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Agent" ;
+          pv:mappingName "publisher"
+      ], [
+          sh:path dcat:landingPage ;
+          sh:maxCount 1 ;
+          sh:nodeKind sh:IRI ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Page" ;
+          pv:mappingName "website"
+      ], [
+          sh:path schema:image ;
+          sh:nodeKind sh:IRI ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "StandardDisabled" ;
+          pv:mappingName "image"
+      ], [
+          sh:path dct:references ;
+          sh:nodeKind sh:IRI ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "references" ;
+      ], [
+          sh:path dcat:theme ;
+          sh:nodeKind sh:IRI ;
+          pv:mappingClass "Theme" ;
+          pv:mappingName "categories"
+      ], [
+          sh:path dct:type ;
+          sh:minCount 1 ;
+          sh:maxCount 1 ;
+          sh:nodeKind sh:IRI ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "type" ;
+      ], [
+          sh:nodeKind sh:Literal ;
+          sh:path dcat:keyword ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Keywords" ;
+          pv:mappingName "keywords"
+      ]
+      .
