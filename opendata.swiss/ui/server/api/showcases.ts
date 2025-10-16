@@ -8,6 +8,7 @@ const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
 interface AggregateShowcase {
   id: string
+  identifier: string
   '@type': string[]
   title: Record<string, string | undefined>
   image: string | undefined
@@ -62,6 +63,7 @@ export default defineEventHandler(async (event) => {
     if (!aggregate) {
       aggregate = {
         id,
+        identifier: stem,
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         title: {},
         image: showcase.image,

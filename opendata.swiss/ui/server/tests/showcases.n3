@@ -85,6 +85,22 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
   } ;
 .
 
+<#identifier>
+  a earl:TestCase ;
+  rdfs:label "Sets slug as dcterms:identifier" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:identifier "showcase" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
 <#datasets>
   a earl:TestCase ;
   rdfs:label "Datasets are exported" ;
