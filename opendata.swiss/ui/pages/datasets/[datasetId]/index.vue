@@ -46,6 +46,16 @@ const breadcrumbs = computed(() => {
   if (import.meta.client) {
     const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId);
     if (storedBreadcrumbs) {
+      storedBreadcrumbs[0].title = t('message.header.navigation.datasets');
+      if(storedBreadcrumbs.length === 4) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = t('message.dataset_search.search_results');
+        storedBreadcrumbs[3].title = dataset.value?.title ?? '';
+      } else if(storedBreadcrumbs.length === 3) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = dataset.value?.title ?? '';
+      }
+      storeDatasetBreadcrumbInSessionStorage(datasetId, storedBreadcrumbs);
       return storedBreadcrumbs;
     }
   }
