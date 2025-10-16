@@ -1,6 +1,7 @@
 @prefix dcat:   <http://www.w3.org/ns/dcat#> .
 @prefix dct:    <http://purl.org/dc/terms/> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix publishertype: <http://purl.org/adms/publishertype/> .
 
 <https://opendata.swiss/id/catalogue/showcases-ods>
     a dcat:Catalog ;
@@ -17,7 +18,7 @@
 
     dct:publisher [ 
         a foaf:Agent ;
-        dct:type       <http://purl.org/adms/publishertype/NationalAuthority> ;
+        dct:type publishertype:NationalAuthority ;
         foaf:homepage  <https://www.bfs.admin.ch> ;
         foaf:mbox      <mailto:opendata@bfs.admin.ch> ;
         foaf:name      "Federal Statistical Office"@en ;
