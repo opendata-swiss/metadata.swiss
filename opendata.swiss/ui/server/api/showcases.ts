@@ -8,7 +8,7 @@ const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
 interface AggregateShowcase {
   id: string
-  '@type': 'Showcase'
+  '@type': string[]
   title: Record<string, string | undefined>
   image: string | undefined
   abstract: Record<string, string | undefined>
@@ -44,6 +44,8 @@ const ldContext = {
   identifier: dcterms.identifier.value,
   image: schema.image.value,
   tag: dcat.keyword.value,
+  Dataset: dcat.Dataset.value,
+  piveau: 'https://piveau.eu/ns/voc#'
 };
 export default defineEventHandler(async (event) => {
   const showcases: ShowcasesCollectionItem[] = await queryCollection(event, 'showcases')
@@ -60,7 +62,7 @@ export default defineEventHandler(async (event) => {
     if (!aggregate) {
       aggregate = {
         id,
-        '@type': 'Showcase',
+        '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         title: {},
         image: showcase.image,
         abstract: {},
@@ -97,7 +99,11 @@ function mapDatasets(datasets: ShowcasesCollectionItem['datasets'] | undefined) 
   })) || []
 }
 
-async function stripMarkdown(md: string) {
+async function stripMarkdown(md: string | undefined) {
+  if (!md) {
+    return ''
+  }
+
   const stripped = await remark()
     .use(strip)
     .use(remarkFrontmatter)
