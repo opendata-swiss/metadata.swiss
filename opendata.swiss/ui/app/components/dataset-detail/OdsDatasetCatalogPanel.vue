@@ -8,7 +8,7 @@
         v-if="props.dataset.catalog.issued"
         class="meta-info__item"
       >
-        {{ t('message.dataset_detail.created_on') }}
+        {{ t('message.dataset_detail.released') }}
         <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.issued)" />
       </span>
       <span
@@ -28,7 +28,7 @@
         v-if="props.dataset.catalog.record?.issued"
         class="meta-info__item"
       >
-        {{ t('message.dataset_detail.created_on') }}
+        {{ t('message.dataset_detail.released') }}
          <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.record.issued)" />
       </span>
       <span

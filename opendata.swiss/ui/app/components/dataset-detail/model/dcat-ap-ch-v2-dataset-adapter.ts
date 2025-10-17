@@ -141,15 +141,15 @@ export class DcatApChV2DatasetAdapter {
 
   }
 
-  get getLicenses(): string[] {
-    return this.#dataset?.getLicenses ?? [];
-  }
   /**
    * Get the licenses of the dataset.
    *
+   * In DCAP-AP-CH a dataset has no license, but its distributions have. However, in piveau the dataset
+   * has a getLicenses property that aggregates the licenses of its distributions.
+   *
    */
   get licenses(): string[] {
-    return this.#dataset?.getLicenses ?? [];
+    return this.#dataset.getLicenses ?? [];
   }
 
   /**
