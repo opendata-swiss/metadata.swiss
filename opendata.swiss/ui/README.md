@@ -20,16 +20,19 @@ yarn install
 bun install
 ```
 
-And create a `.env`:
+Optionally, create a `.env`:
 
 ```bash
-NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=https://piveau-hub-search-ln.zazukoians.org/
-NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=https://piveau-hub-repo-ln.zazukoians.org/
+NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=
+NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=
 GITHUB_OWNER=zazukoians
 GITHUB_REPO=metadata.swiss
 GITHUB_BASE_BRANCH=main
 GITHUB_TOKEN=
 ```
+
+The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance. 
+By default, `https://piveau-hub-repo-ln.zazukoians.org` is used.
 
 The personal access token requires contents and pull request permissions.
 
