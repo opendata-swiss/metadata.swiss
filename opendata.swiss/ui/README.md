@@ -32,7 +32,7 @@ GITHUB_TOKEN=
 ```
 
 The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance. 
-By default, `https://piveau-hub-repo-ln.zazukoians.org` is used
+By default, `https://piveau-hub-repo-ln.zazukoians.org` is used.
 
 The personal access token requires contents and pull request permissions.
 
