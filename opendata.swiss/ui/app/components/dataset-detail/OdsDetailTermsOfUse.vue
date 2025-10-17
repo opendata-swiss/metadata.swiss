@@ -21,12 +21,11 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  }
-})
+interface Props {
+  name: string
+}
+
+const props = defineProps<Props>()
 
 const termsName = computed(() => {
   const name = props.name;

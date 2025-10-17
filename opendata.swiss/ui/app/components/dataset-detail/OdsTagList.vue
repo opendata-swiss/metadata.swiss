@@ -16,12 +16,11 @@
 import type { TagItem } from '../OdsTagItem.vue';
 import OdsTagItem from '../OdsTagItem.vue';
 
-const props = defineProps({
-  tags: {
-    type: Array as PropType<TagItem[]>,
-    required: true
-  }
-});
+interface Props {
+  tags: TagItem[];
+}
+
+const props = defineProps<Props>();
 
 </script>
 

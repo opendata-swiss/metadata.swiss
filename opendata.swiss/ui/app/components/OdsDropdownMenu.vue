@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, type PropType } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 import OdsButton from './OdsButton.vue';
@@ -7,22 +7,13 @@ import SvgIcon from './SvgIcon.vue';
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item';
 import { NuxtLinkLocale } from '#components';
 
-const props = defineProps({
-  label: {
-    type: String,
-    required: true
-  },
-  menu: {
-    type: Object as PropType<OdsNavTabItem>,
-    required: true
-  },
-  class: {
-    type: String,
-    required: false,
-    default: ''
-  },
+interface OdsDropdownMenuProps {
+  label: string
+  menu: OdsNavTabItem
+  class?: string
+}
 
-});
+const props = defineProps<OdsDropdownMenuProps>()
 
 const { t } = useI18n()
 const isOpen = ref(false)

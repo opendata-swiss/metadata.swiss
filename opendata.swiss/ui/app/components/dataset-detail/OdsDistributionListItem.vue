@@ -36,12 +36,11 @@ import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
 
 const { t } = useI18n();
 
-const props = defineProps({
-  distribution: {
-    type: Object as PropType<DcatApChV2DistributionAdapter>,
-    required: true
-  }
-})
+interface DistributionProps {
+  distribution: DcatApChV2DistributionAdapter;
+}
+
+const props = defineProps<DistributionProps>();
 
 </script>
 

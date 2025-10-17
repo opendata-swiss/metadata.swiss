@@ -19,8 +19,14 @@ function updateActiveHeading() {
   if (!h2s.length) return;
   const centerOffset = -100; // px, adjust for later switching
   const viewportCenter = window.scrollY + window.innerHeight / 2 + centerOffset;
-  let closestId = h2s[0].id;
-  let minDist = Math.abs(h2s[0].getBoundingClientRect().top + window.scrollY - viewportCenter);
+
+  const closestH2 = h2s[0];
+  if (!closestH2) {
+    activeHeadingId.value = null;
+    return;
+  }
+  let closestId = closestH2.id;
+  let minDist = Math.abs(closestH2.getBoundingClientRect().top + window.scrollY - viewportCenter);
   for (const h2 of h2s) {
     const rect = h2.getBoundingClientRect();
     const h2Center = rect.top + window.scrollY + rect.height / 2;
