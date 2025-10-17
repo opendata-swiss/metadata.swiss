@@ -49,12 +49,11 @@ import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
 
 const { t } = useI18n()
 
-const props = defineProps({
-  dataset: {
-    type: Object as PropType<DcatApChV2DatasetAdapter>,
-    required: true
-  }
-})
+interface PanelProps {
+  dataset: DcatApChV2DatasetAdapter
+}
+
+const props = defineProps<PanelProps>()
 
 </script>
 
