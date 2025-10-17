@@ -71,7 +71,34 @@
             "tags": "Tags",
             "submitted_by": "Submitted by",
             "externalLink": "External Link",
-            "open": "Open website"
+            "open": "Open website",
+            "submission_form": {
+                "group_italian": "Italian",
+                "group_french": "French",
+                "group_german": "German",
+                "group_english": "English",
+                "group_general": "General",
+                "success_message": "The showcase has been submitted.",
+                "failure_message": "Showcase submission failed.",
+                "field_title": "Title",
+                "field_body": "Description",
+                "field_url": "Website",
+                "field_type": "Type of content",
+                "field_image": "Image",
+                "field_tags": {
+                    "label": "Tags",
+                    "prompt": "Enter tags separated by commas"
+                },
+                "field_categories": {
+                    "label": "Categories",
+                    "prompt": "Select one or more categories"
+                },
+                "field_datasets": {
+                    "label": "Datasets",
+                    "prompt": "Type to search for datasets..."
+                },
+                "submit_button": "Submit"
+            }
         },
         "terms_of_use": {
             "ods_open": {
