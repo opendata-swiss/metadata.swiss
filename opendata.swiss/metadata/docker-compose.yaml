@@ -13,7 +13,9 @@ services:
       - 8085:8085
       - 5002:5000
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-hub-repo
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
@@ -40,7 +42,9 @@ services:
       elasticsearch:
         condition: service_healthy
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-hub-search
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
       - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
@@ -159,7 +163,9 @@ services:
       options:
         max-size: "50m"
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-importing-rdf
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx500m
 
@@ -169,7 +175,9 @@ services:
       options:
         max-size: "50m"
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-importing-ckan
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - JAVA_OPTS=-Xms100m -Xmx200m
 
   piveau-consus-transforming-js:
@@ -178,7 +186,9 @@ services:
       options:
         max-size: "50m"
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-transforming-js
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - JAVA_OPTS=-Xms200m -Xmx500m
     volumes:
       - ./piveau_scripts:/usr/verticles/scripts
@@ -189,7 +199,9 @@ services:
       options:
         max-size: "50m"
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-exporting-hub
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx1g
       - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
@@ -204,9 +216,77 @@ services:
       - "8095:8085"
       - "5001:5000" # Just make it also work for macOS
     environment:
-      - OTEL_SDK_DISABLED=true
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-scheduling
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms100m -Xmx200m
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
     volumes:
       - ./piveau_pipes:/usr/verticles/pipes
+
+  #################
+  # OpenTelemetry #
+  #################
+  jaeger:
+    image: docker.io/jaegertracing/all-in-one:1.74.0
+    healthcheck:
+      test: ["CMD-SHELL", "wget -nv -t1 --spider localhost:14269/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+
+  collector:
+    image: docker.io/otel/opentelemetry-collector-contrib:0.137.0
+    command: >-
+      --config=/collector.yaml
+    depends_on:
+      jaeger:
+        condition: service_healthy
+    volumes:
+      - ./config/collector.yaml:/collector.yaml:ro
+
+  prometheus:
+    image: docker.io/prom/prometheus:v3.7.1
+    command: >-
+      --config.file=/prometheus.yaml
+      --web.enable-lifecycle
+    depends_on:
+      - collector
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -nv -t1 --spider localhost:9090/-/healthy || exit 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ./config/prometheus.yaml:/prometheus.yaml:ro
+    ports:
+      - 9090:9090
+
+  grafana:
+    image: docker.io/grafana/grafana:12.2.0
+    ports:
+      - 3000:3000
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_AUTH_DISABLE_LOGIN_FORM: "true"
+      GF_AUTH_DISABLE_SIGNOUT_MENU: "true"
+    volumes:
+      - ./config/grafana.yaml:/etc/grafana/provisioning/datasources/datasources.yaml:ro
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget -nv -t1 --spider localhost:3000/api/health || exit 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
