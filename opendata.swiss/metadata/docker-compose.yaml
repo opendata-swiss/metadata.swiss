@@ -22,7 +22,6 @@ services:
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
       - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
-      - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - JAVA_OPTS=-Xms1g -Xmx2g
     volumes:
       - ./piveau_profile:/piv-profile:ro
@@ -208,3 +207,10 @@ services:
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
     volumes:
       - ./piveau_pipes:/usr/verticles/pipes
+
+
+  piveau-consus-patching:
+    image: piveau-consus-patching
+    logging:
+      options:
+        max-size: "50m"
