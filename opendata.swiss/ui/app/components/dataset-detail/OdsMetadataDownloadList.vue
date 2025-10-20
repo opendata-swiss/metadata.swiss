@@ -26,12 +26,11 @@ import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-ada
 const { piveauHubRepoUrl } = useRuntimeConfig().public
 const { t } = useI18n();
 
-const props = defineProps({
-  dataset: {
-    type: Object as PropType<DcatApChV2DatasetAdapter>,
-    required: true
-  }
-});
+interface Props {
+  dataset: DcatApChV2DatasetAdapter;
+}
+
+const props = defineProps<Props>();
 
 </script>
 

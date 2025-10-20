@@ -31,12 +31,11 @@ import type { TableEntry } from './model/table-entry';
 import OdsInfoBlock from '../OdsInfoBlock.vue';
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
 
-const props = defineProps({
-  tableEntries: {
-    type: Array as PropType<TableEntry[]>,
-    required: true
-  }
-})
+interface OdsDetailsTableProps {
+  tableEntries: TableEntry[];
+}
+
+const props = defineProps<OdsDetailsTableProps>();
 
 </script>
 

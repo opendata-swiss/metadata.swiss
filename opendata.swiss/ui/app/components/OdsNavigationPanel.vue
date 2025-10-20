@@ -51,13 +51,11 @@ import SvgIcon from "~/components/SvgIcon.vue";
 const emit = defineEmits(['requestClose']);
 const { t } = useI18n();
 
-const props = defineProps({
-    items: {
-      type: Array as PropType<OdsNavTabItem[]>,
-      required: true
-    }
-});
+interface Props {
+  items: OdsNavTabItem[]
+}
 
+const props = defineProps<Props>();
 
 
 function emitRequestClose() {

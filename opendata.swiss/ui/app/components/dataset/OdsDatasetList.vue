@@ -5,22 +5,13 @@ import OdsDatasetListItem from './OdsDatasetListItem.vue'
 import type { LocationQueryRaw } from "#vue-router"
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
+interface Props {
+  items: DcatApChV2DatasetAdapter[]
+  listType: 'card' | 'list'
+  searchParams?: LocationQueryRaw
+}
 
-const props = defineProps({
-  items: {
-    type: Array as PropType<DcatApChV2DatasetAdapter[]>,
-    required: true,
-  },
-  listType: {
-    type: String as () => 'card' | 'list',
-    required: true,
-  },
-  searchParams: {
-    type: Object as () => LocationQueryRaw,
-    required: false,
-    default: () => undefined
-  }
-})
+const props = defineProps<Props>()
 
 const searchParamsEncoded = computed(() => {
   // Convert LocationQueryRaw to Record<string, string>

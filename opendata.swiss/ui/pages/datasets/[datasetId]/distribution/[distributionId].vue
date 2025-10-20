@@ -46,11 +46,19 @@ const distribution = computed(() => {
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
-const storedBreadcrumbs = import.meta.client ? getDatasetBreadcrumbFromSessionStorage(datasetId) : null;
 
 const breadcrumbs = computed(()=>{
   const bc = []
+  const storedBreadcrumbs = import.meta.client ? getDatasetBreadcrumbFromSessionStorage(datasetId) : null;
   if (storedBreadcrumbs && import.meta.client) {
+      if(storedBreadcrumbs.length === 4) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = t('message.dataset_search.search_results');
+        storedBreadcrumbs[3].title = dataset.value?.title ?? '';
+      } else if(storedBreadcrumbs.length === 3) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = dataset.value?.title ?? '';
+      }
     bc.push(...storedBreadcrumbs)
     bc.push({
       title: distribution.value?.title

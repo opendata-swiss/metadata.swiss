@@ -41,16 +41,11 @@ import type { LocationQueryRaw } from 'vue-router';
 
 const { t, locale } = useI18n();
 
-const props = defineProps({
-  dataset: {
-    type: Object as PropType<DcatApChV2DatasetAdapter>,
-    required: true,
-  },
-  searchParams: {
-    type: Object as PropType<LocationQueryRaw>,
-    required: false,
-    default: () => undefined
-  }
-})
+interface Props {
+  dataset: DcatApChV2DatasetAdapter;
+  searchParams?: LocationQueryRaw;
+}
+
+const props = defineProps<Props>();
 
 </script>

@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import type { PropType, Ref } from 'vue'
+import type { Ref } from 'vue'
 import OdsTagItem from '../OdsTagItem.vue'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
@@ -31,16 +31,12 @@ interface FilterEntry {
   key: string
   value: string
 }
-const props = defineProps({
-  facetRefs: {
-    type: Object as PropType<Record<string, Ref<string[]>>>,
-    required: true,
-  },
-   facets: {
-    type: Array as PropType<SearchResultFacetGroupLocalized[]>,
-    required: true,
-  },
-})
+interface Props {
+  facetRefs: Record<string, Ref<string[]>>
+  facets: SearchResultFacetGroupLocalized[]
+}
+
+const props = defineProps<Props>()
 
 const emit = defineEmits<{
   (e: 'reset-all-facets'): void

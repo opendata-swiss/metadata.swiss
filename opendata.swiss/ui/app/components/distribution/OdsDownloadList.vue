@@ -10,30 +10,14 @@
 <script setup lang="ts">
 import OdsDownloadListItem from './OdsDownloadListItem.vue';
 
-const props = defineProps({
-  downloadUrls: {
-    type: Array as PropType<string[]>,
-    required: true
-  },
-  format : {
-    type: String,
-    required: false,
-    default: ''
-  },
-  name : {
-    type: String,
-    required: true
-  },
-  languages: {
-    type: Array as PropType<string[]>,
-    required: false,
-    default: () => []
-  },
-  byteSize: {
-    type: String,
-    required: false,
-    default: ''
-  }
-});
+interface OdsDownloadListProps {
+  name: string;
+  downloadUrls: string[];
+  format?: string;
+  languages?: string[];
+  byteSize?: string;
+}
+
+const props = defineProps<OdsDownloadListProps>();
 
 </script>

@@ -7,7 +7,7 @@
        <p class="meta-info download-item__meta-info">
           <span v-if="props.format" class="meta-info__item">{{ props.format }}</span>
           <span v-if="props.byteSize" class="meta-info__item">{{ props.byteSize }}</span>
-          <span v-if="props.languages.length" class="meta-info__item">{{ props.languages.join(', ') }}</span>
+          <span v-if="props.languages?.length" class="meta-info__item">{{ props.languages.join(', ') }}</span>
         </p>
       </div>
     </a>
@@ -18,31 +18,16 @@
 
 import SvgIcon from '../SvgIcon.vue';
 
-const props = defineProps({
-  downloadUrl: {
-    type: String,
-    required: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  format : {
-    type: String,
-    required: false,
-    default: ''
-  },
-  languages: {
-    type: Array as PropType<string[]>,
-    required: false,
-    default: () => []
-  },
-  byteSize: {
-    type: String,
-    required: false,
-    default: ''
-  }
-});
+interface OdsDownloadListItemProps {
+  downloadUrl: string;
+  name: string;
+  format?: string;
+  languages?: string[];
+  byteSize?: string;
+}
+
+const props = defineProps<OdsDownloadListItemProps>();
+
 </script>
 
 <style scoped lang="scss">

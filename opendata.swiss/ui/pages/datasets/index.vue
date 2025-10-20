@@ -287,11 +287,6 @@ onMounted(() => {
   })
 })
 
-watch(facetRefs , () => {
-  console.log('facetRefs changed', facetRefs.value);
-}, { deep: true })
-
-
 useSeoMeta({
   title: `${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
@@ -397,7 +392,6 @@ await suspense()
          </div>
       </div>
    </section>
-   <pre>{{ getSearchResultsEnhanced }}</pre>
 </main>
 
 </div>
