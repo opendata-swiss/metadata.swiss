@@ -161,6 +161,7 @@ services:
         max-size: "50m"
     environment:
       - OTEL_SDK_DISABLED=true
+      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx500m
 
   piveau-consus-importing-ckan:
@@ -190,6 +191,7 @@ services:
         max-size: "50m"
     environment:
       - OTEL_SDK_DISABLED=true
+      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx1g
       - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
 
@@ -204,6 +206,7 @@ services:
       - "5001:5000" # Just make it also work for macOS
     environment:
       - OTEL_SDK_DISABLED=true
+      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms100m -Xmx200m
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
     volumes:
