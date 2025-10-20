@@ -13,7 +13,7 @@ body:
         processed: false
       body:
         config:
-          address: https://piveau-ui/api/showcases
+          address: http://piveau-ui/api/showcases
           catalogue: showcases-ods
     - header:
         name: piveau-consus-patching
@@ -24,6 +24,7 @@ body:
         config:
           actions:
             - remove-dataset-cloak
+            - fix-showcase-typing
             - signal-resource-showcase
     - header:
         name: piveau-consus-exporting-hub
