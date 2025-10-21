@@ -49,6 +49,9 @@ watch(locale, (newLocale) => {
 )
 
 useHead({
+  htmlAttrs: {
+    lang: locale.value
+  },
   bodyAttrs: {
     class: 'body--ods-brand'
   },
