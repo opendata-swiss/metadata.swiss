@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import SvgIcon from '../SvgIcon.vue';
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter';
 

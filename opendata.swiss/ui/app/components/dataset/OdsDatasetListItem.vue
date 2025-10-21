@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
 import type { LocationQueryRaw } from 'vue-router';
 

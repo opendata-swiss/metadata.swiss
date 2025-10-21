@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 
 import { useDatasetsSearch } from '../../../app/piveau/search'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';

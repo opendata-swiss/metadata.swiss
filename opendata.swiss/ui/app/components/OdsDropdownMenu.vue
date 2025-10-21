@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 
 import OdsButton from './OdsButton.vue';
 import SvgIcon from './SvgIcon.vue';
