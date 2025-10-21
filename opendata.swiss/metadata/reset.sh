@@ -5,7 +5,7 @@ docker compose -f docker-compose-hub.yml down -v
 
 docker compose -f docker-compose-consus.yml up build --no-cache
 docker compose -f docker-compose-hub.yml up -d
-docker compose -f docker-compose-consus.yml up --force-recreate
+docker compose -f docker-compose-consus.yml up --force-recreate -d
 
 
 #docker compose -f docker-compose-consus.yml logs > docker-compose-logs.log

@@ -1,6 +1,7 @@
 import argparse
 import json
 import logging
+import time
 from pathlib import Path
 from typing import Union
 
@@ -243,6 +244,7 @@ def run_pipes(pipe_names: list = None):
     logging.info(f"Triggering {len(pipe_names)} pipe(s)...")
     for name in pipe_names:
         piveau_client.trigger_pipe(pipe_name=name)
+        time.sleep(10)  # To avoid overwhelming the server
 
 def generate_all_pipes():
     """

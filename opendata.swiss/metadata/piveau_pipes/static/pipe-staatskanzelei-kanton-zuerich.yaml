@@ -1,0 +1,27 @@
+header:
+  id: 65e25ef8-6a4b-479f-9c83-4599965b09c7
+  name: staatskanzelei-kanton-zuerich
+  title: ZH-Kt Staatskanzlei - DCAT Harvester
+  context: DEU
+  transport: payload
+  version: "1.0.0"
+body:
+  segments:
+    - header:
+        name: piveau-consus-importing-rdf
+        segmentNumber: 1
+        title: Importing RDF
+        processed: false
+      body:
+        config:
+          address: "https://www.web.statistik.zh.ch/ogd/harvester/staatskanzlei-kanton-zuerich.xml"
+          catalogue: staatskanzlei-kanton-zuerich
+          accept: application/rdf+xml
+          inputFormat: application/rdf+xml
+          preProcessing: true
+    - header:
+        name: piveau-consus-exporting-hub
+        segmentNumber: 2
+        title: Exporting hub
+        processed: false
+      body: {}

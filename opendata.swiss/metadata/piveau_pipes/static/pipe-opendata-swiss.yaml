@@ -1,0 +1,25 @@
+header:
+  id: c1dd73b5-77b2-4db0-a944-c3e05804ff65
+  name: opendata-swiss
+  title: Harvesting - opendata.swiss
+  context: DEU
+  transport: payload
+  version: "2.0.0"
+body:
+  segments:
+    - header:
+        name: piveau-consus-importing-rdf
+        segmentNumber: 1
+        title: Importing RDF
+        processed: false
+      body:
+        config:
+          address: "https://ckan.opendata.swiss/catalog.rdf"
+          catalogue: opendata-swiss
+          preProcessing: true
+    - header:
+        name: piveau-consus-exporting-hub
+        segmentNumber: 2
+        title: Exporting hub
+        processed: false
+      body: {}

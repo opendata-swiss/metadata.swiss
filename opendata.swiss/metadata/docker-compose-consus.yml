@@ -7,7 +7,7 @@ services:
         max-size: "50m"
     environment:
       - JAVA_OPTS=-Xms200m -Xmx500m
-      #- PIVEAU_PIPE_LOG_LEVEL=TRACE
+      ##- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
 
   piveau-consus-importing-ckan:
@@ -36,7 +36,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms200m -Xmx1g
       - PIVEAU_HUB_APIKEY=yourRepoApiKey
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      #- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
 
   piveau-consus-scheduling:
@@ -51,7 +51,7 @@ services:
     environment:
       - JAVA_OPTS=-Xms100m -Xmx200m
       - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      #- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
     volumes:
       - ./piveau_pipes:/usr/verticles/pipes

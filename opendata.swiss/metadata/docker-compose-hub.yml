@@ -17,6 +17,7 @@ services:
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
       - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
       - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   piveau-hub-search:
     image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.1.8
@@ -35,6 +36,7 @@ services:
       - PIVEAU_HUB_SEARCH_ES_CONFIG={"host":"elasticsearch","port":9200}
       - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
       - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   piveau-hub-ui:
     image: registry.gitlab.com/piveau/hub/piveau-hub-ui:v1.16.2

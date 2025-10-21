@@ -256,7 +256,11 @@ function transforming(input) {
         "de": "de",
         "fr": "fr",
         "it": "it",
-        "en": "en"
+        "en": "en",
+        "ger + fre": "de",
+        "ger + ita": "de",
+        "fra + ita": "fr",
+        "ger + fra + ita": "de"
     };
 
     // Required
@@ -281,7 +285,19 @@ function transforming(input) {
 
     let record_language;
     if (input["dc:language"]) {
-        const langCode = Array.isArray(input["dc:language"]) ? input["dc:language"][0] : input["dc:language"];
+        // Get the raw language string, which might be an array or a single value.
+        let rawLang = Array.isArray(input["dc:language"]) ? input["dc:language"][0] : input["dc:language"];
+
+        let langCode = rawLang; // Default to the raw value
+
+        if (typeof rawLang === 'string' && rawLang.trim()) {
+            // Split the string by comma or plus, and any surrounding whitespace.
+            // e.g., "ger + fre" becomes ["ger", "fre"]
+            const langParts = rawLang.split(/\s*[,\+]\s*/);
+
+            langCode = langParts[0].trim();
+        }
+
         if (!(langCode in languageMap)) {
             console.log(langCode + " not in language map, using as is.");
         }
@@ -395,12 +411,12 @@ function transforming(input) {
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    //console.log("Transformed output:");
-//
+    console.log("Transformed output:");
+
     //const { "@context": context, ...outputWithoutContext } = output;
 //
     //console.log(JSON.stringify(outputWithoutContext, null, 2));
-
-    console.log("Transformation completed successfully. Returning output.");
+//
+    //console.log("Transformation completed successfully. Returning output.");
     return output
 }
