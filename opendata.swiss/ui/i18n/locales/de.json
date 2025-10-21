@@ -71,7 +71,34 @@
             "tags": "Tags",
             "submitted_by": "Übermittelt von",
             "externalLink": "Externer Link",
-            "open": "Website starten"
+            "open": "Website starten",
+            "submission_form": {
+                "group_italian": "Italienisch",
+                "group_french": "Französisch",
+                "group_german": "Deutsch",
+                "group_english": "Englisch",
+                "group_general": "Allgemein",
+                "success_message": "Der Showcase wurde eingereicht.",
+                "failure_message": "Einreichung des Showcases fehlgeschlagen.",
+                "field_title": "Titel",
+                "field_body": "Beschreibung",
+                "field_url": "Website",
+                "field_type": "Art des Inhalts",
+                "field_image": "Bild",
+                "field_tags": {
+                    "label": "Tags",
+                    "prompt": "Geben Sie die Tags durch Kommas getrennt ein"
+                },
+                "field_categories": {
+                    "label": "Kategorien",
+                    "prompt": "Wählen Sie eine oder mehrere Kategorien"
+                },
+                "field_datasets": {
+                    "label": "Datensätze",
+                    "prompt": "Tippen Sie, um nach Datensätzen zu suchen..."
+                },
+                "submit_button": "Einreichen"
+            }
         },
         "terms_of_use": {
             "ods_open": {
