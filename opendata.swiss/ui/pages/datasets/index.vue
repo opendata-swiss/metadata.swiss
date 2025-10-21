@@ -3,7 +3,7 @@ import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 
 import { useRoute, useRouter } from 'vue-router'
 import type { LocationQueryValue } from 'vue-router'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 import type { SearchParamsBase } from '@piveau/sdk-core'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';

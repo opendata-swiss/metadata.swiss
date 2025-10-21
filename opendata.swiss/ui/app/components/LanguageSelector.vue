@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import Select from './OdsSelect.vue'
 import { ref, computed } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 const switchLocalePath = useSwitchLocalePath()
 const { locale, locales } = useI18n()
