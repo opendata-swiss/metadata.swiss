@@ -47,7 +47,7 @@ Additionally, any type of content can be created using a shortcut button "Quick 
 
 The editing form, is divided into two vertical sections. The left section always displays the editing form, with content in the selected language. The right section can be switched between editing a second language, or previewing the content.
 
-![](images/decap-editing.webm)
+![](images/decap-editing.gif)
 
 When saved, changes are committed to a new branch in the repository, and a pull request is automatically created. Decap-managed Pull Requests are also displayed in the Content Manager on the "Workflow" screen. There, work-in-progress content can be moved between "Draft", "In Review", and "Ready" states. They can also be deleted completely and published, when in the "Ready" state.
 
