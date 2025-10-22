@@ -73,6 +73,8 @@ public class MainVerticle extends AbstractVerticle {
 
         HttpClient client = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.ALWAYS).build();
 
+        int pageSize = 10; // You can adjust this value based on your needs
+
         do {
             String requestUrl = cswUrl
                     + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
@@ -94,6 +96,7 @@ public class MainVerticle extends AbstractVerticle {
 
                     try {
 
+                        int counter = 0;
                         String xmlContent = response.body();
                         SAXBuilder saxBuilder = new SAXBuilder();
                         Document document = saxBuilder.build(new StringReader(xmlContent));
@@ -105,6 +108,15 @@ public class MainVerticle extends AbstractVerticle {
                         // This assumes the records are under
                         // <csw:GetRecordsResponse>/<csw:SearchResults>
                         Element records = rootElement.getChild("SearchResults", cswNamespace);
+
+                        if (records == null) {
+
+                            logger.warn("No 'SearchResults' element found in the CSW response for " + requestUrl + ". Skipping.");
+                            recordsFetched += pageSize;
+                            startPosition += pageSize;
+
+                            continue;
+                        }
 
                         if (totalRecords == -1) { // This only runs on the first iteration
                             totalRecords = records.getAttributeValue("numberOfRecordsMatched") != null
@@ -123,10 +135,18 @@ public class MainVerticle extends AbstractVerticle {
                         List<Element> recordsList = records.getChildren("Record", cswNamespace);
                         Integer recordsOnThisPage = recordsList.size();
 
+                        if (recordsOnThisPage == 0) {
+
+                            logger.warn("No 'Records' elements found in the CSW response for " + requestUrl + ". Skipping.");
+                            recordsFetched += pageSize;
+                            startPosition += pageSize;
+
+                            continue;
+                        }
+
                         recordsFetched += recordsOnThisPage;
                         startPosition += recordsOnThisPage;
 
-                        int counter = 0;
                         for (Element record : recordsList) {
                             ObjectNode dataInfo = new ObjectMapper().createObjectNode()
                                     .put("total", totalRecords)

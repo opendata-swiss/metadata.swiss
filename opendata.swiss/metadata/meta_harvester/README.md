@@ -103,21 +103,6 @@ python -m meta_harvester delete-catalogues <name1> <name2> ...
 ## TODO:
 
 
-Handle this error in java code: ---------> else it gets called multiple times - no point in it
-1. If NoApplicableCode exception/if no children ...  -> report warning and continue
-2. Ask Kim what it means
-
-piveau-consus-importing-csw-1    | 13:00:23.200 [vert.x-worker-thread-2] INFO  i.piveau.importing.csw.MainVerticle - https://www.geocat.ch/geonetwork/jura/ger/csw?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results&typeNames=dcat&startPosition=61
-piveau-consus-importing-csw-1    | 13:00:23.385 [vert.x-worker-thread-2] INFO  i.piveau.importing.csw.MainVerticle - Successfully fetched XML:
-piveau-consus-importing-csw-1    | 13:00:23.385 [vert.x-worker-thread-2] INFO  i.piveau.importing.csw.MainVerticle - -------------------------
-piveau-consus-importing-csw-1    | 13:00:23.386 [vert.x-worker-thread-2] INFO  i.piveau.importing.csw.MainVerticle - Found 98 records to forward.
-piveau-consus-importing-csw-1    | 13:00:23.386 [vert.x-worker-thread-2] ERROR i.piveau.importing.csw.MainVerticle - An error occurred during the HTTP request:
-piveau-consus-importing-csw-1    | java.lang.NullPointerException: Cannot invoke "org.jdom2.Element.getChildren(String, org.jdom2.Namespace)" because "records" is null
-piveau-consus-importing-csw-1    | 	at io.piveau.importing.csw.MainVerticle.handlePipe(MainVerticle.java:123)
-
-
-
-* test on scale - run all pipes
 * test cli commands
 * add functionality: delete catalogues - delete all catalogues in piveau
 * add functionality: load catalogue, and execute pipe -> for 1x and for all
