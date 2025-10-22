@@ -1,3 +1,4 @@
+import logging
 import os
 
 import requests
@@ -5,6 +6,11 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 from .exceptions import NoRecords, NotFoundError
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+logger = logging.getLogger(__name__)
 
 
 def requests_retry_session(
@@ -112,6 +118,38 @@ class PiveauClient:
     PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
     API_KEY = os.getenv("API_KEY_HUB", "yourRepoApiKey")
 
+    def __init__(self):
+        """Initializes the PiveauClient and the catalogue cache."""
+        self._catalogues: list[str] = []
+
+    @property
+    def catalogues(self) -> list[str]:
+        """
+        Provides a cached list of catalogues.
+        Fetches from the API only on the first call or after a refresh.
+        """
+        if self._catalogues is None:
+            logger.info("Catalogue cache is empty. Fetching from API...")
+            self.refresh_catalogues()
+        return self._catalogues
+
+    def refresh_catalogues(self) -> None:
+        """Forces a refresh of the catalogue cache from the API."""
+
+        url = f"{self.HUB_REPO_ENDPOINT}/catalogues"
+
+        headers = {"X-API-Key": self.API_KEY}
+
+        session = requests_retry_session()
+        response = session.get(url, headers=headers)
+        response.raise_for_status()
+
+        api_catalogues = response.json()
+        self._catalogues = [url.split('/')[-1] for url in api_catalogues]
+
+        logger.info(f"Catalogue cache refreshed. Found {len(self._catalogues)} catalogues.")
+
+
     def create_catalogue(self, name: str, metadata_file: str) -> None:
         """
         Uploads a catalogue's metadata to the piveau-hub-repo.
@@ -128,33 +166,54 @@ class PiveauClient:
         with open(metadata_file, "r", encoding="utf-8") as f:
             data = f.read()
 
-        session = requests_retry_session()
 
+        if name in self.catalogues:
+            logger.info(f"Catalogue '{name}' already exists. Deleting it before update.")
+            self.delete_catalogues([name])
+
+        session = requests_retry_session()
         response = session.put(url, headers=headers, data=data)
         response.raise_for_status()
-        print(
+        logger.info(
             f"Successfully created/updated catalogue '{name}'. Status: {response.status_code}"
         )
 
-    def delete_catalogue(self, name: str) -> None:
+        if name not in self.catalogues:
+            self._catalogues.append(name)
+
+    def delete_catalogues(self, names: list[str] | None = None) -> None:
         """
-        Deletes a catalogue from the piveau-hub-repo.
+        Deletes catalogues from the piveau-hub-repo.
+        If no names are provided, all catalogues will be deleted.
 
         Args:
-            name (str): The name of the catalogue to delete.
+            names (list[str], optional): A list of catalogue names to delete. Defaults to None.
         """
 
-        url = f"{self.HUB_REPO_ENDPOINT}/catalogues/{name}"
+        if not names:
+            names = self.catalogues
+
 
         headers = {"X-API-Key": self.API_KEY}
-
         session = requests_retry_session()
-        response = session.delete(url, headers=headers)
-        response.raise_for_status()
 
-        print(
-            f"Successfully deleted catalogue '{name}'. Status: {response.status_code}"
-        )
+        for name in names:
+            url = f"{self.HUB_REPO_ENDPOINT}/catalogues/{name}"
+            try:
+                response = session.delete(url, headers=headers)
+                response.raise_for_status()
+                logger.info(f"Successfully deleted catalogue '{name}'. Status: {response.status_code}"
+                )
+                if self._catalogues and name in self._catalogues:
+                    self._catalogues.remove(name)
+            except requests.exceptions.HTTPError as e:
+                if e.response.status_code == 404:
+                    if self._catalogues and name in self._catalogues:
+                        self._catalogues.remove(name)
+                    logger.info(f"Catalogue '{name}' not found (404), skipping.")
+                else:
+                    logger.error(f"Failed to delete catalogue '{name}'. Status: {e.response.status_code}, Reason: {e.response.text}")
+
 
     def trigger_pipe(self, pipe_name: str) -> None:
         """
@@ -173,4 +232,4 @@ class PiveauClient:
         response = session.put(url, headers=headers, json=payload)
         response.raise_for_status()
 
-        print(f"Successfully triggered pipe '{pipe_name}'. Status: {response.status_code}")
+        logger.info(f"Successfully triggered pipe '{pipe_name}'. Status: {response.status_code}")

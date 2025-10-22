@@ -39,21 +39,32 @@ def to_dict(value: Union[str, dict]) -> dict:
 
 def delete_catalogues(catalogue_names: list[str]):
     """
-    Deletes one or more catalogues from the piveau-hub-repo.
+    Deletes catalogues from the piveau-hub-repo.
     """
     piveau_client = PiveauClient()
-    for name in catalogue_names:
-        logger.info(f"Attempting to delete catalogue: {name}")
-        piveau_client.delete_catalogue(name=name)
+    piveau_client.delete_catalogues(names=catalogue_names)
 
 
-def create_catalogues(catalogue_names: list[str]):
+def create_catalogues(catalogue_names: list[str] | None = None):
     """
     Creates or recreates one or more catalogues in the piveau-hub-repo.
     For each name, it derives the metadata file path from the CATALOGUES_PATH.
     If a catalogue exists, it is deleted first.
     """
     piveau_client = PiveauClient()
+
+    if not catalogue_names:
+        catalogue_dir = Path(CATALOGUES_PATH)
+        if not catalogue_dir.is_dir():
+            logger.error(f"Catalogues directory not found: {CATALOGUES_PATH}")
+            return
+        catalogue_files = list(catalogue_dir.glob("*.ttl"))
+        if not catalogue_files:
+            logger.warning(f"No catalogue files (.ttl) found in '{CATALOGUES_PATH}'.")
+            return
+        catalogue_names = [f.stem for f in catalogue_files]
+
+
     for name in catalogue_names:
         metadata_file = Path(CATALOGUES_PATH) / f"{name}.ttl"
         if not metadata_file.is_file():
@@ -64,11 +75,27 @@ def create_catalogues(catalogue_names: list[str]):
 
         logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
 
-
-        # TODO: check if catalogue exists
-        #piveau_client.delete_catalogue(name=name)
         piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
 
+
+def create_catalogue_from_file(name: str, file_path: str | None = None):
+    """
+    Creates or updates a single catalogue from a file.
+    If file_path is not provided, it defaults to the standard location.
+    """
+    piveau_client = PiveauClient()
+
+    if not file_path:
+        create_catalogues([name])
+    else:
+        metadata_file = Path(file_path)
+
+        if not metadata_file.is_file():
+            logger.error(f"Metadata file for '{name}' not found at '{metadata_file}'. Aborting.")
+            return
+
+        logger.info(f"Publishing catalogue '{name}' from file '{metadata_file}'")
+        piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
 
 def generate_pipe(
     id: str,
@@ -151,24 +178,6 @@ def generate_catalogue_metadata(
 
     return output_file
 
-def create_all_catalogues():
-    """
-    Creates/recreates all catalogues from the .ttl files found in the local directory.
-    """
-    catalogue_dir = Path(CATALOGUES_PATH)
-    if not catalogue_dir.is_dir():
-        logger.error(f"Catalogues directory not found: {CATALOGUES_PATH}")
-        return
-
-    catalogue_files = list(catalogue_dir.glob("*.ttl"))
-    if not catalogue_files:
-        logger.warning(f"No catalogue files (.ttl) found in '{CATALOGUES_PATH}'.")
-        return
-
-    logger.info(f"Found {len(catalogue_files)} catalogues to create/recreate.")
-    catalogue_names = [f.stem for f in catalogue_files]
-    create_catalogues(catalogue_names)
-
 def generate_pipe_and_catalogue_files():
     """
     Fetches all geoharvesters from CKAN and generates corresponding
@@ -219,12 +228,11 @@ def generate_pipe_and_catalogue_files():
         )
 
 
-def run_pipes(pipe_names: list = None):
+def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
     """
-    Triggers piveau pipes to run. If no names are provided,
-    triggers all pipes found in the PIPES_PATH directory.
-
-
+    Triggers piveau pipes to run.
+    By default, it ensures the corresponding catalogue is created/updated first.
+    If no pipe names are provided, triggers all pipes found in the PIPES_PATH directory.
     """
     piveau_client = PiveauClient()
 
@@ -243,8 +251,16 @@ def run_pipes(pipe_names: list = None):
 
     logging.info(f"Triggering {len(pipe_names)} pipe(s)...")
     for name in pipe_names:
+        if create_catalogue:
+            # Derive catalogue name from pipe name and create it
+            catalogue_name = name.replace("-geocat-harvester", "")
+            logging.info(
+                f"Creating/updating '{catalogue_name} before running pipe '{name}'."
+            )
+            create_catalogues([catalogue_name])
+
         piveau_client.trigger_pipe(pipe_name=name)
-        time.sleep(10)  # To avoid overwhelming the server
+        time.sleep(10)
 
 def generate_all_pipes():
     """
@@ -309,45 +325,62 @@ def main():
         nargs="*",
         help="Optional: A list of specific pipe names to run. If omitted, all pipes will be run.",
     )
+    parser_run.add_argument(
+        "--skip-catalogue",
+        action="store_false",
+        dest="create_catalogue",
+        help="Skip the step of creating/updating the catalogue before running the pipe.",
+    )
     parser_run.set_defaults(func=run_pipes)
 
     parser_delete = subparsers.add_parser(
-        "delete-catalogues", help="Delete catalogues by name."
+        "delete-catalogues", help="Delete catalogues by name. If no names are provided, all catalogues will be deleted."
     )
     parser_delete.add_argument(
-        "names", nargs="+", help="A list of catalogue names to delete."
+        "names", nargs="*", help="Optional: A list of catalogue names to delete."
     )
     parser_delete.set_defaults(func=delete_catalogues)
 
-
     parser_create = subparsers.add_parser(
-        "create-catalogues", help="Create or recreate catalogues from files."
+        "create-catalogues", help="Create catalogues from .ttl files. If no names are provided, all catalogues will be created."
     )
     parser_create.add_argument(
         "names",
-        nargs="+",
-        help="A list of catalogue names to create. The script will look for a corresponding .ttl file.",
-    )
-    parser_create.add_argument(
-        "file", help="The path to the .ttl metadata file for the catalogue."
+        nargs="*",
+        help="Optional: A list of catalogue names to create. The script will look for a corresponding .ttl file inside 'piveau_catalogues/'.",
     )
     parser_create.set_defaults(func=create_catalogues)
 
-    parser_create_all = subparsers.add_parser(
-        "create-all-catalogues",
-        help="Create or recreate all catalogues from local .ttl files.",
+
+    parser_create_from_file = subparsers.add_parser(
+        "create-catalogue-from-file",
+        help="" \
+        "Create a single catalogue from a specific .ttl file."
     )
-    parser_create_all.set_defaults(func=create_all_catalogues)
+    parser_create_from_file.add_argument(
+        "name",
+        help="The target name for the catalogue."
+    )
+    parser_create_from_file.add_argument(
+        "--file",
+        dest="file_path",
+        help="Optional: Path to the .ttl file. If omitted, defaults to the standard path."
+    )
+    parser_create_from_file.set_defaults(func=create_catalogue_from_file)
+
 
     args = parser.parse_args()
 
     if args.command == "run-pipes":
-        args.func(pipe_names=args.pipes)
-    elif args.command in ["delete-catalogues", "create-catalogues"]:
-        args.func(catalogue_names=args.names)
+        args.func(pipe_names=args.pipes, create_catalogue=args.create_catalogue)
+    elif args.command == "delete-catalogues":
+        args.func(catalogue_names=args.names if args.names else None)
+    elif args.command == "create-catalogues":
+        args.func(catalogue_names=args.names if args.names else None)
+    elif args.command == "create-catalogue-from-file":
+        args.func(name=args.name, file_path=args.file_path)
     else:
         args.func()
-
 
 if __name__ == "__main__":
     main()
