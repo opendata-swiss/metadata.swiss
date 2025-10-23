@@ -43,12 +43,34 @@ dcatap:Agent_Shape
           sh:minCount 1 ;
           sh:nodeKind sh:Literal ;
           sh:path foaf:name ;
-          sh:severity sh:Violation
+          sh:severity sh:Violation ;
+          pv:mappingClass "SimpleMultiLang" ;
+          pv:mappingName "name"
       ], [
           sh:maxCount 1 ;
           sh:path dct:type ;
-          sh:severity sh:Violation
+          sh:severity sh:Violation ;
+          pv:mappingClass "Standard" ;
+          pv:mappingName "type"
+      ], [
+          sh:maxCount 1 ;
+          sh:path foaf:homepage ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Standard" ;
+          pv:mappingName "homepage"
+      ], [
+          sh:maxCount 1 ;
+          sh:path foaf:mbox ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Standard" ;
+          pv:mappingName "email"
+      ], [
+          sh:path dct:description ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "SimpleMultiLang" ;
+          pv:mappingName "description"
       ] ;
+
     sh:targetClass foaf:Agent .
 
 dcatap:CatalogRecord_Shape
@@ -214,13 +236,28 @@ dcatap:Catalog_Shape
           sh:severity sh:Violation ;
           pv:mappingClass "SimpleMultiLang" ;
           pv:mappingName "description"
-      ], [
+    #   ], [
+    #       sh:maxCount 1 ;
+    #       sh:minCount 1 ;
+    #       sh:path dct:publisher ;
+    #       sh:severity sh:Violation ;
+    #       pv:mappingClass "Agent" ;
+    #       pv:mappingName "publisher"
+      ],[
           sh:maxCount 1 ;
           sh:minCount 1 ;
           sh:path dct:publisher ;
           sh:severity sh:Violation ;
-          pv:mappingClass "Agent" ;
-          pv:mappingName "publisher"
+          pv:mappingClass "Nested" ;          
+          pv:mappingName "publisher_nested" ;         
+          pv:mappingLink dcatap:Agent_Shape
+      ], [
+          sh:maxCount 1 ;
+          sh:minCount 1 ;
+        #   sh:path dct:publisher ;
+          sh:severity sh:Violation ;
+          pv:mappingClass "Standard" ;          
+          pv:mappingName "publisher_iri" ;
       ], [
           sh:minCount 1 ;
           sh:nodeKind sh:Literal ;

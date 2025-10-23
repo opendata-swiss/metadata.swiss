@@ -11,8 +11,16 @@ dcterms:modified    "2022-11-15T16:03:17.063853"^^xsd:dateTime ;
 dcterms:type "ckan"^^xsd:string ;
 dcterms:description "Open Data Portal Stadt Winterthur"@de ;
 dcterms:language    <http://publications.europa.eu/resource/authority/language/GER> ;
-dcterms:publisher   [ a             foaf:Agent ;
-foaf:homepage <https://stadt.winterthur.ch/themen/die-stadt/winterthur/statistik/> ;
-foaf:name     "Stadt Winterthur" ] ;
+dcterms:publisher   <https://opendata.swiss/id/organization/stadt-winterthur> ;
 dcterms:spatial     <http://publications.europa.eu/resource/authority/country/CHE> ;
 dcterms:title       "Geodata Stadt Winterthur"@de .
+
+
+<https://opendata.swiss/id/organization/stadt-winterthur>
+  a foaf:Agent ;
+  foaf:homepage <https://stadt.winterthur.ch/themen/die-stadt/winterthur/statistik/> ;
+  foaf:name     "(de) Stadt Winterthur"@de, "(en)City of Winterthur"@en ;
+  dcterms:description "(de) Die Stadt Winterthur als intelligente, vernetzte und sichere Stadt nutzt städtische Daten als Basis für effiziente und nutzerfreundliche Lösungen und stellt sie der Allgemeinheit unter Gewährleistung des Datenschutzes als 'Open Data' zur freien Wiederverwendung zur Verfügung. Die Publikation der OGD-Datensätze ist in Erarbeitung, das Angebot wird laufend ausgebaut."@de ;
+  dcterms:description "(en) The city of Winterthur .... "@en .
+
+# mappingClass "Agent" does not handle multilingual names (and descriptions)
