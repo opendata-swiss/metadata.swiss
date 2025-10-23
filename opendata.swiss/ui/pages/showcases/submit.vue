@@ -176,9 +176,7 @@ async function submit(e: Event) {
     })
     if (response.ok) {
       success.value = true
-      if (newShowcaseForm.value) {
-        newShowcaseForm.value.reset()
-      }
+      newShowcaseForm.value?.reset()
     } else if (response.status === 400 || response.status === 409) {
       submissionError.value = 'Form contains invalid data:'
       submissionValidationIssues.value = await response.json()

@@ -2,7 +2,11 @@ import type {ShowcasesCollectionItem} from '@nuxt/content'
 import type {H3Event, MultiPartData} from "h3";
 import slugify from "slugify";
 import * as yaml from 'yaml'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import { visit } from 'unist-util-visit'
 import showcaseSchema from '../../src/schema/showcase.js'
+import remarkStringify from 'remark-stringify'
 import {match, P} from "ts-pattern";
 import git from "~~/server/lib/git";
 import fs from "~~/server/lib/fs";
@@ -44,17 +48,17 @@ export default defineEventHandler(async (event) => {
   const imageRoot = `img/uploads`
 
   const uploads: Array<() => Promise<void>> = []
-  const body = await readMultipartFormData(event) as PayloadData
+  const reqBody = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
     it: empty(),
     de: empty(),
     fr: empty(),
     en: empty()
   }
-  const titleDe = body.find(field => field.name === 'title[de]')?.data?.toString()
+  const titleDe = reqBody.find(field => field.name === 'title[de]')?.data?.toString()
   showcase.slug = slugify(titleDe!, {lower: true, locale: 'de'})
 
-  if (process.env.GITHUB_OWNER) {
+  if (process.env.GITHUB_TOKEN) {
     storage = git(showcase.slug!)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
@@ -70,7 +74,10 @@ export default defineEventHandler(async (event) => {
     logger.info('Initialized filesystem storage backend')
   }
 
-  for (const {name, data} of body) {
+  const processedBodies: Array<Promise<void>> = []
+  const allImagePaths = new Map<string, string>()
+
+  for (const {name, data} of reqBody) {
     match(name)
       .with(P.string.startsWith('title'), () => {
         const language = /^title\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
@@ -82,8 +89,19 @@ export default defineEventHandler(async (event) => {
           toAll(showcase, urlOrType, value)
         }
       })
-      .with(P.string.startsWith('body'), () => {
-        toAll(showcase, 'body', data.toString())
+      .with(P.string.startsWith('body'),  () => {
+        processedBodies.push((async () => {
+          const language = /^body\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
+          const rawBody = data.toString()
+          const {
+            body,
+            images
+          } = await extractDataImages(rawBody, `public/${imageRoot}/${showcase.slug}-image-`, allImagePaths)
+          showcase[language].body = body
+          for (const image of images) {
+            uploads.push(storage.writeFile.bind(null, image.path, image.data))
+          }
+        })())
       })
       .with('tags', () => {
         const tags = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
@@ -117,6 +135,8 @@ export default defineEventHandler(async (event) => {
         console.warn(`Unknown field: ${name}`)
       })
     }
+
+  await Promise.all(processedBodies)
 
   const errors = validate(event, showcase)
 
@@ -157,6 +177,40 @@ async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, sto
 
 interface Setter {
   (showcase: ShowcaseTranslation): void
+}
+
+async function extractDataImages(rawBody: string, imagePathPrefix: string, previousImages: Map<string, string>) {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkStringify)
+
+  const tree = processor.parse(rawBody)
+  const images = Array<{ path: string; data: Buffer }>()
+
+  visit(tree, 'image', (node) => {
+    if (node.url.startsWith('data:')) {
+      const match = /^data:(image\/(?<ext>\w+));base64,(?<data>.+)$/.exec(node.url)
+      if (match?.groups) {
+        const { ext, data } = match.groups
+        if (previousImages.has(data)) {
+          node.url = previousImages.get(data)!
+        } else {
+          const path = `${imagePathPrefix}${previousImages.size}.${ext}`
+          images.push({
+            path,
+            data: Buffer.from(match.groups.data, 'base64')
+          })
+          previousImages.set(data, path)
+          node.url = path
+        }
+      }
+    }
+  })
+
+  return {
+    body: processor.stringify(tree),
+    images,
+  }
 }
 
 function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, value: ShowcaseTranslation[K] | Setter) {
