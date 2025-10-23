@@ -1,6 +1,7 @@
 import type {RestEndpointMethodTypes} from "@octokit/rest";
 import {Octokit} from "@octokit/rest";
 import {createAppAuth} from "@octokit/auth-app";
+import {minimatch} from "minimatch";
 
 const BASE_PATH = 'opendata.swiss/ui'
 
@@ -53,6 +54,8 @@ export default function (slug: string) {
           ref: `refs/heads/${prBranch}`,
           sha: baseSha,
         });
+
+        await this.deleteExistingImages()
       } catch (error: any) {
         logger.error('Error preparing git storage')
         if (error.status === 422) {
@@ -142,6 +145,28 @@ export default function (slug: string) {
       } catch (e) {
         logger.warn('Failed to delete branch on rollback')
         logger.warn(e)
+      }
+    },
+    async deleteExistingImages() {
+      const uploadsPath = `${BASE_PATH}/img/uploads`
+
+      const { data } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: uploadsPath,
+      })
+
+      const imagesToDelete = (Array.isArray(data) ? data : [])
+        .filter(item => minimatch(item.path, `${uploadsPath}/${slug}-image*`))
+        .map(item => item.path);
+
+      for (const path of imagesToDelete) {
+        tree.push({
+          path,
+          mode: '100644',
+          type: 'blob',
+          sha: null,
+        })
       }
     }
   }
