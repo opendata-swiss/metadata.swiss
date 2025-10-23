@@ -37,19 +37,19 @@
                   <ToastMarkdownEditor id="body[de]" label="Body (DE)" required />
                 </div>
               </OdsTab>
-              <OdsTab title="French">
+              <OdsTab title="French *">
                 <div class="form__group">
                   <OdsInput id="title[fr]" label="Title (FR)" placeholder="Titre en Français" required />
                   <ToastMarkdownEditor id="body[fr]" label="Body (FR)" required />
                 </div>
               </OdsTab>
-              <OdsTab title="Italian">
+              <OdsTab title="Italian *">
                 <div class="form__group">
                   <OdsInput id="title[it]" label="Title (IT)" placeholder="Titolo in Italiano" required />
                   <ToastMarkdownEditor id="body[it]" label="Body (IT)" required />
                 </div>
               </OdsTab>
-              <OdsTab title="English">
+              <OdsTab title="English *">
                 <div class="form__group">
                   <OdsInput id="title[en]" label="Title (EN)" placeholder="Title in English" required />
                   <ToastMarkdownEditor id="body[en]" label="Body (EN)" required />
@@ -57,7 +57,33 @@
               </OdsTab>
               <OdsTab title="General *">
                 <div class="form__group">
+                  <OdsSelect id="type" name="type" label="Type" required>
+                    <option value="application">Application</option>
+                    <option value="data_visualization">Data Visualization</option>
+                    <option value="event">Event</option>
+                    <option value="blog_and_media_articles">Blog/Article</option>
+                  </OdsSelect>
+                  <div class="form__group">
+                    <OdsInput id="image" type="file" label="Image" accept="image/*" required />
+                  </div>
                   <OdsInput id="url" label="Website" />
+                  <div class="form__group">
+                    <OdsMultiSelect
+                      id="datasets"
+                      label="Datasets"
+                      :load-options="searchDatasets"
+                      :close-on-select="false"
+                      :options="datasets"
+                    >
+                      <template #no-options>
+                        type to search datasets...
+                      </template>
+                      <template #selected-option="option" >
+                        {{ option.title }}
+                        <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
+                      </template>
+                    </OdsMultiSelect>
+                  </div>
                   <OdsMultiSelect label="Categories" :options="dataThemes" :close-on-select="false">
                     <template #no-options>
                       type to search categories...
@@ -67,33 +93,7 @@
                       <input type="hidden" name="categories" :value="option.id">
                     </template>
                   </OdsMultiSelect>
-                  <OdsSelect id="type" name="type" label="Type" required>
-                    <option value="application">Application</option>
-                    <option value="data_visualization">Data Visualization</option>
-                    <option value="event">Event</option>
-                    <option value="blog_and_media_articles">Blog/Article</option>
-                  </OdsSelect>
                   <OdsInput id="tags" label="Tags" placeholder="Enter tags separated by commas" />
-                </div>
-                <div class="form__group">
-                  <OdsInput id="image" type="file" label="Image" accept="image/*" required />
-                </div>
-                <div class="form__group">
-                  <OdsMultiSelect
-                    id="datasets"
-                    label="Datasets"
-                    :load-options="searchDatasets"
-                    :close-on-select="false"
-                    :options="datasets"
-                  >
-                    <template #no-options>
-                      type to search datasets...
-                    </template>
-                    <template #selected-option="option" >
-                      {{ option.title }}
-                      <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
-                    </template>
-                  </OdsMultiSelect>
                 </div>
               </OdsTab>
             </OdsTabs>
@@ -236,5 +236,9 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.tab__container {
+  color: red;
 }
 </style>
