@@ -290,3 +290,16 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  ####################
+  # Custom services  #
+  ####################
+  piveau-consus-importing-csw:
+    build: ../../piveau_modules/piveau-consus-importing-csw
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+      #- PIVEAU_PIPE_LOG_LEVEL=TRACE
+      - OTEL_SDK_DISABLED=true
