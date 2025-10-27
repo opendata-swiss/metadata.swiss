@@ -45,7 +45,7 @@ The script will automatically load these variables when executed.
 
 ## CLI Commands
 
-All commands should be run using `poetry run meta-harvester <command>`.
+All commands should be run using `python -m meta_harvester <command>`.
 
 ---
 
@@ -55,7 +55,7 @@ Fetches all geoharvesters from the configured CKAN instance, generates the neces
 
 **Usage:**
 ```bash
-poetry run meta-harvester generate
+python -m meta_harvester generate
 ```
 
 ---
@@ -66,7 +66,7 @@ Fetches all geoharvesters from CKAN and generates just the pipe definition files
 
 **Usage:**
 ```bash
-poetry run meta-harvester generate-all-pipes
+python -m meta_harvester generate-all-pipes
 ```
 
 ---
@@ -79,15 +79,15 @@ Triggers one or more piveau pipes to execute. By default, this command first cre
 
 *   **Run specific pipes:** Provide one or more pipe names.
     ```bash
-    poetry run meta-harvester run-pipes aargau-kt-geocat-harvester bs-geocat-harvester
+    python -m meta_harvester run-pipes aargau-kt-geocat-harvester bs-geocat-harvester
     ```
 *   **Run all pipes:** If no names are provided, the command discovers and runs all pipes in the `piveau_pipes/` directory.
     ```bash
-    poetry run meta-harvester run-pipes
+    python -m meta_harvester run-pipes
     ```
 *   **Skip catalogue creation:** Use the `--skip-catalogue` flag to run the pipe(s) without touching the catalogue first.
     ```bash
-    poetry run meta-harvester run-pipes aargau-kt-geocat-harvester --no-create-catalogue
+    python -m meta_harvester run-pipes aargau-kt-geocat-harvester --skip-catalogue
     ```
 
 ---
@@ -100,24 +100,24 @@ Creates or recreates catalogues from `.ttl` files located in the default `piveau
 
 *   **Create all catalogues:** If run with no arguments, it scans the directory and creates a catalogue for every `.ttl` file found.
     ```bash
-    poetry run meta-harvester create-catalogues
+    python -m meta_harvester create-catalogues
     ```
 *   **Create specific catalogues:** Provide one or more names to create only those catalogues from their corresponding files in the default directory.
     ```bash
-    poetry run meta-harvester create-catalogues stadt-bern glarus-kt
+    python -m meta_harvester create-catalogues stadt-bern glarus-kt
     ```
 
-#### `create-catalogue-from-file`
+#### `create-single-catalogue`
 
 Creates or updates a single catalogue from a `.ttl` file. This is useful for targeting a single catalogue, with the option to specify a custom file path.
 
 *   **From default location:**
     ```bash
-    poetry run meta-harvester publish-catalogue my-catalogue-name
+    python -m meta_harvester create-single-catalogue my-catalogue-name
     ```
 *   **From a specific file:** Use the `--file` flag to provide a custom path.
     ```bash
-    poetry run meta-harvester publish-catalogue my-catalogue-name --file /path/to/custom/metadata.ttl
+    python -m meta_harvester create-single-catalogue my-catalogue-name --file /path/to/custom/metadata.ttl
     ```
 
 
@@ -127,23 +127,22 @@ Deletes catalogues from the piveau-hub.
 
 *   **Delete specific catalogues:**
     ```bash
-    poetry run meta-harvester delete-catalogues stadt-bern glarus-kt
+    python -m meta_harvester delete-catalogues stadt-bern glarus-kt
     ```
 *   **Delete ALL catalogues:** If run with no arguments, it will delete every catalogue on the server. **Use with caution!**
     ```bash
-    poetry run meta-harvester delete-catalogues
+    python -m meta_harvester delete-catalogues
     ```
 
 
 ## TODO:
-* test cli commands
-
 * add publisher name and website ---> needs fetching it from organizations api (["result"]["url"]): https://ckan.opendata.swiss/api/3/action/organization_show?id=cnai
 
 * add unit tests
 
 * clean code - type hints, function headers
 
+* queue management
 
 
 

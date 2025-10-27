@@ -78,7 +78,7 @@ def create_catalogues(catalogue_names: list[str] | None = None):
         piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
 
 
-def create_catalogue_from_file(name: str, file_path: str | None = None):
+def create_single_catalogue(name: str, file_path: str | None = None):
     """
     Creates or updates a single catalogue from a file.
     If file_path is not provided, it defaults to the standard location.
@@ -353,7 +353,7 @@ def main():
 
 
     parser_create_from_file = subparsers.add_parser(
-        "create-catalogue-from-file",
+        "create-single-catalogue",
         help="" \
         "Create a single catalogue from a specific .ttl file."
     )
@@ -366,7 +366,7 @@ def main():
         dest="file_path",
         help="Optional: Path to the .ttl file. If omitted, defaults to the standard path."
     )
-    parser_create_from_file.set_defaults(func=create_catalogue_from_file)
+    parser_create_from_file.set_defaults(func=create_single_catalogue)
 
 
     args = parser.parse_args()
@@ -374,10 +374,10 @@ def main():
     if args.command == "run-pipes":
         args.func(pipe_names=args.pipes, create_catalogue=args.create_catalogue)
     elif args.command == "delete-catalogues":
-        args.func(catalogue_names=args.names if args.names else None)
+        args.func(catalogue_names=args.names if args.names else [])
     elif args.command == "create-catalogues":
-        args.func(catalogue_names=args.names if args.names else None)
-    elif args.command == "create-catalogue-from-file":
+        args.func(catalogue_names=args.names if args.names else [])
+    elif args.command == "create-single-catalogue":
         args.func(name=args.name, file_path=args.file_path)
     else:
         args.func()

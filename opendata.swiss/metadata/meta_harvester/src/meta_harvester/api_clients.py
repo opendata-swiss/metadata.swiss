@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def requests_retry_session(
-    retries=3,
+    retries=1,
     backoff_factor=0.3,
     status_forcelist=(500, 502, 504),
     session=None,
@@ -123,15 +123,15 @@ class PiveauClient:
         self._catalogues: list[str] = []
 
     @property
-    def catalogues(self) -> list[str]:
+    def catalogues(self) -> set[str]:
         """
         Provides a cached list of catalogues.
         Fetches from the API only on the first call or after a refresh.
         """
-        if self._catalogues is None:
+        if len(self._catalogues) == 0 or self._catalogues is None:
             logger.info("Catalogue cache is empty. Fetching from API...")
             self.refresh_catalogues()
-        return self._catalogues
+        return set(self._catalogues)
 
     def refresh_catalogues(self) -> None:
         """Forces a refresh of the catalogue cache from the API."""
@@ -139,12 +139,14 @@ class PiveauClient:
         url = f"{self.HUB_REPO_ENDPOINT}/catalogues"
 
         headers = {"X-API-Key": self.API_KEY}
+        params = {"valueType": "identifiers"}
 
         session = requests_retry_session()
-        response = session.get(url, headers=headers)
+        response = session.get(url, headers=headers, params=params, timeout=5)
         response.raise_for_status()
 
         api_catalogues = response.json()
+        logger.info(f"API returned {len(api_catalogues)} catalogues.")
         self._catalogues = [url.split('/')[-1] for url in api_catalogues]
 
         logger.info(f"Catalogue cache refreshed. Found {len(self._catalogues)} catalogues.")
@@ -181,7 +183,7 @@ class PiveauClient:
         if name not in self.catalogues:
             self._catalogues.append(name)
 
-    def delete_catalogues(self, names: list[str] | None = None) -> None:
+    def delete_catalogues(self, names: list[str]) -> None:
         """
         Deletes catalogues from the piveau-hub-repo.
         If no names are provided, all catalogues will be deleted.
@@ -190,14 +192,19 @@ class PiveauClient:
             names (list[str], optional): A list of catalogue names to delete. Defaults to None.
         """
 
-        if not names:
+        preexisting_catalogues = self.catalogues.copy()
+        if len(names) == 0:
             names = self.catalogues
+            logger.info("No catalogue names provided. Deleting all catalogues.")
 
 
         headers = {"X-API-Key": self.API_KEY}
         session = requests_retry_session()
 
         for name in names:
+            if name not in preexisting_catalogues:
+                logger.info(f"Catalogue '{name}' does not exist. Skipping deletion.")
+                continue
             url = f"{self.HUB_REPO_ENDPOINT}/catalogues/{name}"
             try:
                 response = session.delete(url, headers=headers)
@@ -206,13 +213,22 @@ class PiveauClient:
                 )
                 if self._catalogues and name in self._catalogues:
                     self._catalogues.remove(name)
-            except requests.exceptions.HTTPError as e:
-                if e.response.status_code == 404:
+            except requests.exceptions.RequestException as e:
+
+                if e.response and e.response.status_code == 404:
                     if self._catalogues and name in self._catalogues:
                         self._catalogues.remove(name)
                     logger.info(f"Catalogue '{name}' not found (404), skipping.")
                 else:
+                    logger.error(f"Error during API request to {url}: {e}")
                     logger.error(f"Failed to delete catalogue '{name}'. Status: {e.response.status_code}, Reason: {e.response.text}")
+
+
+                if e.response is not None:
+                    logger.error(f"Server response: {e.response.text}")
+                raise
+
+
 
 
     def trigger_pipe(self, pipe_name: str) -> None:
