@@ -71,7 +71,34 @@
             "tags": "Tag",
             "submitted_by": "Inviato da",
             "externalLink": "Link esterno",
-            "open": "Apri sito web"
+            "open": "Apri sito web",
+            "submission_form": {
+                "group_italian": "Italiano",
+                "group_french": "Francese",
+                "group_german": "Tedesco",
+                "group_english": "Inglese",
+                "group_general": "Generale",
+                "success_message": "Lo showcase è stato inviato.",
+                "failure_message": "L'invio dello showcase non è riuscito.",
+                "field_title": "Titolo",
+                "field_body": "Descrizione",
+                "field_url": "Sito web",
+                "field_type": "Tipo di contenuto",
+                "field_image": "Immagine",
+                "field_tags": {
+                    "label": "Tag",
+                    "prompt": "Inserisci i tag separati da virgole"
+                },
+                "field_categories": {
+                    "label": "Categorie",
+                    "prompt": "Seleziona una o più categorie"
+                },
+                "field_datasets": {
+                    "label": "Set di dati",
+                    "prompt": "Digita per cercare set di dati..."
+                },
+                "submit_button": "Invia"
+            }
         },
         "terms_of_use": {
             "ods_open": {
