@@ -55,7 +55,7 @@ When saved, changes are committed to a new branch in the repository, and a pull 
 
 ## Submitting showcases
 
-Showcases can also be submitted using a form accessible on the public website. 
+Showcases can also be submitted using a [form](https://piveau-ln.zazukoians.org/de/showcases/submit) accessible on the public website. 
 
 ![](images/showcase-form.png)
 
