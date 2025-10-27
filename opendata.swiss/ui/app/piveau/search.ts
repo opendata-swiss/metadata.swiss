@@ -36,8 +36,10 @@ export function useDatasetsSearch() {
 }
 
 export function useVocabularySearch() {
+  const baseUrl = useRuntimeConfig().public.piveauHubSearchUrl as string
+
   return defineHubSearch({
-    baseUrl: 'https://piveau-hub-search-ln.zazukoians.org/',
+    baseUrl,
     index: 'vocabulary',
     schema: z.object({
       pref_label: z.map(z.string(), z.string()),
