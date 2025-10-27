@@ -71,7 +71,34 @@
             "tags": "Tags",
             "submitted_by": "Soumis par",
             "externalLink": "Lien externe",
-            "open": "Ouvrir le site web"
+            "open": "Ouvrir le site web",
+            "submission_form": {
+                "group_italian": "Italien",
+                "group_french": "Français",
+                "group_german": "Allemand",
+                "group_english": "Anglais",
+                "group_general": "Général",
+                "success_message": "Le showcase a été soumis.",
+                "failure_message": "La soumission du showcase a échoué.",
+                "field_title": "Titre",
+                "field_body": "Description",
+                "field_url": "Site web",
+                "field_type": "Type de contenu",
+                "field_image": "Image",
+                "field_tags": {
+                    "label": "Tags",
+                    "prompt": "Entrez les tags séparés par des virgules"
+                },
+                "field_categories": {
+                    "label": "Catégories",
+                    "prompt": "Sélectionnez une ou plusieurs catégories"
+                },
+                "field_datasets": {
+                    "label": "Jeux de données",
+                    "prompt": "Tapez pour rechercher des jeux de données..."
+                },
+                "submit_button": "Soumettre"
+            }
         },
         "terms_of_use": {
             "ods_open": {

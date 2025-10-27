@@ -1,15 +1,15 @@
 <template>
-  <OdsPage :page="{ title: 'New Showcase' }">
+  <OdsPage :page="{ title }">
     <template #header>
       <OdsNotificationBanner :open="success === true" type="success">
-        The showcase has been submitted
+        {{ t('success_message') }}
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
         </template>
       </OdsNotificationBanner>
       <OdsNotificationBanner :open="success === false" type="error">
-        Failed to submit showcase.
+        {{ t('failure_message') }}
 
         <pre>{{ submissionError }}</pre>
         <ul v-if="Array.isArray(submissionValidationIssues)">
@@ -31,52 +31,52 @@
       <div class="container">
           <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
             <OdsTabs>
-              <OdsTab title="German *">
+              <OdsTab :title="`${t('group_german')} *`">
                 <div class="form__group">
-                  <OdsInput id="title[de]" label="Title (DE)" placeholder="Titel auf Deutsch" required />
-                  <ToastMarkdownEditor id="body[de]" label="Body (DE)" required />
+                  <OdsInput id="title[de]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[de]" :label="t('field_body')" required />
                 </div>
               </OdsTab>
-              <OdsTab title="French *">
+              <OdsTab :title="`${t('group_french')} *`">
                 <div class="form__group">
-                  <OdsInput id="title[fr]" label="Title (FR)" placeholder="Titre en Français" required />
-                  <ToastMarkdownEditor id="body[fr]" label="Body (FR)" required />
+                  <OdsInput id="title[fr]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[fr]" :label="t('field_body')" required />
                 </div>
               </OdsTab>
-              <OdsTab title="Italian *">
+              <OdsTab :title="`${t('group_italian')} *`">
                 <div class="form__group">
-                  <OdsInput id="title[it]" label="Title (IT)" placeholder="Titolo in Italiano" required />
-                  <ToastMarkdownEditor id="body[it]" label="Body (IT)" required />
+                  <OdsInput id="title[it]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[it]" :label="t('field_body')" required />
                 </div>
               </OdsTab>
-              <OdsTab title="English *">
+              <OdsTab :title="`${t('group_english')} *`">
                 <div class="form__group">
-                  <OdsInput id="title[en]" label="Title (EN)" placeholder="Title in English" required />
-                  <ToastMarkdownEditor id="body[en]" label="Body (EN)" required />
+                  <OdsInput id="title[en]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[en]" :label="t('field_body')" required />
                 </div>
               </OdsTab>
-              <OdsTab title="General *">
+              <OdsTab :title="`${t('group_general')} *`">
                 <div class="form__group">
-                  <OdsSelect id="type" name="type" label="Type" required>
+                  <OdsSelect id="type" name="type" :label="t('field_type')" required>
                     <option value="application">Application</option>
                     <option value="data_visualization">Data Visualization</option>
                     <option value="event">Event</option>
                     <option value="blog_and_media_articles">Blog/Article</option>
                   </OdsSelect>
                   <div class="form__group">
-                    <OdsInput id="image" type="file" label="Image" accept="image/*" required />
+                    <OdsInput id="image" type="file" :label="t('field_image')" accept="image/*" required />
                   </div>
-                  <OdsInput id="url" label="Website" />
+                  <OdsInput id="url" :label="t('field_url')" />
                   <div class="form__group">
                     <OdsMultiSelect
                       id="datasets"
-                      label="Datasets"
+                      :label="t('field_datasets.label')"
                       :load-options="searchDatasets"
                       :close-on-select="false"
                       :options="datasets"
                     >
                       <template #no-options>
-                        type to search datasets...
+                        {{ t('field_datasets.prompt') }}
                       </template>
                       <template #selected-option="option" >
                         {{ option.title }}
@@ -84,16 +84,16 @@
                       </template>
                     </OdsMultiSelect>
                   </div>
-                  <OdsMultiSelect label="Categories" :options="dataThemes" :close-on-select="false">
+                  <OdsMultiSelect :label="t('field_categories.label')" :options="dataThemes" :close-on-select="false">
                     <template #no-options>
-                      type to search categories...
+                      {{ t('field_categories.prompt') }}
                     </template>
                     <template #selected-option="option" >
                       {{ option.title }}
                       <input type="hidden" name="categories" :value="option.id">
                     </template>
                   </OdsMultiSelect>
-                  <OdsInput id="tags" label="Tags" placeholder="Enter tags separated by commas" />
+                  <OdsInput id="tags" :label="t('field_tags.label')" :placeholder="t('field_tags.prompt')" />
                 </div>
               </OdsTab>
             </OdsTabs>
@@ -101,7 +101,7 @@
               <OdsButton
                 submit
                 variant="outline-negative"
-                title="Submit"
+                :title="t('submit_button')"
                 icon-right
                 :style="submitting ? 'pointer-events: none; cursor: wait' : ''"
               >
@@ -134,7 +134,9 @@ import ToastMarkdownEditor from "../../app/components/ToastMarkdownEditor.vue";
 import OdsTabs from "../../app/components/OdsTabs.vue";
 import OdsTab from "../../app/components/OdsTab.vue";
 
-const { locale } = useI18n()
+const i18n = useI18n()
+const { locale } = i18n
+const t = (key: string) => i18n.t(`message.showcase.submission_form.${key}`)
 
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
@@ -150,7 +152,8 @@ const dataThemes = computed(() => {
   }))
 })
 
-useSeoMeta({title: 'New Showcase | opendata.swiss'})
+const title = 'New Showcase'
+useSeoMeta({title: `${title} | opendata.swiss`})
 
 const submitting = ref(false)
 const success = ref<boolean | null>(null)
