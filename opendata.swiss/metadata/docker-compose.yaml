@@ -303,3 +303,9 @@ services:
       - JAVA_OPTS=-Xms200m -Xmx500m
       #- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
+
+  piveau-consus-patching:
+    build: ../../piveau_modules/piveau-consus-patching
+    logging:
+      options:
+        max-size: "50m"
