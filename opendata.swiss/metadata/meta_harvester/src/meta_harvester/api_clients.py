@@ -112,6 +112,42 @@ class CkanClient:
         return result
 
 
+class PiveauRunClient:
+    """
+    A client for interacting with the piveau-scheduling 'Run' endpoints.
+    """
+    PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
+
+    def list_runs(self, run_filter: list[str] = None) -> list[dict]:
+        """
+        Lists current or recent runs, with an option to filter by status.
+
+        Args:
+            run_filter (list[str], optional): A list of statuses to filter by.
+                                            Valid values are: "active", "canceled", "failed", "finished".
+                                            Defaults to None.
+
+        Returns:
+            list[dict]: A list of run status objects.
+        """
+        url = f"{self.PIVEAU_PIPES_ENDPOINT}/runs"
+        params = {}
+        if run_filter:
+            params["filter"] = run_filter
+
+        session = requests_retry_session()
+        try:
+            logger.info(f"Listing runs from {url} with filter: {run_filter}")
+            response = session.get(url, params=params, timeout=60)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error listing runs from {url}: {e}")
+            if e.response is not None:
+                logger.error(f"Server response: {e.response.text}")
+            return []
+
+
 class PiveauClient:
 
     HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
@@ -119,8 +155,9 @@ class PiveauClient:
     API_KEY = os.getenv("API_KEY_HUB", "yourRepoApiKey")
 
     def __init__(self):
-        """Initializes the PiveauClient and the catalogue cache."""
         self._catalogues: list[str] = []
+        self.run_client = PiveauRunClient()
+        self.max_concurrent_runs = int(os.getenv("MAX_CONCURRENT_RUNS", "5"))
 
     @property
     def catalogues(self) -> set[str]:
@@ -142,7 +179,7 @@ class PiveauClient:
         params = {"valueType": "identifiers"}
 
         session = requests_retry_session()
-        response = session.get(url, headers=headers, params=params, timeout=5)
+        response = session.get(url, headers=headers, params=params, timeout=30)
         response.raise_for_status()
 
         api_catalogues = response.json()
@@ -249,86 +286,3 @@ class PiveauClient:
         response.raise_for_status()
 
         logger.info(f"Successfully triggered pipe '{pipe_name}'. Status: {response.status_code}")
-
-
-
-class PiveauRunClient:
-    """
-    A client for interacting with the piveau-scheduling 'Run' endpoints.
-    """
-    PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
-
-    def list_runs(self, run_filter: list[str] = None) -> list[dict]:
-        """
-        Lists current or recent runs, with an option to filter by status.
-
-        Args:
-            run_filter (list[str], optional): A list of statuses to filter by.
-                                            Valid values are: "active", "canceled", "failed", "finished".
-                                            Defaults to None.
-
-        Returns:
-            list[dict]: A list of run status objects.
-        """
-        url = f"{self.PIVEAU_PIPES_ENDPOINT}/runs"
-        params = {}
-        if run_filter:
-            params["filter"] = run_filter
-
-        session = requests_retry_session()
-        try:
-            logger.info(f"Listing runs from {url} with filter: {run_filter}")
-            response = session.get(url, params=params, timeout=10)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error listing runs from {url}: {e}")
-            if e.response is not None:
-                logger.error(f"Server response: {e.response.text}")
-            raise
-
-    def get_run_status(self, run_id: str) -> dict:
-        """
-        Gets the status of a specific run by its ID.
-
-        Args:
-            run_id (str): The unique identifier of the run.
-
-        Returns:
-            dict: The run status object.
-        """
-        url = f"{self.PIVEAU_PIPES_ENDPOINT}/runs/{run_id}"
-        session = requests_retry_session()
-        try:
-            logger.info(f"Getting status for run ID '{run_id}' from {url}")
-            response = session.get(url, timeout=10)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error getting status for run ID '{run_id}' from {url}: {e}")
-            if e.response is not None:
-                logger.error(f"Server response: {e.response.text}")
-            raise
-
-    def cancel_run(self, run_id: str) -> dict:
-        """
-        Cancels an active run by its ID.
-
-        Args:
-            run_id (str): The unique identifier of the run to cancel.
-
-        Returns:
-            dict: The new status object of the canceled run.
-        """
-        url = f"{self.PIVEAU_PIPES_ENDPOINT}/runs/{run_id}"
-        session = requests_retry_session()
-        try:
-            logger.info(f"Canceling run ID '{run_id}' at {url}")
-            response = session.delete(url, timeout=10)
-            response.raise_for_status()
-            return response.json()
-        except requests.exceptions.RequestException as e:
-            logger.error(f"Error canceling run ID '{run_id}' at {url}: {e}")
-            if e.response is not None:
-                logger.error(f"Server response: {e.response.text}")
-            raise

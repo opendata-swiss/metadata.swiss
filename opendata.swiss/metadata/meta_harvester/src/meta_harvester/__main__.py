@@ -230,7 +230,7 @@ def generate_pipe_and_catalogue_files():
 
 def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
     """
-    Triggers piveau pipes to run.
+    Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
     By default, it ensures the corresponding catalogue is created/updated first.
     If no pipe names are provided, triggers all pipes found in the PIPES_PATH directory.
     """
@@ -249,8 +249,24 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
         logging.warning("No pipes found to trigger.")
         return
 
-    logging.info(f"Triggering {len(pipe_names)} pipe(s)...")
+    logging.info(f"Queueing {len(pipe_names)} pipe(s) for execution...")
     for name in pipe_names:
+
+        while True:
+            active_runs = piveau_client.run_client.list_runs(run_filter=["active"])
+            active_count = len(active_runs)
+            logger.info(f"Currently {active_count} active run(s).")
+
+            if active_count < piveau_client.max_concurrent_runs:
+                logger.info("Slot available. Proceeding to launch pipe.")
+                break  # Exit the waiting loop
+
+            logger.info(
+                f"Reached maximum concurrent runs ({piveau_client.max_concurrent_runs}). Waiting for a slot to open..."
+            )
+            time.sleep(30)
+
+
         if create_catalogue:
             # Derive catalogue name from pipe name and create it
             catalogue_name = name.replace("-geocat-harvester", "")
@@ -260,7 +276,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
             create_catalogues([catalogue_name])
 
         piveau_client.trigger_pipe(pipe_name=name)
-        time.sleep(10)
+        time.sleep(5)
 
 def generate_all_pipes():
     """

@@ -38,6 +38,9 @@ HUB_REPO_ENDPOINT="http://localhost:8081"
 
 # Endpoint for the piveau-pipes instance (for triggering pipes)
 PIVEAU_PIPES_ENDPOINT="http://localhost:8090"
+
+# The maximum number of pipes to run concurrently
+MAX_CONCURRENT_RUNS=5
 ```
 
 The script will automatically load these variables when executed.
@@ -141,8 +144,6 @@ Deletes catalogues from the piveau-hub.
 * add unit tests
 
 * clean code - type hints, function headers
-
-* queue management
 
 
 
