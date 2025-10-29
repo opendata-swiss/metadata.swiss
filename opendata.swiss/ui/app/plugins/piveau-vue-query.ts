@@ -11,6 +11,7 @@ import {
   VueQueryPlugin,
 } from '@tanstack/vue-query'
 
+import { piveauLocale } from '../../i18n/locales/piveau/piveau-locale'
 import { piveauKitPlugin } from '@piveau/sdk-vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -31,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(VueQueryPlugin, options)
   nuxtApp.vueApp.use(piveauKitPlugin, {
     queryClient,
-    locale: undefined,
+    locale: piveauLocale,
   })
 
   if (import.meta.server) {
