@@ -196,10 +196,5 @@ export const piveauLocale = {
         }
     },
     locale: 'de',
-    fallbackLocale: 'de',
-    dateFormatStrings: {
-        short: 'DD.MM.YYYY',
-        medium: 'DD.MM.YYYY',
-        long: 'DD. MMMM YYYY hh:mm:ss',
-    },
+    fallbackLocale: 'de'
 }
