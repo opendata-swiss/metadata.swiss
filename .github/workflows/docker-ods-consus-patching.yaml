@@ -2,6 +2,8 @@ name: "[consus-patching] Build and push Docker image"
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "opendata.swiss/piveau_modules/piveau-consus-patching/**" # Only trigger if files in the ui directory change
       - ".github/workflows/docker-ods-consus-patching.yaml" # Trigger also if this workflow file is changed
