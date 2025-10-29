@@ -23,8 +23,8 @@ $ docker build -t piveau-consus-patching .
   Contains an array of actions
   Supported actions are:
     * `remove-dataset-cloak`: removes any triples matching `?s a dcat:Dataset .`
-    * `signal-resource-showcase`: signals to subsequent segments that `resourceType` is "showcase"
-    * `signal-resource-foobar`: signals to subsequent segments that `resourceType` is "foobar"
+    * `signal-resource-*`: signals to subsequent segments the value of `resourceType` 
+       * for example, `signal-resource-showcase` signals that `resourceType` is "showcase"
 
 
 ### Logging
