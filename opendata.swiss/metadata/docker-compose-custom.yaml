@@ -1,6 +1,0 @@
-services:
-  piveau-consus-patching:
-    image: piveau-consus-patching
-    logging:
-      options:
-        max-size: "50m"
