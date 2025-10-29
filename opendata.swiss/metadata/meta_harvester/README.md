@@ -139,7 +139,7 @@ Deletes catalogues from the piveau-hub.
 
 
 ## TODO:
-* add publisher name and website ---> needs fetching it from organizations api (["result"]["url"]): https://ckan.opendata.swiss/api/3/action/organization_show?id=cnai
+* add publisher name ---> needs fetching from pipe config parameters
 
 * add unit tests
 

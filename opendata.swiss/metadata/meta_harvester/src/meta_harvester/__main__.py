@@ -100,6 +100,7 @@ def create_single_catalogue(name: str, file_path: str | None = None):
 def generate_pipe(
     id: str,
     name: str,
+    org_name: str,
     catalogue: str,
     title: str,
     http_client: str,
@@ -118,6 +119,7 @@ def generate_pipe(
 
     data["body"]["segments"][0]["body"]["config"]["address"] = http_client
     data["body"]["segments"][0]["body"]["config"]["catalogue"] = catalogue
+    data["body"]["segments"][0]["body"]["config"]["org_name"] = org_name
 
     output_file = Path(output_path) / f"{name}.yaml"
 
@@ -209,22 +211,39 @@ def generate_pipe_and_catalogue_files():
         url = details["url"].split("?")[0]
         catalogue_name = details["name"].replace("-geocat-harvester", "")
 
-        generate_pipe(
-            id=id,
-            name=details["name"],
-            catalogue=catalogue_name,
-            title=details["title"],
-            http_client=url,
-        )
+        org_id = ckan_client.get_org_id_for_harvester(id)
+        if org_id:
+            full_org_details = ckan_client.get_organization_details(organization_id=org_id)
+            if full_org_details:
+                org_url = full_org_details.get("url", "https://example.com")
+            else:
+                logging.warning(
+                    f"No org url for '{catalogue_name}' provided."
+                )
+                org_url = "https://example.com"
+        else:
+            org_url = "https://example.com"
+
 
         organization = to_dict(details.get("organization", {}))
+        org_titles = to_dict(organization.get("title", "{}"))
+
         generate_catalogue_metadata(
             catalogue_name=catalogue_name,
-            org_titles=to_dict(organization.get("title", "{}")),
+            org_titles=org_titles,
             org_descriptions=to_dict(organization.get("description", "{}")),
             created=details["metadata_created"],
             modified=details["metadata_modified"],
-            homepage="https://example.com",
+            homepage=org_url,
+        )
+
+        generate_pipe(
+            id=id,
+            name=details["name"],
+            org_name=org_titles.get("en", "unknown_org"),
+            catalogue=catalogue_name,
+            title=details["title"],
+            http_client=url,
         )
 
 
