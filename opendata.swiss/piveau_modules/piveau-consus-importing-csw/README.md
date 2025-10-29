@@ -21,6 +21,6 @@ mvn -Dmaven.test.skip=true install
 To build the container with newly compiled module:
 
 ```sh
-cd ../../opendata.swiss/metadata
-docker compose -f docker-compose-custom.yaml build --no-cache piveau-consus-importing-csw
+cd ../../metadata
+docker compose -f docker-compose.yaml build --no-cache piveau-consus-importing-csw
 ```

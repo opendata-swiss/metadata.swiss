@@ -295,7 +295,7 @@ services:
   # Custom services  #
   ####################
   piveau-consus-importing-csw:
-    build: ../../piveau_modules/piveau-consus-importing-csw
+    build: ../piveau_modules/piveau-consus-importing-csw
     logging:
       options:
         max-size: "50m"
@@ -305,7 +305,7 @@ services:
       - OTEL_SDK_DISABLED=true
 
   piveau-consus-patching:
-    build: ../../piveau_modules/piveau-consus-patching
+    build: ../piveau_modules/piveau-consus-patching
     logging:
       options:
         max-size: "50m"

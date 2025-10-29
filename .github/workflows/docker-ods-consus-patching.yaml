@@ -1,0 +1,73 @@
+name: "[consus-patching] Build and push Docker image"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "opendata.swiss/piveau_modules/piveau-consus-patching/**" # Only trigger if files in the ui directory change
+      - ".github/workflows/docker-ods-consus-patching.yaml" # Trigger also if this workflow file is changed
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v3.9.2
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ghcr.io/opendata-swiss/ods-consus-patching
+          tags: |
+            type=ref,event=branch
+            type=sha
+            type=raw,value={{branch}}-${{ github.run_id }}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker images
+        id: docker_build
+        uses: docker/build-push-action@v6
+        with:
+          context: ./opendata.swiss/piveau_modules/piveau-consus-patching
+          file: ./opendata.swiss/piveau_modules/piveau-consus-patching/Dockerfile
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          platforms: |
+            linux/amd64
+
+      - name: Sign the images with GitHub OIDC Token
+        env:
+          DIGEST: ${{ steps.docker_build.outputs.digest }}
+          TAGS: ${{ steps.docker_meta.outputs.tags }}
+        run: |
+          images=""
+          for tag in ${TAGS}; do
+            images+="${tag}@${DIGEST} "
+          done
+          cosign sign --yes ${images}
