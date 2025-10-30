@@ -1,0 +1,18 @@
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix ex: <https://example.org/> .
+
+<https://opendata.swiss/set/resource/organization/kanton-zuerich>
+  a foaf:Organization, pv:CustomResource ;
+  dcterms:identifier   "kanton-zuerich" ;
+
+  ex:politicalLevel   ex:political-level\/canton ;
+  foaf:name           "Kanton Zürich"@de , "Canton of Zurich"@en ;
+  dcterms:description "Der Kanton Zürich veröffentlicht offene Behördendaten koordiniert durch die Fach- und Koordinationsstelle Open Government Data des Statistischen Amts und die Abteilung Geoinformation des Amts für Raumentwicklung."@de ;
+  dcterms:description "The Canton of Zurich publishes Open Government Data coordinated by the Specialist Unit for Open Government Data of the Statistical Office and the Department of Geoinformation of the Office for Spatial Development."@en ;
+  foaf:homepage       <https://www.zh.ch/opendata> ;
+  schema:image        "https://storage.googleapis.com/dx-liip/production/storage/uploads/group/kt_zh.png" .
+
+<https://www.zh.ch/opendata> a foaf:Document .

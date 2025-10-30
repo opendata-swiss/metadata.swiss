@@ -13,3 +13,6 @@ curl -i -X PUT -H "X-API-Key: $PIVEAU_HUB_API_KEY" -H "Content-Type: text/turtle
 
 # catalog for showcases
 curl -i -X PUT -H "X-API-Key: $PIVEAU_HUB_API_KEY" -H "Content-Type: text/turtle" --data @piveau_catalogues/showcases-ods.ttl "${HUB_REPO_ENDPOINT}/catalogues/showcases-ods"
+
+# catalog for organizations
+curl -i -X PUT -H "X-API-Key: $PIVEAU_HUB_API_KEY" -H "Content-Type: text/turtle" --data @piveau_catalogues/organizations-ods.ttl "${HUB_REPO_ENDPOINT}/catalogues/organizations-ods"

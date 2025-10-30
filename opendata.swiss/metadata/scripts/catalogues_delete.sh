@@ -12,3 +12,4 @@ curl -i -X DELETE -H "X-API-Key: $PIVEAU_HUB_API_KEY" "${HUB_REPO_ENDPOINT}/cata
 curl -i -X DELETE -H "X-API-Key: $PIVEAU_HUB_API_KEY" "${HUB_REPO_ENDPOINT}/catalogues/stadt-winterthur-geocat"
 
 curl -i -X DELETE -H "X-API-Key: $PIVEAU_HUB_API_KEY" "${HUB_REPO_ENDPOINT}/catalogues/showcases-ods"
+curl -i -X DELETE -H "X-API-Key: $PIVEAU_HUB_API_KEY" "${HUB_REPO_ENDPOINT}/catalogues/organizations-ods"

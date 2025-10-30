@@ -46,6 +46,30 @@
         ],
         "searchParams": []
       }
+    }, {
+      "id": "organization",
+      "description": "A representation of an organization",
+      "path": "organization.hub.shapes.ttl",
+      "name": "organization",
+      "inCatalogue": true,
+      "typeUri":  "http://xmlns.com/foaf/0.1/Organization",
+      "shapeUri": "https://example.org/Organization_Shape",
+      "searchSettings": {
+        "max_agg_size": 50,
+        "max_result_window": 10000,
+        "facets": [
+            {
+              "name": "parent_organization",
+              "title": "Parent Organization",
+              "path": "parent_organization"
+            }, {
+              "name": "political_level",
+              "title": "Political Level",
+              "path": "political_level"
+            }
+        ],
+        "searchParams": []
+      }
     }
   ]
 }

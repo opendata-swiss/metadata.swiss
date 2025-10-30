@@ -1,0 +1,19 @@
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix ex: <https://example.org/> .
+
+<https://opendata.swiss/set/resource/organization/stadt-winterthur>
+  a foaf:Organization, pv:CustomResource ;
+  dcterms:identifier   "stadt-winterthur" ;
+  schema:parentOrganization <https://opendata.swiss/set/resource/organization/kanton-zuerich> ;
+
+  ex:politicalLevel    ex:political-level\/commune ;
+  foaf:name           "Stadt Winterthur"@de, "City of Winterthur"@en ;
+  dcterms:description "Die Stadt Winterthur als intelligente, vernetzte und sichere Stadt nutzt städtische Daten als Basis für effiziente und nutzerfreundliche Lösungen und stellt sie der Allgemeinheit unter Gewährleistung des Datenschutzes als 'Open Data' zur freien Wiederverwendung zur Verfügung. Die Publikation der OGD-Datensätze ist in Erarbeitung, das Angebot wird laufend ausgebaut."@de ;
+  dcterms:description "(en) The city of Winterthur .... "@en ;
+  foaf:homepage       <https://stadt.winterthur.ch/themen/die-stadt/winterthur/statistik/> ;
+  schema:image        "https://storage.googleapis.com/dx-liip/production/storage/uploads/group/2022-11-15-160317.0372762022-08-29-082808.186628StadtWinterthurLOGO.jpg" .
+
+<https://stadt.winterthur.ch/themen/die-stadt/winterthur/statistik/> a foaf:Document .

@@ -11,8 +11,6 @@ dcterms:modified    "2019-12-06T10:08:14Z"^^xsd:dateTime ;
 dcterms:type "ckan"^^xsd:string ;
 dcterms:description "Open Data Portal Staatskanzelei Kanton Zürich"@de ;
 dcterms:language    <http://publications.europa.eu/resource/authority/language/GER> ;
-dcterms:publisher   [ a             foaf:Agent ;
-foaf:homepage <https://www.zh.ch/de/staatskanzlei.html> ;
-foaf:name     "Staatskanzlei Kanton Zürich" ] ;
+dcterms:publisher   <https://opendata.swiss/set/resource/organization/staatskanzlei-kanton-zuerich> ;
 dcterms:spatial     <http://publications.europa.eu/resource/authority/country/CHE> ;
 dcterms:title       "Data Staatskanzelei Kanton Zürich"@de .

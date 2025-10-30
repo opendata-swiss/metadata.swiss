@@ -1,0 +1,34 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix publishertype: <http://purl.org/adms/publishertype/> .
+
+<https://opendata.swiss/id/catalogue/organizations-ods>
+    a dcat:Catalog ;
+
+    dct:title "(en) Organizations ODS"@en ;
+    dct:title "(de) Organizations ODS"@de ;
+    dct:title "(fr) Organizations ODS"@fr ;
+    dct:title "(it) Organizations ODS"@it ;
+
+    dct:description "(en) Organizations on opendata.swiss"@en ;
+    dct:description "(de) Organizations auf opendata.swiss"@de ;  
+    dct:description "(fr) Organizations sur opendata.swiss"@fr ;
+    dct:description "(it) Organizations su opendata.swiss"@it ;
+
+    dct:publisher [ 
+        a foaf:Agent ;
+        dct:type publishertype:NationalAuthority ;
+        foaf:homepage  <https://www.bfs.admin.ch> ;
+        foaf:mbox      <mailto:opendata@bfs.admin.ch> ;
+        foaf:name      "Federal Statistical Office"@en ;
+        foaf:name      "Bundesamt für Statistik"@de ;
+        foaf:name      "Office fédéral de la statistique"@fr ;
+        foaf:name      "Ufficio federale di statistica"@it
+    ];
+
+    foaf:homepage      <https://opendata.swiss> .
+
+<https://www.bfs.admin.ch> a foaf:Document .
+
+<https://opendata.swiss> a foaf:Document .
