@@ -1,11 +1,112 @@
-<script setup>
+<script setup lang="ts">
+import { computed, reactive, ref, toRefs, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from '#imports';
+import { useSeoMeta } from 'nuxt/app';
+import { getCurrentTranslation } from "../../app/lib/getCurrentTranslation";
+import type { SearchParamsBase } from '@piveau/sdk-core';
+
+
 import OdsPage from "../../app/components/OdsPage.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsCard from "../../app/components/OdsCard.vue";
 import SvgIcon from "../../app/components/SvgIcon.vue";
+import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
+import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS} from '../../app/piveau/search';
+import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 
 const { locale, t } = useI18n()
+
+const route = useRoute();
+const router = useRouter();
+
+const searchInput = ref(route.query.q)
+
+
+// 1. Main reactive object for your logic/UI
+const selectedFacets = reactive(
+  Object.fromEntries(ACTIVE_SHOWCASE_FACETS.map(facet => [facet, [] as string[]]))
+);
+
+
+
+// 2. facetRefs for useSearch API (syncs with selectedFacets)
+const facetRefs = Object.fromEntries(
+  ACTIVE_SHOWCASE_FACETS.map(facet => [facet, computed({
+    get: () => selectedFacets[facet],
+    set: (val: string[]) => { selectedFacets[facet] = val }
+  })])
+);
+
+
+// 3. Use selectedFacets everywhere in your code and UI
+function resetAllFacets() {
+  for (const key in selectedFacets){
+    selectedFacets[key] = [];
+  }
+  // Reset the 'facets' query parameter
+  const query = { ...route.query }
+  if (query.page && query.page !== '1') {
+    query.page = '1'; // Reset page to 1 if facets are restored from route
+  }
+  query['facets'] = encodeURIComponent(JSON.stringify({}))
+  router.push({ query })
+}
+
+const onSearch = () => goToPage(1, { q: searchInput.value })
+
+function goToPage(newPage: number | string, query = route.query) {
+  const page = newPage ? Number(newPage) : 1
+  // Collect all facet values from facetRefs
+  const facetsQuery = ACTIVE_SHOWCASE_FACETS.reduce((acc, facet) => {
+    if (facetRefs[facet].value.length > 0) {
+      acc[facet] = facetRefs[facet].value
+    }
+    return acc
+  }, {} as Record<string, string[]>)
+  router.push({
+    name: route.name,
+    query: { ...query, ...facetsQuery, page },
+  })
+  scrollToResults();
+
+}
+
+function scrollToResults() {
+  const el = document.getElementById('search-results');
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+const piveauQueryParams: SearchParamsBase = reactive({
+  limit: 10,
+  page: route.query.page ? Number(route.query.page) - 1 : 0,
+  q: Array.isArray(route.query.q) ? route.query.q.join(' ') : route.query.q || '',
+  sort: 'relevance'
+})
+
+
+const { useSearch} = useShowcaseSearch()
+const {
+  query,
+  getSearchResultsEnhanced,
+  getAvailableFacetsLocalized
+  
+} = useSearch({
+  queryParams: toRefs(piveauQueryParams),
+  selectedFacets: facetRefs,
+})
+
+const availableFacets = getAvailableFacetsLocalized(locale.value);
+
+
+const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
+  const facets = availableFacets.value.filter(f => ACTIVE_SHOWCASE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
+  return facets
+});
+
 const breadcrumbs = [
   await homePageBreadcrumb(locale),
   {
@@ -17,32 +118,43 @@ useSeoMeta({
   title: `${t('message.header.navigation.showcases')} | opendata.swiss`,
 })
 
-const { data: showcases } = await useAsyncData('showcases_' + locale.value, () => {
-  return queryCollection('showcases')
-    .where('path', 'LIKE', `%.${locale.value}`)
-    .where('active', '==', true)
-    .all()
+
+
+function resetSearch() {
+  searchInput.value = ''
+  ACTIVE_SHOWCASE_FACETS.forEach(facet => {
+    facetRefs[facet].value = []
+  })
+  piveauQueryParams.page = 0
+}
+
+
+watch(() => route.query.page, (newPage) => {
+  piveauQueryParams.page = newPage ? Number(newPage) - 1 : 0
 })
 
-function firstParagraph(showcase) {
-  const [firstPara] = showcase.body.value
-  let body = [firstPara]
-  if (!firstPara) {
-    body = []
+watch(() => route.query, (queryParam) => {
+  if (Object.keys(queryParam).length === 0) {
+   // query params are empty
+   resetSearch()
+  } else {
+   // syncFacetsFromRoute()
   }
 
-  return {
-    ...showcase,
-    body: {
-      ...showcase.body,
-      value: body
-    },
-  }
-}
+})
 
-function showcaseId(showcase) {
-  return showcase.id.replace(/.*?([^/]+)\.\w\w\.md$/, '$1')
-}
+watch(() => route.query.q, (searchTerm) => {
+  if (searchTerm) {
+    searchInput.value = Array.isArray(searchTerm) ? searchTerm.join(' ') : searchTerm
+  } else {
+    searchInput.value = ''
+  }
+  piveauQueryParams.q = searchInput.value
+})
+
+const { suspense } = query
+await suspense()
+
 </script>
 
 <template>
@@ -50,29 +162,66 @@ function showcaseId(showcase) {
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
-    <section class="section section--py">
-      <div class="container container--grid container--reverse-mobile gap--responsive">
+     <!-- search panel -->
+      <section class="section section--default bg--secondary-50">
+
+        <div class="container">
+
+          <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
+          <div class="search search--large search--page-result">
+            <div class="search__group">
+               <input
+                id="search-input"
+                v-model="searchInput"
+                :placeholder="t('message.dataset_search.search_placeholder')"
+                type="search"
+                :label="t('message.dataset_search.search_placeholder')"
+                autocomplete="off"
+                class="search"
+                @keyup.enter="onSearch"
+              >
+              <OdsButton
+                variant="bare"
+                :title="t('message.dataset_search.search_button')"
+                size="lg"
+                icon="Search"
+                icon-only
+                @click="onSearch"
+              />
+            </div>
+         </div>
+         <div class="search__filters">
+           <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
+         </div>
+         <div class="filters__active" />
+      </div>
+   </section>
+   <!-- results -->
+
+   <section id="search-results" class="section section--default">   
+       <div class="container container--grid container--reverse-mobile gap--responsive">
         <div class="container__main vertical-spacing">
+          
           <OdsCard
-            v-for="showcase in showcases"
+            v-for="showcase in getSearchResultsEnhanced"
             :key="showcase.id"
-            :title="showcase.title"
+            :title="getCurrentTranslation(showcase.title, locale.value)"
             clickable
           >
             <template #image>
-              <img :src="showcase.image" :alt="showcase.title" >
+              <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
             </template>
 
             <template #top-meta>
               <div>
-                <span class="meta-info__item">{{ showcase.type }}</span>
+                <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
               </div>
             </template>
 
-            <ContentRenderer :value="firstParagraph(showcase)" />
+            <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
 
             <template #footer-action>
-              <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcaseId(showcase) } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
+              <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
                 <SvgIcon icon="ArrowRight" role="btn" />
                 <span class="btn__text">Weiterlesen</span>
               </NuxtLinkLocale>
