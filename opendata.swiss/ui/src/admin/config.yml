@@ -94,8 +94,8 @@ collections:
         widget: string
         i18n: true
         required: false
-      - label: Description
-        name: description
+      - label: Sub-heading
+        name: subHeading
         widget: markdown
         i18n: true
       - name: body
