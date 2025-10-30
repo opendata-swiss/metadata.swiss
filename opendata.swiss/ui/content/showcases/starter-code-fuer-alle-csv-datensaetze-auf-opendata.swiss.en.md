@@ -1,14 +1,15 @@
 ---
 active: true
-categories: []
+title: Starter code for all CSV datasets on opendata.swiss
+image: img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
+url: https://github.com/rnckp/starter-code_opendataswiss
+categories:
+  - http://publications.europa.eu/resource/authority/data-theme/INTR
+type: data_visualization
 datasets: []
 tags:
   - CSV
   - starter-code
-title: Starter code for all CSV datasets on opendata.swiss
-image: img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
-url: https://github.com/rnckp/starter-code_opendataswiss
-type: application
 ---
 Open any CSV dataset from opendata.swiss with a single click and start analyzing your data immediately in a fully preconfigured starter code notebook for Python or R markdown file.
 
