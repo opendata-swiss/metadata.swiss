@@ -1,0 +1,49 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://opendata.swiss/vocabulary/showcase-types> . # TODO check rename
+
+<>
+    a owl:Ontology, skos:ConceptScheme ;
+    skos:prefLabel 
+        "Showcase Types"@en,
+        "Types de vitrine"@fr,
+        "Showcase-Typen"@de,
+        "Tipi di vetrina"@it .
+
+</application>
+    a skos:Concept ;
+    skos:inScheme <> ;
+    skos:prefLabel 
+        "Application"@en ,
+        "Application"@fr ,
+        "Anwendung"@de ,
+        "Applicazione"@it .
+
+<data_visualization>
+    a skos:Concept ;
+    skos:inScheme <> ;
+    skos:prefLabel 
+        "Data Visualization"@en ,
+        "Visualisation des données"@fr ,
+        "Datenvisualisierung"@de ,
+        "Visualizzazione dei dati"@it .
+
+<event>
+    a skos:Concept ;
+    skos:inScheme <> ;
+    skos:prefLabel 
+        "Event"@en ,
+        "Événement"@fr ,
+        "Veranstaltung"@de ,
+        "Evento"@it .
+
+<blog_article>
+    a skos:Concept ;
+    skos:inScheme <> ;
+    skos:prefLabel 
+        "Blog/Article"@en ,
+        "Blog/Article"@fr ,
+        "Blog/Artikel"@de ,
+        "Blog/Articolo"@it .
