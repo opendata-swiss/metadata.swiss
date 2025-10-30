@@ -12,6 +12,7 @@ import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsCard from "../../app/components/OdsCard.vue";
 import SvgIcon from "../../app/components/SvgIcon.vue";
+import OdsButton from '../../app/components/OdsButton.vue';
 import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
 import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS} from '../../app/piveau/search';
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
@@ -92,7 +93,8 @@ const { useSearch} = useShowcaseSearch()
 const {
   query,
   getSearchResultsEnhanced,
-  getAvailableFacetsLocalized
+  getAvailableFacetsLocalized,
+  getSearchResultsCount
   
 } = useSearch({
   queryParams: toRefs(piveauQueryParams),
@@ -197,38 +199,76 @@ await suspense()
       </div>
    </section>
    <!-- results -->
-
-   <section id="search-results" class="section section--default">   
-       <div class="container container--grid container--reverse-mobile gap--responsive">
-        <div class="container__main vertical-spacing">
-          
-          <OdsCard
-            v-for="showcase in getSearchResultsEnhanced"
-            :key="showcase.id"
-            :title="getCurrentTranslation(showcase.title, locale.value)"
-            clickable
-          >
-            <template #image>
-              <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
-            </template>
-
-            <template #top-meta>
-              <div>
-                <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+ <section id="search-results" class="section section--default">
+      <div class="container gap--responsive">
+         <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
+            <div class="search-results__header">
+              <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
+                <div class="search-results__header__right">
+            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->    
+                  <div class="separator separator--vertical" />
+                 <!--  <OdsListCardToggle v-model="listType" /> --> 
+                </div>
               </div>
-            </template>
+            <h2 class="sr-only">Results list</h2>
+              <div  class="ods-card-list">
+                <ul class="search-results-list">
+                  <li  v-for="showcase in getSearchResultsEnhanced" :key="showcase.id">
+                    <OdsCard
+                        style="height: 100%;"
+                        :title="getCurrentTranslation(showcase.title, locale.value)"
+                        clickable
+                      >
+                        <template #image>
+                          <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
+                        </template>
 
-            <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
+                        <template #top-meta>
+                          <div>
+                            <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                          </div>
+                        </template>
 
-            <template #footer-action>
-              <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                <SvgIcon icon="ArrowRight" role="btn" />
-                <span class="btn__text">Weiterlesen</span>
-              </NuxtLinkLocale>
-            </template>
-          </OdsCard>
-        </div>
-      </div>
+                        <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
+
+                        <template #footer-action>
+                          <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
+                            <SvgIcon icon="ArrowRight" role="btn" />
+                            <span class="btn__text">Weiterlesen</span>
+                          </NuxtLinkLocale>
+                        </template>
+                      </OdsCard>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
     </section>
   </OdsPage>
 </template>
+<style lang="scss" scoped>
+ol, ul {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ods-card-list {
+        margin-top: 2.5rem !important;
+}
+
+@media (min-width: 1024px) {
+  .ods-card-list {
+        margin-top: 3rem !important;
+  }
+}
+@media (min-width: 640px) {
+  .ods-card-list {
+        margin-top: 2.25rem !important;
+  }
+}
+@media (min-width: 480px) {
+    .ods-card-list {
+        margin-top: 1.75rem !important;
+  }
+}</style>
