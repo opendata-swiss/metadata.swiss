@@ -3,7 +3,6 @@ import strip from 'strip-markdown'
 import remarkFrontmatter from "remark-frontmatter";
 import {dcat, dcterms, rdfs, schema} from "@tpluscode/rdf-ns-builders";
 import type {ShowcasesCollectionItem} from "@nuxt/content";
-import slugify from "slugify";
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
@@ -64,7 +63,7 @@ export default defineEventHandler(async (event) => {
     if (!aggregate) {
       aggregate = {
         id,
-        identifier: slugify(stem),
+        identifier: stem,
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         title: {},
         image: showcase.image,
