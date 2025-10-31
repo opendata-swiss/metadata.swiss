@@ -27,6 +27,8 @@ Each collection is a set of markdown files stored in the repository. Each collec
 
 Pages are the static content of the website: home page, "about" pages, etc. They cannot be added or deleted via the CMS, only edited.
 
+[Read more](cms/pages.md)
+
 ### Blog
 
 TBD
@@ -35,9 +37,13 @@ TBD
 
 The handbook is a collection of articles divided into sections. Sections determine the navigation structure of the handbook, resulting in addresses such as `/handbook/section/article` for articles, and `/handbook/section` for section overview pages.
 
+[Read more](cms/handbook.md)
+
 ### Showcases
 
-Showcases are the most complex content. In addition to typical fields, they include references to Piveau datasets.
+Showcases are the most complex content. In addition to typical fields, they include references to Piveau datasets. They are also possible to submit via a public form.
+
+[Read more](cms/showcases.md)
 
 ## Editorial workflow
 
@@ -53,10 +59,10 @@ When saved, changes are committed to a new branch in the repository, and a pull 
 
 ![](images/decap-workflow.png)
 
-## Submitting showcases
+## Rendered content
 
-Showcases can also be submitted using a [form](https://piveau-ln.zazukoians.org/de/showcases/submit) accessible on the public website. 
+Most pages on the website follow a similar structure, with a title, subtitle, short lead, main content, and optional sidebar.
 
-![](images/showcase-form.png)
+![](images/content-page-elements.png)
 
-Same as with decap, submissions create Pull Requests which are visible in the decap Content Manager.
+On most pages, the sidebar shows a table of contents generated from headings in the main content.

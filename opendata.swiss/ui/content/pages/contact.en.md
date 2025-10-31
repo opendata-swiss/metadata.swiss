@@ -1,9 +1,11 @@
 ---
 title: Contact
 heading: Looking for data?
-subHeading: "Are you trying to find datasets which are not included in our catalogue? You can contact us to request publication of these datasets.
+subHeading: >-
+  Are you trying to find datasets which are not included in our catalogue? You
+  can contact us to request publication of these datasets.
 
-  - Email us at opendata(at)bfs.admin.ch"
+  - Email us at opendata(at)bfs.admin.ch
 ---
 
 ## Have you developed an application?
