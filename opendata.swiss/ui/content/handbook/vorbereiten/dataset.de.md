@@ -2,7 +2,7 @@
 section: Vorbereiten
 title: Für jedes Dataset
 breadcrumb_title: Dataset
-permalink: dataset
+permalink: fur-jedes-dataset
 ---
 
 ## Welche Schritte sind vor der Publikation eines Datasets nötig?
