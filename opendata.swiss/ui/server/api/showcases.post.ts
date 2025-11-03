@@ -58,7 +58,7 @@ export default defineEventHandler(async (event) => {
   const titleDe = reqBody.find(field => field.name === 'title[de]')?.data?.toString()
   showcase.slug = slugify(titleDe!, {lower: true, locale: 'de'})
 
-  if (process.env.GITHUB_TOKEN) {
+  if (process.env.GITHUB_TOKEN || process.env.GITHUB_APP_ID) {
     storage = git(showcase.slug!)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
