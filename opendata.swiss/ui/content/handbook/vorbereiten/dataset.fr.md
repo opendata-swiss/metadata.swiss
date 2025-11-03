@@ -2,7 +2,7 @@
 section: Vorbereiten
 title: Pour chaque jeu de données
 breadcrumb_title: jeu de données
-permalink: dataset
+permalink: fur-jedes-dataset
 ---
 
 ## Étapes nécessaires avant la publication d’un jeu de données

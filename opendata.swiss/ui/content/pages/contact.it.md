@@ -1,9 +1,11 @@
 ---
 title: Contatto
 heading: Siete alla ricerca di dati?
-subHeading: "Siete alla ricerca di set di dati non presenti nel nostro catalogo? Se sì, contattateci per richiederne la pubblicazione.
+subHeading: >-
+  Siete alla ricerca di set di dati non presenti nel nostro catalogo? Se sì,
+  contattateci per richiederne la pubblicazione.
 
-  - Scriveteci a opendata(at)bfs.admin.ch"
+  - Scriveteci a opendata(at)bfs.admin.ch
 ---
 
 ## Avete creato un’applicazione?
