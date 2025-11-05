@@ -24,7 +24,8 @@ Comma-separated list to be used for filtering in Piveau.
 
 ## Submitting showcases
 
-The [submission form](https://piveau-ln.zazukoians.org/de/showcases/submit) is accessible on the public website.
+The submission form is accessible on the [public website](https://piveau-ln.zazukoians.org/de/showcases/submit).
 
 ![](images/showcase-form.png)
 
+To submit a form, it is required to select the type and image on the "General" tab. It is also necessary to provide at least a title and description in one or more languages. Missing languages would be filled in by editors later, using decap Content Manager.
