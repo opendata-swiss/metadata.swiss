@@ -141,6 +141,7 @@ const t = (key: string) => i18n.t(`message.showcase.submission_form.${key}`)
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
   queryParams: {
+    limit: 100,
     vocabulary: 'data-theme',
   }
 })
