@@ -1,0 +1,66 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX tuner: <https://api-tuner.described.at/>
+PREFIX earl: <http://www.w3.org/ns/earl#>
+
+<#missingTitle>
+  a earl:TestCase ;
+  rdfs:label "Showcase submitted without a title" ;
+  <#request> [
+    a tuner:Request ;
+      tuner:url </api/showcases> ;
+      tuner:method "POST" ;
+      tuner:body [
+        tuner:form ( "body[de]" "Body" ) ;
+        tuner:form ( "type" "application" ) ;
+        tuner:form ( "image" <file:assets/Rdf_logo.svg.png> ) ;
+      ] ;
+  ] ;
+  tuner:formula {
+    <#missingTitle> <#request> ?req .
+    ?req tuner:response ?res .
+
+    ?res tuner:http_code 400 .
+  } ;
+.
+
+<#missingBody>
+  a earl:TestCase ;
+  rdfs:label "Showcase submitted without a body" ;
+  <#request> [
+    a tuner:Request ;
+    tuner:url </api/showcases> ;
+    tuner:method "POST" ;
+    tuner:body [
+      tuner:form ( "title[de]" "Title" ) ;
+      tuner:form ( "type" "application" ) ;
+      tuner:form ( "image" <file:assets/Rdf_logo.svg.png> ) ;
+    ] ;
+  ] ;
+  tuner:formula {
+    <#missingBody> <#request> ?req .
+    ?req tuner:response ?res .
+
+    ?res tuner:http_code 400 .
+  } ;
+.
+
+<#translationsMixed>
+  a earl:TestCase ;
+  rdfs:label "Showcase with title and body in different languages" ;
+  <#request> [
+    a tuner:Request ;
+    tuner:url </api/showcases> ;
+    tuner:method "POST" ;
+    tuner:body [
+      tuner:form ( "body[de]" "Body" ) ;
+      tuner:form ( "title[en]" "Title" ) ;
+      tuner:form ( "type" "application" ) ;
+      tuner:form ( "image" <file:assets/Rdf_logo.svg.png> ) ;
+    ] ;
+  ] ;
+  tuner:formula {
+    <#translationsMixed> <#request> ?req .
+    ?req tuner:response ?res .
+    ?res tuner:http_code 400 .
+  } ;
+.

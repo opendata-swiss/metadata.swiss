@@ -5,22 +5,21 @@ import * as yaml from 'yaml'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import { visit } from 'unist-util-visit'
-import showcaseSchema from '../../src/schema/showcase.js'
+import {submissionSchema} from '~~/src/schema/showcase'
 import remarkStringify from 'remark-stringify'
 import {match, P} from "ts-pattern";
 import git from "~~/server/lib/git";
 import fs from "~~/server/lib/fs";
+import type { AppLanguage as Language} from "~/constants/langages";
+import { APP_LANGUAGES as languages } from "~/constants/langages";
 
-const languages = ['en', 'fr', 'de', 'it'] as const
-
-type Language = typeof languages[number]
 type Translated<FieldName extends string> = `${FieldName}[${Language}]`
 type FormDataFieldNames = keyof ShowcasesCollectionItem | Translated<'title'> | Translated<'body'>
 type ShowcaseTranslation = Omit<Partial<ShowcasesCollectionItem>, 'body'> & {
   body?: string
 }
 type Showcase = Record<Language, ShowcaseTranslation> & {
-  slug?: string
+  slug: string
 }
 type PayloadData = Array<Omit<MultiPartData, 'name'> & { name: FormDataFieldNames }>
 
@@ -50,16 +49,25 @@ export default defineEventHandler(async (event) => {
   const uploads: Array<() => Promise<void>> = []
   const reqBody = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
+    slug: '',
     it: empty(),
     de: empty(),
     fr: empty(),
     en: empty()
   }
-  const titleDe = reqBody.find(field => field.name === 'title[de]')?.data?.toString()
-  showcase.slug = slugify(titleDe!, {lower: true, locale: 'de'})
+
+  const slug = createSlug(reqBody)!
+
+  if(!slug) {
+    event.node.res.statusCode = 400
+    return {
+      error: t('server.api.showcases.post.error.missing_content')
+    }
+  }
+  showcase.slug = slug
 
   if (process.env.GITHUB_TOKEN || process.env.GITHUB_APP_ID) {
-    storage = git(showcase.slug!)
+    storage = git(showcase.slug)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
       event.node.res.statusCode = 409
@@ -138,7 +146,7 @@ export default defineEventHandler(async (event) => {
 
   await Promise.all(processedBodies)
 
-  const errors = validate(event, showcase)
+  const errors = validate(event, showcase, t)
 
   if (errors) {
     logger.info('Validation failed. Reverting showcase submission.')
@@ -223,12 +231,22 @@ function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, 
   }
 }
 
-function validate(event: H3Event, showcase: Showcase) {
-  for (const language of languages) {
-    const { error } = showcaseSchema.safeParse(showcase[language])
-    if (error) {
-      event.node.res.statusCode = 400
-      return error.issues
+function createSlug(showcase: PayloadData) {
+  for (const locale of languages) {
+    const titleField = `title[${locale}]`
+    const title = showcase.find(field => field.name === titleField)?.data.toString()
+    if (title) {
+      return slugify(title, { lower: true, locale })
     }
+  }
+
+  return undefined
+}
+
+function validate(event: H3Event, showcase: Showcase, t: (key: string) => string) {
+  const { error } = submissionSchema(t).safeParse(showcase)
+  if (error) {
+    event.node.res.statusCode = 400
+    return error.issues
   }
 }

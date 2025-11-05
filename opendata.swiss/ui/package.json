@@ -61,7 +61,7 @@
   },
   "devDependencies": {
     "@types/vue-select": "^3.16.8",
-    "api-tuner": "^0.4.2",
+    "api-tuner": "^0.5.2",
     "decap-server": "^3.3.0"
   }
 }

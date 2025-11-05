@@ -165,6 +165,7 @@
             "showcases": {
                 "post": {
                     "error": {
+                        "missing_content": "Mindestens eine Sprache muss einen Titel (mind. 5 Zeichen) und einen Text (mind. 100 Zeichen) haben.",
                         "submission_exists": "Eine Einreichung mit exakt demselben deutschen Titel existiert bereits.",
                         "unspecified_error": "Ein nicht näher bezeichneter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
                     },

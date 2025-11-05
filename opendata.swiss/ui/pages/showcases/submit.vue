@@ -31,28 +31,28 @@
       <div class="container">
           <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
             <OdsTabs>
-              <OdsTab :title="`${t('group_german')} *`">
+              <OdsTab :title="`${t('group_german')}`">
                 <div class="form__group">
-                  <OdsInput id="title[de]" :label="t('field_title')" required />
-                  <ToastMarkdownEditor id="body[de]" :label="t('field_body')" required />
+                  <OdsInput id="title[de]" :label="t('field_title')" />
+                  <ToastMarkdownEditor id="body[de]" :label="t('field_body')" />
                 </div>
               </OdsTab>
-              <OdsTab :title="`${t('group_french')} *`">
+              <OdsTab :title="`${t('group_french')}`">
                 <div class="form__group">
-                  <OdsInput id="title[fr]" :label="t('field_title')" required />
-                  <ToastMarkdownEditor id="body[fr]" :label="t('field_body')" required />
+                  <OdsInput id="title[fr]" :label="t('field_title')" />
+                  <ToastMarkdownEditor id="body[fr]" :label="t('field_body')" />
                 </div>
               </OdsTab>
-              <OdsTab :title="`${t('group_italian')} *`">
+              <OdsTab :title="`${t('group_italian')}`">
                 <div class="form__group">
-                  <OdsInput id="title[it]" :label="t('field_title')" required />
-                  <ToastMarkdownEditor id="body[it]" :label="t('field_body')" required />
+                  <OdsInput id="title[it]" :label="t('field_title')" />
+                  <ToastMarkdownEditor id="body[it]" :label="t('field_body')" />
                 </div>
               </OdsTab>
-              <OdsTab :title="`${t('group_english')} *`">
+              <OdsTab :title="`${t('group_english')}`">
                 <div class="form__group">
-                  <OdsInput id="title[en]" :label="t('field_title')" required />
-                  <ToastMarkdownEditor id="body[en]" :label="t('field_body')" required />
+                  <OdsInput id="title[en]" :label="t('field_title')" />
+                  <ToastMarkdownEditor id="body[en]" :label="t('field_body')" />
                 </div>
               </OdsTab>
               <OdsTab :title="`${t('group_general')} *`">
@@ -237,9 +237,5 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-.tab__container {
-  color: red;
 }
 </style>
