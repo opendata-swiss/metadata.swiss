@@ -51,6 +51,14 @@ And to trigger a harvest, run:
 ./scripts/harvest.sh
 ```
 
+Finally, to trigger CMS harvest, run:
+
+```sh
+./scripts/harvest_showcases.sh
+```
+
+You can also harvest from local environment by modifying the [`harvest_showcases.sh` script](./scripts/harvest_showcases.sh) to use `http://host.docker.internal:8080` as Piveau endpoint.
+
 If you open the UI at [http://localhost:8080](http://localhost:8080), you should see that the catalogues and datasets are now visible.
 
 To remove the catalogues, run:
