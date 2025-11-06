@@ -6,6 +6,7 @@ import OdsTagItem from "../../app/components/OdsTagItem.vue";
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsCard from "../../app/components/OdsCard.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
+import { useDatasetsSearch, useVocabularySearch } from "../../app/piveau/search.js";
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -29,6 +30,16 @@ const breadcrumbs = [
   }
 ]
 
+const showcaseCategories = computed(() => {
+  return []
+    //const {resultEnhanced} = useVocabularySearch().useResources(['SOCI'])
+    //return resultEnhanced
+})
+const showcaseDatasets = computed(() => {
+  const {resultEnhanced} = useDatasetsSearch().useResource(showcase.value.datasets[0].id)
+  return resultEnhanced
+})
+
 useSeoMeta({
   title: `${showcase.value?.title} | ${t('message.header.navigation.showcases')} | opendata.swiss`,
 })
@@ -44,7 +55,7 @@ useSeoMeta({
       <img v-if="showcase.image" :src="showcase.image" :alt="showcase.title" >
     </template>
 
-    <template #aside-content>
+    <template #aside-content>acek
       <OdsCard v-if="showcase.url" :title="t('message.showcase.externalLink')">
         <OdsButton icon="External" variant="outline-negative" :href="showcase.url">{{ t('message.showcase.open') }}</OdsButton>
       </OdsCard>
@@ -57,6 +68,15 @@ useSeoMeta({
           <ul>
             <li v-for="category in showcase.categories" :key="category">
               {{ category }}
+            </li>
+          </ul>
+        </OdsInfoBlock>
+        <OdsInfoBlock :title="t('message.showcase.datasets')">
+          <ul>
+            <li v-for="dataset in showcase.datasets" :key="dataset">
+              <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.id } }">
+                {{ dataset.label }}
+              </NuxtLinkLocale>
             </li>
           </ul>
         </OdsInfoBlock>
