@@ -17,7 +17,11 @@ export default defineConfig({
           transform(content, filename) {
             if (filename.endsWith('config.yml') && process.env.NODE_ENV === 'development') {
               // In development, we want to use the local backend
-              return `local_backend: true\n\n${content}`
+              return `
+local_backend:
+  url: http://localhost:8088/api/v1
+
+${content}`
             }
 
             return content
