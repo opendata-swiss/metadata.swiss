@@ -1,5 +1,5 @@
 /**
- * Available application languages
+ * Available application languages and language precedence.
  */
 export const APP_LANGUAGES = ['de', 'fr', 'it', 'en'] as const
 

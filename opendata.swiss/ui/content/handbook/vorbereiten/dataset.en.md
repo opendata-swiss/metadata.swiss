@@ -1,4 +1,4 @@
 ---
 section: Vorbereiten
-permalink: dataset
+permalink: fur-jedes-dataset
 ---

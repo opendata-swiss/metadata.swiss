@@ -1,9 +1,13 @@
 ---
 title: Kontakt
 heading: Suchen Sie bestimmte Daten?
-subHeading: "Sie sind auf der Suche nach einem Datensatz, der in unserem Katalog nicht vorhanden ist? Dann nehmen Sie mit uns Kontakt auf und beantragen Sie die Veröffentlichung der entsprechenden Informationen.
+subHeading: >-
+  Sie sind auf der Suche nach einem Datensatz, der in unserem Katalog nicht
+  vorhanden ist? Dann nehmen Sie mit uns Kontakt auf und beantragen Sie die
+  Veröffentlichung der entsprechenden Informationen.
 
-  - Mail an: opendata(at)bfs.admin.ch"
+  - Mail an: opendata(at)bfs.admin.ch
+description: foobar
 ---
 
 ## Haben Sie eine App erstellt?

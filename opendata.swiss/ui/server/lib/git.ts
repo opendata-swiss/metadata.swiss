@@ -3,7 +3,7 @@ import {Octokit} from "@octokit/rest";
 import {createAppAuth} from "@octokit/auth-app";
 import {minimatch} from "minimatch";
 
-const BASE_PATH = 'opendata.swiss/ui'
+const BASE_PATH = 'opendata.swiss/ui/public'
 
 function getAuth() {
   if (process.env.GITHUB_APP_ID) {
@@ -26,6 +26,8 @@ export default function (slug: string) {
   const owner = process.env.GITHUB_OWNER!
   const repo = process.env.GITHUB_REPO!
   const baseBranch = process.env.GITHUB_BASE_BRANCH!
+
+  logger.info(`Using GitHub repository: ${owner}/${repo}, base branch: ${baseBranch}`)
 
   const auth = getAuth();
   const octokit = new Octokit({
@@ -150,6 +152,7 @@ export default function (slug: string) {
     async deleteExistingImages() {
       const uploadsPath = `${BASE_PATH}/img/uploads`
 
+      logger.info(`Checking for existing images to delete using pattern '${uploadsPath}/${slug}-image*'`)
       const { data } = await octokit.repos.getContent({
         owner,
         repo,
@@ -160,6 +163,7 @@ export default function (slug: string) {
         .filter(item => minimatch(item.path, `${uploadsPath}/${slug}-image*`))
         .map(item => item.path);
 
+      logger.info(`Found ${imagesToDelete.length} images to delete`)
       for (const path of imagesToDelete) {
         tree.push({
           path,
