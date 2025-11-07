@@ -37,12 +37,12 @@ function getSelectedValue({value, options, isMultiple}) {
 }
 
 export default class VocabularySelectComponent extends PiveauSearchComponent {
-  static fetchOptions = async (url) => {
+  fetchOptions = onetime(async (url) => {
     const res = await fetch(url)
     const { result: { results }} = await res.json()
 
     return results.map(({pref_label, resource}) => ({label: pref_label.de, value: resource}))
-  }
+  })
 
   state = {
     options: []
@@ -62,7 +62,7 @@ export default class VocabularySelectComponent extends PiveauSearchComponent {
     const vocabulary = this.props.field.get('piveau').get('vocabulary')
 
     this.setState({ loading: true })
-    VocabularySelectComponent.fetchOptions(this.prepareSearchUrl({vocabulary})).then(options => {
+    this.fetchOptions(this.prepareSearchUrl({vocabulary})).then(options => {
       this.setState({ options, loading: false })
     })
   }
