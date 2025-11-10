@@ -1,7 +1,7 @@
 ---
 active: true
 title: Code de démarrage pour tous les jeux de données CSV sur opendata.swiss
-image: img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
+image: /img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
 url: https://github.com/rnckp/starter-code_opendataswiss
 categories:
   - http://publications.europa.eu/resource/authority/data-theme/INTR

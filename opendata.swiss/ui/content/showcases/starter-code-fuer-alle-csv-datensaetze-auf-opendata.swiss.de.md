@@ -1,7 +1,7 @@
 ---
 active: true
 title: Starter Code für alle CSV-Datensätze auf opendata.swiss
-image: img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
+image: /img/uploads/starter-code-fuer-alle-csv-datensaetze-auf-opendata.swiss-image.jpg
 url: https://github.com/rnckp/starter-code_opendataswiss
 categories:
   - http://publications.europa.eu/resource/authority/data-theme/INTR
