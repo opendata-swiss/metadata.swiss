@@ -54,7 +54,7 @@ All commands should be run using `python -m meta_harvester <command>`.
 
 ### `generate`
 
-Fetches all geoharvesters from the configured CKAN instance, generates the necessary pipe and catalogue files, and uploads the catalogue metadata to the hub. This is a high-level command for a full setup.
+Fetches all geoharvesters from the configured CKAN instance, and generates the necessary pipe and catalogue files.
 
 **Usage:**
 ```bash
@@ -139,17 +139,12 @@ Deletes catalogues from the piveau-hub.
 
 
 ## TODO:
-* add publisher name ---> needs fetching from pipe config parameters
-
 * add unit tests
-
 * clean code - type hints, function headers
 
+* check if this pipe is already running - do not relaunch if so
 
-
-DEMO:
-- creating catalogues (in cli and in piveau-hub)
-
+Hypothesis: deleting catalogues too quickly crashes the service?
 
 
 

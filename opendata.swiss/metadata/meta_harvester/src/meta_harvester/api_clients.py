@@ -1,11 +1,14 @@
 import logging
 import os
+from pathlib import Path
 
 import requests
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
 from .exceptions import NoRecords, NotFoundError
+
+CATALOGUES_PATH = Path(os.getenv("CATALOGUES_PATH", "../piveau_catalogues"))
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -222,7 +225,7 @@ class PiveauClient:
     API_KEY = os.getenv("API_KEY_HUB", "yourRepoApiKey")
 
     def __init__(self):
-        self._catalogues: list[str] = []
+        self._catalogues: set[str] = set()
         self.run_client = PiveauRunClient()
         self.max_concurrent_runs = int(os.getenv("MAX_CONCURRENT_RUNS", "5"))
 
@@ -235,7 +238,7 @@ class PiveauClient:
         if len(self._catalogues) == 0 or self._catalogues is None:
             logger.info("Catalogue cache is empty. Fetching from API...")
             self.refresh_catalogues()
-        return set(self._catalogues)
+        return self._catalogues
 
     def refresh_catalogues(self) -> None:
         """Forces a refresh of the catalogue cache from the API."""
@@ -251,7 +254,7 @@ class PiveauClient:
 
         api_catalogues = response.json()
         logger.info(f"API returned {len(api_catalogues)} catalogues.")
-        self._catalogues = [url.split('/')[-1] for url in api_catalogues]
+        self._catalogues = set([url.split('/')[-1] for url in api_catalogues])
 
         logger.info(f"Catalogue cache refreshed. Found {len(self._catalogues)} catalogues.")
 
@@ -285,7 +288,7 @@ class PiveauClient:
         )
 
         if name not in self.catalogues:
-            self._catalogues.append(name)
+            self._catalogues.add(name)
 
     def delete_catalogues(self, names: list[str]) -> None:
         """
@@ -300,6 +303,8 @@ class PiveauClient:
         if len(names) == 0:
             names = self.catalogues
             logger.info("No catalogue names provided. Deleting all catalogues.")
+        else:
+            names = set(names)
 
 
         headers = {"X-API-Key": self.API_KEY}
@@ -325,14 +330,43 @@ class PiveauClient:
                     logger.info(f"Catalogue '{name}' not found (404), skipping.")
                 else:
                     logger.error(f"Error during API request to {url}: {e}")
-                    logger.error(f"Failed to delete catalogue '{name}'. Status: {e.response.status_code}, Reason: {e.response.text}")
+                    logger.error(f"Failed to delete catalogue '{name}'. Status: {e.response}")
 
 
                 if e.response is not None:
                     logger.error(f"Server response: {e.response.text}")
-                raise
 
 
+    def create_catalogues(self, catalogue_names: list[str] | None = None):
+        """
+        Creates or recreates one or more catalogues in the piveau-hub-repo.
+        For each name, it derives the metadata file path from the CATALOGUES_PATH.
+        If a catalogue exists, it is deleted first.
+        """
+
+        if not catalogue_names:
+            catalogue_dir = CATALOGUES_PATH
+            if not catalogue_dir.is_dir():
+                logger.error(f"Catalogues directory not found: {CATALOGUES_PATH}")
+                return
+            catalogue_files = list(catalogue_dir.glob("*.ttl"))
+            if not catalogue_files:
+                logger.warning(f"No catalogue files (.ttl) found in '{CATALOGUES_PATH}'.")
+                return
+            catalogue_names = [f.stem for f in catalogue_files]
+
+
+        for name in catalogue_names:
+            metadata_file = Path(CATALOGUES_PATH) / f"{name}.ttl"
+            if not metadata_file.is_file():
+                logger.error(
+                    f"Metadata file for '{name}' not found at '{metadata_file}'. Skipping."
+                )
+                continue
+
+            logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
+
+            self.create_catalogue(name=name, metadata_file=str(metadata_file))
 
 
     def trigger_pipe(self, pipe_name: str) -> None:

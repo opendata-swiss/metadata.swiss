@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
 
 TEMPLATE_FILE = "src/meta_harvester/pipe-template.yaml"
 PIPES_PATH = "../piveau_pipes"
-CATALOGUES_PATH = "../piveau_catalogues"
+
 
 def to_dict(value: Union[str, dict]) -> dict:
     """
@@ -42,40 +42,9 @@ def delete_catalogues(catalogue_names: list[str]):
     Deletes catalogues from the piveau-hub-repo.
     """
     piveau_client = PiveauClient()
+    logger.info(f"Deleting catalogues: {catalogue_names}")
     piveau_client.delete_catalogues(names=catalogue_names)
 
-
-def create_catalogues(catalogue_names: list[str] | None = None):
-    """
-    Creates or recreates one or more catalogues in the piveau-hub-repo.
-    For each name, it derives the metadata file path from the CATALOGUES_PATH.
-    If a catalogue exists, it is deleted first.
-    """
-    piveau_client = PiveauClient()
-
-    if not catalogue_names:
-        catalogue_dir = Path(CATALOGUES_PATH)
-        if not catalogue_dir.is_dir():
-            logger.error(f"Catalogues directory not found: {CATALOGUES_PATH}")
-            return
-        catalogue_files = list(catalogue_dir.glob("*.ttl"))
-        if not catalogue_files:
-            logger.warning(f"No catalogue files (.ttl) found in '{CATALOGUES_PATH}'.")
-            return
-        catalogue_names = [f.stem for f in catalogue_files]
-
-
-    for name in catalogue_names:
-        metadata_file = Path(CATALOGUES_PATH) / f"{name}.ttl"
-        if not metadata_file.is_file():
-            logger.error(
-                f"Metadata file for '{name}' not found at '{metadata_file}'. Skipping."
-            )
-            continue
-
-        logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
-
-        piveau_client.create_catalogue(name=name, metadata_file=str(metadata_file))
 
 
 def create_single_catalogue(name: str, file_path: str | None = None):
@@ -86,7 +55,7 @@ def create_single_catalogue(name: str, file_path: str | None = None):
     piveau_client = PiveauClient()
 
     if not file_path:
-        create_catalogues([name])
+        piveau_client.create_catalogues([name])
     else:
         metadata_file = Path(file_path)
 
@@ -292,7 +261,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
             logging.info(
                 f"Creating/updating '{catalogue_name} before running pipe '{name}'."
             )
-            create_catalogues([catalogue_name])
+            piveau_client.create_catalogues([catalogue_name])
 
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
@@ -334,6 +303,15 @@ def generate_all_pipes():
         )
     logger.info("Finished generating pipe files.")
 
+def create_catalogues_wrapper(catalogue_names: list[str]):
+    """
+    Creates or updates catalogues from .ttl files.
+    If no names are provided, all catalogues in the CATALOGUES_PATH directory are created/updated.
+    """
+    piveau_client = PiveauClient()
+    piveau_client.create_catalogues(catalogue_names)
+
+
 def main():
     # Load .env file for environment variables
     load_dotenv()
@@ -343,7 +321,7 @@ def main():
 
     # Sub-command for generating pipes and catalogues
     parser_generate = subparsers.add_parser(
-        "generate", help="Generate all pipes and catalogues from CKAN."
+        "generate", help="Generate all pipes and catalogue files from CKAN."
     )
     parser_generate.set_defaults(func=generate_pipe_and_catalogue_files)
 
@@ -384,7 +362,7 @@ def main():
         nargs="*",
         help="Optional: A list of catalogue names to create. The script will look for a corresponding .ttl file inside 'piveau_catalogues/'.",
     )
-    parser_create.set_defaults(func=create_catalogues)
+    parser_create.set_defaults(func=create_catalogues_wrapper)
 
 
     parser_create_from_file = subparsers.add_parser(
