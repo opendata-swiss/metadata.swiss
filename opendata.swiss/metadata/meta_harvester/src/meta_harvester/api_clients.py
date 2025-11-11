@@ -259,7 +259,7 @@ class PiveauClient:
         logger.info(f"Catalogue cache refreshed. Found {len(self._catalogues)} catalogues.")
 
 
-    def create_catalogue(self, name: str, metadata_file: str) -> None:
+    def create_catalogue(self, name: str, metadata_file: str, recreate: bool=False) -> None:
         """
         Uploads a catalogue's metadata to the piveau-hub-repo.
 
@@ -276,7 +276,7 @@ class PiveauClient:
             data = f.read()
 
 
-        if name in self.catalogues:
+        if recreate and name in self.catalogues:
             logger.info(f"Catalogue '{name}' already exists. Deleting it before update.")
             self.delete_catalogues([name])
 
@@ -336,8 +336,10 @@ class PiveauClient:
                 if e.response is not None:
                     logger.error(f"Server response: {e.response.text}")
 
+                raise e
 
-    def create_catalogues(self, catalogue_names: list[str] | None = None):
+
+    def create_catalogues(self, catalogue_names: list[str] | None = None, recreate: bool = False) -> None:
         """
         Creates or recreates one or more catalogues in the piveau-hub-repo.
         For each name, it derives the metadata file path from the CATALOGUES_PATH.
@@ -364,9 +366,9 @@ class PiveauClient:
                 )
                 continue
 
-            logger.info(f"Recreating catalogue '{name}' from file '{metadata_file}'")
+            logger.info(f"Creating catalogue '{name}' from file '{metadata_file}'")
 
-            self.create_catalogue(name=name, metadata_file=str(metadata_file))
+            self.create_catalogue(name=name, metadata_file=str(metadata_file), recreate=recreate)
 
 
     def trigger_pipe(self, pipe_name: str) -> None:

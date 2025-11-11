@@ -144,7 +144,9 @@ Deletes catalogues from the piveau-hub.
 
 * check if this pipe is already running - do not relaunch if so
 
-Hypothesis: deleting catalogues too quickly crashes the service?
+Hypothesis: deleting catalogues too quickly crashes the service? --> remove delete_catalogue
+
+Issue: runs api returns always empty
 
 
 

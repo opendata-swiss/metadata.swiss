@@ -216,10 +216,12 @@ def generate_pipe_and_catalogue_files():
         )
 
 
-def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
+def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
+
+    # TODO: change create_catalogue=True once API issues are resolved
     """
     Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
-    By default, it ensures the corresponding catalogue is created/updated first.
+    Optionally, it ensures the corresponding catalogue is created/updated first.
     If no pipe names are provided, triggers all pipes found in the PIPES_PATH directory.
     """
     piveau_client = PiveauClient()
@@ -252,7 +254,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
             logger.info(
                 f"Reached maximum concurrent runs ({piveau_client.max_concurrent_runs}). Waiting for a slot to open..."
             )
-            time.sleep(30)
+            time.sleep(1)
 
 
         if create_catalogue:
@@ -261,7 +263,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = True):
             logging.info(
                 f"Creating/updating '{catalogue_name} before running pipe '{name}'."
             )
-            piveau_client.create_catalogues([catalogue_name])
+            piveau_client.create_catalogues([catalogue_name], recreate=create_catalogue)
 
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
@@ -339,10 +341,10 @@ def main():
         help="Optional: A list of specific pipe names to run. If omitted, all pipes will be run.",
     )
     parser_run.add_argument(
-        "--skip-catalogue",
-        action="store_false",
+        "--create-catalogue",
+        action="store_true",
         dest="create_catalogue",
-        help="Skip the step of creating/updating the catalogue before running the pipe.",
+        help="Create the catalogue before running the pipe.",
     )
     parser_run.set_defaults(func=run_pipes)
 
