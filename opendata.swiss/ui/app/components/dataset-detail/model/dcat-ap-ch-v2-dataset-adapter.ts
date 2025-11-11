@@ -1,8 +1,12 @@
-import type { LinkedDataFormats, PropertyTableEntryNode } from '@piveau/sdk-vue';
+import type { LinkedDataFormats } from '@piveau/sdk-vue';
 import type { Dataset } from '../../../model/dataset'
 import { DcatApChV2DistributionAdapter } from './dcat-ap-ch-v2-distribution-adapter'
 import type { TableEntry } from './table-entry';
 import type { Catalog } from '~/piveau/get-ods-catalog-info';
+import type { TagItem } from '../../OdsTagItem.vue';
+import type { AppLanguage } from '~/constants/langages';
+import { APP_LANGUAGES } from '~/constants/langages';
+
 
 export class DcatApChV2DatasetAdapter {
   #dataset: Dataset;
@@ -34,7 +38,7 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the title (see 2.3 Multilingualism).
    */
   get title(): string {
-    return this.#dataset?.getTitle ?? this.id;
+    return this.#dataset.getTitle ?? this.id;
   }
 
   /**
@@ -53,11 +57,53 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the description (see 2.3 Multilingualism). On the user interface of data portals, the content of the element whose language corresponds to the display language selected by the user is displayed.
    */
   get description(): string | undefined {
-    return (this.#dataset?.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim();
+    return (this.#dataset.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim();
   }
 
-  get getCategories(): { label: Record<string, string>; id: string; resource: string; }[] {
-    return this.#dataset?.getCategories ?? [];
+  /**
+   * Get the categories/ themes of the dataset. We convert the categories into TagItem objects for easier handling in the UI.
+   * The language handling is done here, because piveau returns all languages in the label object. We try to get the label in the requested language.
+   * If not available, we try the other APP_LANGUAGES as fallback.
+   * If still not available, we take any available label.
+   *
+   * Property	theme/category
+   * Requirement level	Recommended
+   * Cardinality	0..n
+   * URI	dcat:theme
+   * Range	skos:Concept
+   * Usage Note
+   * This property refers to a category of the Dataset. A Dataset may be associated with multiple themes.
+   * CV to be used: [VOCAB-EU-THEME]
+   *
+   * @param lang
+   * @returns {TagItem[]} The categories as TagItem array
+   */
+  getCategoriesForLanguage(lang: AppLanguage): TagItem[] {
+    const categories = this.#dataset?.getCategories ?? [];
+
+    const tagItems = categories.map(cat => {
+      let preferredLabel = cat.label[lang];
+      if (!preferredLabel) {
+        // Try other APP_LANGUAGES
+        for (const fallbackLang of APP_LANGUAGES) {
+          if (cat.label[fallbackLang]) {
+            preferredLabel = cat.label[fallbackLang];
+            break;
+          }
+        }
+      }
+      // If still undefined, take any available label
+      if (!preferredLabel) {
+        preferredLabel = Object.values(cat.label)[0] ?? '';
+      }
+      const tagItem = {
+        id: cat.id,
+        label: preferredLabel,
+      } as TagItem;
+      return tagItem
+    });
+
+    return tagItems;
   }
 
   /**
@@ -95,15 +141,15 @@ export class DcatApChV2DatasetAdapter {
 
   }
 
-  get getLicenses(): string[] {
-    return this.#dataset?.getLicenses ?? [];
-  }
   /**
    * Get the licenses of the dataset.
    *
+   * In DCAP-AP-CH a dataset has no license, but its distributions have. However, in piveau the dataset
+   * has a getLicenses property that aggregates the licenses of its distributions.
+   *
    */
   get licenses(): string[] {
-    return this.#dataset?.getLicenses ?? [];
+    return this.#dataset.getLicenses ?? [];
   }
 
   /**
@@ -155,10 +201,6 @@ export class DcatApChV2DatasetAdapter {
     return this.#dataset?.getLinkedData ?? {} as Record<LinkedDataFormats, string>;
   }
 
-  get getDistributions(): { id: string; title: string | undefined; description: string | undefined; format: string; modified: string | undefined; license: { label?: string | null | undefined; id?: string | null | undefined; description?: string | null | undefined; resource?: string | null | undefined; } | undefined; created: string | undefined; issued: string | undefined; languages: string[]; accessUrls: string[]; downloadUrls: string[]; getLinkedData: Record<LinkedDataFormats, string>; getPropertyTable: PropertyTableEntryNode[]; }[] {
-    return this.#dataset?.getDistributions ?? [];
-  }
-
   /**
    * Returns the distributions wrapped in DistributionAdapter instances
    *
@@ -176,8 +218,30 @@ export class DcatApChV2DatasetAdapter {
   }
 
 
-  get getKeywords(): { id: string; label: string; language: string; }[] {
-    return this.#dataset?.getKeywords ?? [];
+  /**
+   * Get the keywords of the dataset. The language handling is done by piveau.
+   * We convert the keywords into TagItem objects for easier handling in the UI.
+   *
+   * from dcat-ap-ch:
+   * Property	keyword/ tag
+   * Requirement level	Recommended
+   * Cardinality	0..n
+   * URI	dcat:keyword
+   * Range	rdfs:Literal
+   * Usage Note
+   * This property contains a keyword or tag describing the Dataset.
+   * If a suitable keyword is available in [TERMDAT] then this SHOULD be used.
+   * Good practice: mark the language of the keywords with the [ISO 639-1] language code such as "geodata"@en.
+   */
+  get keywords(): TagItem[] {
+    return (this.#dataset?.getKeywords ?? []).map(keyword => {
+      const tagItem = {
+        id: keyword.id,
+        label: keyword.label,
+        size: 'sm'
+      } as TagItem;
+      return tagItem
+    });
   }
 
   /**

@@ -45,19 +45,17 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import SvgIcon from "~/components/SvgIcon.vue";
 
 const emit = defineEmits(['requestClose']);
 const { t } = useI18n();
 
-const props = defineProps({
-    items: {
-      type: Array as PropType<OdsNavTabItem[]>,
-      required: true
-    }
-});
+interface Props {
+  items: OdsNavTabItem[]
+}
 
+const props = defineProps<Props>();
 
 
 function emitRequestClose() {

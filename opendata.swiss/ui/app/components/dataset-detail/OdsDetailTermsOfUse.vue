@@ -17,16 +17,15 @@
 
 <script setup lang="ts">
 import {computed} from 'vue';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 
 const { t } = useI18n();
 
-const props = defineProps({
-  name: {
-    type: String,
-    required: true
-  }
-})
+interface Props {
+  name: string
+}
+
+const props = defineProps<Props>()
 
 const termsName = computed(() => {
   const name = props.name;

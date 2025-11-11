@@ -27,7 +27,7 @@
 
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 const { t } = useI18n()
 
@@ -35,17 +35,14 @@ export interface SortOption {
   value: string;
   text: string;
 }
+interface Props {
+  options: SortOption[];
+  modelValue?: string;
+}
 
-const props = defineProps({
-  options: {
-    type: Array as PropType<SortOption[]>,
-    required: true,
-  },
-   modelValue: {
-    type: String,
-    default: ''
-  }
-})
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: ''
+});
 
 const emit = defineEmits(['update:modelValue'])
 

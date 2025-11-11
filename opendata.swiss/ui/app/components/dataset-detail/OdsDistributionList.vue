@@ -9,13 +9,11 @@
 import OdsDistributionListItem from './OdsDistributionListItem.vue';
 import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter';
 
+interface Props {
+  distributions: DcatApChV2DistributionAdapter[];
+}
 
-const props = defineProps({
-  distributions: {
-    type: Array as PropType<DcatApChV2DistributionAdapter[]>,
-    required: true
-  }
-})
+const props = defineProps<Props>();
 
 </script>
 

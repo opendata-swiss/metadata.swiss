@@ -19,17 +19,16 @@
 
 <script setup lang="ts">
 
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 const { locale, t } = useI18n()
 const showRaw = ref(false)
 
-const props = defineProps({
-  date: {
-    type: Date,
-    required: true
-  }
-});
+interface Props {
+  date: Date
+}
+
+const props = defineProps<Props>()
 
 function toggle(event: PointerEvent) {
   event.preventDefault()

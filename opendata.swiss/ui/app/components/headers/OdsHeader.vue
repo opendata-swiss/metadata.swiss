@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import OdsDropdownMenu from '@/components/OdsDropdownMenu.vue';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 
 import type { OdsNavTabItem } from '@/components/headers/model/ods-nav-tab-item';
 import NamedLogo from '~/components/NamedLogo.vue';

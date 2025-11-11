@@ -1,11 +1,31 @@
 import { defineCollection, defineContentConfig } from '@nuxt/content'
-import { z } from 'zod'
-import showcase from "./src/schema/showcase.js";
+import { z } from 'zod/v4'
+import * as showcaseSchema from "./src/schema/showcase.js";
+
+function sourcesFor(include: string) {
+  const sources = [{
+    include,
+  }]
+
+  if(process.env.NODE_ENV === 'development') {
+    // During development, include test sources
+    sources.push({
+      include: `.test/${include}`,
+    })
+    sources.push({
+      include: `.local/${include}`,
+    })
+  }
+
+  return sources
+}
+
+
 
 export default defineContentConfig({
   collections: {
     pages: defineCollection({
-      source: 'pages/*.md',
+      source: sourcesFor('pages/*.md'),
       type: 'page',
       schema: z.object({
         title: z.string(),
@@ -15,7 +35,7 @@ export default defineContentConfig({
       })
     }),
     handbook: defineCollection({
-      source: 'handbook/**/*.md',
+      source: sourcesFor('handbook/**/*.md'),
       type: 'page',
       schema: z.object({
         title: z.string(),
@@ -25,7 +45,7 @@ export default defineContentConfig({
       })
     }),
     handbookSections: defineCollection({
-      source: 'sections/*.md',
+      source: sourcesFor('sections/*.md'),
       type: 'page',
       schema: z.object({
         id: z.string(),
@@ -33,7 +53,7 @@ export default defineContentConfig({
       })
     }),
     blog: defineCollection({
-      source: 'blog/*.md',
+      source: sourcesFor('blog/*.md'),
       type: 'page',
       schema: z.object({
         title: z.string(),
@@ -43,9 +63,9 @@ export default defineContentConfig({
       })
     }),
     showcases: defineCollection({
-      source: 'showcases/*.md',
+      source: sourcesFor('showcases/*.md'),
       type: 'page',
-      schema: showcase,
+      schema: z.object(showcaseSchema.shape),
     })
   }
 })

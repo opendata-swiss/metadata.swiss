@@ -26,19 +26,18 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
 
 const { t } = useI18n()
 
 
-const props = defineProps({
-  dataset: {
-    type: Object as PropType<DcatApChV2DatasetAdapter>,
-    required: true
-  }
-})
+interface Props {
+  dataset: DcatApChV2DatasetAdapter
+}
+
+const props = defineProps<Props>()
 
 </script>
 

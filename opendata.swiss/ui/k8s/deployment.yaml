@@ -13,10 +13,31 @@ spec:
             - name: http
               containerPort: 80
           env:
-            - name: PIVEAU_HUB_SEARCH_URL
+            - name: NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL
               value: https://piveau-hub-search-ln.zazukoians.org/
-            - name: PIVEAU_HUB_REPO_URL
+            - name: NUXT_PUBLIC_PIVEAU_HUB_REPO_URL
               value: https://piveau-hub-repo-ln.zazukoians.org/
+            - name: GITHUB_OWNER
+              value: opendata-swiss
+            - name: GITHUB_REPO
+              value: metadata.swiss
+            - name: GITHUB_BASE_BRANCH
+              value: main
+            - name: GITHUB_APP_ID
+              valueFrom:
+                secretKeyRef:
+                  name: piveau-ui-github-app
+                  key: app-id
+            - name: GITHUB_APP_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: piveau-ui-github-app
+                  key: private-key
+            - name: GITHUB_APP_INSTALLATION_ID
+              valueFrom:
+                secretKeyRef:
+                  name: piveau-ui-github-app
+                  key: installation-id
           resources:
             limits:
               memory: 2Gi

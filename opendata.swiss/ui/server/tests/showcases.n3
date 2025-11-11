@@ -1,0 +1,148 @@
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+prefix list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX piveau: <https://piveau.eu/ns/voc#>
+PREFIX theme: <http://voc.odw.tw/theme/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX tuner: <https://api-tuner.described.at/>
+prefix resource: <https://api-tuner.described.at/resource#>
+PREFIX earl: <http://www.w3.org/ns/earl#>
+prefix dcat: <http://www.w3.org/ns/dcat#>
+prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
+
+<#translatedTitle>
+  a earl:TestCase ;
+  rdfs:label "Showcases export titles as tagged literals" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase>
+          dcterms:title "Test showcase (DE)"@de ;
+          dcterms:title "Test showcase (EN)"@en ;
+          dcterms:title "Test showcase (FR)"@fr ;
+          dcterms:title "Test showcase (IT)"@it ;
+        .
+      } .
+    } tuner:assertThat "Body has the title in all languages" ;
+  } ;
+.
+
+<#categories>
+  a earl:TestCase ;
+  rdfs:label "Categories are resources" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> dcat:theme theme:SOCI, theme:REGI.
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#types>
+  a earl:TestCase ;
+  rdfs:label "RDF types are correct" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+        ?body log:includes {
+          </showcase/showcase> a dcat:Dataset .
+        }
+    } tuner:assertThat "Showcase must have type dcat:Dataset" .
+
+    {
+        ?body log:includes {
+          </showcase/showcase> a piveau:CustomResource .
+        }
+    } tuner:assertThat "Showcase must have type piveau:CustomResource" .
+  } ;
+.
+
+<#identifier>
+  a earl:TestCase ;
+  rdfs:label "Sets slug as dcterms:identifier" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:identifier "showcase" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#identifier>
+  a earl:TestCase ;
+  rdfs:label "Sets slug as dcterms:identifier" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:identifier "showcase" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#datasets>
+  a earl:TestCase ;
+  rdfs:label "Datasets are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:references ?datset .
+        ?datset dcterms:identifier "85787-bundesamt-fur-statistik-bfs" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#tags>
+  a earl:TestCase ;
+  rdfs:label "Tags are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> dcat:keyword "test"
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#inactive>
+  a earl:TestCase ;
+  rdfs:label "Inactive showcases are not included" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:notIncludes {
+        </showcase/inactive> ?p ?o .
+      } .
+    }!tuner:assertThat .
+  } ;
+.

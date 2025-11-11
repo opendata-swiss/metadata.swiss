@@ -30,18 +30,17 @@
 <script setup lang="ts">
 import SvgIcon from '../SvgIcon.vue';
 import OdsButton from '../OdsButton.vue';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter';
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
 
 const { t } = useI18n();
 
-const props = defineProps({
-  distribution: {
-    type: Object as PropType<DcatApChV2DistributionAdapter>,
-    required: true
-  }
-})
+interface DistributionProps {
+  distribution: DcatApChV2DistributionAdapter;
+}
+
+const props = defineProps<DistributionProps>();
 
 </script>
 

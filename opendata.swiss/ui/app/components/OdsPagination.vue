@@ -36,7 +36,7 @@ import PaginationItem from './OdsPaginationItem.vue'
 import { computed } from 'vue'
 import type { RouteLocationNamedI18n } from 'vue-router'
 
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 const { t } = useI18n()
 

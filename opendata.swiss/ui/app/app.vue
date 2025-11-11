@@ -30,7 +30,7 @@ import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
 import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
 
 
@@ -49,6 +49,9 @@ watch(locale, (newLocale) => {
 )
 
 useHead({
+  htmlAttrs: {
+    lang: locale.value
+  },
   bodyAttrs: {
     class: 'body--ods-brand'
   },

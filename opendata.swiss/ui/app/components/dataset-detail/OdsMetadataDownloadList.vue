@@ -1,7 +1,7 @@
 <template>
   <div v-for="path in props.dataset.getLinkedData" :key="path">
     <a
-      :href="PIVEAU_HUB_REPO_URL + 'datasets' + path"
+      :href="piveauHubRepoUrl + 'datasets' + path"
       target="_blank"
       :title="t(`message.dataset_detail.metadata_download`)"
       :aria-label="t(`message.dataset_detail.metadata_download`)"
@@ -19,19 +19,18 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 import SvgIcon from '../SvgIcon.vue';
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter';
 
-const { PIVEAU_HUB_REPO_URL } = useRuntimeConfig().public
+const { piveauHubRepoUrl } = useRuntimeConfig().public
 const { t } = useI18n();
 
-const props = defineProps({
-  dataset: {
-    type: Object as PropType<DcatApChV2DatasetAdapter>,
-    required: true
-  }
-});
+interface Props {
+  dataset: DcatApChV2DatasetAdapter;
+}
+
+const props = defineProps<Props>();
 
 </script>
 

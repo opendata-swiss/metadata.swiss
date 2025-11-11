@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n';
+import { useI18n } from '#imports';
 
 import { useDatasetsSearch } from '../../../app/piveau/search'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
@@ -46,6 +46,16 @@ const breadcrumbs = computed(() => {
   if (import.meta.client) {
     const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId);
     if (storedBreadcrumbs) {
+      storedBreadcrumbs[0].title = t('message.header.navigation.datasets');
+      if(storedBreadcrumbs.length === 4) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = t('message.dataset_search.search_results');
+        storedBreadcrumbs[3].title = dataset.value?.title ?? '';
+      } else if(storedBreadcrumbs.length === 3) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
+        storedBreadcrumbs[2].title = dataset.value?.title ?? '';
+      }
+      storeDatasetBreadcrumbInSessionStorage(datasetId, storedBreadcrumbs);
       return storedBreadcrumbs;
     }
   }
@@ -154,10 +164,16 @@ await suspense()
 
             <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
             <OdsDetailsTable :table-entries="dataset.propertyTable"/>
-            <div>
+            <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
                <h2 class="h2">{{ t('message.dataset_detail.categories') }}</h2>
                <div>
-                  <OdsTagList :tags="resultEnhanced?.getCategories ?? []" />
+                  <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
+               </div>
+            </div>
+            <div v-if="dataset.keywords.length > 0">
+               <h2 class="h2">{{ t('message.dataset_detail.keywords') }}</h2>
+               <div>
+                  <OdsTagList :tags="dataset.keywords" />
                </div>
             </div>
             <div v-if="dataset.catalog" >
@@ -187,6 +203,7 @@ await suspense()
    </section>
   </main>
 </div>
+
 
 </template>
 

@@ -29,7 +29,7 @@
                   icon-right
                   size="sm"
                   variant="outline-negative"
-                  @click="openLink(t('message.ods-footer.block_2.news_mail_href'))  "
+                  @click="openLinkInNewTab(t('message.ods-footer.block_2.news_mail_href'))  "
                 >
                   <span >NewsMail</span>
                 </OdsButton>
@@ -47,14 +47,14 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 import OdsButton from '../OdsButton.vue'
 import SvgIcon from '../SvgIcon.vue'
 
 
 const { t } = useI18n()
 
-function openLink(url: string) {
+function openLinkInNewTab(url: string) {
   window.open(url, '_blank')
 
 }

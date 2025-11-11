@@ -26,7 +26,7 @@
         :options="facet.items"
         :label="facet.title"
         :model-value="facets.filter(f => f.id === facet.id).shift()?.items.filter(item => facetRefs[facet.id]?.value.includes(item.id)) || []"
-        @update:model-value="handleFacetChange(facet, $event)"
+        @update:model-value="handleFacetChange(facet, $event as Item[])"
       >
         <template #option="option">
           <span>
@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
+import { useI18n } from '#imports';
 
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 import OdsMultiSelect from './OdsMultiSelect.vue';
@@ -61,17 +61,12 @@ interface Item {
   title: string | undefined;
   count: number;
 }
+interface OdsFilterPanelProps {
+  facets: SearchResultFacetGroupLocalized[];
+  facetRefs: Record<string, Ref<string[]>>;
+}
 
-const props = defineProps({
-  facets: {
-    type: Array as PropType<SearchResultFacetGroupLocalized[]>,
-    required: true,
-  },
-  facetRefs: {
-    type: Object as PropType<Record<string, Ref<string[]>>>,
-    required: true,
-  }
-})
+const props = defineProps<OdsFilterPanelProps>()
 
 const emit = defineEmits<{
   (e: 'reset-all-facets'): void

@@ -1,22 +1,25 @@
 <template>
-  <OdsPage :page="{ title: 'New Showcase' }">
+  <OdsPage :page="{ title }">
     <template #header>
       <OdsNotificationBanner :open="success === true" type="success">
-        The showcase has been submitted
+        {{ t('success_message') }}
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
         </template>
       </OdsNotificationBanner>
       <OdsNotificationBanner :open="success === false" type="error">
-        Failed to submit showcase.
+        {{ t('failure_message') }}
 
         <pre>{{ submissionError }}</pre>
-        <ul>
+        <ul v-if="Array.isArray(submissionValidationIssues)">
           <li v-for="issue in submissionValidationIssues" :key="issue.path.join('-')">
             {{ issue.path.join('.')}}: {{ issue.message }}
           </li>
         </ul>
+        <p v-else>
+          {{ submissionValidationIssues.error }}
+        </p>
 
         <template #buttons>
           <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
@@ -26,64 +29,89 @@
 
     <section class="section section--py">
       <div class="container">
-        <ClientOnly>
           <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
-            <div class="form__group__input">
-              <OdsInput id="title[de]" label="Title (DE)" placeholder="Titel auf Deutsch" required />
-              <OdsInput id="title[fr]" label="Title (FR)" placeholder="Titre en Français" required />
-              <OdsInput id="title[it]" label="Title (IT)" placeholder="Titolo in Italiano" required />
-              <OdsInput id="title[en]" label="Title (EN)" placeholder="Title in English" required />
-            </div>
-            <div class="form__group__input">
-              <OdsInput id="image" type="file" label="Image" accept="image/*" required />
-            </div>
+            <OdsTabs>
+              <OdsTab :title="`${t('group_german')} *`">
+                <div class="form__group">
+                  <OdsInput id="title[de]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[de]" :label="t('field_body')" required />
+                </div>
+              </OdsTab>
+              <OdsTab :title="`${t('group_french')} *`">
+                <div class="form__group">
+                  <OdsInput id="title[fr]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[fr]" :label="t('field_body')" required />
+                </div>
+              </OdsTab>
+              <OdsTab :title="`${t('group_italian')} *`">
+                <div class="form__group">
+                  <OdsInput id="title[it]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[it]" :label="t('field_body')" required />
+                </div>
+              </OdsTab>
+              <OdsTab :title="`${t('group_english')} *`">
+                <div class="form__group">
+                  <OdsInput id="title[en]" :label="t('field_title')" required />
+                  <ToastMarkdownEditor id="body[en]" :label="t('field_body')" required />
+                </div>
+              </OdsTab>
+              <OdsTab :title="`${t('group_general')} *`">
+                <div class="form__group">
+                  <OdsSelect id="type" name="type" :label="t('field_type')" required>
+                    <option value="application">Application</option>
+                    <option value="data_visualization">Data Visualization</option>
+                    <option value="event">Event</option>
+                    <option value="blog_and_media_articles">Blog/Article</option>
+                  </OdsSelect>
+                  <div class="form__group">
+                    <OdsInput id="image" type="file" :label="t('field_image')" accept="image/*" required />
+                  </div>
+                  <OdsInput id="url" :label="t('field_url')" />
+                  <div class="form__group">
+                    <OdsMultiSelect
+                      id="datasets"
+                      :label="t('field_datasets.label')"
+                      :load-options="searchDatasets"
+                      :close-on-select="false"
+                      :options="datasets"
+                    >
+                      <template #no-options>
+                        {{ t('field_datasets.prompt') }}
+                      </template>
+                      <template #selected-option="option" >
+                        {{ option.title }}
+                        <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
+                      </template>
+                    </OdsMultiSelect>
+                  </div>
+                  <OdsMultiSelect :label="t('field_categories.label')" :options="dataThemes" :close-on-select="false">
+                    <template #no-options>
+                      {{ t('field_categories.prompt') }}
+                    </template>
+                    <template #selected-option="option" >
+                      {{ option.title }}
+                      <input type="hidden" name="categories" :value="option.id">
+                    </template>
+                  </OdsMultiSelect>
+                  <OdsInput id="tags" :label="t('field_tags.label')" :placeholder="t('field_tags.prompt')" />
+                </div>
+              </OdsTab>
+            </OdsTabs>
             <div class="form__group">
-              <OdsInput id="url" label="Website" />
-              <OdsMultiSelect label="Categories" :options="dataThemes" :close-on-select="false">
-                <template #no-options>
-                  type to search categories...
-                </template>
-                <template #selected-option="option" >
-                  {{ option.title }}
-                  <input type="hidden" name="categories" :value="option.id">
-                </template>
-              </OdsMultiSelect>
-              <OdsSelect id="type" name="type" label="Type" required>
-                <option value="application">Application</option>
-                <option value="data_visualization">Data Visualization</option>
-                <option value="event">Event</option>
-                <option value="blog_and_media_articles">Blog/Article</option>
-              </OdsSelect>
-              <OdsInput id="tags" label="Tags" placeholder="Enter tags separated by commas" />
-            </div>
-            <div class="form__group">
-              <OdsMultiSelect
-                id="datasets"
-                label="Datasets"
-                :load-options="searchDatasets"
-                :close-on-select="false"
-                :options="datasets"
+              <OdsButton
+                submit
+                variant="outline-negative"
+                :title="t('submit_button')"
+                icon-right
+                :style="submitting ? 'pointer-events: none; cursor: wait' : ''"
               >
-                <template #no-options>
-                  type to search datasets...
+                <template #icon>
+                  <SvgIcon v-if="submitting" icon="Spinner" class="btn__icon btn__icon--spin"  />
+                  <SvgIcon v-else icon="Checkmark" class="btn__icon"/>
                 </template>
-                <template #selected-option="option" >
-                  {{ option.title }}
-                  <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
-                </template>
-              </OdsMultiSelect>
-            </div>
-            <div class="form__group">
-              <OdsTextarea id="body[de]" label="Body (DE)" placeholder="Beschreibung auf Deutsch" required />
-              <OdsTextarea id="body[fr]" label="Body (FR)" placeholder="Description en Français" required />
-              <OdsTextarea id="body[it]" label="Body (IT)" placeholder="Descrizione in Italiano" required />
-              <OdsTextarea id="body[en]" label="Body (EN)" placeholder="Description in English" required />
-            </div>
-            <div class="form__group">
-              <OdsButton submit variant="outline-negative" title="Submit" />
+              </OdsButton>
             </div>
           </form>
-        </ClientOnly>
       </div>
     </section>
   </OdsPage>
@@ -97,13 +125,18 @@ import {debounce} from 'perfect-debounce'
 import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
 import {useDatasetsSearch, useVocabularySearch} from "../../app/piveau/search";
 import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
-import OdsTextarea from "../../app/components/OdsTextarea.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
 import OdsInput from "../../app/components/OdsInput.vue";
 import OdsSelect from "../../app/components/OdsSelect.vue";
 import OdsPage from "../../app/components/OdsPage.vue";
+import SvgIcon from "../../app/components/SvgIcon.vue";
+import ToastMarkdownEditor from "../../app/components/ToastMarkdownEditor.vue";
+import OdsTabs from "../../app/components/OdsTabs.vue";
+import OdsTab from "../../app/components/OdsTab.vue";
 
-const { locale } = useI18n()
+const i18n = useI18n()
+const { locale } = i18n
+const t = (key: string) => i18n.t(`message.showcase.submission_form.${key}`)
 
 const { useSearch } = useVocabularySearch()
 const search = useSearch({
@@ -119,17 +152,24 @@ const dataThemes = computed(() => {
   }))
 })
 
-useSeoMeta({title: 'New Showcase | opendata.swiss'})
+const title = 'New Showcase'
+useSeoMeta({title: `${title} | opendata.swiss`})
 
+const submitting = ref(false)
 const success = ref<boolean | null>(null)
 const submissionError = ref<string | null>(null)
-const submissionValidationIssues = ref<ZodIssue[]>([])
+const submissionValidationIssues = ref<{ error: string } | ZodIssue[]>([])
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
 async function submit(e: Event) {
   e.preventDefault()
 
+  if (submitting.value) {
+    return
+  }
+
   try {
+    submitting.value = true
     const response = await fetch('/api/showcases', {
       method: 'POST',
       body: new FormData(newShowcaseForm.value!),
@@ -139,10 +179,8 @@ async function submit(e: Event) {
     })
     if (response.ok) {
       success.value = true
-      if (newShowcaseForm.value) {
-        newShowcaseForm.value.reset()
-      }
-    } else if (response.status === 400) {
+      newShowcaseForm.value?.reset()
+    } else if (response.status === 400 || response.status === 409) {
       submissionError.value = 'Form contains invalid data:'
       submissionValidationIssues.value = await response.json()
       success.value = false
@@ -155,6 +193,7 @@ async function submit(e: Event) {
     success.value = false
   } finally {
     window.scrollTo({top: 0, behavior: 'smooth'})
+    submitting.value = false
   }
 }
 
@@ -190,3 +229,17 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
   loading(false)
 }, 300)
 </script>
+
+<style scoped>
+.btn__icon--spin {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.tab__container {
+  color: red;
+}
+</style>

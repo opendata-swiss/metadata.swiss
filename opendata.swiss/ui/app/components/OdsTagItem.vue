@@ -19,36 +19,15 @@
 import { computed } from 'vue'
 import SvgIcon from './SvgIcon.vue'
 
-const props = defineProps({
-  id: {
-    type: String,
-    required: true,
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  size: {
-    type: String,
-    default: () => 'base',
-    validator: (prop) => ['base', 'sm'].includes(prop as string),
-  },
-  icon: {
-    type: String,
-    default: () => undefined,
-  },
-  to: {
-    type: String,
-    required: false,
-    default: () => undefined,
-  },
-  variant: {
-    type: String,
-    validator: (prop) =>
-      ['default', 'primary', 'active'].includes(prop as string),
-    default: () => undefined,
-  }
-})
+export interface TagItem {
+  id: string;
+  label: string;
+  size?: 'base' | 'sm';
+  icon?: string;
+  to?: string;
+  variant?: 'default' | 'primary' | 'active';
+}
+const props = defineProps<TagItem>()
 
 const tag = computed(() => {
   return props.to ? 'a' : 'button'

@@ -1,19 +1,32 @@
 
 <script setup lang="ts">
-import type { Dataset } from '../../model/dataset'
 import OdsDatasetCardListItem from './OdsDatasetCardListItem.vue'
 import OdsDatasetListItem from './OdsDatasetListItem.vue'
 import type { LocationQueryRaw } from "#vue-router"
+import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
 interface Props {
-  items: Dataset[] | undefined,
+  items: DcatApChV2DatasetAdapter[]
   listType: 'card' | 'list'
   searchParams?: LocationQueryRaw
 }
+
 const props = defineProps<Props>()
 
 const searchParamsEncoded = computed(() => {
-  const params = new URLSearchParams(props.searchParams || {})
+  // Convert LocationQueryRaw to Record<string, string>
+  const raw = props.searchParams || {}
+  const paramsObj: Record<string, string> = {}
+  Object.entries(raw).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      paramsObj[key] = value.join(',')
+    } else if (typeof value === 'string') {
+      paramsObj[key] = value
+    } else if (value != null) {
+      paramsObj[key] = String(value)
+    }
+  })
+  const params = new URLSearchParams(paramsObj)
   return {
     search: params.toString(),
   }
@@ -23,15 +36,15 @@ const searchParamsEncoded = computed(() => {
 <template>
   <div  v-if="props.items && props.listType === 'card'" class="ods-card-list">
     <ul class="search-results-list">
-      <li  v-for="dataset in props.items" :key="dataset.getId">
-        <OdsDatasetCardListItem :item="dataset" :search-params="searchParamsEncoded" />
+      <li  v-for="dataset in props.items" :key="dataset.id">
+        <OdsDatasetCardListItem :dataset="dataset" :search-params="searchParamsEncoded" />
       </li>
     </ul>
   </div>
 
   <ul v-if="props.items && props.listType === 'list'" >
-    <li  v-for="dataset in props.items" :key="dataset.getId">
-      <OdsDatasetListItem :item="dataset" :search-params="searchParamsEncoded" />
+    <li  v-for="dataset in props.items" :key="dataset.id">
+      <OdsDatasetListItem :dataset="dataset" :search-params="searchParamsEncoded" />
     </li>
   </ul>
 </template>
