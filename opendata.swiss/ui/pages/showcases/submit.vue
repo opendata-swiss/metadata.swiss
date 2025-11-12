@@ -58,10 +58,7 @@
               <OdsTab :title="`${t('group_general')} *`">
                 <div class="form__group">
                   <OdsSelect id="type" name="type" :label="t('field_type')" required>
-                    <option value="application">Application</option>
-                    <option value="data_visualization">Data Visualization</option>
-                    <option value="event">Event</option>
-                    <option value="blog_and_media_articles">Blog/Article</option>
+                    <option v-for="type in showcaseType" :key="type.id" :value="type.id">{{ type.title }}</option>
                   </OdsSelect>
                   <div class="form__group">
                     <OdsInput id="image" type="file" :label="t('field_image')" accept="image/*" required />
@@ -139,14 +136,28 @@ const { locale } = i18n
 const t = (key: string) => i18n.t(`message.showcase.submission_form.${key}`)
 
 const { useSearch } = useVocabularySearch()
-const search = useSearch({
+const searchDataThemes = useSearch({
   queryParams: {
+    limit: 100,
     vocabulary: 'data-theme',
   }
 })
 
 const dataThemes = computed(() => {
-  return search.getSearchResultsEnhanced.value.map(item => ({
+  return searchDataThemes.getSearchResultsEnhanced.value.map(item => ({
+    id: item.resource,
+    title: item.pref_label
+  }))
+})
+
+const searchShowcaseTypes = useSearch({
+  queryParams: {
+    vocabulary: 'showcase-types',
+  }
+})
+
+const showcaseType = computed(() => {
+  return searchShowcaseTypes.getSearchResultsEnhanced.value.map(item => ({
     id: item.resource,
     title: item.pref_label
   }))
