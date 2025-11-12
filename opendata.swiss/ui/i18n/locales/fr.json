@@ -165,7 +165,8 @@
             "showcases": {
                 "post": {
                     "error": {
-                        "submission_exists": "Une soumission avec exactement le même titre en allemand existe déjà.",
+                        "missing_content": "Au moins une langue doit avoir un titre (min. 5 caractères) et un contenu (min. 100 caractères).",
+                        "submission_exists": "Une soumission avec exactement le même titre existe déjà.",
                         "unspecified_error": "Une erreur s'est produite lors de la soumission. Veuillez réessayer plus tard."
                     },
                     "success": "Votre demande a été reçue et est en cours de traitement."
