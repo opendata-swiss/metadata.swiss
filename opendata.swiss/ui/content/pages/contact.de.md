@@ -7,7 +7,6 @@ subHeading: >-
   Veröffentlichung der entsprechenden Informationen.
 
   - Mail an: opendata(at)bfs.admin.ch
-description: foobar
 ---
 
 ## Haben Sie eine App erstellt?
