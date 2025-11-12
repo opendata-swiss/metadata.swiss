@@ -6,7 +6,7 @@ import OdsTagItem from "../../app/components/OdsTagItem.vue";
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsCard from "../../app/components/OdsCard.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
-import { useDatasetsSearch, useVocabularySearch } from "../../app/piveau/search.js";
+import { useVocabularySearch } from "../../app/piveau/search.js";
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -30,15 +30,29 @@ const breadcrumbs = [
   }
 ]
 
+const { useSearch } = useVocabularySearch()
+const dataThemes = useSearch({
+  queryParams: {
+    vocabulary: 'data-theme',
+  }
+})
+
 const showcaseCategories = computed(() => {
-  return []
-    //const {resultEnhanced} = useVocabularySearch().useResources(['SOCI'])
-    //return resultEnhanced
+  return showcase.value?.categories.map(categoryId => {
+    return  dataThemes.getSearchResultsEnhanced.value.find(item => item.resource === categoryId)
+  })?.filter(Boolean) || []
 })
-const showcaseDatasets = computed(() => {
-  const {resultEnhanced} = useDatasetsSearch().useResource(showcase.value.datasets[0].id)
-  return resultEnhanced
-})
+
+// const showcaseDatasets = computedAsync(async () => {
+//   const {value} = showcase
+//   const datasets = value.datasets.map(async ({ id }) => {
+//     const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
+//     await query.suspense()
+//     return resultEnhanced
+//   })
+//
+//   return Promise.all(datasets)
+// })
 
 useSeoMeta({
   title: `${showcase.value?.title} | ${t('message.header.navigation.showcases')} | opendata.swiss`,
@@ -66,8 +80,8 @@ useSeoMeta({
         </OdsInfoBlock>
         <OdsInfoBlock :title="t('message.showcase.categories')">
           <ul>
-            <li v-for="category in showcase.categories" :key="category">
-              {{ category }}
+            <li v-for="category in showcaseCategories" :key="category.id">
+              {{ category.pref_label }}
             </li>
           </ul>
         </OdsInfoBlock>
