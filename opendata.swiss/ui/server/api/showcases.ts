@@ -10,6 +10,7 @@ interface AggregateShowcase {
   id: string
   identifier: string
   '@type': string[]
+  type: string
   title: Record<string, string | undefined>
   image: string | undefined
   abstract: Record<string, string | undefined>
@@ -22,6 +23,10 @@ interface AggregateShowcase {
 const ldContext = {
   id: '@id',
   label: rdfs.label.value,
+  type: {
+    '@id': dcterms.type.value,
+    '@type': '@id'
+  },
   categories: {
     '@id': dcat.theme.value,
     '@type': '@id'
@@ -50,7 +55,7 @@ const ldContext = {
 };
 export default defineEventHandler(async (event) => {
   const showcases: ShowcasesCollectionItem[] = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags')
+    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type')
     .where('active', '=', true)
     .all()
 
@@ -65,6 +70,7 @@ export default defineEventHandler(async (event) => {
         id,
         identifier: stem,
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
+        type: showcase.type,
         title: {},
         image: showcase.image,
         abstract: {},

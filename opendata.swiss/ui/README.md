@@ -23,8 +23,8 @@ bun install
 Optionally, create a `.env`:
 
 ```bash
-NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=
-NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=
+NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084
+NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081
 GITHUB_OWNER=zazukoians
 GITHUB_REPO=metadata.swiss
 GITHUB_BASE_BRANCH=main

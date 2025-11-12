@@ -7,7 +7,7 @@ url: https://storymaps.arcgis.com/stories/35ff1e1ca485429a90112cdadb75d57c
 categories:
   - http://publications.europa.eu/resource/authority/data-theme/SOCI
   - http://publications.europa.eu/resource/authority/data-theme/EDUC
-type: data_visualization
+type: https://opendata.swiss/vocabulary/showcase-type/data_visualization
 datasets:
   - id: weg-der-vielfalt-stadt-st-gallen-stadt-st-gallen
     label: Weg der Vielfalt Stadt St.Gallen

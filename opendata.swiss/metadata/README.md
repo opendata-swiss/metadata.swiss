@@ -51,6 +51,14 @@ And to trigger a harvest, run:
 ./scripts/harvest.sh
 ```
 
+Finally, to trigger CMS harvest, run:
+
+```sh
+./scripts/harvest_showcases.sh
+```
+
+You can also harvest from local environment by modifying the [`harvest_showcases.sh` script](./scripts/harvest_showcases.sh) to use `http://host.docker.internal:3000` as Piveau endpoint.
+
 If you open the UI at [http://localhost:8080](http://localhost:8080), you should see that the catalogues and datasets are now visible.
 
 To remove the catalogues, run:
@@ -68,7 +76,7 @@ docker compose down
 ## OpenTelemetry
 
 The local stack is configured with OpenTelemetry.
-You can access the spans and traces using Grafana at [http://localhost:3000](http://localhost:3000).
+You can access the spans and traces using Grafana at [http://localhost:3001](http://localhost:3001).
 The traces could be found in the "Explore" section, using the "Jaeger" data source ([direct link](http://localhost:3000/explore?schemaVersion=1&panes=%7B%22bf6%22:%7B%22datasource%22:%22jaeger%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22datasource%22:%7B%22type%22:%22jaeger%22,%22uid%22:%22jaeger%22%7D,%22queryType%22:%22search%22,%22service%22:%22piveau-consus-importing-rdf%22%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D,%22compact%22:false%7D%7D&orgId=1)).
 
 You can then search for traces of a specific service, e.g., `piveau-consus-importing-rdf`, and explore the spans.

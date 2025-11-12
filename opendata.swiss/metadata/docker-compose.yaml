@@ -168,6 +168,8 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx500m
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
 
   piveau-consus-importing-ckan:
     image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
@@ -273,7 +275,7 @@ services:
   grafana:
     image: docker.io/grafana/grafana:12.2.0
     ports:
-      - 3000:3000
+      - 3001:3000
     environment:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
