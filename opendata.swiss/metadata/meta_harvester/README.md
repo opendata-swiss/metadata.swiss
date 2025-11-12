@@ -144,10 +144,23 @@ Deletes catalogues from the piveau-hub.
 
 * check if this pipe is already running - do not relaunch if so
 
-Hypothesis: deleting catalogues too quickly crashes the service? --> remove delete_catalogue
-
 Issue: runs api returns always empty
 
 
+RUN IT ON CLUSTER!!!
 
 
+INT:
+https://piveau-int-ln.zazukoians.org/ (.env: https://passbolt.zazuko.com/app/passwords/view/b42f6782-066c-4186-9480-37ac12e4dca1)
+
+Some other endpoints:
+
+hub search: https://piveau-hub-search-int-ln.zazukoians.org/
+hub repo: https://piveau-hub-repo-int-ln.zazukoians.org/
+
+
+TEST ???:
+https://piveau-ln.zazukoians.org/
+
+hub search: https://piveau-hub-search-ln.zazukoians.org/
+hub repo: https://piveau-hub-repo-ln.zazukoians.org/

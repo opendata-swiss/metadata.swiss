@@ -1,6 +1,7 @@
 import argparse
 import json
 import logging
+import os
 import time
 from pathlib import Path
 from typing import Union
@@ -12,6 +13,9 @@ from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD
 from requests.exceptions import HTTPError
 
 from .api_clients import CkanClient, PiveauClient
+
+CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
+
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
