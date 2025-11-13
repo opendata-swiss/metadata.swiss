@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 
-import { useRoute, useRouter } from 'vue-router'
+import { LocationQuery, useRoute, useRouter } from 'vue-router'
 import type { LocationQueryValue } from 'vue-router'
 import { useI18n } from '#imports';
 
@@ -62,10 +62,9 @@ if(import.meta.client) {
 }
 
 function syncFacetsFromRoute() {
-  const facetsFromQuerry = getSearchParamsWithFacets(route.query)
   ACTIVE_FACETS.forEach(facet => {
-    const newVal = facetsFromQuerry[facet] || [];
-    facetRefs[facet].value = newVal;
+    const newVal = route.query[facet] || [];
+    facetRefs[facet].value = Array.isArray(newVal) ? newVal : [newVal];
   })
 }
 
@@ -105,7 +104,6 @@ const piveauQueryParams: SearchParamsBase = reactive({
 const { useSearch} = useDatasetsSearch()
 const {
   query,
-  isFetching,
   getSearchResultsEnhanced,
   getSearchResultsCount,
   getSearchResultsPagesCount,
@@ -264,24 +262,29 @@ watch(() => route.query.sort, (sortTerm) => {
 onMounted(() => {
   syncFacetsFromRoute()
 
+  const hasFacetChanged = (query: LocationQuery, facet: string, newVal: string[]) => {
+    const current = Array.isArray(query[facet]) ? query[facet] : query[facet] ? [query[facet]] : []
+    const currentValues = new Set(current)
+
+    return newVal.length !== currentValues.size || newVal.some(value => !currentValues.has(value))
+  }
+
   ACTIVE_FACETS.forEach(facet => {
     watch(facetRefs[facet], (newVal) => {
       const query = { ...route.query }
-      const facetsFromQuerry = getSearchParamsWithFacets(query)
-      // only set the facet if it has changed
-      const hasFacetChanged = JSON.stringify(facetsFromQuerry[facet] ?? []) !== JSON.stringify(newVal)
+      const facetsFromQuery = getSearchParamsWithFacets(query)
 
-      if (hasFacetChanged) {
-        facetsFromQuerry[facet] = newVal
+      // only set the facet if it has changed
+      if (hasFacetChanged(route.query, facet, newVal)) {
+        query[facet] = newVal
         if (query.page && query.page !== '1') {
           query.page = '1'; // Reset page to 1 if facets are restored from route
         }
-        if(newVal.length === 0) {
+        if (newVal.length === 0) {
           // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete facetsFromQuerry[facet]
+          delete facetsFromQuery[facet]
         }
-        query['facets'] = encodeURIComponent(JSON.stringify(facetsFromQuerry))
-        router.push({ query })
+        router.push({query})
       }
     })
   })
