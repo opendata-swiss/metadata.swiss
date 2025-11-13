@@ -21,6 +21,7 @@ import OdsButton from "../../app/components/OdsButton.vue";
 import { useSeoMeta } from 'nuxt/app';
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
+import {syncFacetsFromRoute, useFacetSync} from "../../app/composables/useFacetSync";
 const { t, locale} = useI18n()
 
 const router = useRouter()
@@ -59,13 +60,6 @@ function resetAllFacets() {
 
 if(import.meta.client) {
   clearDatasetBreadcrumbFromSessionStorage()
-}
-
-function syncFacetsFromRoute() {
-  facets.forEach(facet => {
-    const newVal = route.query[facet] || [];
-    facetRefs[facet].value = Array.isArray(newVal) ? newVal : [newVal];
-  })
 }
 
 function resetSearch() {
@@ -204,14 +198,6 @@ const resultBreadcrumb = computed<BreadcrumbItem | null>(() => {
   return null
 })
 
-function getSearchParamsWithFacets(query: {[x: string]: LocationQueryValue | LocationQueryValue[]}) {
-    const facetsValue = decodeURIComponent(query.facets as string || '');
-    if (Array.isArray(facetsValue)) {
-      return { }  as Record<string, string[]>
-    }
-    return facetsValue ? JSON.parse(String(facetsValue)) as Record<string, string[]> : {} as Record<string, string[]>
-}
-
 const breadcrumbs = computed<BreadcrumbItem[]>(() => {
   const lastBreadcrumb = resultBreadcrumb.value
   if (lastBreadcrumb === null) {
@@ -259,33 +245,17 @@ watch(() => route.query.sort, (sortTerm) => {
 })
 
 onMounted(() => {
-  syncFacetsFromRoute()
+  syncFacetsFromRoute({
+    facets,
+    facetRefs,
+    route
+  })
 
-  const hasFacetChanged = (query: LocationQuery, facet: string, newVal: string[]) => {
-    const current = Array.isArray(query[facet]) ? query[facet] : query[facet] ? [query[facet]] : []
-    const currentValues = new Set(current)
-
-    return newVal.length !== currentValues.size || newVal.some(value => !currentValues.has(value))
-  }
-
-  facets.forEach(facet => {
-    watch(facetRefs[facet], (newVal) => {
-      const query = { ...route.query }
-      const facetsFromQuery = getSearchParamsWithFacets(query)
-
-      // only set the facet if it has changed
-      if (hasFacetChanged(route.query, facet, newVal)) {
-        query[facet] = newVal
-        if (query.page && query.page !== '1') {
-          query.page = '1'; // Reset page to 1 if facets are restored from route
-        }
-        if (newVal.length === 0) {
-          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete facetsFromQuery[facet]
-        }
-        router.push({query})
-      }
-    })
+  useFacetSync({
+    facets,
+    facetRefs,
+    route,
+    router
   })
 })
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, toRefs, watch } from 'vue';
+import {computed, onMounted, reactive, ref, toRefs, watch} from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from '#imports';
 import { useSeoMeta } from 'nuxt/app';
@@ -16,6 +16,7 @@ import OdsButton from '../../app/components/OdsButton.vue';
 import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
 import { useShowcaseSearch, facets } from '../../app/piveau/showcases';
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
+import {syncFacetsFromRoute, useFacetSync} from "../../app/composables/useFacetSync";
 
 const { locale, t } = useI18n()
 
@@ -151,6 +152,21 @@ watch(() => route.query.q, (searchTerm) => {
     searchInput.value = ''
   }
   piveauQueryParams.q = searchInput.value
+})
+
+onMounted(() => {
+  syncFacetsFromRoute({
+    facets,
+    facetRefs,
+    route
+  })
+
+  useFacetSync({
+    facets,
+    facetRefs,
+    route,
+    router
+  })
 })
 
 const { suspense } = query
