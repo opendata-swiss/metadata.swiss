@@ -14,7 +14,7 @@ import OdsCard from "../../app/components/OdsCard.vue";
 import SvgIcon from "../../app/components/SvgIcon.vue";
 import OdsButton from '../../app/components/OdsButton.vue';
 import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
-import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS} from '../../app/piveau/search';
+import { useShowcaseSearch, facets } from '../../app/piveau/showcases';
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 
 const { locale, t } = useI18n()
@@ -27,14 +27,14 @@ const searchInput = ref(route.query.q)
 
 // 1. Main reactive object for your logic/UI
 const selectedFacets = reactive(
-  Object.fromEntries(ACTIVE_SHOWCASE_FACETS.map(facet => [facet, [] as string[]]))
+  Object.fromEntries(facets.map(facet => [facet, [] as string[]]))
 );
 
 
 
 // 2. facetRefs for useSearch API (syncs with selectedFacets)
 const facetRefs = Object.fromEntries(
-  ACTIVE_SHOWCASE_FACETS.map(facet => [facet, computed({
+  facets.map(facet => [facet, computed({
     get: () => selectedFacets[facet],
     set: (val: string[]) => { selectedFacets[facet] = val }
   })])
@@ -60,7 +60,7 @@ const onSearch = () => goToPage(1, { q: searchInput.value })
 function goToPage(newPage: number | string, query = route.query) {
   const page = newPage ? Number(newPage) : 1
   // Collect all facet values from facetRefs
-  const facetsQuery = ACTIVE_SHOWCASE_FACETS.reduce((acc, facet) => {
+  const facetsQuery = facets.reduce((acc, facet) => {
     if (facetRefs[facet].value.length > 0) {
       acc[facet] = facetRefs[facet].value
     }
@@ -95,7 +95,7 @@ const {
   getSearchResultsEnhanced,
   getAvailableFacetsLocalized,
   getSearchResultsCount
-  
+
 } = useSearch({
   queryParams: toRefs(piveauQueryParams),
   selectedFacets: facetRefs,
@@ -105,8 +105,7 @@ const availableFacets = getAvailableFacetsLocalized(locale.value);
 
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
-  const facets = availableFacets.value.filter(f => ACTIVE_SHOWCASE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
-  return facets
+  return availableFacets.value.filter(f => facets.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
 });
 
 const breadcrumbs = [
@@ -124,7 +123,7 @@ useSeoMeta({
 
 function resetSearch() {
   searchInput.value = ''
-  ACTIVE_SHOWCASE_FACETS.forEach(facet => {
+  facets.forEach(facet => {
     facetRefs[facet].value = []
   })
   piveauQueryParams.page = 0
@@ -205,9 +204,9 @@ await suspense()
             <div class="search-results__header">
               <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
                 <div class="search-results__header__right">
-            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->    
+            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->
                   <div class="separator separator--vertical" />
-                 <!--  <OdsListCardToggle v-model="listType" /> --> 
+                 <!--  <OdsListCardToggle v-model="listType" /> -->
                 </div>
               </div>
             <h2 class="sr-only">Results list</h2>

@@ -8,7 +8,7 @@ import { useI18n } from '#imports';
 import type { SearchParamsBase } from '@piveau/sdk-core'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
 
-import { useDatasetsSearch, ACTIVE_FACETS } from '../../app/piveau/search'
+import { useDatasetsSearch, facets } from '../../app/piveau/datasets'
 import OdsBreadcrumbs, { type BreadcrumbItem } from "../../app/components/OdsBreadcrumbs.vue";
 import OdsPagination from "../../app/components/OdsPagination.vue";
 import OdsDatasetList from "../../app/components/dataset/OdsDatasetList.vue";
@@ -28,13 +28,13 @@ const route = useRoute()
 
 // 1. Main reactive object for your logic/UI
 const selectedFacets = reactive(
-  Object.fromEntries(ACTIVE_FACETS.map(facet => [facet, [] as string[]]))
+  Object.fromEntries(facets.map(facet => [facet, [] as string[]]))
 );
 
 
 // 2. facetRefs for useSearch API (syncs with selectedFacets)
 const facetRefs = Object.fromEntries(
-  ACTIVE_FACETS.map(facet => [facet, computed({
+  facets.map(facet => [facet, computed({
     get: () => selectedFacets[facet],
     set: (val: string[]) => { selectedFacets[facet] = val }
   })])
@@ -62,7 +62,7 @@ if(import.meta.client) {
 }
 
 function syncFacetsFromRoute() {
-  ACTIVE_FACETS.forEach(facet => {
+  facets.forEach(facet => {
     const newVal = route.query[facet] || [];
     facetRefs[facet].value = Array.isArray(newVal) ? newVal : [newVal];
   })
@@ -70,7 +70,7 @@ function syncFacetsFromRoute() {
 
 function resetSearch() {
   searchInput.value = ''
-  ACTIVE_FACETS.forEach(facet => {
+  facets.forEach(facet => {
     facetRefs[facet].value = []
   })
   piveauQueryParams.page = 0
@@ -141,14 +141,13 @@ watch(listType, (newType) => {
 const availableFacets = getAvailableFacetsLocalized(locale.value);
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
-  const facets = availableFacets.value.filter(f => ACTIVE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
-  return facets
+  return availableFacets.value.filter(f => facets.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
 });
 
 function goToPage(newPage: number | string, query = route.query) {
   const page = newPage ? Number(newPage) : 1
   // Collect all facet values from facetRefs
-  const facetsQuery = ACTIVE_FACETS.reduce((acc, facet) => {
+  const facetsQuery = facets.reduce((acc, facet) => {
     if (facetRefs[facet].value.length > 0) {
       acc[facet] = facetRefs[facet].value
     }
@@ -269,7 +268,7 @@ onMounted(() => {
     return newVal.length !== currentValues.size || newVal.some(value => !currentValues.has(value))
   }
 
-  ACTIVE_FACETS.forEach(facet => {
+  facets.forEach(facet => {
     watch(facetRefs[facet], (newVal) => {
       const query = { ...route.query }
       const facetsFromQuery = getSearchParamsWithFacets(query)
