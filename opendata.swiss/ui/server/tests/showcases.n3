@@ -132,6 +132,21 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
   } ;
 .
 
+<#type>
+  a earl:TestCase ;
+  rdfs:label "Type is exported as URL" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> dcterms:type <https://opendata.swiss/vocabulary/showcase-type/application>
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
 <#inactive>
   a earl:TestCase ;
   rdfs:label "Inactive showcases are not included" ;

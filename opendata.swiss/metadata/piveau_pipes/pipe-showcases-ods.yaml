@@ -14,6 +14,10 @@ body:
       body:
         config:
           address: http://piveau-ui/api/showcases
+          # use the address below to harvest from locally-running app
+          # address: http://host.docker.internal:3000/api/showcases
+          # address: http://172.17.0.1:3000/api/showcases
+
           catalogue: showcases-ods
     - header:
         name: piveau-consus-patching
