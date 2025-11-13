@@ -69,7 +69,7 @@ useSeoMeta({
       <img v-if="showcase.image" :src="showcase.image" :alt="showcase.title" >
     </template>
 
-    <template #aside-content>acek
+    <template #aside-content>
       <OdsCard v-if="showcase.url" :title="t('message.showcase.externalLink')">
         <OdsButton icon="External" variant="outline-negative" :href="showcase.url">{{ t('message.showcase.open') }}</OdsButton>
       </OdsCard>
