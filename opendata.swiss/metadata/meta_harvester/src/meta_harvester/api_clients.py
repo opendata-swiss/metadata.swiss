@@ -186,7 +186,7 @@ class PiveauRunClient:
     """
     A client for interacting with the piveau-scheduling 'Run' endpoints.
     """
-    PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
 
     def list_runs(self, run_filter: list[str] = None) -> list[dict]:
         """
@@ -200,7 +200,7 @@ class PiveauRunClient:
         Returns:
             list[dict]: A list of run status objects.
         """
-        url = f"{self.PIVEAU_PIPES_ENDPOINT}/runs"
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/runs"
         params = {}
         if run_filter:
             params["filter"] = run_filter
@@ -221,8 +221,8 @@ class PiveauRunClient:
 class PiveauClient:
 
     HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
-    PIVEAU_PIPES_ENDPOINT = os.getenv("PIVEAU_PIPES_ENDPOINT", "http://localhost:8090")
-    API_KEY = os.getenv("API_KEY_HUB", "yourRepoApiKey")
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
+    API_KEY = os.getenv("PIVEAU_HUB_API_KEY", "secret-hub-api-key") #TODO: this is not read from .env
 
     def __init__(self):
         self._catalogues: set[str] = set()
@@ -380,7 +380,7 @@ class PiveauClient:
         """
 
 
-        url = f"{self.PIVEAU_PIPES_ENDPOINT}/pipes/{pipe_name}/triggers/immediateTrigger"
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/pipes/{pipe_name}/triggers/immediateTrigger"
         headers = {"Content-Type": "application/json"}
         payload = {"status": "enabled", "id": "immediateTrigger"}
 

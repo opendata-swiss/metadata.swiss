@@ -258,7 +258,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
             logger.info(
                 f"Reached maximum concurrent runs ({piveau_client.max_concurrent_runs}). Waiting for a slot to open..."
             )
-            time.sleep(1)
+            time.sleep(30)
 
 
         if create_catalogue:
