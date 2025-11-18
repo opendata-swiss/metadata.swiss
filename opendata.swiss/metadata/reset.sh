@@ -3,7 +3,7 @@ docker compose -f docker-compose-consus.yml down -v
 docker compose -f docker-compose-hub.yml down -v
 
 
-docker compose -f docker-compose-consus.yml up build --no-cache
+docker compose -f docker-compose-consus.yml build --no-cache
 docker compose -f docker-compose-hub.yml up -d
 docker compose -f docker-compose-consus.yml up --force-recreate -d
 

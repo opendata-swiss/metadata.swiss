@@ -139,12 +139,12 @@ Deletes catalogues from the piveau-hub.
 
 
 ## TODO:
+* [poetry - add PyYAML, rdflib]
 * add unit tests
 * clean code - type hints, function headers
 
 * check if this pipe is already running - do not relaunch if so
 
-Issue: runs api returns always empty
 
 
 RUN IT ON CLUSTER!!!
