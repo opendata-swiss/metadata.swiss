@@ -301,7 +301,7 @@ class PiveauClient:
 
         preexisting_catalogues = self.catalogues.copy()
         if len(names) == 0:
-            names = self.catalogues
+            names = self.catalogues.copy()
             logger.info("No catalogue names provided. Deleting all catalogues.")
         else:
             names = set(names)

@@ -222,7 +222,6 @@ def generate_pipe_and_catalogue_files():
 
 def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
 
-    # TODO: change create_catalogue=True once API issues are resolved
     """
     Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
     Optionally, it ensures the corresponding catalogue is created/updated first.

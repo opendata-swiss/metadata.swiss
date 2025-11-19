@@ -88,9 +88,9 @@ Triggers one or more piveau pipes to execute. By default, this command first cre
     ```bash
     python -m meta_harvester run-pipes
     ```
-*   **Skip catalogue creation:** Use the `--skip-catalogue` flag to run the pipe(s) without touching the catalogue first.
+*   **Add catalogue creation:** Use the `--create-catalogue` flag to run the pipe(s) with uploading the catalogue first.
     ```bash
-    python -m meta_harvester run-pipes aargau-kt-geocat-harvester --skip-catalogue
+    python -m meta_harvester run-pipes aargau-kt-geocat-harvester --create-catalogue
     ```
 
 ---
@@ -139,12 +139,13 @@ Deletes catalogues from the piveau-hub.
 
 
 ## TODO:
-* [poetry - add PyYAML, rdflib]
 * add unit tests
 * clean code - type hints, function headers
 
-* check if this pipe is already running - do not relaunch if so
 
+Issue:
+- same pipe can be launched twice --> check if this pipe is already running - do not relaunch if so
+- pipes are not available before launching a container --> can we mount them later?
 
 
 RUN IT ON CLUSTER!!!
