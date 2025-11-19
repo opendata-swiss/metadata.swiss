@@ -186,6 +186,7 @@ public class MainVerticle extends AbstractVerticle {
         } while (totalRecords > 0 && recordsFetched < totalRecords);
         pipeContext.setRunFinished();
 
+        pipeContext.setRunFinished();
     }
 
     private HttpClient client;
