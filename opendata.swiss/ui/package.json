@@ -7,7 +7,8 @@
     "@nuxtjs/mdc": "^0.17.4"
   },
   "scripts": {
-    "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
+    "decap-vite": "vite src/admin",
+    "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- npm run decap-vite",
     "dev": "nuxt dev",
     "api-tuner": "api-tuner --base-iri http://localhost:3000",
     "test": "npm run api-tuner -- server/tests/*.n3",
@@ -60,9 +61,11 @@
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/vue-select": "^3.16.8",
     "api-tuner": "^0.5.2",
     "decap-server": "^3.4.0",
-    "dotenv-cli": "^11.0.0"
+    "dotenv-cli": "^11.0.0",
+    "js-yaml": "^4.1.1"
   }
 }

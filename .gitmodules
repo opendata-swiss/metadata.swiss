@@ -1,0 +1,3 @@
+[submodule "opendata.swiss/ui/content"]
+	path = opendata.swiss/ui/content
+	url = git@github.com:zazukoians/opendata-swiss-cms-content.git
