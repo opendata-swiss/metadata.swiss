@@ -2,9 +2,9 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://opendata.swiss/vocabulary/showcase-types> .
+@base <https://opendata.swiss/vocabulary/showcase-type/> .
 
-<>
+<https://opendata.swiss/vocabulary/showcase-types>
     a owl:Ontology, skos:ConceptScheme ;
     skos:prefLabel 
         "Showcase Types"@en,
@@ -12,9 +12,9 @@
         "Showcase-Typen"@de,
         "Tipi di vetrina"@it .
 
-</application>
+<application>
     a skos:Concept ;
-    skos:inScheme <> ;
+    skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
     skos:prefLabel 
         "Application"@en ,
         "Application"@fr ,
@@ -23,7 +23,7 @@
 
 <data_visualization>
     a skos:Concept ;
-    skos:inScheme <> ;
+    skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
     skos:prefLabel 
         "Data Visualization"@en ,
         "Visualisation des données"@fr ,
@@ -32,7 +32,7 @@
 
 <event>
     a skos:Concept ;
-    skos:inScheme <> ;
+    skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
     skos:prefLabel 
         "Event"@en ,
         "Événement"@fr ,
@@ -41,7 +41,7 @@
 
 <blog_article>
     a skos:Concept ;
-    skos:inScheme <> ;
+    skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
     skos:prefLabel 
         "Blog/Article"@en ,
         "Blog/Article"@fr ,

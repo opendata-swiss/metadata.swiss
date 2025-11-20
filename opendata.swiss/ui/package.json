@@ -9,7 +9,7 @@
   "scripts": {
     "decap-vite": "vite src/admin",
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- npm run decap-vite",
-    "dev": "nuxt dev",
+    "dev": "HOST=0.0.0.0 nuxt dev",
     "api-tuner": "api-tuner --base-iri http://localhost:3000",
     "test": "npm run api-tuner -- server/tests/*.n3",
     "prebuild": "vite build src/admin --emptyOutDir",
