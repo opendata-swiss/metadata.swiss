@@ -80,7 +80,23 @@ export default defineNuxtConfig({
     },
     plugins: [
       '~~/server/plugins/zod-locale',
-    ]
+    ],
+    storage: {
+      'cms-assets-local': {
+        driver: 'fs',
+        base: resolve(import.meta.dirname, 'content/assets'),
+      },
+      'cms-assets-remote': {
+        driver: 'github',
+        repo: process.env.CMS_GITHUB_REPO || 'zazukoians/opendata-swiss-cms-content',
+        branch: process.env.CMS_GITHUB_BRANCH || 'develop',
+        token: process.env.CMS_GITHUB_TOKEN,
+        dir: '/assets',
+      }
+    }
+  },
+  image: {
+    provider: 'none'
   },
   icon: {
     mode: 'svg',
