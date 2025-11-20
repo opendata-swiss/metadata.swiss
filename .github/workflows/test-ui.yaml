@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v5
+        with:
+          submodules: true
 
       - uses: fabasoad/setup-prolog-action@v1
 

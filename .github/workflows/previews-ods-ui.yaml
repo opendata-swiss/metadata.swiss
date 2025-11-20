@@ -29,11 +29,14 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
           fetch-depth: 0
+          submodules: true
 
       # If the PR is closed, the branch may be deleted already, so we can't checkout the branch
       - name: Checkout
         if: github.event.action == 'closed'
         uses: actions/checkout@v5
+        with:
+          submodules: true
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4

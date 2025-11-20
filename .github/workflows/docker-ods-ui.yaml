@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          submodules: true
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.9.2
