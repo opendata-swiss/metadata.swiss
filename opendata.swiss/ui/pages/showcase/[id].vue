@@ -6,7 +6,7 @@ import OdsTagItem from "../../app/components/OdsTagItem.vue";
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsCard from "../../app/components/OdsCard.vue";
 import OdsButton from "../../app/components/OdsButton.vue";
-import { useVocabularySearch } from "../../app/piveau/search.js";
+import {useDatasetsSearch, useVocabularySearch} from "../../app/piveau/search.js";
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -37,22 +37,15 @@ const dataThemes = useSearch({
   }
 })
 
-const showcaseCategories = computed(() => {
-  return showcase.value?.categories.map(categoryId => {
-    return  dataThemes.getSearchResultsEnhanced.value.find(item => item.resource === categoryId)
-  })?.filter(Boolean) || []
-})
+const showcaseCategories = showcase.value?.categories.map(categoryId => {
+  return  dataThemes.getSearchResultsEnhanced.value.find(item => item.resource === categoryId)
+})?.filter(Boolean) || []
 
-// const showcaseDatasets = computedAsync(async () => {
-//   const {value} = showcase
-//   const datasets = value.datasets.map(async ({ id }) => {
-//     const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
-//     await query.suspense()
-//     return resultEnhanced
-//   })
-//
-//   return Promise.all(datasets)
-// })
+const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({id}) => {
+  const {query, resultEnhanced} = useDatasetsSearch().useResource(id)
+  await query.suspense()
+  return resultEnhanced.value
+}))
 
 useSeoMeta({
   title: `${showcase.value?.title} | ${t('message.header.navigation.showcases')} | opendata.swiss`,
@@ -87,9 +80,9 @@ useSeoMeta({
         </OdsInfoBlock>
         <OdsInfoBlock :title="t('message.showcase.datasets')">
           <ul>
-            <li v-for="dataset in showcase.datasets" :key="dataset">
-              <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.id } }">
-                {{ dataset.label }}
+            <li v-for="dataset in showcaseDatasets" :key="dataset.getId">
+              <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.getId } }">
+                {{ dataset.getTitle }}
               </NuxtLinkLocale>
             </li>
           </ul>
