@@ -8,3 +8,6 @@ piveau_catalogues/
 
 *.pyc
 __pycache__/
+
+*.log
+*.logs

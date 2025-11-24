@@ -153,7 +153,7 @@ def generate_catalogue_metadata(
 
     return output_file
 
-def generate_pipe_and_catalogue_files():
+def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True):
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
@@ -201,6 +201,7 @@ def generate_pipe_and_catalogue_files():
         organization = to_dict(details.get("organization", {}))
         org_titles = to_dict(organization.get("title", "{}"))
 
+    if catalogues:
         generate_catalogue_metadata(
             catalogue_name=catalogue_name,
             org_titles=org_titles,
@@ -210,6 +211,7 @@ def generate_pipe_and_catalogue_files():
             homepage=org_url,
         )
 
+    if pipes:
         generate_pipe(
             id=id,
             name=details["name"],
@@ -247,12 +249,18 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
 
         while True:
             active_runs = piveau_client.run_client.list_runs(run_filter=["active"])
+            active_runs_names = [i["pipeHeader"]["name"] for i in active_runs if i["status"] == "active"]
+
+            if name in active_runs_names:
+                logger.info(f"Pipe '{name}' is already running. Skipping trigger.")
+                break
+
             active_count = len(active_runs)
             logger.info(f"Currently {active_count} active run(s).")
 
             if active_count < piveau_client.max_concurrent_runs:
                 logger.info("Slot available. Proceeding to launch pipe.")
-                break  # Exit the waiting loop
+                break
 
             logger.info(
                 f"Reached maximum concurrent runs ({piveau_client.max_concurrent_runs}). Waiting for a slot to open..."
@@ -268,45 +276,9 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
             )
             piveau_client.create_catalogues([catalogue_name], recreate=create_catalogue)
 
+        piveau_client.upload_pihat pe(name)
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
-
-def generate_all_pipes():
-    """
-    Fetches all geoharvesters from CKAN and generates corresponding pipe files.
-    """
-    ckan_client = CkanClient()
-    try:
-        ids = ckan_client.get_geoharvesters_ids()
-        logger.info(f"Collected {len(ids)} geoharvester(s) from CKAN.")
-    except HTTPError as e:
-        logger.error(f"Failed to fetch harvester IDs from CKAN: {e}")
-        return
-
-    logger.info("Generating all pipe definition files...")
-    for id in ids:
-        try:
-            details = ckan_client.get_harvester_details_by_id(id)
-        except HTTPError as e:
-            if e.response.status_code == 403:
-                logger.warning(
-                    f"Access forbidden for harvester ID {id}. Omitting this pipe."
-                )
-            else:
-                logger.error(f"HTTP error for harvester ID {id}: {e}. Skipping.")
-            continue
-
-        url = details["url"].split("?")[0]
-        catalogue_name = details["name"].replace("-geocat-harvester", "")
-
-        generate_pipe(
-            id=id,
-            name=details["name"],
-            catalogue=catalogue_name,
-            title=details["title"],
-            http_client=url,
-        )
-    logger.info("Finished generating pipe files.")
 
 def create_catalogues_wrapper(catalogue_names: list[str]):
     """
@@ -328,12 +300,12 @@ def main():
     parser_generate = subparsers.add_parser(
         "generate", help="Generate all pipes and catalogue files from CKAN."
     )
-    parser_generate.set_defaults(func=generate_pipe_and_catalogue_files)
+    parser_generate.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=True)
 
     parser_generate_pipes = subparsers.add_parser(
         "generate-all-pipes", help="Generate all pipe definition files from CKAN."
     )
-    parser_generate_pipes.set_defaults(func=generate_all_pipes)
+    parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=False)
 
     # Sub-command for running pipes
     parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
@@ -397,6 +369,8 @@ def main():
         args.func(catalogue_names=args.names if args.names else [])
     elif args.command == "create-single-catalogue":
         args.func(name=args.name, file_path=args.file_path)
+    elif args.command in ["generate", "generate-all-pipes"]:
+        args.func(pipes=args.pipes, catalogues=args.catalogues)
     else:
         args.func()
 

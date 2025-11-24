@@ -70,6 +70,7 @@ public class MainVerticle extends AbstractVerticle {
         Integer startPosition = 1;
         Integer totalRecords = -1; // Sentinel value: not yet known
         Integer recordsFetched = 0;
+        Integer recordsFailed = 0;
 
         HttpClient client = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.ALWAYS).build();
 
@@ -176,15 +177,23 @@ public class MainVerticle extends AbstractVerticle {
                     logger.error("Error: Received status code " + response.statusCode());
                     logger.error("Response Body:");
                     logger.error(response.body());
+                    recordsFailed += pageSize;
                 }
 
             } catch (Exception e) {
                 logger.error("An error occurred during the HTTP request:");
                 e.printStackTrace();
+                recordsFailed += pageSize;
             }
 
-        } while (totalRecords > 0 && recordsFetched < totalRecords);
-        pipeContext.setRunFinished();
+        } while (totalRecords > 0 && recordsFetched + recordsFailed < totalRecords);
+
+        if (recordsFailed >= totalRecords) {
+            pipeContext.setFailure("All " + recordsFailed + " records failed to import.");
+        } else {
+            logger.info(("All " + recordsFetched + " records imported successfully."));
+            pipeContext.setRunFinished();
+        }
 
     }
 

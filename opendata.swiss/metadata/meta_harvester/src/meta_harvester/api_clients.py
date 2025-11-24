@@ -9,6 +9,7 @@ from requests.packages.urllib3.util.retry import Retry
 from .exceptions import NoRecords, NotFoundError
 
 CATALOGUES_PATH = Path(os.getenv("CATALOGUES_PATH", "../piveau_catalogues"))
+PIPES_PATH = Path(os.getenv("PIPES_PATH", "../piveau_pipes"))
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -217,7 +218,6 @@ class PiveauRunClient:
                 logger.error(f"Server response: {e.response.text}")
             return []
 
-
 class PiveauClient:
 
     HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
@@ -289,6 +289,7 @@ class PiveauClient:
 
         if name not in self.catalogues:
             self._catalogues.add(name)
+
 
     def delete_catalogues(self, names: list[str]) -> None:
         """
@@ -370,6 +371,39 @@ class PiveauClient:
 
             self.create_catalogue(name=name, metadata_file=str(metadata_file), recreate=recreate)
 
+
+    def upload_pipe(self, pipe_name: str) -> None:
+        """
+        Uploads a pipe definition to the piveau-consus-scheduling service.
+
+        Args:
+            pipe_name (str): The name of the pipe, which corresponds to the YAML file name (without extension).
+        """
+        pipe_file = PIPES_PATH / f"{pipe_name}.yaml"
+        if not pipe_file.is_file():
+            logger.error(f"Pipe definition file not found at '{pipe_file}'. Aborting upload.")
+            return
+
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/pipes/{pipe_name}"
+        logger.info(f"Uploading pipe definition for '{pipe_name}' from '{pipe_file}' to '{url}'")
+
+        headers = {"X-API-Key": self.API_KEY}
+
+        with open(pipe_file, 'rb') as f:
+            files = {'data': (pipe_file.name, f, 'application/x-yaml')}
+
+            session = requests_retry_session()
+
+            response = session.put(url, headers=headers, data=files, timeout=30)
+            response.raise_for_status()
+
+            if response.status_code == 201:
+                logger.info(f"Successfully created pipe '{pipe_name}'.")
+            elif response.status_code == 204:
+                logger.info(f"Successfully updated pipe '{pipe_name}'.")
+
+            else:
+                logger.warning(f"Unexpected status code {response.status_code} while uploading pipe '{pipe_name}'.")
 
     def trigger_pipe(self, pipe_name: str) -> None:
         """

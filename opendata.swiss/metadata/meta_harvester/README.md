@@ -144,8 +144,7 @@ Deletes catalogues from the piveau-hub.
 
 
 Issue:
-- same pipe can be launched twice --> check if this pipe is already running - do not relaunch if so
-- pipes are not available before launching a container --> can we mount them later?
+- pipes are not available before launching a container --> can we mount them later? (See runs API)
 
 
 RUN IT ON CLUSTER!!!
