@@ -3,7 +3,7 @@ services:
   # docker-compose-hub.yml #
   ##########################
   piveau-hub-repo:
-    image: piveau/hub-repo:3.3.28
+    image: piveau/hub-repo:3.4.0
     container_name: piveau-hub-repo
     logging:
       options:
@@ -169,7 +169,7 @@ services:
       # - PIVEAU_PIPE_LOG_LEVEL=TRACE
       - JAVA_OPTS=-Xms200m -Xmx500m
     extra_hosts:
-    - "host.docker.internal:host-gateway"
+      - "host.docker.internal:host-gateway"
 
   piveau-consus-importing-ckan:
     image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
