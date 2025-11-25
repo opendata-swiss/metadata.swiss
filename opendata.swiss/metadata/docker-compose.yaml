@@ -196,7 +196,7 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.2
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
     logging:
       options:
         max-size: "50m"
