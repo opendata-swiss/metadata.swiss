@@ -209,7 +209,7 @@ services:
       - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
 
   piveau-consus-scheduling:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:3.0.20
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.0.1
     logging:
       options:
         max-size: "50m"
