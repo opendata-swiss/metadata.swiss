@@ -165,7 +165,8 @@
             "showcases": {
                 "post": {
                     "error": {
-                        "submission_exists": "A submission with the exact same German title already exists.",
+                        "missing_content": "At least one language must have a title (min 5 characters) and body (min 100 characters).",
+                        "submission_exists": "A submission with the exact same title already exists.",
                         "unspecified_error": "An unspecified error occurred. Please try again later."
                     },
                     "success": "Your submission has been received and is pending review."

@@ -94,8 +94,8 @@ collections:
         widget: string
         i18n: true
         required: false
-      - label: Description
-        name: description
+      - label: Sub-heading
+        name: subHeading
         widget: markdown
         i18n: true
       - name: body
@@ -174,17 +174,11 @@ collections:
           vocabulary: data-theme
       - label: Type of content
         name: type
-        widget: select
+        widget: piveau-vocabulary
         i18n: duplicate
-        options:
-          - label: "Application"
-            value: application
-          - label: "Data Visualization"
-            value: data_visualization
-          - label: "Event"
-            value: event
-          - label: "Blog/Article"
-            value: blog_and_media_articles
+        piveau:
+          search: https://piveau-hub-search-ln.zazukoians.org/
+          vocabulary: showcase-types
       - name: datasets
         label: Datasets
         widget: piveau-dataset
