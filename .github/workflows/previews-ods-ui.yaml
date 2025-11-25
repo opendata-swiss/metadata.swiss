@@ -67,7 +67,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: zazukoians/opendata-swiss-cms-content
-          ref: ${{ steps.set_branch.outputs.branch }}
+          # ref: ${{ steps.set_branch.outputs.branch }}
           path: content
           token: ${{ steps.generate_cms_token.outputs.token }}
 
