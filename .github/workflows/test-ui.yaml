@@ -25,6 +25,34 @@ jobs:
           submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # This allow GitHub Actions to clone the CMS repo
+      - name: Generate CMS token
+        id: generate_cms_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.CMS_GITHUB_APP_ID }}
+          private_key: ${{ secrets.CMS_GITHUB_PRIVATE_KEY }}
+
+      - name: Set CMS branch name
+        shell: bash
+        id: set_branch
+        # TODO: set correct branch depending on the environment
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "branch=${{ github.event.inputs.pr_branch }}" >> $GITHUB_OUTPUT
+          else
+            echo "branch=main" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Checkout CMS repository
+        if: github.event.action != 'closed'
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ env.CMS_REPO }}
+          ref: ${{ steps.set_branch.outputs.branch }}
+          path: content
+          token: ${{ steps.generate_cms_token.outputs.token }}
+        
       - uses: fabasoad/setup-prolog-action@v1
 
       - uses: actions/setup-node@v5
