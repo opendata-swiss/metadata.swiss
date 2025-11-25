@@ -252,7 +252,7 @@ services:
       - ./config/collector.yaml:/collector.yaml:ro
 
   prometheus:
-    image: docker.io/prom/prometheus:v3.7.1
+    image: docker.io/prom/prometheus:v3.7.3
     command: >-
       --config.file=/prometheus.yaml
       --web.enable-lifecycle
