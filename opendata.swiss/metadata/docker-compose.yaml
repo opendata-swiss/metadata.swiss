@@ -29,7 +29,7 @@ services:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.2.2
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.0
     container_name: piveau-hub-search
     logging:
       options:
