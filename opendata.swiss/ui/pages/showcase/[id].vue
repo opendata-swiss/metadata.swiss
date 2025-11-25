@@ -30,16 +30,11 @@ const breadcrumbs = [
   }
 ]
 
-const { useSearch } = useVocabularySearch()
-const dataThemes = useSearch({
-  queryParams: {
-    vocabulary: 'data-theme',
-  }
-})
-
-const showcaseCategories = showcase.value?.categories.map(categoryId => {
-  return  dataThemes.getSearchResultsEnhanced.value.find(item => item.resource === categoryId)
-})?.filter(Boolean) || []
+const showcaseCategories = await Promise.all(showcase.value?.categories.map(async categoryId => {
+  const {query, resultEnhanced} = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId }, })
+  await query.suspense()
+  return resultEnhanced.value
+}))
 
 const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({id}) => {
   const {query, resultEnhanced} = useDatasetsSearch().useResource(id)
