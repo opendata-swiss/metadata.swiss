@@ -6,7 +6,7 @@ backend:
 publish_mode: editorial_workflow
 
 media_folder: "assets"
-public_folder: "/cms/assets"
+public_folder: "/cms"
 
 i18n:
   structure: multiple_files
