@@ -9,6 +9,6 @@ categories:
   - http://publications.europa.eu/resource/authority/data-theme/REGI
 type: https://opendata.swiss/vocabulary/showcase-type/application
 datasets:
-  - id: 85787-bundesamt-fur-statistik-bfs
+  - id: 523-staatskanzlei-kanton-zuerich
     label: "Kanton Bern: Gebäude, Wohnungen und Wohnverhältnisse"
 ---
