@@ -273,7 +273,7 @@ services:
       - 9090:9090
 
   grafana:
-    image: docker.io/grafana/grafana:12.2.0
+    image: docker.io/grafana/grafana:12.3.0
     ports:
       - 3001:3000
     environment:
