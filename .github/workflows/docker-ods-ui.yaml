@@ -20,7 +20,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          submodules: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
       # This allow GitHub Actions to clone the CMS repo
