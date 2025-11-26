@@ -25,10 +25,11 @@ jobs:
       # This allow GitHub Actions to clone the CMS repo
       - name: Generate CMS token
         id: generate_cms_token
-        uses: tibdex/github-app-token@v2
+        uses: actions/create-github-app-token@v2
         with:
-          app_id: ${{ secrets.CMS_GITHUB_APP_ID }}
-          private_key: ${{ secrets.CMS_GITHUB_PRIVATE_KEY }}
+          app-id: ${{ secrets.CMS_GITHUB_APP_ID }}
+          private-key: ${{ secrets.CMS_GITHUB_PRIVATE_KEY }}
+          owner: zazukoians
 
       - name: Set CMS branch name
         shell: bash
@@ -49,6 +50,7 @@ jobs:
           ref: ${{ steps.set_branch.outputs.branch }}
           path: content
           token: ${{ steps.generate_cms_token.outputs.token }}
+          persist-credentials: false
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@v3.9.2
