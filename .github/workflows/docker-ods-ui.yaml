@@ -48,7 +48,7 @@ jobs:
         with:
           repository: zazukoians/opendata-swiss-cms-content
           ref: ${{ steps.set_branch.outputs.branch }}
-          path: content
+          path: opendata.swiss/ui/content
           token: ${{ steps.generate_cms_token.outputs.token }}
           persist-credentials: false
 

@@ -39,7 +39,7 @@ jobs:
         with:
           repository: ${{ env.CMS_REPO }}
           ref: develop
-          path: content
+          path: opendata.swiss/ui/content
           token: ${{ steps.generate_cms_token.outputs.token }}
           persist-credentials: false
 
