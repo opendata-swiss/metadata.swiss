@@ -37,7 +37,7 @@ jobs:
         if: github.event.action != 'closed'
         uses: actions/checkout@v5
         with:
-          repository: ${{ env.CMS_REPO }}
+          repository: zazukoians/opendata-swiss-cms-content
           ref: develop
           path: opendata.swiss/ui/content
           token: ${{ steps.generate_cms_token.outputs.token }}
