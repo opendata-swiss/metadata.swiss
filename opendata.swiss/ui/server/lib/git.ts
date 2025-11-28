@@ -3,7 +3,7 @@ import {Octokit} from "@octokit/rest";
 import {createAppAuth} from "@octokit/auth-app";
 import {minimatch} from "minimatch";
 
-const BASE_PATH = 'opendata.swiss/ui/public'
+const BASE_PATH = 'assets'
 
 function getAuth() {
   if (process.env.GITHUB_APP_ID) {
