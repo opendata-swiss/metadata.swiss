@@ -276,7 +276,6 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
             )
             piveau_client.create_catalogues([catalogue_name], recreate=create_catalogue)
 
-        piveau_client.upload_pipe(name)
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
 
