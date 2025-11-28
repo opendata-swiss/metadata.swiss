@@ -142,11 +142,6 @@ Deletes catalogues from the piveau-hub.
 * add unit tests
 * clean code - type hints, function headers
 
-
-Issue:
-- pipes are not available before launching a container --> can we mount them later? (See runs API)
-
-
 RUN IT ON CLUSTER!!!
 
 

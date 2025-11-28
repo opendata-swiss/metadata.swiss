@@ -201,25 +201,25 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
         organization = to_dict(details.get("organization", {}))
         org_titles = to_dict(organization.get("title", "{}"))
 
-    if catalogues:
-        generate_catalogue_metadata(
-            catalogue_name=catalogue_name,
-            org_titles=org_titles,
-            org_descriptions=to_dict(organization.get("description", "{}")),
-            created=details["metadata_created"],
-            modified=details["metadata_modified"],
-            homepage=org_url,
-        )
+        if catalogues:
+            generate_catalogue_metadata(
+                catalogue_name=catalogue_name,
+                org_titles=org_titles,
+                org_descriptions=to_dict(organization.get("description", "{}")),
+                created=details["metadata_created"],
+                modified=details["metadata_modified"],
+                homepage=org_url,
+            )
 
-    if pipes:
-        generate_pipe(
-            id=id,
-            name=details["name"],
-            org_name=org_titles.get("en", "unknown_org"),
-            catalogue=catalogue_name,
-            title=details["title"],
-            http_client=url,
-        )
+        if pipes:
+            generate_pipe(
+                id=id,
+                name=details["name"],
+                org_name=org_titles.get("en", "unknown_org"),
+                catalogue=catalogue_name,
+                title=details["title"],
+                http_client=url,
+            )
 
 
 def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
@@ -276,7 +276,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
             )
             piveau_client.create_catalogues([catalogue_name], recreate=create_catalogue)
 
-        piveau_client.upload_pihat pe(name)
+        piveau_client.upload_pipe(name)
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
 
