@@ -3,8 +3,8 @@ name: "[UI] Handle previews on PR"
 on:
   workflow_dispatch:
     inputs:
-      cms_branch:
-        description: 'CMS repo branch name'
+      deployment_name:
+        description: 'PR number from CMS repo'
         required: true
       remove_preview:
         description: 'CMS repo branch name'
@@ -42,6 +42,8 @@ jobs:
             if [[ "${{ github.event.inputs.remove_preview }}" == "true" ]]; then
               echo "remove_preview=true" >> $GITHUB_OUTPUT
             fi
+          
+            echo "deployment_name=${{ github.event.inputs.deployment_name }}" >> $GITHUB_OUTPUT
           else
             # When triggered from PR, use PR branch name for deploy URL
             BRANCH_NAME="${GITHUB_HEAD_REF}"
@@ -52,11 +54,11 @@ jobs:
             if [[ "${{ github.event.action }}" == "closed" ]]; then
               echo "remove_preview=true" >> $GITHUB_OUTPUT
             fi
+          
+            echo "deployment_name=pr-${{ github.event.pull_request.number }}" >> $GITHUB_OUTPUT
           fi
           
-          BRANCH_STANDARDIZED="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0])' "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g; s/-+/-/g; s/^-+//; s/-+$//' | cut -c1-40)"
           echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          echo "deployment_name=${BRANCH_STANDARDIZED}" >> $GITHUB_OUTPUT
 
       - name: Checkout branch
         if: steps.vars.outputs.remove_preview != 'true'
@@ -88,13 +90,6 @@ jobs:
         uses: azure/setup-kubectl@v4
         with:
           version: v1.33.0
-
-      - name: Set pending status
-        uses: myrotvorets/set-commit-status-action@v2.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          context: Preview deployed
-          status: pending
 
       - name: Set up Kustomize
         uses: imranismail/setup-kustomize@v2
@@ -151,15 +146,6 @@ jobs:
             Your preview environment is deployed! 🚀
             **URL:** https://${{ steps.vars.outputs.deployment_name }}.piveau-ln-preview.zazukoians.org/
             **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
-
-      - name: Final status check
-        uses: myrotvorets/set-commit-status-action@v2.0.1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          context: Preview deployed
-          description: It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
-          status: success
-          targetUrl: https://${{ steps.vars.outputs.deployment_name }}.piveau-ln-preview.zazukoians.org/
 
       - name: Delete manifests
         working-directory: ./opendata.swiss/ui/k8s
