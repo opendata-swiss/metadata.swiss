@@ -41,7 +41,7 @@ jobs:
         working-directory: opendata.swiss/metadata/meta_harvester
         run: |
           poetry install
-          poetry add pyyaml
+          pip install pyyaml
 
       - name: Run meta_harvester
         working-directory: opendata.swiss/metadata/meta_harvester
