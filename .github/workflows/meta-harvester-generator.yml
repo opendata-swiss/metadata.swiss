@@ -46,8 +46,15 @@ jobs:
       - name: Check current working directory
         run: pwd
 
-      - name: Generate catalogues and pipes
-        run: python -m meta_harvester generate
+      - name: List files
+        run: ls
+
+      - name: Run meta_harvester
+        env:
+          CKAN_API_KEY: ${{ secrets.CKAN_API_KEY }}
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY }}
+        working-directory: opendata.swiss/metadata/meta_harvester
+        run: python -m src.meta_harvester generate
 
       - name: Run pipes
         run: python -m meta_harvester run-pipes
