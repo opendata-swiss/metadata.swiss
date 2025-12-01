@@ -43,6 +43,9 @@ jobs:
       - name: Activate venv
         run: poetry env activate
 
+      - name: Check current working directory
+        run: pwd
+
       - name: Generate catalogues and pipes
         run: python -m meta_harvester generate
 

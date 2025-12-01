@@ -28,8 +28,13 @@ PIPES_PATH = "../piveau_pipes"
 
 def to_dict(value: Union[str, dict]) -> dict:
     """
-    Safely converts a JSON string to a dictionary.
-    If the value is already a dictionary, it returns it directly.
+    Converts a JSON string to a dictionary.
+
+    Args:
+        value (Union[str, dict]):       JSON string to convert.
+
+    Returns:
+        dict:                           The converted dictionary, or an empty dictionary if conversion fails.
     """
     if isinstance(value, dict):
         return value
@@ -41,9 +46,13 @@ def to_dict(value: Union[str, dict]) -> dict:
             return {}
     return {}
 
+
 def delete_catalogues(catalogue_names: list[str]) -> None:
     """
     Deletes catalogues from the piveau-hub-repo.
+
+    Args:
+        catalogue_names (list[str]):    A list of catalogue names to delete.
     """
     piveau_client = PiveauClient()
     logger.info(f"Deleting catalogues: {catalogue_names}")
@@ -54,7 +63,12 @@ def delete_catalogues(catalogue_names: list[str]) -> None:
 def create_single_catalogue(name: str, file_path: str | None = None) -> None:
     """
     Creates or updates a single catalogue from a file.
-    If file_path is not provided, it defaults to the standard location.
+    If file_path is not provided, it defaults to the default location.
+
+    Args:
+        name      (str):                        The target name for the catalogue.
+        file_path (str | None, optional):       Path to the .ttl file.
+                                                If omitted, defaults to the default path.
     """
     piveau_client = PiveauClient()
 
@@ -81,7 +95,17 @@ def generate_pipe(
     output_path: str = PIPES_PATH,
 ) -> None:
     """
-    Reads a template pipe file, update selected fields, and saves it as an execution-ready pipe.
+    Reads a template pipe file, updates selected fields, and saves it as an execution-ready pipe.
+
+    Args:
+        id            (str): The ID of the pipe.
+        name          (str): The name of the pipe, used as the output filename.
+        org_name      (str): The name of the organization.
+        catalogue     (str): The name of the associated catalogue.
+        title         (str): The human-readable title of the pipe.
+        http_client   (str): The URL of the CKAN harvester endpoint.
+        template_file (str, optional): Path to the pipe template file.
+        output_path   (str, optional): Directory to save the generated pipe file.
     """
     with open(template_file, "r") as file:
         data = yaml.safe_load(file)
@@ -110,7 +134,20 @@ def generate_catalogue_metadata(
     modified: str,
     homepage: str = "https://example.com",
 ) -> None:
+    """
+    Generates an RDF metadata file for a catalogue in Turtle format.
 
+    Args:
+        catalogue_name (str):       The name of the catalogue.
+        org_titles (dict):          A dictionary of titles for the organization, with language codes as keys.
+        org_descriptions (dict):    A dictionary of descriptions, with language codes as keys.
+        created (str):              The creation timestamp of the metadata (ISO 8601 format).
+        modified (str):             The modification timestamp of the metadata (ISO 8601 format).
+        homepage(str, optional):    The URL to the publisher's homepage.
+
+    Returns:
+        None
+    """
     EU_LANG = Namespace("http://publications.europa.eu/resource/authority/language/")
     EU_COUNTRY = Namespace("http://publications.europa.eu/resource/authority/country/")
     EX = Namespace("https://example.eu/id/catalogue/")
@@ -152,10 +189,14 @@ def generate_catalogue_metadata(
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
 
-def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True)-> None:
+def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True) -> None:
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
+
+    Args:
+        pipes      (bool, optional):    If True, generates pipe definition files. Defaults to True.
+        catalogues (bool, optional):    If True, generates catalogue metadata files. Defaults to True.
     """
     ckan_client = CkanClient()
 
@@ -221,12 +262,17 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             )
 
 
-def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False)-> None:
-
+def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) -> None:
     """
     Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
     Optionally, it ensures the corresponding catalogue is created/updated first.
     If no pipe names are provided, triggers all pipes found in the PIPES_PATH directory.
+
+    Args:
+        pipe_names (list | None, optional):       A list of specific pipe names to run.
+                                                  If omitted, all pipes will be run. Defaults to None.
+        create_catalogue (bool, optional):        If True, creates the catalogue before running the pipe.
+                                                  Defaults to False.
     """
     piveau_client = PiveauClient()
 
@@ -236,7 +282,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False)-> 
         if not pipe_dir.is_dir():
             logging.error(f"Pipes directory not found: {PIPES_PATH}")
             return
-        # Get the name from the filename without the .yaml extension
+
         pipe_names = sorted([p.stem for p in pipe_dir.glob("*.yaml")])
 
     if not pipe_names:
@@ -268,7 +314,6 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False)-> 
 
 
         if create_catalogue:
-            # Derive catalogue name from pipe name and create it
             catalogue_name = name.replace("-geocat-harvester", "")
             logging.info(
                 f"Creating/updating '{catalogue_name} before running pipe '{name}'."
@@ -278,23 +323,27 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False)-> 
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
 
-def create_catalogues_wrapper(catalogue_names: list[str])-> None:
+
+def create_catalogues_wrapper(catalogue_names: list[str]) -> None:
     """
     Creates or updates catalogues from .ttl files.
     If no names are provided, all catalogues in the CATALOGUES_PATH directory are created/updated.
+
+    Args:
+        catalogue_names (list[str]):       A list of catalogue names to create.
     """
     piveau_client = PiveauClient()
     piveau_client.create_catalogues(catalogue_names)
 
 
 def main()-> None:
-    # Load .env file for environment variables
+
     load_dotenv()
 
     parser = argparse.ArgumentParser(description="Meta-Harvester CLI tool.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    # Sub-command for generating pipes and catalogues
+
     parser_generate = subparsers.add_parser(
         "generate", help="Generate all pipes and catalogue files from CKAN."
     )
@@ -305,7 +354,7 @@ def main()-> None:
     )
     parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=False)
 
-    # Sub-command for running pipes
+
     parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
 
     parser_run.add_argument(
