@@ -41,7 +41,7 @@ def to_dict(value: Union[str, dict]) -> dict:
             return {}
     return {}
 
-def delete_catalogues(catalogue_names: list[str]):
+def delete_catalogues(catalogue_names: list[str]) -> None:
     """
     Deletes catalogues from the piveau-hub-repo.
     """
@@ -51,7 +51,7 @@ def delete_catalogues(catalogue_names: list[str]):
 
 
 
-def create_single_catalogue(name: str, file_path: str | None = None):
+def create_single_catalogue(name: str, file_path: str | None = None) -> None:
     """
     Creates or updates a single catalogue from a file.
     If file_path is not provided, it defaults to the standard location.
@@ -79,7 +79,7 @@ def generate_pipe(
     http_client: str,
     template_file: str = TEMPLATE_FILE,
     output_path: str = PIPES_PATH,
-):
+) -> None:
     """
     Reads a template pipe file, update selected fields, and saves it as an execution-ready pipe.
     """
@@ -109,7 +109,7 @@ def generate_catalogue_metadata(
     created: str,
     modified: str,
     homepage: str = "https://example.com",
-) -> str:
+) -> None:
 
     EU_LANG = Namespace("http://publications.europa.eu/resource/authority/language/")
     EU_COUNTRY = Namespace("http://publications.europa.eu/resource/authority/country/")
@@ -151,9 +151,8 @@ def generate_catalogue_metadata(
     g.serialize(destination=output_file, format="turtle")
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
-    return output_file
 
-def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True):
+def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True)-> None:
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
@@ -222,7 +221,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             )
 
 
-def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
+def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False)-> None:
 
     """
     Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
@@ -279,7 +278,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False):
         piveau_client.trigger_pipe(pipe_name=name)
         time.sleep(5)
 
-def create_catalogues_wrapper(catalogue_names: list[str]):
+def create_catalogues_wrapper(catalogue_names: list[str])-> None:
     """
     Creates or updates catalogues from .ttl files.
     If no names are provided, all catalogues in the CATALOGUES_PATH directory are created/updated.
@@ -288,7 +287,7 @@ def create_catalogues_wrapper(catalogue_names: list[str]):
     piveau_client.create_catalogues(catalogue_names)
 
 
-def main():
+def main()-> None:
     # Load .env file for environment variables
     load_dotenv()
 

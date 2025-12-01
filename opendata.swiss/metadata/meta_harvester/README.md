@@ -140,21 +140,9 @@ Deletes catalogues from the piveau-hub.
 
 ## TODO:
 * add unit tests
-* clean code - type hints, function headers
-
-RUN IT ON CLUSTER!!!
 
 
-INT:
-https://piveau-int-ln.zazukoians.org/ (.env: https://passbolt.zazuko.com/app/passwords/view/b42f6782-066c-4186-9480-37ac12e4dca1)
-
-Some other endpoints:
-
-hub search: https://piveau-hub-search-int-ln.zazukoians.org/
-hub repo: https://piveau-hub-repo-int-ln.zazukoians.org/
-
-
-TEST ???:
+CLUSTER:
 https://piveau-ln.zazukoians.org/
 
 hub search: https://piveau-hub-search-ln.zazukoians.org/
