@@ -37,11 +37,13 @@ jobs:
           path: ./opendata.swiss/metadata/meta_harvester/.venv
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
+      - name: Activate venv
+        run: poetry env activate
+
       - name: Install dependencies
         working-directory: opendata.swiss/metadata/meta_harvester
         run: |
           poetry install
-          pip install pyyaml
           pip list
 
       - name: Run meta_harvester
