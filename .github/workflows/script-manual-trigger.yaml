@@ -1,0 +1,86 @@
+name: "Script Trigger Workflow"
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        type: choice
+        options:
+          - "ACCEPTANCE"
+          - "INT"
+        default: "INT"
+
+      action:
+        description: "Action to perform"
+        required: true
+        type: choice
+        options:
+          - "HARVEST"
+          - "HARVEST_SHOWCASES"
+          - "CATALOGUES"
+          - "DELETE_CATALOGUES"
+          - "VOCABULARIES"
+          - "DELETE_VOCABULARIES"
+        default: "HARVEST"
+
+jobs:
+  workflow:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Ensure no old .env file exists
+        working-directory: ./opendata.swiss/metadata
+        run: rm -f .env
+
+      - name: Generate .env file (INT)
+        if: ${{ github.event.inputs.environment == 'INT' }}
+        working-directory: ./opendata.swiss/metadata
+        run: |
+          echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
+          echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+        env:
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_INT }}
+          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_INT }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_INT }}
+
+      - name: Generate .env file (ACCEPTANCE)
+        if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
+        working-directory: ./opendata.swiss/metadata
+        run: |
+          echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
+          echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+        env:
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
+          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
+
+      - name: Run the selected action
+        working-directory: ./opendata.swiss/metadata
+        run: |
+          if [ "${{ github.event.inputs.action }}" == "HARVEST" ]; then
+            ./scripts/harvest.sh;
+          elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
+            ./scripts/harvest_showcases.sh;
+          elif [ "${{ github.event.inputs.action }}" == "CATALOGUES" ]; then
+            ./scripts/catalogues.sh;
+          elif [ "${{ github.event.inputs.action }}" == "DELETE_CATALOGUES" ]; then
+            ./scripts/catalogues_delete.sh;
+          elif [ "${{ github.event.inputs.action }}" == "VOCABULARIES" ]; then
+            ./scripts/vocabularies.sh;
+          elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then
+            ./scripts/vocabularies_delete.sh;
+          else
+            echo "Unknown action: ${{ github.event.inputs.action }}";
+            exit 1;
+          fi
