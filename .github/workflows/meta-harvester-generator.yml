@@ -44,13 +44,16 @@ jobs:
         working-directory: opendata.swiss/metadata/meta_harvester
         run: poetry install
 
-      - name: Check dependencies
+      - name: List installed packages for debugging
         working-directory: opendata.swiss/metadata/meta_harvester
-        run: pip list
+        run: poetry run pip list
 
       - name: Run meta_harvester
+        env:
+          CKAN_API_KEY: ${{ secrets.CKAN_API_KEY }}
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY }}
         working-directory: opendata.swiss/metadata/meta_harvester
-        run: python -m meta_harvester generate
+        run: poetry run python -m meta_harvester generate
 
       - name: Run pipes
-        run: python -m meta_harvester run-pipes
+        run: poetry run python -m meta_harvester run-pipes
