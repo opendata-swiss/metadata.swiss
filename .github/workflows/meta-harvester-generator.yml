@@ -48,12 +48,23 @@ jobs:
         working-directory: opendata.swiss/metadata/meta_harvester
         run: poetry run pip list
 
-      - name: Run meta_harvester
+      #- name: Run meta_harvester
+      #  env:
+      #    PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY }}
+      #  working-directory: opendata.swiss/metadata/meta_harvester
+      #  run: poetry run python -m meta_harvester generate
+
+      - name: Upload catalogues
         env:
-          CKAN_API_KEY: ${{ secrets.CKAN_API_KEY }}
           PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY }}
         working-directory: opendata.swiss/metadata/meta_harvester
-        run: poetry run python -m meta_harvester generate
+        run: poetry run python -m meta_harvester create-catalogues
+
+      - name: test with curl
+        run: curl -i http://localhost:8081/catalogues
+
+      - name: test with curl
+        run: curl -i http://localhost:8090/runs
 
       - name: Run pipes
         run: poetry run python -m meta_harvester run-pipes
