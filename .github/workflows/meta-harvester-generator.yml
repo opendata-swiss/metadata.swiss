@@ -38,13 +38,11 @@ jobs:
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Activate venv
-        run: poetry env activate
+        run: eval $(poetry env activate)
 
       - name: Install dependencies
         working-directory: opendata.swiss/metadata/meta_harvester
-        run: |
-          poetry install
-          pip list
+        run: poetry install
 
       - name: Check dependencies
         working-directory: opendata.swiss/metadata/meta_harvester
