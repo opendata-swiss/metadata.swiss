@@ -46,6 +46,10 @@ jobs:
           poetry install
           pip list
 
+      - name: Check dependencies
+        working-directory: opendata.swiss/metadata/meta_harvester
+        run: pip list
+
       - name: Run meta_harvester
         working-directory: opendata.swiss/metadata/meta_harvester
         run: python -m meta_harvester generate
