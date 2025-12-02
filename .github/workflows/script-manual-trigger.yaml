@@ -48,10 +48,14 @@ jobs:
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
           echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
           echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_USERNAME=${CONSUS_SCHEDULING_USERNAME}" >> .env
+          echo "CONSUS_SCHEDULING_PASSWORD=${CONSUS_SCHEDULING_PASSWORD}" >> .env
         env:
           PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_INT }}
           HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_INT }}
           CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_INT }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_INT }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
 
       - name: Generate .env file (ACCEPTANCE)
         if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
@@ -60,10 +64,14 @@ jobs:
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
           echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
           echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_USERNAME=${CONSUS_SCHEDULING_USERNAME}" >> .env
+          echo "CONSUS_SCHEDULING_PASSWORD=${CONSUS_SCHEDULING_PASSWORD}" >> .env
         env:
           PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
           HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
           CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
 
       - name: Run the selected action
         working-directory: ./opendata.swiss/metadata
