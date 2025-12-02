@@ -22,7 +22,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TEMPLATE_FILE = "src/meta_harvester/pipe-template.yaml"
+TEMPLATE_FILE = "meta_harvester/pipe-template.yaml"
 PIPES_PATH = "../piveau_pipes"
 
 
