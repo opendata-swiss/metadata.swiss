@@ -36,6 +36,12 @@ By default, `https://piveau-hub-repo-ln.zazukoians.org` is used.
 
 The personal access token requires contents and pull request permissions.
 
+Clone develop branch of the CMS content repository:
+
+```
+git clone -b develop git@github.com:zazukoians/opendata-swiss-cms-content.git content
+```
+
 ## Development Server
 
 Start the development server on `http://localhost:3000`:
