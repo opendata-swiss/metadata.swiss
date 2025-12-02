@@ -7,4 +7,11 @@ set +a
 
 set -eu
 
-curl -i -X PUT -H 'Content-Type: application/json' --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/showcases-ods/triggers/immediateTrigger"
+# Set CURL_CREDS if username and password are defined
+if [ -n "${CONSUS_SCHEDULING_USERNAME:-}" ] && [ -n "${CONSUS_SCHEDULING_PASSWORD:-}" ]; then
+  CURL_CREDS="-u ${CONSUS_SCHEDULING_USERNAME}:${CONSUS_SCHEDULING_PASSWORD}"
+else
+  CURL_CREDS=""
+fi
+
+curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/showcases-ods/triggers/immediateTrigger"
