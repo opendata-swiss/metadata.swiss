@@ -338,7 +338,14 @@ def create_catalogues_wrapper(catalogue_names: list[str]) -> None:
 
 def main()-> None:
 
-    load_dotenv()
+    # Load environment variables from .env file located in the parent directory
+    dotenv_path = Path(__file__).resolve().parent.parent / '.env'
+    if dotenv_path.is_file():
+        logger.info(f"Loading environment variables from {dotenv_path}")
+        load_dotenv(dotenv_path=dotenv_path)
+    else:
+        logger.info(f".env file not found at {dotenv_path}, relying on system environment variables.")
+
 
     parser = argparse.ArgumentParser(description="Meta-Harvester CLI tool.")
     subparsers = parser.add_subparsers(dest="command", required=True)
