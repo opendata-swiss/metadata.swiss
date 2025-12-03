@@ -15,6 +15,16 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+from dotenv import load_dotenv
+
+# Load environment variables from .env file located in the parent directory
+dotenv_path = Path(__file__).resolve().parent.parent.parent / '.env'
+if dotenv_path.is_file():
+    logger.info(f"Loading environment variables from {dotenv_path}")
+    load_dotenv(dotenv_path=dotenv_path)
+    logger.info(os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE"))
+else:
+    logger.info(f".env file not found at {dotenv_path}, relying on system environment variables.")
 
 
 def requests_retry_session(
@@ -187,9 +197,12 @@ class PiveauRunClient:
     """
     A client for interacting with the piveau-scheduling 'Run' endpoints.
     """
-    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
-    CONSUS_USERNAME = os.getenv("CONSUS_USERNAME")
-    CONSUS_PASSWORD = os.getenv("CONSUS_PASSWORD")
+
+
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE", "http://localhost:8090")
+    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME_ACCEPTANCE", None)
+    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE", None)
+
 
     def list_runs(self, run_filter: list[str] = None) -> list[dict]:
         """
@@ -211,7 +224,10 @@ class PiveauRunClient:
         session = requests_retry_session()
         try:
             logger.info(f"Listing runs from {url} with filter: {run_filter}")
-            response = session.get(url, params=params, timeout=60, auth=(self.CONSUS_USERNAME, self.CONSUS_PASSWORD))
+            if self.CONSUS_SCHEDULING_USERNAME and self.CONSUS_SCHEDULING_PASSWORD:
+                response = session.get(url, params=params, timeout=60, auth=(self.CONSUS_SCHEDULING_USERNAME, self.CONSUS_SCHEDULING_PASSWORD))
+            else:
+                response = session.get(url, params=params, timeout=60)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
@@ -222,11 +238,11 @@ class PiveauRunClient:
 
 class PiveauClient:
 
-    HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
-    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
-    CONSUS_USERNAME = os.getenv("CONSUS_USERNAME")
-    CONSUS_PASSWORD = os.getenv("CONSUS_PASSWORD")
-    API_KEY = os.getenv("PIVEAU_HUB_API_KEY", "secret-hub-api-key") #TODO: this is not read from .env
+    HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT_ACCEPTANCE", "http://localhost:8081")
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE", "http://localhost:8090")
+    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME_ACCEPTANCE", None)
+    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE", None)
+    API_KEY = os.getenv("PIVEAU_HUB_API_KEY_ACCEPTANCE", "secret-hub-api-key")
 
     def __init__(self):
         self._catalogues: set[str] = set()
@@ -390,7 +406,11 @@ class PiveauClient:
         payload = {"status": "enabled", "id": "immediateTrigger"}
 
         session = requests_retry_session()
-        response = session.put(url, headers=headers, json=payload, auth=(self.run_client.CONSUS_USERNAME, self.run_client.CONSUS_PASSWORD))
+        logger.info(f"Triggering pipe '{pipe_name}' via {url}")
+        if self.CONSUS_SCHEDULING_USERNAME and self.CONSUS_SCHEDULING_PASSWORD:
+            response = session.put(url, headers=headers, json=payload, auth=(self.CONSUS_SCHEDULING_USERNAME, self.CONSUS_SCHEDULING_PASSWORD))
+        else:
+            response = session.put(url, headers=headers, json=payload)
         response.raise_for_status()
 
         logger.info(f"Successfully triggered pipe '{pipe_name}'. Status: {response.status_code}")
