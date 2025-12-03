@@ -22,9 +22,11 @@ dotenv_path = Path(__file__).resolve().parent.parent.parent / '.env'
 if dotenv_path.is_file():
     logger.info(f"Loading environment variables from {dotenv_path}")
     load_dotenv(dotenv_path=dotenv_path)
-    logger.info(os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE"))
 else:
     logger.info(f".env file not found at {dotenv_path}, relying on system environment variables.")
+
+logger.info(os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE"))
+logger.info(os.getenv("HUB_REPO_ENDPOINT_ACCEPTANCE"))
 
 
 def requests_retry_session(
