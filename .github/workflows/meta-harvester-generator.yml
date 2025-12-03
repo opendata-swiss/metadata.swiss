@@ -57,14 +57,17 @@ jobs:
           CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
         run: poetry run python -m meta_harvester generate
 
-      - name: Upload catalogues
-        env:
-          PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
-          HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
-          CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
-          CONSUS_SCHEDULING_USERNAME_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
-          CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
-        run: poetry run python -m meta_harvester create-catalogues
+      - name: List generated pipe files
+        run: ls -l ../piveau_pipes
+
+      # - name: Upload catalogues
+      #   env:
+      #     PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
+      #     HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
+      #     CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
+      #     CONSUS_SCHEDULING_USERNAME_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
+      #     CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
+      #   run: poetry run python -m meta_harvester create-catalogues
 
       #- name: test with curl
       #  run: curl -i http://localhost:8081/catalogues
