@@ -8,6 +8,7 @@ RUN npm ci --omit dev
 
 # Copy the rest of the application code and build
 COPY . .
+RUN ls -la content/pages
 RUN npm run build
 
 # Serve the build
