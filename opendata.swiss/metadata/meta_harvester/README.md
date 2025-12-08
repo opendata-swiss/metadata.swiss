@@ -34,10 +34,10 @@ Add the following variables to the `.env` file, replacing the placeholder values
 PIVEAU_HUB_API_KEY="your-piveau-hub-api-key"
 
 # Endpoint for the piveau-hub-repo (for creating/deleting catalogues)
-HUB_REPO_ENDPOINT_ACCEPTANCE="http://localhost:8081"
+HUB_REPO_ENDPOINT="http://localhost:8081"
 
 # Endpoint for the piveau-pipes instance (for triggering pipes)
-CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE="http://localhost:8090"
+CONSUS_SCHEDULING_ENDPOINT="http://localhost:8090"
 
 # The maximum number of pipes to run concurrently
 MAX_CONCURRENT_RUNS=5

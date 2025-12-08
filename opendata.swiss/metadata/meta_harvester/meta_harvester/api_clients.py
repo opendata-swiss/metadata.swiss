@@ -25,9 +25,6 @@ if dotenv_path.is_file():
 else:
     logger.info(f".env file not found at {dotenv_path}, relying on system environment variables.")
 
-logger.info(os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE"))
-logger.info(os.getenv("HUB_REPO_ENDPOINT_ACCEPTANCE"))
-
 
 def requests_retry_session(
     retries=1,
@@ -201,9 +198,9 @@ class PiveauRunClient:
     """
 
 
-    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE", "http://localhost:8090")
-    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME_ACCEPTANCE", None)
-    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE", None)
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
+    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME", None)
+    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD", None)
 
 
     def list_runs(self, run_filter: list[str] = None) -> list[dict]:
@@ -240,11 +237,11 @@ class PiveauRunClient:
 
 class PiveauClient:
 
-    HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT_ACCEPTANCE", "http://localhost:8081")
-    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE", "http://localhost:8090")
-    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME_ACCEPTANCE", None)
-    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE", None)
-    API_KEY = os.getenv("PIVEAU_HUB_API_KEY_ACCEPTANCE", "secret-hub-api-key")
+    HUB_REPO_ENDPOINT = os.getenv("HUB_REPO_ENDPOINT", "http://localhost:8081")
+    CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
+    CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME", None)
+    CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD", None)
+    API_KEY = os.getenv("PIVEAU_HUB_API_KEY", "secret-hub-api-key")
 
     def __init__(self):
         self._catalogues: set[str] = set()
