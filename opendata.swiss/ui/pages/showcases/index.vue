@@ -95,7 +95,7 @@ const {
   getSearchResultsEnhanced,
   getAvailableFacetsLocalized,
   getSearchResultsCount
-  
+
 } = useSearch({
   queryParams: toRefs(piveauQueryParams),
   selectedFacets: facetRefs,
@@ -205,9 +205,9 @@ await suspense()
             <div class="search-results__header">
               <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
                 <div class="search-results__header__right">
-            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->    
+            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->
                   <div class="separator separator--vertical" />
-                 <!--  <OdsListCardToggle v-model="listType" /> --> 
+                 <!--  <OdsListCardToggle v-model="listType" /> -->
                 </div>
               </div>
             <h2 class="sr-only">Results list</h2>
@@ -226,6 +226,14 @@ await suspense()
                         <template #top-meta>
                           <div>
                             <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                          </div>
+                        </template>
+
+                        <template #footer-info>
+                          <div>
+                            <span class="tag" v-for="tag in showcase.keywords" :key="tag.id">
+                              {{ tag.label }}
+                            </span>
                           </div>
                         </template>
 
