@@ -108,11 +108,11 @@ jobs:
             poetry run python -m meta_harvester create-catalogues;
             poetry run python -m meta_harvester run-pipes;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
-            ./scripts/harvest_showcases.sh;
+            poetry run python -m meta_harvester run-pipes static/pipe-showcases-ods;
           elif [ "${{ github.event.inputs.action }}" == "CATALOGUES" ]; then
-            ./scripts/catalogues.sh;
+            poetry run python -m meta_harvester create-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_CATALOGUES" ]; then
-            ./scripts/catalogues_delete.sh;
+            poetry run python -m meta_harvester delete-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "VOCABULARIES" ]; then
             ./scripts/vocabularies.sh;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then
