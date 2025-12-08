@@ -205,9 +205,9 @@ await suspense()
             <div class="search-results__header">
               <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
                 <div class="search-results__header__right">
-            <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->
+                  <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />-->
                   <div class="separator separator--vertical" />
-                 <!--  <OdsListCardToggle v-model="listType" /> -->
+                  <!--  <OdsListCardToggle v-model="listType" /> -->
                 </div>
               </div>
             <h2 class="sr-only">Results list</h2>
@@ -226,6 +226,9 @@ await suspense()
                         <template #top-meta>
                           <div>
                             <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                            <span class="meta-info__item">
+                              {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
+                            </span>
                           </div>
                         </template>
 
@@ -254,6 +257,7 @@ await suspense()
     </section>
   </OdsPage>
 </template>
+
 <style lang="scss" scoped>
 ol, ul {
     list-style: none !important;
@@ -279,4 +283,9 @@ ol, ul {
     .ods-card-list {
         margin-top: 1.75rem !important;
   }
-}</style>
+}
+
+.tag:not(:last-child)::after {
+    content: ', ';
+}
+</style>

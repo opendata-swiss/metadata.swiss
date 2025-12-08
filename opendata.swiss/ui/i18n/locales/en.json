@@ -72,6 +72,9 @@
             "submitted_by": "Submitted by",
             "externalLink": "External Link",
             "open": "Open website",
+            "search": {
+                "dataset_references": "{count} dataset(s)"
+            },
             "submission_form": {
                 "group_italian": "Italian",
                 "group_french": "French",
