@@ -1,23 +1,65 @@
 name: Generate meta_harvester Files
 
 on:
-  push:
-    branches:
-      - '215-geoharvesters'
   workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        required: true
+        type: choice
+        options:
+          - "ACCEPTANCE"
+          - "INT"
+        default: "ACCEPTANCE"
 
 jobs:
-  generate-files:
+  workflow:
     runs-on: ubuntu-latest
 
-    # Set the working directory for all run commands in this job
     defaults:
       run:
-        working-directory: ./opendata.swiss/metadata/meta_harvester
+        shell: bash
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Ensure no old .env file exists
+        working-directory: ./opendata.swiss/metadata
+        run: rm -f .env
+
+      - name: Generate .env file (INT)
+        if: ${{ github.event.inputs.environment == 'INT' }}
+        working-directory: ./opendata.swiss/metadata
+        run: |
+          echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
+          echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_USERNAME=${CONSUS_SCHEDULING_USERNAME}" >> .env
+          echo "CONSUS_SCHEDULING_PASSWORD=${CONSUS_SCHEDULING_PASSWORD}" >> .env
+        env:
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_INT }}
+          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_INT }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_INT }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_INT }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
+
+      - name: Generate .env file (ACCEPTANCE)
+        if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
+        working-directory: ./opendata.swiss/metadata
+        run: |
+          echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
+          echo "HUB_REPO_ENDPOINT=${HUB_REPO_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_ENDPOINT=${CONSUS_SCHEDULING_ENDPOINT}" >> .env
+          echo "CONSUS_SCHEDULING_USERNAME=${CONSUS_SCHEDULING_USERNAME}" >> .env
+          echo "CONSUS_SCHEDULING_PASSWORD=${CONSUS_SCHEDULING_PASSWORD}" >> .env
+        env:
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
+          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
+
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -38,6 +80,7 @@ jobs:
           key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 
       - name: Activate venv
+        working-directory: opendata.swiss/metadata/meta_harvester
         run: eval $(poetry env activate)
 
       - name: Install dependencies
@@ -49,6 +92,7 @@ jobs:
         run: poetry run pip list
 
       - name: Run meta_harvester
+        working-directory: opendata.swiss/metadata/meta_harvester
         env:
           PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
           HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
@@ -60,22 +104,18 @@ jobs:
       - name: List generated pipe files
         run: ls -l ../piveau_pipes
 
-      # - name: Upload catalogues
-      #   env:
-      #     PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
-      #     HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
-      #     CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
-      #     CONSUS_SCHEDULING_USERNAME_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
-      #     CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
-      #   run: poetry run python -m meta_harvester create-catalogues
+      - name: Upload catalogues
+        working-directory: opendata.swiss/metadata/meta_harvester
+        env:
+          PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
+          HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
+          CONSUS_SCHEDULING_USERNAME_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
+          CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
+        run: poetry run python -m meta_harvester create-catalogues
 
-      #- name: test with curl
-      #  run: curl -i http://localhost:8081/catalogues
-#
-      #- name: test with curl
-      #  run: curl -i http://localhost:8090/runs
-#
       - name: Run pipes
+        working-directory: opendata.swiss/metadata/meta_harvester
         env:
           PIVEAU_HUB_API_KEY_ACCEPTANCE: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
           HUB_REPO_ENDPOINT_ACCEPTANCE: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
