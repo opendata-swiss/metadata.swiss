@@ -299,7 +299,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) ->
 
         while True:
             runs_metadata = piveau_client.run_client.list_runs()
-            runs = {i["pipeHeader"]["name"]: {"status": i["pipeHeader"]["status"], "startTime": i["pipeHeader"]["startTime"]} for i in runs_metadata}
+            runs = {i["pipeHeader"]["name"]: {"status": i["status"], "startTime": i["pipeHeader"]["startTime"]} for i in runs_metadata}
 
             if name in runs:
                 if runs[name]["status"] == "active":
