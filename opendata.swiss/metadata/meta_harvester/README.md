@@ -136,14 +136,3 @@ Deletes catalogues from the piveau-hub.
     ```bash
     python -m meta_harvester delete-catalogues
     ```
-
-
-## TODO:
-* add unit tests
-
-
-CLUSTER:
-https://piveau-ln.zazukoians.org/
-
-hub search: https://piveau-hub-search-ln.zazukoians.org/
-hub repo: https://piveau-hub-repo-ln.zazukoians.org/

@@ -11,7 +11,7 @@ from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD
 from requests.exceptions import HTTPError
 
-from .api_clients import CkanClient, PiveauClient
+from .api_clients import CkanClient, PiveauClient, PiveauRunClient
 
 CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
 
@@ -92,7 +92,8 @@ def generate_pipe(
     http_client: str,
     template_file: str = TEMPLATE_FILE,
     output_path: str = PIPES_PATH,
-) -> None:
+    cluster: bool = True
+) -> str:
     """
     Reads a template pipe file, updates selected fields, and saves it as an execution-ready pipe.
 
@@ -117,12 +118,15 @@ def generate_pipe(
     data["body"]["segments"][0]["body"]["config"]["catalogue"] = catalogue
     data["body"]["segments"][0]["body"]["config"]["org_name"] = org_name
 
-    output_file = Path(output_path) / f"{name}.yaml"
+    output_file = Path(output_path) / f"{name}.json"
 
     with open(output_file, "w") as file:
-        yaml.dump(data, file, sort_keys=False, indent=2)
+        json.dump(data, file, indent=2)
 
     logger.info(f"Successfully generated '{output_file}'")
+
+    return str(output_file)
+
 
 
 def generate_catalogue_metadata(
@@ -188,7 +192,7 @@ def generate_catalogue_metadata(
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
 
-def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True) -> None:
+def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True, cluster: bool = True) -> None:
     """
     Fetches all geoharvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
@@ -196,6 +200,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
     Args:
         pipes      (bool, optional):    If True, generates pipe definition files. Defaults to True.
         catalogues (bool, optional):    If True, generates catalogue metadata files. Defaults to True.
+        cluster       (bool, optional): True for using in cluster mode (API-based pipes updates), False for local mode (file-based pipes updates). Defaults to True.
     """
     ckan_client = CkanClient()
 
@@ -205,6 +210,9 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
     except HTTPError as e:
         logging.error(f"Failed to fetch harvester IDs from CKAN: {e}")
         return
+
+    if pipes and cluster:
+        piveau_run_client = PiveauRunClient()
 
     for id in ids:
         try:
@@ -251,7 +259,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             )
 
         if pipes:
-            generate_pipe(
+            output_file =generate_pipe(
                 id=id,
                 name=details["name"],
                 org_name=org_titles.get("en", "unknown_org"),
@@ -259,7 +267,8 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 title=details["title"],
                 http_client=url,
             )
-
+            if cluster:
+                piveau_run_client.upload_pipe(pipe_file=output_file)
 
 def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) -> None:
     """

@@ -10,6 +10,7 @@ from .exceptions import NoRecords, NotFoundError
 
 CATALOGUES_PATH = Path(os.getenv("CATALOGUES_PATH", "../piveau_catalogues"))
 PIPES_PATH = Path(os.getenv("PIPES_PATH", "../piveau_pipes"))
+STATIC_PIPES_PATH = PIPES_PATH / "static"
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -202,6 +203,65 @@ class PiveauRunClient:
     CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME", None)
     CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD", None)
 
+    def upload_pipe(self, pipe_file: str) -> None:
+        """
+        Uploads a pipe definition to the piveau-scheduling service.
+
+        Args:
+            pipe_file (str): The path to the pipe definition file (JSON).
+        """
+
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/pipes"
+        headers = {"Content-Type": "application/json"}
+
+        with open(pipe_file, "r", encoding="utf-8") as f:
+            data = f.read()
+
+        session = requests_retry_session()
+        logger.info(f"Uploading pipe from file '{pipe_file}' to {url}")
+        if self.CONSUS_SCHEDULING_USERNAME and self.CONSUS_SCHEDULING_PASSWORD:
+            response = session.put(url, headers=headers, data=data, timeout=60, auth=(self.CONSUS_SCHEDULING_USERNAME, self.CONSUS_SCHEDULING_PASSWORD))
+        else:
+            response = session.put(url, headers=headers, data=data, timeout=60)
+        response.raise_for_status()
+
+        logger.info(f"Successfully uploaded pipe '{pipe_file}'. Status: {response.status_code}")
+
+    def list_pipes(self, exclude_static: bool = True) -> list[str]:
+        """
+        Lists all pipes in the piveau-scheduling service.
+        Args:
+            exclude_static (bool, optional): If True, excludes pipes from static directory. Defaults to True.
+
+        Returns:
+            list[str]: A list of pipe names.
+        """
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/pipes"
+
+        if exclude_static:
+            json_pipes = set(f.stem for f in STATIC_PIPES_PATH.glob("*.json"))
+            yaml_pipes = set(f.stem for f in STATIC_PIPES_PATH.glob("*.yaml"))
+            static_pipes = json_pipes.union(yaml_pipes)
+        else:
+            static_pipes = set()
+
+        session = requests_retry_session()
+        try:
+            logger.info(f"Listing pipes from {url}")
+            if self.CONSUS_SCHEDULING_USERNAME and self.CONSUS_SCHEDULING_PASSWORD:
+                response = session.get(url, timeout=60, auth=(self.CONSUS_SCHEDULING_USERNAME, self.CONSUS_SCHEDULING_PASSWORD))
+            else:
+                response = session.get(url, timeout=60)
+            response.raise_for_status()
+            pipes = set(response.json())
+
+            return list(pipes.difference(static_pipes))
+
+        except requests.exceptions.RequestException as e:
+            logger.error(f"Error listing pipes from {url}: {e}")
+            if e.response is not None:
+                logger.error(f"Server response: {e.response.text}")
+            return []
 
     def list_runs(self, run_filter: list[str] = None) -> list[dict]:
         """
