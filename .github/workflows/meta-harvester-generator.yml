@@ -1,6 +1,9 @@
 name: Generate meta_harvester Files
 
 on:
+  push:
+    branches:
+      - 215-geoharvesters
   workflow_dispatch:
     inputs:
       environment:
@@ -15,6 +18,8 @@ on:
 jobs:
   workflow:
     runs-on: ubuntu-latest
+    env:
+      WORKFLOW_ENVIRONMENT: ${{ github.event.inputs.environment || 'ACCEPTANCE' }}
 
     defaults:
       run:
@@ -29,7 +34,7 @@ jobs:
         run: rm -f .env
 
       - name: Generate .env file (INT)
-        if: ${{ github.event.inputs.environment == 'INT' }}
+        if: env.WORKFLOW_ENVIRONMENT == 'INT'
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
@@ -45,7 +50,7 @@ jobs:
           CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
 
       - name: Generate .env file (ACCEPTANCE)
-        if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
+        if: env.WORKFLOW_ENVIRONMENT == 'ACCEPTANCE'
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
