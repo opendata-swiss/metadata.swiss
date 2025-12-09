@@ -1,11 +1,6 @@
 name: "Script Trigger Workflow"
 
 on:
-  #Delete start
-  push:
-    branches
-      - xyz
-  #Delete end
   workflow_dispatch:
     inputs:
       environment:
@@ -33,10 +28,6 @@ on:
 jobs:
   workflow:
     runs-on: ubuntu-latest
-    # Delete start
-    env:
-      WORKFLOW_ENVIRONMENT: ${{ github.event.inputs.environment || 'ACCEPTANCE' }}
-    # Delete end
 
     defaults:
       run:
@@ -51,9 +42,7 @@ jobs:
         run: rm -f .env
 
       - name: Generate .env file (INT)
-        # Delete star
-        if: env.WORKFLOW_ENVIRONMENT == 'INT'
-        # Delete end
+        if: ${{ github.event.inputs.environment == 'INT' }}
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
@@ -69,9 +58,7 @@ jobs:
           CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
 
       - name: Generate .env file (ACCEPTANCE)
-        # Delete star
-        if: env.WORKFLOW_ENVIRONMENT == 'ACCEPTANCE'
-        # Delete end
+        if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
