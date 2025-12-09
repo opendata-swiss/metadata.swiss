@@ -283,15 +283,10 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) ->
                                                   Defaults to False.
     """
     piveau_client = PiveauClient()
+    piveau_run_client = PiveauRunClient()
 
     if not pipe_names:
-        logging.info(f"No specific pipes provided. Discovering pipes in '{PIPES_PATH}'...")
-        pipe_dir = Path(PIPES_PATH)
-        if not pipe_dir.is_dir():
-            logging.error(f"Pipes directory not found: {PIPES_PATH}")
-            return
-
-        pipe_names = sorted([p.stem for p in pipe_dir.glob("*.yaml")])
+        pipe_names = piveau_run_client.list_pipes()
 
     if not pipe_names:
         logging.warning("No pipes found to trigger.")
