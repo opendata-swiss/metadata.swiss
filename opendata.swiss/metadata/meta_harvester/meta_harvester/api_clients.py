@@ -307,6 +307,7 @@ class PiveauClient:
         self._catalogues: set[str] = set()
         self.run_client = PiveauRunClient()
         self.max_concurrent_runs = int(os.getenv("MAX_CONCURRENT_RUNS", "5"))
+        self.min_hours_between_runs = int(os.getenv("MIN_HOURS_BETWEEN_RUNS", "12"))
 
     @property
     def catalogues(self) -> set[str]:

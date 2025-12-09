@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import Union
 
@@ -293,17 +294,25 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) ->
         return
 
     logging.info(f"Queueing {len(pipe_names)} pipe(s) for execution...")
+    time.sleep(60) # Wait for the service to be up to date
     for name in pipe_names:
 
         while True:
-            active_runs = piveau_client.run_client.list_runs(run_filter=["active"])
-            active_runs_names = [i["pipeHeader"]["name"] for i in active_runs if i["status"] == "active"]
+            runs_metadata = piveau_client.run_client.list_runs()
+            runs = {i["pipeHeader"]["name"]: {"status": i["pipeHeader"]["status"], "startTime": i["pipeHeader"]["startTime"]} for i in runs_metadata}
 
-            if name in active_runs_names:
-                logger.info(f"Pipe '{name}' is already running. Skipping trigger.")
-                break
+            if name in runs:
+                if runs[name]["status"] == "active":
+                    logger.info(f"Pipe '{name}' is already running. Skipping trigger.")
+                    break
+                if runs[name]["status"] == "finished":
+                    pipe_started_at = datetime.strptime(runs[name]["startTime"], "%Y-%m-%dT%H:%M:%S.%f%z")
+                    elapsed_time = (datetime.now(pipe_started_at.tzinfo) - pipe_started_at).total_seconds()/3600
+                    if elapsed_time < piveau_client.min_hours_between_runs:
+                        logger.info(f"Pipe '{name}' has already finished. It started at {runs[name]['startTime']}. Skipping trigger.")
+                    break
 
-            active_count = len(active_runs)
+            active_count = sum([1 for run in runs.values() if run["status"] == "active"])
             logger.info(f"Currently {active_count} active run(s).")
 
             if active_count < piveau_client.max_concurrent_runs:
@@ -313,7 +322,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) ->
             logger.info(
                 f"Reached maximum concurrent runs ({piveau_client.max_concurrent_runs}). Waiting for a slot to open..."
             )
-            time.sleep(30)
+            time.sleep(60)
 
 
         if create_catalogue:
