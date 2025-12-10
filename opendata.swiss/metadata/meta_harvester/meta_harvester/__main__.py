@@ -201,7 +201,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
     Args:
         pipes      (bool, optional):    If True, generates pipe definition files. Defaults to True.
         catalogues (bool, optional):    If True, generates catalogue metadata files. Defaults to True.
-        cluster       (bool, optional): True for using in cluster mode (API-based pipes updates), False for local mode (file-based pipes updates). Defaults to True.
+        cluster    (bool, optional):    True for using in cluster mode (API-based pipes updates), False for local mode (file-based pipes updates). Defaults to True.
     """
     ckan_client = CkanClient()
 
@@ -267,6 +267,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 catalogue=catalogue_name,
                 title=details["title"],
                 http_client=url,
+                cluster=cluster
             )
             if cluster:
                 piveau_run_client.upload_pipe(pipe_file=output_file)
@@ -357,12 +358,17 @@ def main()-> None:
     parser_generate = subparsers.add_parser(
         "generate", help="Generate all pipes and catalogue files from CKAN."
     )
-    parser_generate.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=True)
+    parser_generate.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=True, cluster=False)
 
     parser_generate_pipes = subparsers.add_parser(
         "generate-all-pipes", help="Generate all pipe definition files from CKAN."
     )
-    parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=False)
+    parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=True, catalogues=False, cluster=False)
+
+    parser_generate_pipes = subparsers.add_parser(
+        "generate-all-catalogues", help="Generate all catalogue definition files from CKAN."
+    )
+    parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=False, catalogues=True, cluster=False)
 
 
     parser_run = subparsers.add_parser("run-pipes", help="Trigger pipes to run.")
@@ -426,7 +432,7 @@ def main()-> None:
         args.func(catalogue_names=args.names if args.names else [])
     elif args.command == "create-single-catalogue":
         args.func(name=args.name, file_path=args.file_path)
-    elif args.command in ["generate", "generate-all-pipes"]:
+    elif args.command in ["generate", "generate-all-pipes", "generate-all-catalogues"]:
         args.func(pipes=args.pipes, catalogues=args.catalogues)
     else:
         args.func()
