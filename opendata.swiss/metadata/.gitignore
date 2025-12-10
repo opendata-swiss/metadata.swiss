@@ -2,3 +2,12 @@
 .env.*
 !.env.example
 volumes/
+
+piveau_pipes/
+piveau_catalogues/
+
+*.pyc
+__pycache__/
+
+*.log
+*.logs

@@ -247,23 +247,24 @@ function transforming(input) {
         }
     };
 
+    const languageMap = {
+        "ger": "de",
+        "fra": "fr",
+        "fre": "fr",
+        "ita": "it",
+        "eng": "en",
+        "de": "de",
+        "fr": "fr",
+        "it": "it",
+        "en": "en",
+        "ger + fre": "de",
+        "ger + ita": "de",
+        "fra + ita": "fr",
+        "ger + fra + ita": "de"
+    };
+
     // Required
     output["@type"] = "Dataset";
-
-
-    output.title = [
-        {
-            "@value": input["dc:title"],
-            "@language": params.defaultLanguage
-        }
-    ];
-
-    output.description = [
-        {
-            "@value": input["dc:description"],
-            "@language": params.defaultLanguage
-        }
-    ];
 
 
     output.publisher = {
@@ -282,13 +283,25 @@ function transforming(input) {
         id = 0
     }
 
-    let record_language
+    let record_language;
     if (input["dc:language"]) {
-        if (input["dc:language"] === "ger") {
-            record_language = "de"
-        } else {
-            record_language = input["dc:language"];
+        // Get the raw language string, which might be an array or a single value.
+        let rawLang = Array.isArray(input["dc:language"]) ? input["dc:language"][0] : input["dc:language"];
+
+        let langCode = rawLang; // Default to the raw value
+
+        if (typeof rawLang === 'string' && rawLang.trim()) {
+            // Split the string by comma or plus, and any surrounding whitespace.
+            // e.g., "ger + fre" becomes ["ger", "fre"]
+            const langParts = rawLang.split(/\s*[,\+]\s*/);
+
+            langCode = langParts[0].trim();
         }
+
+        if (!(langCode in languageMap)) {
+            console.log(langCode + " not in language map, using as is.");
+        }
+        record_language = languageMap[langCode] || langCode;
     } else {
         record_language = params.default_language;
     }
@@ -303,21 +316,38 @@ function transforming(input) {
     let dist = {
         "@type": "Distribution",
         "identifier": id,
-        "description": [{
-            "@value": input.description,
-            "@language": record_language
-        }],
-        "title": [
-            {
-                "@value": input.title,
-                "@language": record_language
-            }
-        ],
         "format": [{
             "@id": encodeURI("http://publications.europa.eu/input/authority/file-type/" + format)
         }],
 
     };
+
+    if (input["dc:title"]) {
+        output.title = [
+        {
+            "@value": input["dc:title"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.title = output.title;
+
+    }
+
+    if (input["dc:description"]) {
+        output.description = [
+        {
+            "@value": input["dc:description"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.description = output.description;
+
+    } else if (input["dc:abstract"]) {
+        output.description = [
+        {
+            "@value": input["dc:abstract"],
+            "@language": params.defaultLanguage
+        }    ];
+        output.distribution.description = output.description;
+    }
 
     if (input["dc:URI"]) {
         if (!Array.isArray(input["dc:URI"])) {
@@ -330,51 +360,63 @@ function transforming(input) {
 
     }
     output.keyword = [];
-    for (const tag of input["dc:subject"]) {
-        output.keyword.push({
-            "@value": tag,
-            "@language": record_language
-        });
+    if (input["dc:subject"]) {
+        const subjects = Array.isArray(input["dc:subject"]) ? input["dc:subject"] : [input["dc:subject"]];
+
+        for (const tag of subjects) {
+            if (typeof tag === 'string' && tag.trim()) {
+                output.keyword.push({
+                    "@value": tag,
+                    "@language": record_language
+                });
+            }
+        }
     }
 
-    const minLat = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[0]);
-    const minLon = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[1]);
-    const maxLat = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[0]);
-    const maxLon = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[1]);
+    if (input["ows:BoundingBox"]) {
+        if (input["ows:BoundingBox"]["ows:LowerCorner"] && input["ows:BoundingBox"]["ows:UpperCorner"]) {
+            const minLat = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[0]);
+            const minLon = Number(input["ows:BoundingBox"]["ows:LowerCorner"].split(" ")[1]);
+            const maxLat = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[0]);
+            const maxLon = Number(input["ows:BoundingBox"]["ows:UpperCorner"].split(" ")[1]);
 
-    const geojson_points =
-        [
-            [minLon, minLat],
-            [maxLon, minLat],
-            [maxLon, maxLat],
-            [minLon, maxLat],
-            [minLon, minLat]
-        ]
+            const geojson_points =
+                [
+                    [minLon, minLat],
+                    [maxLon, minLat],
+                    [maxLon, maxLat],
+                    [minLon, maxLat],
+                    [minLon, minLat]
+                ]
 
 
-    output.spatial = {
-        "@type": "Location", "http://www.w3.org/ns/locn#geometry": [
-            {
-                "@value": `{\"type\": \"Polygon\", \"coordinates\": [${JSON.stringify(geojson_points)}]}`,
-                "@type": "https://replacement.io/assignments/media-types/application/vnd.geo+json"
-            }
-        ]
-    };
+            output.spatial = {
+                "@type": "Location", "http://www.w3.org/ns/locn#geometry": [
+                    {
+                        "@value": `{\"type\": \"Polygon\", \"coordinates\": [${JSON.stringify(geojson_points)}]}`,
+                        "@type": "https://replacement.io/assignments/media-types/application/vnd.geo+json"
+                    }
+                ]
+            };
+        }
+    }
 
     dist.language = record_language
-    output.issued = `${input["dct:modified"]}T00:00:00`;
-    output.modified = `${input["dct:modified"]}T00:00:00`;
+    if (input["dct:modified"]) {
+        output.issued = `${input["dct:modified"]}T00:00:00`;
+        output.modified = `${input["dct:modified"]}T00:00:00`;
+    }
 
     dist.mediaType = input["dc:format"];
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    //console.log("Transformed output:");
-    //
-    //const { "@context": context, ...outputWithoutContext } = output;
-    //
-    //console.log(JSON.stringify(outputWithoutContext, null, 2));
+    console.log("Transformed output:");
 
-    console.log("Transformation completed successfully. Returning output.");
+    //const { "@context": context, ...outputWithoutContext } = output;
+//
+    //console.log(JSON.stringify(outputWithoutContext, null, 2));
+//
+    //console.log("Transformation completed successfully. Returning output.");
     return output
 }
