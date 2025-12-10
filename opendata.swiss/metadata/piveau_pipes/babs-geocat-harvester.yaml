@@ -1,0 +1,39 @@
+header:
+  id: c8a0b3f4-ce97-4afe-8599-ac14da129537
+  name: babs-geocat-harvester
+  title: BABS - Geocat Harvester
+  context: piveau
+  transport: payload
+  version: 1.0.0
+body:
+  segments:
+  - header:
+      name: piveau-consus-importing-csw
+      segmentNumber: 1
+      title: Importing CSW
+      processed: false
+    body:
+      config:
+        address: https://www.geocat.ch/geonetwork/BABS/ger/csw
+        typeNames: dcat
+        catalogue: babs
+        preProcessing: true
+        org_name: Federal Office for Civil Protection FOCP
+  - header:
+      name: piveau-consus-transforming-js
+      segmentNumber: 2
+      title: Transforming js
+      processed: false
+    body:
+      config:
+        single: true
+        scriptType: localFile
+        path: geocat-transform.js
+        params:
+          defaultLanguage: de
+  - header:
+      name: piveau-consus-exporting-hub
+      segmentNumber: 3
+      title: Exporting hub
+      processed: false
+    body: {}
