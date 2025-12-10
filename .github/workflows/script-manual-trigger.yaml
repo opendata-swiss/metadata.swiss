@@ -106,7 +106,7 @@ jobs:
             cd meta_harvester;
             poetry run python -m meta_harvester generate-all-catalogues;
             poetry run python -m meta_harvester create-catalogues;
-            poetry run python -m meta_harvester run-pipes pipe-babs-geocat-harvester pipe-gemeinde-emmen-geocat-harvester;
+            poetry run python -m meta_harvester run-pipes babs-geocat-harvester gemeinde-emmen-geocat-harvester;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
             cd meta_harvester;
             poetry run python -m meta_harvester create-single-catalogue showcases-ods --file static/showcases-ods.ttl
