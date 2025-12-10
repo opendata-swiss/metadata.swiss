@@ -272,7 +272,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             if cluster:
                 piveau_run_client.upload_pipe(pipe_file=output_file)
 
-def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) -> None:
+def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False, include_static: bool = False) -> None:
     """
     Triggers piveau pipes to run, respecting a maximum number of concurrent runs.
     Optionally, it ensures the corresponding catalogue is created/updated first.
@@ -283,12 +283,13 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False) ->
                                                   If omitted, all pipes will be run. Defaults to None.
         create_catalogue (bool, optional):        If True, creates the catalogue before running the pipe.
                                                   Defaults to False.
+        include_static (bool, optional):          If True, includes static pipes to be run. Defaults to False.
     """
     piveau_client = PiveauClient()
     piveau_run_client = PiveauRunClient()
 
     if not pipe_names:
-        pipe_names = piveau_run_client.list_pipes()
+        pipe_names = piveau_run_client.list_pipes(include_static)
 
     if not pipe_names:
         logging.warning("No pipes found to trigger.")
@@ -383,6 +384,12 @@ def main()-> None:
         action="store_true",
         dest="create_catalogue",
         help="Create the catalogue before running the pipe.",
+    )
+    parser_run.add_argument(
+        "--include-static",
+        action="store_true",
+        dest="include_static",
+        help="Include static pipes when running.",
     )
     parser_run.set_defaults(func=run_pipes)
 

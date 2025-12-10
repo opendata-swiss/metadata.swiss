@@ -227,18 +227,17 @@ class PiveauRunClient:
 
         logger.info(f"Successfully uploaded pipe '{pipe_file}'. Status: {response.status_code}")
 
-    def list_pipes(self, exclude_static: bool = True) -> list[str]:
+    def list_pipes(self, include_static: bool = False) -> list[str]:
         """
         Lists all pipes in the piveau-scheduling service.
         Args:
-            exclude_static (bool, optional): If True, excludes pipes from static directory. Defaults to True.
-
+            include_static (bool, optional): If True, includes pipes from static directory. Defaults to True.
         Returns:
             list[str]: A list of pipe names.
         """
         url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/pipes"
 
-        if exclude_static:
+        if include_static:
             json_pipes = set(f.stem for f in STATIC_PIPES_PATH.glob("*.json"))
             yaml_pipes = set(f.stem for f in STATIC_PIPES_PATH.glob("*.yaml"))
             static_pipes = json_pipes.union(yaml_pipes)

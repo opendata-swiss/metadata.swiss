@@ -92,6 +92,10 @@ Triggers one or more piveau pipes to execute. By default, this command first cre
     ```bash
     python -m meta_harvester run-pipes aargau-kt-geocat-harvester --create-catalogue
     ```
+*   **Include static pipes:** By default, static pipes (e.g., `showcases-ods`) are not run. Use the `--include-static` flag to include them in the execution.
+    ```bash
+    python -m meta_harvester run-pipes --include-static
+    ```
 
 ---
 
