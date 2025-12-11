@@ -2,7 +2,7 @@ FROM node:24-alpine AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache python3
+RUN apk add --no-cache python3 make
 
 # Install dependencies
 COPY package.json package-lock.json ./
