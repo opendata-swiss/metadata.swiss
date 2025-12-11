@@ -24,13 +24,13 @@ export function useDatasetsSearch() {
   }, (dataset, localeInstance) => {
     const { setup: base } = dcatApDataset()
 
-
     return {
       ...base(dataset, localeInstance),
       getKeywords: getKeywords(dataset, localeInstance),
       getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
       getOdsFormats: getOdsFormats(dataset),
-      getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset)
+      getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
+      getResource: dataset.resource
     }
   })
 }
