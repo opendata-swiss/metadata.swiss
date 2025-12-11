@@ -41,6 +41,7 @@ export function useVocabularySearch() {
   return defineHubSearch({
     baseUrl,
     index: 'vocabulary',
+    indexDetails: 'vocabularies',
     schema: z.object({
       pref_label: z.map(z.string(), z.string()),
       id: z.string(),
