@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports';
 
-import { useDatasetsSearch } from '../../../app/piveau/search'
+import { useDatasetsSearch } from '../../../app/piveau/datasets'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
 
 import { homePageBreadcrumb } from "../../../app/composables/breadcrumbs";
