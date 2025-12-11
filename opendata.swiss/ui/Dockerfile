@@ -1,6 +1,8 @@
-FROM node:22-alpine AS builder
+FROM node:24-alpine AS builder
 
 WORKDIR /app
+
+RUN apk add --no-cache python3 make
 
 # Install dependencies
 COPY package.json package-lock.json ./
@@ -11,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # Serve the build
-FROM node:22-alpine
+FROM node:24-alpine
 WORKDIR /app
 COPY --from=builder /app/.output /app
 
