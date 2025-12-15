@@ -20,8 +20,13 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/image',
-    '@nuxt/icon'
+    '@nuxt/icon',
+    './app/modules/cms-assets-sync'
   ],
+  cmsAssets: {
+    contentPath: resolve(import.meta.dirname, 'content/assets'),
+    buildPath: resolve(import.meta.dirname, 'public/cms'),
+  },
   css: [
     '~/assets/main.css',
   ],
@@ -80,7 +85,7 @@ export default defineNuxtConfig({
     },
     plugins: [
       '~~/server/plugins/zod-locale',
-    ]
+    ],
   },
   icon: {
     mode: 'svg',

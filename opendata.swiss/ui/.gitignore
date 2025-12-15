@@ -21,7 +21,5 @@ logs
 
 .env
 
-# ignore images from uploads folder
-public/img/uploads/
-
-content/.local/
+content/
+public/cms/
