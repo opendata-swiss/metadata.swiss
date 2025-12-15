@@ -25,6 +25,7 @@ services:
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
       - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
+      - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
       - JAVA_OPTS=-Xms1g -Xmx2g
     volumes:
       - ./piveau_profile:/piv-profile:ro
@@ -116,6 +117,8 @@ services:
       - -Xms2g
       - -Xmx5g
       - -Ddefault.min.distinct.threshold=512m
+      - -Dgraphdb.health.minimal.free.storage.enabled=false
+      - -Dgraphdb.health.minimal.free.storage.asyncCheck=false
     volumes:
       - ./volumes/graphdb-data:/opt/graphdb/dist/data
 
@@ -307,6 +310,105 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  ##############################
+  # docker-compose-metrics.yml #
+  ##############################
+  mongodb:
+    image: mongo:6.0.13
+    restart: unless-stopped
+    volumes:
+      - ./volumes/mongodb-data:/data/db
+
+  quickchart:
+    image: ianw/quickchart:v1.8.1
+    restart: unless-stopped
+
+  piveau-metrics-validating-shacl:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.2.4
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8181:8080
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-reporter:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-reporter:4.0.5
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8183:8080
+    environment:
+      - API_KEY=yourReporterApiKey
+      - QUICKCHART_ADDRESS=http://quickchart:3400/chart
+      - SCHEDULES=[{"languages":["en","de"],"cron":" 0 50 16 1/1 * ? * "},{"languages":["fr","it"],"cron":" 0 55 16 1/1 * ? * "},{"languages":["en","de"],"cron":" 1 0 0 ? * * * "}]
+      - CORS_DOMAINS=["localhost"]
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-cache:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.6.11
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8185:8080
+    environment:
+      - MONGODB_CONNECTION=mongodb://mongodb:27017
+      - CACHE_APIKEY=yourCacheApiKey
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - CACHE_CORS_DOMAINS=["localhost"]
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-dataset-similarities:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-dataset-similarities:3.0.2
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8186:8080
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-annotator:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.0.7
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-accessibility:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.0.7
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - PIVEAU_ACCESSIBILITY_PERSISTENCE_CONFIG={"mongoDbClient":{"connection_string":"mongodb://mongodb:27017"},"collection":"datasets"}
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-score:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   ####################
   # Custom services  #
