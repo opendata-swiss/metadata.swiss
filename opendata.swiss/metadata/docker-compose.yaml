@@ -325,7 +325,7 @@ services:
     restart: unless-stopped
 
   piveau-metrics-validating-shacl:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.2.4
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.4.0
     restart: unless-stopped
     logging:
       options:
@@ -353,7 +353,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-cache:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.6.11
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.8.2
     restart: unless-stopped
     logging:
       options:
@@ -368,7 +368,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-dataset-similarities:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-dataset-similarities:3.0.2
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-dataset-similarities:3.0.3
     restart: unless-stopped
     logging:
       options:
@@ -379,7 +379,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-annotator:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.0.7
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.3
     restart: unless-stopped
     logging:
       options:
@@ -388,7 +388,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-accessibility:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.0.7
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.7
     restart: unless-stopped
     logging:
       options:
@@ -400,7 +400,7 @@ services:
       - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   piveau-metrics-score:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.0
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.2
     restart: unless-stopped
     logging:
       options:
