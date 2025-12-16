@@ -16,6 +16,7 @@ import OdsButton from '../../app/components/OdsButton.vue';
 import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
 import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS} from '../../app/piveau/search';
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
+import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
 
 const { locale, t } = useI18n()
 
@@ -165,39 +166,14 @@ await suspense()
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
      <!-- search panel -->
-      <section class="section section--default bg--secondary-50">
-
-        <div class="container">
-
-          <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
-          <div class="search search--large search--page-result">
-            <div class="search__group">
-               <input
-                id="search-input"
-                v-model="searchInput"
-                :placeholder="t('message.dataset_search.search_placeholder')"
-                type="search"
-                :label="t('message.dataset_search.search_placeholder')"
-                autocomplete="off"
-                class="search"
-                @keyup.enter="onSearch"
-              >
-              <OdsButton
-                variant="bare"
-                :title="t('message.dataset_search.search_button')"
-                size="lg"
-                icon="Search"
-                icon-only
-                @click="onSearch"
-              />
-            </div>
-         </div>
-         <div class="search__filters">
-           <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
-         </div>
-         <div class="filters__active" />
-      </div>
-   </section>
+    <OdsSearchPanel
+      :search-input="searchInput"
+      :facet-refs="facetRefs"
+      :active-facets="activeFacets"
+      @search="onSearch"
+      @reset-all-facets="resetAllFacets"
+      @update:search-input="value => searchInput = value"
+    />
    <!-- results -->
  <section id="search-results" class="section section--default">
       <div class="container gap--responsive">
