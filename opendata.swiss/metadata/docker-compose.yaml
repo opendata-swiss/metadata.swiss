@@ -208,7 +208,8 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+    # image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.4
     restart: unless-stopped
     logging:
       options:
