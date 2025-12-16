@@ -37,9 +37,9 @@ export default class DatasetSearchComponent extends PiveauSearchComponent {
       const {result} = await response.json()
 
       const options = result.results.map((item) => {
-        const { id } = item
+        const { resource, id } = item
         return {
-          id,
+          id: resource,
           label: item[this.labelProp][this.props.locale] || id
         };
       })
