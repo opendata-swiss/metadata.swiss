@@ -108,7 +108,7 @@
         },
         "handbook": {
             "search_prompt": "Im Handbuch suchen...",
-            "search_prompt_short": "Suchen..."
+            "search_prompt_short": "Hier schreiben..."
         },
         "terms_of_use": {
             "ods_open": {

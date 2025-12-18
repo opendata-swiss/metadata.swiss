@@ -107,7 +107,8 @@
             }
         },
         "handbook": {
-            "search_prompt": "Rechercher dans le manuel..."
+            "search_prompt": "Rechercher dans le manuel...",
+            "search_prompt_short": "Écrivez ici..."
         },
         "terms_of_use": {
             "ods_open": {

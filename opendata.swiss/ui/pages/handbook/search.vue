@@ -1,11 +1,16 @@
 <script setup>
 import {useRouter} from "vue-router";
+import Fuse from 'fuse.js'
 import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
 import OdsPage from "../../app/components/OdsPage.vue";
 import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
+import OdsCard from "../../app/components/OdsCard.vue";
+import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
+import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
+import OdsSearchResults from "../../app/components/OdsSearchResults.vue";
 
-const { t, locale } = useI18n();
+const {t, locale} = useI18n();
 const route = useRoute();
 const router = useRouter()
 
@@ -15,10 +20,29 @@ const onSearch = () => {
   if (searchInput.value.trim() !== '') {
     router.push({
       name: route.name,
-      query: { q: searchInput.value.trim() },
+      query: {q: searchInput.value.trim()},
     })
   }
 };
+
+const {data} = await useAsyncData('handbook-search', () => queryCollectionSearchSections('handbook'))
+
+const fuse = new Fuse(data.value, {
+  keys: ['title', 'titles', 'content'],
+  ignoreDiacritics: true,
+})
+
+const articleIdPattern = new RegExp(`\\.${locale.value}(#.+)?`)
+const result = computed(() => {
+  return fuse
+    .search(toValue(searchInput))
+    .filter(article =>
+      article.item.content
+      && article.item.level < 3
+      && articleIdPattern.test(article.item.id)
+    )
+    .slice(0, 10);
+})
 
 const breadcrumbs = [
   await homePageBreadcrumb(locale),
@@ -35,7 +59,7 @@ const breadcrumbs = [
 <template>
   <OdsPage>
     <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs"/>
       <OdsSearchPanel
         :search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt')"
@@ -43,7 +67,39 @@ const breadcrumbs = [
         @update:search-input="value => searchInput = value"
       />
     </template>
+    <OdsSearchResults :results-count="result.length">
+      <OdsCard
+        v-for="article in result"
+        :key="article.item.id"
+        :title="article.item.title"
+        type="list"
+        clickable
+      >
+        <p>{{ article.item.content }}</p>
 
-    Foobar
+        <template #footer-action>
+          <NuxtLinkLocale
+            :to="{
+                        path: article.item.id.substring(0, article.item.id.lastIndexOf('.')),
+                        hash: article.item.id.includes('#') ? article.item.id.substring(article.item.id.indexOf('#')) : ''
+                      }"
+            class="btn btn--outline btn--icon-only"
+            aria-label="false"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon--base icon--ArrowRight btn__icon"
+            >
+              <path
+                xmlns="http://www.w3.org/2000/svg"
+                d="m16.444 19.204 4.066-7.044-4.066-7.044-.65.375 3.633 6.294h-15.187v.75h15.187l-3.633 6.294z"
+              />
+            </svg>
+            <span class="btn__text">{{ t('message.handbook.read_more') }}</span>
+          </NuxtLinkLocale>
+        </template>
+      </OdsCard>
+    </OdsSearchResults>
   </OdsPage>
 </template>

@@ -48,6 +48,7 @@ const onSearch = () => {
     <template #before-aside-content>
       <OdsSearchPanel
         aside
+        :title="t('message.handbook.search_prompt')"
         :search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt_short')"
         @search="onSearch"

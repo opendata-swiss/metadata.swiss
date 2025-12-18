@@ -1,8 +1,8 @@
 <template>
   <section class="section section--default bg--secondary-50" :aside="aside ? 'true' : 'false'">
     <div class="container">
-      <h3 v-if="aside" class="h3">{{ t('message.dataset_search.search_results') }}</h3>
-      <h1 v-else class="h1">{{ t('message.dataset_search.search_results') }}</h1>
+      <h3 v-if="aside" class="h3">{{ title || t('message.dataset_search.search_results') }}</h3>
+      <h1 v-else class="h1">{{ title || t('message.dataset_search.search_results') }}</h1>
       <div class="search search--large search--page-result">
         <div class="search__group">
           <input
@@ -43,6 +43,7 @@ interface PropTypes {
   searchInput: Ref<string | string[]>;
   searchPrompt: string
   aside?: boolean
+  title?: string
   facetRefs?: Record<string, Ref<string[]>>;
   activeFacets?: SearchResultFacetGroupLocalized[];
 }
