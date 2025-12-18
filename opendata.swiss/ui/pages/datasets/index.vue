@@ -22,6 +22,7 @@ import { useSeoMeta } from 'nuxt/app';
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
 import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
+import OdsSearchResults from "../../app/components/OdsSearchResults.vue";
 const { t, locale} = useI18n()
 
 const router = useRouter()
@@ -316,18 +317,13 @@ await suspense()
     />
    <!-- results -->
 
-   <section id="search-results" class="section section--default">
-      <div class="container gap--responsive">
-         <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
-            <div class="search-results__header">
-              <div class="search-results__header__left"><strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }} </div>
-                <div class="search-results__header__right">
-                  <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
-                  <div class="separator separator--vertical" />
-                    <OdsListCardToggle v-model="listType" />
-                </div>
-              </div>
-            <h2 class="sr-only">Results list</h2>
+      <OdsSearchResults :results-count="getSearchResultsCount">
+        <template #header-right>
+          <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
+          <div class="separator separator--vertical" />
+          <OdsListCardToggle v-model="listType" />
+        </template>
+
            <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
             </div>-->
@@ -365,10 +361,7 @@ await suspense()
                   <a href="#" class="link">Kontaktformular</a>
                </div>
             </div>
-
-         </div>
-      </div>
-   </section>
+      </OdsSearchResults>
 </main>
 
 </div>
