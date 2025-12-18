@@ -307,6 +307,7 @@ await suspense()
     <!-- search panel -->
     <OdsSearchPanel
       :search-input="searchInput"
+      :search-prompt="t('message.dataset_search.search_placeholder')"
       :facet-refs="facetRefs"
       :active-facets="activeFacets"
       @search="onSearch"

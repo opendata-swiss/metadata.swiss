@@ -168,6 +168,7 @@ await suspense()
      <!-- search panel -->
     <OdsSearchPanel
       :search-input="searchInput"
+      :search-prompt="t('message.showcase.search.prompt')"
       :facet-refs="facetRefs"
       :active-facets="activeFacets"
       @search="onSearch"

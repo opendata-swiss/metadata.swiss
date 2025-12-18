@@ -1,15 +1,15 @@
 <template>
-  <section class="section section--default bg--secondary-50">
+  <section class="section section--default bg--secondary-50" :aside="aside ? 'true' : 'false'">
     <div class="container">
-      <h1 class="h1">{{ t('message.dataset_search.search_results') }}</h1>
+      <h3 v-if="aside" class="h3">{{ t('message.dataset_search.search_results') }}</h3>
+      <h1 v-else class="h1">{{ t('message.dataset_search.search_results') }}</h1>
       <div class="search search--large search--page-result">
         <div class="search__group">
           <input
             id="search-input"
             :value="searchInput"
-            :placeholder="t('message.dataset_search.search_placeholder')"
+            :placeholder="searchPrompt"
             type="search"
-            :label="t('message.dataset_search.search_placeholder')"
             autocomplete="off"
             class="search"
             @input="$emit('update:searchInput', $event.target.value)"
@@ -25,10 +25,10 @@
           />
         </div>
       </div>
-      <div class="search__filters">
+      <div v-if="facetRefs && activeFacets" class="search__filters">
         <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="$emit('reset-all-facets')" />
       </div>
-      <div class="filters__active" />
+      <div v-if="facetRefs && activeFacets" class="filters__active" />
     </div>
   </section>
 </template>
@@ -41,8 +41,10 @@ const { t } = useI18n()
 
 interface PropTypes {
   searchInput: Ref<string | string[]>;
-  facetRefs: Record<string, Ref<string[]>>;
-  activeFacets: SearchResultFacetGroupLocalized[];
+  searchPrompt: string
+  aside?: boolean
+  facetRefs?: Record<string, Ref<string[]>>;
+  activeFacets?: SearchResultFacetGroupLocalized[];
 }
 
 defineProps<PropTypes>()
@@ -53,3 +55,13 @@ defineEmits({
   'update:searchInput': (_: string | string[]) => true,
 })
 </script>
+
+<style scoped>
+section[aside] .search {
+  width: 100%
+}
+
+h3 {
+  margin-top: 0;
+}
+</style>

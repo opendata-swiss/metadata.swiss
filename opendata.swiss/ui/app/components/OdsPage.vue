@@ -34,6 +34,7 @@ const { page } = defineProps({
           </div>
           <div class="container__aside">
             <div id="aside-content" class="sticky sticky--top">
+              <slot name="before-aside-content" />
               <OdsToc v-if="page.body?.toc?.links.length" :toc="page.body.toc"/>
               <slot name="aside-content" />
             </div>
