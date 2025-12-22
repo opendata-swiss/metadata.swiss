@@ -41,7 +41,7 @@ import type {SearchResultFacetGroupLocalized} from "@piveau/sdk-vue";
 const { t } = useI18n()
 
 interface PropTypes {
-  searchInput: Ref<string | string[]>;
+  searchInput: string | string[];
   searchPrompt: string
   aside?: boolean
   title?: string

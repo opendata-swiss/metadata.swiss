@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import OdsBreadcrumbs from "~/components/OdsBreadcrumbs.vue";
 import toProperCase from "~/lib/toProperCase.js";
 import { loadHandbookBreadcrumb } from "~/lib/breadcrumbs";
-import OdsPage from "../../../app/components/OdsPage.vue";
+import OdsHandbookPage from "../../../app/components/handbook/OdsHandbookPage.vue";
 
 const { locale, t } = useI18n();
 const route = useRoute()
@@ -66,9 +65,5 @@ const navigation = ref([
 </script>
 
 <template>
-  <OdsPage v-if="data" :page="data" >
-    <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-    </template>
-  </OdsPage>
+  <OdsHandbookPage :page="data" :breadcrumbs="breadcrumbs" />
 </template>

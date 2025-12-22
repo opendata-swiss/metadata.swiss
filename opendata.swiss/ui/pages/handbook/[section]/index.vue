@@ -1,8 +1,7 @@
 <script setup>
 import toProperCase from "~/lib/toProperCase.js";
 import { loadHandbookSectionBreadcrumb } from "../../../app/lib/breadcrumbs.js";
-import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
-import OdsPage from "../../../app/components/OdsPage.vue";
+import OdsHandbookPage from "../../../app/components/handbook/OdsHandbookPage.vue";
 
 const { locale } = useI18n();
 const route = useRoute();
@@ -21,9 +20,5 @@ const breadcrumbs = await useBreadcrumbs({
 </script>
 
 <template>
-  <OdsPage v-if="data" :page="data" >
-    <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-    </template>
-  </OdsPage>
+  <OdsHandbookPage :page="data" :breadcrumbs="breadcrumbs" />
 </template>
