@@ -7,6 +7,7 @@ import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import OdsCard from "../../app/components/OdsCard.vue";
 import OdsSearchResults from "../../app/components/OdsSearchResults.vue";
+import {useSeoMeta} from "nuxt/app";
 
 const {t, locale} = useI18n();
 const route = useRoute();
@@ -83,6 +84,10 @@ watch(
     searchInput.value = value;
   }
 );
+
+useSeoMeta({
+  title: `${t('message.header.navigation.search')} | ${t('message.header.navigation.handbook')} | opendata.swiss`,
+})
 </script>
 
 <template>
