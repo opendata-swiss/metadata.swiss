@@ -6,8 +6,6 @@ import OdsPage from "../../app/components/OdsPage.vue";
 import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
 import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
 import OdsCard from "../../app/components/OdsCard.vue";
-import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
-import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
 import OdsSearchResults from "../../app/components/OdsSearchResults.vue";
 
 const {t, locale} = useI18n();
@@ -18,10 +16,10 @@ const searchInput = ref(route.query.q);
 
 const onSearch = (value) => {
   searchInput.value = value;
-    router.push({
-      name: route.name,
+  router.push({
+    name: route.name,
     query: {q: value.trim()},
-    })
+  })
 };
 
 const {data} = await useAsyncData('handbook-search', () => queryCollectionSearchSections('handbook'))
