@@ -22,7 +22,32 @@ const onSearch = (value) => {
   })
 };
 
-const {data} = await useAsyncData('handbook-search', () => queryCollectionSearchSections('handbook'))
+const {data} = await useAsyncData('handbook-search', async () => {
+  const sections = await queryCollectionSearchSections('handbook');
+  const pages = await queryCollection('handbook')
+    .select('path', 'permalink', 'section')
+    .all()
+
+  console.log(pages)
+
+  return sections.map(section => {
+    let path
+    const [id, hash] = section.id.split('#')
+
+    const page = pages.find(({ path }) => section.id.startsWith(path))
+    if (page) {
+      path = `${page.section.toLowerCase()}/${page.permalink}`
+    } else {
+       path = id.substring(0, id.lastIndexOf('.'))
+    }
+
+    return {
+      ...section,
+      path,
+      hash: hash ? `#${hash}` : null,
+    };
+  });
+})
 
 const fuse = new Fuse(data.value, {
   keys: ['title', 'titles', 'content'],
@@ -82,10 +107,7 @@ watch(
 
         <template #footer-action>
           <NuxtLinkLocale
-            :to="{
-                        path: article.item.id.substring(0, article.item.id.lastIndexOf('.')),
-                        hash: article.item.id.includes('#') ? article.item.id.substring(article.item.id.indexOf('#')) : ''
-                      }"
+            :to="article.item"
             class="btn btn--outline btn--icon-only"
             aria-label="false"
           >
