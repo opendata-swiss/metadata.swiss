@@ -7,13 +7,14 @@
         <div class="search__group">
           <input
             id="search-input"
+            ref="_inputElement"
             :value="searchInput"
             :placeholder="searchPrompt"
             type="search"
             autocomplete="off"
             class="search"
             @input="$emit('update:searchInput', $event.target.value)"
-            @keyup.enter="$emit('search')"
+            @keyup.enter="$emit('search', _inputElement!.value.trim())"
           >
           <OdsButton
             variant="bare"
@@ -21,7 +22,7 @@
             size="lg"
             icon="Search"
             icon-only
-            @click="$emit('search')"
+            @click="$emit('search', _inputElement!.value.trim())"
           />
         </div>
       </div>
@@ -51,10 +52,12 @@ interface PropTypes {
 defineProps<PropTypes>()
 
 defineEmits({
-  search: () => true,
+  search: (_: string) => true,
   'reset-all-facets': () => true,
   'update:searchInput': (_: string | string[]) => true,
 })
+
+const _inputElement = ref<VNode | null>(null)
 </script>
 
 <style scoped>

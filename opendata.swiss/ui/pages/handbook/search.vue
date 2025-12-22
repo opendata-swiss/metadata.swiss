@@ -16,13 +16,12 @@ const router = useRouter()
 
 const searchInput = ref(route.query.q);
 
-const onSearch = () => {
-  if (searchInput.value.trim() !== '') {
+const onSearch = (value) => {
+  searchInput.value = value;
     router.push({
       name: route.name,
-      query: {q: searchInput.value.trim()},
+    query: {q: value.trim()},
     })
-  }
 };
 
 const {data} = await useAsyncData('handbook-search', () => queryCollectionSearchSections('handbook'))
@@ -54,6 +53,13 @@ const breadcrumbs = [
     title: t('message.header.navigation.search'),
   },
 ]
+
+watch(
+  () => route.query.q,
+  (value) => {
+    searchInput.value = value;
+  }
+);
 </script>
 
 <template>
@@ -64,7 +70,6 @@ const breadcrumbs = [
         :search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt')"
         @search="onSearch"
-        @update:search-input="value => searchInput = value"
       />
     </template>
     <OdsSearchResults :results-count="result.length">
