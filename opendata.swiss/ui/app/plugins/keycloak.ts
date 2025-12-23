@@ -12,18 +12,16 @@ export default defineNuxtPlugin((nuxtApp) => {
   // Optionally, expose Keycloak instance globally
   nuxtApp.provide("keycloak", keycloak);
 
-  // Optionally, handle automatic login
+  // Only check SSO status on page load, do not redirect
   if (import.meta.client) {
-    keycloak
-      .init({
-        onLoad: "login-required", // or 'check-sso' for silent check
-        pkceMethod: "S256",
-        flow: "standard",
-      })
-      .then((authenticated) => {
-        if (!authenticated) {
-          keycloak.login();
-        }
-      });
+    keycloak.init({
+      onLoad: "check-sso",
+      pkceMethod: "S256",
+      flow: "standard",
+      silentCheckSsoRedirectUri: window.location.origin + "/silent-check-sso.html",
+    });
+    // Expose login/logout methods for manual control
+    nuxtApp.provide("keycloakLogin", () => keycloak.login());
+    nuxtApp.provide("keycloakLogout", () => keycloak.logout());
   }
 });

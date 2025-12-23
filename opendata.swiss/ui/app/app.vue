@@ -7,6 +7,8 @@
           :enable-authentication="true"
           :authenticated="authenticated"
           :username="username"
+          @login="handleAuthEvent('login')"
+          @logout="handleAuthEvent('logout')"
         />
       </Transition>
       <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
@@ -22,8 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
-import { useNuxtApp } from '#app';
 
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue';
@@ -32,14 +32,28 @@ import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
 import { useI18n } from '#imports';
-import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
+import { useLocale as piveauLocale  } from '@piveau/sdk-vue' ;
+
+import { onMounted, ref } from 'vue';
+import { useNuxtApp } from '#app';
+
+const nuxtApp = useNuxtApp();
+const keycloakLogin = typeof nuxtApp.$keycloakLogin === 'function' ? nuxtApp.$keycloakLogin : undefined;
+const keycloakLogout = typeof nuxtApp.$keycloakLogout === 'function' ? nuxtApp.$keycloakLogout : undefined;
+
+function handleAuthEvent(event: 'login' | 'logout') {
+  if (event === 'login' && keycloakLogin) {
+    keycloakLogin();
+  } else if (event === 'logout' && keycloakLogout) {
+    keycloakLogout();
+  }
+}
 
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
 
 // Keycloak instance and authentication state
-const nuxtApp = useNuxtApp();
 let keycloak = undefined;
 if (import.meta.client) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -110,17 +124,6 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
   handleResize()
 })
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleResize)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
-})
-
-// const { progress } = useLoadingIndicator()
-
 </script>
 
 
