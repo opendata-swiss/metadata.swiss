@@ -5,8 +5,8 @@
         <OdsTopHeader
           v-if="!isMobileMenuOpen"
           :enable-authentication="true"
-          :authenticated="false"
-          :username="undefined"
+          :authenticated="authenticated"
+          :username="username"
         />
       </Transition>
       <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
@@ -22,7 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { useNuxtApp } from '#app';
 
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue';
@@ -36,6 +37,32 @@ import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
+
+// Keycloak instance and authentication state
+const nuxtApp = useNuxtApp();
+let keycloak = undefined;
+if (import.meta.client) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  keycloak = nuxtApp.$keycloak || ((window as any).keycloak);
+}
+const authenticated = ref(false);
+const username = ref<string | undefined>(undefined);
+
+if (import.meta.client && keycloak) {
+  keycloak.onAuthSuccess = () => {
+    authenticated.value = true;
+    username.value = keycloak.tokenParsed?.preferred_username || keycloak.tokenParsed?.email || undefined;
+  };
+  keycloak.onAuthLogout = () => {
+    authenticated.value = false;
+    username.value = undefined;
+  };
+  // Set initial state if already authenticated
+  if (keycloak.authenticated) {
+    authenticated.value = true;
+    username.value = keycloak.tokenParsed?.preferred_username || keycloak.tokenParsed?.email || undefined;
+  }
+}
 
 const { locale } = useI18n();
 
@@ -92,7 +119,7 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-const { progress } = useLoadingIndicator()
+// const { progress } = useLoadingIndicator()
 
 </script>
 

@@ -56,7 +56,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["form-data"],
   },
-  plugins: [],
+  plugins: ["~/plugins/keycloak.ts"],
   i18n: {
     defaultLocale: "de",
     strategy: "prefix",
