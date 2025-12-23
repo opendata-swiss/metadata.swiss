@@ -1,12 +1,14 @@
 import Keycloak from "keycloak-js";
 import { defineNuxtPlugin } from "#app";
 
+
 export default defineNuxtPlugin((nuxtApp) => {
-  // Configure your Keycloak instance
+  // Get config from runtimeConfig/public with fallback to defaults
+  const { keycloakUrl, keycloakRealm, keycloakClientId } = (nuxtApp.$config?.public || {}) as Record<string, string>;
   const keycloak = new Keycloak({
-    url: "https://keycloak.zazukoians.org/",
-    realm: "lindas-next",
-    clientId: "piveau-hub-ui",
+    url: keycloakUrl && typeof keycloakUrl === 'string' && keycloakUrl.length > 0 ? keycloakUrl : "https://keycloak.zazukoians.org/",
+    realm: keycloakRealm && typeof keycloakRealm === 'string' && keycloakRealm.length > 0 ? keycloakRealm : "lindas-next",
+    clientId: keycloakClientId && typeof keycloakClientId === 'string' && keycloakClientId.length > 0 ? keycloakClientId : "piveau-hub-ui",
   });
 
   // Optionally, expose Keycloak instance globally
