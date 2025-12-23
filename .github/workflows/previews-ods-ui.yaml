@@ -13,7 +13,7 @@ on:
       - ".github/workflows/docker-ods-ui.yaml" # Trigger also if the docker workflow file is changed
 
 jobs:
-  preview:
+  preview-int:
     runs-on: ubuntu-latest
 
     permissions:
@@ -44,7 +44,7 @@ jobs:
         uses: myrotvorets/set-commit-status-action@v2.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          context: Preview deployed
+          context: INT - Preview deployed
           status: pending
 
       - name: Set up Kustomize
@@ -62,7 +62,7 @@ jobs:
         run: |
           kubectl config set-cluster default "--server=${K8S_API_URL}" --insecure-skip-tls-verify=true
           kubectl config set-credentials default "--token=${K8S_TOKEN}"
-          kubectl config set-context default --cluster=default --namespace=piveau-previews --user=default
+          kubectl config set-context default --cluster=default --namespace=ods-int-previews --user=default
           kubectl config use-context default
         env:
           K8S_API_URL: ${{ secrets.K8S_API_URL }}
@@ -78,9 +78,8 @@ jobs:
             --kind Ingress \
             --name piveau-ui \
             --patch '[
-              {"op": "replace", "path": "/spec/tls/0/secretName", "value": "${{ steps.vars.outputs.branch }}-prev-tls"},
-              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org"},
-              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org"}
+              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ steps.vars.outputs.branch }}.int-previews.ods.zazukoians.org"},
+              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ steps.vars.outputs.branch }}.int-previews.ods.zazukoians.org"}
             ]'
           kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
           kustomize edit set label "app.kubernetes.io/instance:${{ steps.vars.outputs.branch }}"
@@ -99,7 +98,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: "github-actions[bot]"
-          body-includes: Your preview environment is deployed
+          body-includes: Your INT preview environment is deployed
       - name: Show preview URL directly on the PR
         uses: peter-evans/create-or-update-comment@v4
         with:
@@ -107,18 +106,18 @@ jobs:
           edit-mode: replace
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            Your preview environment is deployed! 🚀
-            **URL:** https://${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org/
+            Your INT preview environment is deployed! 🚀
+            **URL:** https://${{ steps.vars.outputs.branch }}.int-previews.ods.zazukoians.org/
             **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
 
       - name: Final status check
         uses: myrotvorets/set-commit-status-action@v2.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          context: Preview deployed
+          context: INT - Preview deployed
           description: It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
           status: success
-          targetUrl: https://${{ steps.vars.outputs.branch }}.piveau-ln-preview.zazukoians.org/
+          targetUrl: https://${{ steps.vars.outputs.branch }}.int-previews.ods.zazukoians.org/
 
       - name: Delete manifests
         working-directory: ./opendata.swiss/ui/k8s

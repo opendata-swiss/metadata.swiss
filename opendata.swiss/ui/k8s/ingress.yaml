@@ -14,11 +14,11 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-send-timeout: "86400"
 spec:
   tls:
-    - secretName: piveau-ln-preview-zazukoians-org-tls
+    - secretName: wildcard-ods-zazukoians-org-tls
       hosts:
-        - piveau-ln-preview.zazukoians.org
+        - piveau.ods.zazukoians.org
   rules:
-    - host: piveau-ln-preview.zazukoians.org
+    - host: piveau.ods.zazukoians.org
       http:
         paths:
           - path: /
