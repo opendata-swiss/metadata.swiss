@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: piveau-ui
   annotations:
-    kubernetes.io/tls-acme: "true"
     ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: "20g"
     nginx.ingress.kubernetes.io/proxy-buffering: "off"
