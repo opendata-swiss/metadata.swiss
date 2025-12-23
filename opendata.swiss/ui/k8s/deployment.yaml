@@ -14,9 +14,15 @@ spec:
               containerPort: 80
           env:
             - name: NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL
-              value: https://piveau-hub-search-ln.zazukoians.org/
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: hub-search-endpoint
             - name: NUXT_PUBLIC_PIVEAU_HUB_REPO_URL
-              value: https://piveau-hub-repo-ln.zazukoians.org/
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: hub-repo-endpoint
             - name: GITHUB_OWNER
               value: opendata-swiss
             - name: GITHUB_REPO

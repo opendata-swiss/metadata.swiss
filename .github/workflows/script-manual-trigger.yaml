@@ -8,9 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - "ACCEPTANCE"
+          - "TEST"
           - "INT"
-        default: "INT"
+        default: "TEST"
 
       action:
         description: "Action to perform"
@@ -57,8 +57,8 @@ jobs:
           CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_INT }}
           CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
 
-      - name: Generate .env file (ACCEPTANCE)
-        if: ${{ github.event.inputs.environment == 'ACCEPTANCE' }}
+      - name: Generate .env file (TEST)
+        if: ${{ github.event.inputs.environment == 'TEST' }}
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
@@ -67,11 +67,11 @@ jobs:
           echo "CONSUS_SCHEDULING_USERNAME=${CONSUS_SCHEDULING_USERNAME}" >> .env
           echo "CONSUS_SCHEDULING_PASSWORD=${CONSUS_SCHEDULING_PASSWORD}" >> .env
         env:
-          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_ACCEPTANCE }}
-          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_ACCEPTANCE }}
-          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_ACCEPTANCE }}
-          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ACCEPTANCE }}
-          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ACCEPTANCE }}
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_TEST }}
+          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_TEST }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_TEST }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_TEST }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_TEST }}
 
       - name: Run the selected action
         working-directory: ./opendata.swiss/metadata
