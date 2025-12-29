@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
   const logger = console
 
   const t = await useTranslation(event)
+  const runtimeConfig = useRuntimeConfig()
 
   let storage: ShowcaseStorage
 
@@ -62,7 +63,7 @@ export default defineEventHandler(async (event) => {
   showcase.slug = slug
 
   if (process.env.GITHUB_TOKEN || process.env.GITHUB_APP_ID) {
-    storage = image.storage(git(showcase.slug))
+    storage = image.storage(git(showcase.slug), runtimeConfig.showcases)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
       event.node.res.statusCode = 409
@@ -73,7 +74,7 @@ export default defineEventHandler(async (event) => {
     logger.info('Initialized git storage backend')
   } else {
     const {public: {rootDir}} = useRuntimeConfig()
-    storage = image.storage(fs(rootDir))
+    storage = image.storage(fs(rootDir), runtimeConfig.showcases)
     logger.info('Initialized filesystem storage backend')
   }
 

@@ -10,6 +10,9 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/'
+    },
+    showcases: {
+      maxImageWidth: 900
     }
   },
   compatibilityDate: '2025-07-15',
