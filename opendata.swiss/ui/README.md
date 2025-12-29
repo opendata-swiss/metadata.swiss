@@ -29,6 +29,7 @@ GITHUB_OWNER=zazukoians
 GITHUB_REPO=metadata.swiss
 GITHUB_BASE_BRANCH=main
 GITHUB_TOKEN=
+NUXT_SHOWCASES_MAX_IMAGE_WIDTH=
 ```
 
 The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance. 
