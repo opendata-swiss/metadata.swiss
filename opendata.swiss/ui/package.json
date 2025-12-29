@@ -37,9 +37,7 @@
     "bootstrap": "^5.3.7",
     "decap-cms-app": "^3.8.3",
     "eslint": "^9.31.0",
-    "husky": "^9.1.7",
     "is-absolute-url": "^4.0.1",
-    "lint-staged": "^16.2.7",
     "minimatch": "^10",
     "nuxt": "^4.0.0",
     "pinia": "^3.0.3",
@@ -68,7 +66,9 @@
     "api-tuner": "^0.5.2",
     "decap-server": "^3.4.0",
     "dotenv-cli": "^11.0.0",
-    "eslint-plugin-react": "^7.37.5"
+    "eslint-plugin-react": "^7.37.5",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7"
   },
   "lint-staged": {
     "*.{js,jsx,ts,ysx,vue}": [
