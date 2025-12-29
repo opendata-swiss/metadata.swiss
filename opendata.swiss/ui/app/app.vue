@@ -53,11 +53,16 @@ function handleAuthEvent(event: 'login' | 'logout') {
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
 
+declare global {
+  interface Window {
+    keycloak: Keycloak
+  }
+}
+
 // Keycloak instance and authentication state
-let keycloak = undefined;
+let keycloak: Keycloak | undefined = undefined
 if (import.meta.client) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  keycloak = nuxtApp.$keycloak || ((window as any).keycloak);
+  keycloak = nuxtApp.$keycloak as Keycloak || window.keycloak
 }
 const authenticated = ref(false);
 const username = ref<string | undefined>(undefined);
