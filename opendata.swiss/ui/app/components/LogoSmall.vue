@@ -12,16 +12,13 @@ file will be provided inline. */
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 
-const { t } = useI18n();
-
-
+const { t } = useI18n()
 </script>
 
 <style lang="scss" scoped>
 @use '@/assets/ods/ods_breakpoints.scss' as mdeia;
-
 
 .logo__freebrand {
   display: block;

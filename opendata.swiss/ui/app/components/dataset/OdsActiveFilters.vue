@@ -49,11 +49,11 @@ const activeFilter = computed<FilterEntry[]>(() => {
     if (values.length === 0) {
       return []
     }
-    const valueTitles = values.map(val => {
+    const valueTitles = values.map((val) => {
       const facetItems = props.facets.find(f => f.id === key)?.items
       return facetItems?.find(item => item.id === val)?.title || val
     })
-    return {key, value: valueTitles.join(', ')}
+    return { key, value: valueTitles.join(', ') }
   })
   filters.sort((a, b) => a.key.localeCompare(b.key))
   return filters

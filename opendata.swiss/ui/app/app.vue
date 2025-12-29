@@ -25,35 +25,34 @@
 import { onMounted, onBeforeUnmount } from 'vue'
 
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
-import OdsHeader from './components/headers/OdsHeader.vue';
+import OdsHeader from './components/headers/OdsHeader.vue'
 import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
-import OdsFooter from './components/footer/OdsFooter.vue';
-import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
-import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
-import { useI18n } from '#imports';
-import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
+import OdsFooter from './components/footer/OdsFooter.vue'
+import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item'
+import { APP_NAVIGATION_ITEMS } from './constants/navigation-items'
+import { useI18n } from '#imports'
+import { useLocale as piveauLocale } from '@piveau/sdk-vue'
 
+const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS)
+const isMobileMenuOpen = ref(false)
 
-const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
-const isMobileMenuOpen = ref(false);
+const { locale } = useI18n()
 
-const { locale } = useI18n();
-
-const { setLocale, currentLocale} = piveauLocale();
+const { setLocale, currentLocale } = piveauLocale()
 
 watch(locale, (newLocale) => {
   if (newLocale !== (currentLocale as Ref<string>).value) {
     setLocale(newLocale) // set the piveau locale
   }
-}, { immediate: true }
+}, { immediate: true },
 )
 
 useHead({
   htmlAttrs: {
-    lang: locale.value
+    lang: locale.value,
   },
   bodyAttrs: {
-    class: 'body--ods-brand'
+    class: 'body--ods-brand',
   },
   link: [
     { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
@@ -65,11 +64,11 @@ useHead({
   meta: [
     { name: 'apple-mobile-web-app-title', content: 'opendata.swiss' },
     // you can add other default meta tags, e.g. description, viewport, etc
-  ]
+  ],
 })
 
 function mobileMenuOpened(value: boolean) {
-  isMobileMenuOpen.value = value;
+  isMobileMenuOpen.value = value
 }
 
 function handleResize() {
@@ -92,14 +91,10 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
 
-const { progress } = useLoadingIndicator()
-
+useLoadingIndicator()
 </script>
 
-
 <style lang="scss" scoped>
-
-
 .shrink-header-enter-active, .shrink-header-leave-active {
   transition: max-height 1.0s cubic-bezier(0.4,0,0.2,1);
   overflow: hidden;
@@ -111,7 +106,6 @@ const { progress } = useLoadingIndicator()
   max-height: 300px;
 }
 
-
 .fade-content-enter-active, .fade-content-leave-active {
   transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
 }
@@ -121,5 +115,4 @@ const { progress } = useLoadingIndicator()
 .fade-content-enter-to, .fade-content-leave-from {
   opacity: 1;
 }
-
 </style>

@@ -12,6 +12,23 @@ on:
       - ".github/workflows/test-ui.yaml" # Trigger also if this workflow file is changed
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 'lts/*'
+      - run: npm ci
+        working-directory: opendata.swiss/ui
+      - run: npm run lint
+        working-directory: opendata.swiss/ui
+  
   api-tests:
     runs-on: ubuntu-latest
 

@@ -9,17 +9,12 @@
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from '#imports'
 
-
-import { useI18n } from '#imports';
-
-const { t } = useI18n();
-
-
+const { t } = useI18n()
 </script>
 
 <style scoped>
-
 .logo__freebrand {
   display: none;
 }
@@ -29,5 +24,4 @@ const { t } = useI18n();
         display: block;
     }
 }
-
 </style>
