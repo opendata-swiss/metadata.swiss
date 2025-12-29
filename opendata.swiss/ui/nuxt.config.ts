@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       rootDir: __dirname,
-      piveauHubRepoUrl: 'https://piveau-hub-repo-ln.zazukoians.org/',
-      piveauHubSearchUrl: 'https://piveau-hub-search-ln.zazukoians.org/'
+      piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
+      piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/'
     }
   },
   compatibilityDate: '2025-07-15',
