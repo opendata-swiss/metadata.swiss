@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-
+import type Keycloak from 'keycloak-js';
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue';
 import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
@@ -128,6 +128,14 @@ function handleResize() {
 onMounted(() => {
   window.addEventListener('resize', handleResize)
   handleResize()
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
