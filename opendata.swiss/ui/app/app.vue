@@ -5,8 +5,10 @@
         <OdsTopHeader
           v-if="!isMobileMenuOpen"
           :enable-authentication="true"
-          :authenticated="false"
-          :username="undefined"
+          :authenticated="authenticated"
+          :username="username"
+          @login="handleAuthEvent('login')"
+          @logout="handleAuthEvent('logout')"
         />
       </Transition>
       <OdsHeader :navigation-items="navigationItems" @mobile-menu-state-change="mobileMenuOpened" />
@@ -22,8 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount } from 'vue'
-
+import type Keycloak from 'keycloak-js';
 import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue';
 import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
@@ -31,11 +32,56 @@ import OdsFooter from './components/footer/OdsFooter.vue';
 import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item';
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items';
 import { useI18n } from '#imports';
-import { useLocale as piveauLocale } from '@piveau/sdk-vue' ;
+import { useLocale as piveauLocale  } from '@piveau/sdk-vue' ;
+
+import { onMounted, ref } from 'vue';
+import { useNuxtApp } from '#app';
+
+const nuxtApp = useNuxtApp();
+const keycloakLogin = typeof nuxtApp.$keycloakLogin === 'function' ? nuxtApp.$keycloakLogin : undefined;
+const keycloakLogout = typeof nuxtApp.$keycloakLogout === 'function' ? nuxtApp.$keycloakLogout : undefined;
+
+function handleAuthEvent(event: 'login' | 'logout') {
+  if (event === 'login' && keycloakLogin) {
+    keycloakLogin();
+  } else if (event === 'logout' && keycloakLogout) {
+    keycloakLogout();
+  }
+}
 
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS);
 const isMobileMenuOpen = ref(false);
+
+declare global {
+  interface Window {
+    keycloak: Keycloak
+  }
+}
+
+// Keycloak instance and authentication state
+let keycloak: Keycloak | undefined = undefined
+if (import.meta.client) {
+  keycloak = nuxtApp.$keycloak as Keycloak || window.keycloak
+}
+const authenticated = ref(false);
+const username = ref<string | undefined>(undefined);
+
+if (import.meta.client && keycloak) {
+  keycloak.onAuthSuccess = () => {
+    authenticated.value = true;
+    username.value = keycloak.tokenParsed?.preferred_username || keycloak.tokenParsed?.email || undefined;
+  };
+  keycloak.onAuthLogout = () => {
+    authenticated.value = false;
+    username.value = undefined;
+  };
+  // Set initial state if already authenticated
+  if (keycloak.authenticated) {
+    authenticated.value = true;
+    username.value = keycloak.tokenParsed?.preferred_username || keycloak.tokenParsed?.email || undefined;
+  }
+}
 
 const { locale } = useI18n();
 
@@ -91,9 +137,6 @@ onBeforeUnmount(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
-
-const { progress } = useLoadingIndicator()
-
 </script>
 
 
