@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
   ],
-  plugins: [],
+  plugins: ['~/plugins/keycloak.ts'],
   pages: {
     enabled: true,
   },
@@ -52,6 +52,9 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      keycloakUrl: process.env.KEYCLOAK_URL || 'https://keycloak.zazukoians.org/',
+      keycloakRealm: process.env.KEYCLOAK_REALM || 'lindas-next',
+      keycloakClientId: process.env.KEYCLOAK_CLIENT_ID || 'piveau-hub-ui',
     },
   },
   dir: {
