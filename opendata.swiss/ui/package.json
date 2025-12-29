@@ -7,7 +7,7 @@
     "@nuxtjs/mdc": "^0.17.4"
   },
   "scripts": {
-    "prepare": "cd ../.. && husky",
+    "prepare": "if [ -d node_modules/husky ]; then cd ../.. && husky; fi",
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
     "dev": "HOST=0.0.0.0 nuxt dev",
     "api-tuner": "api-tuner --base-iri http://localhost:3000",
