@@ -1,7 +1,6 @@
-import * as path from 'node:path'
-import { resolve } from 'node:path'
+import { dirname, resolve } from 'node:path'
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname)
+const __dirname = dirname(new URL(import.meta.url).pathname)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -19,14 +18,10 @@ export default defineNuxtConfig({
   },
   components: {
     global: true,
-    dirs: [
-      '~/components/content',
-    ],
+    dirs: ['~/components/content'],
   },
   devtools: { enabled: true },
-  css: [
-    '~/assets/main.css',
-  ],
+  css: ['~/assets/main.css'],
   content: {
     build: {
       markdown: {
@@ -52,9 +47,9 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
-      keycloakUrl: process.env.KEYCLOAK_URL || 'https://keycloak.zazukoians.org/',
-      keycloakRealm: process.env.KEYCLOAK_REALM || 'lindas-next',
-      keycloakClientId: process.env.KEYCLOAK_CLIENT_ID || 'piveau-hub-ui',
+      keycloakUrl: 'https://keycloak.zazukoians.org/',
+      keycloakRealm: 'lindas-next',
+      keycloakClientId: 'piveau-hub-ui',
     },
   },
   dir: {
@@ -71,9 +66,7 @@ export default defineNuxtConfig({
     devProxy: {
       '/admin/': 'http://localhost:5173/admin/',
     },
-    plugins: [
-      '~~/server/plugins/zod-locale',
-    ],
+    plugins: ['~~/server/plugins/zod-locale'],
   },
   eslint: {
     config: {
