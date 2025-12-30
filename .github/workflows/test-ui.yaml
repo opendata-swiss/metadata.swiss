@@ -17,7 +17,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v6
       - uses: fabasoad/setup-prolog-action@v1
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
       - run: npm ci
@@ -37,7 +37,7 @@ jobs:
 
       - uses: fabasoad/setup-prolog-action@v1
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
 
