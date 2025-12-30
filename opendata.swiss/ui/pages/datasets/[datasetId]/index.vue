@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 
 import { useDatasetsSearch } from '../../../app/piveau/search'
-import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
+import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
-import { homePageBreadcrumb } from "../../../app/composables/breadcrumbs";
-import OdsBreadcrumbs, { type BreadcrumbItem } from "../../../app/components/OdsBreadcrumbs.vue";
+import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs'
+import OdsBreadcrumbs, { type BreadcrumbItem } from '../../../app/components/OdsBreadcrumbs.vue'
 import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
-import OdsButton from '../../../app/components/OdsButton.vue';
+import OdsButton from '../../../app/components/OdsButton.vue'
 import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
-import { useSeoMeta } from 'nuxt/app';
-import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage';
+import { useSeoMeta } from 'nuxt/app'
+import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
 
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const datasetId = route.params.datasetId as string
@@ -40,23 +40,23 @@ const distributions = computed(() => (dataset.value?.distributions ?? []).sort((
 
 const searchBreadcrumb = ref<BreadcrumbItem | null>(null)
 
-
 const homePage = await homePageBreadcrumb(locale)
 const breadcrumbs = computed(() => {
   if (import.meta.client) {
-    const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId);
+    const storedBreadcrumbs = getDatasetBreadcrumbFromSessionStorage(datasetId)
     if (storedBreadcrumbs) {
-      storedBreadcrumbs[0].title = t('message.header.navigation.datasets');
-      if(storedBreadcrumbs.length === 4) {
-        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
-        storedBreadcrumbs[2].title = t('message.dataset_search.search_results');
-        storedBreadcrumbs[3].title = dataset.value?.title ?? '';
-      } else if(storedBreadcrumbs.length === 3) {
-        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
-        storedBreadcrumbs[2].title = dataset.value?.title ?? '';
+      storedBreadcrumbs[0].title = t('message.header.navigation.datasets')
+      if (storedBreadcrumbs.length === 4) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets')
+        storedBreadcrumbs[2].title = t('message.dataset_search.search_results')
+        storedBreadcrumbs[3].title = dataset.value?.title ?? ''
       }
-      storeDatasetBreadcrumbInSessionStorage(datasetId, storedBreadcrumbs);
-      return storedBreadcrumbs;
+      else if (storedBreadcrumbs.length === 3) {
+        storedBreadcrumbs[1].title = t('message.header.navigation.datasets')
+        storedBreadcrumbs[2].title = dataset.value?.title ?? ''
+      }
+      storeDatasetBreadcrumbInSessionStorage(datasetId, storedBreadcrumbs)
+      return storedBreadcrumbs
     }
   }
 
@@ -68,9 +68,8 @@ const breadcrumbs = computed(() => {
     },
   ]
 
-
   if (searchBreadcrumb.value) {
-    result.push(searchBreadcrumb.value);
+    result.push(searchBreadcrumb.value)
   }
 
   result.push({
@@ -82,26 +81,22 @@ const breadcrumbs = computed(() => {
   })
 
   if (import.meta.client) {
-    storeDatasetBreadcrumbInSessionStorage(datasetId, result);
+    storeDatasetBreadcrumbInSessionStorage(datasetId, result)
   }
-
 
   return result
 })
 
-
 useSeoMeta({
-  title: () => `${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`
+  title: () => `${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
-
-
 
 watch(() => route.query.search,
   () => {
     if (import.meta.client) {
-      const { search, ...rest } = route.query;
-      router.replace({ query: rest });
-      if(search && typeof search === 'string') {
+      const { search, ...rest } = route.query
+      router.replace({ query: rest })
+      if (search && typeof search === 'string') {
         searchBreadcrumb.value = {
           id: 'search',
           title: t('message.dataset_search.search_results'),
@@ -109,102 +104,118 @@ watch(() => route.query.search,
             path: '/datasets',
             query: search
               ? Object.fromEntries(new URLSearchParams(decodeURIComponent(search)))
-              : {}
-          }
+              : {},
+          },
         }
       }
-
     }
-    }
-, { immediate: true }
+  },
+  { immediate: true },
 )
 
 await suspense()
-
 </script>
 
 <template>
   <div v-if="isSuccess && dataset">
-  <header id="main-header">
-    <ClientOnly>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-    </ClientOnly>
-  </header>
-  <main id="main-content">
-   <section class="hero hero--default">
-      <div class="container container--grid gap--responsive">
-         <div class="hero__content">
+    <header id="main-header">
+      <ClientOnly>
+        <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
+      </ClientOnly>
+    </header>
+    <main id="main-content">
+      <section class="hero hero--default">
+        <div class="container container--grid gap--responsive">
+          <div class="hero__content">
             <OdsDatasetMetaInfo :dataset="dataset" />
-            <h1 class="hero__title"> {{ dataset.title }} </h1>
+            <h1 class="hero__title">
+              {{ dataset.title }}
+            </h1>
             <MDC :value="dataset.description" />
             <!----><!---->
             <aside v-if="dataset.publisher" class="authors">
               <div class="disc-images" aria-hidden="true">
-                <div class="disc-image"><img src="https://picsum.photos/120/120/?image=29" :title="dataset.publisher.name"></div>
+                <div class="disc-image">
+                  <img src="https://picsum.photos/120/120/?image=29" :title="dataset.publisher.name">
+                </div>
               </div>
               <address class="authors__names">
                 <a class="link author__name link--external" target="_blank" :href="dataset.publisher.resource">{{ dataset.publisher.name }}</a>
               </address>
             </aside>
-         </div>
-         <!---->
-      </div>
-   </section>
-   <section class="section">
-      <div class="container container--grid gap--responsive">
-         <div class="container__main vertical-spacing">
+          </div>
+          <!---->
+        </div>
+      </section>
+      <section class="section">
+        <div class="container container--grid gap--responsive">
+          <div class="container__main vertical-spacing">
             <div class="container__mobile">
-               <div class="box">
-                  <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
-                  <OdsDetailTermsOfUse v-for="value in dataset.licenses" :key="value" :name="value" />
-               </div>
+              <div class="box">
+                <h2 class="h5">
+                  {{ t(`message.header.navigation.terms_of_use`) }}
+                </h2>
+                <OdsDetailTermsOfUse v-for="value in dataset.licenses" :key="value" :name="value" />
+              </div>
             </div>
-            <h2 class="h2">{{ t('message.dataset_detail.distributions') }}</h2>
+            <h2 class="h2">
+              {{ t('message.dataset_detail.distributions') }}
+            </h2>
             <OdsDistributionList :distributions="distributions" />
 
-            <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
+            <h2 class="h2">
+              {{ t('message.dataset_detail.additional_information') }}
+            </h2>
             <OdsDetailsTable :table-entries="dataset.propertyTable"/>
             <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
-               <h2 class="h2">{{ t('message.dataset_detail.categories') }}</h2>
-               <div>
-                  <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
-               </div>
+              <h2 class="h2">
+                {{ t('message.dataset_detail.categories') }}
+              </h2>
+              <div>
+                <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
+              </div>
             </div>
             <div v-if="dataset.keywords.length > 0">
-               <h2 class="h2">{{ t('message.dataset_detail.keywords') }}</h2>
-               <div>
-                  <OdsTagList :tags="dataset.keywords" />
-               </div>
+              <h2 class="h2">
+                {{ t('message.dataset_detail.keywords') }}
+              </h2>
+              <div>
+                <OdsTagList :tags="dataset.keywords" />
+              </div>
             </div>
             <div v-if="dataset.catalog" >
-              <h2 class="h2">{{ t('message.dataset_detail.catalog') }}</h2>
+              <h2 class="h2">
+                {{ t('message.dataset_detail.catalog') }}
+              </h2>
               <OdsDatasetCatalogPanel :dataset="dataset" />
             </div>
-         </div>
-         <div class="hidden container__aside md:block">
+          </div>
+          <div class="hidden container__aside md:block">
             <div id="aside-content" class="sticky sticky--top">
-               <div class="box">
-                  <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
-                  <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
-               </div>
-                 <div class="box">
-                  <h2 class="h5">{{ t(`message.dataset_detail.metadata_download`) }}</h2>
-                  <OdsMetadataDownloadList :dataset="dataset" />
-               </div>
+              <div class="box">
+                <h2 class="h5">
+                  {{ t(`message.header.navigation.terms_of_use`) }}
+                </h2>
+                <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
+              </div>
+              <div class="box">
+                <h2 class="h5">
+                  {{ t(`message.dataset_detail.metadata_download`) }}
+                </h2>
+                <OdsMetadataDownloadList :dataset="dataset" />
+              </div>
             </div>
-         </div>
-      </div>
-   </section>
+          </div>
+        </div>
+      </section>
 
-   <section class="section publication-back-button-section">
-      <div class="container">
-        <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" size="sm" @click="router.back()" />
-      </div>
-   </section>
-  </main>
-</div>
-
-
+      <section class="section publication-back-button-section">
+        <div class="container">
+          <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" size="sm" @click="router.back()" />
+        </div>
+      </section>
+    </main>
+  </div>
 </template>
 
 <style lang="scss" scoped>

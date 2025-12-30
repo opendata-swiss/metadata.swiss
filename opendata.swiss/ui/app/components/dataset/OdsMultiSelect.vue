@@ -59,7 +59,7 @@
 import VSelect from 'vue-select'
 import { ref, computed, onMounted, h } from 'vue'
 import { v4 as uuidv4 } from 'uuid'
-import OdsFormField from "~/components/OdsFormField.vue";
+import OdsFormField from '~/components/OdsFormField.vue'
 
 const selectId = ref('')
 const selected = defineModel({
@@ -84,12 +84,12 @@ const props = defineProps({
   },
   variant: {
     type: String,
-    validator: (prop) => ['outline', 'negative'].includes(prop as string),
+    validator: prop => ['outline', 'negative'].includes(prop as string),
     default: () => 'outline',
   },
   size: {
     type: String,
-    validator: (prop) => ['sm', 'base', 'lg'].includes(prop as string),
+    validator: prop => ['sm', 'base', 'lg'].includes(prop as string),
     default: () => 'base',
   },
   disabled: {
@@ -118,7 +118,7 @@ const props = defineProps({
   },
   messageType: {
     type: String,
-    validator: (prop) =>
+    validator: prop =>
       ['error', 'warning', 'success', 'info'].includes(prop as string),
     default: () => undefined,
   },

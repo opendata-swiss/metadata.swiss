@@ -1,8 +1,7 @@
-
 <script setup lang="ts">
 import OdsDatasetCardListItem from './OdsDatasetCardListItem.vue'
 import OdsDatasetListItem from './OdsDatasetListItem.vue'
-import type { LocationQueryRaw } from "#vue-router"
+import type { LocationQueryRaw } from '#vue-router'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
 interface Props {
@@ -20,9 +19,11 @@ const searchParamsEncoded = computed(() => {
   Object.entries(raw).forEach(([key, value]) => {
     if (Array.isArray(value)) {
       paramsObj[key] = value.join(',')
-    } else if (typeof value === 'string') {
+    }
+    else if (typeof value === 'string') {
       paramsObj[key] = value
-    } else if (value != null) {
+    }
+    else if (value != null) {
       paramsObj[key] = String(value)
     }
   })

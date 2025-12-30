@@ -1,4 +1,4 @@
-import type { Dataset, Format } from "@piveau/sdk-core";
+import type { Dataset, Format } from '@piveau/sdk-core'
 
 /**
  * Extract unique formats from dataset distributions.
@@ -11,19 +11,17 @@ export function getOdsFormats(dataset: Dataset) {
   const distributions = (dataset?.distributions ?? [])
 
   return distributions.reduce((acc, distribution) => {
-    const distFormat = distribution.format;
+    const distFormat = distribution.format
     if (distFormat && distFormat.id && distFormat.label && distFormat.resource) {
       if (acc.some(item => item.id === distFormat.id)) {
-        return acc;
+        return acc
       }
       acc.push({
         label: distFormat.label,
         resource: distFormat.resource,
-        id: distFormat.id
-      });
+        id: distFormat.id,
+      })
     }
-    return acc;
-  }, [] as Format[]);
+    return acc
+  }, [] as Format[])
 }
-
-

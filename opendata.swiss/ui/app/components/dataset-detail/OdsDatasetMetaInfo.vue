@@ -15,7 +15,7 @@
       {{ t('message.dataset_detail.modified_on') }}
       <OdsRelativeDateToggle :date="props.dataset.modificationDate" />
     </span>
-     <span
+    <span
       v-if="props.dataset.frequency"
       class="meta-info__item"
     >
@@ -26,23 +26,20 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
 
 const { t } = useI18n()
-
 
 interface Props {
   dataset: DcatApChV2DatasetAdapter
 }
 
 const props = defineProps<Props>()
-
 </script>
 
 <style lang="scss" scoped>
-
 .catalog-meta-info {
   margin-top: 0 !important;
   display: flex;
@@ -63,5 +60,4 @@ const props = defineProps<Props>()
   vertical-align: middle;
   border: 1px solid #b3d4fc;
 }
-
 </style>

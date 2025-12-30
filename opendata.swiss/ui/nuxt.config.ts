@@ -1,37 +1,32 @@
-import * as path from "node:path";
-import { resolve } from "node:path";
+import * as path from 'node:path'
+import { resolve } from 'node:path'
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  runtimeConfig: {
-    public: {
-      rootDir: __dirname,
-      piveauHubRepoUrl: "https://piveau-hub-repo.test.ods.zazukoians.org/",
-      piveauHubSearchUrl: "https://piveau-hub-search.test.ods.zazukoians.org/",
-      keycloakUrl: process.env.KEYCLOAK_URL || "https://keycloak.zazukoians.org/",
-      keycloakRealm: process.env.KEYCLOAK_REALM || "lindas-next",
-      keycloakClientId: process.env.KEYCLOAK_CLIENT_ID || "piveau-hub-ui",
-    },
-  },
-  compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
   modules: [
-    "@nuxt/eslint",
-    "@nuxt/content",
-    "@pinia/nuxt",
-    "@nuxtjs/i18n",
-    "@nuxt/image",
-    "@nuxt/icon",
+    '@nuxt/eslint',
+    '@nuxt/content',
+    '@pinia/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxt/icon',
   ],
-  css: ["~/assets/main.css"],
-  dir: {
-    pages: resolve(import.meta.dirname, "pages"),
-  },
+  plugins: ['~/plugins/keycloak.ts'],
   pages: {
     enabled: true,
   },
+  components: {
+    global: true,
+    dirs: [
+      '~/components/content',
+    ],
+  },
+  devtools: { enabled: true },
+  css: [
+    '~/assets/main.css',
+  ],
   content: {
     build: {
       markdown: {
@@ -45,51 +40,67 @@ export default defineNuxtConfig({
   mdc: {
     components: {
       map: {
-        a: "OdsProseA",
-        h2: "OdsProseH2",
-        h3: "OdsProseH3",
-        h4: "OdsProseH4",
+        a: 'OdsProseA',
+        h2: 'OdsProseH2',
+        h3: 'OdsProseH3',
+        h4: 'OdsProseH4',
       },
     },
   },
-  components: {
-    global: true,
-    dirs: ["~/components/content"],
+  runtimeConfig: {
+    public: {
+      rootDir: __dirname,
+      piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
+      piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      keycloakUrl: process.env.KEYCLOAK_URL || 'https://keycloak.zazukoians.org/',
+      keycloakRealm: process.env.KEYCLOAK_REALM || 'lindas-next',
+      keycloakClientId: process.env.KEYCLOAK_CLIENT_ID || 'piveau-hub-ui',
+    },
+  },
+  dir: {
+    pages: resolve(import.meta.dirname, 'pages'),
   },
   build: {
-    transpile: ["form-data"],
+    transpile: ['form-data'],
   },
-  plugins: ["~/plugins/keycloak.ts"],
-  i18n: {
-    defaultLocale: "de",
-    strategy: "prefix",
-    locales: [
-      { code: "de", name: "Deutsch", file: "de.json" },
-      { code: "en", name: "English", file: "en.json" },
-      { code: "fr", name: "Francais", file: "fr.json" },
-      { code: "it", name: "Itlaliano", file: "it.json" },
-    ],
-    experimental: {
-      localeDetector: "localeDetector.ts",
-    },
+  routeRules: {
+    '*/showcases/submit': { ssr: false },
   },
+  compatibilityDate: '2025-07-15',
   nitro: {
     devProxy: {
-      "/admin/": "http://localhost:5173/admin/",
+      '/admin/': 'http://localhost:5173/admin/',
     },
-    plugins: ["~~/server/plugins/zod-locale"],
+    plugins: [
+      '~~/server/plugins/zod-locale',
+    ],
+  },
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
+  i18n: {
+    defaultLocale: 'de',
+    strategy: 'prefix',
+    locales: [
+      { code: 'de', name: 'Deutsch', file: 'de.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'fr', name: 'Francais', file: 'fr.json' },
+      { code: 'it', name: 'Itlaliano', file: 'it.json' },
+    ],
+    experimental: {
+      localeDetector: 'localeDetector.ts',
+    },
   },
   icon: {
-    mode: "svg",
+    mode: 'svg',
     customCollections: [
       {
-        prefix: "ods",
-        dir: "./app/assets/icons",
+        prefix: 'ods',
+        dir: './app/assets/icons',
         normalizeIconName: false,
       },
     ],
   },
-  routeRules: {
-    "*/showcases/submit": { ssr: false },
-  },
-});
+})

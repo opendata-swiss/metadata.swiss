@@ -1,7 +1,7 @@
 <script setup>
-import OdsPage from "../../../app/components/OdsPage.vue";
-import {homePageBreadcrumb} from "../../../app/composables/breadcrumbs";
-import OdsBreadcrumbs from "../../../app/components/OdsBreadcrumbs.vue";
+import OdsPage from '../../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs'
+import OdsBreadcrumbs from '../../../app/components/OdsBreadcrumbs.vue'
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -12,10 +12,10 @@ const { data: post } = await useAsyncData(route.path, () => {
     .where('path', 'LIKE', `%${slug}.${locale.value}`)
     .where('date', '>', `${year}-${month.padStart(2, '0')}-01`)
     .where('date', '<', `${year}-${month.padStart(2, '0')}-32`)
-      .orWhere(q =>
-       q.where('slug', '=', slug)
-        .where('path', 'LIKE', `%${slug}.${locale.value}`)
-     )
+    .orWhere(q =>
+      q.where('slug', '=', slug)
+        .where('path', 'LIKE', `%${slug}.${locale.value}`),
+    )
     .first()
 })
 
@@ -31,7 +31,7 @@ const breadcrumbs = [
   },
   {
     title: post.value?.title || slug,
-  }
+  },
 ]
 </script>
 
