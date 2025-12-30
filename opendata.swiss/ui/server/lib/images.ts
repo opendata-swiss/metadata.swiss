@@ -1,5 +1,5 @@
-import type {ShowcaseStorage} from "~~/server/lib/showcaseStorage";
-import sharp from "sharp";
+import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
+import sharp from 'sharp'
 
 interface ImageOptions {
   maxImageWidth: number
@@ -15,6 +15,6 @@ export function storage(store: Omit<ShowcaseStorage, 'writeImage'>, options: Ima
         .jpeg({ quality: 90 })
 
       return this.writeFile(path, await resized.toBuffer())
-    }
+    },
   }
 }

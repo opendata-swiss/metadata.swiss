@@ -1,5 +1,5 @@
-import type { AppLanguage} from "~/constants/langages";
-import {APP_LANGUAGES} from "~/constants/langages";
+import type { AppLanguage } from '~/constants/langages'
+import { APP_LANGUAGES } from '~/constants/langages'
 
 export default defineI18nLocaleDetector((event, config) => {
   // try to get locale from header (`accept-header`)
