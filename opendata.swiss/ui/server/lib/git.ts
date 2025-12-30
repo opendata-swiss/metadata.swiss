@@ -40,7 +40,7 @@ export default function (slug: string) {
   return {
     async prepare() {
       try {
-        logger.info(`Getting base branch`)
+        logger.info('Getting base branch')
         const gotBranch = await octokit.repos.getBranch({
           owner,
           repo,

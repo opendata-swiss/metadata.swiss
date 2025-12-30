@@ -49,7 +49,7 @@ const classes = computed(() => {
   let base = 'tag-item '
   if (props.variant) base += `tag-item--${props.variant} `
   if (props.size) base += `tag-item--${props.size} `
-  if (props.icon) base += `tag-item--icon `
+  if (props.icon) base += 'tag-item--icon '
   return base
 })
 </script>
