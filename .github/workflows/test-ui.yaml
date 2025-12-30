@@ -1,12 +1,7 @@
 name: "[UI] Tests"
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - closed
+  push:
     paths:
       - "opendata.swiss/ui/**"
       - ".github/workflows/test-ui.yaml" # Trigger also if this workflow file is changed
