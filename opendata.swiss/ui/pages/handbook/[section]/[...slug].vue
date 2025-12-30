@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import OdsBreadcrumbs from "~/components/OdsBreadcrumbs.vue";
-import toProperCase from "~/lib/toProperCase.js";
-import { loadHandbookBreadcrumb } from "~/lib/breadcrumbs";
-import OdsPage from "../../../app/components/OdsPage.vue";
+import OdsBreadcrumbs from '~/components/OdsBreadcrumbs.vue'
+import toProperCase from '~/lib/toProperCase.js'
+import { loadHandbookBreadcrumb } from '~/lib/breadcrumbs'
+import OdsPage from '../../../app/components/OdsPage.vue'
 
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 const route = useRoute()
 
 const section = toProperCase(route.params.section)
@@ -12,14 +12,14 @@ const section = toProperCase(route.params.section)
 const breadcrumbs = await useBreadcrumbs({
   route,
   locale,
-  loadContent: loadHandbookBreadcrumb(section, locale)
+  loadContent: loadHandbookBreadcrumb(section, locale),
 })
 
 const { data } = await useAsyncData(route.path, () => {
   const slug = route.params.slug.join('/')
 
   return queryCollection('handbook')
-    .where('path', 'LIKE',`%.${locale.value}`)
+    .where('path', 'LIKE', `%.${locale.value}`)
     .where('section', '=', section)
     .andWhere(q => q.where('permalink', '=', slug))
     .first()
@@ -30,7 +30,7 @@ useSeoMeta({
 })
 
 // TODO: make sidebar navigation dynamic based on the handbook content
-const navigation = ref([
+const _navigation = ref([
   {
     title: 'Guide',
     icon: 'i-lucide-book-open',
@@ -39,13 +39,13 @@ const navigation = ref([
       {
         title: 'Introduction',
         path: '#introduction',
-        active: true
+        active: true,
       },
       {
         title: 'Installation',
-        path: '#installation'
-      }
-    ]
+        path: '#installation',
+      },
+    ],
   },
   {
     title: 'Composables',
@@ -54,14 +54,14 @@ const navigation = ref([
     children: [
       {
         title: 'defineShortcuts',
-        path: '#defineshortcuts'
+        path: '#defineshortcuts',
       },
       {
         title: 'useModal',
-        path: '#usemodal'
-      }
-    ]
-  }
+        path: '#usemodal',
+      },
+    ],
+  },
 ])
 </script>
 

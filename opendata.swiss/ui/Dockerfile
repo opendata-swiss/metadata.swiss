@@ -6,7 +6,7 @@ RUN apk add --no-cache python3 make
 
 # Install dependencies
 COPY package.json package-lock.json ./
-RUN npm ci --omit dev
+RUN npm i --omit dev
 
 # Copy the rest of the application code and build
 COPY . .

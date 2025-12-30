@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { useI18n } from '#imports';
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useI18n } from '#imports'
 
-import OdsButton from './OdsButton.vue';
-import SvgIcon from './SvgIcon.vue';
-import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item';
-import { NuxtLinkLocale } from '#components';
+import OdsButton from './OdsButton.vue'
+import SvgIcon from './SvgIcon.vue'
+import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item'
+import { NuxtLinkLocale } from '#components'
 
 interface OdsDropdownMenuProps {
   label: string
@@ -21,62 +21,58 @@ const isOpen = ref(false)
 const dropdownRef = ref<HTMLElement | null>(null)
 
 function toggleDropdown() {
-  isOpen.value = !isOpen.value;
+  isOpen.value = !isOpen.value
 }
-
 
 const parentLabelStack = ref<string[]>([props.menu.label])
 
-const menuStack = ref<OdsNavTabItem[][]>([]);
+const menuStack = ref<OdsNavTabItem[][]>([])
 
 const menuKey = computed(() => menuStack.value.length)
 
 const currentMenu = computed(() => {
+  if (menuStack.value.length === 0) {
+    return props.menu.subMenu ?? []
+  }
+  return menuStack.value[menuStack.value.length - 1]
+})
 
-    if (menuStack.value.length === 0) {
-      return props.menu.subMenu ?? []
-    }
-    return menuStack.value[menuStack.value.length - 1]
-});
+const direction = ref<'forward' | 'backward'>('forward')
 
-const direction = ref<'forward' | 'backward'>('forward');
-
-const transitionName = computed(() => direction.value === 'forward' ? 'slide-menu-right' : 'slide-menu-left');
-
+const transitionName = computed(() => direction.value === 'forward' ? 'slide-menu-right' : 'slide-menu-left')
 
 function drillDown(item: OdsNavTabItem) {
-    if (item.subMenu && item.subMenu.length > 0) {
-        direction.value = 'forward';
-        menuStack.value.push(item.subMenu);
-        parentLabelStack.value.push(item.label);
-    }
+  if (item.subMenu && item.subMenu.length > 0) {
+    direction.value = 'forward'
+    menuStack.value.push(item.subMenu)
+    parentLabelStack.value.push(item.label)
+  }
 }
 
 function goBack() {
-    if (menuStack.value.length > 0) {
-        direction.value = 'backward';
-        menuStack.value.pop();
-        parentLabelStack.value.pop();
-    }
+  if (menuStack.value.length > 0) {
+    direction.value = 'backward'
+    menuStack.value.pop()
+    parentLabelStack.value.pop()
+  }
 };
 
 // Close dropdown when clicking outside
 function handleClickOutside(event: MouseEvent) {
   if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node)) {
-    isOpen.value = false;
+    isOpen.value = false
   }
 }
 
 // start listening for clicks outside the dropdown
 onMounted(() => {
-  document.addEventListener('mousedown', handleClickOutside);
-});
+  document.addEventListener('mousedown', handleClickOutside)
+})
 
 // stop listening when component is unmounted
 onBeforeUnmount(() => {
-  document.removeEventListener('mousedown', handleClickOutside);
-});
-
+  document.removeEventListener('mousedown', handleClickOutside)
+})
 </script>
 
 <template>
@@ -108,7 +104,9 @@ onBeforeUnmount(() => {
       <Transition :name="transitionName" mode="out-in">
         <div :key="menuKey">
           <div class="navy">
-            <h2 class="navy__title">{{ t(parentLabelStack[parentLabelStack.length - 1] ?? '') }}</h2>
+            <h2 class="navy__title">
+              {{ t(parentLabelStack[parentLabelStack.length - 1] ?? '') }}
+            </h2>
 
             <nav class="navy__level-0 navy-menu__level-0">
               <ul>
@@ -140,7 +138,6 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-
 .activate-btn {
   color: var(--color-primary-600);
 }

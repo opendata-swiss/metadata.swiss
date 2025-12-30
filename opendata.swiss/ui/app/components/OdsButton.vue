@@ -14,13 +14,12 @@
       </a>
       <slot v-else>{{ title }}</slot>
     </span>
-
   </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import SvgIcon from "~/components/SvgIcon.vue";
+import { computed } from 'vue'
+import SvgIcon from '~/components/SvgIcon.vue'
 
 const { title, iconOnly = false, ...props } = defineProps<{
   title?: string
@@ -36,11 +35,11 @@ const { title, iconOnly = false, ...props } = defineProps<{
 const classes = computed(() => {
   const classes = []
 
-  if(iconOnly) {
+  if (iconOnly) {
     classes.push('btn--icon-only')
   }
 
-  if(props.size) {
+  if (props.size) {
     classes.push(`btn--${props.size}`)
   }
 

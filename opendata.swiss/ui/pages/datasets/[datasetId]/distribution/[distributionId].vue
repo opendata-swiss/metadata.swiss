@@ -1,28 +1,26 @@
 <script setup lang="ts">
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDatasetsSearch } from '../../../../app/piveau/datasets'
-import { homePageBreadcrumb } from "../../../../app/composables/breadcrumbs.js";
-import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue';
+import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
+import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
-import OdsBreadcrumbs from "../../../../app/components/OdsBreadcrumbs.vue";
-import OdsButton from "../../../../app/components/OdsButton.vue";
+import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
+import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
-import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue';
+import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter.js'
-import { useSeoMeta } from 'nuxt/app';
-import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage';
+import { useSeoMeta } from 'nuxt/app'
+import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
 
-
-const { locale, t } = useI18n();
+const { locale, t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
 const datasetId = route.params.datasetId as string
 const distributionId = route.params.distributionId as string
-
 
 const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
@@ -36,7 +34,6 @@ const dataset = computed(() => {
   return new DcatApChV2DatasetAdapter(resultEnhanced.value)
 })
 
-
 const distribution = computed(() => {
   if (!dataset.value) {
     return undefined
@@ -47,21 +44,22 @@ const distribution = computed(() => {
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
 
-const breadcrumbs = computed(()=>{
+const breadcrumbs = computed(() => {
   const bc = []
-  const storedBreadcrumbs = import.meta.client ? getDatasetBreadcrumbFromSessionStorage(datasetId) : null;
+  const storedBreadcrumbs = import.meta.client ? getDatasetBreadcrumbFromSessionStorage(datasetId) : null
   if (storedBreadcrumbs && import.meta.client) {
-      if(storedBreadcrumbs.length === 4) {
-        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
-        storedBreadcrumbs[2].title = t('message.dataset_search.search_results');
-        storedBreadcrumbs[3].title = dataset.value?.title ?? '';
-      } else if(storedBreadcrumbs.length === 3) {
-        storedBreadcrumbs[1].title = t('message.header.navigation.datasets');
-        storedBreadcrumbs[2].title = dataset.value?.title ?? '';
-      }
+    if (storedBreadcrumbs.length === 4) {
+      storedBreadcrumbs[1].title = t('message.header.navigation.datasets')
+      storedBreadcrumbs[2].title = t('message.dataset_search.search_results')
+      storedBreadcrumbs[3].title = dataset.value?.title ?? ''
+    }
+    else if (storedBreadcrumbs.length === 3) {
+      storedBreadcrumbs[1].title = t('message.header.navigation.datasets')
+      storedBreadcrumbs[2].title = dataset.value?.title ?? ''
+    }
     bc.push(...storedBreadcrumbs)
     bc.push({
-      title: distribution.value?.title
+      title: distribution.value?.title,
     })
   }
   else {
@@ -69,22 +67,21 @@ const breadcrumbs = computed(()=>{
     bc.push({
       title: t('message.header.navigation.datasets'),
       path: '/datasets',
+    },
+    {
+      title: resultEnhanced.value?.getTitle,
+      path: {
+        name: 'datasets-datasetId',
+        params: { datasetId: datasetId },
       },
-      {
-        title: resultEnhanced.value?.getTitle,
-        path: {
-          name: 'datasets-datasetId',
-          params: { datasetId: datasetId },
-        },
-      },
-      {
-        title: distribution.value?.title
-      }
+    },
+    {
+      title: distribution.value?.title,
+    },
     )
   }
   return bc
 })
-
 
 useSeoMeta({
   title: () => `${distribution.value?.title} | ${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
@@ -108,13 +105,15 @@ await suspense()
           <p class="meta-info">
             <span v-if="distribution.releaseDate" class="meta-info__item">
               {{ t('message.dataset_detail.published_on') }}
-               <OdsRelativeDateToggle :date="distribution.releaseDate" />
+              <OdsRelativeDateToggle :date="distribution.releaseDate" />
             </span>
             <span v-if="distribution.modified" class="meta-info__item">{{ t('message.dataset_detail.modified_on') }}
               <OdsRelativeDateToggle :date="distribution.modified" />
             </span>
           </p>
-          <h1 class="hero__title"> {{ distribution.title }} </h1>
+          <h1 class="hero__title">
+            {{ distribution.title }}
+          </h1>
           <MDC :value="distribution.description ?? ''" />
         </div>
       </div>
@@ -124,33 +123,47 @@ await suspense()
         <div class="container__main vertical-spacing">
           <div class="container__mobile">
             <div v-if="distribution.downloadUrls.length > 0" class="box">
-              <h2 class="h5">Download</h2>
-                <OdsDownloadList :download-urls="distribution.downloadUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
+              <h2 class="h5">
+                Download
+              </h2>
+              <OdsDownloadList :download-urls="distribution.downloadUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
             </div>
             <div class="box">
-              <h2 class="h5">Access</h2>
+              <h2 class="h5">
+                Access
+              </h2>
               <OdsDownloadList :download-urls="distribution.accessUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
             </div>
             <div class="box">
-              <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
+              <h2 class="h5">
+                {{ t(`message.header.navigation.terms_of_use`) }}
+              </h2>
               <OdsDetailTermsOfUse v-if="distribution.license" :name="distribution.license" />
             </div>
           </div>
-          <h2 class="h2">{{ t('message.dataset_detail.additional_information') }}</h2>
+          <h2 class="h2">
+            {{ t('message.dataset_detail.additional_information') }}
+          </h2>
           <OdsDetailsTable :table-entries="distribution.propertyTable"/>
         </div>
         <div class="hidden container__aside md:block">
           <div id="aside-content" class="sticky sticky--top">
             <div v-if="distribution.downloadUrls.length > 0" class="box">
-              <h2 class="h5">Download</h2>
+              <h2 class="h5">
+                Download
+              </h2>
               <OdsDownloadList :download-urls="distribution.downloadUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
             </div>
-             <div class="box">
-              <h2 class="h5">Access</h2>
+            <div class="box">
+              <h2 class="h5">
+                Access
+              </h2>
               <OdsDownloadList :download-urls="distribution.accessUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
             </div>
             <div class="box">
-              <h2 class="h5">{{ t(`message.header.navigation.terms_of_use`) }}</h2>
+              <h2 class="h5">
+                {{ t(`message.header.navigation.terms_of_use`) }}
+              </h2>
               <OdsDetailTermsOfUse v-if="distribution.license" :name="distribution.license" />
             </div>
           </div>

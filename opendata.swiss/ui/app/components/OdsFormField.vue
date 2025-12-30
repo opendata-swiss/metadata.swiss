@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-const {type = 'input', ...props} = defineProps<{
-  for: string;
-  label?: string;
-  required?: boolean;
-  size?: 'sm' | 'base' | 'lg';
-  variant?: 'outline' | 'negative';
+const { type = 'input', ...props } = defineProps<{
+  for: string
+  label?: string
+  required?: boolean
+  size?: 'sm' | 'base' | 'lg'
+  variant?: 'outline' | 'negative'
   type?: 'input' | 'select'
 }>()
 

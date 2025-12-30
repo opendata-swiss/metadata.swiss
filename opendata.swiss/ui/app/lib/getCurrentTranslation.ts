@@ -1,12 +1,11 @@
-import { APP_LANGUAGES, type AppLanguage } from "~/constants/langages";
+import { APP_LANGUAGES, type AppLanguage } from '~/constants/langages'
 
-type TranslatedString = Record<string, string>;
-
+type TranslatedString = Record<string, string>
 
 export function getCurrentTranslation(translations: TranslatedString, locale: AppLanguage): string {
-    return (
-        translations[locale] ||
-        APP_LANGUAGES.map(lang => translations[lang]).find(Boolean) ||
-        Object.values(translations)[0] || ""
-    );
+  return (
+    translations[locale]
+    || APP_LANGUAGES.map(lang => translations[lang]).find(Boolean)
+    || Object.values(translations)[0] || ''
+  )
 }

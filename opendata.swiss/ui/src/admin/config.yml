@@ -46,7 +46,7 @@ collections:
     view_groups:
       - label: Section
         field: section
-    path: '{{section}}/{{slug}}'
+    path: "{{section}}/{{slug}}"
     fields:
       - label: Section
         name: section
@@ -70,7 +70,11 @@ collections:
         name: permalink
         widget: string
         i18n: duplicate
-        pattern: ["^[a-z0-9-]+(?:/[a-z0-9-]+)*$", "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens."]
+        pattern:
+          [
+            "^[a-z0-9-]+(?:/[a-z0-9-]+)*$",
+            "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens.",
+          ]
       - name: body
         label: Body
         widget: markdown
@@ -122,7 +126,11 @@ collections:
         widget: string
         i18n: false
         required: false
-        pattern: ["^[a-z0-9-]+(?:/[a-z0-9-]+)*$", "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens."]
+        pattern:
+          [
+            "^[a-z0-9-]+(?:/[a-z0-9-]+)*$",
+            "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens.",
+          ]
       - label: Date
         name: date
         widget: datetime
@@ -170,14 +178,14 @@ collections:
         multiple: true
         i18n: duplicate
         piveau:
-          search: https://piveau-hub-search-ln.zazukoians.org/
+          search: https://piveau-hub-search.test.ods.zazukoians.org/
           vocabulary: data-theme
       - label: Type of content
         name: type
         widget: piveau-vocabulary
         i18n: duplicate
         piveau:
-          search: https://piveau-hub-search-ln.zazukoians.org/
+          search: https://piveau-hub-search.test.ods.zazukoians.org/
           vocabulary: showcase-types
       - name: datasets
         label: Datasets
@@ -186,7 +194,7 @@ collections:
         i18n: duplicate
         required: false
         piveau:
-          search: https://piveau-hub-search-ln.zazukoians.org/
+          search: https://piveau-hub-search.test.ods.zazukoians.org/
       - name: tags
         label: Tags
         widget: list

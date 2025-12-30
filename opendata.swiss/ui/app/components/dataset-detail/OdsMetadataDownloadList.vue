@@ -9,8 +9,8 @@
     >
       <SvgIcon icon="Download" size="xl" class="download-item__icon" />
       <div>
-       <h2 class="download-item__title">{{(t(`message.dataset_detail.metadata`)).toLowerCase() + '.' + path.split('.').pop() }}</h2>
-       <p class="meta-info download-item__meta-info">
+        <h2 class="download-item__title">{{(t(`message.dataset_detail.metadata`)).toLowerCase() + '.' + path.split('.').pop() }}</h2>
+        <p class="meta-info download-item__meta-info">
           <span class="meta-info__item">{{ path.split('.').pop() }}</span>
         </p>
       </div>
@@ -19,19 +19,18 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
-import SvgIcon from '../SvgIcon.vue';
-import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter';
+import { useI18n } from '#imports'
+import SvgIcon from '../SvgIcon.vue'
+import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
 
 const { piveauHubRepoUrl } = useRuntimeConfig().public
-const { t } = useI18n();
+const { t } = useI18n()
 
 interface Props {
-  dataset: DcatApChV2DatasetAdapter;
+  dataset: DcatApChV2DatasetAdapter
 }
 
-const props = defineProps<Props>();
-
+const props = defineProps<Props>()
 </script>
 
 <style scoped lang="scss">
