@@ -100,7 +100,7 @@ jobs:
           comment-author: "github-actions[bot]"
           body-includes: Your TEST preview environment is deployed
       - name: Show preview URL directly on the PR
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
@@ -213,7 +213,7 @@ jobs:
           comment-author: "github-actions[bot]"
           body-includes: Your INT preview environment is deployed
       - name: Show preview URL directly on the PR
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           edit-mode: replace
