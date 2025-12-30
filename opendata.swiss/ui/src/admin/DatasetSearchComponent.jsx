@@ -1,28 +1,28 @@
-import PiveauSearchComponent from "./PiveauSearchComponent.jsx";
-import {AsyncTypeahead} from "react-bootstrap-typeahead";
-import {toArray} from "./util.js";
-import React from "react";
+import PiveauSearchComponent from './PiveauSearchComponent.jsx'
+import { AsyncTypeahead } from 'react-bootstrap-typeahead'
+import { toArray } from './util.js'
+import React from 'react'
 
 // Bypass client-side filtering by returning `true`. Results are already
 // filtered by the search endpoint, so no need to do it again.
-const filterBy = () => true;
+const filterBy = () => true
 
 export default class DatasetSearchComponent extends PiveauSearchComponent {
   state = {
-    options: toArray(this.props.value)
-  };
+    options: toArray(this.props.value),
+  }
 
   get filter() {
-    return 'dataset';
+    return 'dataset'
   }
 
   get labelProp() {
-    return 'title';
+    return 'title'
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.value !== this.props.value) {
-      this.setState({options: toArray(this.props.value)});
+      this.setState({ options: toArray(this.props.value) })
     }
   }
 
@@ -34,18 +34,19 @@ export default class DatasetSearchComponent extends PiveauSearchComponent {
     try {
       const response = await fetch(this.prepareSearchUrl({ q }))
 
-      const {result} = await response.json()
+      const { result } = await response.json()
 
       const options = result.results.map((item) => {
         const { resource, id } = item
         return {
           id: resource,
-          label: item[this.labelProp][this.props.locale] || id
-        };
+          label: item[this.labelProp][this.props.locale] || id,
+        }
       })
 
       this.setState({ options })
-    } finally {
+    }
+    finally {
       this.setState({
         isLoading: false,
       })
@@ -60,7 +61,7 @@ export default class DatasetSearchComponent extends PiveauSearchComponent {
         filterBy={filterBy}
         minLength={this.props.minLength || 3}
         isLoading={this.state.isLoading}
-        labelKey='label'
+        labelKey="label"
         multiple
         onSearch={this.handleSearch}
         placeholder="Type to search..."

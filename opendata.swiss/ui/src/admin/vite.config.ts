@@ -1,6 +1,6 @@
-import {nodePolyfills} from 'vite-plugin-node-polyfills'
-import {defineConfig} from "vite";
-import {viteStaticCopy} from "vite-plugin-static-copy";
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { defineConfig } from 'vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 const piveauHubSearch = process.env.NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL
 
@@ -24,13 +24,13 @@ export default defineConfig({
 local_backend:
   url: http://localhost:8088/api/v1
 
-${content.replace(/search: (.+)$/gm, (match) => piveauHubSearch ? `search: ${piveauHubSearch}` : match)}`
+${content.replace(/search: (.+)$/gm, match => piveauHubSearch ? `search: ${piveauHubSearch}` : match)}`
             }
 
             return content
-          }
-        }
-      ]
+          },
+        },
+      ],
     }),
   ],
 })

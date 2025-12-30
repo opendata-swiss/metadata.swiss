@@ -1,18 +1,17 @@
-import type { LinkedDataFormats } from '@piveau/sdk-vue';
+import type { LinkedDataFormats } from '@piveau/sdk-vue'
 import type { Dataset } from '../../../model/dataset'
 import { DcatApChV2DistributionAdapter } from './dcat-ap-ch-v2-distribution-adapter'
-import type { TableEntry } from './table-entry';
-import type { Catalog } from '~/piveau/get-ods-catalog-info';
-import type { TagItem } from '../../OdsTagItem.vue';
-import type { AppLanguage } from '~/constants/langages';
-import { APP_LANGUAGES } from '~/constants/langages';
-
+import type { TableEntry } from './table-entry'
+import type { Catalog } from '~/piveau/get-ods-catalog-info'
+import type { TagItem } from '../../OdsTagItem.vue'
+import type { AppLanguage } from '~/constants/langages'
+import { APP_LANGUAGES } from '~/constants/langages'
 
 export class DcatApChV2DatasetAdapter {
-  #dataset: Dataset;
+  #dataset: Dataset
 
   constructor(d: Dataset) {
-    this.#dataset = d;
+    this.#dataset = d
   }
 
   /**
@@ -20,7 +19,7 @@ export class DcatApChV2DatasetAdapter {
    *
    */
   get id() {
-    return this.#dataset.getId;
+    return this.#dataset.getId
   }
 
   /**
@@ -38,7 +37,7 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the title (see 2.3 Multilingualism).
    */
   get title(): string {
-    return this.#dataset.getTitle ?? this.id;
+    return this.#dataset.getTitle ?? this.id
   }
 
   /**
@@ -57,7 +56,7 @@ export class DcatApChV2DatasetAdapter {
    * This property can be repeated for parallel language versions of the description (see 2.3 Multilingualism). On the user interface of data portals, the content of the element whose language corresponds to the display language selected by the user is displayed.
    */
   get description(): string | undefined {
-    return (this.#dataset.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim();
+    return (this.#dataset.getDescription ?? '').replaceAll(/\r\n/g, '\n').trim()
   }
 
   /**
@@ -79,31 +78,31 @@ export class DcatApChV2DatasetAdapter {
    * @returns {TagItem[]} The categories as TagItem array
    */
   getCategoriesForLanguage(lang: AppLanguage): TagItem[] {
-    const categories = this.#dataset?.getCategories ?? [];
+    const categories = this.#dataset?.getCategories ?? []
 
-    const tagItems = categories.map(cat => {
-      let preferredLabel = cat.label[lang];
+    const tagItems = categories.map((cat) => {
+      let preferredLabel = cat.label[lang]
       if (!preferredLabel) {
         // Try other APP_LANGUAGES
         for (const fallbackLang of APP_LANGUAGES) {
           if (cat.label[fallbackLang]) {
-            preferredLabel = cat.label[fallbackLang];
-            break;
+            preferredLabel = cat.label[fallbackLang]
+            break
           }
         }
       }
       // If still undefined, take any available label
       if (!preferredLabel) {
-        preferredLabel = Object.values(cat.label)[0] ?? '';
+        preferredLabel = Object.values(cat.label)[0] ?? ''
       }
       const tagItem = {
         id: cat.id,
         label: preferredLabel,
-      } as TagItem;
+      } as TagItem
       return tagItem
-    });
+    })
 
-    return tagItems;
+    return tagItems
   }
 
   /**
@@ -120,7 +119,7 @@ export class DcatApChV2DatasetAdapter {
    *
    */
   get publisher() {
-    const publisher = this.#dataset.getPublisher;
+    const publisher = this.#dataset.getPublisher
     // the interface in piveau is wrong.
     // i get this ...
     // {
@@ -136,9 +135,8 @@ export class DcatApChV2DatasetAdapter {
     return {
       type: publisher.type ?? '',
       name: publisher.name ?? '',
-      resource: (publisher as unknown as { resource: string }).resource ?? ''
+      resource: (publisher as unknown as { resource: string }).resource ?? '',
     }
-
   }
 
   /**
@@ -149,7 +147,7 @@ export class DcatApChV2DatasetAdapter {
    *
    */
   get licenses(): string[] {
-    return this.#dataset.getLicenses ?? [];
+    return this.#dataset.getLicenses ?? []
   }
 
   /**
@@ -198,7 +196,7 @@ export class DcatApChV2DatasetAdapter {
   }
 
   get getLinkedData(): Record<LinkedDataFormats, string> {
-    return this.#dataset?.getLinkedData ?? {} as Record<LinkedDataFormats, string>;
+    return this.#dataset?.getLinkedData ?? {} as Record<LinkedDataFormats, string>
   }
 
   /**
@@ -207,16 +205,15 @@ export class DcatApChV2DatasetAdapter {
    * @returns {DistributionAdapter[]} An array of DistributionAdapter instances
    */
   get distributions() {
-    return this.#dataset.getDistributions.map(d => new DcatApChV2DistributionAdapter(d, this));
+    return this.#dataset.getDistributions.map(d => new DcatApChV2DistributionAdapter(d, this))
   }
 
   /**
    * Get the available formats of the dataset
    */
-  get getOdsFormats(): { id?: string | null | undefined; label?: string | null | undefined; resource?: string | null | undefined; }[] {
-    return this.#dataset?.getOdsFormats ?? [];
+  get getOdsFormats(): { id?: string | null | undefined, label?: string | null | undefined, resource?: string | null | undefined }[] {
+    return this.#dataset?.getOdsFormats ?? []
   }
-
 
   /**
    * Get the keywords of the dataset. The language handling is done by piveau.
@@ -234,14 +231,14 @@ export class DcatApChV2DatasetAdapter {
    * Good practice: mark the language of the keywords with the [ISO 639-1] language code such as "geodata"@en.
    */
   get keywords(): TagItem[] {
-    return (this.#dataset?.getKeywords ?? []).map(keyword => {
+    return (this.#dataset?.getKeywords ?? []).map((keyword) => {
       const tagItem = {
         id: keyword.id,
         label: keyword.label,
-        size: 'sm'
-      } as TagItem;
+        size: 'sm',
+      } as TagItem
       return tagItem
-    });
+    })
   }
 
   /**
@@ -250,7 +247,6 @@ export class DcatApChV2DatasetAdapter {
   get catalog(): Catalog {
     return this.#dataset.getOdsCatalogInfo
   }
-
 
   /**
    * Get the accrual periodicity of the dataset if available
@@ -266,83 +262,82 @@ export class DcatApChV2DatasetAdapter {
    * - CV to be used: [VOCAB-EU-FREQUENCY].
    */
   get frequency() {
-    return this.#dataset.getOdsAccrualPeriodicity;
+    return this.#dataset.getOdsAccrualPeriodicity
   }
 
   get propertyTable() {
-    const rootNode = this.#dataset.getPropertyTable;
+    const rootNode = this.#dataset.getPropertyTable
     if (!rootNode) {
-      return [];
+      return []
     }
 
-    const ignoredNode = ['catalogRecord'];
-    const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id));
+    const ignoredNode = ['catalogRecord']
+    const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id))
 
-    const table: TableEntry[] = [];
+    const table: TableEntry[] = []
     for (const node of nodesToConsider) {
-
-      const entry = {} as Partial<TableEntry>;
+      const entry = {} as Partial<TableEntry>
 
       if (node.type === 'node' && node.data) {
-        entry.label = node.label;
-        entry.nodeType = 'node';
+        entry.label = node.label
+        entry.nodeType = 'node'
 
         if (node.data && node.data.length > 0) {
           for (const child of node.data) {
             if (child.type === 'value') {
               if (!entry.value) {
-                entry.value = [{ value: child.data as string, type: 'value' }];
-              } else {
-                entry.value.push({ value: child.data as string, type: 'value' });
+                entry.value = [{ value: child.data as string, type: 'value' }]
               }
-            } else if (child.type === 'href') {
-              const hrefData = child.data as { label: string; href: string };
+              else {
+                entry.value.push({ value: child.data as string, type: 'value' })
+              }
+            }
+            else if (child.type === 'href') {
+              const hrefData = child.data as { label: string, href: string }
               if (!entry.value) {
-                entry.value = [{ value: hrefData.label, href: hrefData.href, type: 'href' }];
-              } else {
-                entry.value.push({ value: hrefData.label, href: hrefData.href, type: 'href' });
+                entry.value = [{ value: hrefData.label, href: hrefData.href, type: 'href' }]
               }
-            } else {
+              else {
+                entry.value.push({ value: hrefData.label, href: hrefData.href, type: 'href' })
+              }
+            }
+            else {
               if (node.id === 'publisher') {
                 // special handling for publisher node
                 for (const data of child.data ?? []) {
                   if (!entry.value) {
-                    entry.value = [{ value: data.data as string, type: 'value' }];
-                  } else {
-                    entry.value.push({ value: data.data as string, type: 'value' });
+                    entry.value = [{ value: data.data as string, type: 'value' }]
+                  }
+                  else {
+                    entry.value.push({ value: data.data as string, type: 'value' })
                   }
                 }
-              } else if (node.id === 'contactPoint') {
+              }
+              else if (node.id === 'contactPoint') {
                 // special handling for contactPoint node
                 const nameNode = child.data?.find(d => d.id === 'contactPointName')
                 const emailNode = child.data?.find(d => d.id === 'contactPointEmail')
                 if (nameNode && emailNode && nameNode.data && emailNode.data) {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const emailData = ((emailNode.data as Array<any>)[0] as any).data
+                  const href = emailData.href
+                  const name = emailData.label
 
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const emailData = ((emailNode.data as Array<any>)[0] as any).data;
-                  const href = emailData.href;
-                  const name = emailData.label;
-
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const nameData = ((nameNode.data as Array<any>)[0] as any).data;
-                  const publisherName = nameData as string;
+                  const nameData = ((nameNode.data as Array<any>)[0] as any).data
+                  const publisherName = nameData as string
                   if (!entry.value) {
-                    entry.value = [{ value: publisherName, type: 'value' }];
-                    entry.value.push({ value: name, href, type: 'email' });
+                    entry.value = [{ value: publisherName, type: 'value' }]
+                    entry.value.push({ value: name, href, type: 'email' })
                   }
                 }
               }
             }
           }
-          table.push(entry as TableEntry);
+          table.push(entry as TableEntry)
         }
-
       }
-
     }
-    return table.sort((a, b) => a.label.localeCompare(b.label));
+    return table.sort((a, b) => a.label.localeCompare(b.label))
   }
 }
-
-
-

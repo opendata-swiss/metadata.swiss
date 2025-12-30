@@ -1,5 +1,5 @@
 import z from 'zod'
-import { schemaDataset, } from '@piveau/sdk-core'
+import { schemaDataset } from '@piveau/sdk-core'
 import { dcatApDataset, defineHubSearch } from '@piveau/sdk-vue'
 import { getKeywords } from './get-keywords'
 import { getOdsFormats } from './get-ods-formats'
@@ -30,7 +30,7 @@ export function useDatasetsSearch() {
       getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
       getOdsFormats: getOdsFormats(dataset),
       getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
-      getResource: dataset.resource
+      getResource: dataset.resource,
     }
   })
 }
@@ -57,8 +57,7 @@ export function useVocabularySearch() {
   })
 }
 
-
-export const ACTIVE_SHOWCASE_FACETS = ['categories', 'keywords', 'type'];
+export const ACTIVE_SHOWCASE_FACETS = ['categories', 'keywords', 'type']
 
 export function useShowcaseSearch() {
   const baseUrl = useRuntimeConfig().public.piveauHubSearchUrl as string
@@ -74,8 +73,8 @@ export function useShowcaseSearch() {
         z.object({
           id: z.string(),
           label: z.string(),
-          language: z.string()
-        })
+          language: z.string(),
+        }),
       ),
       catalog: z.object({
         id: z.string(),
@@ -86,10 +85,10 @@ export function useShowcaseSearch() {
           type: z.string(),
           name: z.string(),
           email: z.string(),
-          homepage: z.string()
+          homepage: z.string(),
         }),
         modified: z.string(),
-        homepage: z.string()
+        homepage: z.string(),
       }),
       index: z.string(),
       id: z.string(),
@@ -99,14 +98,14 @@ export function useShowcaseSearch() {
         z.object({
           id: z.string(),
           label: z.record(z.string(), z.string()),
-          resource: z.string()
-        })
+          resource: z.string(),
+        }),
       ),
       title: z.record(z.string(), z.string()),
       catalog_record: z.object({
         modified: z.string(),
-        issued: z.string()
-      })
+        issued: z.string(),
+      }),
     }),
   }, (showcase) => {
     return {

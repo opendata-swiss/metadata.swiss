@@ -41,7 +41,7 @@ const tabs = computed(() => {
         label: props.title || `Tab ${index + 1}`,
       }
     })
-    .filter((tab) => tab !== null) as Tab[]
+    .filter(tab => tab !== null) as Tab[]
 })
 
 const activeIndex = ref(0)

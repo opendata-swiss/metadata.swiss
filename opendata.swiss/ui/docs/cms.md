@@ -6,7 +6,7 @@ Additionally, decap handles multilinguality by allowing editors to write content
 
 ## Access
 
-The decap Content Manager can be accessed by opening https://piveau-ln.zazukoians.org/admin/. It requires authentication via GitHub. All users can log in but only users with write access to the repository can make changes.
+The decap Content Manager can be accessed by opening https://piveau.test.ods.zazukoians.org/admin/. It requires authentication via GitHub. All users can log in but only users with write access to the repository can make changes.
 
 When logged in, users are presented with a list of collections they can manage:
 

@@ -1,6 +1,5 @@
 <template>
-
-<OdsButton
+  <OdsButton
     variant="link"
     :title="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
     :aria-label="showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
@@ -11,7 +10,7 @@
       <SvgIcon
         icon="ChevronDown"
         role="btn"
-        :class="{ 'rotated': showFilters }"
+        :class="{ rotated: showFilters }"
       />
     </template>
     {{ showFilters ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters') }}
@@ -43,34 +42,33 @@
       <OdsActiveFilters :facets="props.facets" :facet-refs="facetRefs" @reset-all-facets="emit('reset-all-facets')" />
     </div>
   </ClientOnly>
-
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 
-import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
-import OdsMultiSelect from './OdsMultiSelect.vue';
-import OdsButton from '../OdsButton.vue';
-import OdsActiveFilters from './OdsActiveFilters.vue';
-import SvgIcon from "~/components/SvgIcon.vue";
+import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
+import OdsMultiSelect from './OdsMultiSelect.vue'
+import OdsButton from '../OdsButton.vue'
+import OdsActiveFilters from './OdsActiveFilters.vue'
+import SvgIcon from '~/components/SvgIcon.vue'
 
 interface Item {
-  id: string;
-  title: string | undefined;
-  count: number;
+  id: string
+  title: string | undefined
+  count: number
 }
 interface OdsFilterPanelProps {
-  facets: SearchResultFacetGroupLocalized[];
-  facetRefs: Record<string, Ref<string[]>>;
+  facets: SearchResultFacetGroupLocalized[]
+  facetRefs: Record<string, Ref<string[]>>
 }
 
 const props = defineProps<OdsFilterPanelProps>()
 
 const emit = defineEmits<{
   (e: 'reset-all-facets'): void
-}>();
+}>()
 
 const { t } = useI18n()
 const showFilters = ref(false)
@@ -80,17 +78,16 @@ function handleFacetChange(facet: SearchResultFacetGroupLocalized, items: Item[]
   currentFilters.value.set(facet.id, value)
   if (props.facetRefs[facet.id]) {
     props.facetRefs[facet.id]!.value = value
-  } else {
+  }
+  else {
     console.warn(`Facet reference for ${facet.id} is not defined. Cannot update model with new value ${value}.`)
   }
 }
 
 const currentFilters = ref(new Map<string, string[]>(new Map()))
-
 </script>
 
 <style lang="scss" scoped>
-
 .rotated {
   transform: rotate(180deg);
   transition: transform 0.2s;

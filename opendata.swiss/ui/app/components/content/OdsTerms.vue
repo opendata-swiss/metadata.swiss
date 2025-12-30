@@ -1,10 +1,10 @@
 <template>
-    <div class="ods-license">
-      <img
-        :src="imageSrc"
-        :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
-        :title="t(`message.terms_of_use.ods_${termsName}.title`)">
-    </div>
+  <div class="ods-license">
+    <img
+      :src="imageSrc"
+      :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
+      :title="t(`message.terms_of_use.ods_${termsName}.title`)">
+  </div>
   <ul>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_2`) }}</li>
@@ -13,37 +13,35 @@
 </template>
 
 <script setup lang="ts">
-import {computed} from 'vue';
-import { useI18n } from '#imports';
+import { computed } from 'vue'
+import { useI18n } from '#imports'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 const props = defineProps({
   name: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const termsName = computed(() => {
-  const name = props.name;
+  const name = props.name
   switch (name) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
-      return 'by';
+      return 'by'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_open':
-      return 'open';
+      return 'open'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_ask':
-      return 'ask';
-    case'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
-      return 'by_ask';
+      return 'ask'
+    case 'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
+      return 'by_ask'
     default:
-      return props.name;
+      return props.name
   }
+})
 
-});
-
-const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`);
-
+const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`)
 </script>
 
 <style lang="scss" scoped>

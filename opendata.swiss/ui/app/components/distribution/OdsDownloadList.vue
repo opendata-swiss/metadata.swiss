@@ -6,18 +6,16 @@
   </ul>
 </template>
 
-
 <script setup lang="ts">
-import OdsDownloadListItem from './OdsDownloadListItem.vue';
+import OdsDownloadListItem from './OdsDownloadListItem.vue'
 
 interface OdsDownloadListProps {
-  name: string;
-  downloadUrls: string[];
-  format?: string;
-  languages?: string[];
-  byteSize?: string;
+  name: string
+  downloadUrls: string[]
+  format?: string
+  languages?: string[]
+  byteSize?: string
 }
 
-const props = defineProps<OdsDownloadListProps>();
-
+const props = defineProps<OdsDownloadListProps>()
 </script>

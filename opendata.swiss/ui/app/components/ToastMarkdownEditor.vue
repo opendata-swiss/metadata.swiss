@@ -1,21 +1,21 @@
 <script setup>
-import Editor from '@toast-ui/editor';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import OdsFormField from "~/components/OdsFormField.vue";
+import Editor from '@toast-ui/editor'
+import '@toast-ui/editor/dist/toastui-editor.css'
+import OdsFormField from '~/components/OdsFormField.vue'
 
 const { autofocus } = defineProps({
   id: {
     type: String,
-    default: ''
+    default: '',
   },
   label: {
     type: String,
     required: false,
-    default: ''
+    default: '',
   },
   required: {
     type: Boolean,
-    default: false
+    default: false,
   },
   modelValue: {
     type: String,
@@ -24,13 +24,13 @@ const { autofocus } = defineProps({
   },
   autofocus: {
     type: Boolean,
-    default: false
+    default: false,
   },
-});
-const emit = defineEmits(['update:modelValue']);
-const editor = ref();
+})
+const emit = defineEmits(['update:modelValue'])
+const editor = ref()
 
-const value = ref('');
+const value = ref('')
 
 onMounted(() => {
   const e = new Editor({
@@ -41,13 +41,13 @@ onMounted(() => {
     autofocus,
     events: {
       change: () => {
-        const markdown = e.getMarkdown();
+        const markdown = e.getMarkdown()
         value.value = markdown
-        emit('update:modelValue', markdown);
+        emit('update:modelValue', markdown)
       },
     },
-  });
-});
+  })
+})
 </script>
 
 <template>

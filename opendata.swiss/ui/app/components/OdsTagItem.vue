@@ -20,12 +20,12 @@ import { computed } from 'vue'
 import SvgIcon from './SvgIcon.vue'
 
 export interface TagItem {
-  id: string;
-  label: string;
-  size?: 'base' | 'sm';
-  icon?: string;
-  to?: string;
-  variant?: 'default' | 'primary' | 'active';
+  id: string
+  label: string
+  size?: 'base' | 'sm'
+  icon?: string
+  to?: string
+  variant?: 'default' | 'primary' | 'active'
 }
 const props = defineProps<TagItem>()
 
