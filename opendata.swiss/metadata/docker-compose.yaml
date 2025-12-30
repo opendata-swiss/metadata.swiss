@@ -23,8 +23,10 @@ services:
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      # - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
+      - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
       - JAVA_OPTS=-Xms1g -Xmx2g
     volumes:
       - ./piveau_profile:/piv-profile:ro
@@ -103,62 +105,83 @@ services:
     volumes:
       - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
 
-  graphdb:
-    image: ontotext/graphdb:10.8.8
-    container_name: graphdb
-    restart: unless-stopped
+  virtuoso:
+    image: openlink/virtuoso-opensource-7:7.2.13-alpine
+    container_name: virtuoso
     logging:
       options:
         max-size: "50m"
     ports:
-      - 7200:7200
-    command:
-      - -Xms2g
-      - -Xmx5g
-      - -Ddefault.min.distinct.threshold=512m
+      - 8890:8890
+      - 1111:1111
+    environment:
+      - DBA_PASSWORD=dba
+      - VIRT_PARAMETERS_NUMBEROFBUFFERS=170000
+      - VIRT_PARAMETERS_MAXDIRTYBUFFERS=130000
+      - VIRT_PARAMETERS_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_SERVERTHREADS=100
+      - VIRT_HTTPSERVER_MAXCLIENTCONNECTIONS=100
     volumes:
-      - ./volumes/graphdb-data:/opt/graphdb/dist/data
+      - ./volumes/virtuoso-data:/database
 
-  graphdb-create-repo:
-    image: curlimages/curl:latest
-    container_name: graphdb-create-repo
-    restart: "no" # Just run once
-    depends_on:
-      graphdb:
-        condition: service_started
-    command:
-      - /config/setup.sh
-    volumes:
-      - ./config/graphdb:/config:ro
+  # graphdb:
+  #   image: ontotext/graphdb:10.8.8
+  #   container_name: graphdb
+  #   restart: unless-stopped
+  #   logging:
+  #     options:
+  #       max-size: "50m"
+  #   ports:
+  #     - 7200:7200
+  #   command:
+  #     - -Xms2g
+  #     - -Xmx5g
+  #     - -Ddefault.min.distinct.threshold=512m
+  #     - -Dgraphdb.health.minimal.free.storage.enabled=false
+  #     - -Dgraphdb.health.minimal.free.storage.asyncCheck=false
+  #   volumes:
+  #     - ./volumes/graphdb-data:/opt/graphdb/dist/data
 
-  mitmproxy:
-    image: mitmproxy/mitmproxy:12.1.1
-    container_name: mitmproxy
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    ports:
-      - 8888:8888
-      - 8889:8889
-    command:
-      - mitmweb
-      - --mode
-      - reverse:http://graphdb:7200/
-      - --listen-port
-      - "8888"
-      - --web-host
-      - "0.0.0.0"
-      - --web-port
-      - "8889"
-      - --set
-      - web_password=mitm
-      - -s
-      - /scripts/strip_timeout.py
-      - -s
-      - /scripts/digest_to_basic.py
-    volumes:
-      - ./config/mitmproxy:/scripts
+  # graphdb-create-repo:
+  #   image: curlimages/curl:latest
+  #   container_name: graphdb-create-repo
+  #   restart: "no" # Just run once
+  #   depends_on:
+  #     graphdb:
+  #       condition: service_started
+  #   command:
+  #     - /config/setup.sh
+  #   volumes:
+  #     - ./config/graphdb:/config:ro
+
+  # mitmproxy:
+  #   image: mitmproxy/mitmproxy:12.1.1
+  #   container_name: mitmproxy
+  #   restart: unless-stopped
+  #   logging:
+  #     options:
+  #       max-size: "50m"
+  #   ports:
+  #     - 8888:8888
+  #     - 8889:8889
+  #   command:
+  #     - mitmweb
+  #     - --mode
+  #     - reverse:http://graphdb:7200/
+  #     - --listen-port
+  #     - "8888"
+  #     - --web-host
+  #     - "0.0.0.0"
+  #     - --web-port
+  #     - "8889"
+  #     - --set
+  #     - web_password=mitm
+  #     - -s
+  #     - /scripts/strip_timeout.py
+  #     - -s
+  #     - /scripts/digest_to_basic.py
+  #   volumes:
+  #     - ./config/mitmproxy:/scripts
 
   #############################
   # docker-compose-consus.yml #
@@ -205,7 +228,8 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+    # image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.4
     restart: unless-stopped
     logging:
       options:
@@ -307,6 +331,106 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  ##############################
+  # docker-compose-metrics.yml #
+  ##############################
+  mongodb:
+    image: mongo:6.0.13
+    restart: unless-stopped
+    volumes:
+      - ./volumes/mongodb-data:/data/db
+
+  quickchart:
+    image: ianw/quickchart:v1.8.1
+    restart: unless-stopped
+
+  piveau-metrics-validating-shacl:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.4.0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8181:8080
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-reporter:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-reporter:4.0.5
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8183:8080
+    environment:
+      - API_KEY=yourReporterApiKey
+      - QUICKCHART_ADDRESS=http://quickchart:3400/chart
+      - SCHEDULES=[{"languages":["en","de"],"cron":" 0 50 16 1/1 * ? * "},{"languages":["fr","it"],"cron":" 0 55 16 1/1 * ? * "},{"languages":["en","de"],"cron":" 1 0 0 ? * * * "}]
+      - CORS_DOMAINS=["localhost"]
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-cache:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.8.2
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8185:8080
+    environment:
+      - MONGODB_CONNECTION=mongodb://mongodb:27017
+      - CACHE_APIKEY=yourCacheApiKey
+      # - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://virtuoso:8890","clearGeoDataCatalogues":["*"]}
+      - CACHE_CORS_DOMAINS=["localhost"]
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-dataset-similarities:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-dataset-similarities:3.0.3
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8186:8080
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-annotator:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.3
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-accessibility:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.7
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - PIVEAU_ACCESSIBILITY_PERSISTENCE_CONFIG={"mongoDbClient":{"connection_string":"mongodb://mongodb:27017"},"collection":"datasets"}
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-score:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.2
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   ####################
   # Custom services  #
