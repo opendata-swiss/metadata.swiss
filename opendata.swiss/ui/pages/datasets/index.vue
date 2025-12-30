@@ -8,20 +8,21 @@ import type { SearchParamsBase } from '@piveau/sdk-core'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
 import { useDatasetsSearch, facets } from '../../app/piveau/datasets'
-import OdsBreadcrumbs, { type BreadcrumbItem } from '../../app/components/OdsBreadcrumbs.vue';
-import OdsPagination from '../../app/components/OdsPagination.vue';
-import OdsDatasetList from '../../app/components/dataset/OdsDatasetList.vue';
-import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
-import OdsListCardToggle from '../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue';
-import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue';
-import {homePageBreadcrumb} from '../../app/composables/breadcrumbs';
-import SvgIcon from '../../app/components/SvgIcon.vue';
-import OdsButton from '../../app/components/OdsButton.vue';
-import { useSeoMeta } from 'nuxt/app';
-import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
-import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
-import {syncFacetsFromRoute, useFacetSync} from '../../app/composables/useFacetSync';
-const { t, locale} = useI18n()
+import OdsBreadcrumbs, { type BreadcrumbItem } from '../../app/components/OdsBreadcrumbs.vue'
+import OdsPagination from '../../app/components/OdsPagination.vue'
+import OdsDatasetList from '../../app/components/dataset/OdsDatasetList.vue'
+import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue'
+import OdsListCardToggle from '../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue'
+import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs'
+import SvgIcon from '../../app/components/SvgIcon.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
+import { useSeoMeta } from 'nuxt/app'
+import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage'
+import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
+
+const { t, locale } = useI18n()
 
 const router = useRouter()
 const route = useRoute()
@@ -238,14 +239,14 @@ onMounted(() => {
   syncFacetsFromRoute({
     facets,
     facetRefs,
-    route
+    route,
   })
 
   useFacetSync({
     facets,
     facetRefs,
     route,
-    router
+    router,
   })
 })
 

@@ -1,4 +1,4 @@
-import { schemaDataset, } from '@piveau/sdk-core'
+import { schemaDataset } from '@piveau/sdk-core'
 import { dcatApDataset, defineHubSearch } from '@piveau/sdk-vue'
 import { getKeywords } from './get-keywords'
 import { getOdsFormats } from './get-ods-formats'
@@ -22,13 +22,12 @@ export function useDatasetsSearch() {
   }, (dataset, localeInstance) => {
     const { setup: base } = dcatApDataset()
 
-
     return {
       ...base(dataset, localeInstance),
       getKeywords: getKeywords(dataset, localeInstance),
       getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
       getOdsFormats: getOdsFormats(dataset),
-      getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset)
+      getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
     }
   })
 }

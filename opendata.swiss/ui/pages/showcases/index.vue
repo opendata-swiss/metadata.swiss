@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import {computed, onMounted, reactive, ref, toRefs, watch} from 'vue'
+import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 import { useSeoMeta } from 'nuxt/app'
 import { getCurrentTranslation } from '../../app/lib/getCurrentTranslation'
 import type { SearchParamsBase } from '@piveau/sdk-core'
 
-
-import OdsPage from '../../app/components/OdsPage.vue';
-import {homePageBreadcrumb} from '../../app/composables/breadcrumbs.js';
-import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue';
-import OdsCard from '../../app/components/OdsCard.vue';
-import SvgIcon from '../../app/components/SvgIcon.vue';
-import OdsButton from '../../app/components/OdsButton.vue';
-import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
-import { useShowcaseSearch, facets } from '../../app/piveau/showcases';
-import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
-import {syncFacetsFromRoute, useFacetSync} from '../../app/composables/useFacetSync';
+import OdsPage from '../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
+import OdsCard from '../../app/components/OdsCard.vue'
+import SvgIcon from '../../app/components/SvgIcon.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
+import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue'
+import { useShowcaseSearch, facets } from '../../app/piveau/showcases'
+import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
+import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
 
 const { locale, t } = useI18n()
 
@@ -149,14 +148,14 @@ onMounted(() => {
   syncFacetsFromRoute({
     facets,
     facetRefs,
-    route
+    route,
   })
 
   useFacetSync({
     facets,
     facetRefs,
     route,
-    router
+    router,
   })
 })
 
