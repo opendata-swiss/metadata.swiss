@@ -8,19 +8,19 @@ import type { SearchParamsBase } from '@piveau/sdk-core'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
 import { useDatasetsSearch, facets } from '../../app/piveau/datasets'
-import OdsBreadcrumbs, { type BreadcrumbItem } from "../../app/components/OdsBreadcrumbs.vue";
-import OdsPagination from "../../app/components/OdsPagination.vue";
-import OdsDatasetList from "../../app/components/dataset/OdsDatasetList.vue";
-import OdsFilterPanel from "../../app/components/dataset/OdsFilterPanel.vue";
-import OdsListCardToggle from "../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue";
-import OdsSortSelect from "../../app/components/dataset/OdsSortSelect.vue";
-import {homePageBreadcrumb} from "../../app/composables/breadcrumbs";
-import SvgIcon from "../../app/components/SvgIcon.vue";
-import OdsButton from "../../app/components/OdsButton.vue";
+import OdsBreadcrumbs, { type BreadcrumbItem } from '../../app/components/OdsBreadcrumbs.vue';
+import OdsPagination from '../../app/components/OdsPagination.vue';
+import OdsDatasetList from '../../app/components/dataset/OdsDatasetList.vue';
+import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue';
+import OdsListCardToggle from '../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue';
+import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue';
+import {homePageBreadcrumb} from '../../app/composables/breadcrumbs';
+import SvgIcon from '../../app/components/SvgIcon.vue';
+import OdsButton from '../../app/components/OdsButton.vue';
 import { useSeoMeta } from 'nuxt/app';
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage';
 import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
-import {syncFacetsFromRoute, useFacetSync} from "../../app/composables/useFacetSync";
+import {syncFacetsFromRoute, useFacetSync} from '../../app/composables/useFacetSync';
 const { t, locale} = useI18n()
 
 const router = useRouter()
@@ -68,11 +68,11 @@ function resetSearch() {
 const sortOptions = computed(() => {
   const currentLocale = locale.value
   return [
-    { value: `relevance`, text: t('message.dataset_search.sort_by.relevance') },
+    { value: 'relevance', text: t('message.dataset_search.sort_by.relevance') },
     { value: `title.${currentLocale}+asc`, text: t('message.dataset_search.sort_by.title_asc') },
     { value: `title.${currentLocale}+dsc`, text: t('message.dataset_search.sort_by.title_desc') },
-    { value: `modified+desc`, text: t('message.dataset_search.sort_by.date_modified_desc') },
-    { value: `modified+asc`, text: t('message.dataset_search.sort_by.date_modified_asc') },
+    { value: 'modified+desc', text: t('message.dataset_search.sort_by.date_modified_desc') },
+    { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
   ]
 })
 const selectedSort = ref<string>(typeof route.query.sort === 'string' ? route.query.sort.replace(/ /g, '+') : '')

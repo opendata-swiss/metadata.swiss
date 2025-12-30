@@ -44,7 +44,7 @@ export default defineEventHandler(async (event) => {
 
   let storage: ShowcaseStorage
 
-  const imageRoot = `img/uploads`
+  const imageRoot = 'img/uploads'
 
   const uploads: Array<() => Promise<void>> = []
   const reqBody = await readMultipartFormData(event) as PayloadData
