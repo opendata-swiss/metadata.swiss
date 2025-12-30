@@ -1,6 +1,6 @@
 import {watch} from 'vue'
 import type {LocationQuery, LocationQueryValue} from 'vue-router'
-import type {useRoute, useRouter} from "#vue-router";
+import type {useRoute, useRouter} from '#vue-router';
 
 type FacetRefs<F extends string> = Record<F, Ref<string[]>>;
 

@@ -121,18 +121,18 @@ import { reactive, ref, toRefs } from 'vue'
 import type { $ZodIssue as ZodIssue } from 'zod/v4/core'
 import type { SearchParamsBase } from '@piveau/sdk-core'
 import {debounce} from 'perfect-debounce'
-import OdsMultiSelect from "../../app/components/dataset/OdsMultiSelect.vue";
-import {useDatasetsSearch} from "../../app/piveau/datasets";
-import {useVocabularySearch} from "../../app/piveau/vocabularies";
-import OdsNotificationBanner from "../../app/components/OdsNotificationBanner.vue";
-import OdsButton from "../../app/components/OdsButton.vue";
-import OdsInput from "../../app/components/OdsInput.vue";
-import OdsSelect from "../../app/components/OdsSelect.vue";
-import OdsPage from "../../app/components/OdsPage.vue";
-import SvgIcon from "../../app/components/SvgIcon.vue";
-import ToastMarkdownEditor from "../../app/components/ToastMarkdownEditor.vue";
-import OdsTabs from "../../app/components/OdsTabs.vue";
-import OdsTab from "../../app/components/OdsTab.vue";
+import OdsMultiSelect from '../../app/components/dataset/OdsMultiSelect.vue';
+import {useDatasetsSearch} from '../../app/piveau/datasets';
+import {useVocabularySearch} from '../../app/piveau/vocabularies';
+import OdsNotificationBanner from '../../app/components/OdsNotificationBanner.vue';
+import OdsButton from '../../app/components/OdsButton.vue';
+import OdsInput from '../../app/components/OdsInput.vue';
+import OdsSelect from '../../app/components/OdsSelect.vue';
+import OdsPage from '../../app/components/OdsPage.vue';
+import SvgIcon from '../../app/components/SvgIcon.vue';
+import ToastMarkdownEditor from '../../app/components/ToastMarkdownEditor.vue';
+import OdsTabs from '../../app/components/OdsTabs.vue';
+import OdsTab from '../../app/components/OdsTab.vue';
 
 const i18n = useI18n()
 const { locale } = i18n
