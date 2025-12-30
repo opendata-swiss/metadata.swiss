@@ -6,16 +6,15 @@ import { useSeoMeta } from 'nuxt/app'
 import { getCurrentTranslation } from '../../app/lib/getCurrentTranslation'
 import type { SearchParamsBase } from '@piveau/sdk-core'
 
-
-import OdsPage from '../../app/components/OdsPage.vue';
-import {homePageBreadcrumb} from '../../app/composables/breadcrumbs.js';
-import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue';
-import OdsCard from '../../app/components/OdsCard.vue';
-import SvgIcon from '../../app/components/SvgIcon.vue';
-import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS} from '../../app/piveau/search';
-import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue';
-import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue';
-import OdsSearchResults from '../../app/components/OdsSearchResults.vue';
+import OdsPage from '../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
+import OdsCard from '../../app/components/OdsCard.vue'
+import SvgIcon from '../../app/components/SvgIcon.vue'
+import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS } from '../../app/piveau/search'
+import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 
 const { locale, t } = useI18n()
 
@@ -154,7 +153,7 @@ await suspense()
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
-     <!-- search panel -->
+    <!-- search panel -->
     <OdsSearchPanel
       :search-input="searchInput"
       :search-prompt="t('message.showcase.search.prompt')"
@@ -164,46 +163,46 @@ await suspense()
       @reset-all-facets="resetAllFacets"
       @update:search-input="value => searchInput = value"
     />
-   <!-- results -->
+    <!-- results -->
     <OdsSearchResults :results-count="getSearchResultsCount">
       <div  class="ods-card-list">
         <ul class="search-results-list">
           <li  v-for="showcase in getSearchResultsEnhanced" :key="showcase.id">
             <OdsCard
-                style="height: 100%;"
-                :title="getCurrentTranslation(showcase.title, locale.value)"
-                clickable
-              >
-                <template #image>
-                  <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
-                </template>
+              style="height: 100%;"
+              :title="getCurrentTranslation(showcase.title, locale.value)"
+              clickable
+            >
+              <template #image>
+                <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
+              </template>
 
-                <template #top-meta>
-                  <div>
-                    <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
-                    <span class="meta-info__item">
-                      {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
-                    </span>
-                  </div>
-                </template>
+              <template #top-meta>
+                <div>
+                  <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                  <span class="meta-info__item">
+                    {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
+                  </span>
+                </div>
+              </template>
 
-                <template #footer-info>
-                  <div>
-                    <span v-for="tag in showcase.keywords" :key="tag.id" class="tag">
-                      {{ tag.label }}
-                    </span>
-                  </div>
-                </template>
+              <template #footer-info>
+                <div>
+                  <span v-for="tag in showcase.keywords" :key="tag.id" class="tag">
+                    {{ tag.label }}
+                  </span>
+                </div>
+              </template>
 
-                <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
+              <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
 
-                <template #footer-action>
-                  <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                    <SvgIcon icon="ArrowRight" role="btn" />
-                    <span class="btn__text">Weiterlesen</span>
-                  </NuxtLinkLocale>
-                </template>
-              </OdsCard>
+              <template #footer-action>
+                <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
+                  <SvgIcon icon="ArrowRight" role="btn" />
+                  <span class="btn__text">Weiterlesen</span>
+                </NuxtLinkLocale>
+              </template>
+            </OdsCard>
           </li>
         </ul>
       </div>

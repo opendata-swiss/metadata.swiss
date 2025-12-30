@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import toProperCase from '~/lib/toProperCase.js';
-import { loadHandbookBreadcrumb } from '~/lib/breadcrumbs';
-import OdsHandbookPage from '../../../app/components/handbook/OdsHandbookPage.vue';
+import toProperCase from '~/lib/toProperCase.js'
+import { loadHandbookBreadcrumb } from '~/lib/breadcrumbs'
+import OdsHandbookPage from '../../../app/components/handbook/OdsHandbookPage.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()

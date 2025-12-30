@@ -20,9 +20,10 @@ import { useSeoMeta } from 'nuxt/app'
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage'
 import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
-import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue';
-import OdsSearchResults from '../../app/components/OdsSearchResults.vue';
-const { t, locale} = useI18n()
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
+
+const { t, locale } = useI18n()
 
 const router = useRouter()
 const route = useRoute()
@@ -292,17 +293,16 @@ await suspense()
     </header>
 
     <main id="main-content">
-
-    <!-- search panel -->
-    <OdsSearchPanel
-      :search-input="searchInput"
-      :search-prompt="t('message.dataset_search.search_placeholder')"
-      :facet-refs="facetRefs"
-      :active-facets="activeFacets"
-      @search="onSearch"
-      @reset-all-facets="resetAllFacets"
-      @update:search-input="value => searchInput = value"
-    />
+      <!-- search panel -->
+      <OdsSearchPanel
+        :search-input="searchInput"
+        :search-prompt="t('message.dataset_search.search_placeholder')"
+        :facet-refs="facetRefs"
+        :active-facets="activeFacets"
+        @search="onSearch"
+        @reset-all-facets="resetAllFacets"
+        @update:search-input="value => searchInput = value"
+      />
       <!-- results -->
 
       <OdsSearchResults :results-count="getSearchResultsCount">
@@ -312,46 +312,46 @@ await suspense()
           <OdsListCardToggle v-model="listType" />
         </template>
 
-            <!-- <div v-if="isFetching" class="is-fetching">
+        <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
             </div> -->
-            <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
-            <div class="pagination pagination--right">
-              <OdsPagination
-                :current-page="(Number(route.query.page  ?? 1))"
-                :total-pages="getSearchResultsPagesCount"
-                :page-label="t('message.ods-pagination.page')"
-                :total-pages-label="t('message.ods-pagination.of') + getSearchResultsPagesCount"
-                :pagination-items="[
-                  {
-                    icon: 'ChevronLeft',
-                    label: t('message.ods-pagination.previous'),
-                    link: { name: route.name, query: { ...route.query, page: (Number(route.query.page  ?? 1) - 1) } /*, hash: '#search-results'*/ },
-                  },
-                  {
-                    icon: 'ChevronRight',
-                    label: t('message.ods-pagination.next'),
-                    link: { name: route.name, query: { ...route.query, page: (Number(route.query.page ?? 1) + 1) } /* hash: '#search-results' */ },
-                  },
-                ]"
-                @page-change="(page) => goToPage(page)"
-                @click="scrollOnPaging($event)"
-              />
-            </div>
+        <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
+        <div class="pagination pagination--right">
+          <OdsPagination
+            :current-page="(Number(route.query.page  ?? 1))"
+            :total-pages="getSearchResultsPagesCount"
+            :page-label="t('message.ods-pagination.page')"
+            :total-pages-label="t('message.ods-pagination.of') + getSearchResultsPagesCount"
+            :pagination-items="[
+              {
+                icon: 'ChevronLeft',
+                label: t('message.ods-pagination.previous'),
+                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page  ?? 1) - 1) } /*, hash: '#search-results'*/ },
+              },
+              {
+                icon: 'ChevronRight',
+                label: t('message.ods-pagination.next'),
+                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page ?? 1) + 1) } /* hash: '#search-results' */ },
+              },
+            ]"
+            @page-change="(page) => goToPage(page)"
+            @click="scrollOnPaging($event)"
+          />
+        </div>
 
-            <div class="notification notification--info">
-              <SvgIcon icon="InfoCircle" role="notification" />
-              <div class="notification__content">
-                <div class="text--bold">
-                  Haben Sie nicht gefunden wonach Sie suchen?
-                </div>
-                <div>
-                  Gerne geben wir Ihnen auch persönlich Auskunft. Bitte melden Sie sich
-                  via Kontaktformular bei uns.
-                </div>
-                <a href="#" class="link">Kontaktformular</a>
-              </div>
+        <div class="notification notification--info">
+          <SvgIcon icon="InfoCircle" role="notification" />
+          <div class="notification__content">
+            <div class="text--bold">
+              Haben Sie nicht gefunden wonach Sie suchen?
             </div>
+            <div>
+              Gerne geben wir Ihnen auch persönlich Auskunft. Bitte melden Sie sich
+              via Kontaktformular bei uns.
+            </div>
+            <a href="#" class="link">Kontaktformular</a>
+          </div>
+        </div>
       </OdsSearchResults>
     </main>
   </div>

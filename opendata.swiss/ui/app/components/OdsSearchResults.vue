@@ -12,17 +12,20 @@
             <slot name="header-right" />
           </div>
         </div>
-        <h2 class="sr-only">Results list</h2>
+        <h2 class="sr-only">
+          Results list
+        </h2>
         <slot/>
       </div>
     </div>
   </section>
 </template>
+
 <script setup lang="ts">
-const {t} = useI18n()
+const { t } = useI18n()
 
 interface PropTypes {
-  resultsCount: number;
+  resultsCount: number
 }
 
 defineProps<PropTypes>()

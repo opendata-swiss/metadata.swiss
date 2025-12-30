@@ -16,19 +16,19 @@
 </template>
 
 <script setup lang="ts">
-import OdsPage from '~/components/OdsPage.vue';
-import OdsBreadcrumbs, {type BreadcrumbItem} from '~/components/OdsBreadcrumbs.vue';
-import OdsSearchPanel from '~/components/OdsSearchPanel.vue';
-import {useRouter} from '#vue-router';
+import OdsPage from '~/components/OdsPage.vue'
+import OdsBreadcrumbs, { type BreadcrumbItem } from '~/components/OdsBreadcrumbs.vue'
+import OdsSearchPanel from '~/components/OdsSearchPanel.vue'
+import { useRouter } from '#vue-router'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 defineProps<{
-  page: unknown;
-  breadcrumbs: BreadcrumbItem[];
+  page: unknown
+  breadcrumbs: BreadcrumbItem[]
 }>()
 
-const searchInput = ref('');
+const searchInput = ref('')
 
 const router = useRouter()
 const onSearch = (value: string) => {
@@ -36,5 +36,5 @@ const onSearch = (value: string) => {
     path: '/handbook/search',
     query: { q: value.trim() },
   })
-};
+}
 </script>

@@ -1,53 +1,54 @@
 <script setup>
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
-import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue';
-import OdsPage from '../../app/components/OdsPage.vue';
-import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue';
-import {homePageBreadcrumb} from '../../app/composables/breadcrumbs.js';
-import OdsCard from '../../app/components/OdsCard.vue';
-import OdsSearchResults from '../../app/components/OdsSearchResults.vue';
-import {useSeoMeta} from 'nuxt/app';
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
+import OdsPage from '../../app/components/OdsPage.vue'
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
+import OdsCard from '../../app/components/OdsCard.vue'
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
+import { useSeoMeta } from 'nuxt/app'
 
-const {t, locale} = useI18n();
-const route = useRoute();
+const { t, locale } = useI18n()
+const route = useRoute()
 const router = useRouter()
 
-const searchInput = ref(route.query.q);
+const searchInput = ref(route.query.q)
 
 const onSearch = (value) => {
-  searchInput.value = value;
+  searchInput.value = value
   router.push({
     name: route.name,
-    query: {q: value.trim()},
+    query: { q: value.trim() },
   })
-};
+}
 
-const {data} = await useAsyncData('handbook-search', async () => {
-  const sections = await queryCollectionSearchSections('handbook');
+const { data } = await useAsyncData('handbook-search', async () => {
+  const sections = await queryCollectionSearchSections('handbook')
   const pages = await queryCollection('handbook')
     .select('path', 'permalink', 'section')
     .all()
 
   console.log(pages)
 
-  return sections.map(section => {
+  return sections.map((section) => {
     let path
     const [id, hash] = section.id.split('#')
 
     const page = pages.find(({ path }) => section.id.startsWith(path))
     if (page) {
       path = `${page.section.toLowerCase()}/${page.permalink}`
-    } else {
-       path = id.substring(0, id.lastIndexOf('.'))
+    }
+    else {
+      path = id.substring(0, id.lastIndexOf('.'))
     }
 
     return {
       ...section,
       path,
       hash: hash ? `#${hash}` : null,
-    };
-  });
+    }
+  })
 })
 
 const fuse = new Fuse(data.value, {
@@ -62,9 +63,9 @@ const result = computed(() => {
     .filter(article =>
       article.item.content
       && article.item.level < 3
-      && articleIdPattern.test(article.item.id)
+      && articleIdPattern.test(article.item.id),
     )
-    .slice(0, 10);
+    .slice(0, 10)
 })
 
 const breadcrumbs = [
@@ -81,9 +82,9 @@ const breadcrumbs = [
 watch(
   () => route.query.q,
   (value) => {
-    searchInput.value = value;
-  }
-);
+    searchInput.value = value
+  },
+)
 
 useSeoMeta({
   title: `${t('message.header.navigation.search')} | ${t('message.header.navigation.handbook')} | opendata.swiss`,
