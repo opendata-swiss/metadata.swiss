@@ -51,6 +51,9 @@ export default defineNuxtConfig({
       keycloakRealm: 'lindas-next',
       keycloakClientId: 'piveau-hub-ui',
     },
+    showcases: {
+      maxImageWidth: 900,
+    },
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
