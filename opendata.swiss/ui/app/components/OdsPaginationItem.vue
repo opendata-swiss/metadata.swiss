@@ -22,7 +22,7 @@ const props = defineProps({
   type: {
     type: String,
     default: () => '',
-    validator: (prop) =>
+    validator: prop =>
       ['outline', 'outline-negative'].includes(prop as string),
   },
   icon: {

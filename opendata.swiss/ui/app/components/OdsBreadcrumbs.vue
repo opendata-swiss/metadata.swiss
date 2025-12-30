@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import type { RouteLocationNamedI18n } from 'vue-router'
-import SvgIcon from "~/components/SvgIcon.vue";
+import SvgIcon from '~/components/SvgIcon.vue'
 
 export interface BreadcrumbItem {
-  id: string,
+  id: string
   title: string
   route?: RouteLocationNamedI18n<string | number | symbol>
   path?: string
@@ -13,8 +13,8 @@ export interface BreadcrumbItem {
 const { breadcrumbs } = defineProps({
   breadcrumbs: {
     type: Array as PropType<BreadcrumbItem[]>,
-    required: true
-  }
+    required: true,
+  },
 })
 </script>
 

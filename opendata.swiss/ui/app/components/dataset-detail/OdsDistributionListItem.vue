@@ -28,22 +28,20 @@
 </template>
 
 <script setup lang="ts">
-import SvgIcon from '../SvgIcon.vue';
-import OdsButton from '../OdsButton.vue';
-import { useI18n } from '#imports';
-import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter';
-import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
+import SvgIcon from '../SvgIcon.vue'
+import OdsButton from '../OdsButton.vue'
+import { useI18n } from '#imports'
+import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter'
+import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 interface DistributionProps {
-  distribution: DcatApChV2DistributionAdapter;
+  distribution: DcatApChV2DistributionAdapter
 }
 
-const props = defineProps<DistributionProps>();
-
+const props = defineProps<DistributionProps>()
 </script>
-
 
 <style scoped lang="scss">
 .disabled {

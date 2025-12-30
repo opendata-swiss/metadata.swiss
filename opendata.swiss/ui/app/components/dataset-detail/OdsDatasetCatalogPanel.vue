@@ -1,51 +1,51 @@
 <template>
-   <p class="meta-info">
-      <span class="meta-info__item">{{ t('message.dataset_detail.catalog') }}</span>
-      <span class="meta-info__item">{{ props.dataset.catalog.title }}</span>
-   </p>
-    <p class="meta-info">
-      <span
-        v-if="props.dataset.catalog.issued"
-        class="meta-info__item"
-      >
-        {{ t('message.dataset_detail.released') }}
-        <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.issued)" />
-      </span>
-      <span
-        v-if="props.dataset.catalog.modified"
-        class="meta-info__item"
-      >
-        {{ t('message.dataset_detail.modified_on') }}
-        <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.modified)" />
-      </span>
-    </p>
-    <p class="meta-info" style="margin-top: 1rem">
-      <span class="meta-info__item">{{ t('message.dataset_detail.this_dataset_record') }}</span>
-    </p>
+  <p class="meta-info">
+    <span class="meta-info__item">{{ t('message.dataset_detail.catalog') }}</span>
+    <span class="meta-info__item">{{ props.dataset.catalog.title }}</span>
+  </p>
+  <p class="meta-info">
+    <span
+      v-if="props.dataset.catalog.issued"
+      class="meta-info__item"
+    >
+      {{ t('message.dataset_detail.released') }}
+      <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.issued)" />
+    </span>
+    <span
+      v-if="props.dataset.catalog.modified"
+      class="meta-info__item"
+    >
+      {{ t('message.dataset_detail.modified_on') }}
+      <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.modified)" />
+    </span>
+  </p>
+  <p class="meta-info" style="margin-top: 1rem">
+    <span class="meta-info__item">{{ t('message.dataset_detail.this_dataset_record') }}</span>
+  </p>
 
-    <p class="meta-info">
-      <span
-        v-if="props.dataset.catalog.record?.issued"
-        class="meta-info__item"
-      >
-        {{ t('message.dataset_detail.released') }}
-         <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.record.issued)" />
-      </span>
-      <span
-        v-if="props.dataset.catalog.record?.modified"
-        class="meta-info__item"
-        style="cursor: pointer"
-      >
-        {{ t('message.dataset_detail.modified_on') }}
-        <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.record.modified)" />
-      </span>
-    </p>
+  <p class="meta-info">
+    <span
+      v-if="props.dataset.catalog.record?.issued"
+      class="meta-info__item"
+    >
+      {{ t('message.dataset_detail.released') }}
+      <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.record.issued)" />
+    </span>
+    <span
+      v-if="props.dataset.catalog.record?.modified"
+      class="meta-info__item"
+      style="cursor: pointer"
+    >
+      {{ t('message.dataset_detail.modified_on') }}
+      <OdsRelativeDateToggle :date="new Date(props.dataset.catalog.record.modified)" />
+    </span>
+  </p>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
-import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue';
+import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
 
 const { t } = useI18n()
 
@@ -54,7 +54,6 @@ interface PanelProps {
 }
 
 const props = defineProps<PanelProps>()
-
 </script>
 
 <style lang="scss" scoped>
@@ -82,5 +81,4 @@ const props = defineProps<PanelProps>()
 .meta-info__item {
   cursor: pointer;
 }
-
 </style>

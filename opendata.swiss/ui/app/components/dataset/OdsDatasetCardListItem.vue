@@ -19,7 +19,7 @@
     <template #footer-info>
       <span class="meta-info__item" style="color:magenta">{{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }}</span>
       <span class="meta-info__item">{{ props.dataset.keywords.map(k => k.label).join(', ') }}</span>
-      <span class="meta-info__item" style="color:red">{{(props.dataset.getOdsFormats ?? []).map(f => f.label ).join(', ') }}</span>
+      <span class="meta-info__item" style="color:red">{{(props.dataset.getOdsFormats ?? []).map(f => f.label).join(', ') }}</span>
     </template>
     <template #footer-action>
       <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: props.dataset.id }, query: searchParams }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
@@ -28,15 +28,14 @@
       </NuxtLinkLocale>
     </template>
   </OdsCard>
-
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
-import OdsCard from "~/components/OdsCard.vue";
-import SvgIcon from "~/components/SvgIcon.vue";
-import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
-import type { LocationQueryRaw } from 'vue-router';
+import { useI18n } from '#imports'
+import OdsCard from '~/components/OdsCard.vue'
+import SvgIcon from '~/components/SvgIcon.vue'
+import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import type { LocationQueryRaw } from 'vue-router'
 
 const { t, locale } = useI18n()
 
@@ -46,8 +45,6 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-
-
 </script>
 
 <style scoped lang="scss">

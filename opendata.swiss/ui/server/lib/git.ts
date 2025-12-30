@@ -1,7 +1,7 @@
-import type {RestEndpointMethodTypes} from "@octokit/rest";
-import {Octokit} from "@octokit/rest";
-import {createAppAuth} from "@octokit/auth-app";
-import {minimatch} from "minimatch";
+import type { RestEndpointMethodTypes } from '@octokit/rest'
+import { Octokit } from '@octokit/rest'
+import { createAppAuth } from '@octokit/auth-app'
+import { minimatch } from 'minimatch'
 
 const BASE_PATH = 'opendata.swiss/ui/public'
 
@@ -10,7 +10,7 @@ function getAuth() {
     return {
       appId: parseInt(process.env.GITHUB_APP_ID),
       privateKey: process.env.GITHUB_APP_PRIVATE_KEY!,
-      installationId: process.env.GITHUB_APP_INSTALLATION_ID!
+      installationId: process.env.GITHUB_APP_INSTALLATION_ID!,
     }
   }
 
@@ -20,8 +20,8 @@ function getAuth() {
 export default function (slug: string) {
   const logger = console
 
-  let baseSha: string;
-  const prBranch = `cms/Showcases/${slug}`;
+  let baseSha: string
+  const prBranch = `cms/Showcases/${slug}`
 
   const owner = process.env.GITHUB_OWNER!
   const repo = process.env.GITHUB_REPO!
@@ -29,10 +29,10 @@ export default function (slug: string) {
 
   logger.info(`Using GitHub repository: ${owner}/${repo}, base branch: ${baseBranch}`)
 
-  const auth = getAuth();
+  const auth = getAuth()
   const octokit = new Octokit({
     authStrategy: typeof auth === 'string' ? undefined : createAppAuth,
-    auth
+    auth,
   })
 
   const tree: RestEndpointMethodTypes['git']['createTree']['parameters']['tree'] = []
@@ -45,8 +45,8 @@ export default function (slug: string) {
           owner,
           repo,
           branch: baseBranch,
-        });
-        baseSha = gotBranch.data.commit.sha;
+        })
+        baseSha = gotBranch.data.commit.sha
 
         logger.info(`Creating branch '${prBranch}'`)
         await octokit.git.createRef({
@@ -55,15 +55,17 @@ export default function (slug: string) {
           branch: baseBranch,
           ref: `refs/heads/${prBranch}`,
           sha: baseSha,
-        });
+        })
 
         await this.deleteExistingImages()
-      } catch (error: any) {
+      }
+      catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         logger.error('Error preparing git storage')
         if (error.status === 422) {
           logger.error(error)
           return false
-        } else {
+        }
+        else {
           throw error
         }
       }
@@ -71,22 +73,22 @@ export default function (slug: string) {
       return true
     },
     async writeFile(path: string, payload: string | Buffer) {
-      const blobContents = Buffer.isBuffer(payload) ?
-        {content: payload.toString('base64'), encoding: 'base64'} :
-        {content: payload, encoding: 'utf-8'};
+      const blobContents = Buffer.isBuffer(payload)
+        ? { content: payload.toString('base64'), encoding: 'base64' }
+        : { content: payload, encoding: 'utf-8' }
 
       const blob = await octokit.git.createBlob({
         owner,
         repo,
         ...blobContents,
-      });
+      })
 
       tree.push({
         path: `${BASE_PATH}/${path}`,
         type: 'blob',
         mode: '100644',
-        sha: blob.data.sha
-      });
+        sha: blob.data.sha,
+      })
     },
     async finalize(): Promise<boolean> {
       try {
@@ -124,11 +126,12 @@ export default function (slug: string) {
           owner,
           repo,
           issue_number: pr.data.number,
-          labels: ['decap-cms/draft']
+          labels: ['decap-cms/draft'],
         })
 
         logger.info(`Created pull request '${owner}/${repo}#${pr.data.number}'`)
-      } catch (error) {
+      }
+      catch (error) {
         logger.error('Failed to create PR')
         logger.error(error)
         return false
@@ -144,7 +147,8 @@ export default function (slug: string) {
           repo,
           ref: `heads/${prBranch}`,
         })
-      } catch (e) {
+      }
+      catch (e) {
         logger.warn('Failed to delete branch on rollback')
         logger.warn(e)
       }
@@ -161,7 +165,7 @@ export default function (slug: string) {
 
       const imagesToDelete = (Array.isArray(data) ? data : [])
         .filter(item => minimatch(item.path, `${uploadsPath}/${slug}-image*`))
-        .map(item => item.path);
+        .map(item => item.path)
 
       logger.info(`Found ${imagesToDelete.length} images to delete`)
       for (const path of imagesToDelete) {
@@ -172,6 +176,6 @@ export default function (slug: string) {
           sha: null,
         })
       }
-    }
+    },
   }
 }

@@ -1,19 +1,19 @@
-import type {ShowcasesCollectionItem} from '@nuxt/content'
-import type {H3Event, MultiPartData} from "h3";
-import slugify from "slugify";
+import type { ShowcasesCollectionItem } from '@nuxt/content'
+import type { H3Event, MultiPartData } from 'h3'
+import slugify from 'slugify'
 import * as yaml from 'yaml'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import { visit } from 'unist-util-visit'
-import {submissionSchema} from '~~/src/schema/showcase'
+import { submissionSchema } from '~~/src/schema/showcase'
 import remarkStringify from 'remark-stringify'
-import {match, P} from "ts-pattern";
-import git from "~~/server/lib/git";
-import fs from "~~/server/lib/fs";
-import * as image from "~~/server/lib/images";
-import type { AppLanguage as Language} from "~/constants/langages";
-import { APP_LANGUAGES as languages } from "~/constants/langages";
-import type {ShowcaseStorage} from "~~/server/lib/showcaseStorage";
+import { match, P } from 'ts-pattern'
+import git from '~~/server/lib/git'
+import fs from '~~/server/lib/fs'
+import * as image from '~~/server/lib/images'
+import type { AppLanguage as Language } from '~/constants/langages'
+import { APP_LANGUAGES as languages } from '~/constants/langages'
+import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
 
 type Translated<FieldName extends string> = `${FieldName}[${Language}]`
 type FormDataFieldNames = keyof ShowcasesCollectionItem | Translated<'title'> | Translated<'body'>
@@ -25,11 +25,11 @@ type Showcase = Record<Language, ShowcaseTranslation> & {
 }
 type PayloadData = Array<Omit<MultiPartData, 'name'> & { name: FormDataFieldNames }>
 
-const empty =  (): ShowcaseTranslation => ({
+const empty = (): ShowcaseTranslation => ({
   active: true,
   categories: [],
   datasets: [],
-  tags: []
+  tags: [],
 })
 
 export default defineEventHandler(async (event) => {
@@ -49,15 +49,15 @@ export default defineEventHandler(async (event) => {
     it: empty(),
     de: empty(),
     fr: empty(),
-    en: empty()
+    en: empty(),
   }
 
   const slug = createSlug(reqBody)!
 
-  if(!slug) {
+  if (!slug) {
     event.node.res.statusCode = 400
     return {
-      error: t('server.api.showcases.post.error.missing_content')
+      error: t('server.api.showcases.post.error.missing_content'),
     }
   }
   showcase.slug = slug
@@ -68,12 +68,13 @@ export default defineEventHandler(async (event) => {
     if (!branchCreated) {
       event.node.res.statusCode = 409
       return {
-        error: t('server.api.showcases.post.error.submission_exists')
+        error: t('server.api.showcases.post.error.submission_exists'),
       }
     }
     logger.info('Initialized git storage backend')
-  } else {
-    const {public: {rootDir}} = useRuntimeConfig()
+  }
+  else {
+    const { public: { rootDir } } = useRuntimeConfig()
     storage = image.storage(fs(rootDir), runtimeConfig.showcases)
     logger.info('Initialized filesystem storage backend')
   }
@@ -81,7 +82,7 @@ export default defineEventHandler(async (event) => {
   const processedBodies: Array<Promise<void>> = []
   const allImagePaths = new Map<string, string>()
 
-  for (const {name, data} of reqBody) {
+  for (const { name, data } of reqBody) {
     match(name)
       .with(P.string.startsWith('title'), () => {
         const language = /^title\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
@@ -93,13 +94,13 @@ export default defineEventHandler(async (event) => {
           toAll(showcase, urlOrType, value)
         }
       })
-      .with(P.string.startsWith('body'),  () => {
+      .with(P.string.startsWith('body'), () => {
         processedBodies.push((async () => {
           const language = /^body\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
           const rawBody = data.toString()
           const {
             body,
-            images
+            images,
           } = await extractDataImages(rawBody, `public/${imageRoot}/${showcase.slug}-image-`, allImagePaths)
           showcase[language].body = body
           for (const image of images) {
@@ -127,18 +128,18 @@ export default defineEventHandler(async (event) => {
         toAll(showcase, 'image', imagePath)
       })
       .with(P.string.startsWith('datasets'), () => {
-        const {id} = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
+        const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
         if (id) {
           const label = data.toString()
-          toAll(showcase, 'datasets', translation => {
-            translation.datasets!.push({id, label})
+          toAll(showcase, 'datasets', (translation) => {
+            translation.datasets!.push({ id, label })
           })
         }
       })
       .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
       })
-    }
+  }
 
   await Promise.all(processedBodies)
 
@@ -154,19 +155,19 @@ export default defineEventHandler(async (event) => {
     await storage.rollback?.()
     event.node.res.statusCode = 500
     return {
-      error: t('server.api.showcases.post.error.unspecified_error')
-    };
+      error: t('server.api.showcases.post.error.unspecified_error'),
+    }
   }
 
   return {
-    message: t('server.api.showcases.post.success')
-  };
-});
+    message: t('server.api.showcases.post.success'),
+  }
+})
 
 async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, storage: ShowcaseStorage) {
   const { slug } = showcase
 
-  const writeContent = languages.map(language => {
+  const writeContent = languages.map((language) => {
     const path = `content/showcases/${slug}.${language}.md`
 
     const { body, ...meta } = showcase[language]
@@ -189,7 +190,7 @@ async function extractDataImages(rawBody: string, imagePathPrefix: string, previ
     .use(remarkStringify)
 
   const tree = processor.parse(rawBody)
-  const images = Array<{ path: string; data: Buffer }>()
+  const images = Array<{ path: string, data: Buffer }>()
 
   visit(tree, 'image', (node) => {
     if (node.url.startsWith('data:')) {
@@ -198,11 +199,12 @@ async function extractDataImages(rawBody: string, imagePathPrefix: string, previ
         const { ext, data } = match.groups
         if (previousImages.has(data)) {
           node.url = previousImages.get(data)!
-        } else {
+        }
+        else {
           const path = `${imagePathPrefix}${previousImages.size}.${ext}`
           images.push({
             path,
-            data: Buffer.from(match.groups.data, 'base64')
+            data: Buffer.from(match.groups.data, 'base64'),
           })
           previousImages.set(data, path)
           node.url = path
@@ -219,9 +221,10 @@ async function extractDataImages(rawBody: string, imagePathPrefix: string, previ
 
 function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, value: ShowcaseTranslation[K] | Setter) {
   for (const language of languages) {
-    if(typeof value === 'function') {
-     value(showcase[language])
-    } else {
+    if (typeof value === 'function') {
+      value(showcase[language])
+    }
+    else {
       showcase[language][key] = value
     }
   }

@@ -21,7 +21,6 @@ onUnmounted(() => {
   // Ensure the burger button is closed when the component is unmounted
   emit('update:modelValue', false)
 })
-
 </script>
 
 <style scoped lang="scss">
