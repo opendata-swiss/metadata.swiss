@@ -77,11 +77,11 @@ function resetSearch() {
 const sortOptions = computed(() => {
   const currentLocale = locale.value
   return [
-    { value: `relevance`, text: t('message.dataset_search.sort_by.relevance') },
+    { value: 'relevance', text: t('message.dataset_search.sort_by.relevance') },
     { value: `title.${currentLocale}+asc`, text: t('message.dataset_search.sort_by.title_asc') },
     { value: `title.${currentLocale}+dsc`, text: t('message.dataset_search.sort_by.title_desc') },
-    { value: `modified+desc`, text: t('message.dataset_search.sort_by.date_modified_desc') },
-    { value: `modified+asc`, text: t('message.dataset_search.sort_by.date_modified_asc') },
+    { value: 'modified+desc', text: t('message.dataset_search.sort_by.date_modified_desc') },
+    { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
   ]
 })
 const selectedSort = ref<string>(typeof route.query.sort === 'string' ? route.query.sort.replace(/ /g, '+') : '')
