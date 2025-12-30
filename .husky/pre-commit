@@ -1,0 +1,1 @@
+cd opendata.swiss/ui && npx lint-staged

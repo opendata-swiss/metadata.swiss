@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useBreadcrumbs } from "../app/composables/breadcrumbs";
-import { loadPageBreadcrumb } from "../app/lib/breadcrumbs";
-import OdsHandbookPage from "../../app/components/handbook/OdsHandbookPage.vue";
+import { useBreadcrumbs } from '../app/composables/breadcrumbs';
+import { loadPageBreadcrumb } from '../app/lib/breadcrumbs';
+import OdsHandbookPage from '../../app/components/handbook/OdsHandbookPage.vue';
 
 const route = useRoute()
 const { locale } = useI18n()

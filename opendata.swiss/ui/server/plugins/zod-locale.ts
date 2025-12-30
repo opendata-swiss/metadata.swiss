@@ -1,7 +1,7 @@
 import { defineNitroPlugin } from '#imports'
 import { config } from 'zod'
 import { en, de, fr, it } from 'zod/locales'
-import acceptLanguage from 'accept-language';
+import acceptLanguage from 'accept-language'
 
 acceptLanguage.languages(['de', 'fr', 'it', 'en'])
 

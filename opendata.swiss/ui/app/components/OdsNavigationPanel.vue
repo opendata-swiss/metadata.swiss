@@ -1,95 +1,92 @@
 <template>
-<Transition :name="transitionName" mode="out-in">
-  <div :key="menuKey">
-    <div id="mobile-menu">
-      <nav aria-label="Main" class="main-navigation main-navigation--mobile">
-
-        <ul>
-          <li v-if="menuStack.length > 0" style="border-bottom: none;" @click="goBack">
-            <a style="padding-top: 12px; padding-bottom: 12px;">
-              <span>
-                <SvgIcon icon="ArrowLeft" size="lg"/>
-              </span>
-            </a>
-          </li>
-          <li v-if="menuStack.length > 0" style="border-bottom: none;">
-            <h2 class="navy__title">{{ t(parentLabel ?? '') }}</h2>
-          </li>
-
-          <template v-for="item in currentMenu" :key="item.label">
-            <li v-if="item.to">
-              <NuxtLinkLocale
-                :to="item.to"
-                active-class="active"
-                :aria-label="t(item.label)"
-                @click="emitRequestClose"
-              >
-                <span>{{t(item.label)}}</span>
-              </NuxtLinkLocale><div/>
+  <Transition :name="transitionName" mode="out-in">
+    <div :key="menuKey">
+      <div id="mobile-menu">
+        <nav aria-label="Main" class="main-navigation main-navigation--mobile">
+          <ul>
+            <li v-if="menuStack.length > 0" style="border-bottom: none;" @click="goBack">
+              <a style="padding-top: 12px; padding-bottom: 12px;">
+                <span>
+                  <SvgIcon icon="ArrowLeft" size="lg"/>
+                </span>
+              </a>
             </li>
-            <li
+            <li v-if="menuStack.length > 0" style="border-bottom: none;">
+              <h2 class="navy__title">
+                {{ t(parentLabel ?? '') }}
+              </h2>
+            </li>
+
+            <template v-for="item in currentMenu" :key="item.label">
+              <li v-if="item.to">
+                <NuxtLinkLocale
+                  :to="item.to"
+                  active-class="active"
+                  :aria-label="t(item.label)"
+                  @click="emitRequestClose"
+                >
+                  <span>{{t(item.label)}}</span>
+                </NuxtLinkLocale><div/>
+              </li>
+              <li
                 v-else-if="(item.subMenu?.length ?? -1) > 0"
-              @click="drillDown(item)"
+                @click="drillDown(item)"
               >
-              <a>{{t(item.label)}} <SvgIcon size="lg" icon="ArrowRight" /></a>
-            </li>
-          </template>
-        </ul>
-      </nav>
-
+                <a>{{t(item.label)}} <SvgIcon size="lg" icon="ArrowRight" /></a>
+              </li>
+            </template>
+          </ul>
+        </nav>
+      </div>
     </div>
-  </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item';
-import { useI18n } from '#imports';
-import SvgIcon from "~/components/SvgIcon.vue";
+import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item'
+import { useI18n } from '#imports'
+import SvgIcon from '~/components/SvgIcon.vue'
 
-const emit = defineEmits(['requestClose']);
-const { t } = useI18n();
+const emit = defineEmits(['requestClose'])
+const { t } = useI18n()
 
 interface Props {
   items: OdsNavTabItem[]
 }
 
-const props = defineProps<Props>();
-
+const props = defineProps<Props>()
 
 function emitRequestClose() {
-    emit('requestClose');
+  emit('requestClose')
 }
 
-const parentLabel = ref<string | undefined>(undefined);
+const parentLabel = ref<string | undefined>(undefined)
 
-
-const menuStack = ref<OdsNavTabItem[][]>([]);
-const menuKey = computed(() => menuStack.value.length);
+const menuStack = ref<OdsNavTabItem[][]>([])
+const menuKey = computed(() => menuStack.value.length)
 const currentMenu = computed(() => {
-    if (menuStack.value.length === 0) return props.items;
-    return menuStack.value[menuStack.value.length - 1];
-});
-const direction = ref<'forward' | 'backward'>('forward');
-const transitionName = computed(() => direction.value === 'forward' ? 'slide-menu-right' : 'slide-menu-left');
+  if (menuStack.value.length === 0) return props.items
+  return menuStack.value[menuStack.value.length - 1]
+})
+const direction = ref<'forward' | 'backward'>('forward')
+const transitionName = computed(() => direction.value === 'forward' ? 'slide-menu-right' : 'slide-menu-left')
 function drillDown(item: OdsNavTabItem) {
-    if (item.subMenu && item.subMenu.length > 0) {
-        direction.value = 'forward';
-        menuStack.value.push(item.subMenu);
-        parentLabel.value = item.label;
-    }
+  if (item.subMenu && item.subMenu.length > 0) {
+    direction.value = 'forward'
+    menuStack.value.push(item.subMenu)
+    parentLabel.value = item.label
+  }
 }
 function goBack() {
-    if (menuStack.value.length > 0) {
-        direction.value = 'backward';
-        menuStack.value.pop();
-    }
+  if (menuStack.value.length > 0) {
+    direction.value = 'backward'
+    menuStack.value.pop()
+  }
 }
 </script>
 
 <style scoped lang="scss">
-
 // list styles
 
 li {
@@ -126,8 +123,6 @@ a {
   padding-right: 32px;
   color: black;
 }
-
-
 
 //
 

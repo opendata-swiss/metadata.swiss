@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import OdsPage from "~/components/OdsPage.vue";
-import OdsBreadcrumbs, {type BreadcrumbItem} from "~/components/OdsBreadcrumbs.vue";
-import OdsSearchPanel from "~/components/OdsSearchPanel.vue";
-import {useRouter} from "#vue-router";
+import OdsPage from '~/components/OdsPage.vue';
+import OdsBreadcrumbs, {type BreadcrumbItem} from '~/components/OdsBreadcrumbs.vue';
+import OdsSearchPanel from '~/components/OdsSearchPanel.vue';
+import {useRouter} from '#vue-router';
 
 const { t } = useI18n();
 

@@ -1,65 +1,62 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import OdsDropdownMenu from '@/components/OdsDropdownMenu.vue';
-import { useI18n } from '#imports';
+import { ref, watch } from 'vue'
+import OdsDropdownMenu from '@/components/OdsDropdownMenu.vue'
+import { useI18n } from '#imports'
 
-import type { OdsNavTabItem } from '@/components/headers/model/ods-nav-tab-item';
-import NamedLogo from '~/components/NamedLogo.vue';
-import LogoSmall from '@/components/LogoSmall.vue';
-import BurgerButton from '@/components/BurgerButton.vue';
-import OdsNavigationPanel from '@/components/OdsNavigationPanel.vue';
-import { NuxtLinkLocale } from '#components';
+import type { OdsNavTabItem } from '@/components/headers/model/ods-nav-tab-item'
+import NamedLogo from '~/components/NamedLogo.vue'
+import LogoSmall from '@/components/LogoSmall.vue'
+import BurgerButton from '@/components/BurgerButton.vue'
+import OdsNavigationPanel from '@/components/OdsNavigationPanel.vue'
+import { NuxtLinkLocale } from '#components'
 
 const { locale } = useI18n()
-const route = useRoute();
+const route = useRoute()
 
 interface Props {
-  enableAuthentication?: boolean;
-  authenticated?: boolean;
-  navigationItems: OdsNavTabItem[];
+  enableAuthentication?: boolean
+  authenticated?: boolean
+  navigationItems: OdsNavTabItem[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   enableAuthentication: false,
   authenticated: false,
-  navItems: []
-});
-
+  navItems: [],
+})
 
 const emit = defineEmits<{
-  (e: 'mobileMenuStateChange', value: boolean): void;
-}>();
+  (e: 'mobileMenuStateChange', value: boolean): void
+}>()
 
-const { t } = useI18n();
+const { t } = useI18n()
 
-const menuOpen = ref(false);
-
+const menuOpen = ref(false)
 
 watch(menuOpen, (val) => {
-  emit('mobileMenuStateChange', val);
-});
-
+  emit('mobileMenuStateChange', val)
+})
 
 function closeMobileMenu() {
-  menuOpen.value = false;
-  emit('mobileMenuStateChange', false);
+  menuOpen.value = false
+  emit('mobileMenuStateChange', false)
 }
 
 function isChildPage(item: OdsNavTabItem): boolean {
-  if(item.to === '/') {
+  if (item.to === '/') {
     return route.path === `/${locale.value}`
   }
-  if(!item.subMenu || item.subMenu.length < 1 ) {
-      return typeof item.to === 'string' && route.path.startsWith(`/${locale.value}${item.to}`)
+  if (!item.subMenu || item.subMenu.length < 1) {
+    return typeof item.to === 'string' && route.path.startsWith(`/${locale.value}${item.to}`)
   }
-  return isChildPageOfSubMenu(item);
+  return isChildPageOfSubMenu(item)
 }
 
 function isChildPageOfSubMenu(item: OdsNavTabItem) {
-  if(item.subMenu) {
-    return item.subMenu.some(subItem => isChildPage(subItem));
+  if (item.subMenu) {
+    return item.subMenu.some(subItem => isChildPage(subItem))
   }
-  return false;
+  return false
 }
 </script>
 
@@ -68,45 +65,51 @@ function isChildPageOfSubMenu(item: OdsNavTabItem) {
   <div id="top-header-id" class="top-header">
     <div class="container container--flex">
       <div class="logo" to="/" aria-label="Home">
-        <NuxtLinkLocale class="logo" to="/" aria-label="Home"><LogoSmall style="margin-right:4px;"/></NuxtLinkLocale>
-        <NuxtLinkLocale class="logo" to="/" aria-label="Home"><NamedLogo/></NuxtLinkLocale>
-      <div class="logo__separator" role="separator" aria-hidden="true"/>
-      <div class="logo-title__container">
-        <div class="logo__accronym">ODS Portal</div>
-        <div class="logo__title">
-          <div>opendata.swiss<br>Portal</div>
+        <NuxtLinkLocale class="logo" to="/" aria-label="Home">
+          <LogoSmall style="margin-right:4px;"/>
+        </NuxtLinkLocale>
+        <NuxtLinkLocale class="logo" to="/" aria-label="Home">
+          <NamedLogo/>
+        </NuxtLinkLocale>
+        <div class="logo__separator" role="separator" aria-hidden="true"/>
+        <div class="logo-title__container">
+          <div class="logo__accronym">
+            ODS Portal
+          </div>
+          <div class="logo__title">
+            <div>opendata.swiss<br>Portal</div>
+          </div>
         </div>
-      </div>
       </div>
       <div class="top-header__right">
         <BurgerButton v-model="menuOpen"  title="Toggle mobile menu" />
       </div>
-     </div>
+    </div>
   </div>
   <div id="desktop-navigation-id">
     <div class="container container--flex">
       <nav id="main-navigation" class="main-navigation main-navigation--desktop">
-      <ul>
-        <template v-for="item in props.navigationItems" :key="item.label">
-        <!-- a normal tab -->
-        <li v-if="!item.subMenu" class="tab">
-          <NuxtLinkLocale :class="{ active: isChildPage(item) }" :to="item.to"><span> {{ t(item.label) }}</span></NuxtLinkLocale>
-        </li>
+        <ul>
+          <template v-for="item in props.navigationItems" :key="item.label">
+            <!-- a normal tab -->
+            <li v-if="!item.subMenu" class="tab">
+              <NuxtLinkLocale :class="{ active: isChildPage(item) }" :to="item.to">
+                <span> {{ t(item.label) }}</span>
+              </NuxtLinkLocale>
+            </li>
 
-        <li v-if="item.subMenu" class="tab">
-          <OdsDropdownMenu
-            :label="item.label"
-            :menu="item"
-            :class="isChildPage(item) ? 'active' : ''"
-          />
-        </li>
-
-        </template>
-      </ul>
+            <li v-if="item.subMenu" class="tab">
+              <OdsDropdownMenu
+                :label="item.label"
+                :menu="item"
+                :class="isChildPage(item) ? 'active' : ''"
+              />
+            </li>
+          </template>
+        </ul>
       </nav>
     </div>
   </div>
-
 
   <!-- Mobile menu -->
   <Transition name="fade-menu">
@@ -165,6 +168,4 @@ a {
 .fade-menu-enter-to, .fade-menu-leave-from {
   opacity: 1;
 }
-
-
 </style>

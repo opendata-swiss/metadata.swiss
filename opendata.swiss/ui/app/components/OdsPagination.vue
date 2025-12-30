@@ -36,7 +36,7 @@ import PaginationItem from './OdsPaginationItem.vue'
 import { computed } from 'vue'
 import type { RouteLocationNamedI18n } from 'vue-router'
 
-import { useI18n } from '#imports';
+import { useI18n } from '#imports'
 
 const { t } = useI18n()
 
@@ -53,7 +53,7 @@ const props = defineProps({
   type: {
     type: String,
     default: () => 'outline',
-    validator: (prop) =>
+    validator: prop =>
       ['outline', 'outline-negative'].includes(prop as string),
   },
   field: {
@@ -73,7 +73,7 @@ const props = defineProps({
     default: () => '',
   },
   paginationItems: {
-    type: Array<{ icon?: string; label?: string; link: RouteLocationNamedI18n<string | number | symbol> }>,
+    type: Array<{ icon?: string, label?: string, link: RouteLocationNamedI18n<string | number | symbol> }>,
     default: () => [],
   },
 })
@@ -90,7 +90,8 @@ function checkBoundariesAndEmit(event: Event) {
 
   if (isNaN(page) || page < 1) {
     page = 1
-  } else if (page > props.totalPages) {
+  }
+  else if (page > props.totalPages) {
     page = props.totalPages
   }
 

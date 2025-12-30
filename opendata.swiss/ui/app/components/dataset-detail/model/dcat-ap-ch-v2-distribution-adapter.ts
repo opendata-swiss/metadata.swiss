@@ -1,26 +1,24 @@
-import type { LinkedDataFormats } from '@piveau/sdk-vue';
+import type { LinkedDataFormats } from '@piveau/sdk-vue'
 import type { Dataset } from '../../../model/dataset'
-import type { DcatApChV2DatasetAdapter } from './dcat-ap-ch-v2-dataset-adapter';
-import type { TableEntry } from './table-entry';
-
+import type { DcatApChV2DatasetAdapter } from './dcat-ap-ch-v2-dataset-adapter'
+import type { TableEntry } from './table-entry'
 
 type EnhancedDistribution = Dataset['getDistributions'][number]
 
-
 export class DcatApChV2DistributionAdapter {
-  #distribution: EnhancedDistribution | undefined;
-  #dataset: DcatApChV2DatasetAdapter;
+  #distribution: EnhancedDistribution | undefined
+  #dataset: DcatApChV2DatasetAdapter
 
   constructor(d: EnhancedDistribution, dataset: DcatApChV2DatasetAdapter) {
-    this.#distribution = d;
-    this.#dataset = dataset;
+    this.#distribution = d
+    this.#dataset = dataset
   }
 
   /**
    * Get the dataset this distribution belongs to
    */
   get dataset() {
-    return this.#dataset;
+    return this.#dataset
   }
 
   /**
@@ -42,7 +40,7 @@ export class DcatApChV2DistributionAdapter {
    * - The title can be given in several languages. In multilingual data portals, the title in the language selected by a user will usually be shown as title for the distribution.
    */
   get title() {
-    return this.#distribution?.title || this.#dataset.title;
+    return this.#distribution?.title || this.#dataset.title
   }
 
   /**
@@ -63,7 +61,7 @@ export class DcatApChV2DistributionAdapter {
    *
    */
   get description() {
-    return (this.#distribution?.description ?? '').replaceAll(/\r\n/g, '\n').trim() || this.#dataset.description || '';
+    return (this.#distribution?.description ?? '').replaceAll(/\r\n/g, '\n').trim() || this.#dataset.description || ''
   }
 
   /**
@@ -79,40 +77,40 @@ export class DcatApChV2DistributionAdapter {
    * This property contains the size of a Distribution in bytes. If the precise size is not known, an approximate size can be indicated.
    */
   get formattedByteSize() {
-    const byteSizeNode = this.#distribution?.getPropertyTable.find(node => node.id === 'byteSize');
+    const byteSizeNode = this.#distribution?.getPropertyTable.find(node => node.id === 'byteSize')
 
     if (!byteSizeNode || !byteSizeNode.data?.length) {
-      return '';
+      return ''
     }
 
-    const byteSizeValue = byteSizeNode.data[0]?.data;
+    const byteSizeValue = byteSizeNode.data[0]?.data
 
     if (!byteSizeValue || typeof byteSizeValue !== 'string') {
-      return '';
+      return ''
     }
 
     // Try to parse the byte size as a number.
     // Piveau returns it as a string with dots as thousands separators which is not valid for Number()
-    const byteSizeNumber = Number(byteSizeValue.replace(/\./g, '').replace(/,/g, '').replace(/\s+/g, '')); // Remove spaces for thousands separators
+    const byteSizeNumber = Number(byteSizeValue.replace(/\./g, '').replace(/,/g, '').replace(/\s+/g, '')) // Remove spaces for thousands separators
 
     if (isNaN(byteSizeNumber)) {
-      return byteSizeValue; // Return the raw value if parsing fails
+      return byteSizeValue // Return the raw value if parsing fails
     }
 
     if (byteSizeNumber === 0) {
-      return '0 B';
+      return '0 B'
     }
 
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-    let size = byteSizeNumber;
-    let unitIndex = 0;
+    const units = ['B', 'KB', 'MB', 'GB', 'TB']
+    let size = byteSizeNumber
+    let unitIndex = 0
 
     while (size >= 1024 && unitIndex < units.length - 1) {
-      size /= 1024;
-      unitIndex++;
+      size /= 1024
+      unitIndex++
     }
 
-    return `${size % 1 === 0 ? size : size.toFixed(2)} ${units[unitIndex]}`;
+    return `${size % 1 === 0 ? size : size.toFixed(2)} ${units[unitIndex]}`
   }
 
   /**
@@ -130,7 +128,7 @@ export class DcatApChV2DistributionAdapter {
    *   MAY thus be the same as the accessURLs but they MAY also differ.
    */
   get downloadUrls() {
-    return this.#distribution?.downloadUrls || [];
+    return this.#distribution?.downloadUrls || []
   }
 
   /**
@@ -147,7 +145,7 @@ export class DcatApChV2DistributionAdapter {
    *   information about how to get the Dataset.
    */
   get accessUrls() {
-    return this.#distribution?.accessUrls || [];
+    return this.#distribution?.accessUrls || []
   }
 
   /**
@@ -169,18 +167,18 @@ export class DcatApChV2DistributionAdapter {
   get format(): string {
     const format = this.#distribution?.format
     if (format) {
-      return format;
+      return format
     }
     // Fallback: get mediaType from property table
-    const mediaTypeNode = this.#distribution?.getPropertyTable.find(node => node.id === 'mediaType');
+    const mediaTypeNode = this.#distribution?.getPropertyTable.find(node => node.id === 'mediaType')
     if (!mediaTypeNode || !mediaTypeNode.data?.length) {
-      return '';
+      return ''
     }
-    const mediaType = mediaTypeNode?.data[0]?.data ?? '';
+    const mediaType = mediaTypeNode?.data[0]?.data ?? ''
     if (typeof mediaType !== 'string') {
-      return '';
+      return ''
     }
-    return mediaType;
+    return mediaType
   }
 
   /**
@@ -197,14 +195,13 @@ export class DcatApChV2DistributionAdapter {
    * CV to used: [VOCAB-CH-LICENSE]
    */
   get license() {
-    const lic = this.#distribution?.license;
+    const lic = this.#distribution?.license
     const licIri = lic?.resource
     if (!licIri) {
-      return undefined;
+      return undefined
     }
     return licIri
   }
-
 
   /**
    * Get the release date of the distribution if available
@@ -221,12 +218,12 @@ export class DcatApChV2DistributionAdapter {
    * @returns {Date | undefined} The release date as a Date object, or undefined if not available or invalid.
    */
   get releaseDate() {
-    const releaseDateString = this.#distribution?.issued || '';
+    const releaseDateString = this.#distribution?.issued || ''
     if (!releaseDateString) {
-      return undefined;
+      return undefined
     }
-    const releaseDate = new Date(releaseDateString);
-    return isNaN(releaseDate.getTime()) ? undefined : releaseDate;
+    const releaseDate = new Date(releaseDateString)
+    return isNaN(releaseDate.getTime()) ? undefined : releaseDate
   }
 
   /**
@@ -245,12 +242,12 @@ export class DcatApChV2DistributionAdapter {
    * @returns {Date | undefined} The modified date as a Date object, or undefined if not available or invalid.
    */
   get modified() {
-    const modifiedDateString = this.#distribution?.modified || '';
+    const modifiedDateString = this.#distribution?.modified || ''
     if (!modifiedDateString) {
-      return undefined;
+      return undefined
     }
-    const modifiedDate = new Date(modifiedDateString);
-    return isNaN(modifiedDate.getTime()) ? undefined : modifiedDate;
+    const modifiedDate = new Date(modifiedDateString)
+    return isNaN(modifiedDate.getTime()) ? undefined : modifiedDate
   }
 
   /**
@@ -259,7 +256,7 @@ export class DcatApChV2DistributionAdapter {
    * Note: This is not part of dcat-ap-ch, but added by piveau
    */
   get id() {
-    return this.#distribution?.id || '';
+    return this.#distribution?.id || ''
   }
 
   /**
@@ -276,7 +273,7 @@ export class DcatApChV2DistributionAdapter {
    * - CV to be used: [VOCAB-EU-LANGUAGE]
    */
   get languages() {
-    return this.#distribution?.languages || [];
+    return this.#distribution?.languages || []
   }
 
   get getLinkedData(): Record<LinkedDataFormats, string> {
@@ -285,83 +282,84 @@ export class DcatApChV2DistributionAdapter {
       ttl: '',
       n3: '',
       nt: '',
-      jsonld: ''
-    };
+      jsonld: '',
+    }
   }
 
-
   get propertyTable() {
-    const rootNode = this.#distribution?.getPropertyTable;
+    const rootNode = this.#distribution?.getPropertyTable
     if (!rootNode) {
-      return [];
+      return []
     }
 
-    const ignoredNode: string[] = ['byteSize'];
-    const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id));
+    const ignoredNode: string[] = ['byteSize']
+    const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id))
 
-    const table: TableEntry[] = [];
+    const table: TableEntry[] = []
     for (const node of nodesToConsider) {
-
-      const entry = {} as Partial<TableEntry>;
+      const entry = {} as Partial<TableEntry>
 
       if (node.type === 'node' && node.data) {
-        entry.label = node.label;
-        entry.nodeType = 'node';
+        entry.label = node.label
+        entry.nodeType = 'node'
 
         if (node.data && node.data.length > 0) {
           for (const child of node.data) {
             if (child.type === 'value') {
               if (!entry.value) {
-                entry.value = [{ value: child.data as string, type: 'value' }];
-              } else {
-                entry.value.push({ value: child.data as string, type: 'value' });
+                entry.value = [{ value: child.data as string, type: 'value' }]
               }
-            } else if (child.type === 'href') {
-              const hrefData = child.data as { label: string; href: string };
+              else {
+                entry.value.push({ value: child.data as string, type: 'value' })
+              }
+            }
+            else if (child.type === 'href') {
+              const hrefData = child.data as { label: string, href: string }
               if (!entry.value) {
-                entry.value = [{ value: hrefData.label, href: hrefData.href, type: 'href' }];
-              } else {
-                entry.value.push({ value: hrefData.label, href: hrefData.href, type: 'href' });
+                entry.value = [{ value: hrefData.label, href: hrefData.href, type: 'href' }]
               }
-            } else {
+              else {
+                entry.value.push({ value: hrefData.label, href: hrefData.href, type: 'href' })
+              }
+            }
+            else {
               if (node.id === 'publisher') {
                 // special handling for publisher node
                 for (const data of child.data ?? []) {
                   if (!entry.value) {
-                    entry.value = [{ value: data.data as string, type: 'value' }];
-                  } else {
-                    entry.value.push({ value: data.data as string, type: 'value' });
+                    entry.value = [{ value: data.data as string, type: 'value' }]
+                  }
+                  else {
+                    entry.value.push({ value: data.data as string, type: 'value' })
                   }
                 }
-              } else if (node.id === 'contactPoint') {
+              }
+              else if (node.id === 'contactPoint') {
                 // special handling for contactPoint node
                 const nameNode = child.data?.find(d => d.id === 'contactPointName')
                 const emailNode = child.data?.find(d => d.id === 'contactPointEmail')
                 if (nameNode && emailNode && nameNode.data && emailNode.data) {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const emailData = ((emailNode.data as Array<any>)[0] as any).data
+                  const href = emailData.href
+                  const name = emailData.label
 
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const emailData = ((emailNode.data as Array<any>)[0] as any).data;
-                  const href = emailData.href;
-                  const name = emailData.label;
-
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const nameData = ((nameNode.data as Array<any>)[0] as any).data;
-                  const publisherName = nameData as string;
+                  const nameData = ((nameNode.data as Array<any>)[0] as any).data
+                  const publisherName = nameData as string
                   if (!entry.value) {
-                    entry.value = [{ value: publisherName, type: 'value' }];
-                    entry.value.push({ value: name, href, type: 'email' });
+                    entry.value = [{ value: publisherName, type: 'value' }]
+                    entry.value.push({ value: name, href, type: 'email' })
                   }
                 }
               }
             }
           }
-          table.push(entry as TableEntry);
+          table.push(entry as TableEntry)
         }
-
       }
-
     }
 
-    return table.sort((a, b) => a.label.localeCompare(b.label));
+    return table.sort((a, b) => a.label.localeCompare(b.label))
   }
 }

@@ -1,10 +1,10 @@
 <script setup>
-import OdsToc from "~/components/OdsToc.vue";
+import OdsToc from '~/components/OdsToc.vue'
 
 const { page } = defineProps({
   page: {
     type: Object,
-    default: () => null
+    default: () => null,
   },
 })
 </script>
@@ -17,7 +17,9 @@ const { page } = defineProps({
     <section v-if="page" class="hero hero--default">
       <div class="container container--grid gap--responsive">
         <div class="hero__content">
-          <h1 class="hero__title">{{ page.heading || page.title }}</h1>
+          <h1 class="hero__title">
+            {{ page.heading || page.title }}
+          </h1>
           <div class="hero__description">
             <slot name="hero-subheading">
               <MDC v-if="page.subHeading" :value="page.subHeading"/>
@@ -30,7 +32,7 @@ const { page } = defineProps({
       <section class="section section--py">
         <div class="container container--grid container--reverse-mobile gap--responsive">
           <div class="container__main vertical-spacing">
-              <ContentRenderer :value="page"/>
+            <ContentRenderer :value="page"/>
           </div>
           <div class="container__aside">
             <div id="aside-content" class="sticky sticky--top">
@@ -43,5 +45,4 @@ const { page } = defineProps({
       </section>
     </slot>
   </div>
-
 </template>

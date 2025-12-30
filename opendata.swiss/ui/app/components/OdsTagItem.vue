@@ -20,12 +20,12 @@ import { computed } from 'vue'
 import SvgIcon from './SvgIcon.vue'
 
 export interface TagItem {
-  id: string;
-  label: string;
-  size?: 'base' | 'sm';
-  icon?: string;
-  to?: string;
-  variant?: 'default' | 'primary' | 'active';
+  id: string
+  label: string
+  size?: 'base' | 'sm'
+  icon?: string
+  to?: string
+  variant?: 'default' | 'primary' | 'active'
 }
 const props = defineProps<TagItem>()
 
@@ -49,7 +49,7 @@ const classes = computed(() => {
   let base = 'tag-item '
   if (props.variant) base += `tag-item--${props.variant} `
   if (props.size) base += `tag-item--${props.size} `
-  if (props.icon) base += `tag-item--icon `
+  if (props.icon) base += 'tag-item--icon '
   return base
 })
 </script>

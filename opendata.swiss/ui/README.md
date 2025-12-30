@@ -31,8 +31,8 @@ GITHUB_BASE_BRANCH=main
 GITHUB_TOKEN=
 ```
 
-The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance. 
-By default, `https://piveau-hub-repo-ln.zazukoians.org` is used.
+The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance.
+By default, `https://piveau-hub-repo.test.ods.zazukoians.org` is used.
 
 The personal access token requires contents and pull request permissions.
 
@@ -67,7 +67,7 @@ Set the environment variables:
 - `GITHUB_REPO`
 - `GITHUB_BASE_BRANCH`
 
-The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
+The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.
 
 Build the application for production:
 

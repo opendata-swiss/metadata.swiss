@@ -1,13 +1,13 @@
 <script setup>
-import {useRouter} from "vue-router";
+import {useRouter} from 'vue-router';
 import Fuse from 'fuse.js'
-import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
-import OdsPage from "../../app/components/OdsPage.vue";
-import OdsSearchPanel from "../../app/components/OdsSearchPanel.vue";
-import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
-import OdsCard from "../../app/components/OdsCard.vue";
-import OdsSearchResults from "../../app/components/OdsSearchResults.vue";
-import {useSeoMeta} from "nuxt/app";
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue';
+import OdsPage from '../../app/components/OdsPage.vue';
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue';
+import {homePageBreadcrumb} from '../../app/composables/breadcrumbs.js';
+import OdsCard from '../../app/components/OdsCard.vue';
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue';
+import {useSeoMeta} from 'nuxt/app';
 
 const {t, locale} = useI18n();
 const route = useRoute();

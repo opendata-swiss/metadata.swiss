@@ -1,12 +1,12 @@
 <script setup>
-import OdsPage from "../../app/components/OdsPage.vue"
-import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
-import OdsInfoBlock from "../../app/components/OdsInfoBlock.vue";
-import OdsTagItem from "../../app/components/OdsTagItem.vue";
-import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
-import OdsCard from "../../app/components/OdsCard.vue";
-import OdsButton from "../../app/components/OdsButton.vue";
-import {useDatasetsSearch, useVocabularySearch} from "../../app/piveau/search.js";
+import OdsPage from '../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
+import OdsInfoBlock from '../../app/components/OdsInfoBlock.vue'
+import OdsTagItem from '../../app/components/OdsTagItem.vue'
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
+import OdsCard from '../../app/components/OdsCard.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
+import { useDatasetsSearch, useVocabularySearch } from '../../app/piveau/search.js'
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -27,17 +27,17 @@ const breadcrumbs = [
   },
   {
     title: showcase.value?.title || id,
-  }
+  },
 ]
 
-const showcaseCategories = await Promise.all(showcase.value?.categories.map(async categoryId => {
-  const {query, resultEnhanced} = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId }, })
+const showcaseCategories = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
+  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId } })
   await query.suspense()
   return resultEnhanced.value
 }))
 
-const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({id}) => {
-  const {query, resultEnhanced} = useDatasetsSearch().useResource(id)
+const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
+  const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
   await query.suspense()
   return resultEnhanced.value
 }))
@@ -59,7 +59,9 @@ useSeoMeta({
 
     <template #aside-content>
       <OdsCard v-if="showcase.url" :title="t('message.showcase.externalLink')">
-        <OdsButton icon="External" variant="outline-negative" :href="showcase.url">{{ t('message.showcase.open') }}</OdsButton>
+        <OdsButton icon="External" variant="outline-negative" :href="showcase.url">
+          {{ t('message.showcase.open') }}
+        </OdsButton>
       </OdsCard>
 
       <OdsCard :title="t('message.dataset_detail.additional_information')">

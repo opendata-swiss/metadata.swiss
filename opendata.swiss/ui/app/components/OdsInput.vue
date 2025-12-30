@@ -29,12 +29,12 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
-import OdsFormField from "~/components/OdsFormField.vue";
+import OdsFormField from '~/components/OdsFormField.vue'
 
 const props = defineProps({
   type: {
     type: String,
-    validator: (prop) =>
+    validator: prop =>
       [
         'color',
         'date',
@@ -57,7 +57,7 @@ const props = defineProps({
   },
   variant: {
     type: String,
-    validator: (prop) => ['outline', 'negative'].includes(prop as string),
+    validator: prop => ['outline', 'negative'].includes(prop as string),
     default: () => 'outline',
   },
   message: {
@@ -70,13 +70,13 @@ const props = defineProps({
   },
   messageType: {
     type: String,
-    validator: (prop) =>
+    validator: prop =>
       ['error', 'warning', 'success', 'info'].includes(prop as string),
     default: () => 'error',
   },
   size: {
     type: String,
-    validator: (prop) => ['sm', 'base', 'lg'].includes(prop as string),
+    validator: prop => ['sm', 'base', 'lg'].includes(prop as string),
     default: () => undefined,
   },
   label: {
@@ -130,7 +130,7 @@ const props = defineProps({
   accept: {
     type: String,
     default: () => undefined,
-  }
+  },
 })
 
 const classes = computed(() => {
