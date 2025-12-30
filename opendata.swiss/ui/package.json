@@ -37,6 +37,7 @@
     "bootstrap": "^5.3.7",
     "decap-cms-app": "^3.8.3",
     "eslint": "^9.31.0",
+    "fuse.js": "^7.1.0",
     "is-absolute-url": "^4.0.1",
     "keycloak-js": "^26.2.2",
     "minimatch": "^10",
