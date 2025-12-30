@@ -92,7 +92,7 @@ const emit = defineEmits(['change', 'update:modelValue'])
 
 const selectWrapperClasses = computed(() => {
   let base = 'select '
-  if (props.bare) base += `select--bare `
+  if (props.bare) base += 'select--bare '
   return base
 })
 

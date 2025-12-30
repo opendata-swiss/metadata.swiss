@@ -5,12 +5,21 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 export default withNuxt(
   {
     settings: {
+      files: [
+        '**/*.ts',
+        '**/*.js',
+        '**/*.tsx',
+        '**/*.jsx',
+        '**/*.mjs',
+        '**/*.vue',
+      ],
       react: {
         version: 'detect',
       },
     },
     rules: {
       '@stylistic/no-tabs': 'off',
+      'quotes': ['error', 'single'],
     },
   },
   reactPlugin.configs.flat.recommended,
