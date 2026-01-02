@@ -9,8 +9,9 @@ categories:
   - http://publications.europa.eu/resource/authority/data-theme/REGI
 type: https://opendata.swiss/vocabulary/showcase-type/application
 datasets:
-  - id: 523-staatskanzlei-kanton-zuerich
-    label: "Kanton Bern: Gebäude, Wohnungen und Wohnverhältnisse"
+  - id: https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich
+    label: Statistik der Informationszugangsgesuche nach IDG des Kantons Zürich ab
+      2013
 ---
 Ce tableau de bord **interactif** permet de visualiser l’évolution des **loyers à Berne** entre 2013 et 2024, par **quartier**, **année** et **taille de logement**. Il facilite la compréhension des dynamiques du marché locatif et offre une vue d’ensemble claire, utile à la fois pour les **citoyens**, les **acteurs publics** et les **professionnels du logement**.
 
