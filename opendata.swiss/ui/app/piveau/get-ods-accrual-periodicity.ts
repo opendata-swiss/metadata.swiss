@@ -1,11 +1,9 @@
-import type { Dataset } from "@piveau/sdk-core";
-import type { LocaleInstance } from "@piveau/sdk-vue";
+import type { Dataset } from '@piveau/sdk-core'
 
 interface Resource {
-  resource: string;
-  label: string;
+  resource: string
+  label: string
 }
-
 
 /**
  * Get accrual periodicity from an enriched dataset.
@@ -27,23 +25,21 @@ interface Resource {
  * @returns Catalog information (id, modified, issued, title, description, record: {modified, issued})
  */
 export function getOdsAccrualPeriodicity(dataset: Dataset): Resource | undefined {
-  const accrualPeriodicity = dataset?.accrual_periodicity;
+  const accrualPeriodicity = dataset?.accrual_periodicity
 
   if (!accrualPeriodicity) {
-    return undefined;
+    return undefined
   }
 
-  const resource = accrualPeriodicity.resource;
-  const label = accrualPeriodicity.label;
+  const resource = accrualPeriodicity.resource
+  const label = accrualPeriodicity.label
 
   if (!resource || !label) {
-    return undefined;
+    return undefined
   }
 
   return {
     resource,
-    label
-  };
+    label,
+  }
 }
-
-

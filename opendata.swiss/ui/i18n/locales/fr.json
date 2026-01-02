@@ -68,10 +68,14 @@
                 "header": "Type de contenu"
             },
             "categories": "Catégories",
+            "datasets": "Jeux de données",
             "tags": "Tags",
             "submitted_by": "Soumis par",
             "externalLink": "Lien externe",
             "open": "Ouvrir le site web",
+            "search": {
+                "dataset_references": "{count} jeux de données"
+            },
             "submission_form": {
                 "group_italian": "Italien",
                 "group_french": "Français",

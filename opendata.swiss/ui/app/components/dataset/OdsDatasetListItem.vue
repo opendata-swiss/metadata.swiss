@@ -11,14 +11,14 @@
         <div class="card__title">
           <h3>{{ props.dataset.title }}</h3>
         </div>
-         <p>{{ props.dataset.description }}</p>
+        <p>{{ props.dataset.description }}</p>
       </div>
       <div class="card__footer">
         <div class="card__footer__info">
           <p class="meta-info">
             <span class="meta-info__item" style="color:magenta">{{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }}</span>
             <span class="meta-info__item">{{ props.dataset.keywords.map(k => k.label).join(', ') }}</span>
-            <span class="meta-info__item" style="color:red">{{(props.dataset.getOdsFormats ?? []).map(f => f.label ).join(', ') }}</span>
+            <span class="meta-info__item" style="color:red">{{(props.dataset.getOdsFormats ?? []).map(f => f.label).join(', ') }}</span>
           </p>
         </div>
         <div class="card__footer__action">
@@ -35,17 +35,16 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '#imports';
-import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter';
-import type { LocationQueryRaw } from 'vue-router';
+import { useI18n } from '#imports'
+import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import type { LocationQueryRaw } from 'vue-router'
 
-const { t, locale } = useI18n();
+const { t, locale } = useI18n()
 
 interface Props {
-  dataset: DcatApChV2DatasetAdapter;
-  searchParams?: LocationQueryRaw;
+  dataset: DcatApChV2DatasetAdapter
+  searchParams?: LocationQueryRaw
 }
 
-const props = defineProps<Props>();
-
+const props = defineProps<Props>()
 </script>

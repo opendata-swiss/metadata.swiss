@@ -24,7 +24,7 @@ Comma-separated list to be used for filtering in Piveau.
 
 ## Submitting showcases
 
-The submission form is accessible on the [public website](https://piveau-ln.zazukoians.org/de/showcases/submit).
+The submission form is accessible on the [public website](https://piveau.test.ods.zazukoians.org/de/showcases/submit).
 
 ![](images/showcase-form.png)
 

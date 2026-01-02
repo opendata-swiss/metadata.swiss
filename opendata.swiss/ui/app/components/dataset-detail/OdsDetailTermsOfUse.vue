@@ -1,12 +1,14 @@
 <template>
-    <div class="ods-license">
-      <h2 class="download-item__title">{{ t(`message.terms_of_use.ods_${termsName}.title`) }}</h2>
-      <img
-        :src="imageSrc"
-        :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
-        :title="t(`message.terms_of_use.ods_${termsName}.title`)"
-        class="ods-terms-of-use_image">
-    </div>
+  <div class="ods-license">
+    <h2 class="download-item__title">
+      {{ t(`message.terms_of_use.ods_${termsName}.title`) }}
+    </h2>
+    <img
+      :src="imageSrc"
+      :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
+      :title="t(`message.terms_of_use.ods_${termsName}.title`)"
+      class="ods-terms-of-use_image">
+  </div>
 
   <ul>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>
@@ -16,10 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import {computed} from 'vue';
-import { useI18n } from '#imports';
+import { computed } from 'vue'
+import { useI18n } from '#imports'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 interface Props {
   name: string
@@ -28,24 +30,22 @@ interface Props {
 const props = defineProps<Props>()
 
 const termsName = computed(() => {
-  const name = props.name;
+  const name = props.name
   switch (name) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
-      return 'by';
+      return 'by'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_open':
-      return 'open';
+      return 'open'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_ask':
-      return 'ask';
-    case'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
-      return 'by_ask';
+      return 'ask'
+    case 'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
+      return 'by_ask'
     default:
-      return props.name;
+      return props.name
   }
+})
 
-});
-
-const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`);
-
+const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`)
 </script>
 
 <style lang="scss" scoped>

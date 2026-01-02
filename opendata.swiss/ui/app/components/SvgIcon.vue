@@ -6,19 +6,19 @@
 import { computed } from 'vue'
 
 interface PropTypes {
-  icon: string,
-  size?: 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full',
-  spin?: boolean,
-  role?: 'btn' | 'menu__item' | 'navigation',
+  icon: string
+  size?: 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'
+  spin?: boolean
+  role?: 'btn' | 'menu__item' | 'navigation'
 }
 
 const props = defineProps<PropTypes>()
 
 const iconClasses = computed(() => {
-  function * generate() {
+  function* generate() {
     if (props.size) yield `icon--${props.size}`
     if (props.icon) yield `icon--${props.icon}`
-    if (props.spin) yield `icon--spin`
+    if (props.spin) yield 'icon--spin'
     if (props.role) yield `${props.role}__icon`
   }
 

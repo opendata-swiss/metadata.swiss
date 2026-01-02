@@ -5,35 +5,34 @@
 </template>
 
 <script setup lang="ts">
-
 import type { PropType } from 'vue'
-import isAbsolute from 'is-absolute-url';
+import isAbsolute from 'is-absolute-url'
 
 const props = defineProps({
   href: {
     type: String,
-    default: ''
+    default: '',
   },
   target: {
     type: String as PropType<'_blank' | '_parent' | '_self' | '_top' | (string & object) | null | undefined>,
     default: undefined,
-    required: false
-  }
+    required: false,
+  },
 })
 
-const isExternal = (() =>{
+const isExternal = (() => {
   if (!props.href) {
     return false
   }
 
-  if(props.href.startsWith('mailto')) {
+  if (props.href.startsWith('mailto')) {
     return false
   }
 
-  if(isAbsolute(props.href)) {
+  if (isAbsolute(props.href)) {
     const base = import.meta.client ? window.location : useRequestURL()
 
-    return new URL(props.href).host !== base.host;
+    return new URL(props.href).host !== base.host
   }
 
   return false
@@ -47,7 +46,7 @@ const linkProps = computed(() => {
   return {
     ...props,
     rel: 'noopener noreferrer',
-    class: 'link--external'
+    class: 'link--external',
   }
 })
 </script>

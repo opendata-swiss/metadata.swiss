@@ -22,7 +22,7 @@ const props = defineProps({
   type: {
     type: String,
     default: () => '',
-    validator: (prop) =>
+    validator: prop =>
       ['outline', 'outline-negative'].includes(prop as string),
   },
   icon: {
@@ -46,7 +46,7 @@ const props = defineProps({
 const computedClasses = computed(() => {
   let base = 'btn '
   if (props.type) base += `btn--${props.type} `
-  if (props.icon) base += `btn--icon-only `
+  if (props.icon) base += 'btn--icon-only '
   return base
 })
 </script>

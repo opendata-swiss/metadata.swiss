@@ -1,12 +1,12 @@
-export const loadPageBreadcrumb = (locale: Ref<string>): LoadBreadcrumbContent => ({path}) => {
+export const loadPageBreadcrumb = (locale: Ref<string>): LoadBreadcrumbContent => ({ path }) => {
   return queryCollection('pages')
     .select('id', 'title')
     .where('path', 'LIKE', `%${path}.${locale.value}`)
 }
 
-export const loadHandbookSectionBreadcrumb = (section: string, locale: Ref<string>): LoadBreadcrumbContent => ({path}, index) => {
+export const loadHandbookSectionBreadcrumb = (section: string, locale: Ref<string>): LoadBreadcrumbContent => ({ path }, index) => {
   if (index === 0) {
-    return loadPageBreadcrumb(locale)({path}, index);
+    return loadPageBreadcrumb(locale)({ path }, index)
   }
 
   return queryCollection('handbookSections')
@@ -14,9 +14,9 @@ export const loadHandbookSectionBreadcrumb = (section: string, locale: Ref<strin
     .where('title', '=', section)
 }
 
-export const loadHandbookBreadcrumb = (section: string, locale: Ref<string>): LoadBreadcrumbContent => ({path}, index) => {
+export const loadHandbookBreadcrumb = (section: string, locale: Ref<string>): LoadBreadcrumbContent => ({ path }, index) => {
   if (index <= 1) {
-    return loadHandbookSectionBreadcrumb(section, locale)({path}, index);
+    return loadHandbookSectionBreadcrumb(section, locale)({ path }, index)
   }
 
   return queryCollection('handbook')
@@ -26,6 +26,6 @@ export const loadHandbookBreadcrumb = (section: string, locale: Ref<string>): Lo
     .orWhere(q => q
       .where('permalink', '=', path.replace(/^\/handbook\/(?<section>\w+\/)/, ''))
       .where('path', '=', `${path}.${locale.value}`)
-      .where('path', '=', `${path}/index.${locale.value}`)
+      .where('path', '=', `${path}/index.${locale.value}`),
     )
 }
