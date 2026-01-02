@@ -74,7 +74,13 @@
             "externalLink": "Externer Link",
             "open": "Website starten",
             "search": {
-                "dataset_references": "{count} Datensätze"
+                "dataset_references": "{count} Datensätze",
+                "submit_prompt": {
+                    "your": "Präsentieren Sie Ihr",
+                    "add_showcase_image_alt": "Fügen Sie Ihr Showcase-Titelbild hinzu",
+                    "title": "Ihr Showcase hier?",
+                    "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren."
+                }
             },
             "submission_form": {
                 "group_italian": "Italienisch",
