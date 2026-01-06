@@ -36,13 +36,18 @@ import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item'
 import { APP_NAVIGATION_ITEMS } from './constants/navigation-items'
 import { useI18n } from '#imports'
 import { useLocale as piveauLocale } from '@piveau/sdk-vue'
-
 import { onMounted, ref } from 'vue'
 
-const { clear: logout } = useUserSession()
+const router = useRouter()
+const { clear } = useUserSession()
 
 function login() {
   window.location.href = '/api/auth/keycloak'
+}
+
+function logout() {
+  clear()
+  router.push('/logged-out')
 }
 
 const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS)
