@@ -9,8 +9,7 @@
 
 <script setup lang="ts">
 import OdsButton from '~/components/OdsButton.vue'
+import { useLogin } from '@/composables/login'
 
-function login() {
-  window.location.href = '/api/auth/keycloak'
-}
+const login = useLogin()
 </script>

@@ -37,13 +37,13 @@ import { APP_NAVIGATION_ITEMS } from './constants/navigation-items'
 import { useI18n } from '#imports'
 import { useLocale as piveauLocale } from '@piveau/sdk-vue'
 import { onMounted, ref } from 'vue'
+import { useLoginWithRedirect } from '@/composables/login'
 
 const router = useRouter()
+const route = useRoute()
 const { clear } = useUserSession()
 
-function login() {
-  window.location.href = '/api/auth/keycloak'
-}
+const login = useLoginWithRedirect(route.fullPath)
 
 function logout() {
   clear()
