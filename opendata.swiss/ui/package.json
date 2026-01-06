@@ -41,6 +41,7 @@
     "minimatch": "^10",
     "nuxt": "^4.2.2",
     "nuxt-auth-utils": "^0.5.26",
+    "nuxt-basic-auth-module": "^1.4.1",
     "pinia": "^3.0.4",
     "react-bootstrap-typeahead": "^6.4.1",
     "remark": "^15.0.1",

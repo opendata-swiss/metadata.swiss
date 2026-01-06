@@ -56,6 +56,7 @@ export default defineNuxtConfig({
         clientId: 'piveau-hub-ui',
       },
     },
+    apiTunerTests: false,
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
