@@ -40,10 +40,8 @@ import { onMounted, ref } from 'vue'
 import { useLoginWithRedirect } from '@/composables/login'
 
 const router = useRouter()
-const route = useRoute()
 const { clear } = useUserSession()
-
-const login = useLoginWithRedirect(route.fullPath)
+const login = useLoginWithRedirect()
 
 function logout() {
   clear()

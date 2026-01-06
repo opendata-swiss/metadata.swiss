@@ -1,8 +1,8 @@
 export default defineNuxtRouteMiddleware((from, to) => {
   const { loggedIn } = useUserSession()
-  const login = useLoginWithRedirect(to.fullPath)
+  const login = useLoginWithRedirect()
 
   if (!loggedIn.value) {
-    login()
+    login(to.fullPath)
   }
 })

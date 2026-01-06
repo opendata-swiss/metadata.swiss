@@ -1,10 +1,9 @@
-export function useLoginWithRedirect(returnTo: string) {
+export function useLoginWithRedirect() {
+  const route = useRoute()
   const authReturnTo = useCookie('auth-return-to')
 
-  return () => {
-    authReturnTo.value = returnTo
+  return (redirectTo?: string) => {
+    authReturnTo.value = redirectTo || route.fullPath
     window.location.href = '/api/auth/keycloak'
   }
 }
-
-export const useLogin = useLoginWithRedirect.bind(null, '/')
