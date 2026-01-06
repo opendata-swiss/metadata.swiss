@@ -20,7 +20,13 @@ yarn install
 bun install
 ```
 
-Optionally, create a `.env`:
+Create a `.env` file with required variables:
+
+```bash
+NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET:
+```
+
+and optionally:
 
 ```bash
 NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084
@@ -56,7 +62,7 @@ bun run dev
 
 ## Production
 
-Set the environment variables:
+Set the environment variables as needed:
 
 - `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
@@ -66,6 +72,9 @@ Set the environment variables:
 - `GITHUB_OWNER`
 - `GITHUB_REPO`
 - `GITHUB_BASE_BRANCH`
+- `NUXT_OAUTH_KEYCLOAK_CLIENT_ID`
+- `NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET`
+- `NUXT_OAUTH_KEYCLOAK_REALM`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.
 
