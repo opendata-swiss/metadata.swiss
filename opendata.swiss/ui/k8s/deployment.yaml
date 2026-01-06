@@ -24,21 +24,31 @@ spec:
                   name: public-endpoints
                   key: hub-repo-endpoint
 
-            - name: NUXT_PUBLIC_KEYCLOAK_URL
+            - name: NUXT_OAUTH_KEYCLOAK_SERVER_URL
               valueFrom:
-                configMapKeyRef:
-                  name: public-endpoints
-                  key: keycloak-url
-            - name: NUXT_PUBLIC_KEYCLOAK_REALM
+                secretKeyRef:
+                  name: auth-ui
+                  key: server-url
+            - name: NUXT_OAUTH_KEYCLOAK_REALM
               valueFrom:
-                configMapKeyRef:
-                  name: public-endpoints
-                  key: keycloak-realm
-            - name: NUXT_PUBLIC_KEYCLOAK_CLIENT_ID
+                secretKeyRef:
+                  name: auth-ui
+                  key: realm
+            - name: NUXT_OAUTH_KEYCLOAK_CLIENT_ID
               valueFrom:
-                configMapKeyRef:
-                  name: public-endpoints
-                  key: keycloak-client-id
+                secretKeyRef:
+                  name: auth-ui
+                  key: client-id
+            - name: NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: client-secret
+            - name: NUXT_SESSION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: session-password
 
             - name: GITHUB_OWNER
               value: opendata-swiss
