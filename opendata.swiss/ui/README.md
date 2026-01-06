@@ -60,6 +60,21 @@ yarn dev
 bun run dev
 ```
 
+### API tests
+
+To run API tests, set the environment variable below to enable basic auth for the API endpoints:
+
+```bash
+NUXT_API_TUNER_TESTS=true
+```
+
+Then, run the tests with:
+
+```bash
+npm run dev
+npm test
+```
+
 ## Production
 
 Set the environment variables as needed:
