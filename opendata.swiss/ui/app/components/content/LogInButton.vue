@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import OdsButton from '~/components/OdsButton.vue'
-import { useLogin } from '@/composables/login'
+import { useLoginWithRedirect } from '@/composables/login'
 
-const login = useLogin()
+const login = useLoginWithRedirect()
 </script>
