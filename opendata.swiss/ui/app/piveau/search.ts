@@ -30,6 +30,7 @@ export function useDatasetsSearch() {
       getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
       getOdsFormats: getOdsFormats(dataset),
       getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
+      getResource: dataset.resource,
     }
   })
 }
