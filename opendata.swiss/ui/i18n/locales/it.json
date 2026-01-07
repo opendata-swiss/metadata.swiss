@@ -74,7 +74,13 @@
             "externalLink": "Link esterno",
             "open": "Apri sito web",
             "search": {
-                "dataset_references": "{count} set di dati"
+                "dataset_references": "{count} set di dati",
+                "submit_prompt": {
+                    "your": "Presenta il tuo",
+                    "add_showcase_image_alt": "Aggiungi l'immagine di copertina del tuo showcase",
+                    "title": "Il tuo showcase qui?",
+                    "abstract": "Invia il tuo showcase per condividere il tuo progetto con la community, promuovere i tuoi dataset e ispirare gli altri."
+                }
             },
             "submission_form": {
                 "group_italian": "Italiano",

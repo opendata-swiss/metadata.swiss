@@ -182,15 +182,26 @@ await suspense()
           </div>
         </div>
         <div class="search__filters">
-          <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
+          <OdsFilterPanel
+            :facet-refs="facetRefs"
+            :facets="activeFacets"
+            @reset-all-facets="resetAllFacets"
+          />
         </div>
         <div class="filters__active" />
       </div>
     </section>
     <!-- results -->
-    <section id="search-results" class="section section--default">
+    <section
+      id="search-results"
+      class="section section--default"
+    >
       <div class="container gap--responsive">
-        <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
+        <div
+          class="search-results search-results--grid"
+          aria-live="polite"
+          aria-busy="false"
+        >
           <div class="search-results__header">
             <div class="search-results__header__left">
               <strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }}
@@ -204,16 +215,63 @@ await suspense()
           <h2 class="sr-only">
             Results list
           </h2>
-          <div  class="ods-card-list">
+          <div class="ods-card-list">
             <ul class="search-results-list">
-              <li  v-for="showcase in getSearchResultsEnhanced" :key="showcase.id">
+              <li>
+                <OdsCard
+                  style="height: 100%;"
+                  :title="t('message.showcase.search.submit_prompt.title')"
+                  clickable
+                >
+                  <template #image>
+                    <NuxtImg
+                      src="/img/ods-submit.png"
+                      :alt="t('message.showcase.search.submit_prompt.add_showcase_image_alt')"
+                    />
+                  </template>
+
+                  <template #top-meta>
+                    <div>
+                      <span class="meta-info__item">
+                        {{ t('message.showcase.search.dataset_references', { count: t('message.showcase.search.submit_prompt.your') }) }}
+                      </span>
+                    </div>
+                  </template>
+
+                  <p>
+                    {{ t('message.showcase.search.submit_prompt.abstract') }}
+                  </p>
+
+                  <template #footer-action>
+                    <NuxtLinkLocale
+                      :to="{ name: 'showcases-submit' }"
+                      type="false"
+                      class="btn btn--outline btn--icon-only"
+                      aria-label="false"
+                    >
+                      <SvgIcon
+                        icon="ArrowRight"
+                        role="btn"
+                      />
+                      <span class="btn__text">Submit</span>
+                    </NuxtLinkLocale>
+                  </template>
+                </OdsCard>
+              </li>
+              <li
+                v-for="showcase in getSearchResultsEnhanced"
+                :key="showcase.id"
+              >
                 <OdsCard
                   style="height: 100%;"
                   :title="getCurrentTranslation(showcase.title, locale.value)"
                   clickable
                 >
                   <template #image>
-                    <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
+                    <img
+                      :src="showcase.image[0]"
+                      :alt="getCurrentTranslation(showcase.title, locale.value)"
+                    >
                   </template>
 
                   <template #top-meta>
@@ -227,7 +285,11 @@ await suspense()
 
                   <template #footer-info>
                     <div>
-                      <span class="tag" v-for="tag in showcase.keywords" :key="tag.id">
+                      <span
+                        v-for="tag in showcase.keywords"
+                        :key="tag.id"
+                        class="tag"
+                      >
                         {{ tag.label }}
                       </span>
                     </div>
@@ -236,8 +298,16 @@ await suspense()
                   <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
 
                   <template #footer-action>
-                    <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                      <SvgIcon icon="ArrowRight" role="btn" />
+                    <NuxtLinkLocale
+                      :to="{ name: 'showcase-id', params: { id: showcase.id } }"
+                      type="false"
+                      class="btn btn--outline btn--icon-only"
+                      aria-label="false"
+                    >
+                      <SvgIcon
+                        icon="ArrowRight"
+                        role="btn"
+                      />
                       <span class="btn__text">Weiterlesen</span>
                     </NuxtLinkLocale>
                   </template>
