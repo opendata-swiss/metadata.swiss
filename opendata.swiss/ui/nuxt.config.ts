@@ -49,6 +49,9 @@ export default defineNuxtConfig({
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
     },
+    showcases: {
+      maxImageWidth: 900,
+    },
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
