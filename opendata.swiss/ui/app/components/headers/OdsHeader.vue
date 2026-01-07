@@ -62,16 +62,35 @@ function isChildPageOfSubMenu(item: OdsNavTabItem) {
 
 <template>
   <NuxtLoadingIndicator color="red" />
-  <div id="top-header-id" class="top-header">
+  <div
+    id="top-header-id"
+    class="top-header"
+  >
     <div class="container container--flex">
-      <div class="logo" to="/" aria-label="Home">
-        <NuxtLinkLocale class="logo" to="/" aria-label="Home">
-          <LogoSmall style="margin-right:4px;"/>
+      <div
+        class="logo"
+        to="/"
+        aria-label="Home"
+      >
+        <NuxtLinkLocale
+          class="logo"
+          to="/"
+          aria-label="Home"
+        >
+          <LogoSmall style="margin-right:4px;" />
         </NuxtLinkLocale>
-        <NuxtLinkLocale class="logo" to="/" aria-label="Home">
-          <NamedLogo/>
+        <NuxtLinkLocale
+          class="logo"
+          to="/"
+          aria-label="Home"
+        >
+          <NamedLogo />
         </NuxtLinkLocale>
-        <div class="logo__separator" role="separator" aria-hidden="true"/>
+        <div
+          class="logo__separator"
+          role="separator"
+          aria-hidden="true"
+        />
         <div class="logo-title__container">
           <div class="logo__accronym">
             ODS Portal
@@ -82,23 +101,41 @@ function isChildPageOfSubMenu(item: OdsNavTabItem) {
         </div>
       </div>
       <div class="top-header__right">
-        <BurgerButton v-model="menuOpen"  title="Toggle mobile menu" />
+        <BurgerButton
+          v-model="menuOpen"
+          title="Toggle mobile menu"
+        />
       </div>
     </div>
   </div>
   <div id="desktop-navigation-id">
     <div class="container container--flex">
-      <nav id="main-navigation" class="main-navigation main-navigation--desktop">
+      <nav
+        id="main-navigation"
+        class="main-navigation main-navigation--desktop"
+      >
         <ul>
-          <template v-for="item in props.navigationItems" :key="item.label">
+          <template
+            v-for="item in props.navigationItems"
+            :key="item.label"
+          >
             <!-- a normal tab -->
-            <li v-if="!item.subMenu" class="tab">
-              <NuxtLinkLocale :class="{ active: isChildPage(item) }" :to="item.to">
+            <li
+              v-if="!item.subMenu"
+              class="tab"
+            >
+              <NuxtLinkLocale
+                :class="{ active: isChildPage(item) }"
+                :to="item.to"
+              >
                 <span> {{ t(item.label) }}</span>
               </NuxtLinkLocale>
             </li>
 
-            <li v-if="item.subMenu" class="tab">
+            <li
+              v-if="item.subMenu"
+              class="tab"
+            >
               <OdsDropdownMenu
                 :label="item.label"
                 :menu="item"
@@ -113,8 +150,14 @@ function isChildPageOfSubMenu(item: OdsNavTabItem) {
 
   <!-- Mobile menu -->
   <Transition name="fade-menu">
-    <div v-if="menuOpen" class="ods-mobile-menu"  >
-      <OdsNavigationPanel  :items="props.navigationItems" @request-close="closeMobileMenu" />
+    <div
+      v-if="menuOpen"
+      class="ods-mobile-menu"
+    >
+      <OdsNavigationPanel
+        :items="props.navigationItems"
+        @request-close="closeMobileMenu"
+      />
     </div>
   </Transition>
 </template>
