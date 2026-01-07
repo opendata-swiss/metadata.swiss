@@ -21,7 +21,7 @@ export async function useBreadcrumbs({ route, locale, loadContent }: Options) {
     .slice(1)
 
   while (segments.length) {
-    const path = `/` + segments.join('/')
+    const path = '/' + segments.join('/')
     const { id, breadcrumb_title, title } = await loadContent({ path }, segments.length - 1).first() || {}
     breadcrumbs.unshift({
       id, title: breadcrumb_title || title || path, path,

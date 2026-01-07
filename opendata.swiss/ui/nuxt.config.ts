@@ -11,8 +11,9 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxt/icon',
+    'nuxt-auth-utils',
   ],
-  plugins: ['~/plugins/keycloak.ts'],
+  plugins: [],
   pages: {
     enabled: true,
   },
@@ -47,13 +48,18 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
-      keycloakUrl: 'https://keycloak.zazukoians.org/',
-      keycloakRealm: 'lindas-next',
-      keycloakClientId: 'piveau-hub-ui',
     },
     showcases: {
       maxImageWidth: 900,
     },
+    oauth: {
+      keycloak: {
+        serverUrl: 'https://keycloak.zazukoians.org/',
+        realm: 'lindas-next',
+        clientId: 'piveau-hub-ui',
+      },
+    },
+    apiTunerTests: false,
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),

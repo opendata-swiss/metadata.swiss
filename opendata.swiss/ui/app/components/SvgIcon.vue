@@ -18,7 +18,7 @@ const iconClasses = computed(() => {
   function* generate() {
     if (props.size) yield `icon--${props.size}`
     if (props.icon) yield `icon--${props.icon}`
-    if (props.spin) yield `icon--spin`
+    if (props.spin) yield 'icon--spin'
     if (props.role) yield `${props.role}__icon`
   }
 
