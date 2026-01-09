@@ -51,6 +51,10 @@ import { useVocabularySearch } from '../../app/piveau/search'
 import OdsCard from '../../app/components/OdsCard.vue'
 import SvgIcon from '../../app/components/SvgIcon.vue'
 
+definePageMeta({
+  middleware: 'require-auth',
+})
+
 const { t, locale } = useI18n()
 
 const { useSearch } = useVocabularySearch()
