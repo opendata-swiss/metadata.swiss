@@ -8,8 +8,6 @@ const { t } = useI18n()
 
 interface Props {
   enableAuthentication?: boolean
-  authenticated?: boolean
-  username: string | undefined
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -17,12 +15,11 @@ const props = withDefaults(defineProps<Props>(), {
   authenticated: false,
 })
 
-function loginOrLogout() {
-  if (props.authenticated) {
-    emit('logout')
-  }
-  else {
-    emit('login')
+const { loggedIn, user } = useUserSession()
+
+declare module '#auth-utils' {
+  interface User {
+    name: string
   }
 }
 
@@ -32,34 +29,40 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <header id="top-bar-container" class="top-bar">
-    <div id="top-bar" class="top-bar__bar">
+  <header
+    id="top-bar-container"
+    class="top-bar"
+  >
+    <div
+      id="top-bar"
+      class="top-bar__bar"
+    >
       <div class="container container--flex ">
-        <div class="top-bar__btn"/>
+        <div class="top-bar__btn" />
         <div class="top-bar__right">
           <div v-if="props.enableAuthentication">
             <OdsButton
-              v-if="props.authenticated"
+              v-if="loggedIn"
               icon="Logout"
               variant="bare-negative"
               size="sm"
               :title="t('message.top_header.logout')"
               :aria-label="t('message.top_header.logout')"
               icon-right
-              @click="loginOrLogout"
+              @click="emit('logout')"
             >
-              <span>{{ props.username ? props.username : t('message.top_header.logout')}}</span>
+              <span>{{ user ? user.name : t('message.top_header.logout') }}</span>
             </OdsButton>
 
             <OdsButton
-              v-if="!props.authenticated"
+              v-else
               icon="Login"
               variant="bare-negative"
               size="sm"
               :title="t('message.top_header.login')"
               :aria-label="t('message.top_header.login')"
               icon-right
-              @click="loginOrLogout"
+              @click="emit('login')"
             >
               <span>{{ t('message.top_header.login') }}</span>
             </OdsButton>
