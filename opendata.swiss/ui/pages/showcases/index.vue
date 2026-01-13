@@ -20,6 +20,7 @@ const { locale, t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
+const localePath = useLocalePath()
 
 const searchInput = ref(route.query.q)
 
@@ -217,47 +218,6 @@ await suspense()
           </h2>
           <div class="ods-card-list">
             <ul class="search-results-list">
-              <li>
-                <OdsCard
-                  style="height: 100%;"
-                  :title="t('message.showcase.search.submit_prompt.title')"
-                  clickable
-                >
-                  <template #image>
-                    <NuxtImg
-                      src="/img/ods-submit.png"
-                      :alt="t('message.showcase.search.submit_prompt.add_showcase_image_alt')"
-                    />
-                  </template>
-
-                  <template #top-meta>
-                    <div>
-                      <span class="meta-info__item">
-                        {{ t('message.showcase.search.dataset_references', { count: t('message.showcase.search.submit_prompt.your') }) }}
-                      </span>
-                    </div>
-                  </template>
-
-                  <p>
-                    {{ t('message.showcase.search.submit_prompt.abstract') }}
-                  </p>
-
-                  <template #footer-action>
-                    <NuxtLinkLocale
-                      :to="{ name: 'showcases-submit' }"
-                      type="false"
-                      class="btn btn--outline btn--icon-only"
-                      aria-label="false"
-                    >
-                      <SvgIcon
-                        icon="ArrowRight"
-                        role="btn"
-                      />
-                      <span class="btn__text">Submit</span>
-                    </NuxtLinkLocale>
-                  </template>
-                </OdsCard>
-              </li>
               <li
                 v-for="showcase in getSearchResultsEnhanced"
                 :key="showcase.id"
@@ -315,6 +275,30 @@ await suspense()
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="section bg--secondary-200">
+      <div class="container">
+        <h2 class="section__title">
+          {{ t('message.showcase.search.submit_prompt.title') }}
+        </h2>
+
+        <div class="card card--highlight">
+          <div class="card__content">
+            <div class="card__body">
+              {{ t('message.showcase.search.submit_prompt.abstract') }}
+            </div>
+          </div>
+        </div>
+
+        <div class="section__action">
+          <OdsButton
+            :href="localePath('showcases-submit')"
+            :title="t('message.showcase.search.submit_prompt.button_title')"
+            icon-right
+            icon="ArrowRight"
+          />
         </div>
       </div>
     </section>
