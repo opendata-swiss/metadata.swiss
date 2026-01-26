@@ -33,9 +33,6 @@ import java.net.http.HttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
 public class MainVerticle extends AbstractVerticle {
 
     private static final String CATALOGUE_INFO_FIELD_NAME = "catalogue";
@@ -45,15 +42,16 @@ public class MainVerticle extends AbstractVerticle {
 
     @Override
     public void start() {
-        // Initialize the PipeConnector, which connects this module to the Piveau pipeline.
+        // Initialize the PipeConnector, which connects this module to the Piveau
+        // pipeline.
         PipeConnector.create(vertx)
-            .onSuccess(connector -> {
-                this.pipeConnector = connector;
-                // Handle a pipe instance when it is received.
-                connector.handlePipe(this::handlePipe);
-                logger.info("Custom CSW Importer started successfully.");
-            })
-            .onFailure(Throwable::printStackTrace);
+                .onSuccess(connector -> {
+                    this.pipeConnector = connector;
+                    // Handle a pipe instance when it is received.
+                    connector.handlePipe(this::handlePipe);
+                    logger.info("Custom CSW Importer started successfully.");
+                })
+                .onFailure(Throwable::printStackTrace);
 
     }
 
@@ -72,11 +70,15 @@ public class MainVerticle extends AbstractVerticle {
         Integer startPosition = 1;
         Integer totalRecords = -1; // Sentinel value: not yet known
         Integer recordsFetched = 0;
+        Integer recordsFailed = 0;
 
-        HttpClient client = HttpClient.newHttpClient();
+        HttpClient client = HttpClient.newBuilder().followRedirects(HttpClient.Redirect.ALWAYS).build();
+
+        int pageSize = 10; // You can adjust this value based on your needs
 
         do {
-            String requestUrl = cswUrl + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
+            String requestUrl = cswUrl
+                    + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results";
 
             requestUrl += "&typeNames=" + typeNames;
             requestUrl += "&startPosition=" + startPosition;
@@ -95,6 +97,7 @@ public class MainVerticle extends AbstractVerticle {
 
                     try {
 
+                        int counter = 0;
                         String xmlContent = response.body();
                         SAXBuilder saxBuilder = new SAXBuilder();
                         Document document = saxBuilder.build(new StringReader(xmlContent));
@@ -103,12 +106,23 @@ public class MainVerticle extends AbstractVerticle {
                         Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
                         Namespace dcNamespace = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
 
-                        // This assumes the records are under <csw:GetRecordsResponse>/<csw:SearchResults>
+                        // This assumes the records are under
+                        // <csw:GetRecordsResponse>/<csw:SearchResults>
                         Element records = rootElement.getChild("SearchResults", cswNamespace);
 
+                        if (records == null) {
+
+                            logger.warn("No 'SearchResults' element found in the CSW response for " + requestUrl + ". Skipping.");
+                            recordsFetched += pageSize;
+                            startPosition += pageSize;
+
+                            continue;
+                        }
+
                         if (totalRecords == -1) { // This only runs on the first iteration
-                            totalRecords = records.getAttributeValue("numberOfRecordsMatched") != null ?
-                                        Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched")) : 0;
+                            totalRecords = records.getAttributeValue("numberOfRecordsMatched") != null
+                                    ? Integer.parseInt(records.getAttributeValue("numberOfRecordsMatched"))
+                                    : 0;
                             logger.info("Total records to import: " + totalRecords);
 
                             if (totalRecords == 0) {
@@ -119,20 +133,28 @@ public class MainVerticle extends AbstractVerticle {
 
                         logger.info("Found " + totalRecords + " records to forward.");
 
-
                         List<Element> recordsList = records.getChildren("Record", cswNamespace);
                         Integer recordsOnThisPage = recordsList.size();
+
+                        if (recordsOnThisPage == 0) {
+
+                            logger.warn("No 'Records' elements found in the CSW response for " + requestUrl + ". Skipping.");
+                            recordsFetched += pageSize;
+                            startPosition += pageSize;
+
+                            continue;
+                        }
 
                         recordsFetched += recordsOnThisPage;
                         startPosition += recordsOnThisPage;
 
-                        int counter = 0;
                         for (Element record : recordsList) {
                             ObjectNode dataInfo = new ObjectMapper().createObjectNode()
-                                .put("total", totalRecords)
-                                .put("current", startPosition + counter)
-                                .put("identifier", record.getChildText("identifier", dcNamespace))
-                                .put(CATALOGUE_INFO_FIELD_NAME, pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
+                                    .put("total", totalRecords)
+                                    .put("current", startPosition + counter)
+                                    .put("identifier", record.getChildText("identifier", dcNamespace))
+                                    .put(CATALOGUE_INFO_FIELD_NAME,
+                                            pipeContext.getConfig().getString(CATALOGUE_INFO_FIELD_NAME));
 
                             String xmlString = new XMLOutputter().outputString(record);
                             JSONObject jsonObject = XML.toJSONObject(xmlString);
@@ -145,33 +167,38 @@ public class MainVerticle extends AbstractVerticle {
 
                         }
 
-
-
                     } catch (JDOMException | IOException e) {
                         pipeContext.setFailure("Failed to parse XML response: " + e.getMessage());
                     } catch (JSONException e) {
                         pipeContext.setFailure("Failed to convert XML to JSON: " + e.getMessage());
                     }
 
-
                 } else {
                     logger.error("Error: Received status code " + response.statusCode());
                     logger.error("Response Body:");
                     logger.error(response.body());
+                    recordsFailed += pageSize;
                 }
 
             } catch (Exception e) {
                 logger.error("An error occurred during the HTTP request:");
                 e.printStackTrace();
+                recordsFailed += pageSize;
             }
 
-        } while (totalRecords > 0 && recordsFetched < totalRecords);
+        } while (totalRecords > 0 && recordsFetched + recordsFailed < totalRecords);
 
+        if (recordsFailed >= totalRecords) {
+            pipeContext.setFailure("All " + recordsFailed + " records failed to import.");
+        } else {
+            logger.info(("All " + recordsFetched + " records imported successfully."));
+            pipeContext.setRunFinished();
+        }
 
     }
 
-
     private HttpClient client;
+
     // Setter for the HTTP client to facilitate testing with a mock client.
     public void setClient(HttpClient client) {
         this.client = client;

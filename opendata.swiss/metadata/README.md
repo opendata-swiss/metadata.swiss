@@ -31,11 +31,6 @@ docker compose up -d # You can ignore the `-d` to see the logs in real time
 
 You can open the UI at [http://localhost:8080](http://localhost:8080).
 
-To create the catalogues, run:
-
-```sh
-./scripts/catalogues.sh
-```
 
 To install the default vocabularies, open the shell at [http://localhost:8085/shell.html](http://localhost:8085/shell.html) and run `installVocabularies`.
 
@@ -45,27 +40,18 @@ To add custom vocabularies, run:
 ./scripts/vocabularies.sh
 ```
 
-And to trigger a harvest, run:
-
-```sh
-./scripts/harvest.sh
-```
 
 Finally, to trigger CMS harvest, run:
 
 ```sh
-./scripts/harvest_showcases.sh
+poetry run python -m meta_harvester create-single-catalogue showcases-ods --file static/showcases-ods.ttl
+poetry run python -m meta_harvester run-pipes showcases-ods;
 ```
 
-You can also harvest from local environment by modifying the [`harvest_showcases.sh` script](./scripts/harvest_showcases.sh) to use `http://host.docker.internal:3000` as Piveau endpoint.
+You can also harvest from local environment by modifying `.env` file to use `http://host.docker.internal:3000` as Piveau endpoint.
 
 If you open the UI at [http://localhost:8080](http://localhost:8080), you should see that the catalogues and datasets are now visible.
 
-To remove the catalogues, run:
-
-```sh
-./scripts/catalogues_delete.sh
-```
 
 To stop the stack, run:
 
@@ -81,3 +67,10 @@ The traces could be found in the "Explore" section, using the "Jaeger" data sour
 
 You can then search for traces of a specific service, e.g., `piveau-consus-importing-rdf`, and explore the spans.
 You will need to create the catalogues and trigger a harvest first to see some traces.
+
+
+## Catalogues and pipes management
+
+This directory contains a CLI tool for managing harvester pipes and catalogues. For detailed usage instructions, checkout:
+
+- **[Meta-Harvester README](./meta_harvester/README.md)**
