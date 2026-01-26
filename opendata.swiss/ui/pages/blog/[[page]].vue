@@ -1,19 +1,19 @@
 <script setup>
-import OdsPage from "../../app/components/OdsPage.vue";
-import {homePageBreadcrumb} from "../../app/composables/breadcrumbs.js";
-import SvgIcon from "../../app/components/SvgIcon.vue";
-import OdsBreadcrumbs from "../../app/components/OdsBreadcrumbs.vue";
-import OdsCard from "../../app/components/OdsCard.vue";
-import OdsPagination from "../../app/components/OdsPagination.vue";
+import OdsPage from '../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
+import SvgIcon from '../../app/components/SvgIcon.vue'
+import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
+import OdsCard from '../../app/components/OdsCard.vue'
+import OdsPagination from '../../app/components/OdsPagination.vue'
 
 const route = useRoute()
-const {locale, t} = useI18n()
+const { locale, t } = useI18n()
 const localePath = useLocalePath()
 
 const PAGE_SIZE = 1 // Number of posts per page
 const page = parseInt(route.params.page) || 1
 
-const {data} = await useAsyncData(route.path, () => {
+const { data } = await useAsyncData(route.path, () => {
   return queryCollection('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
@@ -21,7 +21,7 @@ const {data} = await useAsyncData(route.path, () => {
     .limit(PAGE_SIZE)
     .all()
 })
-const {data: pageCount} = await useAsyncData(route.path + '_pageCount', () => {
+const { data: pageCount } = await useAsyncData(route.path + '_pageCount', () => {
   return queryCollection('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
@@ -33,7 +33,7 @@ useSeoMeta({
 })
 
 const posts = computed(() => {
-  return data.value?.map(post => {
+  return data.value?.map((post) => {
     const date = new Date(post.date)
 
     return {
@@ -41,7 +41,7 @@ const posts = computed(() => {
       year: date.getFullYear(),
       month: date.getMonth() + 1,
       slug: post.slug || post.path.split('/').pop().replace(`.${locale.value}`, ''),
-    };
+    }
   }) || []
 })
 
@@ -66,7 +66,7 @@ const breadcrumbs = [
             <li v-for="post in posts" :key="post.id">
               <OdsCard :title="post.title" type="universal" clickable>
                 <template #top-meta>
-                    <NuxtTime class="meta-info__item" :datetime="new Date(post.date)" relative />
+                  <NuxtTime class="meta-info__item" :datetime="new Date(post.date)" relative />
                 </template>
                 <template #footer-action>
                   <NuxtLinkLocale
@@ -96,8 +96,8 @@ const breadcrumbs = [
             {
               icon: 'ChevronRight',
               label: t('message.ods-pagination.next'),
-              link: `/blog/${page < pageCount ? parseInt(page) + 1 : pageCount}`
-            }
+              link: `/blog/${page < pageCount ? parseInt(page) + 1 : pageCount}`,
+            },
           ]"
           @page-change="navigateTo(localePath({ name: 'blog-page', params: { page: $event } }))"
         />

@@ -41,7 +41,7 @@ const tabs = computed(() => {
         label: props.title || `Tab ${index + 1}`,
       }
     })
-    .filter((tab) => tab !== null) as Tab[]
+    .filter(tab => tab !== null) as Tab[]
 })
 
 const activeIndex = ref(0)
@@ -51,14 +51,14 @@ const setActiveIndex = function (index: number) {
 }
 
 watch(activeIndex, (current, previous) => {
-  const tabsElements = [...root.value?.querySelectorAll(`[role=tabpanel]`) || []]
+  const tabsElements = [...root.value?.querySelectorAll('[role=tabpanel]') || []]
 
   tabsElements[previous]?.removeAttribute('active')
   tabsElements[current]?.setAttribute('active', 'active')
 })
 
 onMounted(() => {
-  [...root.value?.querySelectorAll(`[role=tabpanel]`) || []][0]?.setAttribute('active', 'active')
+  [...root.value?.querySelectorAll('[role=tabpanel]') || []][0]?.setAttribute('active', 'active')
 })
 </script>
 

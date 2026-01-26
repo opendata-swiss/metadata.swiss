@@ -5,6 +5,7 @@ services:
   piveau-hub-repo:
     image: piveau/hub-repo:3.4.0
     container_name: piveau-hub-repo
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -30,6 +31,7 @@ services:
   piveau-hub-search:
     image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.0
     container_name: piveau-hub-search
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -57,6 +59,7 @@ services:
   piveau-hub-ui:
     image: registry.gitlab.com/piveau/hub/piveau-hub-ui:v1.16.6
     container_name: piveau-hub-ui
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -74,6 +77,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.18.3
     container_name: elasticsearch
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -101,6 +105,7 @@ services:
   graphdb:
     image: ontotext/graphdb:10.8.8
     container_name: graphdb
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -116,6 +121,7 @@ services:
   graphdb-create-repo:
     image: curlimages/curl:latest
     container_name: graphdb-create-repo
+    restart: "no" # Just run once
     depends_on:
       graphdb:
         condition: service_started
@@ -123,11 +129,11 @@ services:
       - /config/setup.sh
     volumes:
       - ./config/graphdb:/config:ro
-    restart: "no"
 
   mitmproxy:
     image: mitmproxy/mitmproxy:12.1.1
     container_name: mitmproxy
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -158,6 +164,7 @@ services:
   #############################
   piveau-consus-importing-rdf:
     image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.10.1
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -172,6 +179,7 @@ services:
 
   piveau-consus-importing-ckan:
     image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -183,6 +191,7 @@ services:
 
   piveau-consus-transforming-js:
     image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.0.4
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -196,6 +205,7 @@ services:
 
   piveau-consus-exporting-hub:
     image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -209,6 +219,7 @@ services:
 
   piveau-consus-scheduling:
     image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.0
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -231,6 +242,7 @@ services:
   #################
   jaeger:
     image: docker.io/jaegertracing/all-in-one:1.75.0
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "wget -nv -t1 --spider localhost:14269/ || exit 1"]
       interval: 10s
@@ -242,6 +254,7 @@ services:
 
   collector:
     image: docker.io/otel/opentelemetry-collector-contrib:0.137.0
+    restart: unless-stopped
     command: >-
       --config=/collector.yaml
     depends_on:
@@ -252,6 +265,7 @@ services:
 
   prometheus:
     image: docker.io/prom/prometheus:v3.7.3
+    restart: unless-stopped
     command: >-
       --config.file=/prometheus.yaml
       --web.enable-lifecycle
@@ -273,6 +287,7 @@ services:
 
   grafana:
     image: docker.io/grafana/grafana:12.3.0
+    restart: unless-stopped
     ports:
       - 3001:3000
     environment:
@@ -297,6 +312,7 @@ services:
   ####################
   piveau-consus-importing-csw:
     build: ../piveau_modules/piveau-consus-importing-csw
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"
@@ -307,6 +323,7 @@ services:
 
   piveau-consus-patching:
     build: ../piveau_modules/piveau-consus-patching
+    restart: unless-stopped
     logging:
       options:
         max-size: "50m"

@@ -2,15 +2,15 @@
   <OdsFormField type="select" :for="id" :label="label" :required="required">
     <div :class="selectWrapperClasses">
       <select
-    :id="id"
-    :class="selectClasses"
-    :name="name"
-    :required="required"
-    :value="modelValue"
-    @change="handleChange"
-  >
-    <slot />
-  </select>
+        :id="id"
+        :class="selectClasses"
+        :name="name"
+        :required="required"
+        :value="modelValue"
+        @change="handleChange"
+      >
+        <slot />
+      </select>
       <div class="select__icon">
         <svg role="presentation" aria-hidden="true" viewBox="0 0 24 24">
           <path
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { computed, type PropType } from 'vue'
-import OdsFormField from "~/components/OdsFormField.vue";
+import OdsFormField from '~/components/OdsFormField.vue'
 
 const props = defineProps({
   modelValue: {
@@ -40,7 +40,7 @@ const props = defineProps({
   },
   variant: {
     type: String,
-    validator: (prop) => ['outline', 'negative'].includes(prop as string),
+    validator: prop => ['outline', 'negative'].includes(prop as string),
     default: () => 'outline',
   },
   bare: {
@@ -49,7 +49,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    validator: (prop) => ['sm', 'base', 'lg'].includes(prop as string),
+    validator: prop => ['sm', 'base', 'lg'].includes(prop as string),
     default: () => undefined,
   },
   label: {
@@ -74,7 +74,7 @@ const props = defineProps({
   },
   messageType: {
     type: String,
-    validator: (prop) =>
+    validator: prop =>
       ['error', 'warning', 'success', 'info'].includes(prop as string),
     default: () => undefined,
   },
@@ -92,7 +92,7 @@ const emit = defineEmits(['change', 'update:modelValue'])
 
 const selectWrapperClasses = computed(() => {
   let base = 'select '
-  if (props.bare) base += `select--bare `
+  if (props.bare) base += 'select--bare '
   return base
 })
 

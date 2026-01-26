@@ -14,9 +14,42 @@ spec:
               containerPort: 80
           env:
             - name: NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL
-              value: https://piveau-hub-search-ln.zazukoians.org/
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: hub-search-endpoint
             - name: NUXT_PUBLIC_PIVEAU_HUB_REPO_URL
-              value: https://piveau-hub-repo-ln.zazukoians.org/
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: hub-repo-endpoint
+
+            - name: NUXT_OAUTH_KEYCLOAK_SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: server-url
+            - name: NUXT_OAUTH_KEYCLOAK_REALM
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: realm
+            - name: NUXT_OAUTH_KEYCLOAK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: client-id
+            - name: NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: client-secret
+            - name: NUXT_SESSION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: auth-ui
+                  key: session-password
+
             - name: GITHUB_OWNER
               value: opendata-swiss
             - name: GITHUB_REPO
