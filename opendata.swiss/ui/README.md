@@ -126,3 +126,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+### Decap authentication
+
+To log in to Decap CMS, a GitHub account is required. Authentication is done by Netlify, which uses a GitHub OAuth App.
+
+The Netlify credentials are [here](https://passbolt.zazuko.com/app/passwords/view/df195c98-a453-4532-b3b1-eeccd1028aa1).
+
+In the single Netlify Project, the OAuth App is set up using Client ID and secret. Most importantly, each instance of ODS
+must be added in the [Domain Management](https://app.netlify.com/projects/preeminent-flan-064546/domain-management)
+section.
