@@ -74,7 +74,12 @@
             "externalLink": "External Link",
             "open": "Open website",
             "search": {
-                "dataset_references": "{count} dataset(s)"
+                "dataset_references": "{count} dataset(s)",
+                "submit_prompt": {
+                    "title": "Your showcase here?",
+                    "abstract": "Submit your own showcase to share your project with the community, advertise your datasets and inspire others.",
+                    "button_title": "Submit your showcase"
+                }
             },
             "submission_form": {
                 "group_italian": "Italian",
