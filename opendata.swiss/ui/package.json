@@ -9,6 +9,7 @@
   "scripts": {
     "prepare": "if [ -d node_modules/husky ]; then cd ../.. && husky; fi",
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
+    "predev": "shx test -d content || git clone --depth 1 https://github.com/opendata-swiss/opendata-swiss-cms-content content",
     "dev": "HOST=0.0.0.0 nuxt dev",
     "api-tuner": "npx api-tuner@0.5.2 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
@@ -64,12 +65,16 @@
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/vue-select": "^3.16.8",
+    "chokidar": "^4.0.3",
     "decap-server": "^3.4.0",
     "dotenv-cli": "^11.0.0",
     "eslint-plugin-react": "^7.37.5",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7"
+    "js-yaml": "^4.1.1",
+    "lint-staged": "^16.2.7",
+    "shx": "^0.4.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,ysx,vue}": [

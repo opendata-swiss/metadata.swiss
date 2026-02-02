@@ -1,12 +1,12 @@
 backend:
   name: github
-  repo: opendata-swiss/metadata.swiss
+  repo: opendata-swiss/opendata-swiss-cms-content-test
   squash_merges: true
 
 publish_mode: editorial_workflow
 
-media_folder: "public/img/uploads"
-public_folder: "/img/uploads"
+media_folder: "assets"
+public_folder: "/cms"
 
 i18n:
   structure: multiple_files
@@ -17,7 +17,7 @@ collections:
   - name: handbook-section
     label: "Handbook sections"
     label_singular: Handbook section
-    folder: "opendata.swiss/ui/content/sections"
+    folder: sections
     extension: md
     widget: "list"
     create: true
@@ -37,7 +37,7 @@ collections:
     label: "Handbook articles"
     label_singular: Handbook article
     identifier_field: id
-    folder: "opendata.swiss/ui/content/handbook"
+    folder: handbook
     extension: md
     widget: "list"
     create: true
@@ -82,7 +82,7 @@ collections:
 
   - name: pages
     label: "Pages"
-    folder: "opendata.swiss/ui/content/pages"
+    folder: pages
     extension: md
     widget: "list"
     create: false
@@ -110,7 +110,7 @@ collections:
   - name: blog
     label: Blog
     label_singular: Blog Post
-    folder: "opendata.swiss/ui/content/blog"
+    folder: blog
     extension: md
     widget: "list"
     create: true
@@ -148,7 +148,7 @@ collections:
   - name: Showcases
     label: "Showcases"
     label_singular: Showcase
-    folder: "opendata.swiss/ui/content/showcases"
+    folder: showcases
     i18n: true
     extension: md
     widget: "list"
