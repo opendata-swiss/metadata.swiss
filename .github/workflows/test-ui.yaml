@@ -37,9 +37,9 @@ jobs:
 
       - name: Checkout CMS repository
         if: github.event.action != 'closed'
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
-          repository: ${{ env.CMS_REPO_TEST }}
+          repository: ${{ vars.CMS_REPO_TEST }}
           path: opendata.swiss/ui/content
 
       - uses: fabasoad/setup-prolog-action@v1
