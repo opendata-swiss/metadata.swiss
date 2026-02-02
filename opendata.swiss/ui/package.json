@@ -17,7 +17,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "clone-cms": "shx test -d content || git clone --depth 1 https://github.com/opendata-swiss/opendata-swiss-cms-content content",
+    "clone-cms": "shx test -d content || git clone --depth 1 https://github.com/zazukoians/opendata-swiss-cms-content-test content",
     "postinstall": "npm run clone-cms && nuxt prepare"
   },
   "dependencies": {
