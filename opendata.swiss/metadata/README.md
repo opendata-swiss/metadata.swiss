@@ -25,11 +25,14 @@ For this, you need to have Docker and Docker Compose installed.
 
 Then, you will need to create a `.env` file, based on the `.env.example` file, and fill in the secrets.
 
-On Linux, you will need to manually create the volumes before starting the stack:
-
-```sh
-mkdir -p volumes/{graphdb,elasticsearch}-data
-```
+> [!NOTE]
+> On Linux, you will need to manually create the volumes and set specific permissions before starting the stack:
+>
+> ```sh
+> mkdir -p volumes/{graphdb,elasticsearch}-data
+> chown -R 1000:1000 ./volumes/elasticsearch-data
+> chmod -R 755 ./volumes/elasticsearch-data
+> ```
 
 Finally, you can start the stack with:
 
