@@ -1,10 +1,6 @@
 services:
-  ##########################
-  # docker-compose-hub.yml #
-  ##########################
   piveau-hub-repo:
-    image: piveau/hub-repo:3.4.0
-    container_name: piveau-hub-repo
+    image: piveau/hub-repo:3.4.5
     restart: unless-stopped
     logging:
       options:
@@ -14,24 +10,26 @@ services:
       - 8085:8085
       - 5002:5000
     environment:
+      - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
+      - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
+      - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
+      - JAVA_OPTS=-Xms1g -Xmx2g
       - OTEL_SDK_DISABLED=false
       - OTEL_SERVICE_NAME=piveau-hub-repo
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
+      - PIVEAU_HUB_REPO_RESTRICTED_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
-      - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
-      - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
-      - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
-      - JAVA_OPTS=-Xms1g -Xmx2g
     volumes:
+      - ./piveau_pipes:/usr/verticles/pipes
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.0
-    container_name: piveau-hub-search
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.1
     restart: unless-stopped
     logging:
       options:
@@ -39,27 +37,24 @@ services:
     ports:
       - 8084:8080
       - 8086:8081
-      - 5003:5000
     depends_on:
       elasticsearch:
         condition: service_healthy
     environment:
+      - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
+      - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
+      - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
+      - JAVA_OPTS=-Xms1g -Xmx2g
       - OTEL_SDK_DISABLED=false
       - OTEL_SERVICE_NAME=piveau-hub-search
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
-      - PIVEAU_HUB_SEARCH_API_KEY=${PIVEAU_HUB_SEARCH_API_KEY}
-      - PIVEAU_HUB_SEARCH_CLI_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_HUB_SEARCH_ES_CONFIG=${PIVEAU_HUB_SEARCH_ES_CONFIG}
-      - PIVEAU_HUB_SEARCH_GAZETTEER_CONFIG={"url":"http://doesnotmatter.eu"}
-      - JAVA_OPTS=-Xms1g -Xmx2g
     volumes:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-ui:
     image: registry.gitlab.com/piveau/hub/piveau-hub-ui:v1.16.6
-    container_name: piveau-hub-ui
     restart: unless-stopped
     logging:
       options:
@@ -75,37 +70,161 @@ services:
       - VITE_AUTHENTICATION_KEYCLOAK_CLIENT_ID=${VITE_AUTHENTICATION_KEYCLOAK_CLIENT_ID}
       - VITE_ROUTING_ROUTER_OPTIONS_BASE=/
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.3
-    container_name: elasticsearch
+  piveau-ui:
+    build: ../ui
+    restart: unless-stopped
+    ports:
+      - 8008:80
+    environment:
+      - NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084/
+      - NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
+
+  ###########
+  #### CONSUS
+  ###########
+
+  piveau-consus-importing-rdf:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.10.2
     restart: unless-stopped
     logging:
       options:
         max-size: "50m"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    healthcheck:
-      test: curl -s -f http://elasticsearch:9200/_cat/health >/dev/null || exit 1
-      interval: 5s
-      timeout: 3s
-      retries: 20
-    ports:
-      - 9200:9200
-      - 9300:9300
     environment:
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
-      - bootstrap.memory_lock=true
-      - discovery.type=single-node
-      - xpack.security.enabled=false
-      - ES_JAVA_OPTS=-Xms2G -Xmx4G
+      - JAVA_OPTS=-Xms200m -Xmx500m
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-importing-rdf
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+
+  piveau-consus-importing-ckan:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-importing-ckan
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+
+  piveau-consus-transforming-js:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.1.0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx500m
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-transforming-js
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
     volumes:
-      - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
+      - ./piveau_scripts:/usr/verticles/scripts
+
+  piveau-consus-exporting-hub:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.6
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms200m -Xmx1g
+      - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
+      - OTEL_SDK_DISABLED=true
+      - PIVEAU_PIPE_LOG_LEVEL=trace
+      - PIVEAU_LOG_LEVEL=TRACE
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-exporting-hub
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+      - PIVEAU_HUB_RESTRICTED_APIKEY=${PIVEAU_HUB_API_KEY}
+
+  piveau-consus-scheduling:
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - "8090:8080"
+      - "8095:8085"
+      - "5001:5000" # Just make it also work for macOS
+    environment:
+      - JAVA_OPTS=-Xms100m -Xmx200m
+      - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+      - OTEL_SDK_DISABLED=false
+      - OTEL_SERVICE_NAME=piveau-consus-scheduling
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+    volumes:
+      - ./piveau_pipes:/usr/verticles/pipes
+
+  ############
+  #### METRICS
+  ############
+
+  piveau-metrics-validating-shacl:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.4.0
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8181:8080
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-cache:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.8.2
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    ports:
+      - 8185:8080
+    environment:
+      - MONGODB_CONNECTION=mongodb://mongodb:27017
+      - CACHE_APIKEY=yourCacheApiKey
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - CACHE_CORS_DOMAINS=["localhost"]
+      - JAVA_OPTS=-Xms1g -Xmx2g
+
+  piveau-metrics-annotator:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.3
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-accessibility:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.7
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - PIVEAU_ACCESSIBILITY_PERSISTENCE_CONFIG={"mongoDbClient":{"connection_string":"mongodb://mongodb:27017"},"collection":"datasets"}
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+
+  piveau-metrics-score:
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.2
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
+    environment:
+      - JAVA_OPTS=-Xms1g -Xmx2g
+      - PIVEAU_LOG_LEVEL=trace
+      - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
   graphdb:
     image: ontotext/graphdb:10.8.8
-    container_name: graphdb
     restart: unless-stopped
     logging:
       options:
@@ -116,12 +235,13 @@ services:
       - -Xms2g
       - -Xmx5g
       - -Ddefault.min.distinct.threshold=512m
+      - -Dgraphdb.health.minimal.free.storage.enabled=false
+      - -Dgraphdb.health.minimal.free.storage.asyncCheck=false
     volumes:
       - ./volumes/graphdb-data:/opt/graphdb/dist/data
 
   graphdb-create-repo:
     image: curlimages/curl:latest
-    container_name: graphdb-create-repo
     restart: "no" # Just run once
     depends_on:
       graphdb:
@@ -133,7 +253,6 @@ services:
 
   mitmproxy:
     image: mitmproxy/mitmproxy:12.1.1
-    container_name: mitmproxy
     restart: unless-stopped
     logging:
       options:
@@ -160,83 +279,38 @@ services:
     volumes:
       - ./config/mitmproxy:/scripts
 
-  #############################
-  # docker-compose-consus.yml #
-  #############################
-  piveau-consus-importing-rdf:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.10.1
+  mongodb:
+    image: mongo:6.0.13
     restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    environment:
-      - OTEL_SDK_DISABLED=false
-      - OTEL_SERVICE_NAME=piveau-consus-importing-rdf
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
-      - JAVA_OPTS=-Xms200m -Xmx500m
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
-  piveau-consus-importing-ckan:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    environment:
-      - OTEL_SDK_DISABLED=false
-      - OTEL_SERVICE_NAME=piveau-consus-importing-ckan
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      - JAVA_OPTS=-Xms100m -Xmx200m
-
-  piveau-consus-transforming-js:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-transforming-js:4.0.4
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    environment:
-      - OTEL_SDK_DISABLED=false
-      - OTEL_SERVICE_NAME=piveau-consus-transforming-js
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      - JAVA_OPTS=-Xms200m -Xmx500m
     volumes:
-      - ./piveau_scripts:/usr/verticles/scripts
+      - ./volumes/mongodb-data:/data/db
 
-  piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.5
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.3
     restart: unless-stopped
     logging:
       options:
         max-size: "50m"
-    environment:
-      - OTEL_SDK_DISABLED=false
-      - OTEL_SERVICE_NAME=piveau-consus-exporting-hub
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
-      - JAVA_OPTS=-Xms200m -Xmx1g
-      - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
-
-  piveau-consus-scheduling:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.0
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    healthcheck:
+      test: curl -s -f http://elasticsearch:9200/_cat/health >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 20
     ports:
-      - "8090:8080"
-      - "8095:8085"
-      - "5001:5000" # Just make it also work for macOS
+      - 9200:9200
+      - 9300:9300
     environment:
-      - OTEL_SDK_DISABLED=false
-      - OTEL_SERVICE_NAME=piveau-consus-scheduling
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      # - PIVEAU_PIPE_LOG_LEVEL=TRACE
-      - JAVA_OPTS=-Xms100m -Xmx200m
-      - PIVEAU_SHELL_CONFIG={"telnet":{},"http":{}}
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms2G -Xmx4G
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
     volumes:
-      - ./piveau_pipes:/usr/verticles/pipes
+      - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
 
   #################
   # OpenTelemetry #
