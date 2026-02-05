@@ -74,7 +74,8 @@
             "externalLink": "Lien externe",
             "open": "Ouvrir le site web",
             "search": {
-                "dataset_references": "{count} jeux de données"
+                "dataset_references": "{count} jeux de données",
+                "placeholder": "Rechercher des showcases"
             },
             "submission_form": {
                 "group_italian": "Italien",

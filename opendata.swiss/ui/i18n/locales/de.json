@@ -74,7 +74,8 @@
             "externalLink": "Externer Link",
             "open": "Website starten",
             "search": {
-                "dataset_references": "{count} Datensätze"
+                "dataset_references": "{count} Datensätze",
+                "placeholder": "Nach Showcases suchen"
             },
             "submission_form": {
                 "group_italian": "Italienisch",
