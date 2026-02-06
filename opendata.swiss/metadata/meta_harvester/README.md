@@ -82,7 +82,7 @@ Triggers one or more piveau pipes to execute. By default, this command first cre
 
 *   **Run specific pipes:** Provide one or more pipe names.
     ```bash
-    python -m meta_harvester run-pipes aargau-kt-geocat-harvester bs-geocat-harvester
+    python -m meta_harvester run-pipes aargau-kt-geocat-harvester bfs-geocat-harvester
     ```
 *   **Run all pipes:** If no names are provided, the command discovers and runs all pipes in the `piveau_pipes/` directory.
     ```bash
