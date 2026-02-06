@@ -20,7 +20,12 @@ const { locale, t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
-const localePath = useLocalePath()
+
+const { data: showcasesExplanation } = await useAsyncData(route.path, () => {
+  return queryCollection('pages')
+    .where('path', 'LIKE', `%showcases-explanation.${locale.value}`)
+    .first()
+})
 
 const searchInput = ref(route.query.q)
 
@@ -278,27 +283,21 @@ await suspense()
         </div>
       </div>
     </section>
-    <section class="section bg--secondary-200">
+    <section class="section bg--secondary-900">
       <div class="container">
         <h2 class="section__title">
-          {{ t('message.showcase.search.submit_prompt.title') }}
+          {{ showcasesExplanation.title }}
         </h2>
 
         <div class="card card--highlight">
           <div class="card__content">
-            <div class="card__body">
-              {{ t('message.showcase.search.submit_prompt.abstract') }}
+            <div
+              class="card__body"
+              style="padding-bottom: 2em"
+            >
+              <MDC :value="showcasesExplanation.rawbody" />
             </div>
           </div>
-        </div>
-
-        <div class="section__action">
-          <OdsButton
-            :href="localePath('showcases-submit')"
-            :title="t('message.showcase.search.submit_prompt.button_title')"
-            icon-right
-            icon="ArrowRight"
-          />
         </div>
       </div>
     </section>
