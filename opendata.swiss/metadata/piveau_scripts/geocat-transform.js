@@ -411,7 +411,7 @@ function transforming(input) {
     dist.license = "http://dcat-ap.de/def/licenses/dl-by-de/2.0"
 
     output.distribution.push(dist);
-    console.log("Transformed output:");
+    console.log(`Transformed record with identifier: ${id}`);
 
     //const { "@context": context, ...outputWithoutContext } = output;
 //
