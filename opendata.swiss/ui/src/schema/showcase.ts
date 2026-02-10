@@ -14,6 +14,10 @@ export const shape = {
     label: z.string(),
   })).optional(),
   tags: z.array(z.string()).optional(),
+  submittedBy: z.object({
+    name: z.string(),
+    url: z.array(z.url()).optional(),
+  }).optional(),
   rawbody: z.string().optional(),
 }
 
