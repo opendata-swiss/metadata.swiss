@@ -36,11 +36,13 @@ const showcaseCategories = await Promise.all(showcase.value?.categories.map(asyn
   return resultEnhanced.value
 }))
 
-const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
+const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
   const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
   await query.suspense()
   return resultEnhanced.value
 }))
+
+const showcaseDatasets = computed(() => showcaseDatasetsRaw.filter(Boolean))
 
 useSeoMeta({
   title: `${showcase.value?.title} | ${t('message.header.navigation.showcases')} | opendata.swiss`,
@@ -48,18 +50,32 @@ useSeoMeta({
 </script>
 
 <template>
-  <OdsPage v-if="showcase" :page="showcase" >
+  <OdsPage
+    v-if="showcase"
+    :page="showcase"
+  >
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
 
     <template #hero-subheading>
-      <img v-if="showcase.image" :src="showcase.image" :alt="showcase.title" >
+      <img
+        v-if="showcase.image"
+        :src="showcase.image"
+        :alt="showcase.title"
+      >
     </template>
 
     <template #aside-content>
-      <OdsCard v-if="showcase.url" :title="t('message.showcase.externalLink')">
-        <OdsButton icon="External" variant="outline-negative" :href="showcase.url">
+      <OdsCard
+        v-if="showcase.url"
+        :title="t('message.showcase.externalLink')"
+      >
+        <OdsButton
+          icon="External"
+          variant="outline-negative"
+          :href="showcase.url"
+        >
           {{ t('message.showcase.open') }}
         </OdsButton>
       </OdsCard>
@@ -70,14 +86,23 @@ useSeoMeta({
         </OdsInfoBlock>
         <OdsInfoBlock :title="t('message.showcase.categories')">
           <ul>
-            <li v-for="category in showcaseCategories" :key="category.id">
+            <li
+              v-for="category in showcaseCategories"
+              :key="category.id"
+            >
               {{ category.pref_label }}
             </li>
           </ul>
         </OdsInfoBlock>
-        <OdsInfoBlock :title="t('message.showcase.datasets')">
+        <OdsInfoBlock
+          v-if="showcaseDatasets.length > 0"
+          :title="t('message.showcase.datasets')"
+        >
           <ul>
-            <li v-for="dataset in showcaseDatasets" :key="dataset.getId">
+            <li
+              v-for="dataset in showcaseDatasets"
+              :key="dataset.getId"
+            >
               <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.getId } }">
                 {{ dataset.getTitle }}
               </NuxtLinkLocale>
@@ -85,7 +110,11 @@ useSeoMeta({
           </ul>
         </OdsInfoBlock>
         <OdsInfoBlock :title="t('message.showcase.tags')">
-          <OdsTagItem v-for="tag in showcase.tags" :key="tag" :label="tag" />
+          <OdsTagItem
+            v-for="tag in showcase.tags"
+            :key="tag"
+            :label="tag"
+          />
         </OdsInfoBlock>
         <OdsInfoBlock :title="t('message.showcase.submitted_by')">
           Pending
