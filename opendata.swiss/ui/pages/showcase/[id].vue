@@ -12,11 +12,22 @@ const route = useRoute()
 const { locale, t } = useI18n()
 const { id } = route.params
 
-const { data: showcase } = await useAsyncData(route.path, () => {
-  return queryCollection('showcases')
+const { data: showcase } = await useAsyncData(route.path, async () => {
+  const currentTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.${locale.value}`)
     .where('active', '==', true)
     .first()
+
+  const germanTranslation = await queryCollection('showcases')
+    .where('stem', 'LIKE', `%${id}.de`)
+    .where('active', '==', true)
+    .select('submittedBy')
+    .first()
+
+  return {
+    ...currentTranslation,
+    submittedBy: germanTranslation.submittedBy,
+  }
 })
 
 const breadcrumbs = [
@@ -36,11 +47,13 @@ const showcaseCategories = await Promise.all(showcase.value?.categories.map(asyn
   return resultEnhanced.value
 }))
 
-const showcaseDatasets = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
+const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
   const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
   await query.suspense()
   return resultEnhanced.value
 }))
+
+const showcaseDatasets = computed(() => showcaseDatasetsRaw.filter(Boolean))
 
 useSeoMeta({
   title: `${showcase.value?.title} | ${t('message.header.navigation.showcases')} | opendata.swiss`,
@@ -87,8 +100,20 @@ useSeoMeta({
         <OdsInfoBlock :title="t('message.showcase.tags')">
           <OdsTagItem v-for="tag in showcase.tags" :key="tag" :label="tag" />
         </OdsInfoBlock>
-        <OdsInfoBlock :title="t('message.showcase.submitted_by')">
-          Pending
+        <OdsInfoBlock
+          v-if="showcase.submittedBy"
+          :title="t('message.showcase.submitted_by')"
+        >
+          <p>{{ showcase.submittedBy.name }}</p>
+          <a
+            v-for="link in showcase.submittedBy.url"
+            :key="link"
+            class="link--external"
+            target="_blank"
+            :href="link"
+          >
+            {{ link }}
+          </a>
         </OdsInfoBlock>
       </OdsCard>
     </template>
