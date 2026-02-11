@@ -49,7 +49,7 @@ public class MainVerticle extends AbstractVerticle {
             .flatMap(records -> records.stream())
             .forEach(record -> {
                 ObjectNode dataInfo = new ObjectMapper().createObjectNode()
-                        .put("total", xmlSource.totalRecords)
+                        .put("total", xmlSource.getTotalRecords())
                         .put("current", index.getAndIncrement())
                         .put("identifier", record.getChildText("identifier", XmlSource.dcNamespace))
                         .put("catalogue", catalogue);
@@ -61,11 +61,11 @@ public class MainVerticle extends AbstractVerticle {
                 pipeContext.setResult(jsonString, "application/json", dataInfo).forward();
                 pipeContext.log().info("Dataset imported: {}", dataInfo);
             });
-        if (xmlSource.totalRecords == 0) {
+        if (xmlSource.getTotalRecords() == 0) {
             throw new RuntimeException("No records found to import from " + address);
         } 
-        if (index.get() - 1 != xmlSource.totalRecords) {
-            throw new RuntimeException("Expected to import " + xmlSource.totalRecords + " records, but imported " + (index.get() - 1));
+        if (index.get() - 1 != xmlSource.getTotalRecords()) {
+            throw new RuntimeException("Expected to import " + xmlSource.getTotalRecords() + " records, but imported " + (index.get() - 1));
         }
     }
 
@@ -84,6 +84,8 @@ public class MainVerticle extends AbstractVerticle {
         try {
             importData(pipeContext, cswUrl, typeNames, catalogue);
             pipeContext.setRunFinished();
+            logger.info("Data import completed successfully for catalogue: " + catalogue);
+
         } catch (Exception e) {
             logger.error("An error occurred during data import: " + e.getMessage(), e);
             pipeContext.setFailure("An error occurred during data import: " + e.getMessage());

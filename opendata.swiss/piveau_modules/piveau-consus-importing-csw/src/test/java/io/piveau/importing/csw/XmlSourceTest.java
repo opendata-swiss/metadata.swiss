@@ -31,6 +31,11 @@ public class XmlSourceTest {
         test("https://www.geocat.ch/geonetwork/sh/ger/csw", "dcat", "amt-fur-geoinformation-kt-sh");
     }
 
+        @Test
+    public void glarus_kt() {
+        test("https://www.geocat.ch/geonetwork/gl/ger/csw", "dcat", "glarus-kt");
+    }
+
     @Test // takes a lot of time
     public void testAll() throws Exception {
         File dir = new File("../../metadata/piveau_pipes");
@@ -51,7 +56,7 @@ public class XmlSourceTest {
             .flatMap(records -> records.stream())
             .forEach(record -> {
                 ObjectNode dataInfo = new ObjectMapper().createObjectNode()
-                        .put("total", xmlSource.totalRecords)
+                        .put("total", xmlSource.getTotalRecords())
                         .put("current", index.getAndIncrement())
                         .put("identifier", record.getChildText("identifier", XmlSource.dcNamespace))
                         .put("catalogue", catalogue);
@@ -62,8 +67,8 @@ public class XmlSourceTest {
 
                 print(jsonString, dataInfo);
             });
-        assertTrue(xmlSource.totalRecords > 0);
-        assertEquals(index.get(), xmlSource.totalRecords + 1);
+        assertTrue(xmlSource.getTotalRecords() > 0);
+        assertEquals(index.get(), xmlSource.getTotalRecords() + 1);
     }
 
     JSONObject getConfig(Path path) {
