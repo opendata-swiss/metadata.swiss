@@ -107,6 +107,7 @@ jobs:
             poetry run python -m meta_harvester generate-all-catalogues;
             poetry run python -m meta_harvester create-catalogues;
             # For running all pipes
+            poetry run python -m meta_harvester generate-all-pipes;
             poetry run python -m meta_harvester run-pipes;
             # For quick tests -> comment the line above and uncomment the line below to run only specific pipes
             # poetry run python -m meta_harvester run-pipes babs-geocat-harvester gemeinde-emmen-geocat-harvester;
