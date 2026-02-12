@@ -4,7 +4,6 @@ import { APP_LANGUAGES } from '../../app/constants/langages.js'
 export const shape = {
   active: z.boolean(),
   title: z.string().optional(),
-  body: z.string().optional(),
   image: z.string().optional(),
   url: z.string().optional(),
   categories: z.array(z.string()).optional(),
