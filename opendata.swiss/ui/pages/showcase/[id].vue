@@ -84,7 +84,10 @@ useSeoMeta({
         <OdsInfoBlock :title="t('message.showcase.type.header')">
           {{ showcase.type }}
         </OdsInfoBlock>
-        <OdsInfoBlock :title="t('message.showcase.categories')">
+        <OdsInfoBlock
+          v-if="showcaseCategories.length > 0"
+          :title="t('message.showcase.categories')"
+        >
           <ul>
             <li
               v-for="category in showcaseCategories"
@@ -109,7 +112,10 @@ useSeoMeta({
             </li>
           </ul>
         </OdsInfoBlock>
-        <OdsInfoBlock :title="t('message.showcase.tags')">
+        <OdsInfoBlock
+          v-if="showcase.tags.length > 0"
+          :title="t('message.showcase.tags')"
+        >
           <OdsTagItem
             v-for="tag in showcase.tags"
             :key="tag"
