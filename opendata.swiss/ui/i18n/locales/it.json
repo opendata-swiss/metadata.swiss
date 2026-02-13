@@ -101,6 +101,10 @@
                     "label": "Set di dati",
                     "prompt": "Digita per cercare set di dati..."
                 },
+                "field_submitted_by": {
+                    "name": "Inviato da",
+                    "url": "Link al sito web"
+                },
                 "submit_button": "Invia"
             }
         },

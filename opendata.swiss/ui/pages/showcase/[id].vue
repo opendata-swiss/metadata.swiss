@@ -12,11 +12,22 @@ const route = useRoute()
 const { locale, t } = useI18n()
 const { id } = route.params
 
-const { data: showcase } = await useAsyncData(route.path, () => {
-  return queryCollection('showcases')
+const { data: showcase } = await useAsyncData(route.path, async () => {
+  const currentTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.${locale.value}`)
     .where('active', '==', true)
     .first()
+
+  const germanTranslation = await queryCollection('showcases')
+    .where('stem', 'LIKE', `%${id}.de`)
+    .where('active', '==', true)
+    .select('submittedBy')
+    .first()
+
+  return {
+    ...currentTranslation,
+    submittedBy: germanTranslation.submittedBy,
+  }
 })
 
 const breadcrumbs = [
@@ -116,8 +127,20 @@ useSeoMeta({
             :label="tag"
           />
         </OdsInfoBlock>
-        <OdsInfoBlock :title="t('message.showcase.submitted_by')">
-          Pending
+        <OdsInfoBlock
+          v-if="showcase.submittedBy"
+          :title="t('message.showcase.submitted_by')"
+        >
+          <p>{{ showcase.submittedBy.name }}</p>
+          <a
+            v-for="link in showcase.submittedBy.url"
+            :key="link"
+            class="link--external"
+            target="_blank"
+            :href="link"
+          >
+            {{ link }}
+          </a>
         </OdsInfoBlock>
       </OdsCard>
     </template>

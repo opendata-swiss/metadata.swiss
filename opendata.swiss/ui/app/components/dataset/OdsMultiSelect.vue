@@ -1,5 +1,10 @@
 <template>
-  <OdsFormField :for="getUniqueId('multi-select')" :label="label" type="select" :required="required">
+  <OdsFormField
+    :for="getUniqueId('multi-select')"
+    :label="label"
+    type="select"
+    :required="required"
+  >
     <div :class="selectWrapperClasses">
       <VSelect
         :id="getUniqueId('multi-select')"
@@ -11,13 +16,15 @@
         :components="{ Deselect, OpenIndicator }"
         :options="options"
         :name="name"
+        :taggable="taggable"
+        :no-drop="taggable"
         label="title"
         :filterable="!!loadOptions"
         :close-on-select="closeOnSelect"
         @search="loadOptions!"
       >
         <template #no-options>
-          <slot name="no-options"/>
+          <slot name="no-options" />
         </template>
         <!-- Workaround for required validation -->
         <template #search="{ attributes, events }">
@@ -27,18 +34,29 @@
               required && (!selected || selected.length === 0)
             "
             v-bind="attributes as any"
+            @keydown="onSearchKeydown"
             v-on="events"
           >
         </template>
         <template #option="option">
-          <slot name="option" v-bind="option" />
+          <slot
+            name="option"
+            v-bind="option"
+          />
         </template>
         <template #selected-option="option">
-          <slot name="selected-option" v-bind="option" />
+          <slot
+            name="selected-option"
+            v-bind="option"
+          />
         </template>
       </VSelect>
       <div class="select__icon">
-        <svg role="presentation" aria-hidden="true" viewBox="0 0 24 24">
+        <svg
+          role="presentation"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+        >
           <path
             d="m5.706 10.015 6.669 3.85 6.669-3.85.375.649-7.044 4.067-7.044-4.067z"
           />
@@ -142,6 +160,10 @@ const props = defineProps({
     type: Number,
     default: () => undefined,
   },
+  taggable: {
+    type: Boolean,
+    default: () => false,
+  },
 })
 
 const selectWrapperClasses = computed(() => {
@@ -173,6 +195,14 @@ const selectClasses = computed(() => {
 
 const getUniqueId = function (text = '') {
   return `${text}-${selectId.value}`
+}
+
+function onSearchKeydown(event: KeyboardEvent) {
+  if (event.key === 'Enter') {
+    nextTick(() => {
+      (event.target as HTMLInputElement).focus()
+    })
+  }
 }
 
 onMounted(() => {

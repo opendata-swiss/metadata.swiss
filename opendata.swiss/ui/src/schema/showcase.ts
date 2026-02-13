@@ -13,6 +13,10 @@ export const shape = {
     label: z.string(),
   })).optional(),
   tags: z.array(z.string()).optional(),
+  submittedBy: z.object({
+    name: z.string(),
+    url: z.array(z.url()).optional(),
+  }).optional(),
   rawbody: z.string().optional(),
 }
 
@@ -24,7 +28,7 @@ const submissionSchemaShape = APP_LANGUAGES.reduce((acc, lang) => {
 export const submissionSchema = (t: (key: string) => string) => z.object(submissionSchemaShape).refine(data =>
   APP_LANGUAGES.some((lang) => {
     const langData = data[lang]
-    return langData.title && langData.body && langData.title.length >= 5 && langData.body.length >= 100
+    return langData && langData.title && langData.rawbody && langData.title.length >= 5 && langData.rawbody.length >= 100
   }),
 {
   message: t('server.api.showcases.post.error.missing_content'),

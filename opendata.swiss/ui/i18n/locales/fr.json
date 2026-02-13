@@ -101,6 +101,10 @@
                     "label": "Jeux de données",
                     "prompt": "Tapez pour rechercher des jeux de données..."
                 },
+                "field_submitted_by": {
+                    "name": "Soumis par",
+                    "url": "Liens vers le site web"
+                },
                 "submit_button": "Soumettre"
             }
         },

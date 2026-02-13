@@ -101,6 +101,10 @@
                     "label": "Datensätze",
                     "prompt": "Tippen Sie, um nach Datensätzen zu suchen..."
                 },
+                "field_submitted_by": {
+                    "name": "Übermittelt von",
+                    "url": "Website-Links"
+                },
                 "submit_button": "Einreichen"
             }
         },
