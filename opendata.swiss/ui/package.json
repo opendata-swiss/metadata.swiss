@@ -17,7 +17,8 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "clone-cms": "shx test -d content || git clone --depth 1 https://github.com/zazukoians/opendata-swiss-cms-content-test content",
+    "postinstall": "npm run clone-cms && nuxt prepare"
   },
   "dependencies": {
     "@nuxt/content": "^3.10.0",
@@ -64,12 +65,16 @@
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
     "@types/vue-select": "^3.16.8",
+    "chokidar": "^4.0.3",
     "decap-server": "^3.4.0",
     "dotenv-cli": "^11.0.0",
     "eslint-plugin-react": "^7.37.5",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7"
+    "js-yaml": "^4.1.1",
+    "lint-staged": "^16.2.7",
+    "shx": "^0.4.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,ysx,vue}": [
