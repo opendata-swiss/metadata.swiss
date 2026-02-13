@@ -25,6 +25,12 @@ on:
           - "DELETE_VOCABULARIES"
         default: "HARVEST"
 
+      arguments:
+        description: "Additional arguments (optional)"
+        required: false
+        type: string
+        default: ""
+
 jobs:
   workflow:
     runs-on: ubuntu-latest
@@ -73,17 +79,54 @@ jobs:
           CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_TEST }}
           CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_TEST }}
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v4
+        with:
+          path: ./opendata.swiss/metadata/meta_harvester/.venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Activate venv
+        working-directory: opendata.swiss/metadata/meta_harvester
+        run: eval $(poetry env activate)
+
+      - name: Install dependencies
+        working-directory: opendata.swiss/metadata/meta_harvester
+        run: poetry install
+
       - name: Run the selected action
         working-directory: ./opendata.swiss/metadata
         run: |
           if [ "${{ github.event.inputs.action }}" == "HARVEST" ]; then
-            ./scripts/harvest.sh;
+            cd meta_harvester;
+            poetry run python -m meta_harvester generate-all-catalogues;
+            poetry run python -m meta_harvester create-catalogues;
+            # For running all pipes
+            poetry run python -m meta_harvester generate-all-pipes;
+            poetry run python -m meta_harvester run-pipes "${{ github.event.inputs.arguments }}";
+            # For quick tests -> comment the line above and uncomment the line below to run only specific pipes
+            # poetry run python -m meta_harvester run-pipes babs-geocat-harvester gemeinde-emmen-geocat-harvester;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
-            ./scripts/harvest_showcases.sh;
+            cd meta_harvester;
+            poetry run python -m meta_harvester create-single-catalogue showcases-ods --file static/showcases-ods.ttl
+            poetry run python -m meta_harvester run-pipes showcases-ods;
           elif [ "${{ github.event.inputs.action }}" == "CATALOGUES" ]; then
-            ./scripts/catalogues.sh;
+            cd meta_harvester;
+            poetry run python -m meta_harvester create-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_CATALOGUES" ]; then
-            ./scripts/catalogues_delete.sh;
+            cd meta_harvester;
+            poetry run python -m meta_harvester delete-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "VOCABULARIES" ]; then
             ./scripts/vocabularies.sh;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then

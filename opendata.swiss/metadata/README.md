@@ -68,45 +68,6 @@ In case you want to remove them, run:
 To install the default vocabularies, open the shell at [http://localhost:8085/shell.html](http://localhost:8085/shell.html) and run `installVocabularies`.
 This could take some minutes.
 
-#### Catalogues and Harvesting
-
-To create the catalogues, run:
-
-```sh
-./scripts/catalogues.sh
-```
-
-And to trigger a harvest, run:
-
-```sh
-./scripts/harvest.sh
-```
-
-Finally, to trigger CMS harvest, ensure that the new UI is ready by opening http://localhost:8008/.
-
-If this is the case, run:
-
-```sh
-./scripts/harvest_showcases.sh
-```
-
-You can also harvest from local environment by modifying the [`harvest_showcases.sh` script](./scripts/harvest_showcases.sh) to use `http://host.docker.internal:3000` as Piveau endpoint.
-
-If you open the UI at http://localhost:8080, you should see that the catalogues and datasets are now visible.
-
-If you open the new UI at http://localhost:8008, you should also see all data.
-
-To remove the catalogues, run:
-
-```sh
-./scripts/catalogues_delete.sh
-```
-
-To stop the stack, run:
-
-```sh
-docker compose down
-```
 
 ## OpenTelemetry
 
@@ -116,3 +77,32 @@ The traces could be found in the "Explore" section, using the "Jaeger" data sour
 
 You can then search for traces of a specific service, e.g., `piveau-consus-importing-rdf`, and explore the spans.
 You will need to create the catalogues and trigger a harvest first to see some traces.
+
+
+## Catalogues and pipes management
+
+This directory contains a CLI tool for managing harvester pipes and catalogues. For detailed usage instructions, checkout:
+
+- **[Meta-Harvester README](./meta_harvester/README.md)**
+
+Finally, to trigger CMS harvest, ensure that the new UI is ready by opening http://localhost:8008/.
+
+If this is the case, run:
+
+```sh
+poetry run python -m meta_harvester create-single-catalogue showcases-ods --file static/showcases-ods.ttl
+poetry run python -m meta_harvester run-pipes showcases-ods;
+```
+
+You can also harvest from local environment by modifying `.env` file to use `http://host.docker.internal:3000` as Piveau endpoint.
+
+If you open the UI at http://localhost:8080, you should see that the catalogues and datasets are now visible.
+
+If you open the new UI at http://localhost:8008, you should also see all data.
+
+
+To stop the stack, run:
+
+```sh
+docker compose down
+```

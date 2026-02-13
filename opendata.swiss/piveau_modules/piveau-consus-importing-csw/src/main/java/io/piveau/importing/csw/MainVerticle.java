@@ -93,7 +93,6 @@ public class MainVerticle extends AbstractVerticle {
     }
 
 
-
     public static void main(String[] args) {
         String[] params = Arrays.copyOf(args, args.length + 1);
         params[params.length - 1] = MainVerticle.class.getName();

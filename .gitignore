@@ -8,8 +8,8 @@
 *.log
 *.json
 opendata.swiss/archimate/odsn.archimate.bak
+dependency-reduced-pom.xml
 
-__pycache__/
 
 opendata.swiss/metatadata/meta_harvester/meta_harvester/__pycache__/
 opendata.swiss/metadata/piveau_catalogues
