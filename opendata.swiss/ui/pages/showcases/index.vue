@@ -164,7 +164,7 @@ await suspense()
             <input
               id="search-input"
               v-model="searchInput"
-              :placeholder="t('message.dataset_search.search_placeholder')"
+              :placeholder="t('message.showcase.search.placeholder')"
               type="search"
               :label="t('message.dataset_search.search_placeholder')"
               autocomplete="off"
