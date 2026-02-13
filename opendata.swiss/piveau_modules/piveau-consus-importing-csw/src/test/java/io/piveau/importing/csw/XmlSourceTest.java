@@ -2,9 +2,6 @@ package io.piveau.importing.csw;
 
 import org.junit.jupiter.api.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -14,10 +11,10 @@ import java.nio.file.Path;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.jdom2.Element;
 import org.jdom2.output.XMLOutputter;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.XML;
 
 public class XmlSourceTest {
 
@@ -54,19 +51,7 @@ public class XmlSourceTest {
         XmlSource xmlSource = new XmlSource(address, typeNames);
         xmlSource.getRecordsStream()
             .flatMap(records -> records.stream())
-            .forEach(record -> {
-                ObjectNode dataInfo = new ObjectMapper().createObjectNode()
-                        .put("total", xmlSource.getTotalRecords())
-                        .put("current", index.getAndIncrement())
-                        .put("identifier", record.getChildText("identifier", XmlSource.dcNamespace))
-                        .put("catalogue", catalogue);
-
-                String xmlString = new XMLOutputter().outputString(record);
-                JSONObject jsonObject = XML.toJSONObject(xmlString);
-                String jsonString = jsonObject.toString(4);
-
-                print(jsonString, dataInfo);
-            });
+            .forEach(record -> print(record, index.getAndIncrement()));
         assertTrue(xmlSource.getTotalRecords() > 0);
         assertEquals(index.get(), xmlSource.getTotalRecords() + 1);
     }
@@ -97,9 +82,10 @@ public class XmlSourceTest {
         "sitg"
     );
 
-    static void print(String jsonString, ObjectNode dataInfo) {
-       System.out.println("Dataset imported: " + dataInfo);
-       // System.out.println(jsonString);
-       // System.out.println("--------------------------------------------------");
+    static void print(Element record, Integer index) {
+        System.out.println("-------------- " + index + " -------------------------------");
+        String xmlString = new XMLOutputter().outputString(record);
+        System.out.println(xmlString);
+
     }
 }
