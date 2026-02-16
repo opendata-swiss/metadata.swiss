@@ -76,7 +76,7 @@
             "open": "Apri sito web",
             "search": {
                 "dataset_references": "{count} set di dati",
-                "prompt": "Cerca set di dati..."
+                "placeholder": "Cerca showcases"
             },
             "submission_form": {
                 "group_italian": "Italiano",

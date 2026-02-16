@@ -76,7 +76,7 @@
             "open": "Open website",
             "search": {
                 "dataset_references": "{count} dataset(s)",
-                "prompt": "Search for datasets..."
+                "placeholder": "Search showcases"
             },
             "submission_form": {
                 "group_italian": "Italian",

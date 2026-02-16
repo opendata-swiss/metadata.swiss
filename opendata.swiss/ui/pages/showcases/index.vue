@@ -165,16 +165,22 @@ await suspense()
     />
     <!-- results -->
     <OdsSearchResults :results-count="getSearchResultsCount">
-      <div  class="ods-card-list">
+      <div class="ods-card-list">
         <ul class="search-results-list">
-          <li  v-for="showcase in getSearchResultsEnhanced" :key="showcase.id">
+          <li
+            v-for="showcase in getSearchResultsEnhanced"
+            :key="showcase.id"
+          >
             <OdsCard
               style="height: 100%;"
               :title="getCurrentTranslation(showcase.title, locale.value)"
               clickable
             >
               <template #image>
-                <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
+                <img
+                  :src="showcase.image[0]"
+                  :alt="getCurrentTranslation(showcase.title, locale.value)"
+                >
               </template>
 
               <template #top-meta>
@@ -188,7 +194,11 @@ await suspense()
 
               <template #footer-info>
                 <div>
-                  <span v-for="tag in showcase.keywords" :key="tag.id" class="tag">
+                  <span
+                    v-for="tag in showcase.keywords"
+                    :key="tag.id"
+                    class="tag"
+                  >
                     {{ tag.label }}
                   </span>
                 </div>
@@ -197,8 +207,16 @@ await suspense()
               <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
 
               <template #footer-action>
-                <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                  <SvgIcon icon="ArrowRight" role="btn" />
+                <NuxtLinkLocale
+                  :to="{ name: 'showcase-id', params: { id: showcase.id } }"
+                  type="false"
+                  class="btn btn--outline btn--icon-only"
+                  aria-label="false"
+                >
+                  <SvgIcon
+                    icon="ArrowRight"
+                    role="btn"
+                  />
                   <span class="btn__text">Weiterlesen</span>
                 </NuxtLinkLocale>
               </template>
