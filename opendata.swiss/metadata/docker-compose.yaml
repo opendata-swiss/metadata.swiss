@@ -395,6 +395,7 @@ services:
       - JAVA_OPTS=-Xms200m -Xmx500m
       #- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
+      - CSW_IMPORT_DELAY=20
 
   piveau-consus-patching:
     build: ../piveau_modules/piveau-consus-patching
