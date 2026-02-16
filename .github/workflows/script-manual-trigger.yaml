@@ -116,7 +116,7 @@ jobs:
             cd meta_harvester;
             # run all pipes if there are no additional arguments, otherwise run the specified pipes
             args=$(echo ${{ github.event.inputs.arguments }} | sed 's/%20/ /g')
-            poetry run python -m meta_harvester run-pipes "$args";
+            poetry run python -m meta_harvester run-pipes $args;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
             cd meta_harvester;
             poetry run python -m meta_harvester create-single-catalogue showcases-ods --file static/showcases-ods.ttl
