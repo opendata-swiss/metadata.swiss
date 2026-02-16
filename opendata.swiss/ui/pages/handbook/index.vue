@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import OdsBreadcrumbs from '../app/components/OdsBreadcrumbs.vue'
 import { useBreadcrumbs } from '../app/composables/breadcrumbs'
 import { loadPageBreadcrumb } from '../app/lib/breadcrumbs'
-import OdsPage from '../app/components/OdsPage.vue'
+import OdsHandbookPage from '../../app/components/handbook/OdsHandbookPage.vue'
 
 const route = useRoute()
-const router = useRouter()
 const { locale } = useI18n()
 
 const breadcrumbs = await useBreadcrumbs({
@@ -15,17 +13,9 @@ const breadcrumbs = await useBreadcrumbs({
 })
 
 const { data: page } = await useAsyncData(route.path, () => {
-  const slug = route.params.id || 'index'
-
   return queryCollection('pages')
-    .where('stem', 'LIKE', `%${slug}.${locale.value}`)
+    .where('path', 'LIKE', `%handbook.${locale.value}`)
     .first()
-})
-
-onMounted(() => {
-  if (!page.value) {
-    router.replace('/404')
-  }
 })
 
 useSeoMeta({
@@ -34,12 +24,5 @@ useSeoMeta({
 </script>
 
 <template>
-  <OdsPage
-    v-if="page"
-    :page="page"
-  >
-    <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
-    </template>
-  </OdsPage>
+  <OdsHandbookPage :page="page" :breadcrumbs="breadcrumbs" />
 </template>

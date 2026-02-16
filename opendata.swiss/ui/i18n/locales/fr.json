@@ -15,9 +15,16 @@
                 "what_is_ods": "Qu'est-ce qu'opendata.swiss?",
                 "terms_of_use": "Conditions d'utilisation",
                 "handbook": "Manuel",
+                "search": "Recherche",
                 "showcases": "Showcases",
                 "close": "Fermer",
-                "showcase_submit": "Soumettre un showcase"
+                "showcase_submit": "Soumettre un showcase",
+                "admin": {
+                    "title": "GOGD Admin",
+                    "dashboard": "Tableau de bord",
+                    "metrics": "Qualité & métriques",
+                    "categories": "Catégories DCAT"
+                }
             }
         },
         "ods_toc": {
@@ -74,7 +81,8 @@
             "externalLink": "Lien externe",
             "open": "Ouvrir le site web",
             "search": {
-                "dataset_references": "{count} jeux de données"
+                "dataset_references": "{count} jeux de données",
+                "placeholder": "Rechercher des showcases"
             },
             "submission_form": {
                 "group_italian": "Italien",
@@ -101,8 +109,16 @@
                     "label": "Jeux de données",
                     "prompt": "Tapez pour rechercher des jeux de données..."
                 },
+                "field_submitted_by": {
+                    "name": "Soumis par",
+                    "url": "Liens vers le site web"
+                },
                 "submit_button": "Soumettre"
             }
+        },
+        "handbook": {
+            "search_prompt": "Rechercher dans le manuel...",
+            "search_prompt_short": "Écrivez ici..."
         },
         "terms_of_use": {
             "ods_open": {

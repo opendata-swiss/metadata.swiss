@@ -136,6 +136,22 @@ export default defineEventHandler(async (event) => {
           })
         }
       })
+      .with(P.string.startsWith('submittedBy'), () => {
+        const submittedBy = showcase.de.submittedBy || {
+          name: undefined,
+          url: [],
+        } as unknown as ShowcasesCollectionItem['submittedBy']
+
+        match(name as 'submittedBy.name' | 'submittedBy.url')
+          .with('submittedBy.name', () => {
+            submittedBy.name = data.toString()
+          })
+          .with('submittedBy.url', () => {
+            submittedBy.url!.push(data.toString())
+          })
+
+        showcase.de.submittedBy = submittedBy
+      })
       .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
       })
