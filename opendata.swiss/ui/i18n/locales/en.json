@@ -101,6 +101,10 @@
                     "label": "Datasets",
                     "prompt": "Type to search for datasets..."
                 },
+                "field_submitted_by": {
+                    "name": "Submitted by",
+                    "url": "Website links"
+                },
                 "submit_button": "Submit"
             }
         },

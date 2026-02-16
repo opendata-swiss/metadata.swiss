@@ -177,6 +177,27 @@
                   :label="t('field_tags.label')"
                   :placeholder="t('field_tags.prompt')"
                 />
+                <div class="form__group">
+                  <OdsInput
+                    id="submittedBy.name"
+                    :label="t('field_submitted_by.name')"
+                  />
+                  <OdsMultiSelect
+                    ref="urlInputRef"
+                    :label="t('field_submitted_by.url')"
+                    :close-on-select="true"
+                    taggable
+                  >
+                    <template #selected-option="option">
+                      {{ option.title }}
+                      <input
+                        type="hidden"
+                        name="submittedBy.url"
+                        :value="option.title"
+                      >
+                    </template>
+                  </OdsMultiSelect>
+                </div>
               </div>
             </OdsTab>
           </OdsTabs>
