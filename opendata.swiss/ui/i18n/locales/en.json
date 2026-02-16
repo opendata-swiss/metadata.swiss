@@ -18,7 +18,13 @@
                 "search": "Search",
                 "showcases": "Showcases",
                 "close": "Close",
-                "showcase_submit": "Submit a showcase"
+                "showcase_submit": "Submit a showcase",
+                "admin": {
+                    "title": "GOGD Admin",
+                    "dashboard": "Dashboard",
+                    "metrics": "Quality & Metrics",
+                    "categories": "DCAT Categories"
+                }
             }
         },
         "ods_toc": {
