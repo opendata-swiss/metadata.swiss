@@ -6,7 +6,8 @@ import OdsTagItem from '../../app/components/OdsTagItem.vue'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsCard from '../../app/components/OdsCard.vue'
 import OdsButton from '../../app/components/OdsButton.vue'
-import { useDatasetsSearch, useVocabularySearch } from '../../app/piveau/search.js'
+import { useVocabularySearch } from '../../app/piveau/vocabularies.js'
+import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 
 const route = useRoute()
 const { locale, t } = useI18n()
