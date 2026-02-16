@@ -198,6 +198,20 @@ collections:
       - name: tags
         label: Tags
         widget: list
+      - name: submittedBy
+        label: Submitted by
+        widget: object
+        summary: '{{fields.name}}'
+        required: false
+        i18n: false
+        fields:
+          - name: name
+            label: Name
+            widget: string
+          - name: url
+            label: Url (separate multiple entries with a comma)
+            widget: list
+            required: false
       - name: body
         label: Body
         widget: markdown

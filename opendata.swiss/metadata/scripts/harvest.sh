@@ -14,5 +14,5 @@ else
   CURL_CREDS=""
 fi
 
-curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/staatskanzelei-kanton-zuerich/triggers/immediateTrigger"
+# curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/staatskanzelei-kanton-zuerich/triggers/immediateTrigger"
 curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/bafu/triggers/immediateTrigger"

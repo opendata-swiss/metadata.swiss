@@ -20,7 +20,13 @@ yarn install
 bun install
 ```
 
-Optionally, create a `.env`:
+Create a `.env` file with required variables:
+
+```bash
+NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET:
+```
+
+and optionally:
 
 ```bash
 NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084
@@ -54,9 +60,24 @@ yarn dev
 bun run dev
 ```
 
+### API tests
+
+To run API tests, set the environment variable below to enable basic auth for the API endpoints:
+
+```bash
+NUXT_API_TUNER_TESTS=true
+```
+
+Then, run the tests with:
+
+```bash
+npm run dev
+npm test
+```
+
 ## Production
 
-Set the environment variables:
+Set the environment variables as needed:
 
 - `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
@@ -66,6 +87,9 @@ Set the environment variables:
 - `GITHUB_OWNER`
 - `GITHUB_REPO`
 - `GITHUB_BASE_BRANCH`
+- `NUXT_OAUTH_KEYCLOAK_CLIENT_ID`
+- `NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET`
+- `NUXT_OAUTH_KEYCLOAK_REALM`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.
 
@@ -102,3 +126,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+### Decap authentication
+
+To log in to Decap CMS, a GitHub account is required. Authentication is done by Netlify, which uses a GitHub OAuth App.
+
+The Netlify credentials are [here](https://passbolt.zazuko.com/app/passwords/view/df195c98-a453-4532-b3b1-eeccd1028aa1).
+
+In the single Netlify Project, the OAuth App is set up using Client ID and secret. Most importantly, each instance of ODS
+must be added in the [Domain Management](https://app.netlify.com/projects/preeminent-flan-064546/domain-management)
+section.

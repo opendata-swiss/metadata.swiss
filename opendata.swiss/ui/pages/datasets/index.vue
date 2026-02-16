@@ -2,25 +2,26 @@
 import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 
 import { useRoute, useRouter } from 'vue-router'
-import type { LocationQueryValue } from 'vue-router'
 import { useI18n } from '#imports'
 
 import type { SearchParamsBase } from '@piveau/sdk-core'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
-import { useDatasetsSearch, ACTIVE_FACETS } from '../../app/piveau/search'
+import { useDatasetsSearch, facets } from '../../app/piveau/datasets'
 import OdsBreadcrumbs, { type BreadcrumbItem } from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPagination from '../../app/components/OdsPagination.vue'
 import OdsDatasetList from '../../app/components/dataset/OdsDatasetList.vue'
-import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue'
 import OdsListCardToggle from '../../app/components/dataset/list-card-toggle/OdsListCardToggle.vue'
 import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
 import { homePageBreadcrumb } from '../../app/composables/breadcrumbs'
 import SvgIcon from '../../app/components/SvgIcon.vue'
-import OdsButton from '../../app/components/OdsButton.vue'
 import { useSeoMeta } from 'nuxt/app'
 import { clearDatasetBreadcrumbFromSessionStorage } from './[datasetId]/breadcrumb-session-stoage'
 import { DcatApChV2DatasetAdapter } from '../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
+
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 
 const { t, locale } = useI18n()
 
@@ -29,12 +30,12 @@ const route = useRoute()
 
 // 1. Main reactive object for your logic/UI
 const selectedFacets = reactive(
-  Object.fromEntries(ACTIVE_FACETS.map(facet => [facet, [] as string[]])),
+  Object.fromEntries(facets.map(facet => [facet, [] as string[]])),
 )
 
 // 2. facetRefs for useSearch API (syncs with selectedFacets)
 const facetRefs = Object.fromEntries(
-  ACTIVE_FACETS.map(facet => [facet, computed({
+  facets.map(facet => [facet, computed({
     get: () => selectedFacets[facet],
     set: (val: string[]) => { selectedFacets[facet] = val },
   })]),
@@ -58,17 +59,9 @@ if (import.meta.client) {
   clearDatasetBreadcrumbFromSessionStorage()
 }
 
-function syncFacetsFromRoute() {
-  const facetsFromQuerry = getSearchParamsWithFacets(route.query)
-  ACTIVE_FACETS.forEach((facet) => {
-    const newVal = facetsFromQuerry[facet] || []
-    facetRefs[facet].value = newVal
-  })
-}
-
 function resetSearch() {
   searchInput.value = ''
-  ACTIVE_FACETS.forEach((facet) => {
+  facets.forEach((facet) => {
     facetRefs[facet].value = []
   })
   piveauQueryParams.page = 0
@@ -136,14 +129,13 @@ watch(listType, (newType) => {
 const availableFacets = getAvailableFacetsLocalized(locale.value)
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
-  const facets = availableFacets.value.filter(f => ACTIVE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
-  return facets
+  return availableFacets.value.filter(f => facets.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
 })
 
 function goToPage(newPage: number | string, query = route.query) {
   const page = newPage ? Number(newPage) : 1
   // Collect all facet values from facetRefs
-  const facetsQuery = ACTIVE_FACETS.reduce((acc, facet) => {
+  const facetsQuery = facets.reduce((acc, facet) => {
     if (facetRefs[facet].value.length > 0) {
       acc[facet] = facetRefs[facet].value
     }
@@ -198,14 +190,6 @@ const resultBreadcrumb = computed<BreadcrumbItem | null>(() => {
   return null
 })
 
-function getSearchParamsWithFacets(query: { [x: string]: LocationQueryValue | LocationQueryValue[] }) {
-  const facetsValue = decodeURIComponent(query.facets as string || '')
-  if (Array.isArray(facetsValue)) {
-    return { } as Record<string, string[]>
-  }
-  return facetsValue ? JSON.parse(String(facetsValue)) as Record<string, string[]> : {} as Record<string, string[]>
-}
-
 const breadcrumbs = computed<BreadcrumbItem[]>(() => {
   const lastBreadcrumb = resultBreadcrumb.value
   if (lastBreadcrumb === null) {
@@ -253,28 +237,17 @@ watch(() => route.query.sort, (sortTerm) => {
 })
 
 onMounted(() => {
-  syncFacetsFromRoute()
+  syncFacetsFromRoute({
+    facets,
+    facetRefs,
+    route,
+  })
 
-  ACTIVE_FACETS.forEach((facet) => {
-    watch(facetRefs[facet], (newVal) => {
-      const query = { ...route.query }
-      const facetsFromQuerry = getSearchParamsWithFacets(query)
-      // only set the facet if it has changed
-      const hasFacetChanged = JSON.stringify(facetsFromQuerry[facet] ?? []) !== JSON.stringify(newVal)
-
-      if (hasFacetChanged) {
-        facetsFromQuerry[facet] = newVal
-        if (query.page && query.page !== '1') {
-          query.page = '1' // Reset page to 1 if facets are restored from route
-        }
-        if (newVal.length === 0) {
-          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
-          delete facetsFromQuerry[facet]
-        }
-        query['facets'] = encodeURIComponent(JSON.stringify(facetsFromQuerry))
-        router.push({ query })
-      }
-    })
+  useFacetSync({
+    facets,
+    facetRefs,
+    route,
+    router,
   })
 })
 
@@ -293,100 +266,65 @@ await suspense()
 
     <main id="main-content">
       <!-- search panel -->
-      <section class="section section--default bg--secondary-50">
-        <div class="container">
-          <h1 class="h1">
-            {{ t('message.dataset_search.search_results') }}
-          </h1>
-          <div class="search search--large search--page-result">
-            <div class="search__group">
-              <input
-                id="search-input"
-                v-model="searchInput"
-                :placeholder="t('message.dataset_search.search_placeholder')"
-                type="search"
-                :label="t('message.dataset_search.search_placeholder')"
-                autocomplete="off"
-                class="search"
-                @keyup.enter="onSearch"
-              >
-              <OdsButton
-                variant="bare"
-                :title="t('message.dataset_search.search_button')"
-                size="lg"
-                icon="Search"
-                icon-only
-                @click="onSearch"
-              />
-            </div>
-          </div>
-          <div class="search__filters">
-            <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
-          </div>
-          <div class="filters__active" />
-        </div>
-      </section>
+      <OdsSearchPanel
+        :search-input="searchInput"
+        :search-prompt="t('message.dataset_search.search_placeholder')"
+        :facet-refs="facetRefs"
+        :active-facets="activeFacets"
+        @search="onSearch"
+        @reset-all-facets="resetAllFacets"
+        @update:search-input="value => searchInput = value"
+      />
       <!-- results -->
 
-      <section id="search-results" class="section section--default">
-        <div class="container gap--responsive">
-          <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
-            <div class="search-results__header">
-              <div class="search-results__header__left">
-                <strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }}
-              </div>
-              <div class="search-results__header__right">
-                <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
-                <div class="separator separator--vertical" />
-                <OdsListCardToggle v-model="listType" />
-              </div>
-            </div>
-            <h2 class="sr-only">
-              Results list
-            </h2>
-            <!-- <div v-if="isFetching" class="is-fetching">
+      <OdsSearchResults :results-count="getSearchResultsCount">
+        <template #header-right>
+          <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
+          <div class="separator separator--vertical" />
+          <OdsListCardToggle v-model="listType" />
+        </template>
+
+        <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
             </div> -->
-            <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
-            <div class="pagination pagination--right">
-              <OdsPagination
-                :current-page="(Number(route.query.page  ?? 1))"
-                :total-pages="getSearchResultsPagesCount"
-                :page-label="t('message.ods-pagination.page')"
-                :total-pages-label="t('message.ods-pagination.of') + getSearchResultsPagesCount"
-                :pagination-items="[
-                  {
-                    icon: 'ChevronLeft',
-                    label: t('message.ods-pagination.previous'),
-                    link: { name: route.name, query: { ...route.query, page: (Number(route.query.page  ?? 1) - 1) } /*, hash: '#search-results'*/ },
-                  },
-                  {
-                    icon: 'ChevronRight',
-                    label: t('message.ods-pagination.next'),
-                    link: { name: route.name, query: { ...route.query, page: (Number(route.query.page ?? 1) + 1) } /* hash: '#search-results' */ },
-                  },
-                ]"
-                @page-change="(page) => goToPage(page)"
-                @click="scrollOnPaging($event)"
-              />
-            </div>
+        <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
+        <div class="pagination pagination--right">
+          <OdsPagination
+            :current-page="(Number(route.query.page  ?? 1))"
+            :total-pages="getSearchResultsPagesCount"
+            :page-label="t('message.ods-pagination.page')"
+            :total-pages-label="t('message.ods-pagination.of') + getSearchResultsPagesCount"
+            :pagination-items="[
+              {
+                icon: 'ChevronLeft',
+                label: t('message.ods-pagination.previous'),
+                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page  ?? 1) - 1) } /*, hash: '#search-results'*/ },
+              },
+              {
+                icon: 'ChevronRight',
+                label: t('message.ods-pagination.next'),
+                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page ?? 1) + 1) } /* hash: '#search-results' */ },
+              },
+            ]"
+            @page-change="(page) => goToPage(page)"
+            @click="scrollOnPaging($event)"
+          />
+        </div>
 
-            <div class="notification notification--info">
-              <SvgIcon icon="InfoCircle" role="notification" />
-              <div class="notification__content">
-                <div class="text--bold">
-                  Haben Sie nicht gefunden wonach Sie suchen?
-                </div>
-                <div>
-                  Gerne geben wir Ihnen auch persönlich Auskunft. Bitte melden Sie sich
-                  via Kontaktformular bei uns.
-                </div>
-                <a href="#" class="link">Kontaktformular</a>
-              </div>
+        <div class="notification notification--info">
+          <SvgIcon icon="InfoCircle" role="notification" />
+          <div class="notification__content">
+            <div class="text--bold">
+              Haben Sie nicht gefunden wonach Sie suchen?
             </div>
+            <div>
+              Gerne geben wir Ihnen auch persönlich Auskunft. Bitte melden Sie sich
+              via Kontaktformular bei uns.
+            </div>
+            <a href="#" class="link">Kontaktformular</a>
           </div>
         </div>
-      </section>
+      </OdsSearchResults>
     </main>
   </div>
 </template>

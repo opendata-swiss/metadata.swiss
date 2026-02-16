@@ -1,0 +1,88 @@
+# System capabilities, sorted by priority
+
+Priority highest at the bottom, lowest at the top
+Dependencies only downwards
+
+---------------------------
+[   ] Not Ready (needs refinement)
+[.  ] To-Do
+[.. ] In-Progress
+[...] Done
+---------------------------
+
+[   ] Showcase Harvesting (from other Swiss OGD portals)
+
+[   ] Message communication (datapublisher, operator)
+
+[   ] Handbook, run scripts
+[.  ] Handbook, multimedia
+
+[.  ] Onboardings ("Hilfefunktion")
+
+[.  ] Blog submission, by external people
+[.  ] Multi tenant support in decap CMS ("Mandantenfähigkeit")
+[.  ] Keycloak Integration decap CMS
+
+[   ] Rate Datasets, Showcases ("5-stars")
+[   ] Comment Datasets, Showcases, Handbook, Blogs
+[   ] Favorite Datasets, Showcases
+
+[.  ] Dataset semantic search
+[   ] Dataset machine translations
+
+[   ] Distribution Preview
+
+[   ] (___) Harvester extended error management and failure reporting
+[   ] (106) Harvester metadata import guard (blocking, constraint enforcement)
+
+[.  ] Dataset edit (manual, upload, API)
+[.  ] Dataset workflow
+[.  ] Harvester UI for datapublisher (Config, Test, Schedule)
+
+[.  ] Multi tenant support in Piveau ("Mandantenfähigkeit")
+
+[.  ] Harvester UI for operator, RBAC only (Config, Test, Schedule)
+
+------[ Jun 30 ]--------------------------------
+
+???
+
+------[ MVP ]-----------------------------------
+
+[   ] Statistics of portal usage
+
+[   ] Static content (CMS) workflow/activation
+[...] Static content (CMS) display
+[.. ] Static content (CMS) edit
+
+[.  ] Blog workflow
+[.. ] Blog search & display
+[...] Blog edit
+
+[.  ] Showcase linked to Organization
+[...] Showcase submission
+[.. ] Showcase workflow
+[.. ] Showcase search & display
+[...] Showcase edit (in decap CMS)
+
+[.  ] Subscribe to Datasets, Themes, Organizations
+
+[.  ] Metadata Quality UI (DCAT-AP CH conformance, linkchecker)
+[.. ] Linkchecker (Distributions)
+[.. ] DCAT-AP CH conformance check
+
+[.. ] Handbook workflow
+[.. ] Handbook search & display
+[...] Handbook edit
+
+[.. ] DCAT-AP CH V3 Metadata
+[.  ] Organization search & display
+[.. ] Organization edit
+[.. ] Keycloak/eIAM Integration piveau
+
+[.. ] Dataset search & display
+[.. ] Geo Meta Harvesting
+[.. ] DCAT-AP Harvesting
+[.. ] Harvester Monitoring
+[.. ] Harvester Scheduling
+[.. ] DCAT-AP CH V2 Metadata

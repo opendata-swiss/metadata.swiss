@@ -3,7 +3,7 @@ import { useI18n } from '#imports'
 
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useDatasetsSearch } from '../../../../app/piveau/search.js'
+import { useDatasetsSearch } from '../../../../app/piveau/datasets'
 import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
 import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'

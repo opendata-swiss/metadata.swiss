@@ -29,4 +29,13 @@ export const APP_NAVIGATION_ITEMS: OdsNavTabItem[] = [
       { label: 'message.header.navigation.contact', to: '/contact' },
     ],
   },
+  {
+    label: 'message.header.navigation.admin.title',
+    adminOnly: true,
+    subMenu: [
+      { label: 'message.header.navigation.admin.dashboard', to: '/gogd/dashboard' },
+      { label: 'message.header.navigation.admin.metrics', to: '/gogd/metrics' },
+      { label: 'message.header.navigation.admin.categories', to: '/gogd/categories' },
+    ],
+  },
 ]
