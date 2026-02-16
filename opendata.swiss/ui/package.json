@@ -37,6 +37,7 @@
     "bootstrap": "^5.3.8",
     "decap-cms-app": "^3.9.0",
     "eslint": "^9.39.2",
+    "fuse.js": "^7.1.0",
     "is-absolute-url": "^5.0.0",
     "minimatch": "^10",
     "nuxt": "^4.2.2",

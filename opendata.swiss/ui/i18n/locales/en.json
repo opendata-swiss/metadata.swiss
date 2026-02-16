@@ -15,6 +15,7 @@
                 "what_is_ods": "What is opendata.swiss?",
                 "terms_of_use": "Terms of use",
                 "handbook": "Handbook",
+                "search": "Search",
                 "showcases": "Showcases",
                 "close": "Close",
                 "showcase_submit": "Submit a showcase"
@@ -74,7 +75,8 @@
             "externalLink": "External Link",
             "open": "Open website",
             "search": {
-                "dataset_references": "{count} dataset(s)"
+                "dataset_references": "{count} dataset(s)",
+                "prompt": "Search for datasets..."
             },
             "submission_form": {
                 "group_italian": "Italian",
@@ -107,6 +109,10 @@
                 },
                 "submit_button": "Submit"
             }
+        },
+        "handbook": {
+            "search_prompt": "Search the handbook...",
+            "search_prompt_short": "Type here..."
         },
         "terms_of_use": {
             "ods_open": {

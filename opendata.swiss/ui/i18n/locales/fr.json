@@ -15,6 +15,7 @@
                 "what_is_ods": "Qu'est-ce qu'opendata.swiss?",
                 "terms_of_use": "Conditions d'utilisation",
                 "handbook": "Manuel",
+                "search": "Recherche",
                 "showcases": "Showcases",
                 "close": "Fermer",
                 "showcase_submit": "Soumettre un showcase"
@@ -74,7 +75,8 @@
             "externalLink": "Lien externe",
             "open": "Ouvrir le site web",
             "search": {
-                "dataset_references": "{count} jeux de données"
+                "dataset_references": "{count} jeux de données",
+                "prompt": "Rechercher des jeux de données..."
             },
             "submission_form": {
                 "group_italian": "Italien",
@@ -107,6 +109,10 @@
                 },
                 "submit_button": "Soumettre"
             }
+        },
+        "handbook": {
+            "search_prompt": "Rechercher dans le manuel...",
+            "search_prompt_short": "Écrivez ici..."
         },
         "terms_of_use": {
             "ods_open": {
