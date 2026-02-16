@@ -15,9 +15,16 @@
                 "what_is_ods": "Was ist opendata.swiss?",
                 "terms_of_use": "Nutzungsbedingungen",
                 "handbook": "Handbuch",
+                "search": "Suche",
                 "showcases": "Showcases",
                 "close": "Schliessen",
-                "showcase_submit": "Showcase einreichen"
+                "showcase_submit": "Showcase einreichen",
+                "admin": {
+                    "title": "GOGD Admin",
+                    "dashboard": "Dashboard",
+                    "metrics": "Qualität & Metriken",
+                    "categories": "DCAT Kategorien"
+                }
             }
         },
         "ods_toc": {
@@ -74,7 +81,13 @@
             "externalLink": "Externer Link",
             "open": "Website starten",
             "search": {
-                "dataset_references": "{count} Datensätze"
+                "dataset_references": "{count} Datensätze",
+                "prompt": "Nach Datensätzen suchen...",
+                "submit_prompt": {
+                    "title": "Ihr Showcase hier?",
+                    "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren.",
+                    "button_title": "Ihre Showcase einreichen"
+                }
             },
             "submission_form": {
                 "group_italian": "Italienisch",
@@ -101,8 +114,16 @@
                     "label": "Datensätze",
                     "prompt": "Tippen Sie, um nach Datensätzen zu suchen..."
                 },
+                "field_submitted_by": {
+                    "name": "Übermittelt von",
+                    "url": "Website-Links"
+                },
                 "submit_button": "Einreichen"
             }
+        },
+        "handbook": {
+            "search_prompt": "Im Handbuch suchen...",
+            "search_prompt_short": "Hier schreiben..."
         },
         "terms_of_use": {
             "ods_open": {

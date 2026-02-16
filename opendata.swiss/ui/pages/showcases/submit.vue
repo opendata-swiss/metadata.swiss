@@ -1,20 +1,35 @@
 <template>
   <OdsPage :page="{ title }">
     <template #header>
-      <OdsNotificationBanner :open="success === true" type="success">
+      <OdsNotificationBanner
+        :open="success === true"
+        type="success"
+      >
         {{ t('success_message') }}
 
         <template #buttons>
-          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
+          <OdsButton
+            variant="outline"
+            title="Close"
+            icon-right
+            icon="Checkmark"
+            @click="closeMessages"
+          />
         </template>
       </OdsNotificationBanner>
-      <OdsNotificationBanner :open="success === false" type="error">
+      <OdsNotificationBanner
+        :open="success === false"
+        type="error"
+      >
         {{ t('failure_message') }}
 
         <pre>{{ submissionError }}</pre>
         <ul v-if="Array.isArray(submissionValidationIssues)">
-          <li v-for="issue in submissionValidationIssues" :key="issue.path.join('-')">
-            {{ issue.path.join('.')}}: {{ issue.message }}
+          <li
+            v-for="issue in submissionValidationIssues"
+            :key="issue.path.join('-')"
+          >
+            {{ issue.path.join('.') }}: {{ issue.message }}
           </li>
         </ul>
         <p v-else>
@@ -22,50 +37,103 @@
         </p>
 
         <template #buttons>
-          <OdsButton variant="outline" title="Close" icon-right icon="Checkmark" @click="closeMessages"/>
+          <OdsButton
+            variant="outline"
+            title="Close"
+            icon-right
+            icon="Checkmark"
+            @click="closeMessages"
+          />
         </template>
       </OdsNotificationBanner>
     </template>
 
     <section class="section section--py">
       <div class="container">
-        <form ref="newShowcaseForm" class="form" method="post" @submit="submit">
+        <form
+          ref="newShowcaseForm"
+          class="form"
+          method="post"
+          @submit="submit"
+        >
           <OdsTabs>
             <OdsTab :title="`${t('group_german')}`">
               <div class="form__group">
-                <OdsInput id="title[de]" :label="t('field_title')" />
-                <ToastMarkdownEditor id="body[de]" :label="t('field_body')" />
+                <OdsInput
+                  id="title[de]"
+                  :label="t('field_title')"
+                />
+                <ToastMarkdownEditor
+                  id="body[de]"
+                  :label="t('field_body')"
+                />
               </div>
             </OdsTab>
             <OdsTab :title="`${t('group_french')}`">
               <div class="form__group">
-                <OdsInput id="title[fr]" :label="t('field_title')" />
-                <ToastMarkdownEditor id="body[fr]" :label="t('field_body')" />
+                <OdsInput
+                  id="title[fr]"
+                  :label="t('field_title')"
+                />
+                <ToastMarkdownEditor
+                  id="body[fr]"
+                  :label="t('field_body')"
+                />
               </div>
             </OdsTab>
             <OdsTab :title="`${t('group_italian')}`">
               <div class="form__group">
-                <OdsInput id="title[it]" :label="t('field_title')" />
-                <ToastMarkdownEditor id="body[it]" :label="t('field_body')" />
+                <OdsInput
+                  id="title[it]"
+                  :label="t('field_title')"
+                />
+                <ToastMarkdownEditor
+                  id="body[it]"
+                  :label="t('field_body')"
+                />
               </div>
             </OdsTab>
             <OdsTab :title="`${t('group_english')}`">
               <div class="form__group">
-                <OdsInput id="title[en]" :label="t('field_title')" />
-                <ToastMarkdownEditor id="body[en]" :label="t('field_body')" />
+                <OdsInput
+                  id="title[en]"
+                  :label="t('field_title')"
+                />
+                <ToastMarkdownEditor
+                  id="body[en]"
+                  :label="t('field_body')"
+                />
               </div>
             </OdsTab>
             <OdsTab :title="`${t('group_general')} *`">
               <div class="form__group">
-                <OdsSelect id="type" name="type" :label="t('field_type')" required>
-                  <option v-for="type in showcaseType" :key="type.id" :value="type.id">
+                <OdsSelect
+                  id="type"
+                  name="type"
+                  :label="t('field_type')"
+                  required
+                >
+                  <option
+                    v-for="type in showcaseType"
+                    :key="type.id"
+                    :value="type.id"
+                  >
                     {{ type.title }}
                   </option>
                 </OdsSelect>
                 <div class="form__group">
-                  <OdsInput id="image" type="file" :label="t('field_image')" accept="image/*" required />
+                  <OdsInput
+                    id="image"
+                    type="file"
+                    :label="t('field_image')"
+                    accept="image/*"
+                    required
+                  />
                 </div>
-                <OdsInput id="url" :label="t('field_url')" />
+                <OdsInput
+                  id="url"
+                  :label="t('field_url')"
+                />
                 <div class="form__group">
                   <OdsMultiSelect
                     id="datasets"
@@ -77,22 +145,59 @@
                     <template #no-options>
                       {{ t('field_datasets.prompt') }}
                     </template>
-                    <template #selected-option="option" >
+                    <template #selected-option="option">
                       {{ option.title }}
-                      <input type="hidden" :name="`datasets[${option.id}]`" :value="option.title">
+                      <input
+                        type="hidden"
+                        :name="`datasets[${option.id}]`"
+                        :value="option.title"
+                      >
                     </template>
                   </OdsMultiSelect>
                 </div>
-                <OdsMultiSelect :label="t('field_categories.label')" :options="dataThemes" :close-on-select="false">
+                <OdsMultiSelect
+                  :label="t('field_categories.label')"
+                  :options="dataThemes"
+                  :close-on-select="false"
+                >
                   <template #no-options>
                     {{ t('field_categories.prompt') }}
                   </template>
-                  <template #selected-option="option" >
+                  <template #selected-option="option">
                     {{ option.title }}
-                    <input type="hidden" name="categories" :value="option.id">
+                    <input
+                      type="hidden"
+                      name="categories"
+                      :value="option.id"
+                    >
                   </template>
                 </OdsMultiSelect>
-                <OdsInput id="tags" :label="t('field_tags.label')" :placeholder="t('field_tags.prompt')" />
+                <OdsInput
+                  id="tags"
+                  :label="t('field_tags.label')"
+                  :placeholder="t('field_tags.prompt')"
+                />
+                <div class="form__group">
+                  <OdsInput
+                    id="submittedBy.name"
+                    :label="t('field_submitted_by.name')"
+                  />
+                  <OdsMultiSelect
+                    ref="urlInputRef"
+                    :label="t('field_submitted_by.url')"
+                    :close-on-select="true"
+                    taggable
+                  >
+                    <template #selected-option="option">
+                      {{ option.title }}
+                      <input
+                        type="hidden"
+                        name="submittedBy.url"
+                        :value="option.title"
+                      >
+                    </template>
+                  </OdsMultiSelect>
+                </div>
               </div>
             </OdsTab>
           </OdsTabs>
@@ -105,8 +210,16 @@
               :style="submitting ? 'pointer-events: none; cursor: wait' : ''"
             >
               <template #icon>
-                <SvgIcon v-if="submitting" icon="Spinner" class="btn__icon btn__icon--spin"  />
-                <SvgIcon v-else icon="Checkmark" class="btn__icon"/>
+                <SvgIcon
+                  v-if="submitting"
+                  icon="Spinner"
+                  class="btn__icon btn__icon--spin"
+                />
+                <SvgIcon
+                  v-else
+                  icon="Checkmark"
+                  class="btn__icon"
+                />
               </template>
             </OdsButton>
           </div>
@@ -133,6 +246,10 @@ import SvgIcon from '../../app/components/SvgIcon.vue'
 import ToastMarkdownEditor from '../../app/components/ToastMarkdownEditor.vue'
 import OdsTabs from '../../app/components/OdsTabs.vue'
 import OdsTab from '../../app/components/OdsTab.vue'
+
+definePageMeta({
+  middleware: 'require-auth',
+})
 
 const i18n = useI18n()
 const { locale } = i18n

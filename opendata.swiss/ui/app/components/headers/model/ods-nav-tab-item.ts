@@ -1,5 +1,9 @@
-export interface OdsNavTabItem {
+interface OdsNavTabLinkItem {
   label: string
   to?: string
-  subMenu?: OdsNavTabItem[]
+}
+
+export interface OdsNavTabItem extends OdsNavTabLinkItem {
+  subMenu?: OdsNavTabLinkItem[]
+  adminOnly?: boolean
 }

@@ -9,6 +9,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     a tuner:Request ;
       tuner:url </api/showcases> ;
       tuner:method "POST" ;
+      tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
       tuner:body [
         tuner:form ( "body[de]" "Body" ) ;
         tuner:form ( "type" "application" ) ;
@@ -23,6 +24,51 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
   } ;
 .
 
+<#submittedByMissingName>
+  a earl:TestCase ;
+  rdfs:label "Showcase submitted with a submitter missing a name" ;
+  <#request> [
+    a tuner:Request ;
+      tuner:url </api/showcases> ;
+      tuner:method "POST" ;
+      tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
+      tuner:body [
+        tuner:form ( "body[de]" "Body" ) ;
+        tuner:form ( "title[de]" "Title" ) ;
+        tuner:form ( "submittedBy.url" "https://john.doe.name" ) ;
+        tuner:form ( "type" "application" ) ;
+        tuner:form ( "image" <file:assets/Rdf_logo.svg.png> ) ;
+      ] ;
+  ] ;
+  tuner:formula {
+    <#submittedByMissingName> <#request> ?req .
+    ?req tuner:response ?res .
+
+    ?res tuner:http_code 400 .
+  } ;
+.
+
+<#missingCredentials>
+  a earl:TestCase ;
+  rdfs:label "Showcase submitted without credenials" ;
+  <#request> [
+    a tuner:Request ;
+      tuner:url </api/showcases> ;
+      tuner:method "POST" ;
+      tuner:body [
+        tuner:form ( "body[de]" "Body" ) ;
+        tuner:form ( "type" "application" ) ;
+        tuner:form ( "image" <file:assets/Rdf_logo.svg.png> ) ;
+      ] ;
+  ] ;
+  tuner:formula {
+    <#missingCredentials> <#request> ?req .
+    ?req tuner:response ?res .
+
+    ?res tuner:http_code 401 .
+  } ;
+.
+
 <#missingBody>
   a earl:TestCase ;
   rdfs:label "Showcase submitted without a body" ;
@@ -30,6 +76,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     a tuner:Request ;
     tuner:url </api/showcases> ;
     tuner:method "POST" ;
+    tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
     tuner:body [
       tuner:form ( "title[de]" "Title" ) ;
       tuner:form ( "type" "application" ) ;
@@ -51,6 +98,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     a tuner:Request ;
     tuner:url </api/showcases> ;
     tuner:method "POST" ;
+    tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
     tuner:body [
       tuner:form ( "body[de]" "Body" ) ;
       tuner:form ( "title[en]" "Title" ) ;
