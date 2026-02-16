@@ -15,6 +15,7 @@
                 "what_is_ods": "Cos'è opendata.swiss?",
                 "terms_of_use": "Termini di utilizzo",
                 "handbook": "Manuale",
+                "search": "Cerca",
                 "showcases": "Showcases",
                 "close": "Chiudi",
                 "showcase_submit": "Invia uno showcase"
@@ -75,6 +76,7 @@
             "open": "Apri sito web",
             "search": {
                 "dataset_references": "{count} set di dati",
+                "placeholder": "Cerca showcases",
                 "submit_prompt": {
                     "title": "Il tuo showcase qui?",
                     "abstract": "Invia il tuo showcase per condividere il tuo progetto con la community, promuovere i tuoi dataset e ispirare gli altri.",
@@ -106,8 +108,16 @@
                     "label": "Set di dati",
                     "prompt": "Digita per cercare set di dati..."
                 },
+                "field_submitted_by": {
+                    "name": "Inviato da",
+                    "url": "Link al sito web"
+                },
                 "submit_button": "Invia"
             }
+        },
+        "handbook": {
+            "search_prompt": "Cerca nel manuale...",
+            "search_prompt_short": "Scrivi qui..."
         },
         "terms_of_use": {
             "ods_open": {
