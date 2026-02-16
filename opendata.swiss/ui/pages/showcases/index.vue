@@ -11,10 +11,10 @@ import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsCard from '../../app/components/OdsCard.vue'
 import SvgIcon from '../../app/components/SvgIcon.vue'
-import OdsButton from '../../app/components/OdsButton.vue'
-import OdsFilterPanel from '../../app/components/dataset/OdsFilterPanel.vue'
 import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS } from '../../app/piveau/search'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
+import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
+import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 
 const { locale, t } = useI18n()
 
@@ -154,100 +154,77 @@ await suspense()
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
     <!-- search panel -->
-    <section class="section section--default bg--secondary-50">
-      <div class="container">
-        <h1 class="h1">
-          {{ t('message.dataset_search.search_results') }}
-        </h1>
-        <div class="search search--large search--page-result">
-          <div class="search__group">
-            <input
-              id="search-input"
-              v-model="searchInput"
-              :placeholder="t('message.dataset_search.search_placeholder')"
-              type="search"
-              :label="t('message.dataset_search.search_placeholder')"
-              autocomplete="off"
-              class="search"
-              @keyup.enter="onSearch"
-            >
-            <OdsButton
-              variant="bare"
-              :title="t('message.dataset_search.search_button')"
-              size="lg"
-              icon="Search"
-              icon-only
-              @click="onSearch"
-            />
-          </div>
-        </div>
-        <div class="search__filters">
-          <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="resetAllFacets" />
-        </div>
-        <div class="filters__active" />
-      </div>
-    </section>
+    <OdsSearchPanel
+      :search-input="searchInput"
+      :search-prompt="t('message.showcase.search.prompt')"
+      :facet-refs="facetRefs"
+      :active-facets="activeFacets"
+      @search="onSearch"
+      @reset-all-facets="resetAllFacets"
+      @update:search-input="value => searchInput = value"
+    />
     <!-- results -->
-    <section id="search-results" class="section section--default">
-      <div class="container gap--responsive">
-        <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
-          <div class="search-results__header">
-            <div class="search-results__header__left">
-              <strong>{{ getSearchResultsCount }}</strong>{{ t('message.dataset_search.search_results') }}
-            </div>
-            <div class="search-results__header__right">
-              <!--  <OdsSortSelect v-model="selectedSort" :options="sortOptions" /> -->
-              <div class="separator separator--vertical" />
-              <!--  <OdsListCardToggle v-model="listType" /> -->
-            </div>
-          </div>
-          <h2 class="sr-only">
-            Results list
-          </h2>
-          <div  class="ods-card-list">
-            <ul class="search-results-list">
-              <li  v-for="showcase in getSearchResultsEnhanced" :key="showcase.id">
-                <OdsCard
-                  style="height: 100%;"
-                  :title="getCurrentTranslation(showcase.title, locale.value)"
-                  clickable
+    <OdsSearchResults :results-count="getSearchResultsCount">
+      <div class="ods-card-list">
+        <ul class="search-results-list">
+          <li
+            v-for="showcase in getSearchResultsEnhanced"
+            :key="showcase.id"
+          >
+            <OdsCard
+              style="height: 100%;"
+              :title="getCurrentTranslation(showcase.title, locale.value)"
+              clickable
+            >
+              <template #image>
+                <img
+                  :src="showcase.image[0]"
+                  :alt="getCurrentTranslation(showcase.title, locale.value)"
                 >
-                  <template #image>
-                    <img :src="showcase.image[0]" :alt="getCurrentTranslation(showcase.title, locale.value)" >
-                  </template>
+              </template>
 
-                  <template #top-meta>
-                    <div>
-                      <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
-                      <span class="meta-info__item">
-                        {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
-                      </span>
-                    </div>
-                  </template>
+              <template #top-meta>
+                <div>
+                  <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                  <span class="meta-info__item">
+                    {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
+                  </span>
+                </div>
+              </template>
 
-                  <template #footer-info>
-                    <div>
-                      <span class="tag" v-for="tag in showcase.keywords" :key="tag.id">
-                        {{ tag.label }}
-                      </span>
-                    </div>
-                  </template>
+              <template #footer-info>
+                <div>
+                  <span
+                    v-for="tag in showcase.keywords"
+                    :key="tag.id"
+                    class="tag"
+                  >
+                    {{ tag.label }}
+                  </span>
+                </div>
+              </template>
 
-                  <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
+              <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
 
-                  <template #footer-action>
-                    <NuxtLinkLocale :to="{ name: 'showcase-id', params: { id: showcase.id } }" type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                      <SvgIcon icon="ArrowRight" role="btn" />
-                      <span class="btn__text">Weiterlesen</span>
-                    </NuxtLinkLocale>
-                  </template>
-                </OdsCard>
-              </li>
-            </ul>
-          </div>
-        </div>
+              <template #footer-action>
+                <NuxtLinkLocale
+                  :to="{ name: 'showcase-id', params: { id: showcase.id } }"
+                  type="false"
+                  class="btn btn--outline btn--icon-only"
+                  aria-label="false"
+                >
+                  <SvgIcon
+                    icon="ArrowRight"
+                    role="btn"
+                  />
+                  <span class="btn__text">Weiterlesen</span>
+                </NuxtLinkLocale>
+              </template>
+            </OdsCard>
+          </li>
+        </ul>
       </div>
-    </section>
+    </OdsSearchResults>
   </OdsPage>
 </template>
 
