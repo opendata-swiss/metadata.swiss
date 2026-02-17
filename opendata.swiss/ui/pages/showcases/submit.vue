@@ -358,7 +358,7 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
   searchTerm.value = arg
   await query.suspense()
   datasets.value = getSearchResultsEnhanced.value.map(dataset => ({
-    id: dataset.getId,
+    id: dataset.getResource,
     title: dataset.getTitle,
   }))
   loading(false)
