@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useBreadcrumbs } from '../app/composables/breadcrumbs'
-import { loadPageBreadcrumb } from '../app/lib/breadcrumbs'
+import { useBreadcrumbs } from '../../app/composables/breadcrumbs'
+import { loadPageBreadcrumb } from '../../app/lib/breadcrumbs'
 import OdsHandbookPage from '../../app/components/handbook/OdsHandbookPage.vue'
 
 const route = useRoute()
@@ -24,5 +24,8 @@ useSeoMeta({
 </script>
 
 <template>
-  <OdsHandbookPage :page="page" :breadcrumbs="breadcrumbs" />
+  <OdsHandbookPage
+    :page="page"
+    :breadcrumbs="breadcrumbs"
+  />
 </template>
