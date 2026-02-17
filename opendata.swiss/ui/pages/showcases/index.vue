@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, toRefs, watch } from 'vue'
+import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 import { useSeoMeta } from 'nuxt/app'
@@ -11,26 +11,33 @@ import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsCard from '../../app/components/OdsCard.vue'
 import SvgIcon from '../../app/components/SvgIcon.vue'
-import { useShowcaseSearch, ACTIVE_SHOWCASE_FACETS } from '../../app/piveau/search'
+import { useShowcaseSearch, facets } from '../../app/piveau/showcases'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
+import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
 
 const { locale, t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()
 
+const { data: showcasesExplanation } = await useAsyncData(route.path, () => {
+  return queryCollection('pages')
+    .where('path', 'LIKE', `%showcases-explanation.${locale.value}`)
+    .first()
+})
+
 const searchInput = ref(route.query.q)
 
 // 1. Main reactive object for your logic/UI
 const selectedFacets = reactive(
-  Object.fromEntries(ACTIVE_SHOWCASE_FACETS.map(facet => [facet, [] as string[]])),
+  Object.fromEntries(facets.map(facet => [facet, [] as string[]])),
 )
 
 // 2. facetRefs for useSearch API (syncs with selectedFacets)
 const facetRefs = Object.fromEntries(
-  ACTIVE_SHOWCASE_FACETS.map(facet => [facet, computed({
+  facets.map(facet => [facet, computed({
     get: () => selectedFacets[facet],
     set: (val: string[]) => { selectedFacets[facet] = val },
   })]),
@@ -55,7 +62,7 @@ const onSearch = () => goToPage(1, { q: searchInput.value })
 function goToPage(newPage: number | string, query = route.query) {
   const page = newPage ? Number(newPage) : 1
   // Collect all facet values from facetRefs
-  const facetsQuery = ACTIVE_SHOWCASE_FACETS.reduce((acc, facet) => {
+  const facetsQuery = facets.reduce((acc, facet) => {
     if (facetRefs[facet].value.length > 0) {
       acc[facet] = facetRefs[facet].value
     }
@@ -97,8 +104,7 @@ const {
 const availableFacets = getAvailableFacetsLocalized(locale.value)
 
 const activeFacets = computed<SearchResultFacetGroupLocalized[]>(() => {
-  const facets = availableFacets.value.filter(f => ACTIVE_SHOWCASE_FACETS.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
-  return facets
+  return availableFacets.value.filter(f => facets.includes(f.id)).sort((a, b) => a.title.localeCompare(b.title))
 })
 
 const breadcrumbs = [
@@ -114,7 +120,7 @@ useSeoMeta({
 
 function resetSearch() {
   searchInput.value = ''
-  ACTIVE_SHOWCASE_FACETS.forEach((facet) => {
+  facets.forEach((facet) => {
     facetRefs[facet].value = []
   })
   piveauQueryParams.page = 0
@@ -142,6 +148,21 @@ watch(() => route.query.q, (searchTerm) => {
     searchInput.value = ''
   }
   piveauQueryParams.q = searchInput.value
+})
+
+onMounted(() => {
+  syncFacetsFromRoute({
+    facets,
+    facetRefs,
+    route,
+  })
+
+  useFacetSync({
+    facets,
+    facetRefs,
+    route,
+    router,
+  })
 })
 
 const { suspense } = query
@@ -224,6 +245,24 @@ await suspense()
           </li>
         </ul>
       </div>
+      <section class="section bg--secondary-900">
+        <div class="container">
+          <h2 class="section__title">
+            {{ showcasesExplanation.title }}
+          </h2>
+
+          <div class="card card--highlight">
+            <div class="card__content">
+              <div
+                class="card__body"
+                style="padding-bottom: 2em"
+              >
+                <MDC :value="showcasesExplanation.rawbody" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </OdsSearchResults>
   </OdsPage>
 </template>

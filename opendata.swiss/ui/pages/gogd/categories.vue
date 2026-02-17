@@ -47,7 +47,7 @@
 import OdsPage from '../../app/components/OdsPage.vue'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import { homePageBreadcrumb } from '../../app/composables/breadcrumbs'
-import { useVocabularySearch } from '../../app/piveau/search'
+import { useVocabularySearch } from '../../app/piveau/vocabularies'
 import OdsCard from '../../app/components/OdsCard.vue'
 import SvgIcon from '../../app/components/SvgIcon.vue'
 

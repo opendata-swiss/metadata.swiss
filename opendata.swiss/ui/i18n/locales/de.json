@@ -82,7 +82,12 @@
             "open": "Website starten",
             "search": {
                 "dataset_references": "{count} Datensätze",
-                "prompt": "Nach Datensätzen suchen..."
+                "prompt": "Nach Datensätzen suchen...",
+                "submit_prompt": {
+                    "title": "Ihr Showcase hier?",
+                    "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren.",
+                    "button_title": "Ihre Showcase einreichen"
+                }
             },
             "submission_form": {
                 "group_italian": "Italienisch",

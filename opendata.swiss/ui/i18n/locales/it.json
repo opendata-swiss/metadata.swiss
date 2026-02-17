@@ -82,7 +82,12 @@
             "open": "Apri sito web",
             "search": {
                 "dataset_references": "{count} set di dati",
-                "placeholder": "Cerca showcases"
+                "placeholder": "Cerca showcases",
+                "submit_prompt": {
+                    "title": "Il tuo showcase qui?",
+                    "abstract": "Invia il tuo showcase per condividere il tuo progetto con la community, promuovere i tuoi dataset e ispirare gli altri.",
+                    "button_title": "Invia il tuo showcase"
+                }
             },
             "submission_form": {
                 "group_italian": "Italiano",

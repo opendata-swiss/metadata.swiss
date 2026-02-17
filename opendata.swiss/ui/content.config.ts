@@ -30,6 +30,7 @@ export default defineContentConfig({
         heading: z.string().optional(),
         subHeading: z.string().optional(),
         permalink: z.string().optional(),
+        rawbody: z.string(),
       }),
     }),
     handbook: defineCollection({

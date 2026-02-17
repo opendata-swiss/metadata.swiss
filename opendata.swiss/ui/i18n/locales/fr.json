@@ -82,7 +82,12 @@
             "open": "Ouvrir le site web",
             "search": {
                 "dataset_references": "{count} jeux de données",
-                "placeholder": "Rechercher des showcases"
+                "placeholder": "Rechercher des showcases",
+                "submit_prompt": {
+                    "title": "Votre vitrine ici?",
+                    "abstract": "Soumettez votre propre vitrine pour partager votre projet avec la communauté, promouvoir vos jeux de données et inspirer les autres.",
+                    "button_title": "Soumettez votre showcase"
+                }
             },
             "submission_form": {
                 "group_italian": "Italien",

@@ -48,7 +48,11 @@ public class ImportingCswVerticle extends AbstractVerticle {
 
         Promise<Integer> promise = Promise.promise();
         AtomicInteger index = new AtomicInteger(1);
-        vertx.setPeriodic(300, id -> { // wait between each record to avoid overwhelming the system
+        // consider using vert.x ConfigRetriever
+        String delayEnv = System.getenv("CSW_IMPORT_DELAY");
+        long delay = delayEnv != null ? Long.parseLong(delayEnv) : 100;
+        logger.info("Starting data import with a delay of {} ms between records", delay);
+        vertx.setPeriodic(delay, id -> { // wait between each record to avoid overwhelming the system
             if (iterator.hasNext()) {
                 JSONObject jsonObject = iterator.next();
                 ObjectNode dataInfo = new ObjectMapper().createObjectNode()
@@ -61,15 +65,14 @@ public class ImportingCswVerticle extends AbstractVerticle {
                 pipeContext.log().info("Dataset imported: {}", dataInfo);
             } else {
                 vertx.cancelTimer(id); // stop when done
-
+                int importedRecords = index.get() - 1;
                 if (xmlSource.getTotalRecords() == 0) {
                     promise.fail("No records found to import from " + address);
-                } 
-                int importedRecords = index.get() - 1;
-                if (importedRecords != xmlSource.getTotalRecords()) {
+                } else if (importedRecords != xmlSource.getTotalRecords()) {
                     promise.fail("Expected to import " + xmlSource.getTotalRecords() + " records, but imported " + importedRecords);
+                } else {
+                    promise.complete(importedRecords);
                 }
-                promise.complete(importedRecords);
             }
         });
 
