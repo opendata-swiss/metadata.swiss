@@ -1,6 +1,6 @@
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:3.4.5
+    image: piveau/hub-repo:3.4.8
     restart: unless-stopped
     logging:
       options:
