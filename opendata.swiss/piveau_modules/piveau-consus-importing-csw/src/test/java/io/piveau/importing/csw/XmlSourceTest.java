@@ -20,17 +20,17 @@ public class XmlSourceTest {
 
     @Test
     public void aargau_kt() {
-        test("https://geocat.ch/geonetwork/ag/ger/csw", "dcat", "aargau-kt");
+        test("https://geocat.ch/geonetwork/ag/ger/csw", "dcat", 50, "aargau-kt");
     }
 
     @Test
     public void amt_fur_geoinformation_kt_sh() {
-        test("https://www.geocat.ch/geonetwork/sh/ger/csw", "dcat", "amt-fur-geoinformation-kt-sh");
+        test("https://www.geocat.ch/geonetwork/sh/ger/csw", "dcat", 20, "amt-fur-geoinformation-kt-sh");
     }
 
         @Test
     public void glarus_kt() {
-        test("https://www.geocat.ch/geonetwork/gl/ger/csw", "dcat", "glarus-kt");
+        test("https://www.geocat.ch/geonetwork/gl/ger/csw", "dcat", 10, "glarus-kt");
     }
 
     @Test // takes a lot of time
@@ -43,12 +43,12 @@ public class XmlSourceTest {
             .peek(path -> System.out.println("Testing file " + path))
             .map(path -> getConfig(path))
             .filter(config -> !skipList.contains(config.getString("catalogue")))
-            .forEach(config -> test(config.getString("address"), config.getString("typeNames"), config.getString("catalogue")));
+            .forEach(config -> test(config.getString("address"), config.getString("typeNames"), 50, config.getString("catalogue")));
     }
 
-    void test(String address, String typeNames, String catalogue) {
+    void test(String address, String typeNames, int pageSize, String catalogue) {
         AtomicInteger index = new AtomicInteger(1);
-        XmlSource xmlSource = new XmlSource(address, typeNames);
+        XmlSource xmlSource = new XmlSource(address, typeNames, pageSize);
         xmlSource.getRecordsStream()
             .flatMap(records -> records.stream())
             .forEach(record -> print(record, index.getAndIncrement()));
