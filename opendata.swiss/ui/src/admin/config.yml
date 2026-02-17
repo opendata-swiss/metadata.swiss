@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: zazukoians/opendata-swiss-cms-content-test
+  repo: opendata-swiss/opendata-swiss-cms-content-test
   squash_merges: true
 
 publish_mode: editorial_workflow

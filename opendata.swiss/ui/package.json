@@ -9,6 +9,7 @@
   "scripts": {
     "prepare": "if [ -d node_modules/husky ]; then cd ../.. && husky; fi",
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
+    "predev": "shx test -d content || git clone --depth 1 https://github.com/opendata-swiss/opendata-swiss-cms-content-test content",
     "dev": "HOST=0.0.0.0 nuxt dev",
     "api-tuner": "npx api-tuner@0.5.2 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
@@ -17,8 +18,7 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "clone-cms": "shx test -d content || git clone --depth 1 https://github.com/zazukoians/opendata-swiss-cms-content-test content",
-    "postinstall": "npm run clone-cms && nuxt prepare"
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/content": "^3.10.0",
