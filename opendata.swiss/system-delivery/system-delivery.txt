@@ -10,6 +10,11 @@ Dependencies only downwards
 [...] Done
 ---------------------------
 
+[.. ] Geo Meta Harvesting (CSW importer)
+[.  ] Dataset edit (manual, upload, API)
+[.  ] Dataset workflow
+
+
 [   ] Showcase Harvesting (from other Swiss OGD portals)
 
 [   ] Message communication (datapublisher, operator)
@@ -30,13 +35,9 @@ Dependencies only downwards
 [.  ] Dataset semantic search
 [   ] Dataset machine translations
 
-[   ] Distribution Preview
 
 [   ] (___) Harvester extended error management and failure reporting
-[   ] (106) Harvester metadata import guard (blocking, constraint enforcement)
 
-[.  ] Dataset edit (manual, upload, API)
-[.  ] Dataset workflow
 [.  ] Harvester UI for datapublisher (Config, Test, Schedule)
 
 [.  ] Multi tenant support in Piveau ("Mandantenfähigkeit")
@@ -45,11 +46,11 @@ Dependencies only downwards
 
 ------[ Jun 30 ]--------------------------------
 
-???
+[   ] Distribution Preview
 
-------[ MVP ]-----------------------------------
+[   ] Statistics of portal usage (I14Y matomo re-use)
 
-[   ] Statistics of portal usage
+[   ] Landing Page
 
 [   ] Static content (CMS) workflow/activation
 [...] Static content (CMS) display
@@ -64,10 +65,11 @@ Dependencies only downwards
 [.. ] Showcase workflow
 [.. ] Showcase search & display
 [...] Showcase edit (in decap CMS)
+[   ] Possibility to remove/delete accidental decap content from git repo (including git history)
 
-[.  ] Subscribe to Datasets, Themes, Organizations
+[.  ] Subscribe to Datasets, Themes, Organizations (RSS feed not enough, email subscription or better)
 
-[.  ] Metadata Quality UI (DCAT-AP CH conformance, linkchecker)
+[   ] Metadata Quality UI (DCAT-AP CH conformance, linkchecker) - TBD: existing ODS dashboard AND|OR piveau metrics UI
 [.. ] Linkchecker (Distributions)
 [.. ] DCAT-AP CH conformance check
 
@@ -80,8 +82,8 @@ Dependencies only downwards
 [.. ] Organization edit
 [.. ] Keycloak/eIAM Integration piveau
 
+[.  ] (106) Harvester metadata import guard (reject datasets with missing terms-of-use/license)
 [.. ] Dataset search & display
-[.. ] Geo Meta Harvesting
 [.. ] DCAT-AP Harvesting
 [.. ] Harvester Monitoring
 [.. ] Harvester Scheduling

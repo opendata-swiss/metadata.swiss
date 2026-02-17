@@ -14,12 +14,11 @@ public class MainVerticle extends AbstractVerticle {
     @Override
     public void start(Promise<Void> startPromise) {
         DeploymentOptions options = new DeploymentOptions();
-        // options.setWorker(true);
         options.setThreadingModel(ThreadingModel.WORKER);
         vertx.deployVerticle(ImportingCswVerticle.class, options)
                 .compose(id -> PipeConnector.create(vertx))
                 .onSuccess(connector -> {
-                    connector.publishTo(ImportingCswVerticle.ADDRESS, false);
+                    connector.publishTo(ImportingCswVerticle.ADDRESS);
                     startPromise.complete();
                 })
                 .onFailure(startPromise::fail);
