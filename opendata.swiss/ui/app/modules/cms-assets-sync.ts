@@ -13,15 +13,17 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'cmsAssets',
   },
   async setup({ buildPath, contentPath }, nuxtApp) {
-    function copyAssets() {
+    async function copyAssets() {
       try {
-        return fs.cp(contentPath, buildPath, { recursive: true })
+        // Check if contentPath exists before copying
+        await fs.cp(contentPath, buildPath, { recursive: true })
       }
       catch (e: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
-        console.error(`Failed to copy CMS assets: ${e.message}`)
+        console.warn(`Failed to copy CMS assets: ${e.message}`)
       }
-
-      console.info('CMS assets copied')
+      finally {
+        console.info('CMS assets copied')
+      }
     }
 
     if (process.env.NODE_ENV === 'development') {
