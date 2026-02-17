@@ -1,6 +1,6 @@
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:3.4.5
+    image: piveau/hub-repo:3.4.8
     restart: unless-stopped
     logging:
       options:
@@ -12,7 +12,7 @@ services:
     environment:
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://graphdb:7200/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - JAVA_OPTS=-Xms1g -Xmx2g
@@ -185,7 +185,7 @@ services:
     environment:
       - MONGODB_CONNECTION=mongodb://mongodb:27017
       - CACHE_APIKEY=yourCacheApiKey
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://graphdb:7200/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - CACHE_CORS_DOMAINS=["localhost"]
       - JAVA_OPTS=-Xms1g -Xmx2g
 
@@ -250,34 +250,6 @@ services:
       - /config/setup.sh
     volumes:
       - ./config/graphdb:/config:ro
-
-  mitmproxy:
-    image: mitmproxy/mitmproxy:12.1.1
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    ports:
-      - 8888:8888
-      - 8889:8889
-    command:
-      - mitmweb
-      - --mode
-      - reverse:http://graphdb:7200/
-      - --listen-port
-      - "8888"
-      - --web-host
-      - "0.0.0.0"
-      - --web-port
-      - "8889"
-      - --set
-      - web_password=mitm
-      - -s
-      - /scripts/strip_timeout.py
-      - -s
-      - /scripts/digest_to_basic.py
-    volumes:
-      - ./config/mitmproxy:/scripts
 
   mongodb:
     image: mongo:6.0.13
@@ -395,6 +367,7 @@ services:
       - JAVA_OPTS=-Xms200m -Xmx500m
       #- PIVEAU_PIPE_LOG_LEVEL=TRACE
       - OTEL_SDK_DISABLED=true
+      - CSW_IMPORT_DELAY=20
 
   piveau-consus-patching:
     build: ../piveau_modules/piveau-consus-patching
