@@ -43,8 +43,8 @@ public class XmlSource {
         this.client = client;
     }
 
-    public XmlSource(String address, String typeNames) {
-        this.baseURL = address + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results&typeNames=" + typeNames;
+    public XmlSource(String address, String typeNames, int pageSize) {
+        this.baseURL = address + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results&typeNames=" + typeNames + "&maxRecords=" + pageSize;
     }
 
     Stream<List<Element>> getRecordsStream() {
