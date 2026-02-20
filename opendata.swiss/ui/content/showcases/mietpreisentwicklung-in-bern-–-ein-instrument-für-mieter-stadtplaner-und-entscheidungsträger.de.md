@@ -24,7 +24,7 @@ Das Dashboard wurde im Rahmen der Module *Data Visualization* und *Dashboard 
 
 Die Applikation basiert auf modernen Technologien wie **11ty** (Static Site Generator) und **Apache ECharts**, die eine flüssige, schnelle und reaktionsschnelle Nutzung gewährleisten.
 
-## Verwendete Daten
+## Verwendete Daten dd
 
 Die Daten stammen vom statistischen Amt der **Stadt Bern** und umfassen die durchschnittlichen Mietpreise pro Stadtteil und Wohnungstyp auf Jahresbasis.
 
