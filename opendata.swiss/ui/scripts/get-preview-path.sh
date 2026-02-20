@@ -1,12 +1,9 @@
 #!/bin/bash
 
-set -x
-
 # Find the first changed file in opendata.swiss/ui/content/
-# We use git diff with the common ancestor of the current branch and the base branch (usually master or main)
-# In GH Actions, github.event.pull_request.base.sha is available, or we can use FETCH_HEAD
+# Prefer a base ref name (e.g. origin/main) over a raw SHA, and use merge-base via triple-dot
 
-BASE_SHA=${1:-"origin/master"}
+BASE_INPUT=${1:-"origin/main"}
 # Resolve directories to absolute paths to align git output (repo‑relative)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(git rev-parse --show-toplevel)"
@@ -14,8 +11,28 @@ CONTENT_DIR_ABS="$(cd "$SCRIPT_DIR/../content" && pwd)"
 # Convert absolute content dir to repo‑relative path (matches git diff output)
 CONTENT_DIR_REPO="${CONTENT_DIR_ABS#$REPO_ROOT/}"
 
-# Get the list of changed Markdown files under content (paths are repo‑relative)
-CHANGED_FILE=$(git -C "$REPO_ROOT" diff --name-only --diff-filter=d "$BASE_SHA" -- "$CONTENT_DIR_REPO" | grep -E '\.md$' | head -n 1)
+# Try to ensure the base is available locally (works when BASE_INPUT is a ref); ignore failures
+(git -C "$REPO_ROOT" fetch --no-tags --prune --depth=50 origin "+${BASE_INPUT}:${BASE_INPUT}" || true) >/dev/null 2>&1
+
+BASE_RANGE="${BASE_INPUT}...HEAD"
+
+# Primary attempt: pathspec restricted to content dir, with non-ASCII paths unescaped
+CHANGED_FILE=$(git -C "$REPO_ROOT" -c core.quotepath=false diff --name-only --diff-filter=d "$BASE_RANGE" -- "$CONTENT_DIR_REPO" | grep -E '\.md$' | head -n 1)
+
+# Fallback 1: diff all and grep the prefix (handles odd pathspec issues)
+if [ -z "$CHANGED_FILE" ]; then
+  CHANGED_FILE=$(git -C "$REPO_ROOT" -c core.quotepath=false diff --name-only --diff-filter=d "$BASE_RANGE" | grep -E "^${CONTENT_DIR_REPO}/.*\\.md$" | head -n 1)
+fi
+
+# Fallback 2: use two-dot range
+if [ -z "$CHANGED_FILE" ]; then
+  CHANGED_FILE=$(git -C "$REPO_ROOT" -c core.quotepath=false diff --name-only --diff-filter=d "$BASE_INPUT" -- "$CONTENT_DIR_REPO" | grep -E '\.md$' | head -n 1)
+fi
+
+# Fallback 3: two-dot range + grep
+if [ -z "$CHANGED_FILE" ]; then
+  CHANGED_FILE=$(git -C "$REPO_ROOT" -c core.quotepath=false diff --name-only --diff-filter=d "$BASE_INPUT" | grep -E "^${CONTENT_DIR_REPO}/.*\\.md$" | head -n 1)
+fi
 
 if [ -z "$CHANGED_FILE" ]; then
     echo "/"
@@ -31,6 +48,11 @@ REL_PATH=${CHANGED_FILE#"$CONTENT_DIR_REPO/"}
 # 3. content/pages/{slug} - the path is /{slug}
 # 4. content/showcases/{slug}.{lang}.md - the full path is /showase/{slug}
 
+# Function to URL-encode a string using perl
+encode_segment() {
+    echo -n "$1" | perl -MURI::Escape -ne 'print uri_escape($_)'
+}
+
 if [[ $REL_PATH == handbook/* ]]; then
     # Extract permalink from front matter
     PERMALINK=$(grep -E "^permalink:" "$REPO_ROOT/$CHANGED_FILE" | head -n 1 | sed 's/permalink: *//' | tr -d '\r')
@@ -41,13 +63,15 @@ if [[ $REL_PATH == handbook/* ]]; then
         # Or just /handbook/erstpublizierende?
         # Let's assume it keeps the directory structure but replaces the filename with the permalink.
         DIR=$(dirname "$REL_PATH")
-        echo "/$DIR/$PERMALINK"
+        ENCODED_PERMALINK=$(encode_segment "$PERMALINK")
+        echo "/$DIR/$ENCODED_PERMALINK"
     else
         # Fallback to filename without lang and extension
         BASENAME=$(basename "$REL_PATH")
         NAME_WITHOUT_LANG_EXT=$(echo "$BASENAME" | sed -E 's/\.[a-z]{2}\.md$//')
         DIR=$(dirname "$REL_PATH")
-        echo "/$DIR/$NAME_WITHOUT_LANG_EXT"
+        ENCODED_NAME=$(encode_segment "$NAME_WITHOUT_LANG_EXT")
+        echo "/$DIR/$ENCODED_NAME"
     fi
 elif [[ $REL_PATH == blog/* ]]; then
     # content/blog/**/{slug}.{lang}.md - the full path is path + /blog/{slug}
@@ -66,11 +90,13 @@ elif [[ $REL_PATH == blog/* ]]; then
         # 2025-07-31 -> 2025-7
         YEAR=$(echo "$DATE_STR" | cut -d'-' -f1)
         MONTH=$(echo "$DATE_STR" | cut -d'-' -f2 | sed 's/^0//')
-        echo "/blog/$YEAR-$MONTH/$SLUG"
+        ENCODED_SLUG=$(encode_segment "$SLUG")
+        echo "/blog/$YEAR-$MONTH/$ENCODED_SLUG"
     else
         # Fallback to current directory structure if date is missing
         DIR=$(dirname "$REL_PATH")
-        echo "/$DIR/$SLUG"
+        ENCODED_SLUG=$(encode_segment "$SLUG")
+        echo "/$DIR/$ENCODED_SLUG"
     fi
 elif [[ $REL_PATH == pages/* ]]; then
     # content/pages/{slug} - the path is /{slug}
@@ -81,16 +107,19 @@ elif [[ $REL_PATH == pages/* ]]; then
     if [ "$SLUG" == "index" ]; then
         echo "/"
     else
-        echo "/$SLUG"
+        ENCODED_SLUG=$(encode_segment "$SLUG")
+        echo "/$ENCODED_SLUG"
     fi
 elif [[ $REL_PATH == showcases/* ]]; then
-    # content/showcases/{slug}.{lang}.md - the full path is /showase/{slug}
+    # content/showcases/{slug}.{lang}.md - the full path is /showcase/{slug}
     # Note the typo in the prompt: "showase" or "showcase"? I'll use "showcase" unless "showase" is really intended.
     # Looking at the existing pages: /opendata.swiss/ui/pages/showcases/index.vue
     # It should probably be /showcase/{slug} or /showcases/{slug}
     BASENAME=$(basename "$REL_PATH")
     SLUG=$(echo "$BASENAME" | sed -E 's/\.[a-z]{2}\.md$//')
-    echo "/showcase/$SLUG"
+    # Use perl for URL encoding to handle Unicode correctly
+    ENCODED_SLUG=$(encode_segment "$SLUG")
+    echo "/showcase/$ENCODED_SLUG"
 else
     echo "/"
 fi
