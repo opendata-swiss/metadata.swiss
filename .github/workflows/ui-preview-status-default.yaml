@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
     paths:
       - "opendata.swiss/ui/**"
-      - ".github/workflows/ui-final-status-default.yaml"
+      - ".github/workflows/previews-ods-ui.yaml"
       - "!opendata.swiss/ui/content/**"
 
 jobs:
