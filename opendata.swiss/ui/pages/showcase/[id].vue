@@ -42,11 +42,13 @@ const breadcrumbs = [
   },
 ]
 
-const showcaseCategories = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
+const showcaseCategoriesRaw = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
   const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId } })
   await query.suspense()
   return resultEnhanced.value
 }))
+
+const showcaseCategories = computed(() => showcaseCategoriesRaw.filter(Boolean))
 
 const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
   const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
