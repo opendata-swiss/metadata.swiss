@@ -1,0 +1,57 @@
+name: "[UI] Preview PR status - content"
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - "opendata.swiss/ui/content/**"
+      - ".github/workflows/ui-preview-status-content.yaml"
+
+jobs:
+  final-status:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Ensure base ref is fetched
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }} --depth=1
+
+      - name: Compute branch slug
+        id: vars
+        run: |
+          BRANCH_NAME="${GITHUB_HEAD_REF}"
+          BRANCH_STANDARDIZED="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0])' "$BRANCH_NAME" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9-]+/-/g; s/-+/-/g; s/^-+//; s/-+$//' | cut -c1-40)"
+          echo "branch=${BRANCH_STANDARDIZED}" >> $GITHUB_OUTPUT
+
+      - name: Determine changed content path
+        id: content
+        working-directory: ./
+        run: |
+          PATH_SUFFIX=$(opendata.swiss/ui/scripts/get-preview-path.sh ${{ github.event.pull_request.base.sha }})
+          echo "suffix=$PATH_SUFFIX" >> $GITHUB_OUTPUT
+
+      - name: Final status check (TEST)
+        uses: myrotvorets/set-commit-status-action@v2.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          context: TEST - Preview deployed
+          description: It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
+          status: success
+          targetUrl: https://${{ steps.vars.outputs.branch }}.test-previews.ods.zazukoians.org${{ steps.content.outputs.suffix }}
+
+      - name: Final status check (INT)
+        uses: myrotvorets/set-commit-status-action@v2.0.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          context: INT - Preview deployed
+          description: It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
+          status: success
+          targetUrl: https://${{ steps.vars.outputs.branch }}.int-previews.ods.zazukoians.org${{ steps.content.outputs.suffix }}
