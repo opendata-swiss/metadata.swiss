@@ -6,8 +6,7 @@ on:
     paths:
       - "opendata.swiss/ui/**"
       - ".github/workflows/ui-final-status-default.yaml"
-    paths-ignore:
-      - "opendata.swiss/ui/content/**"
+      - "!opendata.swiss/ui/content/**"
 
 jobs:
   final-status:
