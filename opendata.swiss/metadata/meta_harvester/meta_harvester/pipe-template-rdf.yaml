@@ -1,0 +1,27 @@
+header:
+  id: "CHANGE ME"
+  name: "CHANGE ME"
+  title: "CHANGE ME"
+  context: piveau
+  transport: payload
+  version: "1.0.0"
+body:
+  segments:
+    - header:
+        name: piveau-consus-importing-rdf
+        segmentNumber: 1
+        title: Importing RDF
+        processed: false
+      body:
+        config:
+          address: "CHANGE ME"
+          catalogue: "CHANGE ME"
+          preProcessing: true
+          accept: "application/rdf+xml"
+          inputFormat: "application/rdf+xml"
+    - header:
+        name: piveau-consus-exporting-hub
+        segmentNumber: 2
+        title: Exporting hub
+        processed: false
+      body: {}

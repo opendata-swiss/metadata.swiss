@@ -22,7 +22,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TEMPLATE_FILE = "meta_harvester/pipe-template.yaml"
+template_files = {
+    "geocat_harvester": "meta_harvester/pipe-template.yaml",
+    "dcat_ch_rdf" : "meta_harvester/pipe-template-rdf.yaml",
+    "dcat_ch_i14y_rdf" : "meta_harvester/pipe-template-rdf.yaml"
+}
+
 PIPES_PATH = "../piveau_pipes"
 
 
@@ -91,7 +96,7 @@ def generate_pipe(
     catalogue: str,
     title: str,
     http_client: str,
-    template_file: str = TEMPLATE_FILE,
+    template_file: str,
     output_path: str = PIPES_PATH,
     cluster: bool = True
 ) -> str:
@@ -105,7 +110,7 @@ def generate_pipe(
         catalogue     (str): The name of the associated catalogue.
         title         (str): The human-readable title of the pipe.
         http_client   (str): The URL of the CKAN harvester endpoint.
-        template_file (str, optional): Path to the pipe template file.
+        template_file (str): Path to the pipe template file.
         output_path   (str, optional): Directory to save the generated pipe file.
     """
     with open(template_file, "r") as file:
@@ -206,8 +211,9 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
     ckan_client = CkanClient()
 
     try:
-        ids = ckan_client.get_geoharvesters_ids()
-        logging.info(f"Collected {len(ids)} geoharvester(s) from CKAN.")
+        harversters = ckan_client.get_harvesters()
+        # harversters = [h for h in harversters if h["type"] not in ["geocat_harvester", "dcat_ch_i14y_rdf"]]
+        logging.info(f"Collected {len(harversters)} geoharvester(s) from CKAN.")
     except HTTPError as e:
         logging.error(f"Failed to fetch harvester IDs from CKAN: {e}")
         return
@@ -215,7 +221,11 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
     if pipes and cluster:
         piveau_run_client = PiveauRunClient()
 
-    for id in ids:
+
+    for harverster in harversters:
+        id = harverster["id"]
+        type = harverster["type"]
+
         try:
             details = ckan_client.get_harvester_details_by_id(id)
         except HTTPError as e:
@@ -229,7 +239,10 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 )
             continue
 
-        url = details["url"].split("?")[0]
+        url = details["url"]
+        if type=="geocat_harvester":
+            url = url.split("?")[0]
+
         catalogue_name = details["name"].replace("-geocat-harvester", "")
 
         org_id = ckan_client.get_org_id_for_harvester(id)
@@ -267,7 +280,8 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 catalogue=catalogue_name,
                 title=details["title"],
                 http_client=url,
-                cluster=cluster
+                cluster=cluster,
+                template_file=template_files.get(type, "meta_harvester/pipe-template.yaml")
             )
             if cluster:
                 piveau_run_client.upload_pipe(pipe_file=output_file)
