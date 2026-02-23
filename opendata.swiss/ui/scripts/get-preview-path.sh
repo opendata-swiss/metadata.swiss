@@ -45,8 +45,9 @@ REL_PATH=${CHANGED_FILE#"$CONTENT_DIR_REPO/"}
 # Cases:
 # 1. content/handbook/**/*.{lang}.md - the full path is determined by the path and permalink front matter variable
 # 2. content/blog/**/{slug}.{lang}.md - the full path is path + /blog/{slug}
-# 3. content/pages/{slug} - the path is /{slug}
-# 4. content/showcases/{slug}.{lang}.md - the full path is /showase/{slug}
+# 3. content/sections/{slug} - the path is /handbook/{slug}
+# 4. content/pages/{slug} - the path is /{slug}
+# 5. content/showcases/{slug}.{lang}.md - the full path is /showcase/{slug}
 
 # Function to URL-encode a string using perl
 encode_segment() {
@@ -98,6 +99,12 @@ elif [[ $REL_PATH == blog/* ]]; then
         ENCODED_SLUG=$(encode_segment "$SLUG")
         echo "/$DIR/$ENCODED_SLUG"
     fi
+elif [[ $REL_PATH == sections/* ]]; then
+    # content/sections/{slug} - the path is /handbook/{slug}
+    BASENAME=$(basename "$REL_PATH")
+    SLUG=$(echo "$BASENAME" | sed -E 's/\.[a-z]{2}\.md$//')
+    ENCODED_SLUG=$(encode_segment "$SLUG")
+    echo "/handbook/$ENCODED_SLUG"
 elif [[ $REL_PATH == pages/* ]]; then
     # content/pages/{slug} - the path is /{slug}
     # REL_PATH is pages/my-page.de.md
