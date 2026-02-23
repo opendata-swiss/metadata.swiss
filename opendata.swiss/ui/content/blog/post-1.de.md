@@ -8,6 +8,6 @@ subHeading: This is the intro
 
 What do we have here?
 
-## Second paraa
+## Second para
 
 Lorem ipsum
