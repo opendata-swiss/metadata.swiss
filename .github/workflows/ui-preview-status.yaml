@@ -21,8 +21,6 @@ jobs:
           fetch-depth: 0
 
       - name: Ensure base ref is fetched
-        needs: changes
-        if: ${{ needs.changes.outputs.contentChanged == 'true' }}
         run: |
             git fetch origin ${{ github.base_ref }} --depth=1    
 
