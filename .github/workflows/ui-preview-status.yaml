@@ -1,11 +1,11 @@
-name: "[UI] Preview PR status - default"
+name: "[UI] Preview PR status"
 
 on:
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - "opendata.swiss/ui/**"
-      - ".github/workflows/previews-ods-ui.yaml"
+      - ".github/workflows/ui-preview-status.yaml"
       - "!opendata.swiss/ui/content/**"
 
 jobs:
