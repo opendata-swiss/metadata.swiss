@@ -111,7 +111,8 @@ jobs:
         run: |
           if [ "${{ github.event.inputs.action }}" == "GENERATE" ]; then
             cd meta_harvester;
-            poetry run python -m meta_harvester generate
+            poetry run python -m meta_harvester generate;
+            poetry run python -m meta_harvester create-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST" ]; then
             cd meta_harvester;
             # run all pipes if there are no additional arguments, otherwise run the specified pipes
