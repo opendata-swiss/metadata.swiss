@@ -8,7 +8,7 @@ on:
       - ".github/workflows/ui-preview-status.yaml"
 
 jobs:
-  final-status:
+  preview-link-status:
     runs-on: ubuntu-latest
     permissions:
       contents: read
