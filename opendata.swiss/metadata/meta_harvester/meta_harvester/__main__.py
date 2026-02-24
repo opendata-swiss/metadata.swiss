@@ -310,7 +310,7 @@ def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False, in
         return
 
     logging.info(f"Queueing {len(pipe_names)} pipe(s) for execution...")
-    time.sleep(60) # Wait for the service to be up to date
+    # time.sleep(60) # Wait for the service to be up to date
     for name in pipe_names:
 
         while True:
