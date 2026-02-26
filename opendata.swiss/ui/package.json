@@ -20,6 +20,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@kgierke/nuxt-matomo": "^0.0.3",
     "@nuxt/content": "^3.10.0",
     "@nuxt/eslint": "^1.12.1",
     "@nuxt/icon": "^2.1.1",

@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     'nuxt-auth-utils',
+    '@kgierke/nuxt-matomo',
   ],
   plugins: [],
   pages: {
@@ -101,5 +102,9 @@ export default defineNuxtConfig({
         normalizeIconName: false,
       },
     ],
+  },
+  matomo: {
+    host: process.env.NUXT_MATOMO_URL || 'https://opendata.opsone-analytics.ch/',
+    siteId: process.env.NUXT_MATOMO_SITE_ID ? parseInt(process.env.NUXT_MATOMO_SITE_ID) : 4,
   },
 })
