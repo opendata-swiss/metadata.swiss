@@ -2,7 +2,7 @@ FROM node:24-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache python3 make
+RUN apk add --no-cache python3 make git
 
 # Install dependencies
 COPY package.json package-lock.json ./
@@ -16,4 +16,4 @@ ENV HOST=0.0.0.0
 
 EXPOSE 80
 
-CMD ["sh", "-c", "npm run build && node .output/server/index.mjs"]
+CMD ["sh", "-c", "./entrypoint.sh"]
