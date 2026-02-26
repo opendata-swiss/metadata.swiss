@@ -29,9 +29,11 @@ Then, you will need to create a `.env` file, based on the `.env.example` file, a
 > On Linux, you will need to manually create the volumes and set specific permissions before starting the stack:
 >
 > ```sh
-> mkdir -p volumes/{graphdb,elasticsearch}-data
+> mkdir -p volumes/{qlever,elasticsearch}-data
 > chown -R 1000:1000 ./volumes/elasticsearch-data
 > chmod -R 755 ./volumes/elasticsearch-data
+> chown -R 65534:0 volumes/qlever-data
+> touch volumes/qlever-data/empty.nt
 > ```
 
 Finally, you can start the stack with:
