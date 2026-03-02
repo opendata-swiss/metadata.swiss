@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     'nuxt-auth-utils',
-    '@kgierke/nuxt-matomo',
   ],
   plugins: [],
   pages: {
@@ -49,6 +48,8 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      matomoUrl: 'https://opendata.opsone-analytics.ch/',
+      matomoSiteId: 5,
     },
     oauth: {
       keycloak: {
@@ -102,9 +103,5 @@ export default defineNuxtConfig({
         normalizeIconName: false,
       },
     ],
-  },
-  matomo: {
-    host: process.env.NUXT_MATOMO_URL || 'https://opendata.opsone-analytics.ch/',
-    siteId: process.env.NUXT_MATOMO_SITE_ID ? parseInt(process.env.NUXT_MATOMO_SITE_ID) : 4,
   },
 })

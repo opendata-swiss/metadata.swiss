@@ -40,6 +40,7 @@ import { onMounted, ref } from 'vue'
 import { useLoginWithRedirect } from '@/composables/login'
 
 const router = useRouter()
+const config = useRuntimeConfig()
 const { clear } = useUserSession()
 const login = useLoginWithRedirect()
 
@@ -62,6 +63,9 @@ watch(locale, (newLocale) => {
 }, { immediate: true },
 )
 
+const matomoUrl = config.public.matomoUrl
+const matomoSiteId = config.public.matomoSiteId
+
 useHead({
   htmlAttrs: {
     lang: locale.value,
@@ -79,6 +83,24 @@ useHead({
   meta: [
     { name: 'apple-mobile-web-app-title', content: 'opendata.swiss' },
     // you can add other default meta tags, e.g. description, viewport, etc
+  ],
+  script: [
+    {
+      innerHTML: `
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="${matomoUrl}";
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', '${matomoSiteId}']);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+      `,
+      type: 'text/javascript',
+    },
   ],
 })
 
