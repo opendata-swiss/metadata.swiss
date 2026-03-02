@@ -12,7 +12,9 @@ services:
     environment:
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
-      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
+      # - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://fuseki:3030/dataset"}
+      - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://fuseki:3030/dataset", "username":"admin", "password":"admin", "circuitBreakerTimeout":-1, "dataEndpoint":"/", "queryEndpoint":"/", "queryAuthEndpoint":"/", "graphEndpoint":"/data", "graphAuthEndpoint":"/data"}
+      # - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - JAVA_OPTS=-Xms1g -Xmx2g
@@ -94,6 +96,7 @@ services:
       - OTEL_SDK_DISABLED=false
       - OTEL_SERVICE_NAME=piveau-consus-importing-rdf
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
+      - PIVEAU_DEFAULT_PULSE=200 # experiment with different values here
 
   piveau-consus-importing-ckan:
     image: registry.gitlab.com/piveau/consus/piveau-consus-importing-ckan:1.2.7
@@ -223,61 +226,48 @@ services:
       - PIVEAU_LOG_LEVEL=trace
       - PIVEAU_PIPE_LOG_LEVEL=TRACE
 
-  graphdb:
-    image: ontotext/graphdb:10.8.8
-    restart: unless-stopped
+  fuseki:
+    image: stain/jena-fuseki
+    container_name: fuseki
     logging:
       options:
         max-size: "50m"
     ports:
-      - 7200:7200
-    command:
-      - -Xms2g
-      - -Xmx5g
-      - -Ddefault.min.distinct.threshold=512m
-      - -Dgraphdb.health.minimal.free.storage.enabled=false
-      - -Dgraphdb.health.minimal.free.storage.asyncCheck=false
+      - 3030:3030
+    environment:
+      - ADMIN_PASSWORD=admin
+      - FUSEKI_DATASET_1=dataset
     volumes:
-      - ./volumes/graphdb-data:/opt/graphdb/dist/data
+      - fuseki-data:/fuseki
 
-  graphdb-create-repo:
-    image: curlimages/curl:latest
-    restart: "no" # Just run once
-    depends_on:
-      graphdb:
-        condition: service_started
-    command:
-      - /config/setup.sh
-    volumes:
-      - ./config/graphdb:/config:ro
 
-  mitmproxy:
-    image: mitmproxy/mitmproxy:12.1.1
-    restart: unless-stopped
-    logging:
-      options:
-        max-size: "50m"
-    ports:
-      - 8888:8888
-      - 8889:8889
-    command:
-      - mitmweb
-      - --mode
-      - reverse:http://graphdb:7200/
-      - --listen-port
-      - "8888"
-      - --web-host
-      - "0.0.0.0"
-      - --web-port
-      - "8889"
-      - --set
-      - web_password=mitm
-      - -s
-      - /scripts/strip_timeout.py
-      - -s
-      - /scripts/digest_to_basic.py
-    volumes:
-      - ./config/mitmproxy:/scripts
+  # mitmproxy:
+  #   image: mitmproxy/mitmproxy:12.1.1
+  #   restart: unless-stopped
+  #   logging:
+  #     options:
+  #       max-size: "50m"
+  #   ports:
+  #     - 8888:8888
+  #     - 8889:8889
+  #   command:
+  #     - mitmweb
+  #     - --mode
+  #     - reverse:http://graphdb:7200/
+  #     - --listen-port
+  #     - "8888"
+  #     - --web-host
+  #     - "0.0.0.0"
+  #     - --web-port
+  #     - "8889"
+  #     - --set
+  #     - web_password=mitm
+  #     - -s
+  #     - /scripts/strip_timeout.py
+  #     - -s
+  #     - /scripts/digest_to_basic.py
+  #   volumes:
+  #     - ./config/mitmproxy:/scripts
 
   mongodb:
     image: mongo:6.0.13
@@ -402,3 +392,6 @@ services:
     logging:
       options:
         max-size: "50m"
+
+volumes:
+  fuseki-data:
