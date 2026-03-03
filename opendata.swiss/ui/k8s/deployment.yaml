@@ -23,16 +23,6 @@ spec:
                 configMapKeyRef:
                   name: public-endpoints
                   key: hub-repo-endpoint
-            - name: NUXT_PUBLIC_MATOMO_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: public-endpoints
-                  key: matomo-url
-            - name: NUXT_PUBLIC_MATOMO_SITE_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: public-endpoints
-                  key: matomo-site-id
 
             - name: NUXT_OAUTH_KEYCLOAK_SERVER_URL
               valueFrom:
