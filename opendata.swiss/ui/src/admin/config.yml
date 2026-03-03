@@ -13,6 +13,11 @@ i18n:
   default_locale: de
   locales: [de, fr, it, en]
 
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: handbook-section
     label: "Handbook sections"
