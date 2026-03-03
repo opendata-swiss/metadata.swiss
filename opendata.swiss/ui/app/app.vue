@@ -79,6 +79,9 @@ if (matomoHost && matomoSiteId) {
   // @ts-ignore
   app.vueApp.use(matomo)
 }
+else {
+  console.warn('Matomo configuration missing: host and/or siteId')
+}
 
 useHead({
   htmlAttrs: {
