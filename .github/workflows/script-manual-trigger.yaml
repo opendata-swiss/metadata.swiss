@@ -110,6 +110,8 @@ jobs:
       - name: Run the selected action
         working-directory: ./opendata.swiss/metadata
         run: |
+          args="${{ github.event.inputs.arguments }}"
+          args="${args//%20/ }"
           if [ "${{ github.event.inputs.action }}" == "GENERATE" ]; then
             cd meta_harvester;
             poetry run python -m meta_harvester generate;
@@ -117,8 +119,6 @@ jobs:
           elif [ "${{ github.event.inputs.action }}" == "HARVEST" ]; then
             cd meta_harvester;
             # run all pipes if there are no additional arguments, otherwise run the specified pipes
-            args="${{ github.event.inputs.arguments }}"
-            args="${args//%20/ }"
             poetry run python -m meta_harvester run-pipes $args;
           elif [ "${{ github.event.inputs.action }}" == "HARVEST_SHOWCASES" ]; then
             cd meta_harvester;
@@ -129,7 +129,7 @@ jobs:
             poetry run python -m meta_harvester create-catalogues;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_CATALOGUES" ]; then
             cd meta_harvester;
-            poetry run python -m meta_harvester delete-catalogues;
+            poetry run python -m meta_harvester delete-catalogues $args;
           elif [ "${{ github.event.inputs.action }}" == "VOCABULARIES" ]; then
             ./scripts/vocabularies.sh;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then
