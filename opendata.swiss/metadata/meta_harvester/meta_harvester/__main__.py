@@ -99,8 +99,7 @@ def generate_pipe(
     title: str,
     http_client: str,
     template_file: str,
-    output_path: str = PIPES_PATH,
-    cluster: bool = True
+    output_path: str = PIPES_PATH
 ) -> str:
     """
     Reads a template pipe file, updates selected fields, and saves it as an execution-ready pipe.
@@ -288,7 +287,6 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 catalogue=catalogue_name,
                 title=details["title"],
                 http_client=url,
-                cluster=cluster,
                 template_file=template_files.get(type, "meta_harvester/pipe-template.yaml")
             )
 
