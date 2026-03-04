@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://data.bl.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:\"opendata.swiss\"",
+            "address": "https://data.bl.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:%22opendata.swiss%22",
             "catalogue": "bl-dcat",
             "preProcessing": true,
             "accept": "application/rdf+xml",

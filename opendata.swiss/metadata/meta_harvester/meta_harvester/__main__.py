@@ -7,6 +7,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Union
 
+import requests
 import yaml
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD
@@ -243,9 +244,12 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 )
             continue
 
-        url = details["url"]
+        url = details["url"].strip()
         if type=="geocat_harvester":
             url = url.split("?")[0]
+        # encode for URL if not already encoded
+        url = requests.utils.requote_uri(url)
+        
 
         catalogue_name = details["name"].replace("-geocat-harvester", "")
 

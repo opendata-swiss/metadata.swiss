@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://daten.stadt.sg.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:\"opendata.swiss\"",
+            "address": "https://daten.stadt.sg.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:%22opendata.swiss%22",
             "catalogue": "dcat-harvester-stadt-st-gallen",
             "preProcessing": true,
             "accept": "application/rdf+xml",

@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": " https://data.zg.ch/store/1/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
+            "address": "https://data.zg.ch/store/1/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
             "catalogue": "dcat-harvester-kt-zg",
             "preProcessing": true,
             "accept": "application/rdf+xml",

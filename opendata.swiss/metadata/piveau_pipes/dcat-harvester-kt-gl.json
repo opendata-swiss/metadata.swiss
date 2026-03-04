@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.landsgemeinde.gl.ch/catalog.rdf  ",
+            "address": "https://www.landsgemeinde.gl.ch/catalog.rdf",
             "catalogue": "dcat-harvester-kt-gl",
             "preProcessing": true,
             "accept": "application/rdf+xml",

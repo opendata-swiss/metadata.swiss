@@ -17,7 +17,7 @@
       },
       "body" : {
         "config" : {
-          "address" : " https://data.zg.ch/store/2/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
+          "address" : "https://data.zg.ch/store/2/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
           "catalogue" : "dcat-harvester-stadt-zug",
           "preProcessing" : true,
           "accept" : "application/rdf+xml",

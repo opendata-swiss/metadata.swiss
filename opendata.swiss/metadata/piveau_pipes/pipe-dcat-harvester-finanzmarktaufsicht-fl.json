@@ -17,7 +17,7 @@
       },
       "body" : {
         "config" : {
-          "address" : "https://catalog.opendata.li/store/13/metadata/2?recursive=dcat&repository&format=application/rdf+xml ",
+          "address" : "https://catalog.opendata.li/store/13/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
           "catalogue" : "dcat-harvester-finanzmarktaufsicht-fl",
           "preProcessing" : true,
           "accept" : "application/rdf+xml",
