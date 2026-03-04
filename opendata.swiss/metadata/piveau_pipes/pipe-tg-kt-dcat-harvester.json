@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "7aa27a0d-54bf-44da-9814-5e44cd5f7790",
+    "name" : "tg-kt-dcat-harvester",
+    "title" : "TG-Kt DCAT Harvester",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://data.tg.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:\"opendata.swiss\"",
+          "catalogue" : "tg-kt-dcat-harvester",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "Canton of Thurgau"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

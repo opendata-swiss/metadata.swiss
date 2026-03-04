@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-gemeindeamt-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-01-14T11:15:37.839403"^^xsd:dateTime ;
+    dcterms:description "Das Gemeindeamt des Kantons Zürich hilft den Gemeinden, sich in Übereinstimmung mit dem kantonalen Recht zu organisieren. Mit dem Finanzausgleich stellt das Amt sicher, dass alle Gemeinden ihre Grundaufgaben erfüllen können. Daneben obliegen dem Gemeindeamt die kantonalen Aufgaben des Zivilstands-, Einbürgerungs- und Einwohnerwesens. Schliesslich ist das Gemeindeamt Aufsichtsstelle 2. Instanz (nach den Bezirksräten) hinsichtlich Organisation, Haushaltführung, Rechnungslegung sowie Aufsichtsbehörde über die Kindes- und Erwachsenenschutzbehörden."@de ;
+    dcterms:modified "2025-10-30T12:23:39.338383"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/direktion-der-justiz-und-des-innern/gemeindeamt.html> ;
+            foaf:name "Gemeindeamt Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Gemeindeamt Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "609b5092-6a21-49c2-a12b-db3d44e0e562",
+    "name" : "zh-kt-statistisches-amt-dcat-harvester",
+    "title" : "ZH-Kt Statistisches Amt - DCAT Harvester",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://daten.statistik.zh.ch/ogd/harvester/statistisches-amt-kanton-zuerich.xml",
+          "catalogue" : "zh-kt-statistisches-amt-dcat-harvester",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : ""
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

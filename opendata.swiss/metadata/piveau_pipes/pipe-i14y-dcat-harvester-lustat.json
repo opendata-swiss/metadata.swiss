@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "dcb1cbeb-87ae-4b61-9db0-39b620c8ad5f",
+    "name" : "i14y-dcat-harvester-lustat",
+    "title" : "I14Y DCAT Harvester LUSTAT",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://api.i14y.admin.ch/api/public/v1/catalogs/824b51db-a300-4ab1-b805-c3fa28d25c92/dcat/exports/rdf",
+          "catalogue" : "i14y-dcat-harvester-lustat",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "LUSTAT Statistics Lucerne"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

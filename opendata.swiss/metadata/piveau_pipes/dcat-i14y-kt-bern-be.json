@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "bf1e23ec-7a34-41f1-8c2d-83d5c60d81a9",
+    "name": "dcat-i14y-kt-bern-be",
+    "title": "DCAT I14Y Kt. Bern BE",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/e9bc40db-2f4c-42e9-aa0a-/dcat/exports/rdf",
+            "catalogue": "dcat-i14y-kt-bern-be",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

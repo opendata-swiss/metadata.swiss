@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "a5a7efd2-73e8-47d2-a9c4-04f2df16b00b",
+    "name": "zh-kt-oberjugendanwaltschaft-dcat-harvester",
+    "title": "ZH-Kt Oberjugendanwaltschaft - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://daten.statistik.zh.ch/ogd/harvester/oberjugendanwaltschaft-kanton-zuerich.xml",
+            "catalogue": "zh-kt-oberjugendanwaltschaft-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "47bf1425-f615-4803-838a-f9b4c79a3cbb",
+    "name": "bfs-dcat-harvester",
+    "title": "BFS - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://dam-api.bfs.admin.ch/hub/api/ogd/harvest?limit=50",
+            "catalogue": "bfs-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Federal Statistical Office FSO"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

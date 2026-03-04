@@ -1,0 +1,21 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-kt-ti> a dcat:Catalog ;
+    dcterms:created "2024-06-03T19:54:05.268308"^^xsd:dateTime ;
+    dcterms:description """L'Ufficio di statistica del Cantone Ticino (Ustat) è il servizio centrale della statistica cantonale e il suo coordinatore ai sensi della [Legge sulla statistica cantonale](https://www4.ti.ch/dfe/dr/ustat/chi-siamo/basi-legali/leggi-cantonali) del 22 settembre 2009.\r
+\r
+Nella prima veste l'Ustat produce e diffonde per la collettività e per lo Stato: dati, elaborazioni, contributi analitici di vario genere e livello di approfondimento, consulenze statistiche e tematiche, su praticamente tutti i settori della statistica pubblica.\r
+Alla base di questi risultati vi è un'attività che copre tutte le fasi del processo statistico: dalla definizione del fabbisogno alla rilevazione, trattamento e validazione dei dati, alla loro archiviazione e documentazione, all'elaborazione, analisi ed interpretazione e alla diffusione dei risultati. Progressivamente, le attività di analisi e di ricerca tematica e la diffusione stanno progressivamente assumendo maggior peso.\r
+\r
+Nella veste di coordinatore della statistica cantonale l'Ustat opera in prima misura attraverso la preparazione, l'aggiornamento annuale e la rendicontazione del [Programma pluriennale](https://www4.ti.ch/dfe/dr/ustat/chi-siamo/programma-dattivita/programma-pluriennale), in collaborazione con la [Commissione scientifica](https://www4.ti.ch/dfe/dr/ustat/chi-siamo/la-commissione-scientifica) e gli altri attori della [statistica cantonale](https://www4.ti.ch/dfe/dr/ustat/chi-siamo/statistica-cantonale). L'Ustat assicura pure il coordinamento con l'esterno, in primis con il programma e l'attività della [statistica nazionale](https://www4.ti.ch/dfe/dr/ustat/chi-siamo/il-sistema-statistico), ma pure con gli altri servizi statistici e di ricerca regionali, nazionali e transfrontalieri."""@it ;
+    dcterms:modified "2024-06-03T19:54:05.268316"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.ti.ch/ustat> ;
+            foaf:name "Ufficio di statistica del Canton Ticino (Ustat)"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Ufficio di statistica del Canton Ticino (Ustat)"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

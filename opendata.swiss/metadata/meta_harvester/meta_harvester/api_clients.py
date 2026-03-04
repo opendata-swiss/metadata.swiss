@@ -11,6 +11,7 @@ from .exceptions import NoRecords, NotFoundError
 CATALOGUES_PATH = Path(os.getenv("CATALOGUES_PATH", "../piveau_catalogues"))
 PIPES_PATH = Path(os.getenv("PIPES_PATH", "../piveau_pipes"))
 STATIC_PIPES_PATH = PIPES_PATH / "static"
+TRIGGERS_PATH = Path(os.getenv("TRIGGERS_PATH", "../piveau_triggers"))
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -202,6 +203,30 @@ class PiveauRunClient:
     CONSUS_SCHEDULING_ENDPOINT = os.getenv("CONSUS_SCHEDULING_ENDPOINT", "http://localhost:8090")
     CONSUS_SCHEDULING_USERNAME = os.getenv("CONSUS_SCHEDULING_USERNAME", None)
     CONSUS_SCHEDULING_PASSWORD = os.getenv("CONSUS_SCHEDULING_PASSWORD", None)
+
+    def upload_triggers(self) -> None:
+        """
+        Uploads trigger definitions to the piveau-scheduling service.
+        """
+
+        trigger_file = TRIGGERS_PATH / "bulk.json"
+
+        url = f"{self.CONSUS_SCHEDULING_ENDPOINT}/triggers"
+        headers = {"Content-Type": "application/json"}
+
+        with open(trigger_file, "r", encoding="utf-8") as f:
+            data = f.read()
+
+        session = requests_retry_session()
+        logger.info(f"Uploading triggers from file '{trigger_file}' to {url}")
+        if self.CONSUS_SCHEDULING_USERNAME and self.CONSUS_SCHEDULING_PASSWORD:
+            response = session.put(url, headers=headers, data=data, timeout=60, auth=(self.CONSUS_SCHEDULING_USERNAME, self.CONSUS_SCHEDULING_PASSWORD))
+        else:
+            response = session.put(url, headers=headers, data=data, timeout=60)
+        response.raise_for_status()
+
+        logger.info(f"Successfully uploaded triggers from '{trigger_file}'. Status: {response.status_code}")
+
 
     def upload_pipe(self, pipe_file: str) -> None:
         """

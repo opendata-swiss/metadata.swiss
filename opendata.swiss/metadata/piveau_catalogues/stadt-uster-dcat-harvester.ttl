@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/stadt-uster-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-07-12T14:42:19.124561"^^xsd:dateTime ;
+    dcterms:description """Uster, drittgrösste Stadt im Kanton Zürich, ist mit rund 35'000 Einwohnerinnen und Einwohnern eine dynamisch wachsende Stadt im Grossraum Zürich und bekannt als innovatives Regionalzentrum.\r
+\r
+Das [Geschäftsfeld Gesellschaft Stadt Uster](https://www.uster.ch/aemter/8157) fördert die gesellschaftliche Entwicklung der Stadt Uster. Es erarbeitet Grundlagen für Entscheidungsträger und die interessierte Öffentlichkeit, entwickelt Massnahmen im Leistungsbereich und stellt ein an die Bedürfnisse angepasstes Angebot sicher. Es ist für die folgenden Bereiche zuständig: Kindheit, Jugend und Familien / Migration und Integration / Quartier- und Gemeinwesenarbeit / Kulturförderung / Bibliothek / Archiv. \r
+"""@de,
+        "Uster, the third largest city in the canton of Zurich, is a dynamically growing city in the greater Zurich area with around 35,000 inhabitants and is known as an innovative regional centre."@en,
+        "Uster, troisième ville du canton de Zurich, est une ville de l'agglomération zurichoise à la croissance dynamique, qui compte environ 35 000 habitants et est connue comme un centre régional innovant."@fr,
+        "Uster, la terza città più grande del cantone di Zurigo, è una città in crescita dinamica nella grande area di Zurigo con circa 35.000 abitanti ed è conosciuta come un centro regionale innovativo."@it ;
+    dcterms:modified "2025-10-30T12:34:22.754683"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.uster.ch> ;
+            foaf:name "Stadt Uster"@de,
+                "City of Uster"@en,
+                "Ville de Uster"@fr,
+                "Cità di Uster"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Stadt Uster"@de,
+        "City of Uster"@en,
+        "Ville de Uster"@fr,
+        "Cità di Uster"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

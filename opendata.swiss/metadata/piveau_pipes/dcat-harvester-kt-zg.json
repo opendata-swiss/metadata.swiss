@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "71abd913-fa39-45e3-9537-9f4364f76c56",
+    "name": "dcat-harvester-kt-zg",
+    "title": "DCAT Harvester Kt. ZG",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": " https://data.zg.ch/store/1/metadata/2?recursive=dcat&repository&format=application/rdf+xml",
+            "catalogue": "dcat-harvester-kt-zg",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Canton of Zug"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "514f72c9-1efe-4df9-8f6e-8024c0d49bf2",
+    "name": "stadt-uster-dcat-harvester",
+    "title": "Stadt Uster - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://daten.statistik.zh.ch/ogd/harvester/stadt-uster.xml",
+            "catalogue": "stadt-uster-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "City of Uster"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

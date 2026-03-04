@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "4207505c-ae27-4e53-af65-444fe4faa8ff",
+    "name" : "envidat-harvester",
+    "title" : "Envidat Harvester",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://opendataswiss.s3-zh.os.switch.ch/dcat-ap-ch.xml",
+          "catalogue" : "envidat-harvester",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "EnviDat: the Environmental Data Portal"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

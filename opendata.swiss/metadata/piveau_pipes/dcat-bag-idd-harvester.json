@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "3ea98cd1-a95c-41c1-add0-78b69e55cf6c",
+    "name": "dcat-bag-idd-harvester",
+    "title": "DCAT-BAG-IDD Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://www.idd.bag.admin.ch/api/opendata/catalog.xml",
+            "catalogue": "dcat-bag-idd-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Communicable Diseases Division"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "d27e6c6b-566c-4808-9814-94d1586334ce",
+    "name" : "stadt-zug-geocat-harvester",
+    "title" : "Stadt Zug - geocat harvester",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://data.zg.ch/store/13/metadata/2?recursive=dcat&format=application/rdf+xml",
+          "catalogue" : "stadt-zug",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : ""
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

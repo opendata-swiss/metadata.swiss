@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-personalamt> a dcat:Catalog ;
+    dcterms:created "2022-11-15T16:14:33.869033"^^xsd:dateTime ;
+    dcterms:description "Das Personalamt erarbeitet in Zusammenarbeit mit den Direktionen und der Staatskanzlei die kantonale Personalstrategie zu Handen des Regierungsrates und führt die direktionsübergreifenden Projekte zu deren Umsetzung. Es stellt die Lohnverarbeitung und -auszahlung sowie Abrechnung mit den Sozialversicherungen sicher und sorgt für attraktive Weiterbildungs- und Beratungsangebote für Mitarbeitende und Führungskräfte sowie für die Betreuung der Lernenden und Berufsbildenden in den beruflichen Grundbildungen KV, Informatik und Mediamatik."@de ;
+    dcterms:modified "2025-10-30T12:36:44.362627"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/finanzdirektion/personalamt.html> ;
+            foaf:name "Personalamt Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Personalamt Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

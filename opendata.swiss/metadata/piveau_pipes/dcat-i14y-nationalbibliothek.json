@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "65c1efce-fa01-4bd4-868c-4b40f3991354",
+    "name": "dcat-i14y-nationalbibliothek",
+    "title": "DCAT I14Y Nationalbibliothek",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/950e523a-8f5c-42dc-b512-6d2e402e4ab0/dcat/exports/rdf",
+            "catalogue": "dcat-i14y-nationalbibliothek",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Swiss National Library NL"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "9a2e4ae1-62b2-431d-913e-aeaa42988ec5",
+    "name": "zh-dcat-harvester",
+    "title": "ZH - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://data.stadt-zuerich.ch/catalog.xml?fq=-tags:ktzh",
+            "catalogue": "zh-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "City of Zurich"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

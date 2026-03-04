@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "e46a57ce-41a2-4507-bdcc-bd74cfecd1d5",
+    "name": "dcat-harvester-kt-fr",
+    "title": "DCAT Harvester Kt. FR",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://opendata.fr.ch/api/explore/v2.1/catalog/exports/dcat_ap_ch",
+            "catalogue": "dcat-harvester-kt-fr",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Statistics and Data Service Fribourg"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

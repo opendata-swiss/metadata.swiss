@@ -3,11 +3,20 @@
 !.env.example
 volumes/
 
-piveau_pipes/
-piveau_catalogues/
+# piveau_pipes/
+# piveau_catalogues/
 
 *.pyc
 __pycache__/
 
 *.log
 *.logs
+
+# Do not ignore piveau_triggers/bulk.json
+!piveau_triggers/bulk.json
+
+# Do not ignore any .json in piveau_pipes
+!piveau_pipes/*.json
+
+# Do not ignore any .ttl in piveau_catalogues
+!piveau_catalogues/*.ttl

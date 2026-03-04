@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "9ac9f5af-ebbd-471f-8f6a-dcf04e33b3d6",
+    "name": "dcat-harvester-ekz-kt-zh",
+    "title": "DCAT Harvester EKZ Kt. ZH",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://daten.statistik.zh.ch/ogd/harvester/ekz.xml",
+            "catalogue": "dcat-harvester-ekz-kt-zh",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

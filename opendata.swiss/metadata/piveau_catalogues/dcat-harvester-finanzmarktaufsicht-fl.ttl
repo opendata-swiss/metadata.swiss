@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-finanzmarktaufsicht-fl> a dcat:Catalog ;
+    dcterms:created "2024-12-16T08:44:18.131820"^^xsd:dateTime ;
+    dcterms:description "Die FMA Liechtenstein ist die zuständige Behörde für die Erteilung von Bewilligungen und Zulassungen für Finanzdienstleister. "@de,
+        "The Liechtenstein FMA is the competent authority for licensing and admission of financial service providers."@en ;
+    dcterms:modified "2025-06-08T11:45:31.135431"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.fma-li.li/> ;
+            foaf:name "Finanzmarktaufsicht Liechtenstein"@de,
+                "Financial Market Authority Liechtenstein"@en ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Finanzmarktaufsicht Liechtenstein"@de,
+        "Financial Market Authority Liechtenstein"@en ;
+    dcterms:type "ckan"^^xsd:string .
+

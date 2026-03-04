@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/lindas-dcat-harvester-bafu> a dcat:Catalog ;
+    dcterms:created "2022-09-23T08:30:00.069122"^^xsd:dateTime ;
+    dcterms:description "Die Fachbehörde für die Umwelt. Es ist zuständig für die nachhaltige Nutzung der natürlichen Ressourcen sowie für den Schutz des Menschen vor Naturgefahren und den Schutz der Umwelt vor übermässigen Belastungen."@de,
+        "The federal environmental authority. It is responsible for ensuring that natural resources are used sustainably, that the public is protected against natural hazards, and that the environment is protected from unacceptable adverse impacts."@en,
+        "L’autorité compétente pour les questions environnementales. Il est à ce titre chargé de gérer les ressources naturelles selon les principes du développement durable et de protéger l’homme contre les dangers naturels et l’environnement contre les pollutions."@fr,
+        "Il servizio specializzato in materia ambientale, è competente per quanto riguarda l'utilizzazione sostenibile delle risorse naturali, la protezione delle persone dai pericoli naturali e dell'ambiente da un inquinamento eccessivo."@it ;
+    dcterms:modified "2024-04-29T12:55:48.305383"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Bundesamt für Umwelt BAFU"@de,
+                "Federal Office for the Environment FOEN"@en,
+                "Office fédéral de l'environnement OFEV"@fr,
+                "Ufficio federale dell'ambiente UFAM"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Umwelt BAFU"@de,
+        "Federal Office for the Environment FOEN"@en,
+        "Office fédéral de l'environnement OFEV"@fr,
+        "Ufficio federale dell'ambiente UFAM"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/gr-kt-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2017-08-22T07:23:41.751264"^^xsd:dateTime ;
+    dcterms:description "Die Standeskanzlei liefert ausgewählte Open Government Daten aus den Bereichen Parlament, Regierung und Verwaltung, insbesondere zu Abstimmungen und Wahlen."@de,
+        "The State Chancellery provides selected open government data from parliament, government and administration, particularly on votes and elections."@en,
+        "La Chancellerie d’État fournit des données publiques librement accessibles triées sur le volet, qui proviennent du Parlement, du gouvernement et de l’administration et qui portent notamment sur les votations et les élections."@fr,
+        "La Cancelleria fornisce dati selezionati dai settori Parlamento, Governo e Amministrazione, concernenti in particolare votazioni ed elezioni, come Open Government Data."@it ;
+    dcterms:modified "2021-06-14T11:41:16.592341"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Standeskanzlei Graubünden"@de,
+                "State Chancellery of Grisons"@en,
+                "Chancellerie d’État des Grisons"@fr,
+                "Cancelleria dello Stato dei Grigioni"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Standeskanzlei Graubünden"@de,
+        "State Chancellery of Grisons"@en,
+        "Chancellerie d’État des Grisons"@fr,
+        "Cancelleria dello Stato dei Grigioni"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

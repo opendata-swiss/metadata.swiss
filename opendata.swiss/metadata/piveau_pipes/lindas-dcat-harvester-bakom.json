@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "38f48174-6f38-4f82-a182-dc85bb901637",
+    "name": "lindas-dcat-harvester-bakom",
+    "title": "LINDAS DCAT Harvester BAKOM",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://lindas.admin.ch/ckan?organization=https://register.ld.admin.ch/opendataswiss/org/bundesamt-fur-kommunikation-bakom",
+            "catalogue": "lindas-dcat-harvester-bakom",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Federal Office of Communications OFCOM"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

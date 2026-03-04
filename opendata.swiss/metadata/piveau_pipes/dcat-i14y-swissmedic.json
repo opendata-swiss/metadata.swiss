@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "0992840c-4d1b-4c21-9efe-f6bce51c1140",
+    "name": "dcat-i14y-swissmedic",
+    "title": "DCAT I14Y Swissmedic",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/21fec2c4-4e41-4ec4-8819-3aa286c73ee2/dcat/exports/rdf",
+            "catalogue": "dcat-i14y-swissmedic",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Swissmedic Swiss Agency for Therapeutic Products"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

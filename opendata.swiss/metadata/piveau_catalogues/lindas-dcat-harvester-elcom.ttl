@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/lindas-dcat-harvester-elcom> a dcat:Catalog ;
+    dcterms:created "2024-01-26T08:48:59.092379"^^xsd:dateTime ;
+    dcterms:description "Die ElCom ist die unabhängige staatliche Regulierungsbehörde im Elektrizitätsbereich. Sie überwacht die Einhaltung des Stromversorgungs- und Energiegesetzes, trifft die dazu nötigen Entscheide und erlässt Verfügungen. Sie beaufsichtigt die Strompreise und entscheidet bei Differenzen betreffend den Netzzugang. Sie überwacht zudem die Versorgungssicherheit im Strombereich und regelt Fragen zum internationalen Stromtransport und -handel. Schliesslich entscheidet die ElCom in Streitigkeiten zu Rückliefervergütungen sowie zwischen Netzbetreiber und Eigenverbraucher."@de,
+        "ElCom is Switzerland's independent regulatory authority in the electricity sector. It is responsible for monitoring compliance with the Swiss Federal Electricity Act and the Swiss Federal Energy Act, taking all necessary related decisions and pronouncing rulings where required. ElCom monitors electricity prices and rules on disputes relating to Network access. It also monitors electricity supply security and regulates issues relating to international electricity transmission and trading. ElCom is responsible for ruling on disputes concerning feed-in tariffs and between network operators and independent producers."@en,
+        "L'ElCom est l'autorité fédérale indépendante de régulation dans le domaine de l'électricité. Elle surveille le respect de la loi sur l'approvisionnement en électricité et de la loi sur l'énergie, prenant les mesures et rendant les décisions nécessaires à cet effet. Elle surveille les prix de l'électricité et tranche en cas de divergences concernant l'accès au réseau. Elle vérifie la sécurité de l'approvisionnement du pays en électricité et règle les questions de transport et de commerce international d'électricité. Enfin, l’ElCom rend des décisions en matière de rétribution de reprise ainsi que dans le cadre de litiges opposant des auto-consommateurs à leur gestionnaire de réseau."@fr,
+        "La ElCom è l‘autorità di regolazione statale e indipendente del settore elettrico. Essa vigila sul rispetto della legge sull‘approvvigionamento elettrico ed emana le decisioni necessarie. La ElCom vigila sui prezzi dell'energia elettrica e decide in caso di divergenze relative all'Accesso alla rete."@it ;
+    dcterms:modified "2024-02-20T12:54:27.505826"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.elcom.admin.ch/elcom/de/home.html> ;
+            foaf:name "Eidgenössische Elektrizitätskommission ElCom"@de,
+                "Federal Electricity Commission ElCom"@en,
+                "Commission fédérale de l'électricité ElCom"@fr,
+                "Commissione federale dell'energia elettrica ElCom"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Eidgenössische Elektrizitätskommission ElCom"@de,
+        "Federal Electricity Commission ElCom"@en,
+        "Commission fédérale de l'électricité ElCom"@fr,
+        "Commissione federale dell'energia elettrica ElCom"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

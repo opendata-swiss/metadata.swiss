@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "2c14ab8a-7e34-4273-b323-913197d6832d",
+    "name": "zh-kt-tiefbauamt-dcat-harvester",
+    "title": "ZH-Kt Tiefbauamt \u2013 DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://daten.statistik.zh.ch/ogd/harvester/tiefbauamt-kanton-zuerich.xml",
+            "catalogue": "zh-kt-tiefbauamt-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

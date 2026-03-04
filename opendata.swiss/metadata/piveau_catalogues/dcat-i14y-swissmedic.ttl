@@ -1,0 +1,35 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-swissmedic> a dcat:Catalog ;
+    dcterms:created "2025-11-12T12:08:05.300135"^^xsd:dateTime ;
+    dcterms:description """Arzneimittel dürfen in der Schweiz nur vertrieben werden, wenn sie vom Schweizerischen Heilmittelinstitut zugelassen sind. Swissmedic ist durch ihre Aufgaben in den Bereichen Bewilligung, Zulassung und Überwachung von Arzneimitteln in den gesamten Lebenszyklus eines Arzneimittels eingebunden.\r
+\r
+Anders als Arzneimittel durchlaufen Medizinprodukte keine behördliche Zulassung. Der Schwerpunkt von Swissmedic im Bereich Medizinprodukte liegt somit in einer effizienten Marktüberwachung.\r
+\r
+"""@de,
+        """Swissmedic is the Swiss authority responsible for the authorisation and supervision of therapeutic products. Swissmedic's activities are based on the Law on Therapeutic Products.\r
+\r
+Unlike medicinal products, medical devices do not undergo an official authorisation procedure. Swissmedic's focus in the area of medical devices is thus on effective market surveillance."""@en,
+        """Swissmedic est l’autorité d’autorisation et de contrôle des produits thérapeutiques en Suisse. Les tâches de Swissmedic reposent sur le droit des produits thérapeutiques.\r
+\r
+Contrairement aux médicaments, les dispositifs médicaux ne sont soumis à aucune autorisation officielle. Dans le secteur des dispositifs médicaux, Swissmedic a donc pour principale mission d’assurer une surveillance efficace du marché."""@fr,
+        """Swissmedic è l’autorità centrale svizzera di omologazione e controllo per gli agenti terapeutici. L’attività di Swissmedic si basa sul diritto degli agenti terapeutici.\r
+\r
+Diversamente dai medicamenti, i dispositivi medici non sono sottoposti ad alcuna omologazione ufficiale. L’attività di Swissmedic nel campo dei dispositivi medici si concentra quindi sulla sorveglianza efficiente del mercato."""@it ;
+    dcterms:modified "2025-11-12T12:08:05.300140"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.swissmedic.ch/> ;
+            foaf:name "Swissmedic Schweizerisches Heilmittelinstitut"@de,
+                "Swissmedic Swiss Agency for Therapeutic Products"@en,
+                "Swissmedic Institut suisse des produits thérapeutiques"@fr,
+                "Swissmedic Istituto svizzero per gli agenti terapeutici"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Swissmedic Schweizerisches Heilmittelinstitut"@de,
+        "Swissmedic Swiss Agency for Therapeutic Products"@en,
+        "Swissmedic Institut suisse des produits thérapeutiques"@fr,
+        "Swissmedic Istituto svizzero per gli agenti terapeutici"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

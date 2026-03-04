@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-tiefbauamt-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-02-08T11:26:26.680064"^^xsd:dateTime ;
+    dcterms:description "Das Tiefbauamt plant, projektiert, realisiert und unterhält die Zürcher Staatsstrassen. Zudem betreibt es im Auftrag des Bundesamts für Strassen ASTRA die Nationalstrassen in der Gebietseinheit VII. Um den Verkehrsfluss und die Sicherheit zu optimieren, stellt es Steuerungs- und Regelungssysteme zur Verfügung. Weiter ist es für den Vollzug und die Überwachung der Umweltschutzgesetzgebung im Bereich Lärm zuständig."@de ;
+    dcterms:modified "2025-10-30T12:32:01.934052"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/baudirektion/tiefbauamt.html> ;
+            foaf:name "Tiefbauamt Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Tiefbauamt Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

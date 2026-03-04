@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-kt-fr> a dcat:Catalog ;
+    dcterms:created "2025-01-30T19:21:41.554074"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Statistik und Daten ist das kantonale Kompetenzzentrum für die öffentliche Statistik. Es erhebt, analysiert und verbreitet statistische Daten über die Lage und die Entwicklung des Kantons, unterstützt die Dienststellen des Staats bei der Verwaltung ihrer Daten und koordiniert die Veröffentlichung der offenen Verwaltungsdaten. "@de,
+        "The Statistics and Data Service is the cantonal competence center for public statistics. It collects, analyzes, and disseminates statistical data on the situation and development of the canton, supports state services in data management, and coordinates the dissemination of administrative data in open access."@en,
+        "Le Service de la statistique et de la donnée est le centre de compétence cantonal pour la statistique publique. Il collecte, analyse et diffuse des données statistiques sur la situation et l’évolution du canton, soutient les services de l’État dans la gestion des données et coordonne la diffusion des données administratives en libre accès."@fr,
+        "Il Servizio Statistiche e Dati è il centro di competenza cantonale per la statistica pubblica. Raccoglie, analizza e diffonde dati statistici sulla situazione e l'evoluzione del cantone, supporta i servizi statali nella gestione dei dati e coordina la diffusione dei dati amministrativi ad accesso aperto."@it ;
+    dcterms:modified "2025-02-04T16:03:24.639187"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.fr.ch/deef/ssd> ;
+            foaf:name "Amt für Statistik und Daten Freiburg"@de,
+                "Statistics and Data Service Fribourg"@en,
+                "Service de la statistique et de la donnée Fribourg"@fr,
+                "Servizio Statistiche e Dati Friburgo"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Statistik und Daten Freiburg"@de,
+        "Statistics and Data Service Fribourg"@en,
+        "Service de la statistique et de la donnée Fribourg"@fr,
+        "Servizio Statistiche e Dati Friburgo"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

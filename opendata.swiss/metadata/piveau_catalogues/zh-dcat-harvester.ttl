@@ -1,0 +1,27 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2016-09-29T08:42:29.610394"^^xsd:dateTime ;
+    dcterms:description "Open Data Zürich stellt hier offene Daten aus der Stadt Zürich zur freien Nutzung bereit. Die Stadt Zürich verfügt parallel über ein eigenes Open Data Portal, auf dem Sie auch Anleitungen und Dokumentationen zum Umgang mit Datensätzen finden. Mit wenigen Ausnahmen sind alle Datensätze der Stadt Zürich mit «Creative Commons Zero» lizenziert."@de,
+        "Here you find all publicly available data published by Open Data Zürich. In addition, the city of Zurich runs its own Open Data Portal, where you find manuals and documentation about the handling of datasets. With only a few exceptions, all datasets from Open Data Zürich are licensed under «Creative Commons Zero»."@en,
+        "Vous trouverez ici les données de la ville de Zürich. En parallèle, Open Data Zürich a son propre portail Open Data où vous pouvez trouver également des manuels et des documents sur le traitement des données. À de rares exceptions près, toutes les données publiées par Open Data Zürich sont sous une licence «Creative Commons Zero». "@fr,
+        """Open Data Zürich propone qui dati pubblici della città di Zurigo, pronti alla libera utilizzazione. \r
+La città di Zurigo dispone parallelamente di un proprio portale Open Data, sul quale sono disponibili anche istruzioni e documentazioni per contestualizzare i datasets.\r
+A parte poche eccezioni tutte le datasets della città di Zurigo hanno una licenza «Creative Commons Zero»."""@it ;
+    dcterms:modified "2021-06-14T11:49:45.231303"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <http://www.stadt-zuerich.ch/opendata> ;
+            foaf:name "Stadt Zürich"@de,
+                "City of Zurich"@en,
+                "Ville de Zurich"@fr,
+                "Cità di Zurigo"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Stadt Zürich"@de,
+        "City of Zurich"@en,
+        "Ville de Zurich"@fr,
+        "Cità di Zurigo"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

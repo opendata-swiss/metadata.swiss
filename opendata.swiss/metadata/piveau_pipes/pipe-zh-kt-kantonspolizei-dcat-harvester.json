@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "42c6bb6a-5de0-4b43-bbf1-b28c56fbf7e0",
+    "name" : "zh-kt-kantonspolizei-dcat-harvester",
+    "title" : "ZH-Kt Kantonspolizei - DCAT Harvester",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://daten.statistik.zh.ch/ogd/harvester/kantonspolizei-kanton-zuerich.xml",
+          "catalogue" : "zh-kt-kantonspolizei-dcat-harvester",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : ""
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

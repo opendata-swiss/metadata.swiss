@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "5f83af03-88bb-4713-9eff-8ad969b7bfab",
+    "name": "dcat-i14y-uepf",
+    "title": "DCAT I14Y UEPF",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/aeeb8487-c9c0-42ab-ba44-0340fd104b09/dcat/exports/rdf",
+            "catalogue": "dcat-i14y-uepf",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Post and Telecommunications Surveillance Service"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "021e2303-840a-4d55-b373-63973571038b",
+    "name": "electronic-media-centre-dcat-harvester",
+    "title": "Electronic Media Centre DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://www.mediathek.admin.ch/fp/api/export/xml",
+            "catalogue": "electronic-media-centre-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Armed Forces Digital Media Centre AFDM"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

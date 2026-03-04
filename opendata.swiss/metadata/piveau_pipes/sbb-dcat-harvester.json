@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "f926d101-3007-4eee-8333-a738af9d5442",
+    "name": "sbb-dcat-harvester",
+    "title": "SBB - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://sbb.opendatasoft.com/api/v2/catalog/exports/dcat_ap_ch",
+            "catalogue": "sbb-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Swiss Federal Railways SBB"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

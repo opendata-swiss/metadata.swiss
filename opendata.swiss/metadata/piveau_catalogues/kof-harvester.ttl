@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kof-harvester> a dcat:Catalog ;
+    dcterms:created "2021-06-08T14:32:07.131732"^^xsd:dateTime ;
+    dcterms:description "Das KOF Institut liefert fundierte Informationen im Bereich der Wirtschafts- und Konjunkturforschung. Sie erstellt eine Vielzahl von Prognosen und Indikatoren zur Konjunkturbeobachtung. Ihr Datenpool aus Unternehmensbefragungen ist einmalig in der Schweiz. Aus diesen Daten generiert die KOF verschiedene Indikatoren (KOF Konjunkturbarometer, KOF Beschäftigungsindikator, KOF Geschäftslageindikator, u.a.), die ein Stimmungsbild der Schweizer Wirtschaft wiedergeben. Ihre Umfrageresultate wertet sie vierteljährlich aus und stellt sie der Öffentlichkeit vor, ebenso ihre Konjunkturprognosen. Sie analysiert aber auch die Innovationstätigkeit Schweizer Unternehmen, liefert Studien zum Arbeitsmarkt, den Gesundheitsausgaben und kommentiert aktuelle wirtschaftliche Entwicklungen. So ist die KOF auch (zusammen mit dem ifo Institut in München) an der Gemeinschaftsdiagnose in Deutschland beteiligt, die der deutschen Regierung als Richtmass für die zukünftige wirtschaftliche Entwicklung dient."@de,
+        "KOF delivers profund insight into the field of Economic Research. Next to conducting surveys in all branches of the Swiss economy, it also creates forecasts and indicators for business cycle analysis. KOF's data pool of business surveys is unique in Switzerland. KOF uses these data sets to mirror the economic situations and moods of Swiss companies through the generation of indicators. The KOF Economic Barometer, KOF Employment Indicator, KOF Business Situation, etc., are crucial for assessing economic developments in Switzerland. Many of these surveys are carried out monthly and results are evaluated quarterly to be presented to the public. KOF also analyzes the innovation of Swiss companies, provides studies on health issues and comments on current economic developments. KOF is also (together with the Ifo Institute in Munich) involved in the joint economic forecast in Germany, which is used by the German Government as a directional measure of future economic development."@en,
+        "Le KOF, Centre de recherches conjoncturelles, fournit des informations tangibles dans le domaine de la recherche économique et conjoncturelle. Il établit une multitude de prévisions et d’indicateurs utiles à l’observation de la conjoncture. Sa base de données, issue d’enquêtes menées auprès des entreprises, est unique en Suisse. Ces données permettent au KOF de générer divers indicateurs (baromètre, indicateur de l’emploi, indicateur bancaire), qui reflètent le climat de l’économie suisse. Les résultats de ces enquêtes sont évalués chaque trimestre et communiqués au public, tout comme les prévisions conjoncturelles. Le KOF analyse également l’activité d’innovation des entreprises suisses, effectue des études sur les dépenses de santé et commente les derniers développements de l’économie. Il participe aussi (en collaboration avec le centre Ifo de Munich) à l’élaboration des prévisions conjoncturelles allemandes (« Gemeinschaftsdiagnose »), lesquelles servent de base au gouvernement allemand en ce qui concerne l’évolution future de l’économie."@fr,
+        "l KOF fornisce informazioni approfondite in materia di ricerca economica e congiunturale, producendo svariati indicatori e previsioni per il monitoraggio congiunturale. Il pool di dati derivante da indagini tra le aziende è unico in Svizzera. A partire da questi dati, il KOF genera diversi indicatori (barometro congiunturale, indicatore di occupazione, situazione commerciale, e così via) che riflettono la realtà dell'economia svizzera. Valuta trimestralmente i risultati delle indagini e li presenta al pubblico, unitamente alle previsioni congiunturali. Ma il KOF analizza anche l'attività di innovazione delle imprese svizzere, svolge studi sulla spesa sanitaria o commenta gli ultimi sviluppi economici. Il KOF, inoltre (insieme all'Istituto ifo di Monaco di Baviera) partecipa alla previsione congiunta in Germania, che il governo tedesco utilizza come riferimento per gli sviluppi economici futuri."@it ;
+    dcterms:modified "2021-06-14T11:21:23.164608"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://kof.ethz.ch/> ;
+            foaf:name "KOF Konjunkturforschungsstelle"@de,
+                "KOF Swiss Economic Institute"@en,
+                "KOF Centre de recherches conjoncturelles"@fr,
+                "KOF Centro di ricerca congiunturale"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "KOF Konjunkturforschungsstelle"@de,
+        "KOF Swiss Economic Institute"@en,
+        "KOF Centre de recherches conjoncturelles"@fr,
+        "KOF Centro di ricerca congiunturale"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

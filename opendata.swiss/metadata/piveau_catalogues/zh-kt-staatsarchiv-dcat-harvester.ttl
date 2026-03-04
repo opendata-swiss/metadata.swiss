@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-staatsarchiv-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-01-14T11:21:49.147154"^^xsd:dateTime ;
+    dcterms:description "Das Staatsarchiv ist das Archiv des Kantons Zürich und seiner Rechtsvorgänger. Es bewertet, übernimmt, erschliesst und konserviert Unterlagen aus über tausend Jahren Zürcher Geschichte. Durch die Aufbewahrung dieser Unterlagen macht es staatliches Handeln nachvollziehbar und ermöglicht historische Forschung. Das Staatsarchiv gewährt allen Interessierten Einsicht in diejenigen Bestände, die keinen Beschränkungen mehr unterliegen. Der grösste Teil der Findmittel zu den Archivbeständen kann online abgefragt werden."@de ;
+    dcterms:modified "2025-10-30T12:33:39.567704"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/politik-staat/recherche-im-staatsarchiv.html#426283062> ;
+            foaf:name "Staatsarchiv Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Staatsarchiv Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

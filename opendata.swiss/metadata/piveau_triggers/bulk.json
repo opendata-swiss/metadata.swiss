@@ -1,0 +1,761 @@
+{
+  "dcat-i14y-bazg": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-bazg-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:32:49.000Z"
+    }
+  ],
+  "dcat-i14y-zivi": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-zivi-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:37:49.000Z"
+    }
+  ],
+  "dcat-i14y-modus": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-modus-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:42:49.000Z"
+    }
+  ],
+  "dcat-i14y-uepf": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-uepf-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:47:49.000Z"
+    }
+  ],
+  "dcat-i14y-bkb": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-bkb-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:52:49.000Z"
+    }
+  ],
+  "dcat-i14y-swissmedic": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-swissmedic-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T09:57:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-graubunden-gr": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-graubunden-gr-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:02:49.000Z"
+    }
+  ],
+  "dcat-i14y-kt-bern-be": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-kt-bern-be-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:07:49.000Z"
+    }
+  ],
+  "dcat-i14y-efv": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-efv-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:12:49.000Z"
+    }
+  ],
+  "dcat-i14y-bafu": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-bafu-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:17:49.000Z"
+    }
+  ],
+  "dcat-i14y-bfe": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-bfe-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:22:49.000Z"
+    }
+  ],
+  "dcat-i14y-nationalbibliothek": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-i14y-nationalbibliothek-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:27:49.000Z"
+    }
+  ],
+  "i14y-dcat-blw": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "i14y-dcat-blw-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:32:49.000Z"
+    }
+  ],
+  "i14y-dcat-swiss-emobility": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "i14y-dcat-swiss-emobility-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:37:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-gl": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-gl-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:42:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-fr": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-fr-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:47:49.000Z"
+    }
+  ],
+  "dcat-harvester-finanzmarktaufsicht-fl": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-finanzmarktaufsicht-fl-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:52:49.000Z"
+    }
+  ],
+  "dcat-harvester-amt-fur-statistik-fl": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-amt-fur-statistik-fl-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T10:57:49.000Z"
+    }
+  ],
+  "i14y-dcat-harvester-lustat": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "i14y-dcat-harvester-lustat-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:02:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-zg": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-zg-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:07:49.000Z"
+    }
+  ],
+  "dcat-harvester-stadt-zug": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-stadt-zug-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:12:49.000Z"
+    }
+  ],
+  "stadt-zug-geocat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "stadt-zug-geocat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:17:49.000Z"
+    }
+  ],
+  "dcat-bag-idd-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-bag-idd-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:22:49.000Z"
+    }
+  ],
+  "dcat-harvester-morges": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-morges-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:27:49.000Z"
+    }
+  ],
+  "lindas-dcat-harvester-bakom": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "lindas-dcat-harvester-bakom-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:32:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-ti": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-ti-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:37:49.000Z"
+    }
+  ],
+  "dcat-harvester-immobilienamt-kt-zh": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-immobilienamt-kt-zh-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:42:49.000Z"
+    }
+  ],
+  "lindas-dcat-harvester-blw": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "lindas-dcat-harvester-blw-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:47:49.000Z"
+    }
+  ],
+  "lindas-dcat-harvester-elcom": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "lindas-dcat-harvester-elcom-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:52:49.000Z"
+    }
+  ],
+  "dcat-harvester-ekz-kt-zh": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-ekz-kt-zh-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T11:57:49.000Z"
+    }
+  ],
+  "dcat-harvester-stadt-st-gallen": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-stadt-st-gallen-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:02:49.000Z"
+    }
+  ],
+  "stadt-lausanne-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "stadt-lausanne-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:07:49.000Z"
+    }
+  ],
+  "dcat-harvester-amt-fur-mobilitat-kanton-zurich": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-amt-fur-mobilitat-kanton-zurich-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:12:49.000Z"
+    }
+  ],
+  "zh-kt-kantonspolizei-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-kantonspolizei-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:17:49.000Z"
+    }
+  ],
+  "bl-abstimmungen": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "bl-abstimmungen-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:22:49.000Z"
+    }
+  ],
+  "bl-dcat": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "bl-dcat-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:27:49.000Z"
+    }
+  ],
+  "zh-kt-handelsregisteramt": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-handelsregisteramt-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:32:49.000Z"
+    }
+  ],
+  "zh-kt-personalamt": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-personalamt-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:37:49.000Z"
+    }
+  ],
+  "stadt-winterthur-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "stadt-winterthur-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:42:49.000Z"
+    }
+  ],
+  "lindas-dcat-harvester-bafu": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "lindas-dcat-harvester-bafu-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:47:49.000Z"
+    }
+  ],
+  "zh-kt-finanzverwaltung-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-finanzverwaltung-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:52:49.000Z"
+    }
+  ],
+  "electronic-media-centre-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "electronic-media-centre-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T12:57:49.000Z"
+    }
+  ],
+  "tg-kt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "tg-kt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:02:49.000Z"
+    }
+  ],
+  "zh-kt-are-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-are-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:07:49.000Z"
+    }
+  ],
+  "lindas-dcat-harvester-bar": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "lindas-dcat-harvester-bar-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:12:49.000Z"
+    }
+  ],
+  "zh-kt-staatskanzlei-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-staatskanzlei-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:17:49.000Z"
+    }
+  ],
+  "zh-kt-volksschulamt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-volksschulamt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:22:49.000Z"
+    }
+  ],
+  "bs-kanton-stadt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "bs-kanton-stadt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:27:49.000Z"
+    }
+  ],
+  "stadt-uster-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "stadt-uster-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:32:49.000Z"
+    }
+  ],
+  "envidat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "envidat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:37:49.000Z"
+    }
+  ],
+  "kof-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "kof-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:42:49.000Z"
+    }
+  ],
+  "dcat-harvester-identitas": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-identitas-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:47:49.000Z"
+    }
+  ],
+  "dcat-harvester-kt-sg": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "dcat-harvester-kt-sg-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:52:49.000Z"
+    }
+  ],
+  "zh-kt-tiefbauamt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-tiefbauamt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T13:57:49.000Z"
+    }
+  ],
+  "zh-kt-statistisches-amt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-statistisches-amt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:02:49.000Z"
+    }
+  ],
+  "zh-kt-staatsarchiv-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-staatsarchiv-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:07:49.000Z"
+    }
+  ],
+  "zh-kt-oberjugendanwaltschaft-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-oberjugendanwaltschaft-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:12:49.000Z"
+    }
+  ],
+  "zh-kt-gesundheitsdirektion-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-gesundheitsdirektion-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:17:49.000Z"
+    }
+  ],
+  "zh-kt-gemeindeamt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-gemeindeamt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:22:49.000Z"
+    }
+  ],
+  "zh-kt-fachstelle-ogd-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-fachstelle-ogd-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:27:49.000Z"
+    }
+  ],
+  "zh-kt-bildungsstatistik-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-bildungsstatistik-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:32:49.000Z"
+    }
+  ],
+  "zh-kt-awel-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-kt-awel-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:37:49.000Z"
+    }
+  ],
+  "_3074": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "_3074-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:42:49.000Z"
+    }
+  ],
+  "sbb-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "sbb-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:47:49.000Z"
+    }
+  ],
+  "bfs-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "bfs-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:52:49.000Z"
+    }
+  ],
+  "zg-kt-staatskanzlei-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zg-kt-staatskanzlei-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T14:57:49.000Z"
+    }
+  ],
+  "gr-kt-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "gr-kt-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T15:02:49.000Z"
+    }
+  ],
+  "opendatatransport-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "opendatatransport-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T15:07:49.000Z"
+    }
+  ],
+  "zh-dcat-harvester": [
+    {
+      "interval": {
+        "value": 1,
+        "unit": "DAY"
+      },
+      "id": "zh-dcat-harvester-trigger",
+      "status": "enabled",
+      "next": "2026-03-04T15:12:49.000Z"
+    }
+  ]
+}

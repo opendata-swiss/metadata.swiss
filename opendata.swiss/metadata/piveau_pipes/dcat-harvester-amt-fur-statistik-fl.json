@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "4c132739-3a56-4f2b-870e-33c527fcf1d3",
+    "name": "dcat-harvester-amt-fur-statistik-fl",
+    "title": "DCAT Harvester Amt f\u00fcr Statistik FL",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://catalog.opendata.li/store/29/metadata/1411?recursive=dcat&format=application/rdf+xml",
+            "catalogue": "dcat-harvester-amt-fur-statistik-fl",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Office of Statistics"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

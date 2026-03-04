@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "0a324a4e-a7ac-42d9-a215-1cba60acf246",
+    "name": "dcat-harvester-identitas",
+    "title": "DCAT Harvester Identitas",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://tierstatistik.identitas.ch/tierstatistik.rdf",
+            "catalogue": "dcat-harvester-identitas",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Identitas AG"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

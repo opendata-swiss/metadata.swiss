@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "19a6cb47-8cdc-4af8-b7b1-830531ed5aaf",
+    "name" : "lindas-dcat-harvester-elcom",
+    "title" : "LINDAS DCAT Harvester ELCOM",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://lindas.admin.ch/ckan?organization=https://register.ld.admin.ch/opendataswiss/org/elcom",
+          "catalogue" : "lindas-dcat-harvester-elcom",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "Federal Electricity Commission ElCom"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

@@ -24,6 +24,7 @@ on:
           - "DELETE_CATALOGUES"
           - "VOCABULARIES"
           - "DELETE_VOCABULARIES"
+          - "UPLOAD_TRIGGERS"
         default: "HARVEST"
 
       arguments:
@@ -133,6 +134,9 @@ jobs:
             ./scripts/vocabularies.sh;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then
             ./scripts/vocabularies_delete.sh;
+          elif [ "${{ github.event.inputs.action }}" == "UPLOAD_TRIGGERS" ]; then
+            cd meta_harvester;
+            poetry run python -m meta_harvester upload-triggers;
           else
             echo "Unknown action: ${{ github.event.inputs.action }}";
             exit 1;

@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "e3cf518c-92b6-4f5e-a246-4734e31fc7a7",
+    "name" : "dcat-harvester-kt-sg",
+    "title" : "DCAT Harvester Kt-SG",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://daten.sg.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:%22opendata.swiss%22",
+          "catalogue" : "dcat-harvester-kt-sg",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : ""
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

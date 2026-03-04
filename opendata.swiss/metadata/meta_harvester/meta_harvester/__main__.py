@@ -3,7 +3,7 @@ import json
 import logging
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Union
 
@@ -29,6 +29,7 @@ template_files = {
 }
 
 PIPES_PATH = "../piveau_pipes"
+TRIGGERS_PATH = "../piveau_triggers"
 
 
 def to_dict(value: Union[str, dict]) -> dict:
@@ -197,10 +198,10 @@ def generate_catalogue_metadata(
     g.serialize(destination=output_file, format="turtle")
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
-
+# run this locally and push the generated files to repo
 def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True, cluster: bool = True) -> None:
     """
-    Fetches all geoharvesters from CKAN and generates corresponding
+    Fetches all harvesters from CKAN and generates corresponding
     pipe and catalogue metadata files.
 
     Args:
@@ -212,19 +213,22 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
 
     try:
         harversters = ckan_client.get_harvesters()
-        # harversters = [h for h in harversters if h["type"] not in ["geocat_harvester", "dcat_ch_i14y_rdf"]]
-        logging.info(f"Collected {len(harversters)} geoharvester(s) from CKAN.")
+        harversters = [h for h in harversters if h["type"] not in ["geocat_harvester"]]
+        logging.info(f"Collected {len(harversters)} harvester(s) from CKAN.")
     except HTTPError as e:
         logging.error(f"Failed to fetch harvester IDs from CKAN: {e}")
         return
 
-    if pipes and cluster:
-        piveau_run_client = PiveauRunClient()
+    # if pipes and cluster:
+    #     piveau_run_client = PiveauRunClient()
 
+    pipe_names = []
 
-    for harverster in harversters:
+    for i, harverster in enumerate(harversters):
         id = harverster["id"]
         type = harverster["type"]
+
+        logging.info(f"({i+1}/{len(harversters)}) Processing harvester ID {id} of type '{type}'...")
 
         try:
             details = ckan_client.get_harvester_details_by_id(id)
@@ -283,8 +287,44 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 cluster=cluster,
                 template_file=template_files.get(type, "meta_harvester/pipe-template.yaml")
             )
-            if cluster:
-                piveau_run_client.upload_pipe(pipe_file=output_file)
+
+        pipe_names.append(details["name"])
+        if cluster:
+            piveau_run_client = PiveauRunClient()
+            piveau_run_client.upload_pipe(pipe_file=output_file)
+    
+
+    # pair each pipe name with a date with 5 minutes difference, starting from now, to create staggered triggers    
+    start_time = datetime.now()
+    staggered_triggers = {}
+    for i, pipe_name in enumerate(pipe_names):
+        trigger_time = start_time + timedelta(minutes=5 * (i+1))
+        trigger_time = trigger_time.astimezone(timezone.utc)
+        staggered_triggers[pipe_name] = trigger_time.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+    with open(f"{TRIGGERS_PATH}/bulk.json", "w") as trigger_file:
+        json.dump({
+            trigger: [
+                {
+                    "interval": {
+                        "value": 1,
+                        "unit": "DAY"
+                    },
+                    "id": f"{trigger}-trigger",
+                    "status": "enabled",
+                    "next": staggered_triggers[trigger]
+                }
+            ]
+            for trigger in staggered_triggers
+        }, trigger_file, indent=2)
+
+def upload_triggers() -> None:
+    """
+    Uploads trigger definitions from the triggers directory to Piveau.
+    """
+    piveau_run_client = PiveauRunClient()
+    piveau_run_client.upload_triggers()
+   
 
 def run_pipes(pipe_names: list | None = None, create_catalogue: bool = False, include_static: bool = False) -> None:
     """
@@ -441,6 +481,12 @@ def main()-> None:
         help="Optional: Path to the .ttl file. If omitted, defaults to the standard path."
     )
     parser_create_from_file.set_defaults(func=create_single_catalogue)
+
+    parser_upload_triggers = subparsers.add_parser(
+        "upload-triggers",
+        help="Upload trigger definitions from the triggers directory to Piveau."
+    )
+    parser_upload_triggers.set_defaults(func=upload_triggers)
 
 
     args = parser.parse_args()

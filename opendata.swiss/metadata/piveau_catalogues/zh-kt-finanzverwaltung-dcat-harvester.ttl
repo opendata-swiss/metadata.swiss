@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-finanzverwaltung-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2022-09-12T11:40:37.000911"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Zürich hat, nach dem Bund, den zweitgrössten öffentlichen Haushalt der Schweiz. Die Finanzverwaltung ist verantwortlich für die Planung, Führung und Überwachung dieses Finanzhaushalts. Sie erstellt das Budget und den Jahresabschluss der kantonalen Verwaltung und publiziert den Geschäftsbericht. Zudem übernimmt sie das operative Rechnungswesen und sichert mit der Tresorie die Zahlungsbereitschaft des Kantons. Die Finanzverwaltung bildet die finanzielle Schnittstelle zum Bund und den anderen Kantonen, beispielsweise für den nationalen Finanzausgleich."@de ;
+    dcterms:modified "2025-10-30T12:36:05.869422"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/finanzdirektion/finanzverwaltung.html> ;
+            foaf:name "Finanzverwaltung Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Finanzverwaltung Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

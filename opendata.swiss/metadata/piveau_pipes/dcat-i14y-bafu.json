@@ -1,0 +1,41 @@
+{
+  "header": {
+    "id": "8568a9da-1e80-4e68-bafa-e224c36382b3",
+    "name": "dcat-i14y-bafu",
+    "title": "DCAT I14Y BAFU",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/8c907021-5ade-494e-9b57-0aeb97999393/dcat/exports/rdf",
+            "catalogue": "dcat-i14y-bafu",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Federal Office for the Environment FOEN"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 2,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

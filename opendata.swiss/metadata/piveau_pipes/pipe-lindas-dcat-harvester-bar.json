@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "4b2dbc4e-38d4-4bd1-a183-d93707f4b5b2",
+    "name" : "lindas-dcat-harvester-bar",
+    "title" : "LINDAS DCAT Harvester BAR",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://lindas.admin.ch/ckan?organization=https://register.ld.admin.ch/opendataswiss/org/schweizerisches-bundesarchiv-bar",
+          "catalogue" : "lindas-dcat-harvester-bar",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "Swiss Federal Archives SFA"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}

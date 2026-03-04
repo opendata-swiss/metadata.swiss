@@ -1,0 +1,38 @@
+{
+  "header" : {
+    "id" : "d81b4ecb-9915-4e0c-93e5-a0ac9627e158",
+    "name" : "i14y-dcat-swiss-emobility",
+    "title" : "I14Y DCAT Swiss eMobility",
+    "context" : "piveau",
+    "transport" : "payload",
+    "version" : "1.0.0"
+  },
+  "body" : {
+    "segments" : [ {
+      "header" : {
+        "name" : "piveau-consus-importing-rdf",
+        "segmentNumber" : 1,
+        "title" : "Importing RDF",
+        "processed" : false
+      },
+      "body" : {
+        "config" : {
+          "address" : "https://api.i14y.admin.ch/api/public/v1/catalogs/e601f859-ed9d-49d6-9a33-f1da3f20e3c7/dcat/exports/rdf",
+          "catalogue" : "i14y-dcat-swiss-emobility",
+          "preProcessing" : true,
+          "accept" : "application/rdf+xml",
+          "inputFormat" : "application/rdf+xml",
+          "org_name" : "Swiss eMobility"
+        }
+      }
+    }, {
+      "header" : {
+        "name" : "piveau-consus-exporting-hub",
+        "segmentNumber" : 2,
+        "title" : "Exporting hub",
+        "processed" : false
+      },
+      "body" : { }
+    } ]
+  }
+}
