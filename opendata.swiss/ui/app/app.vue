@@ -65,23 +65,25 @@ watch(locale, (newLocale) => {
 }, { immediate: true },
 )
 
-const matomoHost = config.public.matomo.url
-const matomoSiteId = config.public.matomo.siteId
+onMounted(() => {
+  const matomoHost = config.public.matomo.url
+  const matomoSiteId = config.public.matomo.siteId
 
-if (matomoHost && matomoSiteId) {
-  const matomo = initMatomo({
-    host: matomoHost,
-    siteId: matomoSiteId,
-    trackRouter: true,
-  })
+  if (matomoHost && matomoSiteId) {
+    const matomo = initMatomo({
+      host: matomoHost,
+      siteId: matomoSiteId,
+      trackRouter: true,
+    })
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  app.vueApp.use(matomo)
-}
-else {
-  console.warn('Matomo configuration missing: host and/or siteId')
-}
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    app.vueApp.use(matomo)
+  }
+  else {
+    console.warn('Matomo configuration missing: host and/or siteId')
+  }
+})
 
 useHead({
   htmlAttrs: {
