@@ -53,6 +53,9 @@ export default defineNuxtConfig({
         siteId: '',
       },
     },
+    showcases: {
+      maxImageWidth: 900,
+    },
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
