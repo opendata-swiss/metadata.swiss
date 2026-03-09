@@ -8,7 +8,7 @@ export function useShowcaseSearch() {
 
   return defineHubSearch({
     baseUrl,
-    index: 'resource_showcase',
+    index: 'resource',
     facets,
     schema: z.object({
       image: z.array(z.string()),
