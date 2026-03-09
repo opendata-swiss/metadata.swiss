@@ -1,0 +1,26 @@
+name: Trigger Harvesting showcases
+
+on:
+  pull_request:
+    types: [closed]
+    paths:
+      - "opendata.swiss/ui/content/showcases/**"
+
+jobs:
+  trigger:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [TEST, INT]
+    permissions:
+      actions: write
+    steps:
+      - name: Trigger Piveau Harvester for ${{ matrix.environment }}
+        run: |
+          gh workflow run script-manual-trigger.yaml \
+            --ref ${{ github.event.pull_request.base.ref }} \
+            -f environment=${{ matrix.environment }} \
+            -f action=HARVEST_SHOWCASES
+        env:
+          GH_TOKEN: ${{ github.token }}
