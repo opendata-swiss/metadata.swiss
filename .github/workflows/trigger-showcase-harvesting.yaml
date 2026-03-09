@@ -19,6 +19,7 @@ jobs:
       - name: Trigger Piveau Harvester for ${{ matrix.environment }}
         run: |
           gh workflow run script-manual-trigger.yaml \
+            --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
             -f environment=${{ matrix.environment }} \
             -f action=HARVEST_SHOWCASES
