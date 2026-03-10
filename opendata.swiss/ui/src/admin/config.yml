@@ -213,6 +213,7 @@ collections:
           - name: name
             label: Name
             widget: string
+            required: false
           - name: url
             label: Url (separate multiple entries with a comma)
             widget: list
