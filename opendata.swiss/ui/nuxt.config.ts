@@ -49,6 +49,10 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      matomo: {
+        url: '',
+        siteId: '',
+      },
     },
     oauth: {
       keycloak: {

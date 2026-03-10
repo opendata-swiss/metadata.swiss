@@ -90,6 +90,8 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_ID`
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET`
 - `NUXT_OAUTH_KEYCLOAK_REALM`
+- `NUXT_MATOMO_URL`
+- `NUXT_MATOMO_SITE_ID`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 
