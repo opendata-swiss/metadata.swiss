@@ -325,7 +325,7 @@ public class DatasetTest extends BaseSystemTest {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
         org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].checksum.checksum_value"), equalTo("5bcc814127be171c75595d419f371c74c9cf041419c45d6e8d2c789e5c303b47"));
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].checksum.algorithm"), equalTo("checksumAlgorithm_sha256"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].checksum.algorithm"), equalTo("sha256"));
     }
 
     @Test
