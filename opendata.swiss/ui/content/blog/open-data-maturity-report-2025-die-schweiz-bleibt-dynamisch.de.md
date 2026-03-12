@@ -9,6 +9,8 @@ subHeading: Les résultats de l’Open Data Maturity Report 2025 sont disponible
 
 Grâce à des avancées légales, techniques et organisationnelles, notre pays renforce son cadre « open by default » et améliore la qualité ainsi que l’impact de ses données publiques.
 
+
+
 **Résultats clés de l’édition 2025 :**
 
 ✅  Politique Open Data : 89.8% (=)
@@ -48,6 +50,8 @@ Ces résultats confirment la trajectoire positive de la Suisse et encouragent la
 ➡️ soutenir les cantons et unités administratives dans une gouvernance cohérente des données publiques.
 
 En s’inspirant des meilleures pratiques et en misant sur l’innovation, la Suisse continue de faire progresser son écosystème de données ouvertes au bénéfice de toutes et tous.
+
+
 
 **Découvrez :**
 

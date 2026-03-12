@@ -9,6 +9,8 @@ subHeading: Die neuesten Ergebnisse des Open Data Maturity Report liegen vor. Im
 
 Dank gesetzlicher, technischer und organisatorischer Fortschritte wurde in der Schweiz das Prinzip «open by default», also der standardmässig freie Zugang zu Daten, gestärkt und sowohl die Qualität als auch die Wirkung (*Impact*) von Verwaltungsdaten gesteigert.
 
+
+
 **Die wichtigsten Ergebnisse des Berichts 2025:**
 
 ✅ Open-Data-Politik: 89,8% (=)
@@ -48,6 +50,8 @@ Die Ergebnisse des Berichts bestätigen den Erfolgskurs der Schweiz und regen zu
 ➡️ Kantone und Verwaltungseinheiten bei der kohärenten Gouvernanz im Bereich Verwaltungsdaten unterstützen
 
 Die Schweiz orientiert sich an Best Practices, setzt auf Innovation und entwickelt ihr Open-Data-Ökosystem zum Nutzen aller weiter.
+
+
 
 **Mehr dazu:**
 
