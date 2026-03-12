@@ -51,11 +51,20 @@ spec:
                   key: session-password
 
             - name: GITHUB_OWNER
-              value: opendata-swiss
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-owner
             - name: GITHUB_REPO
-              value: metadata.swiss
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-repo
             - name: GITHUB_BASE_BRANCH
-              value: main
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-base-branch
             - name: GITHUB_APP_ID
               valueFrom:
                 secretKeyRef:
