@@ -5,7 +5,7 @@ subHeading: Die neuesten Ergebnisse des Open Data Maturity Report liegen vor. Im
   Jahr 2025 hat die Schweiz ihren Erfolgskurs fortgesetzt und ihre Stellung im
   europäischen Open-Data-Ökosystem gefestigt.
 ---
-![](/img/uploads/ogd-parapente.jpg)
+![](public/img/uploads/ogd-parapente.jpg)
 
 Dank gesetzlicher, technischer und organisatorischer Fortschritte wurde in der Schweiz das Prinzip «open by default», also der standardmässig freie Zugang zu Daten, gestärkt und sowohl die Qualität als auch die Wirkung (*Impact*) von Verwaltungsdaten gesteigert.
 
@@ -21,25 +21,17 @@ Dank gesetzlicher, technischer und organisatorischer Fortschritte wurde in der S
 
 ➡️ Gesamtergebnis: 81.7% (+1.7 Prozentpunkte)
 
-
-
 ## Festigung des politischen Rahmens
 
 Seit 2024 gilt gemäss Artikel 10 EMBAG der Grundsatz «open by default». Damit werden das Bewusstsein und das Engagement für OGD gestärkt – in der Bundesverwaltung sowie bei ihren Partnern. Der OGD-Masterplan 2024–2027 gibt den Verwaltungseinheiten einen Rahmen zur Veröffentlichung offener Daten vor und harmonisiert die entsprechenden Praktiken.
-
-
 
 ## Ein Portal im technologischen Wandel
 
 Das Portal opendata.swiss wird derzeit schrittweise auf Piveau migriert. So sollen die Interoperabilität sowie die Vielfalt der Metadaten unter Einhaltung der FAIR-Prinzipien verbessert werden. Gleichzeitig investieren auch mehrere Kantone in ihre Infrastrukturen und erweitern ihr OGD-Angebot. Dadurch entsteht ein technologischer Wandel, der die Qualität und Nutzbarkeit offener Daten schweizweit stärkt. 
 
-
-
 ## Deutlich bessere Metadatenqualität
 
 In der Kategorie «Qualität» konnte die Schweiz erhebliche Fortschritte erzielen (+3,2 Prozentpunkte). Diese Entwicklung ist auf drei zentrale Verbesserungen zurückzuführen: die Einführung eines nationalen Dashboards zur Metadatenqualität, die Aktualisierung des Standards DCAT-AP CH (v3) sowie die Weiterentwicklung des SHACL-Validators, der alle Metadatenangaben prüft, mit denen Datensätze beschrieben werden.
-
-
 
 ## Grössere Wirkung dank Veröffentlichung besonders relevanter Daten
 
