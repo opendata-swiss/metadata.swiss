@@ -47,7 +47,7 @@ collections:
     widget: "list"
     create: true
     i18n: true
-    summary: "{{title}}"
+    summary: "{{section}} - {{title}}"
     view_groups:
       - label: Section
         field: section
@@ -59,6 +59,8 @@ collections:
         collection: handbook-section
         search_fields: ["title"]
         value_field: title
+        display_fields:
+          - "{{title}}"
         required: true
         i18n: duplicate
       - label: Title
@@ -77,9 +79,21 @@ collections:
         i18n: duplicate
         pattern:
           [
-            "^[a-z0-9-]+(?:/[a-z0-9-]+)*$",
-            "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens.",
+            "^[a-z0-9-]+$",
+            "Permalink must be lowercase and can only contain letters, numbers, and hyphens.",
           ]
+      - label: Parent article
+        name: parent
+        widget: relation
+        collection: handbook
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{section}} - {{title}}"
+        search_fields:
+          - "title"
+          - "section"
+        i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown

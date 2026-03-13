@@ -1,4 +1,5 @@
 ---
 section: Vorbereiten
-permalink: dataset/organisatorischer-check
+parent: vorbereiten/fur-jedes-dataset
+permalink: organisatorischer-check
 ---
