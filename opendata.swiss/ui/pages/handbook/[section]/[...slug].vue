@@ -14,14 +14,27 @@ const breadcrumbs = await useBreadcrumbs({
   loadContent: loadHandbookBreadcrumb(section, locale),
 })
 
-const { data } = await useAsyncData(route.path, () => {
-  const slug = route.params.slug.join('/')
+const { data } = useAsyncData(route.path, async () => {
+  const slug = [...route.params.slug]
+  let permalink = slug.pop()
 
-  return queryCollection('handbook')
+  const page = await queryCollection('handbook')
     .where('path', 'LIKE', `%.${locale.value}`)
     .where('section', '=', section)
-    .andWhere(q => q.where('permalink', '=', slug))
-    .first()
+    .where('permalink', '=', permalink).first()
+
+  while (slug.length) {
+    const parentPage = await queryCollection('handbook')
+      .where('section', '=', section)
+      .where('permalink', '=', permalink)
+      .first()
+    if (!parentPage) {
+      return undefined
+    }
+    permalink = slug.pop()
+  }
+
+  return page
 })
 
 useSeoMeta({
@@ -65,5 +78,8 @@ const _navigation = ref([
 </script>
 
 <template>
-  <OdsHandbookPage :page="data" :breadcrumbs="breadcrumbs" />
+  <OdsHandbookPage
+    :page="data"
+    :breadcrumbs="breadcrumbs"
+  />
 </template>
