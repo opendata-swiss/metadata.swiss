@@ -49,6 +49,7 @@ export default defineContentConfig({
       schema: z.object({
         id: z.string(),
         title: z.string(),
+        order: z.number(),
       }),
     }),
     blog: defineCollection({

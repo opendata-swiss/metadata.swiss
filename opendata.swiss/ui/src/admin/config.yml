@@ -33,6 +33,13 @@ collections:
         widget: string
         required: true
         i18n: true
+      - name: order
+        label: Order
+        widget: number
+        value_type: int
+        min: 1
+        required: true
+        i18n: duplicate
       - name: body
         label: Body
         widget: markdown
