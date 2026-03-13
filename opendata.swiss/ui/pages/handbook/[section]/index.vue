@@ -7,7 +7,7 @@ const { locale } = useI18n()
 const route = useRoute()
 const section = toProperCase(route.params.section)
 
-const { data } = await useAsyncData('handbookSection', () =>
+const { data } = await useAsyncData(route.fullPath, () =>
   queryCollection('handbookSections')
     .where('title', '=', section)
     .first())
@@ -20,5 +20,8 @@ const breadcrumbs = await useBreadcrumbs({
 </script>
 
 <template>
-  <OdsHandbookPage :page="data" :breadcrumbs="breadcrumbs" />
+  <OdsHandbookPage
+    :page="data"
+    :breadcrumbs="breadcrumbs"
+  />
 </template>
