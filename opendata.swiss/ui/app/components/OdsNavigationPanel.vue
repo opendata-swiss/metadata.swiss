@@ -1,38 +1,60 @@
 <template>
-  <Transition :name="transitionName" mode="out-in">
+  <Transition
+    :name="transitionName"
+    mode="out-in"
+  >
     <div :key="menuKey">
       <div id="mobile-menu">
-        <nav aria-label="Main" class="main-navigation main-navigation--mobile">
+        <nav
+          aria-label="Main"
+          class="main-navigation main-navigation--mobile"
+        >
           <ul>
-            <li v-if="menuStack.length > 0" style="border-bottom: none;" @click="goBack">
+            <li
+              v-if="menuStack.length > 0"
+              style="border-bottom: none;"
+              @click="goBack"
+            >
               <a style="padding-top: 12px; padding-bottom: 12px;">
                 <span>
-                  <SvgIcon icon="ArrowLeft" size="lg"/>
+                  <SvgIcon
+                    icon="ArrowLeft"
+                    size="lg"
+                  />
                 </span>
               </a>
             </li>
-            <li v-if="menuStack.length > 0" style="border-bottom: none;">
+            <li
+              v-if="menuStack.length > 0"
+              style="border-bottom: none;"
+            >
               <h2 class="navy__title">
                 {{ t(parentLabel ?? '') }}
               </h2>
             </li>
 
-            <template v-for="item in currentMenu" :key="item.label">
+            <template
+              v-for="item in currentMenu"
+              :key="item.label"
+            >
               <li v-if="item.to">
                 <NuxtLinkLocale
                   :to="item.to"
                   active-class="active"
-                  :aria-label="t(item.label)"
+                  :aria-label="label(item)"
                   @click="emitRequestClose"
                 >
-                  <span>{{t(item.label)}}</span>
-                </NuxtLinkLocale><div/>
+                  <span>{{ label(item) }}</span>
+                </NuxtLinkLocale><div />
               </li>
               <li
                 v-else-if="(item.subMenu?.length ?? -1) > 0"
                 @click="drillDown(item)"
               >
-                <a>{{t(item.label)}} <SvgIcon size="lg" icon="ArrowRight" /></a>
+                <a>{{ label(item) }} <SvgIcon
+                  size="lg"
+                  icon="ArrowRight"
+                /></a>
               </li>
             </template>
           </ul>
@@ -47,9 +69,12 @@ import { ref, computed } from 'vue'
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item'
 import { useI18n } from '#imports'
 import SvgIcon from '~/components/SvgIcon.vue'
+import { useNavigationItemLabel } from '~/constants/navigation-items'
 
 const emit = defineEmits(['requestClose'])
 const { t } = useI18n()
+
+const label = useNavigationItemLabel()
 
 interface Props {
   items: OdsNavTabItem[]

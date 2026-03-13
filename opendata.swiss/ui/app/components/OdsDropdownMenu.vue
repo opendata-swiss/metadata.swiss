@@ -6,6 +6,7 @@ import OdsButton from './OdsButton.vue'
 import SvgIcon from './SvgIcon.vue'
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item'
 import { NuxtLinkLocale } from '#components'
+import { useNavigationItemLabel } from '~/constants/navigation-items'
 
 interface OdsDropdownMenuProps {
   label: string
@@ -16,6 +17,7 @@ interface OdsDropdownMenuProps {
 const props = defineProps<OdsDropdownMenuProps>()
 
 const { t } = useI18n()
+const navigationItemLabel = useNavigationItemLabel()
 const isOpen = ref(false)
 
 const dropdownRef = ref<HTMLElement | null>(null)
@@ -84,10 +86,22 @@ onBeforeUnmount(() => {
   >
     <span class="activate-btn">{{ t(props.label) }}</span>
   </a>
-  <div ref="dropdownRef" class="ods-dropdown">
-    <div v-if="isOpen" id="desktop-menu__drawer" class="desktop-menu__drawer ods-drop-down-panel" >
+  <div
+    ref="dropdownRef"
+    class="ods-dropdown"
+  >
+    <div
+      v-if="isOpen"
+      id="desktop-menu__drawer"
+      class="desktop-menu__drawer ods-drop-down-panel"
+    >
       <div class="close-button-container">
-        <SvgIcon v-if="menuStack.length > 0" icon="ArrowLeft" size="lg"  @click.prevent="goBack"/>
+        <SvgIcon
+          v-if="menuStack.length > 0"
+          icon="ArrowLeft"
+          size="lg"
+          @click.prevent="goBack"
+        />
         <div v-else />
         <OdsButton
           icon="Cancel"
@@ -98,10 +112,13 @@ onBeforeUnmount(() => {
           class="ods-close"
           @click="isOpen = false"
         >
-          <span class="ods-close">{{t('message.header.navigation.close')}}</span>
+          <span class="ods-close">{{ t('message.header.navigation.close') }}</span>
         </OdsButton>
       </div>
-      <Transition :name="transitionName" mode="out-in">
+      <Transition
+        :name="transitionName"
+        mode="out-in"
+      >
         <div :key="menuKey">
           <div class="navy">
             <h2 class="navy__title">
@@ -110,22 +127,28 @@ onBeforeUnmount(() => {
 
             <nav class="navy__level-0 navy-menu__level-0">
               <ul>
-                <template v-for="item in currentMenu" :key="item.label">
+                <template
+                  v-for="item in currentMenu"
+                  :key="item.label"
+                >
                   <li v-if="item.to">
                     <NuxtLinkLocale
                       :to="item.to"
                       active-class="active"
-                      :aria-label="t(item.label)"
+                      :aria-label="navigationItemLabel(item)"
                       @click="isOpen = false"
                     >
-                      <span>{{t(item.label)}}</span>
-                    </NuxtLinkLocale><div/>
+                      <span>{{ navigationItemLabel(item) }}</span>
+                    </NuxtLinkLocale><div />
                   </li>
                   <li
                     v-else-if="(item.subMenu?.length ?? -1) > 0"
                     @click="drillDown(item)"
                   >
-                    <a>{{t(item.label)}} <SvgIcon size="lg" icon="ArrowRight" /></a>
+                    <a>{{ navigationItemLabel(item) }} <SvgIcon
+                      size="lg"
+                      icon="ArrowRight"
+                    /></a>
                   </li>
                 </template>
               </ul>

@@ -32,8 +32,7 @@ import OdsTopHeader from './components/headers/OdsTopHeader.vue'
 import OdsHeader from './components/headers/OdsHeader.vue'
 import OdsBottomFooter from '@/components/footer/OdsBottomFooter.vue'
 import OdsFooter from './components/footer/OdsFooter.vue'
-import type { OdsNavTabItem } from './components/headers/model/ods-nav-tab-item'
-import { APP_NAVIGATION_ITEMS } from './constants/navigation-items'
+import { useNavigationItems } from './constants/navigation-items'
 import { useI18n } from '#imports'
 import { useLocale as piveauLocale } from '@piveau/sdk-vue'
 import { onMounted, ref } from 'vue'
@@ -51,7 +50,7 @@ function logout() {
   router.push('/logged-out')
 }
 
-const navigationItems = ref<OdsNavTabItem[]>(APP_NAVIGATION_ITEMS)
+const navigationItems = await useNavigationItems()
 const isMobileMenuOpen = ref(false)
 
 const { locale } = useI18n()
