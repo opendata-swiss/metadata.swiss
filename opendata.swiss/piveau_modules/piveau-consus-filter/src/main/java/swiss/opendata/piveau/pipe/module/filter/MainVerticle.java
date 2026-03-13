@@ -1,0 +1,58 @@
+package swiss.opendata.piveau.pipe.module.filter;
+
+import io.piveau.pipe.PipeContext;
+import io.piveau.pipe.connector.PipeConnector;
+import io.piveau.rdf.Piveau;
+import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Future;
+import io.vertx.core.Launcher;
+import io.vertx.core.Promise;
+import io.vertx.core.json.JsonArray;
+import io.vertx.core.json.JsonObject;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.vocabulary.DCAT;
+import org.apache.jena.vocabulary.RDF;
+
+import java.util.Arrays;
+import java.util.Iterator;
+
+public class MainVerticle extends AbstractVerticle {
+
+    /**
+     * The main Vert.x function aka entry point to the application
+     */
+    @Override
+    public void start(Promise<Void> startPromise) throws Exception {
+
+        Future<PipeConnector> pipeConnector = PipeConnector.create(vertx);
+        pipeConnector.onSuccess(connector -> {
+            connector.handlePipe(this::handlePipe);
+        });
+
+        startPromise.complete();
+    }
+
+    private void handlePipe(PipeContext pipeContext) {
+        if (pipeContext.log().isTraceEnabled()) {
+            pipeContext.log().trace(pipeContext.getPipeManager().prettyPrint());
+        }
+
+        pipeContext.pass();
+        
+    }
+
+    /**
+     * This is an optional function which is handy if you want to start your app form an IDE.
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        String[] params = Arrays.copyOf(args, args.length + 1);
+        params[params.length - 1] = MainVerticle.class.getName();
+        Launcher.executeCommand("run", params);
+    }
+}
