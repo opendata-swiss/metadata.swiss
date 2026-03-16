@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import OdsDropdownMenu from '@/components/OdsDropdownMenu.vue'
 import { useI18n } from '#imports'
 
@@ -34,6 +34,8 @@ const { t } = useI18n()
 
 const menuOpen = ref(false)
 
+const dropdownMenus = ref<InstanceType<typeof OdsDropdownMenu>[]>([])
+
 watch(menuOpen, (val) => {
   emit('mobileMenuStateChange', val)
 })
@@ -62,6 +64,14 @@ function isChildPageOfSubMenu(item: OdsNavTabItem) {
 
 function showAdminMenus(item: OdsNavTabItem): boolean {
   return !item.adminOnly || loggedIn.value === true
+}
+
+function closeOtherDropdowns(currentItem: OdsNavTabItem) {
+  dropdownMenus.value.forEach((menu) => {
+    if (menu && menu.menu !== currentItem) {
+      menu.isOpen = false
+    }
+  })
 }
 </script>
 
@@ -140,8 +150,10 @@ function showAdminMenus(item: OdsNavTabItem): boolean {
             <li
               v-if="item.subMenu"
               class="tab"
+              @mouseenter="closeOtherDropdowns(item)"
             >
               <OdsDropdownMenu
+                ref="dropdownMenus"
                 :label="item.label"
                 :menu="item"
                 :class="isChildPage(item) ? 'active' : ''"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 import { useI18n } from '#imports'
 
 import OdsButton from './OdsButton.vue'
@@ -25,6 +25,11 @@ const dropdownRef = ref<HTMLElement | null>(null)
 function toggleDropdown() {
   isOpen.value = !isOpen.value
 }
+
+defineExpose({
+  isOpen,
+  menu: props.menu,
+})
 
 const parentLabelStack = ref<string[]>([props.menu.label])
 
