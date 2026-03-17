@@ -1,0 +1,7 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+
+[] a dcat:Dataset ;
+    dct:title "Updated title" ;
+    dct:description "Updated description" ;
+    dct:identifier "%s" .

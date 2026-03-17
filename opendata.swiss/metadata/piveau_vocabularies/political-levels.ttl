@@ -1,0 +1,53 @@
+@base <https://opendata.swiss/vocabulary/political-level/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix gn:      <http://www.geonames.org/ontology#> .
+
+<https://opendata.swiss/vocabulary/political-levels>
+    a owl:Ontology, skos:ConceptScheme ;
+    skos:prefLabel
+        "Political Levels"@en ,
+        "Niveaux politiques"@fr ,
+        "Politische Ebenen"@de ,
+        "Livelli politici"@it ;
+    dct:description
+        "A controlled vocabulary describing the political-administrative levels in Switzerland."@en .
+
+<confederation>
+    a skos:Concept ;
+    skos:inScheme <https://opendata.swiss/vocabulary/political-levels> ;
+    skos:topConceptOf <https://opendata.swiss/vocabulary/political-levels> ;
+    skos:prefLabel
+        "Confederation"@en ,
+        "Confédération"@fr ,
+        "Bund"@de ,
+        "Confederazione"@it ;
+    skos:notation "A.PCLI" ;
+    skos:exactMatch <http://www.geonames.org/ontology#A.PCLI> ;
+    skos:narrower <confederation/canton> .
+
+<canton>
+    a skos:Concept ;
+    skos:inScheme <https://opendata.swiss/vocabulary/political-levels> ;
+    skos:prefLabel
+        "Canton"@en ,
+        "Canton"@fr ,
+        "Kanton"@de ,
+        "Cantone"@it ;
+    skos:notation "A.ADM1" ;
+    skos:exactMatch <http://www.geonames.org/ontology#A.ADM1> ;
+    skos:broader <confederation> ;
+    skos:narrower <municipality> .
+
+<municipality>
+    a skos:Concept ;
+    skos:inScheme <https://opendata.swiss/vocabulary/political-levels> ;
+    skos:prefLabel
+        "Municipality"@en ,
+        "Commune"@fr ,
+        "Gemeinde"@de ,
+        "Comune"@it ;
+    skos:notation "A.ADM3" ;
+    skos:exactMatch <http://www.geonames.org/ontology#A.ADM3> ;
+    skos:broader <canton> .
