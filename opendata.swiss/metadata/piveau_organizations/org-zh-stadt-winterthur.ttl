@@ -2,13 +2,12 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix schema: <http://schema.org/> .
-@prefix pv: <https://piveau.eu/ns/voc#> .
-@prefix ex: <https://example.org/> .
 
 <https://opendata.swiss/id/organization/stadt-winterthur>
   a foaf:Organization, org:Organization ;
 
-  ex:politicalLevel    ex:political-level\/commune ;
+  org:classification <https://opendata.swiss/vocabulary/political-level/municipality> ;
+
   foaf:name           "Stadt Winterthur"@de, "City of Winterthur"@en ;
   dcterms:description "Die Stadt Winterthur als intelligente, vernetzte und sichere Stadt nutzt städtische Daten als Basis für effiziente und nutzerfreundliche Lösungen und stellt sie der Allgemeinheit unter Gewährleistung des Datenschutzes als 'Open Data' zur freien Wiederverwendung zur Verfügung. Die Publikation der OGD-Datensätze ist in Erarbeitung, das Angebot wird laufend ausgebaut."@de ;
   dcterms:description "(en) The city of Winterthur .... "@en ;

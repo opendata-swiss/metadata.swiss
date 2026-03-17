@@ -2,15 +2,13 @@
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix schema: <http://schema.org/> .
-@prefix pv: <https://piveau.eu/ns/voc#> .
-@prefix ex: <https://example.org/> .
 
 <https://opendata.swiss/id/organization/staatskanzlei-kanton-zuerich>
   a foaf:Organization, org:Organization ;
 
   org:subOrganizationOf <https://opendata.swiss/id/organization/zh-foo> ;
+  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
 
-  ex:politicalLevel   ex:political-level\/canton ;
   foaf:name           "Staatskanzlei Kanton Zürich"@de, "(en) Staatskanzlei Kanton Zürich"@en ;
   dcterms:description "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat in administrativen und juristischen Tätigkeiten für verschiedene Dialoggruppen. Zudem ist sie eine Schnittstelle zwischen den Direktionen des Kantons und arbeitet mit den Gemeinden, dem Bund und den Nachbarkantonen zusammen."@de ;
   dcterms:description "(en) The federal chancellery of canton ZH  .... "@en ;

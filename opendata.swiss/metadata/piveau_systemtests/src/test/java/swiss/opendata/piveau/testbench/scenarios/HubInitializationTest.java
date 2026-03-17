@@ -104,14 +104,14 @@ public class HubInitializationTest extends BaseSystemTest {
     }
 
     /**
-     * Installs opendata.swiss custom vocabularies (ch-licenses, showcase-types) via the REST API.
+     * Installs opendata.swiss custom vocabularies (ch-licenses, showcase-types, political-levels) via the REST API.
      */
     @Test
     @DependsOn(Goal.HUB_STARTED)
     @Provides(Goal.CUSTOM_ODSN_VOCABS_INSTALLED)
     public void customVocabulariesInstalled(TestContext context) throws IOException {
 
-        List<String> customVocabs = List.of("ch-licenses", "showcase-types");
+        List<String> customVocabs = List.of("ch-licenses", "showcase-types", "political-levels");
         assertVocabulariesDoNotExist(customVocabs);
 
         File licensesFile = new File("../piveau_vocabularies/licenses-20240716.ttl");
@@ -123,6 +123,11 @@ public class HubInitializationTest extends BaseSystemTest {
         assertTrue(showcaseTypesFile.exists(), "showcase types file should exist at " + showcaseTypesFile.getAbsolutePath());
 
         io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseTypesFile).when().put("/vocabularies/showcase-types").then().statusCode(is(oneOf(200, 201, 204)));
+
+        File politicalLevelsFile = new File("../piveau_vocabularies/political-levels.ttl");
+        assertTrue(politicalLevelsFile.exists(), "political levels file should exist at " + politicalLevelsFile.getAbsolutePath());
+
+        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(politicalLevelsFile).when().put("/vocabularies/political-levels").then().statusCode(is(oneOf(200, 201, 204)));
 
         assertVocabulariesExist(customVocabs);
     }
