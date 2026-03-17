@@ -1,0 +1,8 @@
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+[] a foaf:Organization, org:Organization ;
+
+  foaf:name           "Org Level-0" ;
+  dcterms:description "An organization at level zero (toplevel)." .
