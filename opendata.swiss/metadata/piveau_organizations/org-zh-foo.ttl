@@ -1,0 +1,20 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix ex: <https://example.org/> .
+
+<https://opendata.swiss/id/organization/zh-foo>
+  a foaf:Organization, org:Organization  ;
+
+  org:subOrganizationOf <https://opendata.swiss/id/organization/kanton-zuerich> ;
+
+  ex:politicalLevel   ex:political-level\/canton ;
+  foaf:name           "Kanton Zürich Organisationsgruppierung Foo"@de , "Canton of Zurich organizational grouping Foo"@en ;
+  dcterms:description "Organisationsgruppierung Foo im Kanton Zürich."@de ;
+  dcterms:description "Organizational grouping Foo in Canton of Zurich."@en ;
+  foaf:homepage       <https://www.zh.ch/opendata-foo> ;
+  schema:image        "https://storage.googleapis.com/dx-liip/production/storage/uploads/group/kt_zh.png" .
+
+<https://www.zh.ch/opendata-foo> a foaf:Document .
