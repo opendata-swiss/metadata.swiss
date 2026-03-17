@@ -1,0 +1,16 @@
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+
+[]  a foaf:Organization, org:Organization ;
+
+  org:classification <https://opendata.swiss/vocabulary/political-level/canton> ;
+
+  foaf:name           "Kanton Zürich"@de , "%s"@en ;
+  dcterms:description "Der Kanton Zürich veröffentlicht offene Behördendaten ..."@de ;
+  dcterms:description "The Canton of Zurich publishes Open Government Data ..."@en ;
+  foaf:homepage       <https://www.zh.ch/opendata> ;
+  schema:image        <https://storage.googleapis.com/dx-liip/production/storage/uploads/group/kt_zh.png> .
+
+<https://www.zh.ch/opendata> a foaf:Document .
