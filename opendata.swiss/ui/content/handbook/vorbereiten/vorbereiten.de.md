@@ -3,6 +3,7 @@ section: Vorbereiten
 title: Auf einen Blick
 breadcrumb_title: Vorbereiten
 permalink: vorbereiten
+order: 1
 ---
 ## Daten vorbereiten
 

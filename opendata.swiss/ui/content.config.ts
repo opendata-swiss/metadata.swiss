@@ -41,6 +41,7 @@ export default defineContentConfig({
         breadcrumb_title: z.string(),
         permalink: z.string(),
         section: z.string(),
+        order: z.number().optional(),
       }),
     }),
     handbookSections: defineCollection({
