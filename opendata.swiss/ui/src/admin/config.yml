@@ -94,6 +94,11 @@ collections:
           - "section"
         i18n: duplicate
         required: false
+      - name: order
+        label: Order
+        widget: number
+        required: false
+        i18n: duplicate
       - name: body
         label: Body
         widget: markdown
