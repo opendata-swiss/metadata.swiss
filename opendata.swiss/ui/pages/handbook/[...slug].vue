@@ -1,37 +1,32 @@
 <script lang="ts" setup>
-import toProperCase from '~/lib/toProperCase.js'
 import { loadHandbookBreadcrumb } from '~/lib/breadcrumbs'
-import OdsHandbookPage from '../../../app/components/handbook/OdsHandbookPage.vue'
+import OdsHandbookPage from '../../app/components/handbook/OdsHandbookPage.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()
 
-const section = toProperCase(route.params.section)
-
 const breadcrumbs = await useBreadcrumbs({
   route,
   locale,
-  loadContent: loadHandbookBreadcrumb(section, locale),
+  loadContent: loadHandbookBreadcrumb(locale),
 })
 
 const { data } = useAsyncData(route.path, async () => {
-  const slug = [...route.params.slug]
-  let permalink = slug.pop()
+  const path = [...route.params.slug]
+  let slug = path.pop()
 
   const page = await queryCollection('handbook')
     .where('path', 'LIKE', `%.${locale.value}`)
-    .where('section', '=', section)
-    .where('permalink', '=', permalink).first()
+    .where('slug', '=', slug).first()
 
-  while (slug.length) {
+  while (path.length) {
     const parentPage = await queryCollection('handbook')
-      .where('section', '=', section)
-      .where('permalink', '=', permalink)
+      .where('slug', '=', slug)
       .first()
     if (!parentPage) {
       return undefined
     }
-    permalink = slug.pop()
+    slug = path.pop()
   }
 
   return page

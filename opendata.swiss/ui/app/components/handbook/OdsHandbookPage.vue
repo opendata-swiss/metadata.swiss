@@ -76,7 +76,6 @@ const onSearch = (value: string) => {
 const { data: articles } = await useAsyncData('handbook-articles', () =>
   queryCollection('handbook')
     .where('path', 'LIKE', `%.${locale.value}`)
-    // .where('parent', 'IS NULL')
     .all(),
 )
 
@@ -97,10 +96,23 @@ function byOrder(left: HandbookCollectionItem, right: HandbookCollectionItem) {
 }
 
 function isSectionOpen(section: HandbookCollectionItem) {
-  if (page.stem.startsWith('pages')) {
-    return true
+  if ('parent' in page && !!page.parent) {
+    let current: HandbookCollectionItem | undefined = page
+
+    while (current) {
+      if (current.parent === section.slug) {
+        return true
+      }
+
+      current = articles.value?.find(article => `handbook/${current?.parent}.${locale.value}` === article.stem)
+    }
+
+    return false
+  }
+  else {
+    return page.id === section.id
   }
 
-  return page.id === section.id
+  return true
 }
 </script>
