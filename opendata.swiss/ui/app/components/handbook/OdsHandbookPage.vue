@@ -24,9 +24,16 @@
             :open="isSectionOpen(section)"
           >
             <NuxtLinkLocale
-              v-for="article in getArticlesBySection(section)"
+              :to="`/handbook/${section.slug}`"
+              :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === section.id }]"
+              style="margin-top: unset"
+            >
+              <div>{{ section.title }}</div>
+            </NuxtLinkLocale>
+            <NuxtLinkLocale
+              v-for="article in getArticlesByParent(section)"
               :key="article.id"
-              :to="`/handbook/${section.title.toLowerCase()}/${article.permalink}`"
+              :to="`/handbook/${section.slug}/${article.slug}`"
               :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === article.id }]"
               style="margin-top: unset"
             >
@@ -40,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import type { HandbookCollectionItem, HandbookSectionsCollectionItem, PagesCollectionItem } from '@nuxt/content'
+import type { HandbookCollectionItem, PagesCollectionItem } from '@nuxt/content'
 import OdsPage from '~/components/OdsPage.vue'
 import OdsBreadcrumbs, { type BreadcrumbItem } from '~/components/OdsBreadcrumbs.vue'
 import OdsSearchPanel from '~/components/OdsSearchPanel.vue'
@@ -52,7 +59,7 @@ import OdsAccordionItem from '~/components/OdsAccordionItem.vue'
 const { t, locale } = useI18n()
 
 const { page } = defineProps<{
-  page: HandbookCollectionItem | HandbookSectionsCollectionItem | PagesCollectionItem
+  page: HandbookCollectionItem | PagesCollectionItem
   breadcrumbs: BreadcrumbItem[]
 }>()
 
@@ -66,12 +73,6 @@ const onSearch = (value: string) => {
   })
 }
 
-const { data: sections } = await useAsyncData('handbook-sections', () =>
-  queryCollection('handbookSections')
-    .where('path', 'LIKE', `%.${locale.value}`)
-    .all(),
-)
-
 const { data: articles } = await useAsyncData('handbook-articles', () =>
   queryCollection('handbook')
     .where('path', 'LIKE', `%.${locale.value}`)
@@ -79,17 +80,23 @@ const { data: articles } = await useAsyncData('handbook-articles', () =>
     .all(),
 )
 
-function getArticlesBySection(section: HandbookSectionsCollectionItem) {
+const sections = computed(() => {
+  const sections = articles.value?.filter(article => !article.parent) || []
+
+  return sections.sort(byOrder)
+})
+
+function getArticlesByParent(parent: HandbookCollectionItem) {
   return articles.value
-    ?.filter(article => article.section.toLowerCase() === section.title.toLowerCase())
-    ?.sort((a, b) => a.order || Number.MAX_SAFE_INTEGER - (b.order || Number.MAX_SAFE_INTEGER)) || []
+    ?.filter(article => parent.path === `/handbook/${article.parent}.${locale.value}`)
+    ?.sort(byOrder) || []
 }
 
-function isSectionOpen(section: HandbookSectionsCollectionItem) {
-  if ('section' in page) {
-    return page.section.toLowerCase() === section.title.toLowerCase()
-  }
+function byOrder(left: HandbookCollectionItem, right: HandbookCollectionItem) {
+  return left.order || Number.MAX_SAFE_INTEGER - (right.order || Number.MAX_SAFE_INTEGER)
+}
 
+function isSectionOpen(section: HandbookCollectionItem) {
   if (page.stem.startsWith('pages')) {
     return true
   }
