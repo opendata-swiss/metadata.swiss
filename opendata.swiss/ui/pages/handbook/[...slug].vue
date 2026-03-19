@@ -11,7 +11,7 @@ const breadcrumbs = await useBreadcrumbs({
   loadContent: loadHandbookBreadcrumb(locale),
 })
 
-const { data } = useAsyncData(route.path, async () => {
+const { data } = await useAsyncData(route.path, async () => {
   const path = [...route.params.slug]
 
   const articles = await queryCollection('handbook')
