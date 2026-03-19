@@ -8,9 +8,9 @@
     </template>
     <template #before-aside-content>
       <OdsSearchPanel
+        v-model:search-input="searchInput"
         aside
         :title="t('message.handbook.search_prompt')"
-        :search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt_short')"
         @search="onSearch"
       />
@@ -55,6 +55,7 @@ import { useRouter } from '#vue-router'
 import OdsCard from '~/components/OdsCard.vue'
 import OdsAccordion from '~/components/OdsAccordion.vue'
 import OdsAccordionItem from '~/components/OdsAccordionItem.vue'
+import { useGetArticleUrl } from '~/composables/handbook'
 
 const { t, locale } = useI18n()
 
@@ -65,12 +66,15 @@ const { page } = defineProps<{
 
 const searchInput = ref('')
 
+const getArticleUrl = await useGetArticleUrl()
+
 const router = useRouter()
+const localePath = useLocalePath()
 const onSearch = (value: string) => {
-  router.push({
+  router.push(localePath({
     path: '/handbook/search',
     query: { q: value.trim() },
-  })
+  }))
 }
 
 const { data: articles } = await useAsyncData('handbook-articles', () =>
@@ -125,26 +129,5 @@ function isSectionOpen(section: HandbookCollectionItem) {
   }
 
   return true
-}
-
-function getPathSegments(article: HandbookCollectionItem): string[] {
-  const segments = [article.slug]
-  let current = article
-  while (current.parent) {
-    const currentParent = current.parent
-    const parent = articles.value?.find((a) => {
-      if (!currentParent) return false
-      return a.path.endsWith(`handbook/${currentParent}.${locale.value}`)
-        || (locale.value !== 'de' && a.path.endsWith(`handbook/${currentParent}.de.md`))
-    })
-    if (!parent) break
-    segments.unshift(parent.slug)
-    current = parent
-  }
-  return segments
-}
-
-function getArticleUrl(article: HandbookCollectionItem) {
-  return `/handbook/${getPathSegments(article).join('/')}`
 }
 </script>
