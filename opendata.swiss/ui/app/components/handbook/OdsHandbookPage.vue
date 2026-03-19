@@ -24,7 +24,7 @@
             :open="isSectionOpen(section)"
           >
             <NuxtLinkLocale
-              :to="`/handbook/${section.slug}`"
+              :to="getArticleUrl(section)"
               :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === section.id }]"
               style="margin-top: unset"
             >
@@ -33,7 +33,7 @@
             <NuxtLinkLocale
               v-for="article in getArticlesByParent(section)"
               :key="article.id"
-              :to="`/handbook/${section.slug}/${article.slug}`"
+              :to="getArticleUrl(article)"
               :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === article.id }]"
               style="margin-top: unset"
             >
@@ -75,44 +75,76 @@ const onSearch = (value: string) => {
 
 const { data: articles } = await useAsyncData('handbook-articles', () =>
   queryCollection('handbook')
-    .where('path', 'LIKE', `%.${locale.value}`)
     .all(),
 )
 
+const localizedArticles = computed(() => articles.value?.filter(article => article.path.endsWith(`.${locale.value}`)) || [])
+
 const sections = computed(() => {
-  const sections = articles.value?.filter(article => !article.parent) || []
+  const sections = localizedArticles.value?.filter(article => !article.parent) || []
 
   return sections.sort(byOrder)
 })
 
 function getArticlesByParent(parent: HandbookCollectionItem) {
-  return articles.value
-    ?.filter(article => parent.path === `/handbook/${article.parent}.${locale.value}`)
+  return localizedArticles.value
+    ?.filter(article => article.parent && (
+      parent.path.endsWith(`handbook/${article.parent}.${locale.value}`)
+      || parent.path.endsWith(`handbook/${article.parent}.de.md`)
+    ))
     ?.sort(byOrder) || []
 }
 
 function byOrder(left: HandbookCollectionItem, right: HandbookCollectionItem) {
-  return left.order || Number.MAX_SAFE_INTEGER - (right.order || Number.MAX_SAFE_INTEGER)
+  return (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER)
 }
 
 function isSectionOpen(section: HandbookCollectionItem) {
-  if ('parent' in page && !!page.parent) {
-    let current: HandbookCollectionItem | undefined = page
+  if ('parent' in page) {
+    if (page.parent) {
+      let current: HandbookCollectionItem | undefined = page as HandbookCollectionItem
 
-    while (current) {
-      if (current.parent === section.slug) {
-        return true
+      while (current) {
+        if (current.path === section.path) {
+          return true
+        }
+
+        const currentParent: string | undefined = current.parent
+        current = articles.value?.find((article) => {
+          if (!currentParent) return false
+          return article.path.endsWith(`handbook/${currentParent}.${locale.value}`)
+            || (locale.value !== 'de' && article.path.endsWith(`handbook/${currentParent}.de.md`))
+        })
       }
 
-      current = articles.value?.find(article => `handbook/${current?.parent}.${locale.value}` === article.stem)
+      return false
     }
-
-    return false
-  }
-  else {
-    return page.id === section.id
+    else {
+      return page.id === section.id
+    }
   }
 
   return true
+}
+
+function getPathSegments(article: HandbookCollectionItem): string[] {
+  const segments = [article.slug]
+  let current = article
+  while (current.parent) {
+    const currentParent = current.parent
+    const parent = articles.value?.find((a) => {
+      if (!currentParent) return false
+      return a.path.endsWith(`handbook/${currentParent}.${locale.value}`)
+        || (locale.value !== 'de' && a.path.endsWith(`handbook/${currentParent}.de.md`))
+    })
+    if (!parent) break
+    segments.unshift(parent.slug)
+    current = parent
+  }
+  return segments
+}
+
+function getArticleUrl(article: HandbookCollectionItem) {
+  return `/handbook/${getPathSegments(article).join('/')}`
 }
 </script>

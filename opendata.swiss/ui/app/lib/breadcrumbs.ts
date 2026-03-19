@@ -9,14 +9,12 @@ export const loadHandbookBreadcrumb = (locale: Ref<string>): LoadBreadcrumbConte
     return loadPageBreadcrumb(locale)({ path }, index)
   }
 
-  const slug = path.split('/').pop()
+  const segments = path.split('/').filter(Boolean)
+  if (segments[0] === 'handbook') segments.shift()
+  const slug = segments[segments.length - 1]
 
   return queryCollection('handbook')
-    .select('id', 'title', 'breadcrumb_title')
+    .select('id', 'title', 'breadcrumb_title', 'slug', 'parent', 'path')
     .where('path', 'LIKE', `%.${locale.value}`)
-    .orWhere(q => q
-      .where('slug', '=', slug)
-      .where('path', '=', `${path}.${locale.value}`)
-      .where('path', '=', `${path}/index.${locale.value}`),
-    )
+    .where('slug', '=', slug)
 }

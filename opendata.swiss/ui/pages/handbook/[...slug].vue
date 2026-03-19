@@ -13,23 +13,45 @@ const breadcrumbs = await useBreadcrumbs({
 
 const { data } = useAsyncData(route.path, async () => {
   const path = [...route.params.slug]
-  let slug = path.pop()
 
-  const page = await queryCollection('handbook')
-    .where('path', 'LIKE', `%.${locale.value}`)
-    .where('slug', '=', slug).first()
+  const articles = await queryCollection('handbook')
+    .all()
 
-  while (path.length) {
-    const parentPage = await queryCollection('handbook')
-      .where('slug', '=', slug)
-      .first()
-    if (!parentPage) {
-      return undefined
-    }
-    slug = path.pop()
+  const localizedArticles = articles.filter(article => article.path.endsWith(`.${locale.value}`))
+
+  // Find the article whose slug matches the last part of the path
+  const leaf = localizedArticles.find(article => article.slug === path[path.length - 1])
+
+  if (!leaf) {
+    return undefined
   }
 
-  return page
+  // verify parent chain by building the path from the leaf upwards
+  function getPathSegments(article: typeof leaf): string[] {
+    const segments = [article.slug]
+    let current = article
+    while (current.parent) {
+      // Find parent in the current locale
+      let parent = articles.find(a => a.path.endsWith(`handbook/${current.parent}.${locale.value}`))
+
+      // Fallback to German version of parent if localized version is missing
+      if (!parent && locale.value !== 'de') {
+        parent = articles.find(a => a.path.endsWith(`handbook/${current.parent}.de.md`))
+      }
+
+      if (!parent) break
+      segments.unshift(parent.slug)
+      current = parent
+    }
+    return segments
+  }
+
+  const actualPath = getPathSegments(leaf)
+  if (actualPath.join('/') === path.join('/')) {
+    return leaf
+  }
+
+  return undefined
 })
 
 useSeoMeta({
