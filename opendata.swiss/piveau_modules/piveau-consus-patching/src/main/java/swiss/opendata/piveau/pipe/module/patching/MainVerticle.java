@@ -16,7 +16,6 @@ import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
-
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -47,9 +46,11 @@ public class MainVerticle extends AbstractVerticle {
                     pipeContext.getStringData().getBytes(),
                     Lang.NTRIPLES
             );
-            final JsonObject outboundDataInfo = new JsonObject().mergeIn(pipeContext.getDataInfo());
+            
 
-            applyActions(pipeContext, actions, model, outboundDataInfo);
+            applyActions(pipeContext, actions, model);
+
+            JsonObject outboundDataInfo = signalResource(pipeContext, actions);
 
             pipeContext.log().debug("Outbound dataInfo: {}", outboundDataInfo.toString());
 
@@ -64,8 +65,7 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
-    private void applyActions(PipeContext pipeContext, final JsonArray actions, final Model model,
-            final JsonObject outboundDataInfo) {
+    private void applyActions(PipeContext pipeContext, final JsonArray actions, final Model model) {
         if (actions.contains("remove-dataset-cloak")) {
             for (StmtIterator it = model.listStatements((Resource) null, RDF.type, DCAT.Dataset); it.hasNext(); ) {
                 Statement stmt = it.next();
@@ -93,6 +93,10 @@ public class MainVerticle extends AbstractVerticle {
                 model.add(fixedStmt);
             }
         }
+    }
+
+    private JsonObject signalResource(PipeContext pipeContext, final JsonArray actions) {
+        final JsonObject outboundDataInfo = new JsonObject().mergeIn(pipeContext.getDataInfo());
 
         String resourceType = null;
         for (Iterator<Object> it = actions.iterator(); it.hasNext(); ) {
@@ -108,6 +112,8 @@ public class MainVerticle extends AbstractVerticle {
                     .put("content", "resource")
                     .put("resourceType", resourceType);
         }
+
+        return outboundDataInfo;
     }
 
     /**
