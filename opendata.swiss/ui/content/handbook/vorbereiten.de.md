@@ -1,12 +1,9 @@
 ---
-section: Vorbereiten
-title: Vue d’ensemble
-breadcrumb_title: Préparer
-permalink: vorbereiten
+title: Vorbereiten
+slug: vorbereiten
 order: 1
 ---
-
-## Préparer les données
+## Daten vorbereiten
 
 Am Anfang steht eine gute Vorbereitung. Bevor Sie Daten als Open
 Government Data publizieren können, müssen Sie sicherstellen,
