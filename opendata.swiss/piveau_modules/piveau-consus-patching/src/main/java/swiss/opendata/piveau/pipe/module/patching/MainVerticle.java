@@ -19,6 +19,7 @@ import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -93,12 +94,35 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    public static void removeUnlicensedDistributions(Consumer<String> logger, final Model model) {
+        final Resource distributionClass = model.createResource("http://www.w3.org/ns/dcat#Distribution");
+        final var licenseProperty = model.createProperty("http://purl.org/dc/terms/license");
+
+        // Collect subjects to remove
+        List<Resource> toRemove = model.listStatements((Resource) null, RDF.type, distributionClass)
+            .toList().stream()
+            .map(Statement::getSubject)
+            .filter(subject -> !subject.hasProperty(licenseProperty))
+            .toList();
+
+        // Remove properties for each subject
+        for (Resource subject : toRemove) {
+            logger.accept("Removing triples for " + subject + " as it is an unlicensed distribution");
+            subject.removeProperties();
+            // remove incoming statements as well
+            model.removeAll(null, null, subject);
+        }
+    }
+
     private void applyActions(Consumer<String> logger, final JsonArray actions, final Model model) {
         if (actions.contains("remove-dataset-cloak")) {
             removeDatasetCloak(logger, model);
         }
         if (actions.contains("fix-showcase-typing")) {
             fixShowcaseTyping(logger, model);
+        }
+        if (actions.contains("remove-unlicensed-distributions")) {
+            removeUnlicensedDistributions(logger, model);
         }
     }
 
