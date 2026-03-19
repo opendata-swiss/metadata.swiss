@@ -38,7 +38,7 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         title: z.string(),
-        breadcrumb_title: z.string(),
+        breadcrumb_title: z.string().optional(),
         slug: z.string(),
         parent: z.string().optional(),
         order: z.number().optional(),
