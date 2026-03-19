@@ -1,6 +1,7 @@
 package swiss.opendata.piveau.pipe.module.patching;
 
 import io.piveau.pipe.PipeContext;
+import io.piveau.pipe.PipeLogger;
 import io.piveau.pipe.connector.PipeConnector;
 import io.piveau.rdf.Piveau;
 import io.vertx.core.AbstractVerticle;
@@ -47,8 +48,7 @@ public class MainVerticle extends AbstractVerticle {
                     Lang.NTRIPLES
             );
             
-
-            applyActions(pipeContext, actions, model);
+            applyActions(pipeContext.log(), actions, model);
 
             JsonObject outboundDataInfo = signalResource(pipeContext, actions);
 
@@ -65,33 +65,42 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
-    private void applyActions(PipeContext pipeContext, final JsonArray actions, final Model model) {
+    private void removeDatasetCloak(PipeLogger logger, final Model model) {
+        for (StmtIterator it = model.listStatements((Resource) null, RDF.type, DCAT.Dataset); it.hasNext(); ) {
+            Statement stmt = it.next();
+            logger.info("Removing triple " + stmt);
+            it.remove();
+        }
+    }
+
+    private void fixShowcaseTyping(PipeLogger logger, final Model model) {
+        final Resource tempType = model.createResource("http://localhost:3000/Showcase");
+        final Resource targetType = model.createResource("https://example.org/Showcase");
+
+        Statement fixedStmt = null;
+        for (StmtIterator it = model.listStatements((Resource) null, RDF.type, tempType); it.hasNext(); ) {
+            final Statement stmt = it.next();
+            logger.info("Removing triple " + stmt);
+            it.remove();
+
+            // only one single resource to fix: assuming here we get at most one single showcase per pipe message
+            fixedStmt = model.createStatement(stmt.getSubject(), RDF.type, targetType);
+        }
+
+        if (fixedStmt != null) {
+            logger.info("Adding triple " + fixedStmt);
+            model.add(fixedStmt);
+        }
+    }
+
+    private void applyActions(PipeLogger logger, final JsonArray actions, final Model model) {
+
         if (actions.contains("remove-dataset-cloak")) {
-            for (StmtIterator it = model.listStatements((Resource) null, RDF.type, DCAT.Dataset); it.hasNext(); ) {
-                Statement stmt = it.next();
-                pipeContext.log().info("Removing triple " + stmt);
-                it.remove();
-            }
+            removeDatasetCloak(logger, model);
         }
 
         if (actions.contains("fix-showcase-typing")) {
-            final Resource tempType = model.createResource("http://localhost:3000/Showcase");
-            final Resource targetType = model.createResource("https://example.org/Showcase");
-
-            Statement fixedStmt = null;
-            for (StmtIterator it = model.listStatements((Resource) null, RDF.type, tempType); it.hasNext(); ) {
-                final Statement stmt = it.next();
-                pipeContext.log().info("Removing triple " + stmt);
-                it.remove();
-
-                // only one single resource to fix: assuming here we get at most one single showcase per pipe message
-                fixedStmt = model.createStatement(stmt.getSubject(), RDF.type, targetType);
-            }
-
-            if (fixedStmt != null) {
-                pipeContext.log().info("Adding triple " + fixedStmt);
-                model.add(fixedStmt);
-            }
+            fixShowcaseTyping(logger, model);
         }
     }
 
