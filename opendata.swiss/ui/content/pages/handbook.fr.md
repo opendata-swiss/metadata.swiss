@@ -1,7 +1,7 @@
 ---
 id: Handbuch
 title: Manuel
-mainMenu: true
+mainMenu: false
 ---
 
 # Bienvenue
