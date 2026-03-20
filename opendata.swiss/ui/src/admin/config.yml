@@ -106,11 +106,15 @@ collections:
 
   - name: pages
     label: "Pages"
+    label_singular: Page
     folder: "opendata.swiss/ui/content/pages"
     extension: md
     widget: "list"
-    create: false
+    create: true
     i18n: true
+    view_groups:
+      - label: Shown in Main Menu
+        field: mainMenu
     fields:
       - label: Title
         name: title
@@ -131,7 +135,7 @@ collections:
         label: Parent page
         widget: relation
         collection: pages
-        value_field: "{{title}}"
+        value_field: "{{slug}}"
         search_fields:
           - "title"
         i18n: duplicate

@@ -137,10 +137,10 @@ onBeforeUnmount(() => {
                       @click="isOpen = false"
                     >
                       <span>{{ item.label }}</span>
-                    </NuxtLinkLocale><div />
+                    </NuxtLinkLocale>
                   </li>
                   <li
-                    v-else-if="(item.subMenu?.length ?? -1) > 0"
+                    v-else
                     @click="drillDown(item)"
                   >
                     <a>{{ item.label }} <SvgIcon

@@ -1,6 +1,10 @@
 import type { PagesCollectionItem } from '@nuxt/content'
+import type { OdsNavTabItem } from '~/components/headers/model/ods-nav-tab-item'
 
-export async function useNavigationItems() {
+const stemPattern = /pages\/(?<name>.+)\.\w\w/i
+const getSlug = (page: PagesCollectionItem) => page.stem.match(stemPattern)?.groups?.name
+
+export async function useNavigationItems(): Promise<OdsNavTabItem[]> {
   const { t, locale } = useI18n()
 
   const { data: pages } = await useAsyncData('navigation-pages', () => {
@@ -9,9 +13,6 @@ export async function useNavigationItems() {
       .where('mainMenu', '=', true)
       .all()
   })
-
-  const stemPattern = /pages\/(?<name>.+)\.\w\w/i
-  const getSlug = (page: PagesCollectionItem) => page.stem.match(stemPattern)?.groups?.name
 
   const sortedPages = pages.value?.slice() || []
   const maxIterations = sortedPages.length
@@ -34,13 +35,12 @@ export async function useNavigationItems() {
     if (!changed) break
   }
 
-  const pagesSubMenu = sortedPages.map((page) => {
-    const path = page.permalink ? page.permalink : getSlug(page)
-    return ({
-      label: page.title,
-      to: `/${path}`,
-    })
+  const { pagesSubMenu } = sortedPages.reduce(nestSubmenus, {
+    pagesSubMenu: [],
+    tempSubSubMenus: {},
   })
+
+  console.log(pagesSubMenu)
 
   return [
     {
@@ -77,4 +77,61 @@ export async function useNavigationItems() {
       subMenu: pagesSubMenu,
     },
   ]
+}
+
+interface PagesNavWithSubmenus {
+  pagesSubMenu: OdsNavTabItem[]
+  tempSubSubMenus: Record<string, OdsNavTabItem[] | undefined>
+}
+
+function nestSubmenus({ pagesSubMenu, tempSubSubMenus }: PagesNavWithSubmenus, page: PagesCollectionItem): PagesNavWithSubmenus {
+  const path = page.permalink ? page.permalink : getSlug(page)
+  const menuItem: OdsNavTabItem = {
+    label: page.title,
+    to: `/${path}`,
+  }
+
+  if (page.parent) {
+    const parentLink = `/${page.parent}`
+    const parentMenuItem = pagesSubMenu.find(item => item.to === parentLink)
+
+    // check if we already have a menu item for the parent
+    if (parentMenuItem) {
+      parentMenuItem.subMenu = [...parentMenuItem.subMenu || [], menuItem]
+
+      return {
+        pagesSubMenu,
+        tempSubSubMenus,
+      }
+    }
+
+    // if not, put it in a temp object
+    return {
+      pagesSubMenu,
+      tempSubSubMenus: {
+        ...tempSubSubMenus,
+        [parentLink]: [
+          ...tempSubSubMenus[parentLink] || [],
+          menuItem,
+        ],
+      },
+    }
+  }
+
+  // if we already have some sub-sub menu in the temp object, connect to parent
+  if (tempSubSubMenus[`/${path}`]) {
+    menuItem.subMenu = [
+      { ...menuItem },
+      ...tempSubSubMenus[`/${path}`] || [],
+    ]
+    delete menuItem.to
+  }
+
+  return {
+    pagesSubMenu: [...pagesSubMenu, menuItem],
+    tempSubSubMenus: {
+      ...tempSubSubMenus,
+      [`/${path}`]: undefined,
+    },
+  }
 }
