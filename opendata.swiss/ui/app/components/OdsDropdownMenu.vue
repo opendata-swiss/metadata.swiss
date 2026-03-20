@@ -82,12 +82,24 @@ onBeforeUnmount(() => {
     @click.prevent="toggleDropdown"
     @mouseenter="isOpen = true"
   >
-    <span class="activate-btn">{{ t(props.label) }}</span>
+    <span class="activate-btn">{{ props.label }}</span>
   </a>
-  <div ref="dropdownRef" class="ods-dropdown">
-    <div v-if="isOpen" id="desktop-menu__drawer" class="desktop-menu__drawer ods-drop-down-panel" >
+  <div
+    ref="dropdownRef"
+    class="ods-dropdown"
+  >
+    <div
+      v-if="isOpen"
+      id="desktop-menu__drawer"
+      class="desktop-menu__drawer ods-drop-down-panel"
+    >
       <div class="close-button-container">
-        <SvgIcon v-if="menuStack.length > 0" icon="ArrowLeft" size="lg"  @click.prevent="goBack"/>
+        <SvgIcon
+          v-if="menuStack.length > 0"
+          icon="ArrowLeft"
+          size="lg"
+          @click.prevent="goBack"
+        />
         <div v-else />
         <OdsButton
           icon="Cancel"
@@ -98,34 +110,43 @@ onBeforeUnmount(() => {
           class="ods-close"
           @click="isOpen = false"
         >
-          <span class="ods-close">{{t('message.header.navigation.close')}}</span>
+          <span class="ods-close">{{ t('message.header.navigation.close') }}</span>
         </OdsButton>
       </div>
-      <Transition :name="transitionName" mode="out-in">
+      <Transition
+        :name="transitionName"
+        mode="out-in"
+      >
         <div :key="menuKey">
           <div class="navy">
             <h2 class="navy__title">
-              {{ t(parentLabelStack[parentLabelStack.length - 1] ?? '') }}
+              {{ parentLabelStack[parentLabelStack.length - 1] }}
             </h2>
 
             <nav class="navy__level-0 navy-menu__level-0">
               <ul>
-                <template v-for="item in currentMenu" :key="item.label">
+                <template
+                  v-for="item in currentMenu"
+                  :key="item.label"
+                >
                   <li v-if="item.to">
                     <NuxtLinkLocale
                       :to="item.to"
                       active-class="active"
-                      :aria-label="t(item.label)"
+                      :aria-label="item.label"
                       @click="isOpen = false"
                     >
-                      <span>{{t(item.label)}}</span>
-                    </NuxtLinkLocale><div/>
+                      <span>{{ item.label }}</span>
+                    </NuxtLinkLocale><div />
                   </li>
                   <li
                     v-else-if="(item.subMenu?.length ?? -1) > 0"
                     @click="drillDown(item)"
                   >
-                    <a>{{t(item.label)}} <SvgIcon size="lg" icon="ArrowRight" /></a>
+                    <a>{{ item.label }} <SvgIcon
+                      size="lg"
+                      icon="ArrowRight"
+                    /></a>
                   </li>
                 </template>
               </ul>

@@ -1,6 +1,7 @@
 ---
 id: Handbuch
 title: Handbuch
+mainMenu: true
 ---
 
 # Willkommen!

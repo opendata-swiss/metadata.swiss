@@ -9,6 +9,7 @@ subHeading: >-
 
 
   The symbols next to each dataset indicate what use is permitted. All data owners use the same symbols.
+mainMenu: true
 ---
 
 ## Open use

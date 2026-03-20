@@ -126,6 +126,20 @@ collections:
         name: subHeading
         widget: markdown
         i18n: true
+      - name: parent
+        label: Parent page
+        widget: relation
+        collection: pages
+        value_field: "{{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
+      - name: mainMenu
+        label: Show in main menu
+        widget: boolean
+        default: true
+        i18n: duplicate
       - name: body
         label: Body
         widget: markdown

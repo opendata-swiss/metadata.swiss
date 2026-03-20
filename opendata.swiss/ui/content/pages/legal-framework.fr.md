@@ -2,6 +2,7 @@
 title: Cadre juridique
 heading: Utilisation des ensembles de données sur opendata.swiss
 subHeading: Les conditions d'utilisation applicables à opendata.swiss sont expliquées [ici](/terms-of-use).
+mainMenu: true
 ---
 
 ## Limitation de responsabilité

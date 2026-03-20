@@ -30,6 +30,8 @@ export default defineContentConfig({
         heading: z.string().optional(),
         subHeading: z.string().optional(),
         permalink: z.string().optional(),
+        parent: z.string().optional(),
+        mainMenu: z.boolean().optional(),
         rawbody: z.string(),
       }),
     }),
