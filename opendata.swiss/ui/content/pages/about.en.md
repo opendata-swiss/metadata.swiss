@@ -2,7 +2,8 @@
 title: About us
 heading: opendata.swiss
 subHeading: >-
-  opendata.swiss is the Swiss public administration’s central portal for open government data.
+  opendata.swiss is the Swiss public administration’s central portal for open
+  government data.
 
 
   A centralised and reliable tool, the opendata.swiss website offers easy access to the public data of the Confederation, cantons and communes. Where in the public interest, it also keeps a record of third party data – parastate enterprises or private stakeholders carrying out tasks on behalf of the Confederation, cantons or communes – even if the data in question have already been recorded on other websites.
@@ -19,6 +20,9 @@ subHeading: >-
 
 
   Note that the portal is limited to referencing data. The data are hosted by their owner. This avoids any redundancy. As a general rule, no personal data are published in the scope of open government data. The data are aggregated and anonymised and do not enable the persons concerned to be identified. This is indeed essential in the provision of these data.
+parent: null
+mainMenu: true
+after: terms-of-use
 ---
 ## Do you wish to publish data on opendata.swiss?
 

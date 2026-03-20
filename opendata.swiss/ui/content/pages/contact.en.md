@@ -6,6 +6,7 @@ subHeading: >-
   can contact us to request publication of these datasets.
 
   - Email us at opendata(at)bfs.admin.ch
+mainMenu: true
 ---
 
 ## Have you developed an application?

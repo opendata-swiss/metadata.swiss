@@ -9,6 +9,7 @@ subHeading: >-
 
 
   Les symboles accompagnant chaque jeu de données indiquent le type d’utilisation autorisé. Tous les services proposant des données emploient les mêmes symboles.
+mainMenu: true
 ---
 
 ## Utilisation libre

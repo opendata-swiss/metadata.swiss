@@ -2,6 +2,7 @@
 title: Quadro giuridico
 heading: Utilizzo dei dataset su opendata.swiss
 subHeading: I termini di utilizzo applicabili a opendata.swiss sono spiegati [qui](/terms-of-use).
+mainMenu: true
 ---
 
 ## Limitazione di responsabilità
