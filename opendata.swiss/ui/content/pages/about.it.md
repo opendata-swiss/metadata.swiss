@@ -21,7 +21,9 @@ subHeading: >-
 
 
   Si tiene a precisare che il portale si limita ad archiviare i dati. L’hosting dei dati è garantito dal loro proprietario, ciò che di fatto ne impedisce la ridondanza. Di norma, gli open government data non contengono alcun dato personale, bensì dati aggregati e anonimizzati, che non consentono di risalire alle persone cui si riferiscono. Si tratta di una conditio sine qua non per poter proporre questi dati per la pubblicazione.
+parent: null
 mainMenu: true
+after: terms-of-use
 ---
 ## Desiderate pubblicare dati su opendata.swiss?
 

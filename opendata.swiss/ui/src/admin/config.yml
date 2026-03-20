@@ -126,6 +126,7 @@ collections:
         name: subHeading
         widget: markdown
         i18n: true
+        required: false
       - name: parent
         label: Parent page
         widget: relation
@@ -140,6 +141,18 @@ collections:
         widget: boolean
         default: true
         i18n: duplicate
+        required: false
+      - name: after
+        label: After
+        widget: relation
+        collection: pages
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown

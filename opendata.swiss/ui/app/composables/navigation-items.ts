@@ -1,3 +1,5 @@
+import type { PagesCollectionItem } from '@nuxt/content'
+
 export async function useNavigationItems() {
   const { t, locale } = useI18n()
 
@@ -9,8 +11,31 @@ export async function useNavigationItems() {
   })
 
   const stemPattern = /pages\/(?<name>.+)\.\w\w/i
-  const pagesSubMenu = pages.value!.map((page) => {
-    const path = page.permalink ? page.permalink : page.stem.match(stemPattern)?.groups?.name
+  const getSlug = (page: PagesCollectionItem) => page.stem.match(stemPattern)?.groups?.name
+
+  const sortedPages = pages.value?.slice() || []
+  const maxIterations = sortedPages.length
+  for (let iter = 0; iter < maxIterations; iter++) {
+    let changed = false
+    for (let i = 0; i < sortedPages.length; i++) {
+      const a = sortedPages[i]
+      if (a?.after) {
+        const targetIndex = sortedPages.findIndex(p => getSlug(p) === a.after)
+        if (targetIndex !== -1 && targetIndex > i) {
+          const aToMove = sortedPages.splice(i, 1)[0]!
+          // Find target again because index shifted if i < targetIndex
+          const newTargetIndex = sortedPages.findIndex(p => getSlug(p) === a.after)
+          sortedPages.splice(newTargetIndex + 1, 0, aToMove)
+          changed = true
+          break
+        }
+      }
+    }
+    if (!changed) break
+  }
+
+  const pagesSubMenu = sortedPages.map((page) => {
+    const path = page.permalink ? page.permalink : getSlug(page)
     return ({
       label: page.title,
       to: `/${path}`,

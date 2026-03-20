@@ -32,6 +32,7 @@ export default defineContentConfig({
         permalink: z.string().optional(),
         parent: z.string().optional(),
         mainMenu: z.boolean().optional(),
+        after: z.string().optional(),
         rawbody: z.string(),
       }),
     }),
