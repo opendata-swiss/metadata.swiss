@@ -373,3 +373,10 @@ services:
     logging:
       options:
         max-size: "50m"
+
+  piveau-consus-filter:
+    build: ../piveau_modules/piveau-consus-filter
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
