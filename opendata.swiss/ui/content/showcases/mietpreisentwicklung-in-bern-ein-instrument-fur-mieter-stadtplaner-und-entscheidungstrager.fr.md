@@ -13,15 +13,15 @@ datasets:
     label: Statistik der Informationszugangsgesuche nach IDG des Kantons Zürich ab
       2013
 ---
-Ce tableau de bord **interactif** permet de visualiser l’évolution des **loyers à Berne** entre 2013 et 2024, par **quartier**, **année** et **taille de logement**. Il facilite la compréhension des dynamiques du marché locatif et offre une vue d’ensemble claire, utile à la fois pour les **citoyens**, les **acteurs publics** et les **professionnels du logement**.
+Ce tableau de bord **interactif** permet de visualiser l’évolution des **loyers à Berne** entre 2013 et 2024, par **quartier**, **année** et **taille de logement**. Il facilite la compréhension des dynamiques du marché locatif et offre une vue d’ensemble claire, utile à la fois pour les **citoyens**, les **acteurs publics** et les **professionnels du logement**.
 
-Le tableau de bord a été développé dans le cadre des modules *Data Visualization* et *Dashboard Design* à la **Fachhochschule Graubünden** par **Lukas Streit**, **Martina Stüssi** et **Gionathan Diani**, avec l’objectif de renforcer la **transparence immobilière**.
+Le tableau de bord a été développé dans le cadre des modules *Data Visualization* et *Dashboard Design* à la **Fachhochschule Graubünden** par **Lukas Streit**, **Martina Stüssi** et **Gionathan Diani**, avec l’objectif de renforcer la **transparence immobilière**.
 
-L’application repose sur des technologies modernes comme **11ty** (Static Site Generator) et **Apache ECharts**, garantissant une expérience fluide, rapide et responsive.
+L’application repose sur des technologies modernes comme **11ty** (Static Site Generator) et **Apache ECharts**, garantissant une expérience fluide, rapide et responsive.
 
 ## Données utilisées
 
-Les données proviennent du service statistique de la **Ville de Berne**, avec une couverture annuelle des prix moyens des loyers par quartier et type de logement.
+Les données proviennent du service statistique de la **Ville de Berne**, avec une couverture annuelle des prix moyens des loyers par quartier et type de logement.
 
 Le jeu de données a été retravaillé en raison d’un format initial inadapté au traitement automatique. À partir de 2013, une colonne « Insgesamt » a été ajoutée, renommée « Total » en 2015. Elle contient la moyenne pondérée par le nombre de logements par quartier, les données sur le nombre de logements étant fournies dans un jeu de données séparé. Le coût par pièce a été calculé séparément. En raison de l’impossibilité de reconstituer les valeurs manquantes pour « Total », les années 2010 à 2012 ont été exclues du tableau de bord.
 

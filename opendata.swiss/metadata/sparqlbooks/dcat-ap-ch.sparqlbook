@@ -1,0 +1,44 @@
+[
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "# Queries for DCAT-AP CH entities\n\nhttps://dcat-ap.ch/releases/2.0/dcat-ap-ch.html\n\nThe following queries are useful as starting point for sampling invidual entities that use specific fields, or specific combinations of fields, from the DCAT-AP CH specification.",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "# PREFIXES from the DCAT-AP CH specification\nPREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcatap: <http://data.europa.eu/r5r/>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX schema: <http://schema.org/>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX vcard: <http://www.w3.org/2006/vcard/ns#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX adms: <http://www.w3.org/ns/adms#>\nPREFIX skos: <http://www.w3.org/2004/02/skos/core#>\nPREFIX locn: <http://www.w3.org/ns/locn#>\nPREFIX prov: <http://www.w3.org/ns/prov#>\nPREFIX spdx: <http://spdx.org/rdf/terms#>\nPREFIX gsp: <http://www.opengis.net/ont/geosparql#>",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n\nDESCRIBE ?catalog WHERE {\n\nSELECT ?catalog  WHERE {\n    ?catalog a dcat:Catalog .\n\n    # mandatory fields\n    ?catalog\n        dcterms:description ?description ;        \n        dcterms:publisher ?publisher ;\n        dcterms:title ?title .\n\n\n    # recommended fields\n    # ?catalog dcat:dataset ?dataset .\n    # ?catalog foaf:homepage ?homepage .\n    # ?catalog dcterms:language ?language .\n    # ?catalog dcterms:license ?license .\n    # ?catalog dcterms:issued ?issued .\n    # ?catalog dcterms:rights ?rights .\n    # ?catalog dcat:service ?service .\n    # ?catalog dcterms:spatial ?location .\n    # ?catalog dcat:themeTaxonomy ?themeTaxonomy .\n    # ?catalog dcterms:modified ?modified .\n\n        \n} LIMIT 1\n}\n",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX schema: <http://schema.org/>\nPREFIX prov: <http://www.w3.org/ns/prov#>\n\n\nDESCRIBE ?dataset WHERE {\n\nSELECT ?dataset  WHERE {\n    ?dataset a dcat:Dataset .\n\n    # mandatory fields\n    ?dataset\n        dcat:contactPoint ?contactPoint ;\n        dcterms:description ?description ;\n        dcterms:identifier ?identifier ;\n        dcterms:publisher ?publisher ;\n        dcterms:title ?title .\n\n\n    # recommended fields\n    ?dataset dcat:distribution ?distribution .\n    # ?dataset dcat:keyword ?keyword .\n    # ?dataset dcat:landingPage ?landingPage .\n    # ?dataset dcterms:issued ?issued .\n    # ?dataset dcterms:spatial ?location .\n    # ?dataset dcterms:temporal ?periodOfTime .\n    # ?dataset dcat:theme ?theme .\n    # ?dataset dcterms:modified ?modified .\n\n    # optional fields\n    # ?dataset dcterms:accessRights ?accessRights .\n    # ?dataset dcterms:conformsTo ?conformsTo .\n    # ?dataset foaf:page ?page .\n    # ?dataset dcterms:accrualPeriodicity ?accrualPeriodicity .\n    # ?dataset schema:image ?image .\n    # ?dataset dcterms:isReferencedBy ?isReferencedBy .\n    # ?dataset dcterms:language ?language .\n    # ?dataset prov:qualifiedAttribution ?qualifiedAttribution .\n    # ?dataset dcat:qualifiedRelation ?qualifiedRelation .\n    # ?dataset dcterms:relation ?relation .\n        \n} LIMIT 1\n}\n",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX schema: <http://schema.org/>\nPREFIX prov: <http://www.w3.org/ns/prov#>\n\n\nCONSTRUCT {\n  ?s ?p ?o\n\n} WHERE {\n    {\n        SELECT distinct ?g ?dataset WHERE {\n            GRAPH ?g {\n                ?dataset a dcat:Dataset .\n\n                # mandatory fields\n                ?dataset\n                    dcat:contactPoint ?contactPoint ;\n                    dcterms:description ?description ;\n                    dcterms:identifier ?identifier ;\n                    dcterms:publisher ?publisher ;\n                    dcterms:title ?title .\n\n\n                # recommended fields\n                ?dataset dcat:distribution ?distribution .\n                # ?dataset dcat:keyword ?keyword .\n                # ?dataset dcat:landingPage ?landingPage .\n                # ?dataset dcterms:issued ?issued .\n                # ?dataset dcterms:spatial ?location .\n                # ?dataset dcterms:temporal ?periodOfTime .\n                # ?dataset dcat:theme ?theme .\n                # ?dataset dcterms:modified ?modified .\n\n                # optional fields\n                # ?dataset dcterms:accessRights ?accessRights .\n                # ?dataset dcterms:conformsTo ?conformsTo .\n                # ?dataset foaf:page ?page .\n                # ?dataset dcterms:accrualPeriodicity ?accrualPeriodicity .\n                # ?dataset schema:image ?image .\n                # ?dataset dcterms:isReferencedBy ?isReferencedBy .\n                # ?dataset dcterms:language ?language .\n                ?dataset prov:qualifiedAttribution ?qualifiedAttribution .\n                # ?dataset dcat:qualifiedRelation ?qualifiedRelation .\n                # ?dataset dcterms:relation ?relation .\n            }\n\n            filter (?dataset not in (<http://data.europa.eu/88u/dataset/3978822e-4d3f-4a88-8ed6-0127a643aaec~~1>, <http://data.europa.eu/88u/dataset/643ec096-dcf9-44e4-8427-10b30d3f7e36~~1>))\n                \n        } LIMIT 1\n    }\n    GRAPH ?g {\n        ?s ?p ?o .\n    }\n}",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX dcatap: <http://data.europa.eu/r5r/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\nPREFIX schema: <http://schema.org/>\nPREFIX spdx: <http://spdx.org/rdf/terms#>\n\nDESCRIBE ?distribution WHERE {\n\nSELECT ?distribution  WHERE {\n    ?dataset a dcat:Dataset .\n    ?dataset dcat:distribution ?distribution .\n\n    # mandatory fields\n    ?distribution\n        dcat:accessURL ?accessURL ;\n        dcterms:license ?license .\n\n    # recommended fields\n    # ?distribution dcatap:availability ?availability .\n    # ?distribution dcterms:description ?description .\n    # ?distribution dcterms:format ?format.\n    # ?distribution dcterms:rights ?rights .\n    # ?distribution dcterms:title ?title .\n    # ?distribution dcterms:modified ?modified .\n\n    # optional fields\n    # ?distribution dcat:accessService ?accessService .\n    ?distribution dcat:byteSize ?byteSize .\n    # ?distribution spdx:checksum ?checksum .\n    # ?distribution dcterms:coverage ?coverage .\n    # ?distribution foaf:page ?page .\n    # ?distribution dcat:downloadURL ?downloadURL .\n    # ?distribution dcterms:identifier ?identifier .\n    # ?distribution schema:image ?image .\n    # ?distribution dcterms:language ?language .\n    # ?distribution dcterms:conformsTo ?conformsTo .\n    # ?distribution dcat:mediaType ?mediaType .\n    # ?distribution dcat:packageFormat ?packageFormat .\n    # ?distribution dcterms:issued ?issued .\n    # ?distribution dcat:temporalResolution ?temporalResolution .\n\n} LIMIT 1\n}",
+    "metadata": {}
+  },
+  {
+    "kind": 2,
+    "language": "sparql",
+    "value": "PREFIX dcat: <http://www.w3.org/ns/dcat#>\nPREFIX dcterms: <http://purl.org/dc/terms/>\nPREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n\nDESCRIBE ?service WHERE {\n\nSELECT ?service  WHERE {\n    ?service a dcat:DataService .\n\n    # mandatory fields\n    ?service\n        dcat:endpointURL ?endpointURL ;\n        dcat:contactPoint ?contactPoint ;\n        dcterms:publisher ?publisher ;\n        dcterms:title ?title .\n\n    \n    # recommended fields\n    # ?service dcat:endpointDescription ?endpointDescription .\n    # ?service dcterms:license ?license .\n    # ?service dcat:servesDataset ?servesDataset .\n    # ?service dcterms:accessRights ?accessRights .\n    # ?service foaf:page ?page .\n    # ?service dcat:keyword ?keyword .\n    # ?service dcat:landingPage ?landingPage .\n\n\n} LIMIT 1\n}",
+    "metadata": {}
+  }
+]

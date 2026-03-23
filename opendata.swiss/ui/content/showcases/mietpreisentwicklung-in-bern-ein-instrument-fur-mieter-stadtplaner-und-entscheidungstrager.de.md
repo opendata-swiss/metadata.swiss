@@ -19,15 +19,15 @@ submittedBy:
     - https://github.com.mcas.ms/giodi/dashboard-wohnungsmietpreise-stadt-bern
   name: Gionathan Diani
 ---
-Dieses **interaktive** Dashboard zeigt die Preisentwicklung der **Mieten in Bern** zwischen 2013 und 2024 nach **Stadtteil**, **Jahr** und **Wohnungsgrösse**. Sie erleichtert das Verständnis der Dynamik des Mietmarktes und bietet einen klaren Überblick, der sowohl für **Bürger** als auch für **öffentliche Akteure** und **Fachleute aus dem Wohnungswesen** nützlich ist.
+Dieses **interaktive** Dashboard zeigt die Preisentwicklung der **Mieten in Bern** zwischen 2013 und 2024 nach **Stadtteil**, **Jahr** und **Wohnungsgrösse**. Sie erleichtert das Verständnis der Dynamik des Mietmarktes und bietet einen klaren Überblick, der sowohl für **Bürger** als auch für **öffentliche Akteure** und **Fachleute aus dem Wohnungswesen** nützlich ist.
 
-Das Dashboard wurde im Rahmen der Module *Data Visualization* und *Dashboard Design* an der **Fachhochschule Graubünden** von **Lukas Streit**, **Martina Stüssi** und **Gionathan Diani** mit dem Ziel entwickelt, die **Transparenz im Immobilienbereich** zu verbessern.
+Das Dashboard wurde im Rahmen der Module *Data Visualization* und *Dashboard Design* an der **Fachhochschule Graubünden** von **Lukas Streit**, **Martina Stüssi** und **Gionathan Diani** mit dem Ziel entwickelt, die **Transparenz im Immobilienbereich** zu verbessern.
 
-Die Applikation basiert auf modernen Technologien wie **11ty** (Static Site Generator) und **Apache ECharts**, die eine flüssige, schnelle und reaktionsschnelle Nutzung gewährleisten.
+Die Applikation basiert auf modernen Technologien wie **11ty** (Static Site Generator) und **Apache ECharts**, die eine flüssige, schnelle und reaktionsschnelle Nutzung gewährleisten.
 
 ## Verwendete Daten
 
-Die Daten stammen vom statistischen Amt der **Stadt Bern** und umfassen die durchschnittlichen Mietpreise pro Stadtteil und Wohnungstyp auf Jahresbasis.
+Die Daten stammen vom statistischen Amt der **Stadt Bern** und umfassen die durchschnittlichen Mietpreise pro Stadtteil und Wohnungstyp auf Jahresbasis.
 
 Der Datensatz wurde überarbeitet, da das ursprüngliche Format für die automatische Verarbeitung ungeeignet war. Ab 2013 wurde eine Spalte «Insgesamt» hinzugefügt, die 2015 in «Total» umbenannt wurde. Sie enthält den nach der Anzahl der Wohnungen pro Quartier gewichteten Durchschnitt, wobei die Daten zur Anzahl der Wohnungen in einem separaten Datensatz bereitgestellt werden. Die Kosten pro Zimmer wurden separat berechnet. Da die fehlenden Werte für „Total“ nicht rekonstruiert werden konnten, wurden die Jahre 2010 bis 2012 aus dem Dashboard ausgeschlossen.
 

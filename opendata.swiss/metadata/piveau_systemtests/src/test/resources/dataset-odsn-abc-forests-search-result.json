@@ -1,0 +1,325 @@
+{
+    "result": {
+        "id": "dataset-1773068970026",
+        "resource": "https://opendata.swiss/set/data/dataset-1773068970026",
+        "catalog": {
+            "id": "test-catalog-1773068969625",
+            "title": {
+                "de": "Offene Daten ABC",
+                "it": "Dati aperti ABC",
+                "en": "Test Catalog 1773068969625",
+                "fr": "Donn�es ouvertes ABC"
+            },
+            "language": [
+                {
+                    "id": "de",
+                    "label": "German",
+                    "resource": "http://publications.europa.eu/resource/authority/language/DEU"
+                },
+                {
+                    "id": "en",
+                    "label": "English",
+                    "resource": "http://publications.europa.eu/resource/authority/language/ENG"
+                },
+                {
+                    "id": "fr",
+                    "label": "French",
+                    "resource": "http://publications.europa.eu/resource/authority/language/FRA"
+                },
+                {
+                    "id": "it",
+                    "label": "Italian",
+                    "resource": "http://publications.europa.eu/resource/authority/language/ITA"
+                }
+            ],
+            "publisher": {
+                "type": "Organization",
+                "name": "Verein ABC",
+                "resource": "https://data.example.org/org/abc"
+            },
+            "description": {
+                "de": "Datenkatalog ABC",
+                "it": "Catalogo dati ABC",
+                "fr": "Catalogue de donn�es ABC",
+                "en": "Data Catalog ABC"
+            },
+            "issued": "2021-01-07T00:00:00",
+            "license": {
+                "resource": "http://dcat-ap.ch/vocabulary/licenses/terms_open",
+                "id": "http://dcat-ap.ch/vocabulary/licenses/terms_open",
+                "label": "Opendata OPEN: Open use."
+            },
+            "modified": "2021-01-07T00:00:00"
+        },
+        "catalog_record": {
+            "modified": "2026-03-09T15:09:30Z",
+            "issued": "2026-03-09T15:09:30Z"
+        },
+        "language": [
+            {
+                "id": "de",
+                "label": "German",
+                "resource": "http://publications.europa.eu/resource/authority/language/DEU"
+            },
+            {
+                "id": "fr",
+                "label": "French",
+                "resource": "http://publications.europa.eu/resource/authority/language/FRA"
+            }
+        ],
+        "image": [
+            "https://opendata.swiss/images/logo_default.png",
+            "https://opendata.swiss/images/logo_horizontal.png"
+        ],
+        "title": {
+            "it": "Foreste di ABC",
+            "fr": "For�ts de ABC",
+            "en": "Forests of ABC",
+            "de": "Waldbestand ABC"
+        },
+        "temporal": [
+            {
+                "gte": "2020-01-01T00:00:00Z",
+                "lte": "2021-06-22T00:00:00Z"
+            }
+        ],
+        "is_referenced_by": [
+            "https://data.example.org/data/345"
+        ],
+        "accrual_periodicity": {
+            "label": "annual",
+            "resource": "http://publications.europa.eu/resource/authority/frequency/ANNUAL"
+        },
+        "description": {
+            "it": "Questo set di dati contiene informazioni sulle foreste del Canton ABC",
+            "en": "This dataset contains information regarding the forests in Canton ABC",
+            "fr": "Ce jeu de donn�es contient des informations sur les for�ts du canton ABC",
+            "de": "In diesem Dataset finden Sie Daten zum Waldbestand im Kanton ABC"
+        },
+        "keywords": [
+            {
+                "id": "waldbestand",
+                "label": "waldbestand",
+                "language": "de"
+            },
+            {
+                "id": "foreste",
+                "label": "foreste",
+                "language": "it"
+            },
+            {
+                "id": "for�ts",
+                "label": "for�ts",
+                "language": "fr"
+            },
+            {
+                "id": "forests",
+                "label": "forests",
+                "language": "en"
+            }
+        ],
+        "publisher": {
+            "type": "Organization",
+            "name": "Verein ABC",
+            "resource": "https://data.example.org/org/abc"
+        },
+        "categories": [
+            {
+                "id": "ENVI",
+                "label": {
+                    "lv": "Vide",
+                    "ga": "Comhshaol",
+                    "sk": "Životné prostredie",
+                    "mt": "Ambjent",
+                    "fr": "Environnement",
+                    "nb": "Miljø",
+                    "hu": "Környezet",
+                    "fi": "Ympäristö",
+                    "en": "Environment",
+                    "nn": "Miljø",
+                    "nl": "Milieu",
+                    "el": "Περιβάλλον",
+                    "hr": "Okoliš",
+                    "it": "Ambiente",
+                    "de": "Umwelt",
+                    "lt": "Aplinka",
+                    "cs": "Životní prostředí",
+                    "no": "Miljø",
+                    "pl": "Środowisko",
+                    "sl": "Okolje",
+                    "es": "Medio ambiente",
+                    "bg": "Околна среда",
+                    "et": "Keskkond",
+                    "ro": "Mediu",
+                    "sv": "Miljö",
+                    "pt": "Ambiente",
+                    "da": "Miljø"
+                },
+                "resource": "http://publications.europa.eu/resource/authority/data-theme/ENVI"
+            }
+        ],
+        "distributions": [
+            {
+                "id": "92536997-8b58-4948-b4a5-e18452cf85fa",
+                "package_format": {
+                    "resource": "https://www.iana.org/assignments/media-types/application/zip",
+                    "label": "application/zip"
+                },
+                "checksum": {
+                    "checksum_value": "5bcc814127be171c75595d419f371c74c9cf041419c45d6e8d2c789e5c303b47",
+                    "algorithm": "checksumAlgorithm_sha256"
+                },
+                "identifier": [
+                    "b3577777-10d3-4644-a945-48e1d272ba40"
+                ],
+                "title": {
+                    "fr": "un titre de distribution",
+                    "en": "some title of the distribution",
+                    "de": "ein Titel der Distribution",
+                    "it": "un titolo di distribuzione"
+                },
+                "description": {
+                    "de": "eine Beschreibung der Daten",
+                    "fr": "une description des donn�es",
+                    "it": "una descrizione dei dati",
+                    "en": "some description of the data"
+                },
+                "modified": "2019-04-26T00:00:00Z",
+                "format": {
+                    "id": "CSV",
+                    "label": "CSV",
+                    "resource": "http://publications.europa.eu/resource/authority/file-type/CSV"
+                },
+                "coverage": [
+                    "2019-09-22"
+                ],
+                "language": [
+                    {
+                        "id": "de",
+                        "label": "German",
+                        "resource": "http://publications.europa.eu/resource/authority/language/DEU"
+                    },
+                    {
+                        "id": "fr",
+                        "label": "French",
+                        "resource": "http://publications.europa.eu/resource/authority/language/FRA"
+                    }
+                ],
+                "access_url": [
+                    "https://data.example.org/data/1234/access"
+                ],
+                "download_url": [
+                    "https://tierstatistik.identitas.ch/data/fig-equids-size.csv"
+                ],
+                "image": [
+                    "https://opendata.swiss/images/logo_horizontal.png"
+                ],
+                "conforms_to": [
+                    {
+                        "resource": "http://resource.geosciml.org/ontology/timescale/gts"
+                    }
+                ],
+                "media_type": "text/csv",
+                "temporal_resolution": "P1D",
+                "license": {
+                    "resource": "http://dcat-ap.ch/vocabulary/licenses/cc-by/4.0",
+                    "id": "http://dcat-ap.ch/vocabulary/licenses/cc-by/4.0",
+                    "label": "http://dcat-ap.ch/vocabulary/licenses/cc-by/4.0"
+                },
+                "issued": "2019-04-26T00:00:00Z",
+                "rights": {
+                    "resource": "https://data.example.org/rights/123"
+                },
+                "page": [
+                    {
+                        "resource": "https://example.org/1234/about"
+                    }
+                ],
+                "byte_size": 646458
+            }
+        ],
+        "contact_point": [
+            {
+                "type": "Organization",
+                "email": "mailto:forests@abc.example.org",
+                "name": "Abteilung Wald ABC"
+            },
+            {
+                "type": "Individual",
+                "email": "mailto:sekretariat@abc.example.org",
+                "name": "Sekretariat ABC"
+            }
+        ],
+        "conforms_to": [
+            {
+                "resource": "http://resource.geosciml.org/ontology/timescale/gts"
+            }
+        ],
+        "landing_page": [
+            {
+                "resource": "https://abc.example.org/forests/1234/about"
+            }
+        ],
+        "spatial_resource": [
+            {
+                "label": "Switzerland",
+                "id": "ch",
+                "resource": "http://publications.europa.eu/resource/authority/country/CHE"
+            }
+        ],
+        "spatial": [],
+        "qualified_relation": [
+            {
+                "had_role": [
+                    "http://www.iana.org/assignments/relation/original"
+                ],
+                "relation": [
+                    "http://data.example.org/Original987"
+                ]
+            }
+        ],
+        "issued": "2021-04-26T00:00:00Z",
+        "access_right": {
+            "label": "public",
+            "resource": "http://publications.europa.eu/resource/authority/access-right/PUBLIC"
+        },
+        "page": [
+            {
+                "resource": "https://abc.example.org/forests/1234/about"
+            }
+        ],
+        "identifier": [
+            "dataset-1773068970026"
+        ],
+        "modified": "2021-04-26T00:00:00Z",
+        "qualified_attribution": [],
+        "relation": [
+            "http://www.bafu.admin.ch/laerm/index",
+            "http://www.bafu.admin.ch/laerm/about",
+            "http://www.bafu.admin.ch/legal_info"
+        ],
+        "translation_meta": {
+            "details": {
+                "it": {
+                    "machine_translated": false
+                },
+                "fr": {
+                    "machine_translated": false
+                },
+                "en": {
+                    "machine_translated": false
+                },
+                "de": {
+                    "machine_translated": false
+                }
+            },
+            "full_available_languages": [
+                "it",
+                "fr",
+                "en",
+                "de"
+            ],
+            "status": "unknown"
+        }
+    }
+}

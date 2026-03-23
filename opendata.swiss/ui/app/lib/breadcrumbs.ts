@@ -19,12 +19,14 @@ export const loadHandbookBreadcrumb = (section: string, locale: Ref<string>): Lo
     return loadHandbookSectionBreadcrumb(section, locale)({ path }, index)
   }
 
+  const permalink = path.split('/').pop()
+
   return queryCollection('handbook')
     .select('id', 'title', 'breadcrumb_title')
     .where('path', 'LIKE', `%.${locale.value}`)
     .where('section', '=', section)
     .orWhere(q => q
-      .where('permalink', '=', path.replace(/^\/handbook\/(?<section>\w+\/)/, ''))
+      .where('permalink', '=', permalink)
       .where('path', '=', `${path}.${locale.value}`)
       .where('path', '=', `${path}/index.${locale.value}`),
     )
