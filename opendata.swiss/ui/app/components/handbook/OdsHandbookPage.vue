@@ -56,6 +56,7 @@ import OdsCard from '~/components/OdsCard.vue'
 import OdsAccordion from '~/components/OdsAccordion.vue'
 import OdsAccordionItem from '~/components/OdsAccordionItem.vue'
 import { useGetArticleUrl } from '~/composables/handbook'
+import { sortContent } from '~/lib/sortContent'
 
 const { t, locale } = useI18n()
 
@@ -84,23 +85,22 @@ const { data: articles } = await useAsyncData('handbook-articles', () =>
 
 const localizedArticles = computed(() => articles.value?.filter(article => article.path.endsWith(`.${locale.value}`)) || [])
 
+const getSlug = (article: HandbookCollectionItem) => article.slug
+
 const sections = computed(() => {
   const sections = localizedArticles.value?.filter(article => !article.parent) || []
 
-  return sections.sort(byOrder)
+  return sortContent(sections, getSlug)
 })
 
 function getArticlesByParent(parent: HandbookCollectionItem) {
-  return localizedArticles.value
+  const articles = localizedArticles.value
     ?.filter(article => article.parent && (
       parent.path.endsWith(`handbook/${article.parent}.${locale.value}`)
       || parent.path.endsWith(`handbook/${article.parent}.de.md`)
     ))
-    ?.sort(byOrder) || []
-}
 
-function byOrder(left: HandbookCollectionItem, right: HandbookCollectionItem) {
-  return (left.order ?? Number.MAX_SAFE_INTEGER) - (right.order ?? Number.MAX_SAFE_INTEGER)
+  return sortContent(articles, getSlug)
 }
 
 function isSectionOpen(section: HandbookCollectionItem) {

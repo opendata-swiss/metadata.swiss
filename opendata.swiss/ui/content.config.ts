@@ -44,7 +44,7 @@ export default defineContentConfig({
         breadcrumb_title: z.string().optional(),
         slug: z.string(),
         parent: z.string().optional(),
-        order: z.number().optional(),
+        after: z.string().optional(),
       }),
     }),
     blog: defineCollection({

@@ -34,7 +34,6 @@ collections:
         field: parent
     path: "{{parent}}/{{slug}}"
     sortable_fields:
-      - order
       - title
     fields:
       - label: Title
@@ -67,11 +66,17 @@ collections:
           - "title"
         i18n: duplicate
         required: false
-      - name: order
-        label: Order
-        widget: number
-        required: false
+      - name: after
+        label: After
+        widget: relation
+        collection: handbook
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{parent}} - {{title}}"
+        search_fields:
+          - "title"
         i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown

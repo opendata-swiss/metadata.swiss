@@ -1,7 +1,7 @@
 ---
 title: Vorbereiten
 slug: vorbereiten
-order: 1
+after: publizieren
 ---
 ## Daten vorbereiten
 
