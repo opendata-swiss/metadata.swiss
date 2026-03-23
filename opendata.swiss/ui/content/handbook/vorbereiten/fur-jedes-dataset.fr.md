@@ -1,7 +1,7 @@
 ---
-section: Vorbereiten
+parent: vorbereiten
 title: Pour chaque jeu de données
-permalink: dataset
+slug: dataset
 ---
 ## Étapes nécessaires avant la publication d’un jeu de données
 

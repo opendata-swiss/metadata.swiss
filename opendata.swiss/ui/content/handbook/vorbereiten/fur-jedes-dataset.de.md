@@ -1,7 +1,7 @@
 ---
-section: Vorbereiten
+parent: vorbereiten
 title: Für jedes Dataset
-permalink: dataset
+slug: dataset
 ---
 ## Welche Schritte sind vor der Publikation eines Datasets nötig?
 

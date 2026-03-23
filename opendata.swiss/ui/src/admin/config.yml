@@ -19,25 +19,6 @@ slug:
   sanitize_replacement: "-"
 
 collections:
-  - name: handbook-section
-    label: "Handbook sections"
-    label_singular: Handbook section
-    folder: "opendata.swiss/ui/content/sections"
-    extension: md
-    widget: "list"
-    create: true
-    i18n: true
-    fields:
-      - label: Title
-        name: title
-        widget: string
-        required: true
-        i18n: true
-      - name: body
-        label: Body
-        widget: markdown
-        i18n: true
-
   - name: handbook
     label: "Handbook articles"
     label_singular: Handbook article
@@ -47,22 +28,15 @@ collections:
     widget: "list"
     create: true
     i18n: true
-    summary: "{{section}} - {{title}}"
+    summary: "{{title}}"
     view_groups:
-      - label: Section
-        field: section
-    path: "{{section}}/{{slug}}"
+      - label: Parent
+        field: parent
+    path: "{{parent}}/{{slug}}"
+    sortable_fields:
+      - order
+      - title
     fields:
-      - label: Section
-        name: section
-        widget: relation
-        collection: handbook-section
-        search_fields: ["title"]
-        value_field: title
-        display_fields:
-          - "{{title}}"
-        required: true
-        i18n: duplicate
       - label: Title
         name: title
         widget: string
@@ -73,14 +47,14 @@ collections:
         widget: string
         required: false
         i18n: true
-      - label: Permalink
-        name: permalink
+      - label: Slug
+        name: slug
         widget: string
         i18n: duplicate
         pattern:
           [
             "^[a-z0-9-]+$",
-            "Permalink must be lowercase and can only contain letters, numbers, and hyphens.",
+            "Slug must be lowercase and can only contain letters, numbers, and hyphens.",
           ]
       - label: Parent article
         name: parent
@@ -88,10 +62,9 @@ collections:
         collection: handbook
         value_field: "{{slug}}"
         display_fields:
-          - "{{section}} - {{title}}"
+          - "{{parent}} - {{title}}"
         search_fields:
           - "title"
-          - "section"
         i18n: duplicate
         required: false
       - name: order

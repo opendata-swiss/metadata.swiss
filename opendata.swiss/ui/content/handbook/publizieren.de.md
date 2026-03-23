@@ -1,5 +1,6 @@
 ---
 title: Publizieren
+slug: publizieren
 ---
 ## Daten publizieren[](https://handbook.opendata.swiss/de/content/publizieren/publizieren.html#daten-publizieren)
 
