@@ -1,4 +1,4 @@
 ---
-section: Publizieren
-permalink: erstpublizierende
+parent: publizieren
+slug: erstpublizierende
 ---

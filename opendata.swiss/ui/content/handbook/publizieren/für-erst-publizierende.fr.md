@@ -1,7 +1,7 @@
 ---
-section: Publizieren
+parent: publizieren
 title: Avant la première publication
-permalink: erstpublizierende
+slug: erstpublizierende
 ---
 ## Vue d’ensemble des étapes requises[](https://handbook.opendata.swiss/fr/content/publizieren/erstpublizierende.html#die-erforderlichen-schritte-im-uberblick)
 
