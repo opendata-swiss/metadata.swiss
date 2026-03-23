@@ -1,6 +1,10 @@
 ---
 title: Préparer
+slug: vorbereiten
+parent: null
+order: 1
 ---
+
 ## Préparer les données
 
 Am Anfang steht eine gute Vorbereitung. Bevor Sie Daten als Open
@@ -12,3 +16,12 @@ Sie haben noch keine Daten auf opendata.swiss veröffentlicht?
 Als Erst-Publizierende erklären wir Ihnen das Wichtigste
 rund um den Prozess und unterstützen Sie bei der Identifikation
 von geeigneten Daten.
+
+### [Für Erst-Publizierende](erstpublizierende.md)
+
+> - [opendata.swiss verstehen](erstpublizierende/opendata-swiss-verstehen.md)
+> - [Dateninventar erstellen](erstpublizierende/dateninventar-erstellen.md)
+
+### [Publikationsrichtlinien](publikationsrichtlinien.md)
+
+> - [OGD-Richtlinien lesen](publikationsrichtlinien.md)

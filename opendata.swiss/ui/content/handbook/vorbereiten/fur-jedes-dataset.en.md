@@ -1,4 +1,4 @@
 ---
-section: Vorbereiten
-permalink: dataset
+parent: vorbereiten
+slug: dataset
 ---
