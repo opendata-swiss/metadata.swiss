@@ -2,7 +2,6 @@
 title: Vérifier les exigences organisationnelles
 slug: organisatorischer-check
 parent: vorbereiten/fur-jedes-dataset
-order: null
 ---
 
 ## Welche organisatorischen Aspekte sollte ich bei der Publikation von OGD beachten?

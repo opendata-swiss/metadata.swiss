@@ -2,7 +2,7 @@
 title: Préparer
 slug: vorbereiten
 parent: null
-order: 1
+after: publizieren
 ---
 
 ## Préparer les données
