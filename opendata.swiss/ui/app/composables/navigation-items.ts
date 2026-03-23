@@ -1,5 +1,6 @@
 import type { PagesCollectionItem } from '@nuxt/content'
 import type { OdsNavTabItem } from '~/components/headers/model/ods-nav-tab-item'
+import { sortContent } from '~/lib/sortContent'
 
 const stemPattern = /pages\/(?<name>.+)\.\w\w/i
 const getSlug = (page: PagesCollectionItem) => page.stem.match(stemPattern)?.groups?.name
@@ -14,28 +15,7 @@ export async function useNavigationItems(): Promise<OdsNavTabItem[]> {
       .all()
   })
 
-  const sortedPages = pages.value?.slice() || []
-  const maxIterations = sortedPages.length
-  for (let iter = 0; iter < maxIterations; iter++) {
-    let changed = false
-    for (let i = 0; i < sortedPages.length; i++) {
-      const a = sortedPages[i]
-      if (a?.after) {
-        const targetIndex = sortedPages.findIndex(p => getSlug(p) === a.after)
-        if (targetIndex !== -1 && targetIndex > i) {
-          const aToMove = sortedPages.splice(i, 1)[0]!
-          // Find target again because index shifted if i < targetIndex
-          const newTargetIndex = sortedPages.findIndex(p => getSlug(p) === a.after)
-          sortedPages.splice(newTargetIndex + 1, 0, aToMove)
-          changed = true
-          break
-        }
-      }
-    }
-    if (!changed) break
-  }
-
-  const { pagesSubMenu } = sortedPages.reduce(nestSubmenus, {
+  const { pagesSubMenu } = sortContent(pages.value, getSlug).reduce(nestSubmenus, {
     pagesSubMenu: [],
     tempSubSubMenus: {},
   })
