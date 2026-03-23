@@ -40,8 +40,6 @@ export async function useNavigationItems(): Promise<OdsNavTabItem[]> {
     tempSubSubMenus: {},
   })
 
-  console.log(pagesSubMenu)
-
   return [
     {
       label: t('message.header.navigation.home'),
