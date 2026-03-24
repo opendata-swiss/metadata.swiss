@@ -1,0 +1,136 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+
+<https://data.example.org/data/123>
+  a dcat:Dataset ;
+
+  dct:identifier "%s" ;
+
+  dcat:contactPoint [
+    a vcard:Organization ;
+    vcard:fn "Abteilung Wald ABC" ;
+    vcard:hasEmail <mailto:forests@abc.example.org>
+  ], [
+    a vcard:Individual ;
+    vcard:fn "Sekretariat ABC" ;
+    vcard:hasEmail <mailto:sekretariat@abc.example.org>
+  ] ;
+  dct:description "In diesem Dataset finden Sie Daten zum Waldbestand im Kanton ABC"@de,
+                  "This dataset contains information regarding the forests in Canton ABC"@en,
+                  "Ce jeu de données contient des informations sur les forêts du canton ABC"@fr,
+                  "Questo set di dati contiene informazioni sulle foreste del Canton ABC"@it ;
+
+  dct:publisher <https://data.example.org/org/abc> ;
+
+  dct:title "Waldbestand ABC"@de,
+            "%s"@en,
+            "Forêts de ABC"@fr,
+            "Foreste di ABC"@it ;
+
+  dcat:distribution <https://data.example.org/dist/123> ;
+
+  dct:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+
+  dcat:keyword "waldbestand"@de,
+               "forests"@en,
+               "forêts"@fr,
+               "foreste"@it ;
+
+  dcat:landingPage <https://abc.example.org/forests/1234/about> ;
+  dct:issued "2021-04-26"^^xsd:date ;
+  
+  dct:temporal [ a dct:PeriodOfTime ;
+            dcat:endDate "2021-06-22T00:00:00"^^xsd:dateTime ;
+            dcat:startDate "2020-01-01T00:00:00"^^xsd:dateTime ] ;
+  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+  dct:modified "2021-04-26"^^xsd:date ;
+
+  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dct:conformsTo <http://resource.geosciml.org/ontology/timescale/gts> ;
+  foaf:page <https://abc.example.org/forests/1234/about> ;
+  dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
+  schema:image <https://opendata.swiss/images/logo_horizontal.png> ,
+               <https://opendata.swiss/images/logo_default.png> ;
+  dct:isReferencedBy <https://data.example.org/data/345> ;
+  dct:language <http://publications.europa.eu/resource/authority/language/DEU> ,
+               <http://publications.europa.eu/resource/authority/language/FRA> ;
+
+  prov:qualifiedAttribution [
+    a prov:Attribution;
+
+    dcat:hadRole	<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/pointOfContact> ;
+    prov:agent	[
+      a	foaf:Organization ;
+      foaf:homepage	<http://www.abc.example.org/forests/> ;
+      foaf:mbox	<mailto:forests@abc.example.org> ;
+      foaf:name	"Abteilung Wald ABC"
+    ]
+  ] ;
+
+  dcat:qualifiedRelation [
+    a dcat:Relationship ;
+    dct:relation <http://data.example.org/Original987> ;
+    dcat:hadRole <http://www.iana.org/assignments/relation/original>
+  ] ;
+
+  dct:relation <http://www.bafu.admin.ch/laerm/index>,
+               <http://www.bafu.admin.ch/legal_info>,
+               <http://www.bafu.admin.ch/laerm/about> .
+
+
+<https://data.example.org/org/abc>
+  a foaf:Organization ;
+
+  foaf:name "Verein ABC"@de ,
+            "Association ABC"@fr ,
+            "Associazione ABC"@it ,
+            "Association ABC"@en .
+
+
+<https://data.example.org/dist/123>
+  a dcat:Distribution ;
+
+  dcat:accessURL <https://data.example.org/data/1234/access> ;
+  dct:license <http://dcat-ap.ch/vocabulary/licenses/cc-by/4.0> ;
+  
+  dct:description "some description of the data"@en,
+                  "eine Beschreibung der Daten"@de,
+                  "une description des données"@fr,
+                  "una descrizione dei dati"@it ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+  dct:rights <https://data.example.org/rights/123> ;
+  dct:title "some title of the distribution"@en,
+            "ein Titel der Distribution"@de,
+            "un titre de distribution"@fr,
+            "un titolo di distribuzione"@it ;
+  dct:modified "2019-04-26"^^xsd:date ;
+  dct:issued "2019-04-26"^^xsd:date;
+  dcat:temporalResolution "P1D"^^xsd:duration ;
+
+  dcat:byteSize 646458 ;
+  
+  spdx:checksum [
+    a spdx:Checksum;
+    spdx:algorithm <https://spdx.org/rdf/terms/#checksumAlgorithm_sha256>;
+    spdx:checksumValue "5bcc814127be171c75595d419f371c74c9cf041419c45d6e8d2c789e5c303b47"
+  ] ;
+
+  dct:coverage "2019-09-22" ;
+  foaf:page <https://example.org/1234/about> ;
+  dcat:downloadURL <https://tierstatistik.identitas.ch/data/fig-equids-size.csv> ;
+  dct:identifier "b3577777-10d3-4644-a945-48e1d272ba40" ;
+  schema:image <https://opendata.swiss/images/logo_horizontal.png> ;
+ 	dct:language <http://publications.europa.eu/resource/authority/language/DEU> ,
+               <http://publications.europa.eu/resource/authority/language/FRA> ;
+
+  dct:conformsTo <http://resource.geosciml.org/ontology/timescale/gts> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/text/csv> ;
+  dcat:packageFormat <https://www.iana.org/assignments/media-types/application/zip> .

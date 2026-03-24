@@ -1,0 +1,18 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+
+<https://opendata.swiss/id/organization/awel-kanton-zuerich>
+  a foaf:Organization, org:Organization ;
+
+  org:subOrganizationOf <https://opendata.swiss/id/organization/zh-bar> ;
+  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
+
+  foaf:name           "Amt für Abfall, Wasser, Energie und Luft Kanton Zürich"@de, "(en) Amt für Abfall, Wasser, Energie und Luft Kanton Zürich"@en ;
+  dcterms:description "Das Amt für Abfall, Wasser, Energie und Luft (AWEL) des Kantons Zürich hat den Auftrag, der Bevölkerung im Kanton Zürich eine gesunde, sichere und attraktive Umwelt zu bieten. Zu den Themen Abfall, Wasser, Energie und Luft stellt das AWEL Fachleuten und Interessierten Informationen zur Verfügung."@de ;
+  dcterms:description "(en) Das Amt für Abfall, Wasser, Energie und Luft (AWEL) des Kantons Zürich hat den Auftrag, .... "@en ;
+  foaf:homepage       <https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html> ;
+  schema:image        "https://storage.googleapis.com/dx-liip/production/storage/uploads/group/AWEL_kt_zh.png" .
+
+<https://www.zh.ch/de/baudirektion/amt-fuer-abfall-wasser-energie-luft.html> a foaf:Document .

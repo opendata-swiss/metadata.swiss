@@ -1,0 +1,6 @@
+target/
+.allure/
+test_output*.log
+full_log.txt
+.env
+!src/test/resources/dataset-odsn-abc-forests-search-result.json

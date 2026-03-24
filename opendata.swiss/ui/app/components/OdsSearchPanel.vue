@@ -1,10 +1,19 @@
 <template>
-  <section class="section section--default bg--secondary-50" :aside="aside ? 'true' : 'false'">
+  <section
+    class="section section--default bg--secondary-50"
+    :aside="aside ? 'true' : 'false'"
+  >
     <div class="container">
-      <h3 v-if="aside" class="h3">
+      <h3
+        v-if="aside"
+        class="h3"
+      >
         {{ title || t('message.dataset_search.search_results') }}
       </h3>
-      <h1 v-else class="h1">
+      <h1
+        v-else
+        class="h1"
+      >
         {{ title || t('message.dataset_search.search_results') }}
       </h1>
       <div class="search search--large search--page-result">
@@ -12,13 +21,12 @@
           <input
             id="search-input"
             ref="_inputElement"
-            :value="searchInput"
+            v-model="modelValue"
             :placeholder="searchPrompt"
             type="search"
             autocomplete="off"
             class="search"
-            @input="$emit('update:searchInput', $event.target.value)"
-            @keyup.enter="$emit('search', _inputElement!.value.trim())"
+            @keyup.enter="onSearch"
           >
           <OdsButton
             variant="bare"
@@ -26,14 +34,24 @@
             size="lg"
             icon="Search"
             icon-only
-            @click="$emit('search', _inputElement!.value.trim())"
+            @click="onSearch"
           />
         </div>
       </div>
-      <div v-if="facetRefs && activeFacets" class="search__filters">
-        <OdsFilterPanel :facet-refs="facetRefs" :facets="activeFacets" @reset-all-facets="$emit('reset-all-facets')" />
+      <div
+        v-if="facetRefs && activeFacets"
+        class="search__filters"
+      >
+        <OdsFilterPanel
+          :facet-refs="facetRefs"
+          :facets="activeFacets"
+          @reset-all-facets="$emit('reset-all-facets')"
+        />
       </div>
-      <div v-if="facetRefs && activeFacets" class="filters__active" />
+      <div
+        v-if="facetRefs && activeFacets"
+        class="filters__active"
+      />
     </div>
   </section>
 </template>
@@ -54,15 +72,29 @@ interface PropTypes {
   activeFacets?: SearchResultFacetGroupLocalized[]
 }
 
-defineProps<PropTypes>()
+const props = defineProps<PropTypes>()
 
-defineEmits({
+const emit = defineEmits({
   'search': (_: string) => true,
   'reset-all-facets': () => true,
   'update:searchInput': (_: string | string[]) => true,
 })
 
-const _inputElement = ref<VNode | null>(null)
+const modelValue = computed({
+  get: () => {
+    if (Array.isArray(props.searchInput)) {
+      return props.searchInput[0] || ''
+    }
+    return props.searchInput || ''
+  },
+  set: (value: string) => emit('update:searchInput', value),
+})
+
+const _inputElement = ref<HTMLInputElement | null>(null)
+
+const onSearch = () => {
+  emit('search', modelValue.value?.trim() || '')
+}
 </script>
 
 <style scoped>
