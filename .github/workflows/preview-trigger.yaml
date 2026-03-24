@@ -18,7 +18,7 @@ on:
           - "int"
           - "test"
       deployment_name:
-        description: "Subdomain to deploy (defaults to the default branch)"
+        description: "Subdomain to deploy"
         required: true
         type: string
       code_ref:
