@@ -25,7 +25,6 @@ on:
         description: "Branch or tag to deploy (defaults to the default branch)"
         required: false
         type: string
-        default: ${{ github.head_ref }}
       cms_ref:
         description: "Ref to deploy CMS"
         required: false
@@ -42,10 +41,18 @@ jobs:
       statuses: write
 
     steps:
+      - name: Set CODE_REF variable
+        id: set_code_ref
+        run: |
+          if [ -n "${{ github.event.inputs.code_ref }}" ]; then
+            echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
+          else
+            echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
       - name: Checkout branch
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.inputs.code_ref }}
+          ref: ${{ steps.set_code_ref.outputs.code_ref }}
           fetch-depth: 0
 
       - name: Set up kubectl
