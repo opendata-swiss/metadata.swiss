@@ -1,4 +1,0 @@
----
-parent: about
-mainMenu: true
----

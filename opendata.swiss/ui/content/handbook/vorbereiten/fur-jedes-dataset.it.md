@@ -1,4 +1,0 @@
----
-parent: vorbereiten
-slug: dataset
----
