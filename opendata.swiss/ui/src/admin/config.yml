@@ -79,11 +79,15 @@ collections:
 
   - name: pages
     label: "Pages"
+    label_singular: Page
     folder: "opendata.swiss/ui/content/pages"
     extension: md
     widget: "list"
-    create: false
+    create: true
     i18n: true
+    view_groups:
+      - label: Shown in Main Menu
+        field: mainMenu
     fields:
       - label: Title
         name: title
@@ -99,6 +103,33 @@ collections:
         name: subHeading
         widget: markdown
         i18n: true
+        required: false
+      - name: parent
+        label: Parent page
+        widget: relation
+        collection: pages
+        value_field: "{{slug}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
+      - name: mainMenu
+        label: Show in main menu
+        widget: boolean
+        default: true
+        i18n: duplicate
+        required: false
+      - name: after
+        label: After
+        widget: relation
+        collection: pages
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown

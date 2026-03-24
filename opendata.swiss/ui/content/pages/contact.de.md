@@ -7,6 +7,7 @@ subHeading: >-
   Veröffentlichung der entsprechenden Informationen.
 
   - Mail an: opendata(at)bfs.admin.ch
+mainMenu: true
 ---
 
 ## Haben Sie eine App erstellt?

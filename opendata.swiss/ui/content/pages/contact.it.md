@@ -6,6 +6,7 @@ subHeading: >-
   contattateci per richiederne la pubblicazione.
 
   - Scriveteci a opendata(at)bfs.admin.ch
+mainMenu: true
 ---
 
 ## Avete creato un’applicazione?

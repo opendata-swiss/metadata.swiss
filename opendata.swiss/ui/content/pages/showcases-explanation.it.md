@@ -1,5 +1,8 @@
 ---
 title: Cosa sono gli showcase?
+parent: null
+mainMenu: false
+after: null
 ---
 
 ## Che cos’è uno showcase?

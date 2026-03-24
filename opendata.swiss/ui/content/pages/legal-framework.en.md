@@ -2,6 +2,7 @@
 title: Legal framework
 heading: Use of the datasets on opendata.swiss
 subHeading: The terms of use applicable to opendata.swiss are explained [here](/terms-of-use).
+mainMenu: true
 ---
 
 ## Limitation of liability

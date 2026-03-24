@@ -9,6 +9,7 @@ subHeading: >-
 
 
   Die Symbole bei jedem Datensatz erklären die erlaubte Nutzung. Alle Datenlieferanten verwenden die gleichen Symbole.
+mainMenu: true
 ---
 
 ## Freie Nutzung
