@@ -44,6 +44,18 @@ The personal access token requires contents and pull request permissions.
 
 ## Development Server
 
+Before running the application for development, clone on of the CMS content repositories into `content`.
+
+1. https://github.com/opendata-swiss/opendata-swiss-cms-content
+2. https://github.com/opendata-swiss/opendata-swiss-cms-content-int
+2. https://github.com/opendata-swiss/opendata-swiss-cms-content-test
+
+For example, to use TEST content:
+
+```bash
+git clone https://github.com/opendata-swiss/opendata-swiss-cms-content-test.git content
+```
+
 Start the development server on `http://localhost:3000`:
 
 ```bash
