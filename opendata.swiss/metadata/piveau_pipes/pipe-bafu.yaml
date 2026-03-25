@@ -20,11 +20,14 @@ body:
           inputFormat: application/rdf+xml
           preProcessing: true
     - header:
-        name: piveau-consus-filter
+        name: piveau-consus-patching
         segmentNumber: 2
-        title: Filtering
+        title: Remove distributions without license
         processed: false
-      body: {}
+      body:
+        config:
+          actions:
+            - remove-unlicensed-distributions
     - header:
         name: piveau-consus-exporting-hub
         segmentNumber: 3
