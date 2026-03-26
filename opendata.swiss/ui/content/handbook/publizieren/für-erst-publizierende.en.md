@@ -1,4 +1,0 @@
----
-parent: publizieren
-slug: erstpublizierende
----
