@@ -41,7 +41,7 @@ jobs:
           gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
-            -f environment=${{ matrix.environment }} \
+            -f env=${{ matrix.environment }} \
             -f action=UP \
             -f deployment_name="${{ steps.vars.outputs.branch }}" \
             -f code_ref="${{ github.head_ref }}"
@@ -75,7 +75,7 @@ jobs:
           gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
-            -f environment=${{ matrix.environment }} \
+            -f env=${{ matrix.environment }} \
             -f action=DOWN \
             -f deployment_name="${{ steps.vars.outputs.branch }}" \
         env:
