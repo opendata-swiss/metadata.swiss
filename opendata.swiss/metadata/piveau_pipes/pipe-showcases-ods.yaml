@@ -29,6 +29,7 @@ body:
           actions:
             - remove-dataset-cloak
             - fix-showcase-typing
+            - unwrap-references
             - signal-resource-showcase
     - header:
         name: piveau-consus-exporting-hub

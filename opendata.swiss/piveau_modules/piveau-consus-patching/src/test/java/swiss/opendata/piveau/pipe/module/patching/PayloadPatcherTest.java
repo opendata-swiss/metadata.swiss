@@ -2,10 +2,10 @@ package swiss.opendata.piveau.pipe.module.patching;
 
 import io.piveau.rdf.Piveau;
 import io.vertx.core.json.JsonArray;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.DCAT;
+import org.apache.jena.vocabulary.DCTerms;
 import org.apache.jena.vocabulary.RDF;
 import org.junit.jupiter.api.Test;
 
@@ -40,11 +40,50 @@ public class PayloadPatcherTest {
 
         final Resource showcaseIri = model.createResource("http://localhost:3000/showcase/mietpreisentwicklung-in-bern");
 
-        assertFalse(model.contains(showcaseIri, RDF.type, model.createResource("http://localhost:3000/Showcase")), "Showcase type <http://localhost:3000/Showcase> should be removed");
+        assertFalse(model.contains(showcaseIri, RDF.type, model.createResource(PayloadPatcher.SHOWCASE_TMP_URI)), "Showcase type <http://localhost:3000/Showcase> should be removed");
 
-        assertTrue(model.contains(showcaseIri, RDF.type, model.createResource("https://example.org/Showcase")), "Showcase type <https://example.org/Showcase> should be present");
+        assertTrue(model.contains(showcaseIri, RDF.type, model.createResource(PayloadPatcher.SHOWCASE_TARGET_URI)), "Showcase type <https://example.org/Showcase> should be present");
 
         assertTrue(model.contains(showcaseIri, RDF.type, model.createResource("https://piveau.eu/ns/voc#CustomResource")), "CustomResource type <https://piveau.eu/ns/voc#CustomResource> should be preserved");
+    }
+
+    @Test
+    public void testAction_unwrap_references() throws Exception {
+        Model model = loadModel("showcase-mietpreisentwicklung.ttl");
+
+        JsonArray actions = new JsonArray().add("unwrap-references");
+
+        PayloadPatcher.apply(model, actions, null);
+
+        final Resource showcaseIri = model.createResource("http://localhost:3000/showcase/mietpreisentwicklung-in-bern");
+
+        assertTrue(model.contains(showcaseIri, DCTerms.references, model.createResource("https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich")), "Referenced IRI <https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich> should be unwrapped from bNode");
+
+        for (StmtIterator it = model.listStatements(showcaseIri, DCTerms.references, (RDFNode) null); it.hasNext(); ) {
+            final Statement stmt = it.next();
+            assertFalse(stmt.getObject().isAnon(), "bNode should be removed");
+        }
+        assertFalse(model.contains(null, DCTerms.identifier, "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich"), "Wrapped IRI \"https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich\" should be removed");
+    }
+
+    @Test
+    public void testAction_unwrap_references_skips_non_uri_references() throws Exception {
+        Model model = loadModel("showcase-without-uri-references.ttl");
+
+        JsonArray actions = new JsonArray().add("unwrap-references");
+
+        PayloadPatcher.apply(model, actions, null);
+
+        final Resource showcaseIri = model.createResource("http://localhost:3000/showcase/mietpreisentwicklung-in-bern");
+
+        for (StmtIterator it = model.listStatements(showcaseIri, DCTerms.references, (RDFNode) null); it.hasNext(); ) {
+            final Statement stmt = it.next();
+            Resource bNode = stmt.getObject().asResource();
+
+            assertTrue(bNode.isAnon(), "bNode reference should be preserved");
+
+            assertTrue(model.contains(bNode, DCTerms.identifier, "$$$://foo"), "Non-URI identifier should be preserved");
+        }
     }
 
     private Model loadModel(String fileName) throws IOException {
