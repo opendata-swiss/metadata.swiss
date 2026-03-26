@@ -29,7 +29,6 @@ on:
         description: "Ref to deploy CMS"
         required: false
         type: string
-        default: main
 
 jobs:
   preview:
@@ -95,6 +94,24 @@ jobs:
           kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
           kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
+
+      - name: Generate patch for GITHUB_REF
+        if: ${{ github.event.inputs.cms_ref != '' }}
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          cat <<EOF > patch-github-ref.yaml
+          - op: add
+            path: /spec/template/spec/containers/0/env/-
+            value:
+              name: GITHUB_REF
+              value: "${{ github.event.inputs.cms_ref }}"
+          EOF
+
+      - name: Add GITHUB_REF patch
+        if: ${{ github.event.inputs.cms_ref != '' }}
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          kustomize edit add patch patch-github-ref.yaml
 
       - name: Apply manifests
         working-directory: ./opendata.swiss/ui/k8s
