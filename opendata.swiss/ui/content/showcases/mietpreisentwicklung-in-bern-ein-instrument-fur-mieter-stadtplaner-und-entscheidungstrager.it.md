@@ -9,8 +9,9 @@ categories:
   - http://publications.europa.eu/resource/authority/data-theme/REGI
 type: https://opendata.swiss/vocabulary/showcase-type/application
 datasets:
-  - id: 523-staatskanzlei-kanton-zuerich
-    label: "Kanton Bern: Gebäude, Wohnungen und Wohnverhältnisse"
+  - id: https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich
+    label: Statistik der Informationszugangsgesuche nach IDG des Kantons Zürich ab
+      2013
 ---
 Questo **quadro di controllo interattivo** consente di visualizzare l'andamento degli **affitti a Berna** tra il 2013 e il 2024, per **quartiere**, **anno** e **dimensione dell'alloggio**. Facilita la comprensione delle dinamiche del mercato locativo e offre una panoramica chiara, utile sia per i **cittadini** che per gli **attori pubblici** e i **professionisti del settore immobiliare**.
 
