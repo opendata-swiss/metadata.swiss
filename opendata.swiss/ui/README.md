@@ -38,12 +38,24 @@ GITHUB_TOKEN=
 NUXT_SHOWCASES_MAX_IMAGE_WIDTH=
 ```
 
-The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance.
+The `*PIVEAU_HUB*` can be overridden to point to another Piveau instance. 
 By default, `https://piveau-hub-repo.test.ods.zazukoians.org` is used.
 
 The personal access token requires contents and pull request permissions.
 
 ## Development Server
+
+Before running the application for development, clone on of the CMS content repositories into `content`.
+
+1. https://github.com/opendata-swiss/opendata-swiss-cms-content
+2. https://github.com/opendata-swiss/opendata-swiss-cms-content-int
+2. https://github.com/opendata-swiss/opendata-swiss-cms-content-test
+
+For example, to use TEST content:
+
+```bash
+git clone https://github.com/opendata-swiss/opendata-swiss-cms-content-test.git content
+```
 
 Start the development server on `http://localhost:3000`:
 
@@ -91,8 +103,10 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_ID`
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET`
 - `NUXT_OAUTH_KEYCLOAK_REALM`
+- `NUXT_MATOMO_URL`
+- `NUXT_MATOMO_SITE_ID`
 
-The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.
+The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 
 Build the application for production:
 

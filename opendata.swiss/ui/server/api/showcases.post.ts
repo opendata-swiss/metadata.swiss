@@ -40,8 +40,6 @@ export default defineEventHandler(async (event) => {
 
   let storage: ShowcaseStorage
 
-  const imageRoot = 'img/uploads'
-
   const uploads: Array<() => Promise<void>> = []
   const reqBody = await readMultipartFormData(event) as PayloadData
   const showcase: Showcase = {
@@ -101,7 +99,7 @@ export default defineEventHandler(async (event) => {
           const {
             body,
             images,
-          } = await extractDataImages(rawBody, `public/${imageRoot}/${showcase.slug}-image-`, allImagePaths)
+          } = await extractDataImages(rawBody, `assets/${showcase.slug}-image-`, allImagePaths)
           showcase[language].body = body
           for (const image of images) {
             uploads.push(storage.writeImage.bind(storage, image.path, image.data))
@@ -123,9 +121,9 @@ export default defineEventHandler(async (event) => {
         })
       })
       .with('image', () => {
-        const imagePath = `/${imageRoot}/${showcase.slug}-image.jpg`
-        uploads.push(storage!.writeImage.bind(storage, `public${imagePath}`, data))
-        toAll(showcase, 'image', imagePath)
+        const imageFileName = `${showcase.slug}-image.jpg`
+        uploads.push(storage!.writeImage.bind(storage, `assets/${imageFileName}`, data))
+        toAll(showcase, 'image', `/cms/assets/${imageFileName}`)
       })
       .with(P.string.startsWith('datasets'), () => {
         const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
@@ -184,7 +182,7 @@ async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, sto
   const { slug } = showcase
 
   const writeContent = languages.map((language) => {
-    const path = `content/showcases/${slug}.${language}.md`
+    const path = `showcases/${slug}.${language}.md`
 
     const { body, ...meta } = showcase[language]
     const frontMatter = yaml.stringify(meta)

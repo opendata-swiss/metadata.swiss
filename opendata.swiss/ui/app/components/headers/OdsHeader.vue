@@ -30,8 +30,6 @@ const emit = defineEmits<{
   (e: 'mobileMenuStateChange', value: boolean): void
 }>()
 
-const { t } = useI18n()
-
 const menuOpen = ref(false)
 
 watch(menuOpen, (val) => {
@@ -133,7 +131,7 @@ function showAdminMenus(item: OdsNavTabItem): boolean {
                 :class="{ active: isChildPage(item) }"
                 :to="item.to"
               >
-                <span> {{ t(item.label) }}</span>
+                <span> {{ item.label }}</span>
               </NuxtLinkLocale>
             </li>
 

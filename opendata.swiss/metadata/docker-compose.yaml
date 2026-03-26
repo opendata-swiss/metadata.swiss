@@ -1,6 +1,6 @@
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:3.4.8
+    image: piveau/hub-repo:3.5.0
     restart: unless-stopped
     logging:
       options:
@@ -21,7 +21,6 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
-      - PIVEAU_HUB_REPO_RESTRICTED_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
     volumes:
@@ -122,7 +121,7 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.6
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.7
     restart: unless-stopped
     logging:
       options:
@@ -136,7 +135,6 @@ services:
       - OTEL_SDK_DISABLED=false
       - OTEL_SERVICE_NAME=piveau-consus-exporting-hub
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
-      - PIVEAU_HUB_RESTRICTED_APIKEY=${PIVEAU_HUB_API_KEY}
 
   piveau-consus-scheduling:
     image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.0

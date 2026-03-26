@@ -1,61 +1,41 @@
 backend:
   name: github
-  repo: opendata-swiss/metadata.swiss
+  repo: opendata-swiss/opendata-swiss-cms-content-test
   squash_merges: true
 
 publish_mode: editorial_workflow
 
-media_folder: "public/img/uploads"
-public_folder: "/img/uploads"
+media_folder: "assets"
+public_folder: "/cms"
 
 i18n:
   structure: multiple_files
   default_locale: de
   locales: [de, fr, it, en]
 
-collections:
-  - name: handbook-section
-    label: "Handbook sections"
-    label_singular: Handbook section
-    folder: "opendata.swiss/ui/content/sections"
-    extension: md
-    widget: "list"
-    create: true
-    i18n: true
-    fields:
-      - label: Title
-        name: title
-        widget: string
-        required: true
-        i18n: true
-      - name: body
-        label: Body
-        widget: markdown
-        i18n: true
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 
+collections:
   - name: handbook
     label: "Handbook articles"
     label_singular: Handbook article
     identifier_field: id
-    folder: "opendata.swiss/ui/content/handbook"
+    folder: handbook
     extension: md
     widget: "list"
     create: true
     i18n: true
     summary: "{{title}}"
     view_groups:
-      - label: Section
-        field: section
-    path: "{{section}}/{{slug}}"
+      - label: Parent
+        field: parent
+    path: "{{parent}}/{{slug}}"
+    sortable_fields:
+      - title
     fields:
-      - label: Section
-        name: section
-        widget: relation
-        collection: handbook-section
-        search_fields: ["title"]
-        value_field: title
-        required: true
-        i18n: duplicate
       - label: Title
         name: title
         widget: string
@@ -66,15 +46,37 @@ collections:
         widget: string
         required: false
         i18n: true
-      - label: Permalink
-        name: permalink
+      - label: Slug
+        name: slug
         widget: string
         i18n: duplicate
         pattern:
           [
-            "^[a-z0-9-]+(?:/[a-z0-9-]+)*$",
-            "Permalink must be lowercase and can only contain letters, numbers, slashes, and hyphens.",
+            "^[a-z0-9-]+$",
+            "Slug must be lowercase and can only contain letters, numbers, and hyphens.",
           ]
+      - label: Parent article
+        name: parent
+        widget: relation
+        collection: handbook
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{parent}} - {{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
+      - name: after
+        label: After
+        widget: relation
+        collection: handbook
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{parent}} - {{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown
@@ -82,11 +84,15 @@ collections:
 
   - name: pages
     label: "Pages"
-    folder: "opendata.swiss/ui/content/pages"
+    label_singular: Page
+    folder: pages
     extension: md
     widget: "list"
-    create: false
+    create: true
     i18n: true
+    view_groups:
+      - label: Shown in Main Menu
+        field: mainMenu
     fields:
       - label: Title
         name: title
@@ -102,6 +108,33 @@ collections:
         name: subHeading
         widget: markdown
         i18n: true
+        required: false
+      - name: parent
+        label: Parent page
+        widget: relation
+        collection: pages
+        value_field: "{{slug}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
+      - name: mainMenu
+        label: Show in main menu
+        widget: boolean
+        default: true
+        i18n: duplicate
+        required: false
+      - name: after
+        label: After
+        widget: relation
+        collection: pages
+        value_field: "{{slug}}"
+        display_fields:
+          - "{{title}}"
+        search_fields:
+          - "title"
+        i18n: duplicate
+        required: false
       - name: body
         label: Body
         widget: markdown
@@ -110,7 +143,7 @@ collections:
   - name: blog
     label: Blog
     label_singular: Blog Post
-    folder: "opendata.swiss/ui/content/blog"
+    folder: blog
     extension: md
     widget: "list"
     create: true
@@ -148,7 +181,7 @@ collections:
   - name: Showcases
     label: "Showcases"
     label_singular: Showcase
-    folder: "opendata.swiss/ui/content/showcases"
+    folder: showcases
     i18n: true
     extension: md
     widget: "list"
@@ -208,6 +241,7 @@ collections:
           - name: name
             label: Name
             widget: string
+            required: false
           - name: url
             label: Url (separate multiple entries with a comma)
             widget: list

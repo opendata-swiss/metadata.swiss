@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     'nuxt-auth-utils',
+    './app/modules/cms-assets-sync',
   ],
   plugins: [],
   pages: {
@@ -48,6 +49,10 @@ export default defineNuxtConfig({
       rootDir: __dirname,
       piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
       piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      matomo: {
+        url: '',
+        siteId: '',
+      },
     },
     showcases: {
       maxImageWidth: 900,
@@ -76,6 +81,10 @@ export default defineNuxtConfig({
       '/admin/': 'http://localhost:5173/admin/',
     },
     plugins: ['~~/server/plugins/zod-locale'],
+  },
+  cmsAssets: {
+    contentPath: resolve(import.meta.dirname, 'content/assets'),
+    buildPath: resolve(import.meta.dirname, 'public/cms'),
   },
   eslint: {
     config: {
