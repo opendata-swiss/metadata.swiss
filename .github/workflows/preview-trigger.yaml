@@ -67,7 +67,7 @@ jobs:
         run: |
           kubectl config set-cluster default "--server=${K8S_API_URL}" --insecure-skip-tls-verify=true
           kubectl config set-credentials default "--token=${K8S_TOKEN}"
-          kubectl config set-context default --cluster=default --namespace=ods-${{ github.action.inputs.env }}-previews --user=default
+          kubectl config set-context default --cluster=default --namespace=ods-${{ github.event.inputs.env }}-previews --user=default
           kubectl config use-context default
         env:
           K8S_API_URL: ${{ secrets.K8S_API_URL }}
@@ -81,18 +81,18 @@ jobs:
       - name: Generate manifests
         working-directory: ./opendata.swiss/ui/k8s
         run: |
-          kustomize edit set nameprefix "${{ github.action.inputs.deployment_name }}-"
+          kustomize edit set nameprefix "${{ github.event.inputs.deployment_name }}-"
           kustomize edit add patch \
             --group networking.k8s.io \
             --version v1 \
             --kind Ingress \
             --name piveau-ui \
             --patch '[
-              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ github.action.inputs.deployment_name }}.${{ github.action.inputs.env }}-previews.ods.zazukoians.org"},
-              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ github.action.inputs.deployment_name }}.${{ github.action.inputs.env }}-previews.ods.zazukoians.org"}
+              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"},
+              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"}
             ]'
           kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
-          kustomize edit set label "app.kubernetes.io/instance:${{ github.action.inputs.deployment_name }}"
+          kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
 
       - name: Apply manifests
