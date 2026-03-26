@@ -7,9 +7,9 @@ header:
 body:
   segments:
     - header:
-        name: piveau-consus-importing-rdf
+        name: piveau-consus-importing-showcases
         segmentNumber: 1
-        title: Importing RDF
+        title: Importing Showcases
         processed: false
       body:
         config:
@@ -20,19 +20,7 @@ body:
 
           catalogue: showcases-ods
     - header:
-        name: piveau-consus-patching
-        segmentNumber: 2
-        title: Apply some pipe workarounds for custom resources
-        processed: false
-      body:
-        config:
-          actions:
-            - remove-dataset-cloak
-            - fix-showcase-typing
-            - unwrap-references
-            - signal-resource-showcase
-    - header:
         name: piveau-consus-exporting-hub
-        segmentNumber: 3
+        segmentNumber: 2
         title: Exporting hub
         processed: false
