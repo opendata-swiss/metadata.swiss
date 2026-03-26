@@ -3,7 +3,7 @@ import { APP_LANGUAGES } from '~/constants/langages'
 
 export default defineI18nLocaleDetector((event, config) => {
   // try to get locale from header (`accept-header`)
-  const locale = tryHeaderLocale(event)?.toString() as AppLanguage | undefined
+  const locale = tryHeaderLocale(event, { lang: '' })?.toString() as AppLanguage | undefined
   if (locale && APP_LANGUAGES.includes(locale)) {
     return locale
   }

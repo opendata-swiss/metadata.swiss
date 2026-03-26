@@ -36,7 +36,6 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      actions: write
       contents: read
       pull-requests: write
       statuses: write
