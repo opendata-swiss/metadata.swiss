@@ -1,0 +1,91 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix lcon: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix dcatapde: <http://dcat-ap.de/def/dcatde/> .
+@prefix stat: <http://data.europa.eu/s1n/> .
+@prefix dext: <https://data.europa.eu/ns/ext#> .
+
+dcatap:Catalog_Shape
+    sh:property [
+        sh:minCount 1 ;
+        sh:path dct:title ;
+        pv:mappingClass "SimpleMultiLangTitle" ;
+        pv:mappingName "title"
+   ], [
+       sh:minCount 1 ;
+       sh:path dct:description ;
+       pv:mappingClass "SimpleMultiLang" ;
+       pv:mappingName "description"
+   ], [
+       sh:path dct:language ;
+       pv:mappingClass "Language" ;
+       pv:mappingName "language"
+   ], [
+       sh:path dct:spatial ;
+       pv:mappingClass "Spatial" ;
+       pv:mappingName "spatial"
+   ], [
+       sh:maxCount 1 ;
+       sh:path dct:modified ;
+       pv:mappingClass "DateTime" ;
+       pv:mappingName "modified"
+#   ], [
+#       sh:maxCount 1 ;
+#       sh:minCount 1 ;
+#       sh:path dct:publisher ;
+#       pv:mappingClass "Agent" ;
+#       pv:mappingName "publisher"
+   ], [
+       sh:maxCount 1 ;
+       sh:minCount 1 ;
+       sh:path dct:publisher ;
+       pv:mappingClass "Nested" ;
+       pv:mappingName "publisher" ;
+       pv:mappingLink dcatap:Agent_Shape
+   ] .
+
+dcatap:Agent_Shape
+    sh:property [
+        sh:minCount 1 ;
+        sh:path foaf:name ;
+        pv:mappingClass "SimpleMultiLang" ;
+        pv:mappingName "name"
+    ], [
+        sh:maxCount 1 ;
+        sh:path dct:type ;
+        pv:mappingClass "Standard" ;
+        pv:mappingName "type"
+    ], [
+        sh:maxCount 1 ;
+        sh:path foaf:homepage ;
+        pv:mappingClass "Standard" ;
+        pv:mappingName "homepage"
+    ], [
+        sh:maxCount 1 ;
+        sh:path foaf:mbox ;
+        pv:mappingClass "Standard" ;
+        pv:mappingName "email"
+    ], [
+        sh:path dct:description ;
+        pv:mappingClass "SimpleMultiLang" ;
+        pv:mappingName "description"
+    ] .
