@@ -37,7 +37,7 @@ jobs:
       - name: Start preview environment
         if: github.event.action != 'closed'
         run: |
-          gh workflow run deploy-preview.yaml \
+          gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
             -f environment=${{ matrix.environment }} \
@@ -71,7 +71,7 @@ jobs:
         if: github.event.action == 'closed'
         continue-on-error: true
         run: |
-          gh workflow run deploy-preview.yaml \
+          gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
             -f environment=${{ matrix.environment }} \
