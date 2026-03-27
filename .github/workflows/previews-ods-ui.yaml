@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
+      actions: write
       contents: read
       pull-requests: write
       statuses: write
@@ -37,10 +38,10 @@ jobs:
       - name: Start preview environment
         if: github.event.action != 'closed'
         run: |
-          gh workflow run deploy-preview.yaml \
+          gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
-            -f environment=${{ matrix.environment }} \
+            -f env=${{ matrix.environment }} \
             -f action=UP \
             -f deployment_name="${{ steps.vars.outputs.branch }}" \
             -f code_ref="${{ github.head_ref }}"
@@ -71,10 +72,10 @@ jobs:
         if: github.event.action == 'closed'
         continue-on-error: true
         run: |
-          gh workflow run deploy-preview.yaml \
+          gh workflow run preview-trigger.yaml \
             --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.base.ref }} \
-            -f environment=${{ matrix.environment }} \
+            -f env=${{ matrix.environment }} \
             -f action=DOWN \
             -f deployment_name="${{ steps.vars.outputs.branch }}" \
         env:
