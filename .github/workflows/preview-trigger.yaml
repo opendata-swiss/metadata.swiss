@@ -96,23 +96,17 @@ jobs:
           kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
 
-      - name: Generate patch for GITHUB_REF
+      - name: Add GITHUB_REF patch
         if: ${{ github.event.inputs.cms_ref != '' }}
         working-directory: ./opendata.swiss/ui/k8s
         run: |
-          cat <<EOF > patch-github-ref.yaml
+          kustomize edit add patch --patch '
           - op: add
             path: /spec/template/spec/containers/0/env/-
             value:
               name: GITHUB_REF
               value: "${{ github.event.inputs.cms_ref }}"
-          EOF
-
-      - name: Add GITHUB_REF patch
-        if: ${{ github.event.inputs.cms_ref != '' }}
-        working-directory: ./opendata.swiss/ui/k8s
-        run: |
-          kustomize edit add patch patch-github-ref.yaml
+          '
 
       - name: Apply manifests
         working-directory: ./opendata.swiss/ui/k8s
