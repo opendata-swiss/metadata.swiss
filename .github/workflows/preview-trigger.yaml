@@ -36,9 +36,10 @@ jobs:
 
     permissions:
       actions: write
-      contents: read
+      contents: write
       pull-requests: write
       statuses: write
+      repository-projects: write
 
     steps:
       - name: Set CODE_REF variable
