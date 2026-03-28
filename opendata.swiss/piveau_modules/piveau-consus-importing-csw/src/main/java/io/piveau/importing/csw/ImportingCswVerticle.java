@@ -40,7 +40,7 @@ public class ImportingCswVerticle extends AbstractVerticle {
 
     private Future<Integer> importData(PipeContext pipeContext, String address, String typeNames, String catalogue) {
         
-        XmlSource xmlSource = new XmlSource(address, typeNames);
+        XmlSource xmlSource = new XmlSource(address, typeNames, 10);
         Iterator<JSONObject> iterator = xmlSource.getRecordsStream()
             .flatMap(records -> records.stream())
             .map(record -> convertToJSON(record))
