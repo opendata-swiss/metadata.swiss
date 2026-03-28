@@ -1,6 +1,7 @@
 package swiss.opendata.piveau.pipe.module.patching;
 
 import io.piveau.pipe.PipeContext;
+import java.util.function.Consumer;
 import io.piveau.pipe.connector.PipeConnector;
 import io.piveau.rdf.Piveau;
 import io.vertx.core.AbstractVerticle;
@@ -16,9 +17,9 @@ import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
-
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class MainVerticle extends AbstractVerticle {
 
@@ -47,50 +48,10 @@ public class MainVerticle extends AbstractVerticle {
                     pipeContext.getStringData().getBytes(),
                     Lang.NTRIPLES
             );
-            final JsonObject outboundDataInfo = new JsonObject().mergeIn(pipeContext.getDataInfo());
+            
+            applyActions(msg -> pipeContext.log().info(msg), actions, model);
 
-            if (actions.contains("remove-dataset-cloak")) {
-                for (StmtIterator it = model.listStatements((Resource) null, RDF.type, DCAT.Dataset); it.hasNext(); ) {
-                    Statement stmt = it.next();
-                    pipeContext.log().info("Removing triple " + stmt);
-                    it.remove();
-                }
-            }
-
-            if (actions.contains("fix-showcase-typing")) {
-                final Resource tempType = model.createResource("http://localhost:3000/Showcase");
-                final Resource targetType = model.createResource("https://example.org/Showcase");
-
-                Statement fixedStmt = null;
-                for (StmtIterator it = model.listStatements((Resource) null, RDF.type, tempType); it.hasNext(); ) {
-                    final Statement stmt = it.next();
-                    pipeContext.log().info("Removing triple " + stmt);
-                    it.remove();
-
-                    // only one single resource to fix: assuming here we get at most one single showcase per pipe message
-                    fixedStmt = model.createStatement(stmt.getSubject(), RDF.type, targetType);
-                }
-
-                if (fixedStmt != null) {
-                    pipeContext.log().info("Adding triple " + fixedStmt);
-                    model.add(fixedStmt);
-                }
-            }
-
-            String resourceType = null;
-            for (Iterator<Object> it = actions.iterator(); it.hasNext(); ) {
-                final String action = it.next().toString();
-                if (action.startsWith("signal-resource-")) {
-                    resourceType = action.substring("signal-resource-".length());
-                    break;  // only consider the first "signal-resource-" match
-                }
-            }
-            if (resourceType != null && ! resourceType.isBlank()) {
-                pipeContext.log().info("Signaling resourceType: {}", resourceType);
-                outboundDataInfo
-                        .put("content", "resource")
-                        .put("resourceType", resourceType);
-            }
+            JsonObject outboundDataInfo = signalResource(pipeContext, actions);
 
             pipeContext.log().debug("Outbound dataInfo: {}", outboundDataInfo.toString());
 
@@ -103,6 +64,87 @@ public class MainVerticle extends AbstractVerticle {
         } else {
             pipeContext.pass();
         }
+    }
+
+    public static void removeDatasetCloak(Consumer<String> logger, final Model model) {
+        for (StmtIterator it = model.listStatements((Resource) null, RDF.type, DCAT.Dataset); it.hasNext(); ) {
+            Statement stmt = it.next();
+            logger.accept("Removing triple " + stmt);
+            it.remove();
+        }
+    }
+
+    public static void fixShowcaseTyping(Consumer<String> logger, final Model model) {
+        final Resource tempType = model.createResource("http://localhost:3000/Showcase");
+        final Resource targetType = model.createResource("https://example.org/Showcase");
+
+        Statement fixedStmt = null;
+        for (StmtIterator it = model.listStatements((Resource) null, RDF.type, tempType); it.hasNext(); ) {
+            final Statement stmt = it.next();
+            logger.accept("Removing triple " + stmt);
+            it.remove();
+
+            // only one single resource to fix: assuming here we get at most one single showcase per pipe message
+            fixedStmt = model.createStatement(stmt.getSubject(), RDF.type, targetType);
+        }
+
+        if (fixedStmt != null) {
+            logger.accept("Adding triple " + fixedStmt);
+            model.add(fixedStmt);
+        }
+    }
+
+    public static void removeUnlicensedDistributions(Consumer<String> logger, final Model model) {
+        final Resource distributionClass = model.createResource("http://www.w3.org/ns/dcat#Distribution");
+        final var licenseProperty = model.createProperty("http://purl.org/dc/terms/license");
+
+        // Collect subjects to remove
+        List<Resource> toRemove = model.listStatements((Resource) null, RDF.type, distributionClass)
+            .toList().stream()
+            .map(Statement::getSubject)
+            .filter(subject -> !subject.hasProperty(licenseProperty))
+            .toList();
+
+        // Remove properties for each subject
+        for (Resource subject : toRemove) {
+            logger.accept("Removing triples for " + subject + " as it is an unlicensed distribution");
+            subject.removeProperties();
+            // remove incoming statements as well
+            model.removeAll(null, null, subject);
+        }
+    }
+
+    private void applyActions(Consumer<String> logger, final JsonArray actions, final Model model) {
+        if (actions.contains("remove-dataset-cloak")) {
+            removeDatasetCloak(logger, model);
+        }
+        if (actions.contains("fix-showcase-typing")) {
+            fixShowcaseTyping(logger, model);
+        }
+        if (actions.contains("remove-unlicensed-distributions")) {
+            removeUnlicensedDistributions(logger, model);
+        }
+    }
+
+    private JsonObject signalResource(PipeContext pipeContext, final JsonArray actions) {
+        final JsonObject outboundDataInfo = new JsonObject().mergeIn(pipeContext.getDataInfo());
+
+        String resourceType = null;
+        for (Iterator<Object> it = actions.iterator(); it.hasNext(); ) {
+            final String action = it.next().toString();
+            if (action.startsWith("signal-resource-")) {
+                resourceType = action.substring("signal-resource-".length());
+                break;  // only consider the first "signal-resource-" match
+            }
+        }
+        if (resourceType != null && ! resourceType.isBlank()) {
+            pipeContext.log().info("Signaling resourceType: {}", resourceType);
+            outboundDataInfo
+                    .put("content", "resource")
+                    .put("resourceType", resourceType);
+        }
+
+        return outboundDataInfo;
     }
 
     /**
