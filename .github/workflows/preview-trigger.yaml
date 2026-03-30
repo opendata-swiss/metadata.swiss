@@ -53,10 +53,10 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.code_ref }}" ]; then
             echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
-            echo "image_label=$code_ref" >> $GITHUB_OUTPUT
+            echo "image_label=sha-$(git rev-parse --short $code_ref)" >> $GITHUB_OUTPUT
           else
             echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-            echo "image_label=sha-$(git rev-parse --short $code_ref)" >> $GITHUB_OUTPUT  
+            echo "image_label=$code_ref" >> $GITHUB_OUTPUT
           fi    
 
       - name: Set up kubectl
