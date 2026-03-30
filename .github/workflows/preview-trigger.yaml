@@ -81,7 +81,10 @@ jobs:
         if: ${{ github.event.inputs.cms_ref != '' }}
         working-directory: ./opendata.swiss/ui/k8s
         run: |
-          kustomize edit add patch --patch '
+          kustomize edit add patch \
+            --kind Deployment \
+            --name piveau-ui \
+            --patch '
           - op: add
             path: /spec/template/spec/containers/0/env/-
             value:
