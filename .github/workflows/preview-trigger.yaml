@@ -42,7 +42,13 @@ jobs:
       repository-projects: write
 
     steps:
-      - name: Set CODE_REF variable
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.set_code_ref.outputs.code_ref }}
+          fetch-depth: 0
+
+      - name: Configure some variables
         id: set_code_ref
         run: |
           if [ -n "${{ github.event.inputs.code_ref }}" ]; then
@@ -51,12 +57,7 @@ jobs:
           else
             echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
             echo "image_label=sha-$(git rev-parse --short $code_ref)" >> $GITHUB_OUTPUT  
-          fi
-      - name: Checkout branch
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ steps.set_code_ref.outputs.code_ref }}
-          fetch-depth: 0
+          fi    
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4
