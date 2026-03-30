@@ -77,6 +77,18 @@ jobs:
           K8S_API_URL: ${{ secrets.K8S_API_URL }}
           K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
 
+      - name: Add GITHUB_REF patch
+        if: ${{ github.event.inputs.cms_ref != '' }}
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          kustomize edit add patch --patch '
+          - op: add
+            path: /spec/template/spec/containers/0/env/-
+            value:
+              name: GITHUB_REF
+              value: "${{ github.event.inputs.cms_ref }}"
+          '
+
       - name: Generate manifests
         working-directory: ./opendata.swiss/ui/k8s
         run: |
@@ -93,18 +105,6 @@ jobs:
           kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:${{ steps.set_code_ref.outputs.image_tag }}"
           kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
-
-      - name: Add GITHUB_REF patch
-        if: ${{ github.event.inputs.cms_ref != '' }}
-        working-directory: ./opendata.swiss/ui/k8s
-        run: |
-          kustomize edit add patch --patch '
-          - op: add
-            path: /spec/template/spec/containers/0/env/-
-            value:
-              name: GITHUB_REF
-              value: "${{ github.event.inputs.cms_ref }}"
-          '
 
       - name: Apply manifests
         working-directory: ./opendata.swiss/ui/k8s
