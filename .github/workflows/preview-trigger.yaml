@@ -53,11 +53,11 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.code_ref }}" ]; then
             echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
-            echo "image_label=sha-$(git rev-parse --short $code_ref)" >> $GITHUB_OUTPUT
+            echo "image_tag=sha-$(git rev-parse --short $code_ref)" >> $GITHUB_OUTPUT
           else
             echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-            echo "image_label=$code_ref" >> $GITHUB_OUTPUT
-          fi    
+            echo "image_tag=$code_ref" >> $GITHUB_OUTPUT
+          fi
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4
@@ -90,7 +90,7 @@ jobs:
               {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"},
               {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"}
             ]'
-          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:${{ steps.set_code_ref.outputs.image_label }}"
+          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:${{ steps.set_code_ref.outputs.image_tag }}"
           kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
 
