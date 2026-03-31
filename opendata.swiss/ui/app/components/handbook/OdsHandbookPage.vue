@@ -8,9 +8,9 @@
     </template>
     <template #before-aside-content>
       <OdsSearchPanel
+        v-model:search-input="searchInput"
         aside
         :title="t('message.handbook.search_prompt')"
-        :search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt_short')"
         @search="onSearch"
       />
@@ -24,9 +24,16 @@
             :open="isSectionOpen(section)"
           >
             <NuxtLinkLocale
-              v-for="article in getArticlesBySection(section)"
+              :to="getArticleUrl(section)"
+              :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === section.id }]"
+              style="margin-top: unset"
+            >
+              <div>{{ section.title }}</div>
+            </NuxtLinkLocale>
+            <NuxtLinkLocale
+              v-for="article in getArticlesByParent(section)"
               :key="article.id"
-              :to="`/handbook/${section.title.toLowerCase()}/${article.permalink}`"
+              :to="getArticleUrl(article)"
               :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': page.id === article.id }]"
               style="margin-top: unset"
             >
@@ -40,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import type { HandbookCollectionItem, HandbookSectionsCollectionItem, PagesCollectionItem } from '@nuxt/content'
+import type { HandbookCollectionItem, PagesCollectionItem } from '@nuxt/content'
 import OdsPage from '~/components/OdsPage.vue'
 import OdsBreadcrumbs, { type BreadcrumbItem } from '~/components/OdsBreadcrumbs.vue'
 import OdsSearchPanel from '~/components/OdsSearchPanel.vue'
@@ -48,52 +55,79 @@ import { useRouter } from '#vue-router'
 import OdsCard from '~/components/OdsCard.vue'
 import OdsAccordion from '~/components/OdsAccordion.vue'
 import OdsAccordionItem from '~/components/OdsAccordionItem.vue'
+import { useGetArticleUrl } from '~/composables/handbook'
+import { sortContent } from '~/lib/sortContent'
 
 const { t, locale } = useI18n()
 
 const { page } = defineProps<{
-  page: HandbookCollectionItem | HandbookSectionsCollectionItem | PagesCollectionItem
+  page: HandbookCollectionItem | PagesCollectionItem
   breadcrumbs: BreadcrumbItem[]
 }>()
 
 const searchInput = ref('')
 
+const getArticleUrl = await useGetArticleUrl()
+
 const router = useRouter()
+const localePath = useLocalePath()
 const onSearch = (value: string) => {
-  router.push({
+  router.push(localePath({
     path: '/handbook/search',
     query: { q: value.trim() },
-  })
+  }))
 }
-
-const { data: sections } = await useAsyncData('handbook-sections', () =>
-  queryCollection('handbookSections')
-    .where('path', 'LIKE', `%.${locale.value}`)
-    .all(),
-)
 
 const { data: articles } = await useAsyncData('handbook-articles', () =>
   queryCollection('handbook')
-    .where('path', 'LIKE', `%.${locale.value}`)
-    // .where('parent', 'IS NULL')
     .all(),
 )
 
-function getArticlesBySection(section: HandbookSectionsCollectionItem) {
-  return articles.value
-    ?.filter(article => article.section.toLowerCase() === section.title.toLowerCase())
-    ?.sort((a, b) => a.order || Number.MAX_SAFE_INTEGER - (b.order || Number.MAX_SAFE_INTEGER)) || []
+const localizedArticles = computed(() => articles.value?.filter(article => article.path.endsWith(`.${locale.value}`)) || [])
+
+const getSlug = (article: HandbookCollectionItem) => article.slug
+
+const sections = computed(() => {
+  const sections = localizedArticles.value?.filter(article => !article.parent) || []
+
+  return sortContent(sections, getSlug)
+})
+
+function getArticlesByParent(parent: HandbookCollectionItem) {
+  const articles = localizedArticles.value
+    ?.filter(article => article.parent && (
+      parent.path.endsWith(`handbook/${article.parent}.${locale.value}`)
+      || parent.path.endsWith(`handbook/${article.parent}.de.md`)
+    ))
+
+  return sortContent(articles, getSlug)
 }
 
-function isSectionOpen(section: HandbookSectionsCollectionItem) {
-  if ('section' in page) {
-    return page.section.toLowerCase() === section.title.toLowerCase()
+function isSectionOpen(section: HandbookCollectionItem) {
+  if ('parent' in page) {
+    if (page.parent) {
+      let current: HandbookCollectionItem | undefined = page as HandbookCollectionItem
+
+      while (current) {
+        if (current.path === section.path) {
+          return true
+        }
+
+        const currentParent: string | undefined = current.parent
+        current = articles.value?.find((article) => {
+          if (!currentParent) return false
+          return article.path.endsWith(`handbook/${currentParent}.${locale.value}`)
+            || (locale.value !== 'de' && article.path.endsWith(`handbook/${currentParent}.de.md`))
+        })
+      }
+
+      return false
+    }
+    else {
+      return page.id === section.id
+    }
   }
 
-  if (page.stem.startsWith('pages')) {
-    return true
-  }
-
-  return page.id === section.id
+  return true
 }
 </script>

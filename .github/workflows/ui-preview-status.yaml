@@ -35,7 +35,7 @@ jobs:
         id: content
         working-directory: opendata.swiss/ui
         run: |
-          PATH_SUFFIX=$(scripts/get-preview-path.sh ${{ github.base_ref }})
+          PATH_SUFFIX=$(scripts/get-preview-path.sh ${{ github.base_ref }} | head -n 1)
           echo "suffix=$PATH_SUFFIX" >> $GITHUB_OUTPUT
 
       - name: Final status check (TEST)

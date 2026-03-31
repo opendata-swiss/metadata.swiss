@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
+import { useGetArticleUrl } from '../../app/composables/handbook.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
@@ -14,30 +15,31 @@ const route = useRoute()
 const router = useRouter()
 
 const searchInput = ref(route.query.q)
+const getArticleUrl = await useGetArticleUrl()
 
 const onSearch = (value) => {
   searchInput.value = value
   router.push({
     name: route.name,
-    query: { q: value.trim() },
+    query: { q: value?.trim() || undefined },
   })
 }
 
-const { data } = await useAsyncData('handbook-search', async () => {
-  const sections = await queryCollectionSearchSections('handbook')
-  const pages = await queryCollection('handbook')
-    .select('path', 'permalink', 'section')
-    .all()
+const { data, error } = await useAsyncData('handbook-search', async () => {
+  const [sections, pages] = await Promise.all([
+    queryCollectionSearchSections('handbook'),
+    queryCollection('handbook')
+      .select('path', 'title', 'parent', 'slug')
+      .all(),
+  ])
 
-  console.log(pages)
-
-  return sections.map((section) => {
+  return (sections || []).map((section) => {
     let path
     const [id, hash] = section.id.split('#')
 
     const page = pages.find(({ path }) => section.id.startsWith(path))
     if (page) {
-      path = `${page.section.toLowerCase()}/${page.permalink}`
+      path = getArticleUrl(page)
     }
     else {
       path = id.substring(0, id.lastIndexOf('.'))
@@ -51,15 +53,25 @@ const { data } = await useAsyncData('handbook-search', async () => {
   })
 })
 
-const fuse = new Fuse(data.value, {
-  keys: ['title', 'titles', 'content'],
-  ignoreDiacritics: true,
+if (error.value) {
+  console.error('Failed to fetch handbook search sections', error.value)
+}
+
+const fuse = computed(() => {
+  if (!data.value) return null
+
+  return new Fuse(data.value, {
+    keys: ['title', 'titles', 'content'],
+    ignoreDiacritics: true,
+  })
 })
 
 const articleIdPattern = new RegExp(`\\.${locale.value}(#.+)?`)
 const result = computed(() => {
-  return fuse
-    .search(toValue(searchInput))
+  if (!fuse.value) return []
+
+  return fuse.value
+    .search(toValue(searchInput) || '')
     .filter(article =>
       article.item.content
       && article.item.level < 3
@@ -94,9 +106,9 @@ useSeoMeta({
 <template>
   <OdsPage>
     <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs"/>
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
       <OdsSearchPanel
-        :search-input="searchInput"
+        v-model:search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt')"
         @search="onSearch"
       />

@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/icon',
     'nuxt-auth-utils',
+    './app/modules/cms-assets-sync',
   ],
   plugins: [],
   pages: {
@@ -53,6 +54,9 @@ export default defineNuxtConfig({
         siteId: '',
       },
     },
+    showcases: {
+      maxImageWidth: 900,
+    },
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
@@ -77,6 +81,10 @@ export default defineNuxtConfig({
       '/admin/': 'http://localhost:5173/admin/',
     },
     plugins: ['~~/server/plugins/zod-locale'],
+  },
+  cmsAssets: {
+    contentPath: resolve(import.meta.dirname, 'content/assets'),
+    buildPath: resolve(import.meta.dirname, 'public/cms'),
   },
   eslint: {
     config: {

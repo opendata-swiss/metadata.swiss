@@ -30,6 +30,9 @@ export default defineContentConfig({
         heading: z.string().optional(),
         subHeading: z.string().optional(),
         permalink: z.string().optional(),
+        parent: z.string().optional(),
+        mainMenu: z.boolean().optional(),
+        after: z.string().optional(),
         rawbody: z.string(),
       }),
     }),
@@ -38,18 +41,10 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         title: z.string(),
-        breadcrumb_title: z.string(),
-        permalink: z.string(),
-        section: z.string(),
-        order: z.number().optional(),
-      }),
-    }),
-    handbookSections: defineCollection({
-      source: sourcesFor('sections/*.md'),
-      type: 'page',
-      schema: z.object({
-        id: z.string(),
-        title: z.string(),
+        breadcrumb_title: z.string().optional(),
+        slug: z.string(),
+        parent: z.string().optional(),
+        after: z.string().optional(),
       }),
     }),
     blog: defineCollection({

@@ -1,0 +1,109 @@
+name: Deploy preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Action to perform"
+        required: true
+        type: choice
+        options:
+          - "UP"
+          - "DOWN"
+      env:
+        description: "Environment to deploy to"
+        required: true
+        type: choice
+        options:
+          - "int"
+          - "test"
+      deployment_name:
+        description: "Subdomain to deploy"
+        required: true
+        type: string
+      code_ref:
+        description: "Branch or tag to deploy (defaults to the default branch)"
+        required: false
+        type: string
+      cms_ref:
+        description: "Ref to deploy CMS"
+        required: false
+        type: string
+        default: main
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+      statuses: write
+
+    steps:
+      - name: Set CODE_REF variable
+        id: set_code_ref
+        run: |
+          if [ -n "${{ github.event.inputs.code_ref }}" ]; then
+            echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
+          else
+            echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.set_code_ref.outputs.code_ref }}
+          fetch-depth: 0
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
+        with:
+          version: v1.35.0
+
+      - name: Set up Kustomize
+        uses: imranismail/setup-kustomize@v2
+
+      - name: Configure cluster context
+        run: |
+          kubectl config set-cluster default "--server=${K8S_API_URL}" --insecure-skip-tls-verify=true
+          kubectl config set-credentials default "--token=${K8S_TOKEN}"
+          kubectl config set-context default --cluster=default --namespace=ods-${{ github.event.inputs.env }}-previews --user=default
+          kubectl config use-context default
+        env:
+          K8S_API_URL: ${{ secrets.K8S_API_URL }}
+          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
+
+      - name: Configure some variables
+        id: vars
+        run: |
+          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Generate manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          kustomize edit set nameprefix "${{ github.event.inputs.deployment_name }}-"
+          kustomize edit add patch \
+            --group networking.k8s.io \
+            --version v1 \
+            --kind Ingress \
+            --name piveau-ui \
+            --patch '[
+              {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"},
+              {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"}
+            ]'
+          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
+          kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
+          kustomize build | tee manifest.yaml
+
+      - name: Apply manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        if: github.event.inputs.action == 'UP'
+        run: |
+          kubectl apply -f manifest.yaml
+
+      - name: Delete manifests
+        working-directory: ./opendata.swiss/ui/k8s
+        if: github.event.inputs.action == 'DOWN'
+        continue-on-error: true
+        run: |
+          kubectl delete -f manifest.yaml
