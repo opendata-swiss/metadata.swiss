@@ -111,7 +111,7 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> dcterms:references ?datset .
-        ?datset dcterms:identifier "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich" .
+        ?datset dcterms:identifier "https://opendata.swiss/set/data/85787-bundesamt-fur-statistik-bfs" .
       } .
     }!tuner:assertThat .
   } ;
