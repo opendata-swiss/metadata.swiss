@@ -29,31 +29,34 @@ on:
         description: "Ref to deploy CMS"
         required: false
         type: string
-        default: main
 
 jobs:
   preview:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
       statuses: write
+      repository-projects: write
 
     steps:
-      - name: Set CODE_REF variable
-        id: set_code_ref
-        run: |
-          if [ -n "${{ github.event.inputs.code_ref }}" ]; then
-            echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
-          else
-            echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-          fi
       - name: Checkout branch
         uses: actions/checkout@v6
         with:
           ref: ${{ steps.set_code_ref.outputs.code_ref }}
           fetch-depth: 0
+
+      - name: Configure some variables
+        id: set_code_ref
+        run: |
+          if [ -n "${{ github.event.inputs.code_ref }}" ]; then
+            echo "code_ref=${{ github.event.inputs.code_ref }}" >> $GITHUB_OUTPUT
+            echo "image_tag=sha-$(git rev-parse --short ${{ github.event.inputs.code_ref }})" >> $GITHUB_OUTPUT
+          else
+            echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            echo "image_tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v4
@@ -73,10 +76,20 @@ jobs:
           K8S_API_URL: ${{ secrets.K8S_API_URL }}
           K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
 
-      - name: Configure some variables
-        id: vars
+      - name: Add GITHUB_REF patch
+        if: ${{ github.event.inputs.cms_ref != '' }}
+        working-directory: ./opendata.swiss/ui/k8s
         run: |
-          echo "short_sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+          kustomize edit add patch \
+            --kind Deployment \
+            --name piveau-ui \
+            --patch '
+          - op: add
+            path: /spec/template/spec/containers/0/env/-
+            value:
+              name: GITHUB_REF
+              value: "${{ github.event.inputs.cms_ref }}"
+          '
 
       - name: Generate manifests
         working-directory: ./opendata.swiss/ui/k8s
@@ -91,7 +104,7 @@ jobs:
               {"op": "replace", "path": "/spec/tls/0/hosts/0", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"},
               {"op": "replace", "path": "/spec/rules/0/host", "value": "${{ github.event.inputs.deployment_name }}.${{ github.event.inputs.env }}-previews.ods.zazukoians.org"}
             ]'
-          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:sha-${{ steps.vars.outputs.short_sha }}"
+          kustomize edit set image "ghcr.io/opendata-swiss/ods-ui=ghcr.io/opendata-swiss/ods-ui:${{ steps.set_code_ref.outputs.image_tag }}"
           kustomize edit set label "app.kubernetes.io/instance:${{ github.event.inputs.deployment_name }}"
           kustomize build | tee manifest.yaml
 
