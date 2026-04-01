@@ -2,7 +2,7 @@ FROM node:24-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache python3 make git
+RUN apk add --no-cache python3 make git curl
 
 # Install dependencies
 COPY package.json package-lock.json ./
