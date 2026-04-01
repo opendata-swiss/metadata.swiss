@@ -1,0 +1,38 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix label: <http://www.w3.org/2000/01/rdf-schema#label> .
+@prefix identifier: <http://purl.org/dc/terms/identifier> .
+@prefix image: <http://schema.org/image> .
+@prefix tag: <http://www.w3.org/ns/dcat#keyword> .
+@prefix Dataset: <http://www.w3.org/ns/dcat#Dataset> .
+@prefix piveau: <https://piveau.eu/ns/voc#> .
+
+<http://localhost:3000/showcase/mietpreisentwicklung-in-bern> dcterms:identifier "mietpreisentwicklung-in-bern" ;
+    dcterms:type <https://opendata.swiss/vocabulary/showcase-type/application> ;
+    dcterms:title "Mietpreisentwicklung in Bern"@de ;
+    schema:image "https://repository-images.githubusercontent.com/788945570/img.jpg" ;
+    dcterms:abstract "Dieses interaktive Dashboard zeigt..."@de ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+    dcterms:references [
+        dcterms:identifier "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich" ;
+        rdfs:label "Kanton Bern: Gebäude, Wohnungen und Wohnverhältnisse" ;
+    ] ;
+    dcat:keyword "bern" ;
+    a <http://localhost:3000/Showcase>, dcat:Dataset, piveau:CustomResource .
+
+
+<http://localhost:3000/showcase/weg-der-vielfalt> dcterms:identifier "weg-der-vielfalt" ;
+	dcterms:type <https://opendata.swiss/vocabulary/showcase-type/data_visualization> ;
+	dcterms:title "Weg der Vielfalt St. Gallen"@de ;
+	schema:image "https://www2.stadt.sg.ch/od/01%20Open%20Data%20Files/Stadt%20St.Gallen/DIF/SF/Weg%20der%20Vielfalt.jpg" ;
+	dcterms:abstract "Der Weg der Vielfalt ist eine interaktive Karte..."@de ;
+	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI>, <http://publications.europa.eu/resource/authority/data-theme/EDUC> ;
+	dcterms:references [
+		dcterms:identifier "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich" ;
+		rdfs:label "Weg der Vielfalt Stadt St.Gallen" ;
+	] ;
+	dcat:keyword "Geschichte", "Gesellschaft", "Stadt St.Gallen" ;
+	a <http://localhost:3000/Showcase>, dcat:Dataset, piveau:CustomResource .
