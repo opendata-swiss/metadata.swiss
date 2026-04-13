@@ -42,7 +42,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                        # a foaf:Organization ;
+                        a foaf:Organization ;
                            foaf:name "%s"@en .
                     }
                 }
@@ -58,15 +58,15 @@ public class OrganizationTest extends BaseSystemTest {
         ));
 
         // Extract the minted organization IRI from the API
-        // String organizationRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/organizations/" + organizationId).then().statusCode(200).extract().body().asString();
-        // String organizationIRI = SideEffectUtils.extractSubjectIri(organizationRdf, FOAF.ORGANIZATION.stringValue());
-        // System.out.println("Minted Organization IRI: " + organizationIRI);
+        String organizationRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/organizations/" + organizationId).then().statusCode(200).extract().body().asString();
+        String organizationIRI = SideEffectUtils.extractSubjectIri(organizationRdf, FOAF.ORGANIZATION.stringValue());
+        System.out.println("Minted Organization IRI: " + organizationIRI);
 
-        // assertNotNull(organizationIRI);
-        // assertTrue(organizationIRI.startsWith("https://opendata.swiss/id/organization/"));
+        assertNotNull(organizationIRI);
+        assertTrue(organizationIRI.startsWith("https://opendata.swiss/id/organization/"));
 
         context.store(Goal.ODSN_ORGANIZATION_CREATED, "id", organizationId);
-        // context.store(Goal.ODSN_ORGANIZATION_CREATED, "iri", organizationIRI);
+        context.store(Goal.ODSN_ORGANIZATION_CREATED, "iri", organizationIRI);
         context.store(Goal.ODSN_ORGANIZATION_CREATED, "name", organizationName);
     }
 
@@ -99,7 +99,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                        # a foaf:Organization ;
+                        a foaf:Organization ;
                            foaf:name "%s"@en .
                     }
                 }
@@ -141,7 +141,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                        # a foaf:Organization ;
+                        a foaf:Organization ;
                            foaf:name "%s"@en .
                     }
                 }

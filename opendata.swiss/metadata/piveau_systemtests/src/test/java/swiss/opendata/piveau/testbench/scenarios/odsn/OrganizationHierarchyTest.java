@@ -1,6 +1,5 @@
 package swiss.opendata.piveau.testbench.scenarios.odsn;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import swiss.opendata.piveau.testbench.BaseSystemTest;
 import swiss.opendata.piveau.testbench.Goal;
@@ -32,7 +31,6 @@ public class OrganizationHierarchyTest extends BaseSystemTest {
     }
 
     @Test
-    @Disabled
     @DependsOn(Goal.HUB_READY)
     @Provides(Goal.ODSN_ORGANIZATION_HIERARCHY_CREATED)
     public void createOrganizationHierarchy(TestContext context) throws IOException {

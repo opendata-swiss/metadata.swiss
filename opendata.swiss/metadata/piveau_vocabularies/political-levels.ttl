@@ -25,7 +25,7 @@
         "Confederazione"@it ;
     skos:notation "A.PCLI" ;
     skos:exactMatch <http://www.geonames.org/ontology#A.PCLI> ;
-    skos:narrower <confederation/canton> .
+    skos:narrower <canton> .
 
 <canton>
     a skos:Concept ;

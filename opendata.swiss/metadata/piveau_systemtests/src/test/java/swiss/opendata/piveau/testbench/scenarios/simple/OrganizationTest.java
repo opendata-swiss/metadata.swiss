@@ -44,7 +44,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           # a foaf:Organization ;
+                           a foaf:Organization ;
                            foaf:name "%s" .
                     }
                 }
@@ -60,14 +60,14 @@ public class OrganizationTest extends BaseSystemTest {
         ));
 
         // Extract the minted organization IRI from the API
-        // String organizationRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/organizations/" + organizationId).then().statusCode(200).extract().body().asString();
-        // String organizationIRI = SideEffectUtils.extractSubjectIri(organizationRdf, FOAF.ORGANIZATION.stringValue());
-        // System.out.println("Minted Organization IRI: " + organizationIRI);
+        String organizationRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/organizations/" + organizationId).then().statusCode(200).extract().body().asString();
+        String organizationIRI = SideEffectUtils.extractSubjectIri(organizationRdf, FOAF.ORGANIZATION.stringValue());
+        System.out.println("Minted Organization IRI: " + organizationIRI);
 
-        // assertNotNull(organizationIRI);
+        assertNotNull(organizationIRI);
 
         context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "id", organizationId);
-        // context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "iri", organizationIRI);
+        context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "iri", organizationIRI);
         context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "name", organizationName);
     }
 
@@ -100,7 +100,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           # a foaf:Organization ;
+                           a foaf:Organization ;
                            foaf:name "%s" .
                     }
                 }
@@ -142,7 +142,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           # a foaf:Organization ;
+                           a foaf:Organization ;
                            foaf:name "%s" .
                     }
                 }
@@ -171,7 +171,7 @@ public class OrganizationTest extends BaseSystemTest {
     // }
 
     @Test
-    // @Disabled
+    @Disabled
     public void createOrganization_curl(TestContext context) throws IOException, InterruptedException {
 
         // fail("on purpose");
@@ -186,7 +186,7 @@ public class OrganizationTest extends BaseSystemTest {
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           # a foaf:Organization ;
+                           a foaf:Organization ;
                            foaf:name "%s" .
                     }
                 }
