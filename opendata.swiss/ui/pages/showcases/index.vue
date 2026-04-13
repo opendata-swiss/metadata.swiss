@@ -16,6 +16,8 @@ import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
+import type { ShowcasesCollectionItem } from '@nuxt/content'
+import { useVocabularySearch } from '../../app/piveau/vocabularies'
 
 const { locale, t } = useI18n()
 
@@ -168,8 +170,20 @@ onMounted(() => {
   })
 })
 
-const { suspense } = query
-await suspense()
+const { query: showcaseTypesQuery, getSearchResultsEnhanced: showcaseTypes } = useVocabularySearch().useSearch({
+  queryParams: {
+    vocabulary: 'showcase-types',
+  },
+})
+
+await Promise.all([
+  query.suspense,
+  showcaseTypesQuery.suspense,
+])
+
+function showcaseType(showcase: ShowcasesCollectionItem) {
+  return showcaseTypes.value.find(type => type.resource === showcase.type)
+}
 </script>
 
 <template>
@@ -209,7 +223,10 @@ await suspense()
 
               <template #top-meta>
                 <div>
-                  <span class="meta-info__item">{{ (showcase as any).type || 'fixme' }}</span>
+                  <span
+                    v-if="showcaseType(showcase)"
+                    class="meta-info__item"
+                  >{{ showcaseType(showcase).pref_label }}</span>
                   <span class="meta-info__item">
                     {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
                   </span>
