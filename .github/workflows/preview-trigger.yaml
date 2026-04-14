@@ -59,12 +59,12 @@ jobs:
           fi
 
       - name: Set up kubectl
-        uses: azure/setup-kubectl@v4
+        uses: azure/setup-kubectl@v5
         with:
           version: v1.35.0
 
       - name: Set up Kustomize
-        uses: imranismail/setup-kustomize@v2
+        uses: imranismail/setup-kustomize@v3
 
       - name: Configure cluster context
         run: |
