@@ -49,19 +49,19 @@ public class MainVerticle extends AbstractVerticle {
         logger.info("Piveau Consus Filter started successfully.");
     }
 
-    public static boolean isValidIdentifierValue(RDFNode node) {
+    public static boolean isValidIdentifierValue(RDFNode node, String organizationID) {
         if (!node.isLiteral()) {
             return false;
         }
         String identifier = node.asLiteral().getString();
-        return identifier.matches("^[A-Za-z0-9_-]+@[A-Za-z0-9_-]+$");
+        return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
     }
 
     private static String missingIdentifier = "The property 'dct:identifier' on dcat:Dataset is missing. The dataset cannot be imported without a valid dataset identifier. Please add the missing identifier to proceed with the import.";
     private static String multipleIdentifiers = "The property 'dct:identifier' on dcat:Dataset has multiple values. The dataset cannot be imported with multiple identifiers. Please ensure there is only one identifier to proceed with the import.";
     private static String invalidIdentifier = "The value of 'dct:identifier' on dcat:Dataset is invalid. Please provide a correct identifier to allow the dataset to be imported.";
 
-    public static void checkIdentifier(Model model, Resource dataset, Consumer<String> writeError) {
+    public static void checkIdentifier(Model model, Resource dataset, String organizationID, Consumer<String> writeError) {
         Property dctIdentifier = model.createProperty(DCTERMS.IDENTIFIER.stringValue());
 
         List<RDFNode> nodes = model.listObjectsOfProperty(dataset, dctIdentifier).toList();
@@ -81,7 +81,7 @@ public class MainVerticle extends AbstractVerticle {
         // It can consist of the following characters: A-Za-z, 0-9 and - and _
 
         for (RDFNode node : nodes) {
-            if (!isValidIdentifierValue(node)) {
+            if (!isValidIdentifierValue(node, organizationID)) {
                 writeError.accept(invalidIdentifier);
             }        
         }  
@@ -241,8 +241,10 @@ public class MainVerticle extends AbstractVerticle {
             Resource dataset = datasets.get(0);
             config.put("datasetURI", dataset.getURI());
 
+            String organizationID = config.getString("org_id");
+
             ErrorHandler errorHandler = new ErrorHandler(config);
-            checkIdentifier(model, dataset, errorHandler);
+            checkIdentifier(model, dataset, organizationID, errorHandler);
             checkConformsTo(model, dataset, errorHandler);
             checkLicense(model, dataset, errorHandler);
 
