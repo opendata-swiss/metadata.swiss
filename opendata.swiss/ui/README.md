@@ -88,6 +88,20 @@ npm run dev
 npm test
 ```
 
+## Preview deployments
+
+When pull requests are opened, a preview deployment is automatically created. That applies both to PRs in this repository,
+and in the CMS content repositories.
+
+For PR in this repository, two previews get deployed: to INT and TEST. Both will use the latest CMS content from their
+respective content repositories.
+
+![UML Deployment Diagram: App PR Previews](docs/app-pr-preview.uml.svg)
+
+Pull Requests to the CMS content repositories will trigger a new deployment of the application. That deployment will use the latest code from the `main` branch, and the content from the PR branch.
+
+![UML Deployment Diagram: CMS Content PR Previews](docs/cms-content-pr-preview.uml.svg)
+
 ## Production
 
 Set the environment variables as needed:
