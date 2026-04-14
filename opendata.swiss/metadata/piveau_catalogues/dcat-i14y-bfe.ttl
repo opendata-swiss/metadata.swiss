@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-bfe> a dcat:Catalog ;
+    dcterms:created "2025-07-10T14:31:18.811946"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Energie (BFE) ist das Kompetenzzentrum für Fragen der Energieversorgung und der Energienutzung im Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)."@de,
+        "The Swiss Federal Office of Energy (SFOE) is the country's competence centre for issues relating to energy supply and energy use at the Federal Department of the Environment, Transport, Energy and Communications (DETEC)."@en,
+        "L'Office fédéral de l'énergie (OFEN) est le centre de compétences du Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC) pour les questions liées à l'approvisionnement en énergie et à son utilisation."@fr,
+        "L'Ufficio federale dell'energia (UFE) è il centro di competenza in materia di approvvigionamento e di impiego dell'energia in seno al Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)."@it ;
+    dcterms:modified "2025-07-22T14:15:48.458496"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <http://www.bfe.admin.ch> ;
+            foaf:name "Bundesamt für Energie BFE"@de,
+                "Swiss Federal Office of Energy SFOE"@en,
+                "Office fédéral de l'énergie OFEN"@fr,
+                "Ufficio federale dell'energia UFE"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Energie BFE"@de,
+        "Swiss Federal Office of Energy SFOE"@en,
+        "Office fédéral de l'énergie OFEN"@fr,
+        "Ufficio federale dell'energia UFE"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

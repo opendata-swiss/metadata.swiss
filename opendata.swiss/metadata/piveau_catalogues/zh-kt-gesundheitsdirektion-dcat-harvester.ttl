@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-gesundheitsdirektion-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-01-14T11:16:07.846170"^^xsd:dateTime ;
+    dcterms:description "Die Gesundheitsdirektion setzt sich ein für eine hochstehende, sichere und wirtschaftlich tragbare Gesundheitsversorgung, für qualitativ einwandfreie medizinische Dienstleistungen, Heilmittel, Lebensmittel und Gebrauchsgegenstände, für finanziell tragbare Krankenversicherungsprämien. Das Veterinärwesen zählt ebenfalls zu ihrem Aufgabenbereich."@de ;
+    dcterms:modified "2025-10-30T12:36:28.538094"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/gesundheitsdirektion.html> ;
+            foaf:name "Gesundheitsdirektion Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Gesundheitsdirektion Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

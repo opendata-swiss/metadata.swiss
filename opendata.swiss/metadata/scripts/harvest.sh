@@ -14,5 +14,10 @@ else
   CURL_CREDS=""
 fi
 
-# curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/staatskanzelei-kanton-zuerich/triggers/immediateTrigger"
-curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/bafu/triggers/immediateTrigger"
+PIPE_NAME="$1"
+if [ -z "$PIPE_NAME" ]; then
+  echo "Usage: $0 <pipe_name>"
+  exit 1
+fi
+
+curl -i -X PUT -H 'Content-Type: application/json' $CURL_CREDS --data '{"status": "enabled", "id": "immediateTrigger"}' "${CONSUS_SCHEDULING_ENDPOINT}/pipes/${PIPE_NAME}/triggers/immediateTrigger"

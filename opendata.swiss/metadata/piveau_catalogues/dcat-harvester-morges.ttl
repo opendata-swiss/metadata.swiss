@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-morges> a dcat:Catalog ;
+    dcterms:created "2024-08-14T21:56:13.217184"^^xsd:dateTime ;
+    dcterms:description "Die von der Stadt Morges erstellten offenen Datensätze sind über diese Website zugänglich."@de,
+        "The open data sets produced by the City of Morges are accessible via this website."@en,
+        "Les jeux de données ouvertes produits par la Ville de Morges sont accessibles via le présent site Internet."@fr,
+        "I set di dati aperti prodotti dalla Città di Morges sono accessibili tramite questo sito web."@it ;
+    dcterms:modified "2024-08-20T13:25:47.450800"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.morges.ch/> ;
+            foaf:name "Stadt Morges"@de,
+                "City of Morges"@en,
+                "Ville de Morges"@fr,
+                "Città di Morges"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Stadt Morges"@de,
+        "City of Morges"@en,
+        "Ville de Morges"@fr,
+        "Città di Morges"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

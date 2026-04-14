@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-kt-gl> a dcat:Catalog ;
+    dcterms:created "2025-04-02T07:49:53.907789"^^xsd:dateTime ;
+    dcterms:description "Die Staatskanzlei steht dem Landrat und dem Regierungsrat des Kantons Glarus, deren Geschäftsverkehr sie organisiert und koordiniert, als Stabsstelle zur Verfügung. Sie unterstützt Landammann und Regierungsrat, Landratspräsident, Landrat und landrätliche Kommissionen bei der Führung, Planung, Koordination, Information und Dokumentation."@de ;
+    dcterms:modified "2025-05-16T11:25:09.485493"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.gl.ch/verwaltung/staatskanzlei.html/1358> ;
+            foaf:name "Staatskanzlei Glarus"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Staatskanzlei Glarus"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

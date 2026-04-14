@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-amt-fur-mobilitat-kanton-zurich> a dcat:Catalog ;
+    dcterms:created "2023-02-13T07:20:00.616102"^^xsd:dateTime ;
+    dcterms:description "Wir gestalten und steuern die Verkehrsentwicklung im Kanton Zürich und legen Wert darauf, dass diese nachhaltig ist. Dazu übernehmen wir die strategische Planung für alle Verkehrsmittel und wahren die Interessen des Kantons gegenüber dem Bund."@de ;
+    dcterms:modified "2025-10-30T12:32:45.679572"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/volkswirtschaftsdirektion/amt-fuer-mobilitaet.html> ;
+            foaf:name "Amt für Mobilität des Kantons Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Mobilität des Kantons Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

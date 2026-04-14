@@ -76,10 +76,10 @@ To create the catalogues, run:
 ./scripts/catalogues.sh
 ```
 
-And to trigger a harvest, run:
+And to trigger a harvest, run the `harvest.sh` script with a catalogue name as argument (for example, `bl-dcat`):
 
 ```sh
-./scripts/harvest.sh
+./scripts/harvest.sh bl-dcat
 ```
 
 Finally, to trigger CMS harvest, ensure that the new UI is ready by opening http://localhost:8008/.
@@ -96,10 +96,15 @@ If you open the UI at http://localhost:8080, you should see that the catalogues 
 
 If you open the new UI at http://localhost:8008, you should also see all data.
 
-To remove the catalogues, run:
+To remove all catalogues, run:
 
 ```sh
 ./scripts/catalogues_delete.sh
+```
+
+To remove a single catalogue (for example, `bl-dcat`), run:
+```sh
+./scripts/catalogues_delete.sh bl-dcat
 ```
 
 To stop the stack, run:

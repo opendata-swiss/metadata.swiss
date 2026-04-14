@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-stadt-st-gallen> a dcat:Catalog ;
+    dcterms:created "2023-12-21T12:40:29.435706"^^xsd:dateTime ;
+    dcterms:description "St.Gallen, die achtgrösste Stadt der Schweiz, ist mit 80'000 Einwohnern die wirtschaftliche, politische, soziale und kulturelle Metropole der Ostschweiz. Ihre 1400-jährige Geschichte verbindet sich mit urbaner Kreativität, einer innovativen Wirtschaft und einer intakten Landschaft."@de,
+        "With a population of 80,000, St.Gallen, Switzerland’s eighth largest city, is the economic, political, social and cultural metropolis of eastern Switzerland. Its 1400 years of history blend with urban creativity, an innovative economy and an unspoilt landscape."@en,
+        "Avec une population de 80 000 habitants, Saint-Gall, huitième ville de Suisse, est la métropole économique, politique, sociale et culturelle de la Suisse orientale. Ses 1400 ans d'histoire se mêlent à la créativité urbaine, à une économie innovante et à un paysage préservé."@fr,
+        "Con una popolazione di 80.000 abitanti, San Gallo, l'ottava città più grande della Svizzera, è la metropoli economica, politica, sociale e culturale della Svizzera orientale. I suoi 1400 anni di storia si fondono con la creatività urbana, un'economia innovativa e un paesaggio incontaminato."@it ;
+    dcterms:modified "2024-01-16T09:35:25.320114"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.stadt.sg.ch/> ;
+            foaf:name "Stadt St.Gallen"@de,
+                "City of St.Gallen"@en,
+                "Ville de Saint-Gall"@fr,
+                "Città di San Gallo"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Stadt St.Gallen"@de,
+        "City of St.Gallen"@en,
+        "Ville de Saint-Gall"@fr,
+        "Città di San Gallo"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

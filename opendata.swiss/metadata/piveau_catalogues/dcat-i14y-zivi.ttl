@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-zivi> a dcat:Catalog ;
+    dcterms:created "2025-12-24T10:40:52.329551"^^xsd:dateTime ;
+    dcterms:modified "2025-12-24T10:40:52.329559"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zivi.admin.ch> ;
+            foaf:name "Bundesamt für Zivildienst ZIVI"@de,
+                "Office fédéral du service civil CIVI"@fr,
+                "Ufficio federale del servizio civile CIVI"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Zivildienst ZIVI"@de,
+        "Office fédéral du service civil CIVI"@fr,
+        "Ufficio federale del servizio civile CIVI"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

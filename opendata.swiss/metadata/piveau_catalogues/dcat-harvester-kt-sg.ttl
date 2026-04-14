@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-kt-sg> a dcat:Catalog ;
+    dcterms:created "2021-02-24T08:40:32.433664"^^xsd:dateTime ;
+    dcterms:description "Der Kanton St. Gallen veröffentlicht hier schrittweise OGD-Datensätze von kantonalen Ämtern, Dienststellen und Gemeinden. Weitere Informationen über Open Government Data im Kanton St.Gallen finden Sie unter https://daten.sg.ch "@de ;
+    dcterms:modified "2024-01-10T13:43:38.994374"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.sg.ch> ;
+            foaf:name "Kanton St. Gallen"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton St. Gallen"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

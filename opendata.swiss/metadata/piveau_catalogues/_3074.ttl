@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/_3074> a dcat:Catalog ;
+    dcterms:created "2019-09-06T14:53:23.417020"^^xsd:dateTime ;
+    dcterms:description """Hier veröffentlicht das Team von Open Data Zug von der kantonalen Fachstelle für Daten und Statistik schrittweise offene Behördendaten der kantonalen Verwaltung.\r
+\r
+Weitere Informationen unter https://zg.ch/opendata\r
+"""@de ;
+    dcterms:modified "2025-09-10T14:48:58.682039"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Kanton Zug"@de,
+                "Canton of Zug"@en,
+                "Canton de Zoug"@fr,
+                "Cantone di Zugo"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Zug"@de,
+        "Canton of Zug"@en,
+        "Canton de Zoug"@fr,
+        "Cantone di Zugo"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

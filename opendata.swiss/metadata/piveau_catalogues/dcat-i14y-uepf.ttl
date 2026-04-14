@@ -1,0 +1,34 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-uepf> a dcat:Catalog ;
+    dcterms:created "2025-12-22T15:51:16.362654"^^xsd:dateTime ;
+    dcterms:description """Der Dienst ÜPF ist der unabhängige Dienst für die Überwachung des Post- und Fernmeldeverkehrs in der Schweiz. Er wacht über die rechtskonforme, rechtsstaatliche Umsetzung von Überwachungen des Post- und Fernmeldeverkehrs zum Schutze der Privatsphäre der Bevölkerung. Im Weiteren stellt er sicher, dass im Bereich der strafprozessualen Überwachung des Post- und Fernmeldeverkehrs die geltenden Vorgaben eingehalten werden.\r
+\r
+Der Dienst ÜPF führt auf Anordnung der Strafverfolgungsbehörden und des Nachrichtendienstes (NDB) Post- und Fernmeldeüberwachungen durch. Das bedeutet: Er holt bei den Mitwirkungspflichtigen (MWP) jene Daten ein, welche die Strafverfolgungsbehörden bzw. der NDB anfordern, um Verbrechen aufzuklären. Die MWP sind dabei an die Weisungen des Dienstes ÜPF gebunden."""@de,
+        """Lawful execution of post and telecommunications surveillance under the rule of law is indispensable in order to protect the privacy of the population. The PTSS ensures compliance with the applicable regulations, acting as a central interface between the authorities and the telecommunications service providers.\r
+\r
+The main duty of the PTSS is to implement surveillance measures by order of the prosecution authorities. Previously, its main ‘clients’ were the public prosecutors of the 26 cantons, the Office of the Attorney General of Switzerland and the Federal Intelligence Service."""@en,
+        """Le Service SCPT est un service indépendant chargé de la surveillance de la correspondance par poste et télécommunication.\r
+Sa mission est de veiller à ce que la surveillance de la correspondance postale et des télécommunications s'opère dans le respect de la législation et des principes de l'État de droit, de manière à préserver la sphère privée de la population. Le Service SCPT s'assure en particulier de la stricte observance des prescriptions régissant la mise en œuvre de surveillances dans le cadre de procédures pénales.\r
+\r
+Le Service SCPT est chargé d'exécuter les mesures de surveillance visant la correspondance par poste et télécommunication qui sont ordonnées par les autorités de poursuite pénale ou le Service de renseignement de la Confédération (SRC). Concrètement, son rôle consiste à se procurer, auprès des personnes obligées de collaborer (POC), toutes les données demandées par les organes de poursuite pénale ou le SRC dans le cadre de leurs investigations. Les POC sont tenus de respecter les instructions du service."""@fr,
+        """Il Servizio SCPT è il servizio indipendente di sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni. Al fine di proteggere la sfera privata della popolazione, il Servizio SCPT vigila sull'applicazione conforme alla legge e allo Stato di diritto della sorveglianza della corri-spondenza postale e del traffico delle telecomunicazioni. Assicura inoltre il rispetto delle disposizioni vigenti in relazione alla sorveglianza postale e delle telecomunicazioni nell'ambito della procedura penale.\r
+\r
+Il Servizio SCPT esegue, su incarico delle autorità inquirenti o del Servizio delle attività informative della Confederazione (SIC), la sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni. In altre parole si procura, presso i fornitori di servizi di telecomunicazioni (FST), i dati richiesti dalle autorità inquirenti o del SIC nell'ambito delle loro indagini. I FST sono tenuti a rispettare le istruzioni del Servizio SCPT."""@it ;
+    dcterms:modified "2025-12-22T15:51:16.362661"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.li.admin.ch> ;
+            foaf:name "Dienst Überwachung Post- und Fernmeldeverkehr"@de,
+                "Post and Telecommunications Surveillance Service"@en,
+                "Service Surveillance de la correspondance par poste et télécommunication"@fr,
+                "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienst Überwachung Post- und Fernmeldeverkehr"@de,
+        "Post and Telecommunications Surveillance Service"@en,
+        "Service Surveillance de la correspondance par poste et télécommunication"@fr,
+        "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

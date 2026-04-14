@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-staatskanzlei-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-10-06T15:06:54.383251"^^xsd:dateTime ;
+    dcterms:description "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat in administrativen und juristischen Tätigkeiten für verschiedene Dialoggruppen. Zudem ist sie eine Schnittstelle zwischen den Direktionen des Kantons und arbeitet mit den Gemeinden, dem Bund und den Nachbarkantonen zusammen."@de ;
+    dcterms:modified "2025-10-30T12:35:04.952128"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/staatskanzlei.html> ;
+            foaf:name "Staatskanzlei Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Staatskanzlei Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

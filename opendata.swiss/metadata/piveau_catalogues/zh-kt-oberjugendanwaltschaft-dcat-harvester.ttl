@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-oberjugendanwaltschaft-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-01-14T11:21:15.124056"^^xsd:dateTime ;
+    dcterms:description "Die Jugendstrafrechtspflege des Kantons Zürich besteht aus der Oberjugendanwaltschaft, fünf Jugendanwaltschaften sowie der Stelle für Mediation. Die Jugendanwaltschaften untersuchen und beurteilen sämtliche von Jugendlichen zwischen zehn und achtzehn Jahren begangenen Straftaten und sind für den Vollzug jugendstrafrechtlicher Schutzmassnahmen und Strafen verantwortlich."@de ;
+    dcterms:modified "2025-10-30T12:28:56.357443"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/direktion-der-justiz-und-des-innern/jugendstrafrechtspflege.html> ;
+            foaf:name "Oberjugendanwaltschaft Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Oberjugendanwaltschaft Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

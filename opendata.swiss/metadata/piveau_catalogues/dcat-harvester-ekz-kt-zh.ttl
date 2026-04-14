@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-ekz-kt-zh> a dcat:Catalog ;
+    dcterms:created "2023-12-22T13:00:32.370405"^^xsd:dateTime ;
+    dcterms:description "EKZ ist einer der grössten Energiedienstleister der Schweiz und versorgt rund eine Million Menschen mit Strom. Zu den Kunden von EKZ zählen Private, Unternehmen und andere Schweizer Energieversorger. EKZ versorgt von den 162 Gemeinden im Kanton Zürich 125 direkt, 35 über andere Endverteiler. Die Stadt Zürich und Winterthur versorgen sich komplett selbst."@de ;
+    dcterms:modified "2025-10-30T12:30:56.429712"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Elektrizitätswerke des Kantons Zürich EKZ"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Elektrizitätswerke des Kantons Zürich EKZ"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

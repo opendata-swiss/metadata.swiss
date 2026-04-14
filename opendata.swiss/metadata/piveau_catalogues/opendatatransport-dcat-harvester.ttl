@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/opendatatransport-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2017-03-02T08:52:46.804253"^^xsd:dateTime ;
+    dcterms:description "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz"@de,
+        "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland"@en,
+        "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse."@fr,
+        "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."@it ;
+    dcterms:modified "2025-08-25T14:20:16.772680"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.opentransportdata.swiss> ;
+            foaf:name "Geschäftsstelle Systemaufgaben Kundeninformation (SBB AG)"@de,
+                "Business office of Customer Information System Tasks (SBB CFF FFS)"@en,
+                "Secrétariat des tâches du système d’information à la clientèle (CFF SA)"@fr,
+                "Servizio commerciale Attività di sistema Informazione alla clientela (FFS SA)"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Geschäftsstelle Systemaufgaben Kundeninformation (SBB AG)"@de,
+        "Business office of Customer Information System Tasks (SBB CFF FFS)"@en,
+        "Secrétariat des tâches du système d’information à la clientèle (CFF SA)"@fr,
+        "Servizio commerciale Attività di sistema Informazione alla clientela (FFS SA)"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
