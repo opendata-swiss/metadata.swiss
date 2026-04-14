@@ -4,7 +4,7 @@ export interface TableEntry {
     {
       value: string
       href?: string
-      type: 'value' | 'href' | 'email'
+      type: 'value' | 'href' | 'email' | 'telephone'
     },
   ]
   nodeType: 'node' | 'value' | 'href'
