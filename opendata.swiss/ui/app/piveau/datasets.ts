@@ -4,6 +4,7 @@ import { getKeywords } from './get-keywords'
 import { getOdsFormats } from './get-ods-formats'
 import { getOdsCatalogInfo } from './get-ods-catalog-info'
 import { getOdsAccrualPeriodicity } from './get-ods-accrual-periodicity'
+import { getOdsLicenses } from './get-ods-licenses'
 
 export const facets = ['catalog', 'categories', 'publisher', 'format', 'license', 'keywords']
 
@@ -29,6 +30,7 @@ export function useDatasetsSearch() {
       getOdsFormats: getOdsFormats(dataset),
       getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
       getResource: dataset.resource,
+      getOdsLicenses: getOdsLicenses(dataset),
     }
   })
 }

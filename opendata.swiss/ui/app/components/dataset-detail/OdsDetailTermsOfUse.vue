@@ -9,7 +9,6 @@
       :title="t(`message.terms_of_use.ods_${termsName}.title`)"
       class="ods-terms-of-use_image">
   </div>
-
   <ul>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_2`) }}</li>
@@ -20,18 +19,19 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useI18n } from '#imports'
+import type { OdsLicense } from '~/piveau/get-ods-licenses'
 
 const { t } = useI18n()
 
 interface Props {
-  name: string
+  license: OdsLicense
 }
 
 const props = defineProps<Props>()
 
 const termsName = computed(() => {
-  const name = props.name
-  switch (name) {
+  const licnsesId = props.license.id
+  switch (licnsesId) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
       return 'by'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_open':
@@ -41,7 +41,7 @@ const termsName = computed(() => {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
       return 'by_ask'
     default:
-      return props.name
+      return props.license.id
   }
 })
 

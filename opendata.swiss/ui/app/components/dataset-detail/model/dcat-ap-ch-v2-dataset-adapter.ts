@@ -146,8 +146,8 @@ export class DcatApChV2DatasetAdapter {
    * has a getLicenses property that aggregates the licenses of its distributions.
    *
    */
-  get licenses(): string[] {
-    return this.#dataset.getLicenses ?? []
+  get licenses() {
+    return this.#dataset.getOdsLicenses ?? []
   }
 
   /**
