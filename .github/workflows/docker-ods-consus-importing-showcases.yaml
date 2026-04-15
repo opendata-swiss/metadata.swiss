@@ -1,12 +1,12 @@
-name: "[consus-importing-csw] Build and push Docker image"
+name: "[consus-importing-showcases] Build and push Docker image"
 
 on:
   push:
     branches:
       - main
     paths:
-      - "opendata.swiss/piveau_modules/piveau-consus-importing-csw/**" # Only trigger if files in the module directory change
-      - ".github/workflows/docker-ods-consus-importing-csw.yaml" # Trigger also if this workflow file is changed
+      - "opendata.swiss/piveau_modules/piveau-consus-importing-showcases/**" # Only trigger if files in the module directory change
+      - ".github/workflows/docker-ods-consus-importing-showcases.yaml" # Trigger also if this workflow file is changed
 
 jobs:
   docker:
@@ -42,7 +42,7 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ghcr.io/opendata-swiss/ods-consus-importing-csw
+            ghcr.io/opendata-swiss/ods-consus-importing-showcases
           tags: |
             type=ref,event=branch
             type=sha
@@ -53,8 +53,8 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v7
         with:
-          context: ./opendata.swiss/piveau_modules/piveau-consus-importing-csw
-          file: ./opendata.swiss/piveau_modules/piveau-consus-importing-csw/Dockerfile
+          context: ./opendata.swiss/piveau_modules/piveau-consus-importing-showcases
+          file: ./opendata.swiss/piveau_modules/piveau-consus-importing-showcases/Dockerfile
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
