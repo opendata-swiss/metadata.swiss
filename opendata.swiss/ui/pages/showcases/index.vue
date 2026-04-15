@@ -98,6 +98,9 @@ const {
 
 } = useSearch({
   queryParams: toRefs(piveauQueryParams),
+  additionalParams: {
+    resource: 'showcase',
+  },
   selectedFacets: facetRefs,
 })
 

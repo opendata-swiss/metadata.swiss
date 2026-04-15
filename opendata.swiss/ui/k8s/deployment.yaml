@@ -51,11 +51,20 @@ spec:
                   key: session-password
 
             - name: GITHUB_OWNER
-              value: opendata-swiss
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-owner
             - name: GITHUB_REPO
-              value: metadata.swiss
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-repo
             - name: GITHUB_BASE_BRANCH
-              value: main
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-base-branch
             - name: GITHUB_APP_ID
               valueFrom:
                 secretKeyRef:
@@ -76,3 +85,23 @@ spec:
               memory: 2Gi
             requests:
               memory: 1Gi
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - |
+                    case "$GITHUB_REPO" in
+                      opendata-swiss-cms-content-int)
+                        ENVIRONMENT="INT" ;;
+                      opendata-swiss-cms-content)
+                        ENVIRONMENT="PROD" ;;
+                      *)
+                        ENVIRONMENT="TEST" ;;
+                    esac
+                    curl -X POST \
+                      -H "Authorization: Bearer $GITHUB_TOKEN" \
+                      -H "Accept: application/vnd.github+json" \
+                      https://api.github.com/repos/opendata-swiss/metadata.swiss/actions/workflows/script-manual-trigger.yaml/dispatches \
+                      -d "{\"ref\":\"main\",\"inputs\":{\"environment\":\"$ENVIRONMENT\",\"action\":\"HARVEST_SHOWCASES\"}}"

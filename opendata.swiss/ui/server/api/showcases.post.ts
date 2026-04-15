@@ -10,8 +10,10 @@ import remarkStringify from 'remark-stringify'
 import { match, P } from 'ts-pattern'
 import git from '~~/server/lib/git'
 import fs from '~~/server/lib/fs'
+import * as image from '~~/server/lib/images'
 import type { AppLanguage as Language } from '~/constants/langages'
 import { APP_LANGUAGES as languages } from '~/constants/langages'
+import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
 
 type Translated<FieldName extends string> = `${FieldName}[${Language}]`
 type FormDataFieldNames = keyof ShowcasesCollectionItem | Translated<'title'> | Translated<'body'>
@@ -30,21 +32,13 @@ const empty = (): ShowcaseTranslation => ({
   tags: [],
 })
 
-interface ShowcaseStorage {
-  prepare?(): Promise<boolean>
-  writeFile(path: string, contents: string | Buffer): Promise<void>
-  finalize(): Promise<boolean>
-  rollback?(): Promise<void>
-}
-
 export default defineEventHandler(async (event) => {
   const logger = console
 
   const t = await useTranslation(event)
+  const runtimeConfig = useRuntimeConfig()
 
   let storage: ShowcaseStorage
-
-  const imageRoot = 'img/uploads'
 
   const uploads: Array<() => Promise<void>> = []
   const reqBody = await readMultipartFormData(event) as PayloadData
@@ -67,7 +61,7 @@ export default defineEventHandler(async (event) => {
   showcase.slug = slug
 
   if (process.env.GITHUB_TOKEN || process.env.GITHUB_APP_ID) {
-    storage = git(showcase.slug)
+    storage = image.storage(git(showcase.slug), runtimeConfig.showcases)
     const branchCreated = await storage.prepare?.()
     if (!branchCreated) {
       event.node.res.statusCode = 409
@@ -79,7 +73,7 @@ export default defineEventHandler(async (event) => {
   }
   else {
     const { public: { rootDir } } = useRuntimeConfig()
-    storage = fs(rootDir)
+    storage = image.storage(fs(rootDir), runtimeConfig.showcases)
     logger.info('Initialized filesystem storage backend')
   }
 
@@ -105,10 +99,10 @@ export default defineEventHandler(async (event) => {
           const {
             body,
             images,
-          } = await extractDataImages(rawBody, `public/${imageRoot}/${showcase.slug}-image-`, allImagePaths)
+          } = await extractDataImages(rawBody, `assets/${showcase.slug}-image-`, allImagePaths)
           showcase[language].body = body
           for (const image of images) {
-            uploads.push(storage.writeFile.bind(null, image.path, image.data))
+            uploads.push(storage.writeImage.bind(storage, image.path, image.data))
           }
         })())
       })
@@ -127,9 +121,9 @@ export default defineEventHandler(async (event) => {
         })
       })
       .with('image', () => {
-        const imagePath = `/${imageRoot}/${showcase.slug}-image.jpg`
-        uploads.push(storage!.writeFile.bind(null, `public${imagePath}`, data))
-        toAll(showcase, 'image', imagePath)
+        const imageFileName = `${showcase.slug}-image.jpg`
+        uploads.push(storage!.writeImage.bind(storage, `assets/${imageFileName}`, data))
+        toAll(showcase, 'image', `/cms/assets/${imageFileName}`)
       })
       .with(P.string.startsWith('datasets'), () => {
         const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
@@ -188,7 +182,7 @@ async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, sto
   const { slug } = showcase
 
   const writeContent = languages.map((language) => {
-    const path = `content/showcases/${slug}.${language}.md`
+    const path = `showcases/${slug}.${language}.md`
 
     const { body, ...meta } = showcase[language]
     const frontMatter = yaml.stringify(meta)

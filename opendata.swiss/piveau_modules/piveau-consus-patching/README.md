@@ -23,6 +23,7 @@ $ docker build -t piveau-consus-patching .
   Contains an array of actions
   Supported actions are:
     * `remove-dataset-cloak`: removes any triples matching `?s a dcat:Dataset .`
+    * `unwrap-references`: replaces bNodes on `dcterms:references` with the IRI wrapped inside the bNode
     * `signal-resource-*`: signals to subsequent segments the value of `resourceType` 
        * for example, `signal-resource-showcase` signals that `resourceType` is "showcase"
 

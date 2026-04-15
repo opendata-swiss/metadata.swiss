@@ -1,0 +1,92 @@
+{
+    "@context": {
+        "dcterms": "http://purl.org/dc/terms/",
+        "schema": "http://schema.org/",
+        "dcat": "http://www.w3.org/ns/dcat#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "label": "http://www.w3.org/2000/01/rdf-schema#label",
+        "identifier": "http://purl.org/dc/terms/identifier",
+        "image": "http://schema.org/image",
+        "tag": "http://www.w3.org/ns/dcat#keyword",
+        "Dataset": "http://www.w3.org/ns/dcat#Dataset",
+        "piveau": "https://piveau.eu/ns/voc#"
+    },
+    "@graph": [
+        {
+            "@id": "_:g0",
+            "identifier": "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich",
+            "label": "Kanton Bern: Gebäude, Wohnungen und Wohnverhältnisse"
+        },
+        {
+            "@id": "_:g1",
+            "identifier": "https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich",
+            "label": "Weg der Vielfalt Stadt St.Gallen"
+        },
+        {
+            "@id": "http://localhost:3000/showcase/mietpreisentwicklung-in-bern",
+            "@type": [
+                "http://localhost:3000/Showcase",
+                "Dataset",
+                "piveau:CustomResource"
+            ],
+            "dcterms:abstract": {
+                "@language": "de",
+                "@value": "Dieses interaktive Dashboard zeigt..."
+            },
+            "identifier": "mietpreisentwicklung-in-bern",
+            "dcterms:references": {
+                "@id": "_:g0"
+            },
+            "dcterms:title": {
+                "@language": "de",
+                "@value": "Mietpreisentwicklung in Bern"
+            },
+            "dcterms:type": {
+                "@id": "https://opendata.swiss/vocabulary/showcase-type/application"
+            },
+            "image": "https://repository-images.githubusercontent.com/788945570/img.jpg",
+            "tag": "bern",
+            "dcat:theme": {
+                "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+            }
+        },
+        {
+            "@id": "http://localhost:3000/showcase/weg-der-vielfalt",
+            "@type": [
+                "http://localhost:3000/Showcase",
+                "Dataset",
+                "piveau:CustomResource"
+            ],
+            "dcterms:abstract": {
+                "@language": "de",
+                "@value": "Der Weg der Vielfalt ist eine interaktive Karte..."
+            },
+            "identifier": "weg-der-vielfalt",
+            "dcterms:references": {
+                "@id": "_:g1"
+            },
+            "dcterms:title": {
+                "@language": "de",
+                "@value": "Weg der Vielfalt St. Gallen"
+            },
+            "dcterms:type": {
+                "@id": "https://opendata.swiss/vocabulary/showcase-type/data_visualization"
+            },
+            "image": "https://www2.stadt.sg.ch/od/01%20Open%20Data%20Files/Stadt%20St.Gallen/DIF/SF/Weg%20der%20Vielfalt.jpg",
+            "tag": [
+                "Geschichte",
+                "Gesellschaft",
+                "Stadt St.Gallen"
+            ],
+            "dcat:theme": [
+                {
+                    "@id": "http://publications.europa.eu/resource/authority/data-theme/SOCI"
+                },
+                {
+                    "@id": "http://publications.europa.eu/resource/authority/data-theme/EDUC"
+                }
+            ]
+        }
+    ]
+}
