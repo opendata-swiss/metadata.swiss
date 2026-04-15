@@ -44,7 +44,6 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v6
         with:
-          ref: ${{ steps.set_code_ref.outputs.code_ref }}
           fetch-depth: 0
 
       - name: Configure some variables
