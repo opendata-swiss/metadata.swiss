@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "opendata.swiss/piveau_modules/piveau-consus-patching/**" # Only trigger if files in the ui directory change
+      - "opendata.swiss/piveau_modules/piveau-consus-patching/**" # Only trigger if files in the module directory change
       - ".github/workflows/docker-ods-consus-patching.yaml" # Trigger also if this workflow file is changed
 
 jobs:
