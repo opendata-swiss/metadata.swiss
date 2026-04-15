@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-sbfi> a dcat:Catalog ;
+    dcterms:created "2026-03-24T10:41:31.231462"^^xsd:dateTime ;
+    dcterms:description "Das Staatssekretariat für Bildung, Forschung und Innovation SBFI im Eidgenössischen Departement für Wirtschaft, Bildung und Forschung WBF ist das Kompetenzzentrum des Bundes für national und international ausgerichtete Fragen der Bildungs-, Forschungs- und Innovationspolitik."@de,
+        "The State Secretariat for Education, Research and Innovation SERI within the Federal Department of Economic Affairs, Education and Research EAER is the federal government's specialised agency for national and international matters concerning education, research and innovation policy."@en,
+        "Le Secrétariat d'État à la formation, à la recherche et à l'innovation SEFRI dans le Département fédéral de l'économie, de la formation et de la recherche DEFR est le centre de compétences de la Confédération pour les questions de portée nationale ou internationale relevant de la politique de formation, de recherche et d'innovation."@fr,
+        "La Segreteria di Stato per la formazione, la ricerca e l'innovazione SEFRI nel Dipartimento federale dell'economia, della formazione e della ricerca DEFR è il centro di competenza della Confederazione per le questioni nazionali e internazionali connesse alla politica in materia di formazione, ricerca e innovazione."@it ;
+    dcterms:modified "2026-03-24T10:41:31.231467"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.sbfi.admin.ch> ;
+            foaf:name "Staatssekretariat für Bildung, Forschung und Innovation SBFI"@de,
+                "State Secretariat for Education, Research and Innovation SERI"@en,
+                "Secrétariat d'État à la formation, à la recherche et à l'innovation SEFRI"@fr,
+                "Segreteria di Stato per la formazione, la ricerca e l'innovazione SEFRI"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Staatssekretariat für Bildung, Forschung und Innovation SBFI"@de,
+        "State Secretariat for Education, Research and Innovation SERI"@en,
+        "Secrétariat d'État à la formation, à la recherche et à l'innovation SEFRI"@fr,
+        "Segreteria di Stato per la formazione, la ricerca e l'innovazione SEFRI"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

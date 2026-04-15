@@ -374,6 +374,12 @@ services:
       options:
         max-size: "50m"
 
+  piveau-consus-filter:
+    build: ../piveau_modules/piveau-consus-filter
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "50m"
   piveau-consus-importing-showcases:
     build: ../piveau_modules/piveau-consus-importing-showcases
     restart: unless-stopped

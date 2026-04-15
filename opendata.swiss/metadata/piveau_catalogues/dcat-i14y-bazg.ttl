@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-bazg> a dcat:Catalog ;
+    dcterms:created "2025-12-24T14:19:57.881505"^^xsd:dateTime ;
+    dcterms:description "Hauptaufgabe des BAZG ist es, zur Sicherheit und zum Schutz der Bevölkerung, der Wirtschaft, des Schweizer Staats sowie der Umwelt beizutragen. Das BAZG beschäftigt rund 4500 Mitarbeitende und ist im Inland, an den Grenzen sowie im Ausland tätig."@de,
+        "The main task of the FOCBS is to contribute to the safety and protection of the population, the economy, the Swiss state and the environment. The FOCBS employs around 4,500 people and is active at home, at the borders and abroad."@en,
+        "L'OFDF est principalement chargé de la sécurité et de la protection de la population, de l'économie, de l'État ainsi que de l'environnement. L'OFDF emploie près de 4500 collaborateurs et accomplit ses tâches sur le territoire suisse, aux frontières et à l'étranger."@fr,
+        "Il compito principale dell’UDSC è contribuire alla sicurezza e alla protezione della popolazione, dell’economia, dello Stato svizzero e dell’ambiente. L’UDSC occupa circa 4500 collaboratori, operativi in Svizzera, ai confini e all’estero."@it ;
+    dcterms:modified "2025-12-24T14:23:28.749538"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.bazg.admin.ch/bazg/de/home.html> ;
+            foaf:name "Bundesamt für Zoll und Grenzsicherheit BAZG"@de,
+                "Federal Office for Customs and Border Security FOCBS"@en,
+                "Office fédéral de la douane et de la sécurité des frontières OFDF"@fr,
+                "Ufficio federale della dogana e della sicurezza dei confini UDSC"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Zoll und Grenzsicherheit BAZG"@de,
+        "Federal Office for Customs and Border Security FOCBS"@en,
+        "Office fédéral de la douane et de la sécurité des frontières OFDF"@fr,
+        "Ufficio federale della dogana e della sicurezza dei confini UDSC"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

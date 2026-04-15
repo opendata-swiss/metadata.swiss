@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-amt-fur-statistik-fl> a dcat:Catalog ;
+    dcterms:created "2024-12-16T08:42:57.111246"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Statistik ist das statistische Informationszentrum Liechtensteins. Es liefert den Landes- und Gemeindebehörden sowie der Öffentlichkeit relevante, zuverlässige und kohärente statistische Informationen zu Gesellschaft, Wirtschaft und Umwelt in Liechtenstein."@de,
+        "The Office of Statistics is Liechtenstein's statistical information center. It provides the national and municipal authorities as well as the public with relevant, reliable and coherent statistical information on society, economy and environment in Liechtenstein."@en ;
+    dcterms:modified "2024-12-20T09:33:45.329387"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.llv.li/de/landesverwaltung/amt-fuer-statistik> ;
+            foaf:name "Amt für Statistik"@de,
+                "Office of Statistics"@en ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Statistik"@de,
+        "Office of Statistics"@en ;
+    dcterms:type "ckan"^^xsd:string .
+

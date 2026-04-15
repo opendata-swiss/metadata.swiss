@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-are-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2022-02-24T07:12:36.432468"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Raumentwicklung ist die kantonale Fachstelle für Raumplanung, Geoinformation und Kulturgütererhaltung. Es trägt zur Förderung der Standortqualität des Lebens- und Wirtschaftsraums Zürich bei."@de ;
+    dcterms:modified "2025-10-30T12:33:20.928112"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/baudirektion/amt-fuer-raumentwicklung.html> ;
+            foaf:name "Amt für Raumentwicklung Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Raumentwicklung Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

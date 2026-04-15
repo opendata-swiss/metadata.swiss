@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-modus> a dcat:Catalog ;
+    dcterms:created "2025-12-24T09:20:08.650546"^^xsd:dateTime ;
+    dcterms:description "The Modus Foundation takes concrete action to accelerate the transition to sustainable mobility, while seeking to promote enjoyment, experimentation and autonomy for all. It works collaboratively to ensure that, in the future, our travel is fully environmentally friendly and in line with social cohesion, health and well-being for citizens."@en,
+        "La Fondation Modus agit concrètement pour accélérer la transition vers la mobilité durable, tout en cherchant à valoriser le plaisir, l'expérimentation et l'autonomie de chacun·e. Elle oeuvre de manière collaborative pour qu'à l'avenir, nos déplacements respectent pleinement l'environnement et soient en phase avec la cohésion, la santé et le bien-être des citoyen·ne·s."@fr ;
+    dcterms:modified "2025-12-24T09:20:08.650557"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://modus-ge.ch/> ;
+            foaf:name "Modus Foundation"@en,
+                "Fondation Modus"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Modus Foundation"@en,
+        "Fondation Modus"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

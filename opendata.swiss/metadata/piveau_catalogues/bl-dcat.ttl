@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bl-dcat> a dcat:Catalog ;
+    dcterms:created "2022-12-13T14:55:01.027006"^^xsd:dateTime ;
+    dcterms:description """Der Kanton Basel-Landschaft veröffentlicht nach und nach Open Government Datensätze von kantonalen Ämtern und Dienststellen. \r
+Weitere Informationen unter https://ogd.bl.ch/"""@de,
+        """The Canton of Basel-Country publishes open datasets of cantonal offices and agencies.\r
+Further information at https://ogd.bl.ch/"""@en ;
+    dcterms:modified "2023-01-03T09:49:38.955205"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.baselland.ch> ;
+            foaf:name "Kanton Basel-Landschaft"@de,
+                "Canton of Basel-Country"@en,
+                "Canton de Bâle-Campagne"@fr,
+                "Cantone di Basilea-Campagna"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Basel-Landschaft"@de,
+        "Canton of Basel-Country"@en,
+        "Canton de Bâle-Campagne"@fr,
+        "Cantone di Basilea-Campagna"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

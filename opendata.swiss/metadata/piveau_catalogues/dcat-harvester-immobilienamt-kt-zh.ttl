@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-immobilienamt-kt-zh> a dcat:Catalog ;
+    dcterms:created "2024-04-02T11:14:16.305405"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Zürich verfügt über eines der grössten Immobilienportfolios der öffentlichen Hand in der Schweiz. Das Immobilienamt ist als Eigentümervertretung des Kantons mit der Steuerung, Entwicklung und Bewirtschaftung dieses Portfolios betraut."@de ;
+    dcterms:modified "2025-10-30T12:32:21.128295"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/baudirektion/immobilienamt.html> ;
+            foaf:name "Immobilienamt des Kantons Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Immobilienamt des Kantons Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

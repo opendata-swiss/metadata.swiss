@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-handelsregisteramt> a dcat:Catalog ;
+    dcterms:created "2022-11-15T16:17:37.694518"^^xsd:dateTime ;
+    dcterms:description "Das Handelsregisteramt ist zuständig für sämtliche Eintragungen betreffend Unternehmen mit Sitz im Kanton Zürich. Durch die Identifikation von Unternehmen und die Offenlegung von rechtlich relevanten Tatsachen gewährleistet es die Transparenz und Rechtssicherheit im Geschäftsverkehr."@de ;
+    dcterms:modified "2025-10-30T12:33:56.965277"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/direktion-der-justiz-und-des-innern/handelsregisteramt.html> ;
+            foaf:name "Handelsregisteramt Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Handelsregisteramt Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

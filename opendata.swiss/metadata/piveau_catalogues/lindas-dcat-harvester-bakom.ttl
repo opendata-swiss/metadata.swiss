@@ -1,0 +1,35 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/lindas-dcat-harvester-bakom> a dcat:Catalog ;
+    dcterms:created "2024-07-03T07:25:25.235837"^^xsd:dateTime ;
+    dcterms:description """Telefonieren, sich via Presse, Radio oder Fernsehen informieren, E-Mails oder SMS schreiben und empfangen, im Internet surfen – für diese alltäglichen Tätigkeiten braucht es eine leistungsfähige Kommunikationsinfrastruktur. Das BAKOM trägt dazu bei, dass die Bevölkerung und die Wirtschaft in allen Landesteilen über angemessene und kompetitive Telekommunikationsdienste verfügen. Das Amt ermöglicht, dass sich Radio-und Fernsehnutzer auf lokaler Ebene über regionale Sender und auf nationaler Ebene über die Programme der SRG informieren können. Es verteilt auch die Erträge aus den Radio-und Fernsehgebühren gerecht auf alle Regionen der Schweiz. Im Postbereich sorgt es dafür, dass Zeitungen und Zeitschriften von günstigen Versandkosten profitieren. \r
+Weiter gewährleistet es über die Frequenzverwaltung und -zuteilung für Radio, Mobilfunk und drahtlose Geräte eine störungsfreie Kommunikation. \r
+Mit seiner Aufsichtstätigkeit trägt das BAKOM auch zum Schutz der Konsumentinnen und Konsumenten bei: Es überwacht das Einhalten der gesetzlichen Bestimmungen, sei es bei der Radio-und Fernsehwerbung, den Mehrwertdiensten, die über 090x-Nummern angeboten werden, oder bei der Frequenznutzung."""@de,
+        """Every day we read the paper, pick up the phone, write and send emails and text messages, surf online, listen to the radio and watch TV. In order to be able to use all these services, there has to be a stable and powerful communications infrastructure in place. OFCOM helps to ensure that the population and businesses in all parts of the country have access to adequate and competitive tele-communications services. \r
+OFCOM makes it possible for radio and television users at local level to access regional stations and the SRG’s programmes at national level. It also distributes the revenues from television and radio licence fees fairly among all regions in Switzerland. In the postal sector, OFCOM makes sure that newspapers and magazines benefit from reduced postage rates. It also manages and allocates frequencies for radio stations, mobile and wireless devices to ensure interference-free communication. \r
+OFCOM’s oversight responsibilities include consumer protection. It monitors compliance with statutory provisions for radio and television advertising, value-added services which are offered with 090x numbers and for use of frequencies."""@en,
+        """Téléphoner, s’informer par les journaux, la radio ou la télévision, échanger des courriels ou des SMS, surfer sur Internet : autant d’activités quotidiennes qui dépendent d’une infrastructure de communication performante. L’OFCOM contribue à ce que la population et l’économie disposent de services de télécommunication appropriés et compétitifs.\r
+L’office veille à ce que les auditeurs et téléspectateurs puissent s’informer dans leur région, grâce aux diffuseurs régionaux, et au niveau national, par les programmes de la SSR. Il répartit équitablement le produit de la redevance radio et TV entre toutes les régions de Suisse. Dans le domaine postal, il permet aux journaux et périodiques de bénéficier de prix préférentiels.\r
+L’OFCOM gère les fréquences pour que les stations de radio, les téléphones mobiles et les appareils sans fil puissent communiquer sans perturbation.\r
+Grâce à ses activités de surveillance, il participe aussi à la protection des consommateurs : il vérifie que les dispositions légales sont respectées, par exemple en matière de publicité dans les programmes radio et TV, dans le domaine des services à valeur ajoutée proposés par téléphone sur des numéros 090x ou dans l’usage des fréquences."""@fr,
+        """Ogni giorno parliamo al telefono, ci teniamo informati attraverso la stampa, la radio e la televisione, scriviamo e-mail o SMS e navighiamo in Internet. Per svolgere tutte queste attività occorre un’infrastruttura di comunicazione performante. L’UFCOM contribuisce affinché la popolazione e l’economia dispongano di servizi di telecomunicazione adeguati e competitivi. \r
+L’Ufficio permette ai telespettatori e ai radioascoltatori di informarsi a livello locale, grazie alle emittenti regionali, e a livello nazionale, attraverso i programmi della SSR. Ripartisce equamente i proventi derivanti dai canoni radiotelevisivi tra le regioni della Svizzera. Nel settore postale, offre a giornali e periodici la possibilità di beneficiare di riduzioni sui prezzi di spedizione. \r
+L’UFCOM gestisce le frequenze affinché le stazioni radiofoniche, i telefoni cellulari e gli apparecchi senza fili possano comunicare senza interferenze. \r
+Grazie alla sua attività di vigilanza l’UFCOM contribuisce inoltre alla tutela dei consumatori, verificando il rispetto delle disposizioni legali vigenti, in ambiti quali la pubblicità nei programmi radiotelevisivi, i servizi a valore aggiunto offerti tramite i numeri telefonici 090x o l’utilizzazione delle frequenze."""@it ;
+    dcterms:modified "2024-07-05T07:48:07.719067"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Bundesamt für Kommunikation BAKOM"@de,
+                "Federal Office of Communications OFCOM"@en,
+                "Office fédéral de la communication OFCOM"@fr,
+                "Ufficio federale delle comunicazioni UFCOM"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Kommunikation BAKOM"@de,
+        "Federal Office of Communications OFCOM"@en,
+        "Office fédéral de la communication OFCOM"@fr,
+        "Ufficio federale delle comunicazioni UFCOM"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

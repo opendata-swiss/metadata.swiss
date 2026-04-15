@@ -1,0 +1,27 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-identitas> a dcat:Catalog ;
+    dcterms:created "2021-05-10T11:44:20.945493"^^xsd:dateTime ;
+    dcterms:description """Identitas AG entwickelt und betreibt Applikationen zur Identifizierung, Registrierung und zum Monitoring von Nutz- und Heimtieren. Als führender Schweizer IT-Dienstleister für Daten rund um das Tier und den Pflanzenbau schaffen wir Mehrwert für gesunde Tiere und sichere Lebensmittel. An unserem Sitz in Bern beschäftigen wir rund 110 Mitarbeitende.\r
+"""@de,
+        "Identitas AG develops and operates software for the identitfication, registration and monitoring of livestock and companion animals in Switzerland. As leader provider of IT services in Switzerland for data regarding animals and crops, we contribute to creating added value for animal health/ welfare and safe food. About 110 employees work in our headquarters in Berne."@en,
+        "Identitas AG développe et exploite des applications pour l'identification, l'enregistrement et la surveillance des animaux de rente et de compagnie. En tant que prestataire leader de services IT en Suisse pour les données en rapport avec les animaux et la production végétale, nous contribuons à la création de valeur ajoutée pour la santé et le bien-être animale et pour la sécurité des denrées alimentaires. A notre siège à Berne, nous employons environ 110 collaborateurs."@fr,
+        """Identitas AG sviluppa e gestisce applicazioni per l'identificazione, la registrazione e il monitoraggio degli animali da reddito e da compagnia. In qualità di fornitore di servizi informatici leader in Svizzera per i dati relativi agli animali e alla produzione vegetale, contribuiamo alla creazione di valore aggiunto per la salute e il benessere degli animali e la sicurezza alimentare. Nella nostra sede centrale di Berna abbiamo circa 110 dipendenti.\r
+"""@it ;
+    dcterms:modified "2021-09-29T07:15:42.781644"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <http://www.identitas.ch> ;
+            foaf:name "Identitas AG"@de,
+                "Identitas AG"@en,
+                "Identitas AG"@fr,
+                "Identitas AG"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Identitas AG"@de,
+        "Identitas AG"@en,
+        "Identitas AG"@fr,
+        "Identitas AG"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

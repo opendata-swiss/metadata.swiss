@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/envidat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-06-15T14:18:50.817996"^^xsd:dateTime ;
+    dcterms:description "EnviDat ist das Datenportal der WSL für einen einheitlichen und verwalteten Zugang zu Umweltdaten aus Monitoring- und Forschungsprojekten. Auf dem Portal können Datensätze gehostet und veröffentlicht werden. Durch die weltweite Bereitstellung einzigartiger und wertvoller Datensätze leistet EnviDat einen Beitrag zur Forschung im Bereich der Umweltwissenschaften."@de,
+        "EnviDat is the WSL data portal providing unified and managed access to environmental monitoring and research data. The portal has the capability to host and publish data sets. Through the sharing of unique and high-value data sets worldwide, EnviDat fosters research and contributes to advancing environmental science."@en,
+        "EnviDat est le portail de données du WSL; il offre un accès uniformisé et réglementé aux données de surveillance et de recherche en matière d’environnement. Ce portail est capable d’héberger et de publier des ensembles de données précieuses et uniques, qui sont partagées aux quatre coins de la planète. Ce faisant, EnviDat favorise la recherche et contribue à l’avancement des sciences environnementales."@fr,
+        "EnviDat è il portale dati del WSL che fornisce un accesso unificato e gestito ai dati di monitoraggio ambientale e di ricerca. Il portale ha la capacità di ospitare e pubblicare serie di dati preziosi e unici che vengono condivisi in tutto il mondo. Così facendo, EnviDat promuove la ricerca e contribuisce al progresso della scienza ambientale."@it ;
+    dcterms:modified "2022-05-25T12:07:22.711641"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.envidat.ch/> ;
+            foaf:name "EnviDat: das Umwelt-Datenportal"@de,
+                "EnviDat: the Environmental Data Portal"@en,
+                "EnviDat: le portail de données environnementales"@fr,
+                "EnviDat: il portale dei dati ambientali"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "EnviDat: das Umwelt-Datenportal"@de,
+        "EnviDat: the Environmental Data Portal"@en,
+        "EnviDat: le portail de données environnementales"@fr,
+        "EnviDat: il portale dei dati ambientali"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

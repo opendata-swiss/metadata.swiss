@@ -7,9 +7,8 @@ set +a
 
 set -eu
 
-curl -i -X PUT -H "X-API-Key: ${PIVEAU_HUB_API_KEY}" -H "Content-Type: text/turtle" --data @piveau_catalogues/data-staatskanzlei-kanton-zuerich.ttl "${HUB_REPO_ENDPOINT}/catalogues/staatskanzlei-kanton-zuerich"
-curl -i -X PUT -H "X-API-Key: ${PIVEAU_HUB_API_KEY}" -H "Content-Type: text/turtle" --data @piveau_catalogues/data-bafu.ttl "${HUB_REPO_ENDPOINT}/catalogues/bafu"
-curl -i -X PUT -H "X-API-Key: ${PIVEAU_HUB_API_KEY}" -H "Content-Type: text/turtle" --data @piveau_catalogues/data-stadt-winterthur.ttl "${HUB_REPO_ENDPOINT}/catalogues/stadt-winterthur-geocat"
 
-# Catalog for showcases
-curl -i -X PUT -H "X-API-Key: ${PIVEAU_HUB_API_KEY}" -H "Content-Type: text/turtle" --data @piveau_catalogues/showcases-ods.ttl "${HUB_REPO_ENDPOINT}/catalogues/showcases-ods"
+for file in piveau_catalogues/*.ttl; do
+    echo "Uploading $file to ${HUB_REPO_ENDPOINT}/catalogues/$(basename "$file" .ttl)"
+    curl -i -X PUT -H "X-API-Key: ${PIVEAU_HUB_API_KEY}" -H "Content-Type: text/turtle" --data @"$file" "${HUB_REPO_ENDPOINT}/catalogues/$(basename "$file" .ttl)"
+done

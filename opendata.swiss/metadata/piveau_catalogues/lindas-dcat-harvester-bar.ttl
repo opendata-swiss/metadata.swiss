@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/lindas-dcat-harvester-bar> a dcat:Catalog ;
+    dcterms:created "2021-12-14T13:06:55.586165"^^xsd:dateTime ;
+    dcterms:description "Das Schweizerische Bundesarchiv ist das Dienstleistungs- und Kompetenzzentrum des Bundes für nachhaltiges Informationsmanagement. Es bewertet, sichert, erschliesst und vermittelt archivwürdige Unterlagen der Schweizerischen Eidgenossenschaft."@de,
+        "The Swiss Federal Archives (SFA) are the Confederation's service and competence centre for lasting information management. They appraise, secure, describe and provide access to archive-worthy records of the Swiss Confederation. "@en,
+        "En tant que centre de prestations et de compétences de la Confédération pour une gestion durable de l'information, les Archives fédérales suisses évaluent, prennent en charge, mettent en valeur et communiquent tous les documents de la Confédération suisse qui ont une valeur archivistique. "@fr,
+        "L'Archivio federale svizzero è il centro di servizio e competenza della Confederazione per la gestione a lungo termine delle informazioni. In questa funzione è incaricato di valutare, salvaguardare, catalogare e rendere accessibili i documenti di valore archivistico della Confederazione Svizzera."@it ;
+    dcterms:modified "2024-05-06T08:27:36.825075"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.bar.admin.ch> ;
+            foaf:name "Schweizerisches Bundesarchiv BAR"@de,
+                "Swiss Federal Archives SFA"@en,
+                "Archives fédérales suisses AFS"@fr,
+                "Archivio federale svizzero AFS"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Schweizerisches Bundesarchiv BAR"@de,
+        "Swiss Federal Archives SFA"@en,
+        "Archives fédérales suisses AFS"@fr,
+        "Archivio federale svizzero AFS"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

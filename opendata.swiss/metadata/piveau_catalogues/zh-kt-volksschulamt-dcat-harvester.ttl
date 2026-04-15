@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh-kt-volksschulamt-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2021-10-04T13:46:14.389000"^^xsd:dateTime ;
+    dcterms:description "Das Volksschulamt ist zuständig für schulorganisatorische Aufgaben und die Verwaltung des Lehrpersonals. Die Abteilungen unterstützen die Schulen in der Personaladministration, in Fragen zu Unterricht, Lehrplan und Lehrmitteln. Sie übernehmen Koordinations-, Aufsichts- und Beratungsaufgaben für den Sonderschulbereich. Sie beraten Behörden, Schulleitungen und Schulverwaltungen."@de ;
+    dcterms:modified "2025-10-30T12:30:19.970294"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/bildungsdirektion/volksschulamt.html> ;
+            foaf:name "Volksschulamt Kanton Zürich"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Volksschulamt Kanton Zürich"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

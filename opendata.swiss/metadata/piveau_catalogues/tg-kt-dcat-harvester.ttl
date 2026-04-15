@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/tg-kt-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2022-02-28T11:02:15.273438"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Thurgau veröffentlicht hier schrittweise OGD-Datensätze der kantonalen Verwaltung."@de ;
+    dcterms:modified "2022-03-03T15:45:14.373774"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://ogd.tg.ch> ;
+            foaf:name "Kanton Thurgau"@de,
+                "Canton of Thurgau"@en,
+                "Canton de Thurgovie"@fr,
+                "Cantone di Turgovia"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Thurgau"@de,
+        "Canton of Thurgau"@en,
+        "Canton de Thurgovie"@fr,
+        "Cantone di Turgovia"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

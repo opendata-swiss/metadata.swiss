@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-efv> a dcat:Catalog ;
+    dcterms:created "2025-07-15T08:24:29.810488"^^xsd:dateTime ;
+    dcterms:description "Die Eidgenössische Finanzverwaltung (EFV) ist für den Voranschlag, den Finanzplan und die Rechnungslegung verantwortlich, beurteilt die ausgabenwirksamen Vorhaben aller Departemente, entwickelt finanzpolitische Konzepte, ist für die Statistik der öffentlichen Haushalte der Schweiz zuständig und führt den bundesstaatlichen Finanzausgleich. Sie stellt die ständige Zahlungsbereitschaft des Bundes sicher und ist für die Mittelbeschaffung und Anlagen am Geld- und Kapitalmarkt verantwortlich."@de,
+        "The Federal Finance Administration (FFA) is responsible for the budget, the financial plan, and accounting; it evaluates the projects of all departments involving expenditures, develops financial policy concepts, is responsible for the statistics on the public budgets of Switzerland, and administers federal fiscal equalisation. It ensures the permanent liquidity of the Federal Government and is responsible for raising funds and investing on the money and capital markets."@en,
+        "L’Administration fédérale des finances (AFF) est responsable du budget, du plan financier et de l’établissement des comptes. Elle se prononce sur tous les projets des départements susceptibles d’entraîner des dépenses, développe des solutions en matière de politique budgétaire, établit la statistique des finances publiques en Suisse et applique la péréquation financière à l’échelon fédéral. Elle veille en outre à la solvabilité permanente de la Confédération, se procure les fonds nécessaires et se charge des placements sur le marché monétaire et sur le marché des capitaux."@fr,
+        "L'Amministrazione federale delle finanze (AFF) è responsabile per il preventivo, il piano finanziario e la presentazione dei conti della Confederazione, valuta i progetti di tutti i dipartimenti con ripercussioni sulle uscite e sviluppa progetti politico-finanziari. L’AFF è altresì responsabile per la statistica delle amministrazioni pubbliche in Svizzera e gestisce la perequazione finanziaria a livello federale. Essa garantisce in ogni momento la solvibilità della Confederazione e provvede alla raccolta di fondi e agli investimenti nel mercato monetario e dei capitali."@it ;
+    dcterms:modified "2025-07-22T14:15:17.215879"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.efv.admin.ch/efv/de/home.html> ;
+            foaf:name "Eidgenössische Finanzverwaltung EFV"@de,
+                "Federal Finance Administration FFA"@en,
+                "Administration fédérale des finances AFF"@fr,
+                "Amministrazione federale delle finanze AFF"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Eidgenössische Finanzverwaltung EFV"@de,
+        "Federal Finance Administration FFA"@en,
+        "Administration fédérale des finances AFF"@fr,
+        "Amministrazione federale delle finanze AFF"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

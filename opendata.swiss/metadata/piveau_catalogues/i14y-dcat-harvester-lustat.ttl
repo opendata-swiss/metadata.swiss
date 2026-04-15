@@ -1,0 +1,29 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-harvester-lustat> a dcat:Catalog ;
+    dcterms:created "2024-12-02T14:34:00.946352"^^xsd:dateTime ;
+    dcterms:description """LUSTAT Statistik Luzern ist das Kompetenz- und Dienstleistungszentrum der öffentlichen Statistik im Kanton Luzern. Mit ihren objektiven statistischen Informationen begleitet LUSTAT Meinungsbildungs- und Entscheidungsprozesse in Politik, Verwaltung, Gesellschaft und Wirtschaft.  \r
+LUSTAT Statistik Luzern veröffentlicht hier schrittweise geeignete Datensammlungen der kantonalen Statistik als OGD-Daten."""@de,
+        """LUSTAT Statistics Lucerne is the competence and service center for public statistics in the Canton of Lucerne. With its objective statistical information, LUSTAT accompanies opinion-forming and decision-making processes in politics, administration, society and business.  \r
+LUSTAT Statistics Lucerne is gradually publishing here suitable datasets from the cantonal statistics as OGD data."""@en,
+        """LUSTAT statistique Lucerne est le centre de compétences et de services pour la statistique publique du canton de Lucerne. Avec ses informations statistiques objectives, LUSTAT accompagne les processus de formation d'opinion et de prise de décision dans la politique, l'administration, la société et les affaires.  \r
+LUSTAT statistique Lucerne publie ici progressivement des jeux de données appropriées de la statistique cantonale sous forme de données OGD."""@fr,
+        """LUSTAT statistica Lucerna è il centro di competenza e servizi per la statistica pubblica nel cantone di Lucerna. Con le sue informazioni statistiche oggettive, LUSTAT accompagna i processi di formazione delle opinioni e decisionali in politica, amministrazione, società e affari.  \r
+LUSTAT statistica Lucerna sta gradualmente pubblicando qui oportuni set di dati della statistica cantonale come dati OGD."""@it ;
+    dcterms:modified "2024-12-02T14:52:32.906599"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.lustat.ch> ;
+            foaf:name "LUSTAT Statistik Luzern"@de,
+                "LUSTAT Statistics Lucerne"@en,
+                "LUSTAT statistique Lucerne"@fr,
+                "LUSTAT statistica Lucerna"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "LUSTAT Statistik Luzern"@de,
+        "LUSTAT Statistics Lucerne"@en,
+        "LUSTAT statistique Lucerne"@fr,
+        "LUSTAT statistica Lucerna"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

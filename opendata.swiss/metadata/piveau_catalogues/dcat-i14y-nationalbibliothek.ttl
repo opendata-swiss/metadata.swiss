@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-i14y-nationalbibliothek> a dcat:Catalog ;
+    dcterms:created "2025-05-05T07:42:04.648927"^^xsd:dateTime ;
+    dcterms:description "Sammelt alle Schweizer Publikationen seit 1848. Ebenfalls zur Nationalbibliothek gehören das Schweizerische Literaturarchiv, die Graphische Sammlung, die Schweizerische Nationalphonothek und das Centre Dürrenmatt."@de,
+        "Collects all Swiss publications since 1848. The Swiss Literary Archives, the Cabinet of Prints and Drawings, the Swiss National Sound Archives and the Centre Dürrenmatt also belong to the National Library."@en,
+        "Collecte l’ensemble des publications suisses depuis 1848. Les Archives littéraires suisses, le Cabinet des estampes, la Phonothèque Nationale Suisse et le Centre Dürrenmatt font également partie de la Bibliothèque nationale."@fr,
+        "Colleziona tutte le pubblicazioni a partire dal 1848. Alla Biblioteca nazionale sono accorpati l'Archivio svizzero di letteratura, il Gabinetto delle stampe,  la Fonoteca Nazionale Svizzera e il Centre Dürrenmatt."@it ;
+    dcterms:modified "2025-05-16T11:24:22.345911"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.nb.admin.ch> ;
+            foaf:name "Schweizerische Nationalbibliothek NB"@de,
+                "Swiss National Library NL"@en,
+                "Bibliothèque nationale suisse BN"@fr,
+                "Biblioteca nazionale svizzera BN"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Schweizerische Nationalbibliothek NB"@de,
+        "Swiss National Library NL"@en,
+        "Bibliothèque nationale suisse BN"@fr,
+        "Biblioteca nazionale svizzera BN"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,66 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/sbb-dcat-harvester> a dcat:Catalog ;
+    dcterms:created "2019-02-04T12:41:22.248082"^^xsd:dateTime ;
+    dcterms:description """Die SBB ist das Rückgrat einer nachhaltigen Mobilität in der Schweiz. Täglich sind 1,18 Millionen Reisende und 210'000 Tonnen Güter mit der SBB sicher, pünktlich und umweltfreundlich unterwegs.\r
+\r
+Die Eisenbahn verbindet die Schweiz über alle sprachlichen, kulturellen und politischen Grenzen hinweg und leistet in wirtschaftlicher und gesellschaftlicher Hinsicht einen überaus wertvollen Beitrag an die Lebensqualität und Wettbewerbsfähigkeit unseres Landes. Die SBB ist aber weit mehr als ein modernes und leistungsfähiges Bahnunternehmen. Auch als Arbeits- und Auftraggeberin sowie als Immobilienbesitzerin und ‑bewirtschafterin übernimmt sie Verantwortung für die Schweiz, ihre Regionen und die Umwelt."""@de,
+        """SBB is the backbone of sustainable mobility in Switzerland. Every day, it safely transports 1.18 million passengers and 210,000 tonnes of freight on time and in an environmentally friendly manner. \r
+\r
+\r
+The railway transcends all linguistic, cultural and political boundaries to bring Switzerland together, and in economic and social terms, it makes a vital contribution to the quality of life and competitiveness of our country. However, SBB is much more than just a modern, efficient railway company. As an employer and contractor, a property owner and a real estate manager, SBB takes responsibility for Switzerland, its regions and the environment. \r
+"""@en,
+        """Les CFF sont l’un des piliers d’une mobilité durable en Suisse. Chaque jour, les CFF acheminent 1,18 million de voyageurs et 210 000 tonnes de marchandises, de manière ponctuelle et respectueuse de l’environnement.\r
+\r
+\r
+Le chemin de fer crée des liens à travers toute la Suisse, par-delà les frontières linguistiques, culturelles et politiques. Du point de vue économique et social, il contribue ainsi à la qualité de vie et à la compétitivité de notre pays. Mais les CFF ne sont pas qu’une entreprise de chemin de fer moderne et performante. En leur qualité d’employeur, de commanditaire, de propriétaire et de gérant d’immeubles, ils sont responsables de la Suisse, de ses régions et de l’environnement.\r
+"""@fr,
+        """Le FFS assumono la loro responsabilità. \r
+\r
+ \r
+\r
+\r
+\r
+Consigliare ad altri\r
+\r
+\r
+Condividere\r
+\r
+\r
+\r
+\r
+\r
+\r
+\r
+\r
+\r
+\r
+ \r
+\r
+\r
+\r
+ \r
+\r
+\r
+Le FFS sono la colonna portante della mobilità sostenibile in Svizzera. Ogni giorno 1,18 milioni di viaggiatori e quasi 210 000 tonnellate di merci viaggiano con le FFS in modo sicuro, puntuale e rispettoso dell'ambiente.\r
+\r
+\r
+La ferrovia unisce la Svizzera oltre i confini linguistici, culturali e politici e dal punto di vista economico e sociale assicura un contributo oltremodo prezioso alla qualità di vita e alla competitività del nostro Paese. Le FFS tuttavia sono ben più di un'impresa ferroviaria moderna e altamente performante. Esse assumono la loro responsalibità per la Svizzera, le sue regioni e l'ambiente anche come datore di lavoro, di committenti, così come di proprietarie e amministratrici di fondi e di immobili.\r
+"""@it ;
+    dcterms:modified "2021-06-14T11:52:52.388889"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Schweizerische Bundesbahnen SBB"@de,
+                "Swiss Federal Railways SBB"@en,
+                "Chemins de fer fédéraux suisses CFF"@fr,
+                "Ferrovie federali svizzere FFS"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Schweizerische Bundesbahnen SBB"@de,
+        "Swiss Federal Railways SBB"@en,
+        "Chemins de fer fédéraux suisses CFF"@fr,
+        "Ferrovie federali svizzere FFS"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-swiss-emobility> a dcat:Catalog ;
+    dcterms:created "2025-04-07T13:55:16.308416"^^xsd:dateTime ;
+    dcterms:description "Der Verband Swiss eMobility wurde 2012 gegründet. Swiss eMobility unterstützt die Schaffung der politischen und institutionellen Grundlagen für die Entwicklung der Elektromobilität in der Schweiz. Er tritt ein für die Wahrung der Interessen seiner Mitglieder im Zusammenhang mit der Elektromobilität. Er befasst sich mit wirtschaftlichen, rechtlichen, technischen, strukturellen, ökologischen und sozialen Fragen der Elektromobilität, gibt Empfehlungen ab und trifft Massnahmen zuhanden von Behörden und Parlamenten. Swiss eMobility steht grundsätzlich allen interessierten Einzelpersonen, Unternehmen und Institutionen offen, die sich für die Marktentwicklung der Elektromobilität in der Schweiz einsetzen. Weitere Informationen finden Sie auf [unserer Webseite](www.swiss-emobility.ch\"Swiss eMobility\")."@de,
+        "The Swiss eMobility association was founded in 2012. Swiss eMobility supports the creation of political and institutional foundations for the development of electromobility in Switzerland. It advocates for the interests of its members in relation to electromobility. It addresses economic, legal, technical, structural, ecological, and social issues of electromobility, provides recommendations, and takes measures directed at authorities and parliaments. Swiss eMobility is generally open to all interested individuals, companies, and institutions committed to developing the electromobility market in Switzerland. For more information, please visit [our website](www.swiss-emobility.ch\"Swiss eMobility\")."@en,
+        "L'association Swiss eMobility a été fondée en 2012. Swiss eMobility soutient la création des bases politiques et institutionnelles pour le développement de l'électromobilité en Suisse. Elle défend les intérêts de ses membres en lien avec l'électromobilité. Elle traite des questions économiques, juridiques, techniques, structurelles, écologiques et sociales liées à l'électromobilité, émet des recommandations et prend des mesures à l'intention des autorités et des parlements. Swiss eMobility est en principe ouverte à toutes les personnes, entreprises et institutions intéressées par le développement du marché de l'électromobilité en Suisse. Vous trouverez plus d'informations sur [notre site internet](www.swiss-emobility.ch\"Swiss eMobility\")"@fr,
+        "L'associazione Swiss eMobility è stata fondata nel 2012. Swiss eMobility sostiene la creazione delle basi politiche e istituzionali per lo sviluppo della mobilità elettrica in Svizzera. Difende gli interessi dei suoi membri in relazione alla mobilità elettrica. Si occupa di questioni economiche, legali, tecniche, strutturali, ecologiche e sociali relative alla mobilità elettrica, fornisce raccomandazioni e adotta misure destinate alle autorità e ai parlamenti. Swiss eMobility è fondamentalmente aperta a tutte le persone, aziende e istituzioni interessate allo sviluppo del mercato della mobilità elettrica in Svizzera. Ulteriori informazioni sono disponibili su [il nostro sito web](www.swiss-emobility.ch\"Swiss eMobility\")."@it ;
+    dcterms:modified "2025-05-16T11:24:45.204921"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.swiss-emobility.ch> ;
+            foaf:name "Swiss eMobility"@de,
+                "Swiss eMobility"@en,
+                "Swiss eMobility"@fr,
+                "Swiss eMobility"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Swiss eMobility"@de,
+        "Swiss eMobility"@en,
+        "Swiss eMobility"@fr,
+        "Swiss eMobility"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,56 @@
+{
+  "header": {
+    "id": "06a3eff0-386e-4d47-9afa-6257f3480aa6",
+    "name": "bs-kanton-stadt-dcat-harvester",
+    "title": "BS Kanton Stadt - DCAT Harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://data.bs.ch/api/v2/catalog/exports/dcat_ap_ch?where=tags:%22opendata.swiss%22",
+            "catalogue": "bs-kanton-stadt-dcat-harvester",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Canton of Basel-City"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-filter",
+          "segmentNumber": 2,
+          "title": "Filtering",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "org_id": "kanton-basel-stadt",
+            "catalogue": "bs-kanton-stadt-dcat-harvester",
+            "preProcessing": true
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 3,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

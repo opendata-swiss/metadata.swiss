@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-blw> a dcat:Catalog ;
+    dcterms:created "2025-04-09T06:43:41.671037"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Landwirtschaft (BLW) ist das Kompetenzzentrum des Bundes für den Agrarsektor. Es setzt sich für eine multifunktionale Landwirtschaft ein."@de,
+        "The Federal Office for Agriculture (FOAG) is the Confederation's competence center for all core issues relating to the agricultural sector. The FOAG promotes multifunctional agriculture."@en,
+        "L’Office fédéral de l’agriculture (OFAG) est le centre de compétence de la Confédération pour les questions relevant du secteur agricole. Il œuvre pour une agriculture multifonctionnelle."@fr,
+        "L’Ufficio federale dell’agricoltura (UFAG) è il centro di competenza della Confederazione per le questioni inerenti al settore agricolo. Esso si impegna per un'agricoltura multifunzionale."@it ;
+    dcterms:modified "2025-04-11T09:08:53.083614"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Bundesamt für Landwirtschaft BLW"@de,
+                "Federal Office for Agriculture FOAG"@en,
+                "Office fédéral de l'agriculture OFAG"@fr,
+                "Ufficio federale dell'agricoltura UFAG"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Landwirtschaft BLW"@de,
+        "Federal Office for Agriculture FOAG"@en,
+        "Office fédéral de l'agriculture OFAG"@fr,
+        "Ufficio federale dell'agricoltura UFAG"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
