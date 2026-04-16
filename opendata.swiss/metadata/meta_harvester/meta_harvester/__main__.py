@@ -94,6 +94,7 @@ def create_single_catalogue(name: str, file_path: str | None = None) -> None:
 def generate_pipe(
     id: str,
     name: str,
+    org_id: str,
     org_name: str,
     catalogue: str,
     title: str,
@@ -107,6 +108,7 @@ def generate_pipe(
     Args:
         id            (str): The ID of the pipe.
         name          (str): The name of the pipe, used as the output filename.
+        org_id        (str): The ID of the organization.
         org_name      (str): The name of the organization.
         catalogue     (str): The name of the associated catalogue.
         title         (str): The human-readable title of the pipe.
@@ -124,6 +126,12 @@ def generate_pipe(
     data["body"]["segments"][0]["body"]["config"]["address"] = http_client
     data["body"]["segments"][0]["body"]["config"]["catalogue"] = catalogue
     data["body"]["segments"][0]["body"]["config"]["org_name"] = org_name
+
+    for segment in data["body"]["segments"]:
+        if segment["header"]["name"] == "piveau-consus-filter":
+            segment["body"]["config"]["org_id"] = org_id
+            segment["body"]["config"]["catalogue"] = catalogue
+
 
     output_file = Path(output_path) / f"{name}.json"
 
@@ -283,6 +291,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             output_file =generate_pipe(
                 id=id,
                 name=details["name"],
+                org_id = org_id,
                 org_name=org_titles.get("en", "unknown_org"),
                 catalogue=catalogue_name,
                 title=details["title"],
@@ -291,9 +300,9 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             )
 
         pipe_names.append(details["name"])
-        if cluster:
-            piveau_run_client = PiveauRunClient()
-            piveau_run_client.upload_pipe(pipe_file=output_file)
+        # if cluster:
+        #     piveau_run_client = PiveauRunClient()
+        #     piveau_run_client.upload_pipe(pipe_file=output_file)
     
 
     # pair each pipe name with a date with 5 minutes difference, starting from now, to create staggered triggers    
