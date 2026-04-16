@@ -29,6 +29,9 @@ const { data, error } = await useAsyncData('handbook-search', async () => {
   const [sections, pages] = await Promise.all([
     queryCollectionSearchSections('handbook'),
     queryCollection('handbook')
+      .orWhere(sub =>
+        sub.where('active', 'IS NULL').where('active', '=', true),
+      )
       .select('path', 'title', 'parent', 'slug')
       .all(),
   ])

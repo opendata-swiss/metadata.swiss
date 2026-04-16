@@ -80,6 +80,9 @@ const onSearch = (value: string) => {
 
 const { data: articles } = await useAsyncData('handbook-articles', () =>
   queryCollection('handbook')
+    .orWhere(sub =>
+      sub.where('active', 'IS NULL').where('active', '=', true),
+    )
     .all(),
 )
 

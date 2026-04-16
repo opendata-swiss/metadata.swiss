@@ -40,6 +40,7 @@ export default defineContentConfig({
       source: sourcesFor('handbook/**/*.md'),
       type: 'page',
       schema: z.object({
+        active: z.boolean(),
         title: z.string(),
         breadcrumb_title: z.string().optional(),
         slug: z.string(),
