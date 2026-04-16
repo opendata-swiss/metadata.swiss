@@ -168,6 +168,33 @@ def generate_catalogue_metadata(
     g.serialize(destination=output_file, format="turtle")
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
+
+def generate_bulk_triggers(pipe_names: list) -> None:
+    # pair each pipe name with a date with 5 minutes difference, starting from now, to create staggered triggers    
+    start_time = datetime.now()
+    staggered_triggers = {}
+    for i, pipe_name in enumerate(pipe_names):
+        trigger_time = start_time + timedelta(minutes=5 * (i+1))
+        trigger_time = trigger_time.astimezone(timezone.utc)
+        staggered_triggers[pipe_name] = trigger_time.strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+    with open(f"{TRIGGERS_PATH}/bulk.json", "w") as trigger_file:
+        json.dump({
+            trigger: [
+                {
+                    "interval": {
+                        "value": 1,
+                        "unit": "DAY"
+                    },
+                    "id": f"{trigger}-trigger",
+                    "status": "enabled",
+                    "next": staggered_triggers[trigger]
+                }
+            ]
+            for trigger in staggered_triggers
+        }, trigger_file, indent=2)
+
+
 # run this locally and push the generated files to repo
 def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True) -> None:
     """
@@ -247,7 +274,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
             )
 
         if pipes:
-            output_file =generate_pipe(
+            generate_pipe(
                 id=id,
                 name=details["name"],
                 org_id = org_id,
@@ -257,33 +284,11 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 http_client=url,
                 template_file=template_files.get(type, "meta_harvester/pipe-template.yaml")
             )
-
-        pipe_names.append(details["name"])
+            pipe_names.append(details["name"])
     
+    if pipes:
+        generate_bulk_triggers(pipe_names)
 
-    # pair each pipe name with a date with 5 minutes difference, starting from now, to create staggered triggers    
-    start_time = datetime.now()
-    staggered_triggers = {}
-    for i, pipe_name in enumerate(pipe_names):
-        trigger_time = start_time + timedelta(minutes=5 * (i+1))
-        trigger_time = trigger_time.astimezone(timezone.utc)
-        staggered_triggers[pipe_name] = trigger_time.strftime("%Y-%m-%dT%H:%M:%S.000Z")
-
-    with open(f"{TRIGGERS_PATH}/bulk.json", "w") as trigger_file:
-        json.dump({
-            trigger: [
-                {
-                    "interval": {
-                        "value": 1,
-                        "unit": "DAY"
-                    },
-                    "id": f"{trigger}-trigger",
-                    "status": "enabled",
-                    "next": staggered_triggers[trigger]
-                }
-            ]
-            for trigger in staggered_triggers
-        }, trigger_file, indent=2)
 
 
 

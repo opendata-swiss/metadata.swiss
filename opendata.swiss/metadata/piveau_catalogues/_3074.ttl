@@ -9,7 +9,7 @@
 \r
 Weitere Informationen unter https://zg.ch/opendata\r
 """@de ;
-    dcterms:modified "2025-09-10T14:48:58.682039"^^xsd:dateTime ;
+    dcterms:modified "2026-03-26T10:46:16.885996"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <> ;
             foaf:name "Kanton Zug"@de,
