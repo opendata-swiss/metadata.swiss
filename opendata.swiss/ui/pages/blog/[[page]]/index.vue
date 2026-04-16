@@ -1,10 +1,12 @@
 <script setup>
-import OdsPage from '../../app/components/OdsPage.vue'
-import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
-import SvgIcon from '../../app/components/SvgIcon.vue'
-import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
-import OdsCard from '../../app/components/OdsCard.vue'
-import OdsPagination from '../../app/components/OdsPagination.vue'
+import OdsPage from '../../../app/components/OdsPage.vue'
+import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs.js'
+import SvgIcon from '../../../app/components/SvgIcon.vue'
+import OdsBreadcrumbs from '../../../app/components/OdsBreadcrumbs.vue'
+import OdsCard from '../../../app/components/OdsCard.vue'
+import OdsPagination from '../../../app/components/OdsPagination.vue'
+import OdsSearchPanel from '../../../app/components/OdsSearchPanel.vue'
+import { useRouter } from 'vue-router'
 
 const route = useRoute()
 const { locale, t } = useI18n()
@@ -52,27 +54,63 @@ const breadcrumbs = [
     path: '/blog',
   },
 ]
+
+const searchInput = ref('')
+const router = useRouter()
+const onSearch = (value) => {
+  router.push(localePath({
+    path: '/blog/search',
+    query: { q: value.trim() },
+  }))
+}
 </script>
 
 <template>
   <OdsPage>
     <template #header>
-      <OdsBreadcrumbs :breadcrumbs="breadcrumbs"/>
+      <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
+    <OdsSearchPanel
+      v-model:search-input="searchInput"
+      aside
+      :search-prompt="t('message.blog.search_prompt')"
+      @search="onSearch"
+    />
     <section class="section section--default">
       <div class="container gap--responsive">
-        <div class="search-results search-results--grid" aria-live="polite" aria-busy="false">
+        <div
+          class="search-results search-results--grid"
+          aria-live="polite"
+          aria-busy="false"
+        >
           <ul class="search-results-list">
-            <li v-for="post in posts" :key="post.id">
-              <OdsCard :title="post.title" type="universal" clickable>
+            <li
+              v-for="post in posts"
+              :key="post.id"
+            >
+              <OdsCard
+                :title="post.title"
+                type="universal"
+                clickable
+              >
                 <template #top-meta>
-                  <NuxtTime class="meta-info__item" :datetime="new Date(post.date)" relative />
+                  <NuxtTime
+                    class="meta-info__item"
+                    :datetime="new Date(post.date)"
+                    relative
+                  />
                 </template>
                 <template #footer-action>
                   <NuxtLinkLocale
                     :to="{ name: 'blog-year-month-slug', params: { year: post.year, month: post.month, slug: post.slug } }"
-                    type="false" class="btn btn--outline btn--icon-only" aria-label="false">
-                    <SvgIcon icon="ArrowRight" role="btn" />
+                    type="false"
+                    class="btn btn--outline btn--icon-only"
+                    aria-label="false"
+                  >
+                    <SvgIcon
+                      icon="ArrowRight"
+                      role="btn"
+                    />
                     <span class="btn__text">Weiterlesen</span>
                   </NuxtLinkLocale>
                 </template>
