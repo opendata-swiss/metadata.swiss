@@ -15,6 +15,9 @@ const { data } = await useAsyncData(route.path, async () => {
   const path = [...route.params.slug]
 
   const articles = await queryCollection('handbook')
+    .orWhere(sub =>
+      sub.where('active', 'IS NULL').where('active', '=', true),
+    )
     .all()
 
   const localizedArticles = articles.filter(article => article.path.endsWith(`.${locale.value}`))

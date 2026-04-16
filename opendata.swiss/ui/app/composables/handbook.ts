@@ -20,7 +20,11 @@ function getPathSegments(article: HandbookCollectionItem, articles: HandbookColl
 export async function useGetArticleUrl() {
   const { locale } = useI18n()
   const { data: articles } = await useAsyncData('handbook-articles', () =>
-    queryCollection('handbook').all(),
+    queryCollection('handbook')
+      .orWhere(sub =>
+        sub.where('active', 'IS NULL').where('active', '=', true),
+      )
+      .all(),
   )
 
   return (article: HandbookCollectionItem) => {

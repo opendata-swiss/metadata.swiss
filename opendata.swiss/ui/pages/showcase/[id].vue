@@ -16,12 +16,12 @@ const { id } = route.params
 const { data: showcase } = await useAsyncData(route.path, async () => {
   const currentTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.${locale.value}`)
-    .where('active', '==', true)
+    .where('active', '=', true)
     .first()
 
   const germanTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
-    .where('active', '==', true)
+    .where('active', '=', true)
     .select('submittedBy')
     .first()
 
