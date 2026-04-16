@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { loadHandbookBreadcrumb } from '~/lib/breadcrumbs'
 import OdsHandbookPage from '../../app/components/handbook/OdsHandbookPage.vue'
+import { queryHandbook } from '../../app/composables/handbook'
 
 const { locale, t } = useI18n()
 const route = useRoute()
@@ -14,11 +15,7 @@ const breadcrumbs = await useBreadcrumbs({
 const { data } = await useAsyncData(route.path, async () => {
   const path = [...route.params.slug]
 
-  const articles = await queryCollection('handbook')
-    .orWhere(sub =>
-      sub.where('active', 'IS NULL').where('active', '=', true),
-    )
-    .all()
+  const articles = await queryHandbook().all()
 
   const localizedArticles = articles.filter(article => article.path.endsWith(`.${locale.value}`))
 
