@@ -17,15 +17,16 @@ function getPathSegments(article: HandbookCollectionItem, articles: HandbookColl
   return segments
 }
 
+export function queryHandbook() {
+  return queryCollection('handbook')
+    .orWhere(sub =>
+      sub.where('active', 'IS NULL').where('active', '=', true),
+    )
+}
+
 export async function useGetArticleUrl() {
   const { locale } = useI18n()
-  const { data: articles } = await useAsyncData('handbook-articles', () =>
-    queryCollection('handbook')
-      .orWhere(sub =>
-        sub.where('active', 'IS NULL').where('active', '=', true),
-      )
-      .all(),
-  )
+  const { data: articles } = await useAsyncData('handbook-articles', () => queryHandbook().all())
 
   return (article: HandbookCollectionItem) => {
     return `/handbook/${getPathSegments(article, articles.value || [], locale.value).join('/')}`
