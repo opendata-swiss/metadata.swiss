@@ -1,6 +1,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import Fuse from 'fuse.js'
+import MiniSearch from 'minisearch'
 import { useGetArticleUrl } from '../../app/composables/handbook.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
@@ -25,58 +25,62 @@ const onSearch = (value) => {
   })
 }
 
-const { data, error } = await useAsyncData('handbook-search', async () => {
-  const [sections, pages] = await Promise.all([
-    queryCollectionSearchSections('handbook'),
-    queryCollection('handbook')
-      .select('path', 'title', 'parent', 'slug')
-      .all(),
-  ])
-
-  return (sections || []).map((section) => {
-    let path
-    const [id, hash] = section.id.split('#')
-
-    const page = pages.find(({ path }) => section.id.startsWith(path))
-    if (page) {
-      path = getArticleUrl(page)
-    }
-    else {
-      path = id.substring(0, id.lastIndexOf('.'))
-    }
-
-    return {
-      ...section,
-      path,
-      hash: hash ? `#${hash}` : null,
-    }
-  })
+const { data: pages } = await useAsyncData('handbook-search-pages', async () => {
+  return queryCollection('handbook')
+    .select('path', 'title', 'parent', 'slug')
+    .where('path', 'like', `%.${locale.value}%`)
+    .all()
 })
+
+const currentLanguage = new RegExp(`\\.${locale.value}(#.+)?$`)
+const { data, error } = await useAsyncData('handbook-search', async () => {
+  const sections = await queryCollectionSearchSections('handbook')
+
+  return (sections || [])
+    .filter(section => currentLanguage.test(section.id))
+})
+
+function searchResultToLink(result, pages) {
+  const [id, hash] = result.id.split('#')
+
+  let path
+  const page = pages.find(({ path }) => result.id.startsWith(path))
+  if (page) {
+    path = getArticleUrl(page)
+  }
+  else {
+    path = id.substring(0, id.lastIndexOf('.'))
+  }
+  return {
+    path,
+    hash: hash ? `#${hash}` : null,
+  }
+}
 
 if (error.value) {
   console.error('Failed to fetch handbook search sections', error.value)
 }
 
-const fuse = computed(() => {
-  if (!data.value) return null
-
-  return new Fuse(data.value, {
-    keys: ['title', 'titles', 'content'],
-    ignoreDiacritics: true,
+const miniSearch = computed(() => {
+  const ms = new MiniSearch({
+    fields: ['title', 'titles', 'content'],
+    storeFields: ['title', 'titles', 'content'],
+    searchOptions: {
+      prefix: true,
+      fuzzy: 0.2,
+    },
   })
+
+  ms.addAll(toValue(data.value))
+
+  return ms
 })
 
-const articleIdPattern = new RegExp(`\\.${locale.value}(#.+)?`)
 const result = computed(() => {
-  if (!fuse.value) return []
+  if (!miniSearch.value) return []
 
-  return fuse.value
-    .search(toValue(searchInput) || '')
-    .filter(article =>
-      article.item.content
-      && article.item.level < 3
-      && articleIdPattern.test(article.item.id),
-    )
+  return miniSearch.value.search(toValue(searchInput) || '')
+    .sort((a, b) => a.score > b.score ? -1 : a.score < b.score ? 1 : 0)
     .slice(0, 10)
 })
 
@@ -116,16 +120,16 @@ useSeoMeta({
     <OdsSearchResults :results-count="result.length">
       <OdsCard
         v-for="article in result"
-        :key="article.item.id"
-        :title="article.item.title"
+        :key="article.id"
+        :title="article.title"
         type="list"
         clickable
       >
-        <p>{{ article.item.content }}</p>
+        <p>{{ article.content }}</p>
 
         <template #footer-action>
           <NuxtLinkLocale
-            :to="article.item"
+            :to="searchResultToLink(article, pages)"
             class="btn btn--outline btn--icon-only"
             aria-label="false"
           >
