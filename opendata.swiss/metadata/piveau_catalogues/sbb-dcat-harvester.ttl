@@ -50,7 +50,7 @@ Le FFS sono la colonna portante della mobilità sostenibile in Svizzera. Ogni gi
 \r
 La ferrovia unisce la Svizzera oltre i confini linguistici, culturali e politici e dal punto di vista economico e sociale assicura un contributo oltremodo prezioso alla qualità di vita e alla competitività del nostro Paese. Le FFS tuttavia sono ben più di un'impresa ferroviaria moderna e altamente performante. Esse assumono la loro responsalibità per la Svizzera, le sue regioni e l'ambiente anche come datore di lavoro, di committenti, così come di proprietarie e amministratrici di fondi e di immobili.\r
 """@it ;
-    dcterms:modified "2021-06-14T11:52:52.388889"^^xsd:dateTime ;
+    dcterms:modified "2026-04-01T10:01:24.439638"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <> ;
             foaf:name "Schweizerische Bundesbahnen SBB"@de,

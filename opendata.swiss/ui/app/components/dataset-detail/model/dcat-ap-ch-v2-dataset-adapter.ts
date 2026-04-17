@@ -317,18 +317,22 @@ export class DcatApChV2DatasetAdapter {
                 // special handling for contactPoint node
                 const nameNode = child.data?.find(d => d.id === 'contactPointName')
                 const emailNode = child.data?.find(d => d.id === 'contactPointEmail')
+                const telephoneNode = child.data?.find(d => d.id === 'contactPointTelephone')
                 if (nameNode && emailNode && nameNode.data && emailNode.data) {
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const emailData = ((emailNode.data as Array<any>)[0] as any).data
-                  const href = emailData.href
-                  const name = emailData.label
+                  const emailAddress = ((emailNode.data as Array<any>)[0] as any).data
 
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   const nameData = ((nameNode.data as Array<any>)[0] as any).data
                   const publisherName = nameData as string
                   if (!entry.value) {
                     entry.value = [{ value: publisherName, type: 'value' }]
-                    entry.value.push({ value: name, href, type: 'email' })
+                    entry.value.push({ value: emailAddress, href: `mailto:${emailAddress}`, type: 'email' })
+                    if (telephoneNode && telephoneNode.data) {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      const telephoneNumber = ((telephoneNode.data as Array<any>)[0] as any).data as string
+                      entry.value.push({ value: telephoneNumber, href: `tel:${telephoneNumber}`, type: 'telephone' })
+                    }
                   }
                 }
               }
