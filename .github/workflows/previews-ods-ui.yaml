@@ -68,7 +68,6 @@ jobs:
             **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.    
 
       - name: Stop preview environment
-        working-directory: ./opendata.swiss/ui/k8s
         if: github.event.action == 'closed'
         continue-on-error: true
         run: |
