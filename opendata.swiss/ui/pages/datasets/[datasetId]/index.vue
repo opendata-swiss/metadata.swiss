@@ -133,14 +133,27 @@ await suspense()
             </h1>
             <MDC :value="dataset.description" />
             <!----><!---->
-            <aside v-if="dataset.publisher" class="authors">
-              <div class="disc-images" aria-hidden="true">
+            <aside
+              v-if="dataset.publisher"
+              class="authors"
+            >
+              <div
+                class="disc-images"
+                aria-hidden="true"
+              >
                 <div class="disc-image">
-                  <img src="https://picsum.photos/120/120/?image=29" :title="dataset.publisher.name">
+                  <img
+                    src="https://picsum.photos/120/120/?image=29"
+                    :title="dataset.publisher.name"
+                  >
                 </div>
               </div>
               <address class="authors__names">
-                <a class="link author__name link--external" target="_blank" :href="dataset.publisher.resource">{{ dataset.publisher.name }}</a>
+                <a
+                  class="link author__name link--external"
+                  target="_blank"
+                  :href="dataset.publisher.resource"
+                >{{ dataset.publisher.name }}</a>
               </address>
             </aside>
           </div>
@@ -155,7 +168,11 @@ await suspense()
                 <h2 class="h5">
                   {{ t(`message.header.navigation.terms_of_use`) }}
                 </h2>
-                <OdsDetailTermsOfUse v-for="value in dataset.licenses" :key="value" :name="value" />
+                <OdsDetailTermsOfUse
+                  v-for="value in dataset.licenses"
+                  :key="value.id"
+                  :license="value"
+                />
               </div>
             </div>
             <h2 class="h2">
@@ -191,12 +208,19 @@ await suspense()
             </div>
           </div>
           <div class="hidden container__aside md:block">
-            <div id="aside-content" class="sticky sticky--top">
+            <div
+              id="aside-content"
+              class="sticky sticky--top"
+            >
               <div class="box">
                 <h2 class="h5">
                   {{ t(`message.header.navigation.terms_of_use`) }}
                 </h2>
-                <OdsDetailTermsOfUse v-for="value in resultEnhanced?.getLicenses" :key="value" :name="value" />
+                <OdsDetailTermsOfUse
+                  v-for="value in dataset.licenses"
+                  :key="value.id"
+                  :license="value"
+                />
               </div>
               <div class="box">
                 <h2 class="h5">
@@ -211,7 +235,14 @@ await suspense()
 
       <section class="section publication-back-button-section">
         <div class="container">
-          <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" size="sm" @click="router.back()" />
+          <OdsButton
+            title="Zurück"
+            icon="ArrowLeft"
+            variant="outline"
+            class="btn--back"
+            size="sm"
+            @click="router.back()"
+          />
         </div>
       </section>
     </main>
