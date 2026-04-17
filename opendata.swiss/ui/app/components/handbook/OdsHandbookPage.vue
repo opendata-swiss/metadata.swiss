@@ -55,7 +55,7 @@ import { useRouter } from '#vue-router'
 import OdsCard from '~/components/OdsCard.vue'
 import OdsAccordion from '~/components/OdsAccordion.vue'
 import OdsAccordionItem from '~/components/OdsAccordionItem.vue'
-import { useGetArticleUrl } from '~/composables/handbook'
+import { queryHandbook, useGetArticleUrl } from '~/composables/handbook'
 import { sortContent } from '~/lib/sortContent'
 
 const { t, locale } = useI18n()
@@ -78,10 +78,7 @@ const onSearch = (value: string) => {
   }))
 }
 
-const { data: articles } = await useAsyncData('handbook-articles', () =>
-  queryCollection('handbook')
-    .all(),
-)
+const { data: articles } = await useAsyncData('handbook-articles', () => queryHandbook().all())
 
 const localizedArticles = computed(() => articles.value?.filter(article => article.path.endsWith(`.${locale.value}`)) || [])
 

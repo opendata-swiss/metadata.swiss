@@ -2,7 +2,7 @@
 import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
 import { useAsyncData, useSeoMeta } from 'nuxt/app'
 import OdsCmsSearchPage from '../../app/components/OdsCmsSearchPage.vue'
-import { useGetArticleUrl } from '../../app/composables/handbook.js'
+import { queryHandbook, useGetArticleUrl } from '../../app/composables/handbook.js'
 import type { HandbookCollectionItem } from '@nuxt/content'
 import type { SearchResult } from 'minisearch'
 
@@ -11,7 +11,7 @@ const { t, locale } = useI18n()
 const getArticleUrl = await useGetArticleUrl()
 
 const { data: pages } = await useAsyncData('handbook-search-pages', async () => {
-  return queryCollection('handbook')
+  return queryHandbook()
     .select('path', 'title', 'parent', 'slug')
     .where('path', 'LIKE', `%.${locale.value}%`)
     .all()
