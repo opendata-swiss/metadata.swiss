@@ -126,6 +126,10 @@
             "search_prompt": "Im Handbuch suchen...",
             "search_prompt_short": "Hier schreiben..."
         },
+        "blog": {
+            "search_prompt": "Im Blog suchen...",
+            "search_prompt_short": "Hier schreiben..."
+        },
         "terms_of_use": {
             "ods_open": {
                 "title": "Freie Nutzung",
