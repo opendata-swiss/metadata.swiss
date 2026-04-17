@@ -41,6 +41,12 @@ jobs:
       repository-projects: write
 
     steps:
+      - name: Checkout branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.set_code_ref.outputs.code_ref }}
+          fetch-depth: 0
+          
       - name: Configure some variables
         id: set_code_ref
         run: |
@@ -51,12 +57,6 @@ jobs:
             echo "code_ref=${{ github.ref_name }}" >> $GITHUB_OUTPUT
             echo "image_tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
           fi
-
-      - name: Checkout branch
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ steps.set_code_ref.outputs.code_ref }}
-          fetch-depth: 0
 
       - name: Set up kubectl
         uses: azure/setup-kubectl@v5
