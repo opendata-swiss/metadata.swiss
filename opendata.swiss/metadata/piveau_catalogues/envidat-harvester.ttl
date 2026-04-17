@@ -9,7 +9,7 @@
         "EnviDat is the WSL data portal providing unified and managed access to environmental monitoring and research data. The portal has the capability to host and publish data sets. Through the sharing of unique and high-value data sets worldwide, EnviDat fosters research and contributes to advancing environmental science."@en,
         "EnviDat est le portail de données du WSL; il offre un accès uniformisé et réglementé aux données de surveillance et de recherche en matière d’environnement. Ce portail est capable d’héberger et de publier des ensembles de données précieuses et uniques, qui sont partagées aux quatre coins de la planète. Ce faisant, EnviDat favorise la recherche et contribue à l’avancement des sciences environnementales."@fr,
         "EnviDat è il portale dati del WSL che fornisce un accesso unificato e gestito ai dati di monitoraggio ambientale e di ricerca. Il portale ha la capacità di ospitare e pubblicare serie di dati preziosi e unici che vengono condivisi in tutto il mondo. Così facendo, EnviDat promuove la ricerca e contribuisce al progresso della scienza ambientale."@it ;
-    dcterms:modified "2022-05-25T12:07:22.711641"^^xsd:dateTime ;
+    dcterms:modified "2026-04-13T10:45:48.744723"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <https://www.envidat.ch/> ;
             foaf:name "EnviDat: das Umwelt-Datenportal"@de,
