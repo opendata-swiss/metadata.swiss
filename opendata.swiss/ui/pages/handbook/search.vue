@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
+import { debounce } from 'perfect-debounce'
 import { queryHandbook, useGetArticleUrl } from '../../app/composables/handbook.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
@@ -17,13 +18,17 @@ const router = useRouter()
 const searchInput = ref(route.query.q)
 const getArticleUrl = await useGetArticleUrl()
 
-const onSearch = (value) => {
+const onSearch = debounce((value) => {
   searchInput.value = value
+  if (route.query.q === value?.trim()) return
+
   router.push({
     name: route.name,
     query: { q: value?.trim() || undefined },
   })
-}
+}, 300)
+
+watch(searchInput, onSearch)
 
 const { data, error } = await useAsyncData('handbook-search', async () => {
   const [sections, pages] = await Promise.all([
@@ -110,7 +115,6 @@ useSeoMeta({
       <OdsSearchPanel
         v-model:search-input="searchInput"
         :search-prompt="t('message.handbook.search_prompt')"
-        @search="onSearch"
       />
     </template>
     <OdsSearchResults :results-count="result.length">
