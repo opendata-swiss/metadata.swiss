@@ -48,7 +48,7 @@ jobs:
           ref: ${{ github.event.inputs.code_ref }}
           fetch-depth: 0
 
-      - name: Checkout branch default ref
+      - name: Checkout default branch 
         uses: actions/checkout@v6
         if: ${{ github.event.inputs.code_ref == '' }}
         with:
