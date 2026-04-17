@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
 import { debounce } from 'perfect-debounce'
-import { useGetArticleUrl } from '../../app/composables/handbook.js'
+import { queryHandbook, useGetArticleUrl } from '../../app/composables/handbook.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
@@ -33,7 +33,7 @@ watch(searchInput, onSearch)
 const { data, error } = await useAsyncData('handbook-search', async () => {
   const [sections, pages] = await Promise.all([
     queryCollectionSearchSections('handbook'),
-    queryCollection('handbook')
+    queryHandbook()
       .select('path', 'title', 'parent', 'slug')
       .all(),
   ])
