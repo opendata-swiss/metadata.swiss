@@ -7,7 +7,7 @@
     dcterms:created "2025-10-20T07:38:38.865449"^^xsd:dateTime ;
     dcterms:description "Beginnend mit den Geodaten veröffentlicht der Kanton Bern hier nach und nach Datensätze der kantonalen Verwaltung, welche die Anforderungen zur Publikation als Open Government Data erfüllen."@de,
         "En commençant par les géodonnées, le canton de Berne y publie progressivement des jeux de données de l'administration cantonale qui répondent aux exigences de publication en tant que Open Government Data."@fr ;
-    dcterms:modified "2026-02-23T14:55:26.971606"^^xsd:dateTime ;
+    dcterms:modified "2026-03-10T06:42:05.317992"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <http://www.be.ch> ;
             foaf:name "Kanton Bern"@de,

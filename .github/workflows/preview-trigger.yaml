@@ -41,12 +41,19 @@ jobs:
       repository-projects: write
 
     steps:
-      - name: Checkout branch
+      - name: Checkout branch code_ref
         uses: actions/checkout@v6
+        if: ${{ github.event.inputs.code_ref != '' }}
         with:
-          ref: ${{ steps.set_code_ref.outputs.code_ref }}
+          ref: ${{ github.event.inputs.code_ref }}
           fetch-depth: 0
-          
+
+      - name: Checkout default branch
+        uses: actions/checkout@v6
+        if: ${{ github.event.inputs.code_ref == '' }}
+        with:
+          fetch-depth: 0
+
       - name: Configure some variables
         id: set_code_ref
         run: |

@@ -9,7 +9,7 @@
         "The Canton of Graubünden is gradually publishing open government datasets from cantonal offices and agencies."@en,
         "Le canton des Grisons publie progressivement des données publiques en libre accès (Open Government Data) d’offices et de services cantonaux."@fr,
         "Il Cantone dei Grigioni pubblica su base continua serie di dati di uffici e servizi cantonali come Open Government Data."@it ;
-    dcterms:modified "2025-10-22T06:58:36.624911"^^xsd:dateTime ;
+    dcterms:modified "2026-03-17T10:49:34.180878"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <> ;
             foaf:name "Kanton Graubünden"@de,
