@@ -7,6 +7,7 @@ import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsCard from '../../app/components/OdsCard.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 import type { BreadcrumbItem } from '~/components/OdsBreadcrumbs.vue'
+import { debounce } from 'perfect-debounce'
 
 const { t } = useI18n()
 const route = useRoute()
@@ -14,13 +15,17 @@ const router = useRouter()
 
 const searchInput = ref(route.query.q)
 
-const onSearch = (value: string) => {
+const onSearch = debounce((value: string) => {
   searchInput.value = value
+  if (route.query.q === value?.trim()) return
+
   router.push({
     name: route.name,
     query: { q: value?.trim() || undefined },
   })
-}
+}, 300)
+
+watch(searchInput, onSearch)
 
 interface SearchData {
   id: string
