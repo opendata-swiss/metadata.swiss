@@ -196,11 +196,7 @@ export class DcatApChV2DistributionAdapter {
    */
   get license() {
     const lic = this.#distribution?.license
-    const licIri = lic?.resource
-    if (!licIri) {
-      return undefined
-    }
-    return licIri
+    return lic
   }
 
   /**

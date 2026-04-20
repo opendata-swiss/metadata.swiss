@@ -11,7 +11,7 @@ import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
 import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue'
-import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter.js'
+import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
 
@@ -91,7 +91,10 @@ await suspense()
 </script>
 
 <template>
-  <main v-if="isSuccess && distribution" id="main-content">
+  <main
+    v-if="isSuccess && distribution"
+    id="main-content"
+  >
     <header id="main-header">
       <ClientOnly>
         <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
@@ -103,11 +106,18 @@ await suspense()
           <span class="distribution-label">{{ t('message.dataset_detail.distribution') }}</span>
 
           <p class="meta-info">
-            <span v-if="distribution.releaseDate" class="meta-info__item">
+            <span
+              v-if="distribution.releaseDate"
+              class="meta-info__item"
+            >
               {{ t('message.dataset_detail.published_on') }}
               <OdsRelativeDateToggle :date="distribution.releaseDate" />
             </span>
-            <span v-if="distribution.modified" class="meta-info__item">{{ t('message.dataset_detail.modified_on') }}
+            <span
+              v-if="distribution.modified"
+              class="meta-info__item"
+            >
+              {{ t('message.dataset_detail.modified_on') }}
               <OdsRelativeDateToggle :date="distribution.modified" />
             </span>
           </p>
@@ -122,49 +132,88 @@ await suspense()
       <div class="container container--grid gap--responsive">
         <div class="container__main vertical-spacing">
           <div class="container__mobile">
-            <div v-if="distribution.downloadUrls.length > 0" class="box">
+            <div
+              v-if="distribution.downloadUrls.length > 0"
+              class="box"
+            >
               <h2 class="h5">
                 Download
               </h2>
-              <OdsDownloadList :download-urls="distribution.downloadUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
+              <OdsDownloadList
+                :download-urls="distribution.downloadUrls"
+                :name="distribution.title"
+                :format="distribution.format"
+                :languages="distribution.languages"
+                :byte-size="distribution.formattedByteSize"
+              />
             </div>
             <div class="box">
               <h2 class="h5">
                 Access
               </h2>
-              <OdsDownloadList :download-urls="distribution.accessUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
+              <OdsDownloadList
+                :download-urls="distribution.accessUrls"
+                :name="distribution.title"
+                :format="distribution.format"
+                :languages="distribution.languages"
+                :byte-size="distribution.formattedByteSize"
+              />
             </div>
             <div class="box">
               <h2 class="h5">
                 {{ t(`message.header.navigation.terms_of_use`) }}
               </h2>
-              <OdsDetailTermsOfUse v-if="distribution.license" :name="distribution.license" />
+              <OdsDetailTermsOfUse
+                v-if="distribution.license"
+                :license="distribution.license"
+              />
             </div>
           </div>
           <h2 class="h2">
             {{ t('message.dataset_detail.additional_information') }}
           </h2>
-          <OdsDetailsTable :table-entries="distribution.propertyTable"/>
+          <OdsDetailsTable :table-entries="distribution.propertyTable" />
         </div>
         <div class="hidden container__aside md:block">
-          <div id="aside-content" class="sticky sticky--top">
-            <div v-if="distribution.downloadUrls.length > 0" class="box">
+          <div
+            id="aside-content"
+            class="sticky sticky--top"
+          >
+            <div
+              v-if="distribution.downloadUrls.length > 0"
+              class="box"
+            >
               <h2 class="h5">
                 Download
               </h2>
-              <OdsDownloadList :download-urls="distribution.downloadUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
+              <OdsDownloadList
+                :download-urls="distribution.downloadUrls"
+                :name="distribution.title"
+                :format="distribution.format"
+                :languages="distribution.languages"
+                :byte-size="distribution.formattedByteSize"
+              />
             </div>
             <div class="box">
               <h2 class="h5">
                 Access
               </h2>
-              <OdsDownloadList :download-urls="distribution.accessUrls" :name="distribution.title" :format="distribution.format" :languages="distribution.languages" :byte-size="distribution.formattedByteSize"/>
+              <OdsDownloadList
+                :download-urls="distribution.accessUrls"
+                :name="distribution.title"
+                :format="distribution.format"
+                :languages="distribution.languages"
+                :byte-size="distribution.formattedByteSize"
+              />
             </div>
             <div class="box">
               <h2 class="h5">
                 {{ t(`message.header.navigation.terms_of_use`) }}
               </h2>
-              <OdsDetailTermsOfUse v-if="distribution.license" :name="distribution.license" />
+              <OdsDetailTermsOfUse
+                v-if="distribution.license"
+                :license="distribution.license"
+              />
             </div>
           </div>
         </div>
@@ -172,7 +221,13 @@ await suspense()
     </section>
     <section class="section publication-back-button-section">
       <div class="container">
-        <OdsButton title="Zurück" icon="ArrowLeft" variant="outline" class="btn--back" @click="router.back()" />
+        <OdsButton
+          title="Zurück"
+          icon="ArrowLeft"
+          variant="outline"
+          class="btn--back"
+          @click="router.back()"
+        />
       </div>
     </section>
   </main>
