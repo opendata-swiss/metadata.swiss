@@ -1,7 +1,7 @@
 import type { LinkedDataFormats } from '@piveau/sdk-vue'
 import type { Dataset } from '../../../model/dataset'
 import { DcatApChV2DistributionAdapter } from './dcat-ap-ch-v2-distribution-adapter'
-import type { TableEntry } from './table-entry'
+import { OdsTableEntry, OdsTableEntryType } from './table-entry'
 import type { Catalog } from '~/piveau/get-ods-catalog-info'
 import type { TagItem } from '../../OdsTagItem.vue'
 import type { AppLanguage } from '~/constants/langages'
@@ -267,6 +267,7 @@ export class DcatApChV2DatasetAdapter {
 
   get propertyTable() {
     const rootNode = this.#dataset.getPropertyTable
+
     if (!rootNode) {
       return []
     }
@@ -274,74 +275,17 @@ export class DcatApChV2DatasetAdapter {
     const ignoredNode = ['catalogRecord']
     const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id))
 
-    const table: TableEntry[] = []
+    const newTableEntries: OdsTableEntry[] = []
+
     for (const node of nodesToConsider) {
-      const entry = {} as Partial<TableEntry>
-
-      if (node.type === 'node' && node.data) {
-        entry.label = node.label
-        entry.nodeType = 'node'
-
-        if (node.data && node.data.length > 0) {
-          for (const child of node.data) {
-            if (child.type === 'value') {
-              if (!entry.value) {
-                entry.value = [{ value: child.data as string, type: 'value' }]
-              }
-              else {
-                entry.value.push({ value: child.data as string, type: 'value' })
-              }
-            }
-            else if (child.type === 'href') {
-              const hrefData = child.data as { label: string, href: string }
-              if (!entry.value) {
-                entry.value = [{ value: hrefData.label, href: hrefData.href, type: 'href' }]
-              }
-              else {
-                entry.value.push({ value: hrefData.label, href: hrefData.href, type: 'href' })
-              }
-            }
-            else {
-              if (node.id === 'publisher') {
-                // special handling for publisher node
-                for (const data of child.data ?? []) {
-                  if (!entry.value) {
-                    entry.value = [{ value: data.data as string, type: 'value' }]
-                  }
-                  else {
-                    entry.value.push({ value: data.data as string, type: 'value' })
-                  }
-                }
-              }
-              else if (node.id === 'contactPoint') {
-                // special handling for contactPoint node
-                const nameNode = child.data?.find(d => d.id === 'contactPointName')
-                const emailNode = child.data?.find(d => d.id === 'contactPointEmail')
-                const telephoneNode = child.data?.find(d => d.id === 'contactPointTelephone')
-                if (nameNode && emailNode && nameNode.data && emailNode.data) {
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const emailAddress = ((emailNode.data as Array<any>)[0] as any).data
-
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const nameData = ((nameNode.data as Array<any>)[0] as any).data
-                  const publisherName = nameData as string
-                  if (!entry.value) {
-                    entry.value = [{ value: publisherName, type: 'value' }]
-                    entry.value.push({ value: emailAddress, href: `mailto:${emailAddress}`, type: 'email' })
-                    if (telephoneNode && telephoneNode.data) {
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                      const telephoneNumber = ((telephoneNode.data as Array<any>)[0] as any).data as string
-                      entry.value.push({ value: telephoneNumber, href: `tel:${telephoneNumber}`, type: 'telephone' })
-                    }
-                  }
-                }
-              }
-            }
-          }
-          table.push(entry as TableEntry)
-        }
+      if (!(node.type === 'node') || !node.data) {
+        continue
       }
+
+      const newTableEntry = new OdsTableEntry(node.label, node.id, OdsTableEntryType.Node)
+      newTableEntries.push(newTableEntry)
+      newTableEntry.addPiveauPropertyTableEntry(node.data || [])
     }
-    return table.sort((a, b) => a.label.localeCompare(b.label))
+    return newTableEntries.sort((a, b) => a.label.localeCompare(b.label))
   }
 }

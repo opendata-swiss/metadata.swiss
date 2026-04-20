@@ -166,7 +166,10 @@ await suspense()
             <h2 class="h2">
               {{ t('message.dataset_detail.additional_information') }}
             </h2>
-            <OdsDetailsTable :table-entries="dataset.propertyTable"/>
+            <OdsDetailsTable
+              :table-entries="dataset.propertyTable"
+              type="block"
+            />
             <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
               <h2 class="h2">
                 {{ t('message.dataset_detail.categories') }}
