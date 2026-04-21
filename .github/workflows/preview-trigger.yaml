@@ -98,20 +98,6 @@ jobs:
               value: "${{ github.event.inputs.cms_ref }}"
           '
 
-      - name: Add GITHUB_TOKEN patch
-        working-directory: ./opendata.swiss/ui/k8s
-        run: |
-          kustomize edit add patch \
-            --kind Deployment \
-            --name piveau-ui \
-            --patch '
-          - op: add
-            path: /spec/template/spec/containers/0/env/-
-            value:
-              name: GITHUB_TOKEN
-              value: "${{ secrets.HARVEST_TRIGGER_PAT }}"
-          '
-
       - name: Generate manifests
         working-directory: ./opendata.swiss/ui/k8s
         run: |
