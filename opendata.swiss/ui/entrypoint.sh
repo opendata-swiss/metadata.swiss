@@ -4,11 +4,14 @@ if [ -z "$GITHUB_REF" ]; then
 fi
 set -e
 
-git clone --depth 1 "https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}.git" --no-checkout content
-cd content
-git fetch --depth 1 origin "${GITHUB_REF}"
-git checkout FETCH_HEAD
-cd ..
+# Only clone if content directory does not exist
+if [ ! -d "content" ]; then
+  git clone --depth 1 "https://github.com/${GITHUB_OWNER}/${GITHUB_CMS_REPO}.git" --no-checkout content
+  cd content
+  git fetch --depth 1 origin "${GITHUB_REF}"
+  git checkout FETCH_HEAD
+  cd ..
+fi
 
 npm run build
 

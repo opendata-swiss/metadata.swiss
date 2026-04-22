@@ -74,11 +74,14 @@ services:
     restart: unless-stopped
     ports:
       - 8008:80
+    env_file:
+      - .env
     environment:
       - NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084/
       - NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
       - GITHUB_OWNER=opendata-swiss
-      - GITHUB_REPO=opendata-swiss-cms-content-test
+      - GITHUB_CMS_REPO=opendata-swiss-cms-content-test
+      - GITHUB_APP_REPO=metadata.swiss
 
   ###########
   #### CONSUS
