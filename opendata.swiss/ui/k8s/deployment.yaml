@@ -55,11 +55,16 @@ spec:
                 configMapKeyRef:
                   name: public-endpoints
                   key: github-owner
-            - name: GITHUB_REPO
+            - name: GITHUB_CMS_REPO
               valueFrom:
                 configMapKeyRef:
                   name: public-endpoints
-                  key: github-repo
+                  key: github-cms-repo
+            - name: GITHUB_APP_REPO
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: github-app-repo
             - name: GITHUB_BASE_BRANCH
               valueFrom:
                 configMapKeyRef:

@@ -80,7 +80,10 @@ export default defineNuxtConfig({
     devProxy: {
       '/admin/': 'http://localhost:5173/admin/',
     },
-    plugins: ['~~/server/plugins/zod-locale'],
+    plugins: [
+      '~~/server/plugins/zod-locale',
+      '~~/server/plugins/showcase-harvesting-trigger',
+    ],
   },
   cmsAssets: {
     contentPath: resolve(import.meta.dirname, 'content/assets'),

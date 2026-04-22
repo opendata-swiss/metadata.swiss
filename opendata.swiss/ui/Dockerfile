@@ -16,4 +16,4 @@ ENV HOST=0.0.0.0
 
 EXPOSE 80
 
-CMD ["sh", "-c", "./server/entrypoint.sh"]
+CMD ["sh", "-c", "./entrypoint.sh"]
