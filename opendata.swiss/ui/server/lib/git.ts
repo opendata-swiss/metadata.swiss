@@ -24,7 +24,7 @@ export default function (slug: string) {
   const prBranch = `cms/Showcases/${slug}`
 
   const owner = process.env.GITHUB_OWNER!
-  const repo = process.env.GITHUB_REPO!
+  const repo = process.env.GITHUB_CMS_REPO!
   const baseBranch = process.env.GITHUB_BASE_BRANCH!
 
   logger.info(`Using GitHub repository: ${owner}/${repo}, base branch: ${baseBranch}`)

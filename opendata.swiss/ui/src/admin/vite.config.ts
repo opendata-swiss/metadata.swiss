@@ -72,7 +72,7 @@ export default defineConfig({
               }
             }
             else {
-              config.backend.repo = `${process.env.GITHUB_OWNER}/${process.env.GITHUB_REPO}`
+              config.backend.repo = `${process.env.GITHUB_OWNER}/${process.env.GITHUB_CMS_REPO}`
             }
 
             return yaml.dump(config)
