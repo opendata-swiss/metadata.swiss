@@ -9,7 +9,7 @@ export default defineNitroPlugin(async (nitro) => {
     return
   }
 
-  if (executed.has(nitro)) {
+  if (executed.has(nitro) || process.env.DISABLE_SHOWCASE_HARVESTING === 'true') {
     return
   }
 

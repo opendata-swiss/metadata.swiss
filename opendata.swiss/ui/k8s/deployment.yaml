@@ -85,6 +85,8 @@ spec:
                 secretKeyRef:
                   name: piveau-ui-github-app
                   key: installation-id
+            - name: DISABLE_SHOWCASE_HARVESTING
+              value: "true"
           resources:
             limits:
               memory: 2Gi
