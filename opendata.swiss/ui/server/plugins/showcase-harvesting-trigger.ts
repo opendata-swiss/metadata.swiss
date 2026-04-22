@@ -1,4 +1,4 @@
-import { App } from '@octokit/app'
+import { createAppAuth } from '@octokit/auth-app'
 import { defineNitroPlugin } from '#imports'
 
 const executed = new WeakSet()
@@ -28,9 +28,13 @@ export default defineNitroPlugin(async (nitro) => {
   }
 
   try {
-    const app = new App({ appId, privateKey })
-    const octokit = await app.getInstallationOctokit(Number.parseInt(installationId))
-    const { token } = await octokit.auth({ type: 'installation' }) as { token: string }
+    const auth = createAppAuth({
+      appId,
+      privateKey,
+      installationId,
+    })
+
+    const { token } = await auth({ type: 'installation' })
 
     let environment = 'TEST'
     if (cmsRepo === 'opendata-swiss-cms-content-int') {

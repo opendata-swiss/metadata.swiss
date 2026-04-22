@@ -25,7 +25,6 @@
     "@nuxt/image": "^1.11.0",
     "@nuxtjs/i18n": "^10.2.1",
     "@octokit/auth-app": "^8.1.2",
-    "@octokit/app": "^14.0.0",
     "@octokit/rest": "^22.0.1",
     "@pinia/nuxt": "^0.11.3",
     "@piveau/sdk-core": "0.0.0-beta.6",
