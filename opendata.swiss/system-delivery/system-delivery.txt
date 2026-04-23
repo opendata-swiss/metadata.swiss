@@ -82,9 +82,9 @@ Dependencies only downwards
 [.. ] Organization edit
 [.. ] Keycloak/eIAM Integration piveau
 
-[.  ] (106) Harvester metadata import guard (reject datasets with missing terms-of-use/license)
+[.. ] (106) Harvester metadata import guard (reject datasets with missing terms-of-use/license)
 [.. ] Dataset search & display
-[.. ] DCAT-AP Harvesting
+[...] DCAT-AP Harvesting
 [.. ] Harvester Monitoring
-[.. ] Harvester Scheduling
+[...] Harvester Scheduling
 [.. ] DCAT-AP CH V2 Metadata
