@@ -4,7 +4,7 @@ import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 
-import type { SearchParamsBase } from '@piveau/sdk-core'
+import type { SearchParamsBase } from '@piveau/sdk-core/hubSearch'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
 import { useDatasetsSearch, facets } from '../../app/piveau/datasets'

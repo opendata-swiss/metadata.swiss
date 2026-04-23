@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 import { useSeoMeta } from 'nuxt/app'
 import { getCurrentTranslation } from '../../app/lib/getCurrentTranslation'
-import type { SearchParamsBase } from '@piveau/sdk-core'
+import type { SearchParamsBase } from '@piveau/sdk-core/hubSearch'
 
 import OdsPage from '../../app/components/OdsPage.vue'
 import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
