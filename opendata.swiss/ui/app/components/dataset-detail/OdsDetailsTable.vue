@@ -1,5 +1,5 @@
 <template>
-  <OdsInfoBlock
+  <OdsDetailTableInfoBlock
     v-for="entry in props.tableEntries"
     :key="entry.label"
     :title="entry.label"
@@ -18,11 +18,11 @@
         :type="entry.blockType()"
       />
     </div>
-  </OdsInfoBlock>
+  </OdsDetailTableInfoBlock>
 </template>
 
 <script setup lang="ts">
-import OdsInfoBlock from '../OdsInfoBlock.vue'
+import OdsDetailTableInfoBlock from './OdsDetailTableInfoBlock.vue'
 import type { OdsTableEntry } from './model/table-entry'
 import OdsDetailsTableValue from './OdsDetailsTableValue.vue'
 
