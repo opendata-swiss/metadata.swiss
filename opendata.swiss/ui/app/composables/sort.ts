@@ -1,0 +1,18 @@
+import { ref, watch } from 'vue'
+import { type LocationQueryValue, useRoute, useRouter } from 'vue-router'
+
+export function useSorting(initialSort: string, sortCallback: (sortString: LocationQueryValue | LocationQueryValue[] | undefined) => void) {
+  const router = useRouter()
+  const route = useRoute()
+
+  const selectedSort = ref<string>(typeof route.query.sort === 'string' ? route.query.sort.replace(/ /g, '+') : initialSort || '')
+
+  watch(selectedSort, (sortString) => {
+    // use the route to update the query parameters
+    router.push({ query: { ...route.query, sort: sortString } })
+  })
+
+  watch(() => route.query.sort, sortCallback)
+
+  return { selectedSort }
+}

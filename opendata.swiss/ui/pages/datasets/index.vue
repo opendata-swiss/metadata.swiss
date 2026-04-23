@@ -22,6 +22,7 @@ import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFace
 
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
+import { useSorting } from '../../app/composables/sort'
 
 const { t, locale } = useI18n()
 
@@ -77,11 +78,11 @@ const sortOptions = computed(() => {
     { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
   ]
 })
-const selectedSort = ref<string>(typeof route.query.sort === 'string' ? route.query.sort.replace(/ /g, '+') : '')
-
-watch(selectedSort, (sortString) => {
-  // use the route to update the query parameters
-  router.push({ query: { ...route.query, sort: sortString } })
+const { selectedSort } = useSorting((sortTerm) => {
+  if (sortTerm) {
+    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+    piveauQueryParams.sort = selectedSort.value
+  }
 })
 
 const piveauQueryParams: SearchParamsBase = reactive({
@@ -229,13 +230,6 @@ watch(() => route.query.q, (searchTerm) => {
   piveauQueryParams.q = searchInput.value
 })
 
-watch(() => route.query.sort, (sortTerm) => {
-  if (sortTerm) {
-    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
-    piveauQueryParams.sort = selectedSort.value
-  }
-})
-
 onMounted(() => {
   syncFacetsFromRoute({
     facets,
@@ -279,7 +273,10 @@ await suspense()
 
       <OdsSearchResults :results-count="getSearchResultsCount">
         <template #header-right>
-          <OdsSortSelect v-model="selectedSort" :options="sortOptions" />
+          <OdsSortSelect
+            v-model="selectedSort"
+            :options="sortOptions"
+          />
           <div class="separator separator--vertical" />
           <OdsListCardToggle v-model="listType" />
         </template>
@@ -287,10 +284,14 @@ await suspense()
         <!-- <div v-if="isFetching" class="is-fetching">
               Fetching...
             </div> -->
-        <OdsDatasetList :items="datasets" :list-type="listType" :search-params="route.query" />
+        <OdsDatasetList
+          :items="datasets"
+          :list-type="listType"
+          :search-params="route.query"
+        />
         <div class="pagination pagination--right">
           <OdsPagination
-            :current-page="(Number(route.query.page  ?? 1))"
+            :current-page="(Number(route.query.page ?? 1))"
             :total-pages="getSearchResultsPagesCount"
             :page-label="t('message.ods-pagination.page')"
             :total-pages-label="t('message.ods-pagination.of') + getSearchResultsPagesCount"
@@ -298,7 +299,7 @@ await suspense()
               {
                 icon: 'ChevronLeft',
                 label: t('message.ods-pagination.previous'),
-                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page  ?? 1) - 1) } /*, hash: '#search-results'*/ },
+                link: { name: route.name, query: { ...route.query, page: (Number(route.query.page ?? 1) - 1) } /*, hash: '#search-results'*/ },
               },
               {
                 icon: 'ChevronRight',
@@ -312,7 +313,10 @@ await suspense()
         </div>
 
         <div class="notification notification--info">
-          <SvgIcon icon="InfoCircle" role="notification" />
+          <SvgIcon
+            icon="InfoCircle"
+            role="notification"
+          />
           <div class="notification__content">
             <div class="text--bold">
               Haben Sie nicht gefunden wonach Sie suchen?
@@ -321,7 +325,10 @@ await suspense()
               Gerne geben wir Ihnen auch persönlich Auskunft. Bitte melden Sie sich
               via Kontaktformular bei uns.
             </div>
-            <a href="#" class="link">Kontaktformular</a>
+            <a
+              href="#"
+              class="link"
+            >Kontaktformular</a>
           </div>
         </div>
       </OdsSearchResults>

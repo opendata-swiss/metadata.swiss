@@ -16,6 +16,8 @@ import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
+import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
+import { useSorting } from '../../app/composables/sort'
 
 const { locale, t } = useI18n()
 
@@ -82,11 +84,12 @@ function scrollToResults() {
   }
 }
 
+const initialSort = 'modified+desc'
 const piveauQueryParams: SearchParamsBase = reactive({
   limit: 10,
   page: route.query.page ? Number(route.query.page) - 1 : 0,
   q: Array.isArray(route.query.q) ? route.query.q.join(' ') : route.query.q || '',
-  sort: 'relevance',
+  sort: initialSort,
 })
 
 const { useSearch } = useShowcaseSearch()
@@ -170,6 +173,23 @@ onMounted(() => {
 
 const { suspense } = query
 await suspense()
+
+const { selectedSort } = useSorting(initialSort, (sortTerm) => {
+  if (sortTerm) {
+    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+    piveauQueryParams.sort = selectedSort.value
+  }
+})
+
+const sortOptions = computed(() => {
+  const currentLocale = locale.value
+  return [
+    { value: `title.${currentLocale}+asc`, text: t('message.dataset_search.sort_by.title_asc') },
+    { value: `title.${currentLocale}+dsc`, text: t('message.dataset_search.sort_by.title_desc') },
+    { value: 'modified+desc', text: t('message.dataset_search.sort_by.date_modified_desc') },
+    { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
+  ]
+})
 </script>
 
 <template>
@@ -189,6 +209,12 @@ await suspense()
     />
     <!-- results -->
     <OdsSearchResults :results-count="getSearchResultsCount">
+      <template #header-right>
+        <OdsSortSelect
+          v-model="selectedSort"
+          :options="sortOptions"
+        />
+      </template>
       <div class="ods-card-list">
         <ul class="search-results-list">
           <li
