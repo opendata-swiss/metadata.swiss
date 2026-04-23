@@ -172,7 +172,10 @@ await suspense()
           <h2 class="h2">
             {{ t('message.dataset_detail.additional_information') }}
           </h2>
-          <OdsDetailsTable :table-entries="distribution.propertyTable" />
+          <OdsDetailsTable
+            :table-entries="distribution.propertyTable"
+            type="block"
+          />
         </div>
         <div class="hidden container__aside md:block">
           <div
