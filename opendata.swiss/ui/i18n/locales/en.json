@@ -83,7 +83,13 @@
             "open": "Open website",
             "search": {
                 "dataset_references": "{count} dataset(s)",
-                "placeholder": "Search showcases",
+                "prompt": "Search showcases",
+                "sort_by": {
+                    "newest": "Newest first",
+                    "oldest": "Oldest first",
+                    "title_asc": "A-Z",
+                    "title_desc": "Z-A"
+                },
                 "submit_prompt": {
                     "title": "Your showcase here?",
                     "abstract": "Submit your own showcase to share your project with the community, advertise your datasets and inspire others.",

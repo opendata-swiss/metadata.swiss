@@ -3,6 +3,8 @@ import strip from 'strip-markdown'
 import remarkFrontmatter from 'remark-frontmatter'
 import { dcat, dcterms, rdfs, schema } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
+import { execSync } from 'node:child_process'
+import { join } from 'node:path'
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
@@ -18,6 +20,7 @@ interface AggregateShowcase {
   'datasets': Array<{ identifier: string, label: string }>
   'text': Record<string, string | undefined>
   'tag': string[]
+  'modified': string | undefined
 }
 
 const ldContext = {
@@ -50,11 +53,13 @@ const ldContext = {
   identifier: dcterms.identifier.value,
   image: schema.image.value,
   tag: dcat.keyword.value,
+  modified: dcterms.modified.value,
   Dataset: dcat.Dataset.value,
   piveau: 'https://piveau.eu/ns/voc#',
 }
 export default defineEventHandler(async (event) => {
-  const showcases: ShowcasesCollectionItem[] = await queryCollection(event, 'showcases')
+  const { public: { rootDir } } = useRuntimeConfig(event)
+  const showcases = await queryCollection(event, 'showcases')
     .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type')
     .where('active', '=', true)
     .all()
@@ -63,6 +68,11 @@ export default defineEventHandler(async (event) => {
     const arr = await promise
 
     const { stem, lang } = showcase.stem.match(stemPattern)?.groups || {}
+    if (!stem || !lang) {
+      console.warn(`${showcase.stem} did not match stem pattern`)
+      return arr
+    }
+
     const id = `showcase/${stem}`
     let aggregate = arr.find(agg => agg.id === id)
     if (!aggregate) {
@@ -78,6 +88,7 @@ export default defineEventHandler(async (event) => {
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
         'tag': showcase.tags || [],
+        'modified': getLastModified(rootDir, stem),
       }
       arr.push(aggregate)
     }
@@ -117,4 +128,25 @@ async function stripMarkdown(md: string | undefined) {
     .use(remarkFrontmatter)
     .process(md)
   return stripped.value.toString()
+}
+
+function getLastModified(rootDir: string, stem: string) {
+  try {
+    const showcasesDir = join(rootDir, 'content/showcases')
+    const files = [
+      `${stem}.de.md`,
+      `${stem}.en.md`,
+      `${stem}.fr.md`,
+      `${stem}.it.md`,
+    ].join(' ')
+
+    const command = `git log -n 1 --format=%aI -- ${files}`
+    const result = execSync(command, { cwd: showcasesDir, encoding: 'utf-8' })
+
+    return result.trim() || undefined
+  }
+  catch (e) {
+    console.error(`Failed to get last modified date for ${stem}`, e)
+    return undefined
+  }
 }

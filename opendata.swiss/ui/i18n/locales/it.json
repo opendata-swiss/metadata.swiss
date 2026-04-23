@@ -83,7 +83,13 @@
             "open": "Apri sito web",
             "search": {
                 "dataset_references": "{count} set di dati",
-                "placeholder": "Cerca showcases",
+                "prompt": "Cerca showcases",
+                "sort_by": {
+                    "newest": "Dal più recente",
+                    "oldest": "Dal più vecchio",
+                    "title_asc": "A-Z",
+                    "title_desc": "Z-A"
+                },
                 "submit_prompt": {
                     "title": "Il tuo showcase qui?",
                     "abstract": "Invia il tuo showcase per condividere il tuo progetto con la community, promuovere i tuoi dataset e ispirare gli altri.",

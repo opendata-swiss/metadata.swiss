@@ -182,12 +182,11 @@ const { selectedSort } = useSorting(initialSort, (sortTerm) => {
 })
 
 const sortOptions = computed(() => {
-  const currentLocale = locale.value
   return [
-    { value: `title.${currentLocale}+asc`, text: t('message.dataset_search.sort_by.title_asc') },
-    { value: `title.${currentLocale}+dsc`, text: t('message.dataset_search.sort_by.title_desc') },
-    { value: 'modified+desc', text: t('message.dataset_search.sort_by.date_modified_desc') },
-    { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
+    { value: `title.${locale.value}+asc`, text: t('message.showcase.search.sort_by.title_asc') },
+    { value: `title.${locale.value}+dsc`, text: t('message.showcase.search.sort_by.title_desc') },
+    { value: 'modified+desc', text: t('message.showcase.search.sort_by.newest') },
+    { value: 'modified+asc', text: t('message.showcase.search.sort_by.oldest') },
   ]
 })
 </script>
