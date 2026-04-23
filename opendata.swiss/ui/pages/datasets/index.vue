@@ -80,10 +80,8 @@ const sortOptions = computed(() => {
 })
 const { selectedSort } = useSorting({
   sortCallback(sortTerm) {
-    if (sortTerm) {
-      selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
-      piveauQueryParams.sort = selectedSort.value
-    }
+    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+    piveauQueryParams.sort = selectedSort.value
   },
 })
 

@@ -3,7 +3,7 @@ import { type LocationQueryValue, useRoute, useRouter } from 'vue-router'
 
 interface UseSorting {
   initialSort?: string
-  sortCallback: (sortString: LocationQueryValue | LocationQueryValue[] | undefined) => void
+  sortCallback: (sortString: LocationQueryValue | LocationQueryValue[]) => void
 }
 
 export function useSorting({ initialSort, sortCallback }: UseSorting) {
@@ -17,7 +17,7 @@ export function useSorting({ initialSort, sortCallback }: UseSorting) {
     router.push({ query: { ...route.query, sort: sortString } })
   })
 
-  watch(() => route.query.sort, sortCallback)
+  watch(() => route.query.sort, value => value && sortCallback(value))
 
   return { selectedSort }
 }
