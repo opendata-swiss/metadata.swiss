@@ -52,12 +52,12 @@ Dependencies only downwards
 
 [   ] Landing Page
 
-[   ] Static content (CMS) workflow/activation
+[...] Static content (CMS) workflow/activation
 [...] Static content (CMS) display
 [.. ] Static content (CMS) edit
 
-[.  ] Blog workflow
-[.. ] Blog search & display
+[...] Blog workflow
+[...] Blog search & display
 [...] Blog edit
 
 [.  ] Showcase linked to Organization
