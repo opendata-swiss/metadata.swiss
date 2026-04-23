@@ -78,11 +78,13 @@ const sortOptions = computed(() => {
     { value: 'modified+asc', text: t('message.dataset_search.sort_by.date_modified_asc') },
   ]
 })
-const { selectedSort } = useSorting((sortTerm) => {
-  if (sortTerm) {
-    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
-    piveauQueryParams.sort = selectedSort.value
-  }
+const { selectedSort } = useSorting({
+  sortCallback(sortTerm) {
+    if (sortTerm) {
+      selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+      piveauQueryParams.sort = selectedSort.value
+    }
+  },
 })
 
 const piveauQueryParams: SearchParamsBase = reactive({

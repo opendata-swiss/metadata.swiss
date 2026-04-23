@@ -174,11 +174,14 @@ onMounted(() => {
 const { suspense } = query
 await suspense()
 
-const { selectedSort } = useSorting(initialSort, (sortTerm) => {
-  if (sortTerm) {
-    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
-    piveauQueryParams.sort = selectedSort.value
-  }
+const { selectedSort } = useSorting({
+  initialSort,
+  sortCallback(sortTerm) {
+    if (sortTerm) {
+      selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+      piveauQueryParams.sort = selectedSort.value
+    }
+  },
 })
 
 const sortOptions = computed(() => {

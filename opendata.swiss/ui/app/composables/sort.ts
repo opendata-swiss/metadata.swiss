@@ -1,7 +1,12 @@
 import { ref, watch } from 'vue'
 import { type LocationQueryValue, useRoute, useRouter } from 'vue-router'
 
-export function useSorting(initialSort: string, sortCallback: (sortString: LocationQueryValue | LocationQueryValue[] | undefined) => void) {
+interface UseSorting {
+  initialSort?: string
+  sortCallback: (sortString: LocationQueryValue | LocationQueryValue[] | undefined) => void
+}
+
+export function useSorting({ initialSort, sortCallback }: UseSorting) {
   const router = useRouter()
   const route = useRoute()
 
