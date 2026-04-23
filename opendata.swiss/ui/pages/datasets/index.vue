@@ -162,7 +162,7 @@ function scrollOnPaging(event: PointerEvent) {
   }
 }
 
-const searchInput = ref(route.query.q)
+const searchInput = ref(route.query.q ?? '')
 const onSearch = () => goToPage(1, { q: searchInput.value })
 
 const homeBreadcrumb = await homePageBreadcrumb(locale)
