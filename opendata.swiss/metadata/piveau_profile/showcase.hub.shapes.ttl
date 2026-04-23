@@ -49,6 +49,11 @@ ex:Showcase_Shape a sh:NodeShape ;
           pv:mappingClass "DateTime" ;
           pv:mappingName "modified"
       ], [
+          sh:maxCount 1 ;
+          sh:path dcterms:issued ;
+          pv:mappingClass "DateTime" ;
+          pv:mappingName "issued"
+      ], [
           sh:minCount 1 ;
           sh:maxCount 4 ;
           sh:uniqueLang true ;

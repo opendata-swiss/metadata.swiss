@@ -85,8 +85,10 @@
                 "dataset_references": "{count} set di dati",
                 "prompt": "Cerca showcases",
                 "sort_by": {
-                    "newest": "Dal più recente",
-                    "oldest": "Dal più vecchio",
+                    "newest": "Aggiornamenti recenti",
+                    "oldest": "Aggiornamenti passati",
+                    "issued_desc": "Nuovi showcase",
+                    "issued_asc": "Vecchi showcase",
                     "title_asc": "A-Z",
                     "title_desc": "Z-A"
                 },

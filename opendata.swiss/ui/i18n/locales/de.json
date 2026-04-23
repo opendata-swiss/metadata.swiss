@@ -90,8 +90,10 @@
                     "button_title": "Ihre Showcase einreichen"
                 },
                 "sort_by": {
-                    "newest": "Neueste zuerst",
-                    "oldest": "Älteste zuerst",
+                    "newest": "Zuletzt aktualisiert",
+                    "oldest": "Früheste Aktualisierung",
+                    "issued_desc": "Neueste Showcases",
+                    "issued_asc": "Älteste Showcases",
                     "title_asc": "A-Z",
                     "title_desc": "Z-A"
                 }

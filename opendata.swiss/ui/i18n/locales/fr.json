@@ -85,8 +85,10 @@
                 "dataset_references": "{count} jeux de données",
                 "prompt": "Rechercher des showcases",
                 "sort_by": {
-                    "newest": "Les plus récents d'abord",
-                    "oldest": "Les plus anciens d'abord",
+                    "newest": "Mises à jour récentes",
+                    "oldest": "Anciennes mises à jour",
+                    "issued_desc": "Nouveaux showcases",
+                    "issued_asc": "Anciens showcases",
                     "title_asc": "A-Z",
                     "title_desc": "Z-A"
                 },

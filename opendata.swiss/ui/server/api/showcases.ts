@@ -21,6 +21,7 @@ interface AggregateShowcase {
   'text': Record<string, string | undefined>
   'tag': string[]
   'modified': string | undefined
+  'issued': string | undefined
 }
 
 const ldContext = {
@@ -54,6 +55,7 @@ const ldContext = {
   image: schema.image.value,
   tag: dcat.keyword.value,
   modified: dcterms.modified.value,
+  issued: dcterms.issued.value,
   Dataset: dcat.Dataset.value,
   piveau: 'https://piveau.eu/ns/voc#',
 }
@@ -76,6 +78,7 @@ export default defineEventHandler(async (event) => {
     const id = `showcase/${stem}`
     let aggregate = arr.find(agg => agg.id === id)
     if (!aggregate) {
+      const { modified, issued } = getShowcaseDates(rootDir, stem)
       aggregate = {
         id,
         'identifier': stem,
@@ -88,7 +91,8 @@ export default defineEventHandler(async (event) => {
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
         'tag': showcase.tags || [],
-        'modified': getLastModified(rootDir, stem),
+        modified,
+        issued,
       }
       arr.push(aggregate)
     }
@@ -130,7 +134,7 @@ async function stripMarkdown(md: string | undefined) {
   return stripped.value.toString()
 }
 
-function getLastModified(rootDir: string, stem: string) {
+function getShowcaseDates(rootDir: string, stem: string) {
   try {
     const showcasesDir = join(rootDir, 'content/showcases')
     const files = [
@@ -140,13 +144,23 @@ function getLastModified(rootDir: string, stem: string) {
       `${stem}.it.md`,
     ].join(' ')
 
-    const command = `git log -n 1 --format=%aI -- ${files}`
+    // Get all commit dates for the showcase files, sorted from newest to oldest
+    // Note: Accurate dates require a repository clone with sufficient history (avoid --depth 1)
+    const command = `git log --format=%aI -- ${files}`
     const result = execSync(command, { cwd: showcasesDir, encoding: 'utf-8' })
 
-    return result.trim() || undefined
+    const dates = result.trim().split('\n').filter(Boolean)
+
+    return {
+      modified: dates[0],
+      issued: dates.at(-1),
+    }
   }
   catch (e) {
-    console.error(`Failed to get last modified date for ${stem}`, e)
-    return undefined
+    console.error(`Failed to get git dates for ${stem}`, e)
+    return {
+      modified: undefined,
+      issued: undefined,
+    }
   }
 }

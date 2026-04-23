@@ -188,6 +188,8 @@ const sortOptions = computed(() => {
     { value: `title.${locale.value}+dsc`, text: t('message.showcase.search.sort_by.title_desc') },
     { value: 'modified+desc', text: t('message.showcase.search.sort_by.newest') },
     { value: 'modified+asc', text: t('message.showcase.search.sort_by.oldest') },
+    { value: 'issued+desc', text: t('message.showcase.search.sort_by.issued_desc') },
+    { value: 'issued+asc', text: t('message.showcase.search.sort_by.issued_asc') },
   ]
 })
 </script>
