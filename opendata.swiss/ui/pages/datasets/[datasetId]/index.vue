@@ -239,7 +239,7 @@ await suspense()
       <section class="section publication-back-button-section">
         <div class="container">
           <OdsButton
-            title="Zurück"
+            :title="t('message.dataset_detail.to_search')"
             icon="ArrowLeft"
             variant="outline"
             class="btn--back"
