@@ -1,207 +1,209 @@
 {
-    "message": {
-        "top_header": {
-            "logout": "Abmelden",
-            "login": "Anmelden"
-        },
-        "header": {
-            "ods_logo": "Logo von opendata.swiss",
-            "navigation": {
-                "home": "Startseite",
-                "datasets": "Datensätze",
-                "blog": "Blog",
-                "about": "Über uns",
-                "contact": "Kontakt",
-                "what_is_ods": "Was ist opendata.swiss?",
-                "terms_of_use": "Nutzungsbedingungen",
-                "handbook": "Handbuch",
-                "search": "Suche",
-                "showcases": "Showcases",
-                "close": "Schliessen",
-                "more": "Mehr...",
-                "showcase_submit": "Showcase einreichen",
-                "admin": {
-                    "title": "GOGD Admin",
-                    "dashboard": "Dashboard",
-                    "metrics": "Qualität & Metriken",
-                    "categories": "DCAT Kategorien"
-                }
-            }
-        },
-        "ods_toc": {
-            "contents": "Inhaltverzeichnis"
-        },
-        "dataset_search": {
-            "search_placeholder": "Nach Datensätzen suchen",
-            "search_button": "Suchen",
-            "search_results": "Suchergebnisse",
-            "show_filters": "Filter anzeigen",
-            "reset_filters": "Filter zurücksetzen",
-            "hide_filters": "Filter ausblenden",
-            "sort": "Sortieren",
-            "sort_by": {
-                "relevance": "nach Relevanz sortieren",
-                "date_modified_desc": "nach Datum zuletzt geändert (neueste zuerst)",
-                "date_modified_asc": "nach Datum zuletzt geändert (älteste zuerst)",
-                "title_asc": "nach Titel sortieren (a-z)",
-                "title_desc": "nach Titel sortieren (z-a)"
-            }
-        },
-        "dataset_detail": {
-            "dataset": "Datensatz",
-            "catalog": "Katalog",
-            "this_dataset_record": "Dieser Datensatz-Eintrag wurde",
-            "frequency": "Aktualisierungsfrequenz",
-            "show_catalog_entry": "Katalogeintrag anzeigen",
-            "hide_catalog_entry": "Katalogeintrag ausblenden",
-            "distribution": "Distribution",
-            "distributions": "Distributionen",
-            "additional_information": "Zusätzliche Informationen",
-            "published_on": "Publiziert",
-            "created_on": "Erstellt",
-            "modified_on": "Zuletzt aktualisiert",
-            "categories": "Kategorien",
-            "download": "Download",
-            "go_to_resource": "Gehe zur Ressource",
-            "show_raw": "Datum anzeigen",
-            "show_relative": "Relative Zeit anzeigen",
-            "details": "Details",
-            "released": "Veröffentlicht",
-            "metadata_download": "Metadaten herunterladen",
-            "metadata": "Metadaten",
-            "keywords": "Schlagwörter"
-        },
-        "showcase": {
-            "type": {
-                "header": "Art des Inhalts"
-            },
-            "categories": "Kategorien",
-            "datasets": "Datensätze",
-            "tags": "Tags",
-            "submitted_by": "Übermittelt von",
-            "externalLink": "Externer Link",
-            "open": "Website starten",
-            "search": {
-                "dataset_references": "{count} Datensätze",
-                "prompt": "Nach Datensätzen suchen...",
-                "submit_prompt": {
-                    "title": "Ihr Showcase hier?",
-                    "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren.",
-                    "button_title": "Ihre Showcase einreichen"
-                }
-            },
-            "submission_form": {
-                "group_italian": "Italienisch",
-                "group_french": "Französisch",
-                "group_german": "Deutsch",
-                "group_english": "Englisch",
-                "group_general": "Allgemein",
-                "success_message": "Der Showcase wurde eingereicht.",
-                "failure_message": "Einreichung des Showcases fehlgeschlagen.",
-                "field_title": "Titel",
-                "field_body": "Beschreibung",
-                "field_url": "Website",
-                "field_type": "Art des Inhalts",
-                "field_image": "Bild",
-                "field_tags": {
-                    "label": "Tags",
-                    "prompt": "Geben Sie die Tags durch Kommas getrennt ein"
-                },
-                "field_categories": {
-                    "label": "Kategorien",
-                    "prompt": "Wählen Sie eine oder mehrere Kategorien"
-                },
-                "field_datasets": {
-                    "label": "Datensätze",
-                    "prompt": "Tippen Sie, um nach Datensätzen zu suchen..."
-                },
-                "field_submitted_by": {
-                    "name": "Übermittelt von",
-                    "url": "Website-Links"
-                },
-                "submit_button": "Einreichen"
-            }
-        },
-        "handbook": {
-            "search_prompt": "Im Handbuch suchen...",
-            "search_prompt_short": "Hier schreiben..."
-        },
-        "blog": {
-            "search_prompt": "Im Blog suchen...",
-            "search_prompt_short": "Hier schreiben..."
-        },
-        "terms_of_use": {
-            "ods_open": {
-                "title": "Freie Nutzung",
-                "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
-                "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen.",
-                "condition_3": "Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)."
-            },
-            "ods_by": {
-                "title": "Freie Nutzung. Quellenangabe ist Pflicht.",
-                "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
-                "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen.",
-                "condition_3": "Eine Quellenangabe ist Pflicht (Autor, Titel und Link zum Datensatz)."
-            },
-            "ods_ask": {
-                "title": "Freie Nutzung. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig.",
-                "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
-                "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen, sofern Sie eine entsprechende Bewilligung beim Datenlieferanten eingeholt haben.",
-                "condition_3": "Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)."
-            },
-            "ods_by_ask": {
-                "title": "Freie Nutzung. Quellenangabe ist Pflicht. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig.",
-                "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
-                "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen, sofern Sie eine entsprechende Bewilligung beim Datenlieferanten eingeholt haben.",
-                "condition_3": "Eine Quellenangabe ist Pflicht (Autor, Titel und Link zum Datensatz)."
-            }
-        },
-        "bottom_footer": {
-            "ods_a_1": "Rechtliches",
-            "ods_href_1": "https://opendata.swiss/de/legal-framework",
-            "ods_aria_label_1": "Rechtliche Hinweise auf opendata.swiss",
-            "ods_a_2": "Impressum",
-            "ods_href_2": "https://www.bfs.admin.ch/bfs/de/home/bfs/bundesamt-statistik/rechtliche-hinweise.html",
-            "ods_aria_label_2": "Impressum von opendata.swiss"
-        },
-        "ods-pagination": {
-            "previous": "Vorherige Seite",
-            "next": "Nächste Seite",
-            "page": "Seite",
-            "of": "von {pageCount}",
-            "input_label": "Seiteneingabe"
-        },
-        "ods-list-card-toggle": {
-            "list_view": "Als Liste anzeigen",
-            "card_view": "Als Raster anzeigen"
-        },
-        "ods-footer": {
-            "block_1": {
-                "title": "Über uns",
-                "paragraph_1": "Das Portal opendata.swiss ist ein gemeinsames Projekt von Bund, Kantonen, Gemeinden und weiteren Organisationen mit einem staatlichen Auftrag. Es stellt der Allgemeinheit offene Behördendaten in einem zentralen Katalog zur Verfügung. Das Bundesamt für Statistik betreibt opendata.swiss."
-            },
-            "block_2": {
-                "title": "Folgen Sie uns",
-                "news_mail_href": "https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/ogd/gemeinschaft/newsmail.html",
-                "news_mail_aria_label": "News abonnieren"
-            },
-            "block_3": {
-                "title": "Weitere Informationen"
-            }
-        }
+  "message": {
+    "top_header": {
+      "logout": "Abmelden",
+      "login": "Anmelden"
     },
-    "server": {
-        "api": {
-            "showcases": {
-                "post": {
-                    "error": {
-                        "missing_content": "Mindestens eine Sprache muss einen Titel (mind. 5 Zeichen) und einen Text (mind. 100 Zeichen) haben.",
-                        "submission_exists": "Eine Einreichung mit exakt demselben Titel existiert bereits.",
-                        "unspecified_error": "Ein nicht näher bezeichneter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
-                    },
-                    "success": "Ihre Einreichung ist eingegangen und wird überprüft."
-                }
-            }
+    "header": {
+      "ods_logo": "Logo von opendata.swiss",
+      "navigation": {
+        "home": "Startseite",
+        "datasets": "Datensätze",
+        "blog": "Blog",
+        "about": "Über uns",
+        "contact": "Kontakt",
+        "what_is_ods": "Was ist opendata.swiss?",
+        "terms_of_use": "Nutzungsbedingungen",
+        "handbook": "Handbuch",
+        "search": "Suche",
+        "showcases": "Showcases",
+        "close": "Schliessen",
+        "more": "Mehr...",
+        "showcase_submit": "Showcase einreichen",
+        "admin": {
+          "title": "GOGD Admin",
+          "dashboard": "Dashboard",
+          "metrics": "Qualität & Metriken",
+          "categories": "DCAT Kategorien"
         }
+      }
+    },
+    "ods_toc": {
+      "contents": "Inhaltverzeichnis"
+    },
+    "dataset_search": {
+      "search_placeholder": "Nach Datensätzen suchen",
+      "search_button": "Suchen",
+      "search_results": "Suchergebnisse",
+      "show_filters": "Filter anzeigen",
+      "reset_filters": "Filter zurücksetzen",
+      "hide_filters": "Filter ausblenden",
+      "sort": "Sortieren",
+      "sort_by": {
+        "relevance": "nach Relevanz sortieren",
+        "date_modified_desc": "nach Datum zuletzt geändert (neueste zuerst)",
+        "date_modified_asc": "nach Datum zuletzt geändert (älteste zuerst)",
+        "title_asc": "nach Titel sortieren (a-z)",
+        "title_desc": "nach Titel sortieren (z-a)"
+      }
+    },
+    "dataset_detail": {
+      "dataset": "Dataset",
+      "catalog": "Katalog",
+      "this_dataset_record": "Dieser Datensatz-Eintrag wurde",
+      "frequency": "Aktualisierungsfrequenz",
+      "show_catalog_entry": "Katalogeintrag anzeigen",
+      "hide_catalog_entry": "Katalogeintrag ausblenden",
+      "distribution": "Distribution",
+      "distributions": "Distributionen",
+      "additional_information": "Zusätzliche Informationen",
+      "published_on": "Publiziert",
+      "created_on": "Erstellt",
+      "modified_on": "Zuletzt aktualisiert",
+      "categories": "Kategorien",
+      "download": "Download",
+      "go_to_resource": "Gehe zur Ressource",
+      "show_raw": "Datum anzeigen",
+      "show_relative": "Relative Zeit anzeigen",
+      "details": "Details",
+      "released": "Veröffentlicht",
+      "metadata_download": "Metadaten herunterladen",
+      "metadata": "Metadaten",
+      "keywords": "Schlagwörter",
+      "to_dataset": "Zum Dataset",
+      "to_search": "Zur Suche"
+    },
+    "showcase": {
+      "type": {
+        "header": "Art des Inhalts"
+      },
+      "categories": "Kategorien",
+      "datasets": "Datensätze",
+      "tags": "Tags",
+      "submitted_by": "Übermittelt von",
+      "externalLink": "Externer Link",
+      "open": "Website starten",
+      "search": {
+        "dataset_references": "{count} Datensätze",
+        "prompt": "Nach Datensätzen suchen...",
+        "submit_prompt": {
+          "title": "Ihr Showcase hier?",
+          "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren.",
+          "button_title": "Ihre Showcase einreichen"
+        }
+      },
+      "submission_form": {
+        "group_italian": "Italienisch",
+        "group_french": "Französisch",
+        "group_german": "Deutsch",
+        "group_english": "Englisch",
+        "group_general": "Allgemein",
+        "success_message": "Der Showcase wurde eingereicht.",
+        "failure_message": "Einreichung des Showcases fehlgeschlagen.",
+        "field_title": "Titel",
+        "field_body": "Beschreibung",
+        "field_url": "Website",
+        "field_type": "Art des Inhalts",
+        "field_image": "Bild",
+        "field_tags": {
+          "label": "Tags",
+          "prompt": "Geben Sie die Tags durch Kommas getrennt ein"
+        },
+        "field_categories": {
+          "label": "Kategorien",
+          "prompt": "Wählen Sie eine oder mehrere Kategorien"
+        },
+        "field_datasets": {
+          "label": "Datensätze",
+          "prompt": "Tippen Sie, um nach Datensätzen zu suchen..."
+        },
+        "field_submitted_by": {
+          "name": "Übermittelt von",
+          "url": "Website-Links"
+        },
+        "submit_button": "Einreichen"
+      }
+    },
+    "handbook": {
+      "search_prompt": "Im Handbuch suchen...",
+      "search_prompt_short": "Hier schreiben..."
+    },
+    "blog": {
+      "search_prompt": "Im Blog suchen...",
+      "search_prompt_short": "Hier schreiben..."
+    },
+    "terms_of_use": {
+      "ods_open": {
+        "title": "Freie Nutzung",
+        "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
+        "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen.",
+        "condition_3": "Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)."
+      },
+      "ods_by": {
+        "title": "Freie Nutzung. Quellenangabe ist Pflicht.",
+        "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
+        "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen.",
+        "condition_3": "Eine Quellenangabe ist Pflicht (Autor, Titel und Link zum Datensatz)."
+      },
+      "ods_ask": {
+        "title": "Freie Nutzung. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig.",
+        "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
+        "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen, sofern Sie eine entsprechende Bewilligung beim Datenlieferanten eingeholt haben.",
+        "condition_3": "Eine Quellenangabe wird empfohlen (Autor, Titel und Link zum Datensatz)."
+      },
+      "ods_by_ask": {
+        "title": "Freie Nutzung. Quellenangabe ist Pflicht. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig.",
+        "condition_1": "Sie dürfen diesen Datensatz für nicht kommerzielle Zwecke nutzen.",
+        "condition_2": "Sie dürfen diesen Datensatz für kommerzielle Zwecke nutzen, sofern Sie eine entsprechende Bewilligung beim Datenlieferanten eingeholt haben.",
+        "condition_3": "Eine Quellenangabe ist Pflicht (Autor, Titel und Link zum Datensatz)."
+      }
+    },
+    "bottom_footer": {
+      "ods_a_1": "Rechtliches",
+      "ods_href_1": "https://opendata.swiss/de/legal-framework",
+      "ods_aria_label_1": "Rechtliche Hinweise auf opendata.swiss",
+      "ods_a_2": "Impressum",
+      "ods_href_2": "https://www.bfs.admin.ch/bfs/de/home/bfs/bundesamt-statistik/rechtliche-hinweise.html",
+      "ods_aria_label_2": "Impressum von opendata.swiss"
+    },
+    "ods-pagination": {
+      "previous": "Vorherige Seite",
+      "next": "Nächste Seite",
+      "page": "Seite",
+      "of": "von {pageCount}",
+      "input_label": "Seiteneingabe"
+    },
+    "ods-list-card-toggle": {
+      "list_view": "Als Liste anzeigen",
+      "card_view": "Als Raster anzeigen"
+    },
+    "ods-footer": {
+      "block_1": {
+        "title": "Über uns",
+        "paragraph_1": "Das Portal opendata.swiss ist ein gemeinsames Projekt von Bund, Kantonen, Gemeinden und weiteren Organisationen mit einem staatlichen Auftrag. Es stellt der Allgemeinheit offene Behördendaten in einem zentralen Katalog zur Verfügung. Das Bundesamt für Statistik betreibt opendata.swiss."
+      },
+      "block_2": {
+        "title": "Folgen Sie uns",
+        "news_mail_href": "https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/ogd/gemeinschaft/newsmail.html",
+        "news_mail_aria_label": "News abonnieren"
+      },
+      "block_3": {
+        "title": "Weitere Informationen"
+      }
     }
+  },
+  "server": {
+    "api": {
+      "showcases": {
+        "post": {
+          "error": {
+            "missing_content": "Mindestens eine Sprache muss einen Titel (mind. 5 Zeichen) und einen Text (mind. 100 Zeichen) haben.",
+            "submission_exists": "Eine Einreichung mit exakt demselben Titel existiert bereits.",
+            "unspecified_error": "Ein nicht näher bezeichneter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+          },
+          "success": "Ihre Einreichung ist eingegangen und wird überprüft."
+        }
+      }
+    }
+  }
 }
