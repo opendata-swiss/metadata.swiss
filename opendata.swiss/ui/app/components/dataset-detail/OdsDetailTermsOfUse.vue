@@ -35,7 +35,6 @@ const termsName = computed(() => {
     console.warn('License is undefined')
     return 'ask'
   }
-  console.log('License ID:', props.license.id)
   const licnsesId = props.license.id
   switch (licnsesId) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
