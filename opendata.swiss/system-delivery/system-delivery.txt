@@ -48,7 +48,7 @@ Dependencies only downwards
 
 [   ] Distribution Preview
 
-[   ] Statistics of portal usage (I14Y matomo re-use)
+[...] Statistics of portal usage (I14Y matomo re-use)
 
 [   ] Landing Page
 
@@ -73,8 +73,8 @@ Dependencies only downwards
 [.. ] Linkchecker (Distributions)
 [.. ] DCAT-AP CH conformance check
 
-[.. ] Handbook workflow
-[.. ] Handbook search & display
+[...] Handbook workflow
+[...] Handbook search & display
 [...] Handbook edit
 
 [.. ] DCAT-AP CH V3 Metadata

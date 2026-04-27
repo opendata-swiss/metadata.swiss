@@ -1,88 +1,90 @@
 {
-    "message": {
-        "top_header": {
-            "logout": "Déconnexion",
-            "login": "Connexion"
-        },
-        "header": {
-            "ods_logo": "Logo d'opendata.swiss",
-            "navigation": {
-                "home": "Accueil",
-                "datasets": "Jeux de données",
-                "blog": "Blog",
-                "about": "À propos de nous",
-                "contact": "Contact",
-                "what_is_ods": "Qu'est-ce qu'opendata.swiss?",
-                "terms_of_use": "Conditions d'utilisation",
-                "handbook": "Manuel",
-                "search": "Recherche",
-                "showcases": "Showcases",
-                "close": "Fermer",
-                "more": "Plus...",
-                "showcase_submit": "Soumettre un showcase",
-                "admin": {
-                    "title": "GOGD Admin",
-                    "dashboard": "Tableau de bord",
-                    "metrics": "Qualité & métriques",
-                    "categories": "Catégories DCAT"
-                }
-            }
-        },
-        "ods_toc": {
-            "contents": "Table des matières"
-        },
-        "dataset_search": {
-            "search_placeholder": "Rechercher des jeux de données",
-            "search_button": "Rechercher",
-            "search_results": "Résultats de recherche",
-            "show_filters": "Afficher les filtres",
-            "reset_filters": "Réinitialiser les filtres",
-            "hide_filters": "Masquer les filtres",
-            "sort": "Trier par",
-            "sort_by": {
-                "relevance": "par pertinence",
-                "date_modified_desc": "par date de modification (plus récent d'abord)",
-                "date_modified_asc": "par date de modification (plus ancien d'abord)",
-                "title_asc": "par titre (a-z)",
-                "title_desc": "par titre (z-a)"
-            }
-        },
-        "dataset_detail": {
-            "dataset": "Jeu de données",
-            "catalog": "Catalogue",
-            "this_dataset_record": "Cette entrée de jeu de données a été",
-            "frequency": "Fréquence de mise à jour",
-            "show_catalog_entry": "Afficher l’entrée du catalogue",
-            "hide_catalog_entry": "Masquer l’entrée du catalogue",
-            "distribution": "Distribution",
-            "distributions": "Distributions",
-            "additional_information": "Informations supplémentaires",
-            "published_on": "Publié",
-            "created_on": "Créé",
-            "modified_on": "Dernière mise à jour",
-            "categories": "Catégories",
-            "download": "Télécharger",
-            "go_to_resource": "Aller à la ressource",
-            "show_raw": "Afficher la date brute",
-            "show_relative": "Afficher le temps relatif",
-            "details": "Détails",
-            "released": "Publié",
-            "metadata_download": "Télécharger les métadonnées",
-            "metadata": "Métadonnées",
-            "keywords": "Mots-clés"
-        },
-        "showcase": {
-            "type": {
-                "header": "Type de contenu"
-            },
-            "categories": "Catégories",
-            "datasets": "Jeux de données",
-            "tags": "Tags",
-            "submitted_by": "Soumis par",
-            "externalLink": "Lien externe",
-            "open": "Ouvrir le site web",
-            "search": {
-                "dataset_references": "{count} jeux de données",
+  "message": {
+    "top_header": {
+      "logout": "Déconnexion",
+      "login": "Connexion"
+    },
+    "header": {
+      "ods_logo": "Logo d'opendata.swiss",
+      "navigation": {
+        "home": "Accueil",
+        "datasets": "Jeux de données",
+        "blog": "Blog",
+        "about": "À propos de nous",
+        "contact": "Contact",
+        "what_is_ods": "Qu'est-ce qu'opendata.swiss?",
+        "terms_of_use": "Conditions d'utilisation",
+        "handbook": "Manuel",
+        "search": "Recherche",
+        "showcases": "Showcases",
+        "close": "Fermer",
+        "more": "Plus...",
+        "showcase_submit": "Soumettre un showcase",
+        "admin": {
+          "title": "GOGD Admin",
+          "dashboard": "Tableau de bord",
+          "metrics": "Qualité & métriques",
+          "categories": "Catégories DCAT"
+        }
+      }
+    },
+    "ods_toc": {
+      "contents": "Table des matières"
+    },
+    "dataset_search": {
+      "search_placeholder": "Rechercher des jeux de données",
+      "search_button": "Rechercher",
+      "search_results": "Résultats de recherche",
+      "show_filters": "Afficher les filtres",
+      "reset_filters": "Réinitialiser les filtres",
+      "hide_filters": "Masquer les filtres",
+      "sort": "Trier par",
+      "sort_by": {
+        "relevance": "par pertinence",
+        "date_modified_desc": "par date de modification (plus récent d'abord)",
+        "date_modified_asc": "par date de modification (plus ancien d'abord)",
+        "title_asc": "par titre (a-z)",
+        "title_desc": "par titre (z-a)"
+      }
+    },
+    "dataset_detail": {
+      "dataset": "Jeu de données",
+      "catalog": "Catalogue",
+      "this_dataset_record": "Cette entrée de jeu de données a été",
+      "frequency": "Fréquence de mise à jour",
+      "show_catalog_entry": "Afficher l’entrée du catalogue",
+      "hide_catalog_entry": "Masquer l’entrée du catalogue",
+      "distribution": "Distribution",
+      "distributions": "Distributions",
+      "additional_information": "Informations supplémentaires",
+      "published_on": "Publié",
+      "created_on": "Créé",
+      "modified_on": "Dernière mise à jour",
+      "categories": "Catégories",
+      "download": "Télécharger",
+      "go_to_resource": "Aller à la ressource",
+      "show_raw": "Afficher la date brute",
+      "show_relative": "Afficher le temps relatif",
+      "details": "Détails",
+      "released": "Publié",
+      "metadata_download": "Télécharger les métadonnées",
+      "metadata": "Métadonnées",
+      "keywords": "Mots-clés",
+      "to_dataset": "Vers le jeu de données",
+      "to_search": "Vers la recherche"
+    },
+    "showcase": {
+      "type": {
+        "header": "Type de contenu"
+      },
+      "categories": "Catégories",
+      "datasets": "Jeux de données",
+      "tags": "Tags",
+      "submitted_by": "Soumis par",
+      "externalLink": "Lien externe",
+      "open": "Ouvrir le site web",
+      "search": {
+        "dataset_references": "{count} jeux de données",
                 "prompt": "Rechercher des showcases",
                 "sort_by": {
                     "newest": "Mises à jour récentes",
@@ -92,124 +94,124 @@
                     "title_asc": "A-Z",
                     "title_desc": "Z-A"
                 },
-                "submit_prompt": {
-                    "title": "Votre vitrine ici?",
-                    "abstract": "Soumettez votre propre vitrine pour partager votre projet avec la communauté, promouvoir vos jeux de données et inspirer les autres.",
-                    "button_title": "Soumettez votre showcase"
-                }
-            },
-            "submission_form": {
-                "group_italian": "Italien",
-                "group_french": "Français",
-                "group_german": "Allemand",
-                "group_english": "Anglais",
-                "group_general": "Général",
-                "success_message": "Le showcase a été soumis.",
-                "failure_message": "La soumission du showcase a échoué.",
-                "field_title": "Titre",
-                "field_body": "Description",
-                "field_url": "Site web",
-                "field_type": "Type de contenu",
-                "field_image": "Image",
-                "field_tags": {
-                    "label": "Tags",
-                    "prompt": "Entrez les tags séparés par des virgules"
-                },
-                "field_categories": {
-                    "label": "Catégories",
-                    "prompt": "Sélectionnez une ou plusieurs catégories"
-                },
-                "field_datasets": {
-                    "label": "Jeux de données",
-                    "prompt": "Tapez pour rechercher des jeux de données..."
-                },
-                "field_submitted_by": {
-                    "name": "Soumis par",
-                    "url": "Liens vers le site web"
-                },
-                "submit_button": "Soumettre"
-            }
-        },
-        "handbook": {
-            "search_prompt": "Rechercher dans le manuel...",
-            "search_prompt_short": "Écrivez ici..."
-        },
-        "blog": {
-            "search_prompt": "Rechercher dans le blog...",
-            "search_prompt_short": "Écrivez ici..."
-        },
-        "terms_of_use": {
-            "ods_open": {
-                "title": "Utilisation libre",
-                "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
-                "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales.",
-                "condition_3": "Nous vous recommandons d’indiquer la source (auteur, titre et lien vers le jeu de données)."
-            },
-            "ods_by": {
-                "title": "Utilisation libre. Obligation d’indiquer la source.",
-                "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
-                "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales.",
-                "condition_3": "L’indication de la source (auteur, titre et lien vers le jeu de données) est obligatoire."
-            },
-            "ods_ask": {
-                "title": "Utilisation libre. Utilisation à des fins commerciales uniquement avec l’autorisation du fournisseur des données.",
-                "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
-                "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales, sous réserve de l’autorisation du fournisseur des données.",
-                "condition_3": "Nous vous recommandons d’indiquer la source (auteur, titre et lien vers le jeu de données)."
-            },
-            "ods_by_ask": {
-                "title": "Utilisation libre. Obligation d’indiquer la source. Utilisation commerciale uniquement avec l’autorisation du fournisseur des données.",
-                "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
-                "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales, sous réserve que vous ayez reçu l’autorisation du fournisseur des données.",
-                "condition_3": "L’indication de la source (auteur, titre et lien vers le jeu de données) est obligatoire."
-            }
-        },
-        "bottom_footer": {
-            "ods_a_1": "Cadre juridique",
-            "ods_href_1": "https://opendata.swiss/fr/legal-framework",
-            "ods_aria_label_1": "Cadre juridique du portail opendata.swiss",
-            "ods_a_2": "Impressum",
-            "ods_href_2": "https://www.bfs.admin.ch/bfs/de/home/bfs/bundesamt-statistik/rechtliche-hinweise.html",
-            "ods_aria_label_2": "Mentions légales d’opendata.swiss"
-        },
-        "ods-pagination": {
-            "previous": "Page précédente",
-            "next": "Page suivante",
-            "page": "Page",
-            "of": "de {pageCount}",
-            "input_label": "Saisie de la page"
-        },
-        "ods-list-card-toggle": {
-            "list_view": "Afficher en liste",
-            "card_view": "Afficher en grille"
-        },
-        "ods-footer": {
-            "block_1": {
-                "title": "À propos de nous",
-                "paragraph_1": "Le projet opendata.swiss est mené conjointement par la Confédération, les cantons, les communes et plusieurs organisations investies d'un mandat étatique. Administré par l'Office fédéral de la statistique, il met à la disposition du public un ensemble de données ouvertes de l'administration publique dans un catalogue central."
-            },
-            "block_2": {
-                "title": "Suivre l'actualité",
-                "news_mail_href": "https://www.bfs.admin.ch/bfs/fr/home/services/ogd/communaute/newsmail.html",
-                "news_mail_aria_label": "S'abonner à la newsletter d'opendata.swiss"
-            },
-            "block_3": {
-                "title": "Plus d'informations"
-            }
+        "submit_prompt": {
+          "title": "Votre vitrine ici?",
+          "abstract": "Soumettez votre propre vitrine pour partager votre projet avec la communauté, promouvoir vos jeux de données et inspirer les autres.",
+          "button_title": "Soumettez votre showcase"
         }
+      },
+      "submission_form": {
+        "group_italian": "Italien",
+        "group_french": "Français",
+        "group_german": "Allemand",
+        "group_english": "Anglais",
+        "group_general": "Général",
+        "success_message": "Le showcase a été soumis.",
+        "failure_message": "La soumission du showcase a échoué.",
+        "field_title": "Titre",
+        "field_body": "Description",
+        "field_url": "Site web",
+        "field_type": "Type de contenu",
+        "field_image": "Image",
+        "field_tags": {
+          "label": "Tags",
+          "prompt": "Entrez les tags séparés par des virgules"
+        },
+        "field_categories": {
+          "label": "Catégories",
+          "prompt": "Sélectionnez une ou plusieurs catégories"
+        },
+        "field_datasets": {
+          "label": "Jeux de données",
+          "prompt": "Tapez pour rechercher des jeux de données..."
+        },
+        "field_submitted_by": {
+          "name": "Soumis par",
+          "url": "Liens vers le site web"
+        },
+        "submit_button": "Soumettre"
+      }
     },
-    "server": {
-        "api": {
-            "showcases": {
-                "post": {
-                    "error": {
-                        "missing_content": "Au moins une langue doit avoir un titre (min. 5 caractères) et un contenu (min. 100 caractères).",
-                        "submission_exists": "Une soumission avec exactement le même titre existe déjà.",
-                        "unspecified_error": "Une erreur s'est produite lors de la soumission. Veuillez réessayer plus tard."
-                    },
-                    "success": "Votre demande a été reçue et est en cours de traitement."
-                }
-            }
-        }
+    "handbook": {
+      "search_prompt": "Rechercher dans le manuel...",
+      "search_prompt_short": "Écrivez ici..."
+    },
+    "blog": {
+      "search_prompt": "Rechercher dans le blog...",
+      "search_prompt_short": "Écrivez ici..."
+    },
+    "terms_of_use": {
+      "ods_open": {
+        "title": "Utilisation libre",
+        "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
+        "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales.",
+        "condition_3": "Nous vous recommandons d’indiquer la source (auteur, titre et lien vers le jeu de données)."
+      },
+      "ods_by": {
+        "title": "Utilisation libre. Obligation d’indiquer la source.",
+        "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
+        "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales.",
+        "condition_3": "L’indication de la source (auteur, titre et lien vers le jeu de données) est obligatoire."
+      },
+      "ods_ask": {
+        "title": "Utilisation libre. Utilisation à des fins commerciales uniquement avec l’autorisation du fournisseur des données.",
+        "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
+        "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales, sous réserve de l’autorisation du fournisseur des données.",
+        "condition_3": "Nous vous recommandons d’indiquer la source (auteur, titre et lien vers le jeu de données)."
+      },
+      "ods_by_ask": {
+        "title": "Utilisation libre. Obligation d’indiquer la source. Utilisation commerciale uniquement avec l’autorisation du fournisseur des données.",
+        "condition_1": "Vous pouvez utiliser ce jeu de données à des fins non commerciales.",
+        "condition_2": "Vous pouvez utiliser ce jeu de données à des fins commerciales, sous réserve que vous ayez reçu l’autorisation du fournisseur des données.",
+        "condition_3": "L’indication de la source (auteur, titre et lien vers le jeu de données) est obligatoire."
+      }
+    },
+    "bottom_footer": {
+      "ods_a_1": "Cadre juridique",
+      "ods_href_1": "https://opendata.swiss/fr/legal-framework",
+      "ods_aria_label_1": "Cadre juridique du portail opendata.swiss",
+      "ods_a_2": "Impressum",
+      "ods_href_2": "https://www.bfs.admin.ch/bfs/de/home/bfs/bundesamt-statistik/rechtliche-hinweise.html",
+      "ods_aria_label_2": "Mentions légales d’opendata.swiss"
+    },
+    "ods-pagination": {
+      "previous": "Page précédente",
+      "next": "Page suivante",
+      "page": "Page",
+      "of": "de {pageCount}",
+      "input_label": "Saisie de la page"
+    },
+    "ods-list-card-toggle": {
+      "list_view": "Afficher en liste",
+      "card_view": "Afficher en grille"
+    },
+    "ods-footer": {
+      "block_1": {
+        "title": "À propos de nous",
+        "paragraph_1": "Le projet opendata.swiss est mené conjointement par la Confédération, les cantons, les communes et plusieurs organisations investies d'un mandat étatique. Administré par l'Office fédéral de la statistique, il met à la disposition du public un ensemble de données ouvertes de l'administration publique dans un catalogue central."
+      },
+      "block_2": {
+        "title": "Suivre l'actualité",
+        "news_mail_href": "https://www.bfs.admin.ch/bfs/fr/home/services/ogd/communaute/newsmail.html",
+        "news_mail_aria_label": "S'abonner à la newsletter d'opendata.swiss"
+      },
+      "block_3": {
+        "title": "Plus d'informations"
+      }
     }
+  },
+  "server": {
+    "api": {
+      "showcases": {
+        "post": {
+          "error": {
+            "missing_content": "Au moins une langue doit avoir un titre (min. 5 caractères) et un contenu (min. 100 caractères).",
+            "submission_exists": "Une soumission avec exactement le même titre existe déjà.",
+            "unspecified_error": "Une erreur s'est produite lors de la soumission. Veuillez réessayer plus tard."
+          },
+          "success": "Votre demande a été reçue et est en cours de traitement."
+        }
+      }
+    }
+  }
 }

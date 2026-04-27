@@ -232,7 +232,7 @@
 <script setup lang="ts">
 import { reactive, ref, toRefs } from 'vue'
 import type { $ZodIssue as ZodIssue } from 'zod/v4/core'
-import type { SearchParamsBase } from '@piveau/sdk-core'
+import type { SearchParamsBase } from '@piveau/sdk-core/hubSearch'
 import { debounce } from 'perfect-debounce'
 import OdsMultiSelect from '../../app/components/dataset/OdsMultiSelect.vue'
 import { useDatasetsSearch } from '../../app/piveau/datasets'

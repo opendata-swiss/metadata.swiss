@@ -95,17 +95,17 @@ watch(() => route.query.search,
   () => {
     if (import.meta.client) {
       const { search, ...rest } = route.query
-      router.replace({ query: rest })
-      if (search && typeof search === 'string') {
-        searchBreadcrumb.value = {
-          id: 'search',
-          title: t('message.dataset_search.search_results'),
-          route: {
-            path: '/datasets',
-            query: search
-              ? Object.fromEntries(new URLSearchParams(decodeURIComponent(search)))
-              : {},
-          },
+      if (search) {
+        router.replace({ query: rest })
+        if (typeof search === 'string') {
+          searchBreadcrumb.value = {
+            id: 'search',
+            title: t('message.dataset_search.search_results'),
+            route: {
+              path: '/datasets',
+              query: Object.fromEntries(new URLSearchParams(decodeURIComponent(search))),
+            },
+          }
         }
       }
     }
@@ -239,7 +239,7 @@ await suspense()
       <section class="section publication-back-button-section">
         <div class="container">
           <OdsButton
-            title="Zurück"
+            :title="t('message.dataset_detail.to_search')"
             icon="ArrowLeft"
             variant="outline"
             class="btn--back"

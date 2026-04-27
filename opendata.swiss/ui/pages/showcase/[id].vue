@@ -48,6 +48,10 @@ const showcaseCategoriesRaw = await Promise.all(showcase.value?.categories.map(a
   return resultEnhanced.value
 }))
 
+const { query, resultEnhanced } = useVocabularySearch().useResource('showcase-types/vocable', { additionalParams: { resource: showcase.value.type } })
+await query.suspense()
+const showcaseType = resultEnhanced.value
+
 const showcaseCategories = computed(() => showcaseCategoriesRaw.filter(Boolean))
 
 const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
@@ -96,7 +100,7 @@ useSeoMeta({
 
       <OdsCard :title="t('message.dataset_detail.additional_information')">
         <OdsInfoBlock :title="t('message.showcase.type.header')">
-          {{ showcase.type }}
+          {{ showcaseType.pref_label }}
         </OdsInfoBlock>
         <OdsInfoBlock
           v-if="showcaseCategories.length > 0"

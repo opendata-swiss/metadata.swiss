@@ -4,7 +4,7 @@ import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 
-import type { SearchParamsBase } from '@piveau/sdk-core'
+import type { SearchParamsBase } from '@piveau/sdk-core/hubSearch'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 
 import { useDatasetsSearch, facets } from '../../app/piveau/datasets'
@@ -163,7 +163,7 @@ function scrollOnPaging(event: PointerEvent) {
   }
 }
 
-const searchInput = ref(route.query.q)
+const searchInput = ref(route.query.q ?? '')
 const onSearch = () => goToPage(1, { q: searchInput.value })
 
 const homeBreadcrumb = await homePageBreadcrumb(locale)
