@@ -1,29 +1,72 @@
 <template>
   <div class="download-item">
     <!-- spacer if no download URLs -->
-    <SvgIcon v-if="!props.distribution.downloadUrls.length" title="No download available. This is probably an api. Check details" icon="Download" size="xl" class="download-item__icon disabled" />
+    <SvgIcon
+      v-if="!props.distribution.downloadUrls.length"
+      title="No download available. This is probably an api. Check details"
+      icon="Download"
+      size="xl"
+      class="download-item__icon disabled"
+    />
 
-    <a v-for="downloadUrl in props.distribution.downloadUrls" :key="downloadUrl" :href="downloadUrl" target="_blank" rel="noopener" :title="'Download ' + props.distribution.title" class="download-item__link">
-      <SvgIcon icon="Download" size="xl" class="download-item__icon" />
+    <a
+      v-for="downloadUrl in props.distribution.downloadUrls"
+      :key="downloadUrl"
+      :href="downloadUrl"
+      target="_blank"
+      rel="noopener"
+      :title="'Download ' + props.distribution.title"
+      class="download-item__link"
+    >
+      <SvgIcon
+        icon="Download"
+        size="xl"
+        class="download-item__icon"
+      />
     </a>
 
-    <NuxtLink :to="`${props.distribution.dataset.id}/distribution/${props.distribution.id}`" class="no-underline no-overvlow">
-      <h3 class="download-item__title" :title="props.distribution.title">{{ props.distribution.title }}</h3>
+    <NuxtLinkLocale
+      :to="`/datasets/${props.distribution.dataset.id}/distribution/${props.distribution.id}`"
+      class="no-underline no-overvlow"
+    >
+      <h3
+        class="download-item__title"
+        :title="props.distribution.title"
+      >
+        {{ props.distribution.title }}
+      </h3>
       <p class="download-item__description" />
 
       <div class="footer">
         <p class="meta-info download-item__meta-info">
-          <span v-if="props.distribution.format" class="meta-info__item">{{ props.distribution.format }}</span>
-          <span v-if="props.distribution.releaseDate" class="meta-info__item">
+          <span
+            v-if="props.distribution.format"
+            class="meta-info__item"
+          >{{ props.distribution.format }}
+          </span>
+          <span
+            v-if="props.distribution.releaseDate"
+            class="meta-info__item"
+          >
             <OdsRelativeDateToggle :date="props.distribution.modified ? props.distribution.modified : props.distribution.releaseDate" />
           </span>
-          <span v-if="props.distribution.formattedByteSize" class="meta-info__item">{{ props.distribution.formattedByteSize }}</span>
+          <span
+            v-if="props.distribution.formattedByteSize"
+            class="meta-info__item"
+          >{{ props.distribution.formattedByteSize }}
+          </span>
         </p>
-        <OdsButton icon="ArrowRight" variant="bare" size="sm" class="download-item__button" icon-right :to="`${props.distribution.dataset.id}/distribution/${props.distribution.id}`" >
+        <OdsButton
+          icon="ArrowRight"
+          variant="bare"
+          size="sm"
+          class="download-item__button"
+          icon-right
+        >
           <span>{{ t('message.dataset_detail.details') }}</span>
         </OdsButton>
       </div>
-    </NuxtLink>
+    </NuxtLinkLocale>
   </div>
 </template>
 
