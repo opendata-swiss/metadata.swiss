@@ -30,6 +30,10 @@ interface Props {
 const props = defineProps<Props>()
 
 const termsName = computed(() => {
+  if (!props.license) {
+    console.warn('License is undefined')
+    return 'ask'
+  }
   const licnsesId = props.license.id
   switch (licnsesId) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
