@@ -7,13 +7,14 @@
       :src="imageSrc"
       :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
       :title="t(`message.terms_of_use.ods_${termsName}.title`)"
-      class="ods-terms-of-use_image">
+      class="ods-terms-of-use_image"
+    >
+    <ul>
+      <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>
+      <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_2`) }}</li>
+      <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_3`) }}</li>
+    </ul>
   </div>
-  <ul>
-    <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>
-    <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_2`) }}</li>
-    <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_3`) }}</li>
-  </ul>
 </template>
 
 <script setup lang="ts">
@@ -34,15 +35,20 @@ const termsName = computed(() => {
     console.warn('License is undefined')
     return 'ask'
   }
+  console.log('License ID:', props.license.id)
   const licnsesId = props.license.id
   switch (licnsesId) {
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by':
+    case 'https://opendata.swiss/en/terms-of-use/#terms_by':
       return 'by'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_open':
+    case 'https://opendata.swiss/en/terms-of-use/#terms_open':
       return 'open'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_ask':
+    case 'https://opendata.swiss/en/terms-of-use/#terms_ask':
       return 'ask'
     case 'http://dcat-ap.ch/vocabulary/licenses/terms_by_ask':
+    case 'https://opendata.swiss/en/terms-of-use/#terms_by_ask':
       return 'by_ask'
     default:
       return props.license.id
@@ -58,16 +64,17 @@ const imageSrc = computed(() => `/img/terms-of-use/terms_${termsName.value}.svg`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-
+  gap: 12px;
+  margin-bottom: 50px;
 }
 
 img {
-    height: 100%;
+    height: 100px !important;
 
 }
 
 ul {
-  margin-top: 24px;
+  margin-top: 0;
   margin-left: 0;
   padding: 0 !important;
 }
@@ -75,7 +82,9 @@ ul {
 li {
   list-style-type: none;
   margin-bottom: 0;
-  margin-top: 44px !important;
+}
+li:not(:first-child) {
+  margin-top: 24px !important;
 }
 
 .ods-terms-of-use_image {
