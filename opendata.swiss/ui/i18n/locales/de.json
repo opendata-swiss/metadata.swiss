@@ -85,11 +85,19 @@
       "open": "Website starten",
       "search": {
         "dataset_references": "{count} Datensätze",
-        "prompt": "Nach Datensätzen suchen...",
+                "prompt": "Nach Showcases suchen...",
         "submit_prompt": {
           "title": "Ihr Showcase hier?",
           "abstract": "Reichen Sie Ihr eigenes Showcase ein, um Ihr Projekt mit der Community zu teilen, Ihre Datensätze zu bewerben und andere zu inspirieren.",
           "button_title": "Ihre Showcase einreichen"
+                },
+                "sort_by": {
+                    "newest": "Zuletzt aktualisiert",
+                    "oldest": "Früheste Aktualisierung",
+                    "issued_desc": "Neueste Showcases",
+                    "issued_asc": "Älteste Showcases",
+                    "title_asc": "A-Z",
+                    "title_desc": "Z-A"
         }
       },
       "submission_form": {

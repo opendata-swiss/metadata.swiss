@@ -3,6 +3,8 @@ import strip from 'strip-markdown'
 import remarkFrontmatter from 'remark-frontmatter'
 import { dcat, dcterms, rdfs, schema } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
+import { execSync } from 'node:child_process'
+import { join } from 'node:path'
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
@@ -18,6 +20,8 @@ interface AggregateShowcase {
   'datasets': Array<{ identifier: string, label: string }>
   'text': Record<string, string | undefined>
   'tag': string[]
+  'modified': string | undefined
+  'issued': string | undefined
 }
 
 const ldContext = {
@@ -50,11 +54,14 @@ const ldContext = {
   identifier: dcterms.identifier.value,
   image: schema.image.value,
   tag: dcat.keyword.value,
+  modified: dcterms.modified.value,
+  issued: dcterms.issued.value,
   Dataset: dcat.Dataset.value,
   piveau: 'https://piveau.eu/ns/voc#',
 }
 export default defineEventHandler(async (event) => {
-  const showcases: ShowcasesCollectionItem[] = await queryCollection(event, 'showcases')
+  const { public: { rootDir } } = useRuntimeConfig(event)
+  const showcases = await queryCollection(event, 'showcases')
     .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type')
     .where('active', '=', true)
     .all()
@@ -63,9 +70,15 @@ export default defineEventHandler(async (event) => {
     const arr = await promise
 
     const { stem, lang } = showcase.stem.match(stemPattern)?.groups || {}
+    if (!stem || !lang) {
+      console.warn(`${showcase.stem} did not match stem pattern`)
+      return arr
+    }
+
     const id = `showcase/${stem}`
     let aggregate = arr.find(agg => agg.id === id)
     if (!aggregate) {
+      const { modified, issued } = getShowcaseDates(rootDir, stem)
       aggregate = {
         id,
         'identifier': stem,
@@ -78,6 +91,8 @@ export default defineEventHandler(async (event) => {
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
         'tag': showcase.tags || [],
+        modified,
+        issued,
       }
       arr.push(aggregate)
     }
@@ -117,4 +132,35 @@ async function stripMarkdown(md: string | undefined) {
     .use(remarkFrontmatter)
     .process(md)
   return stripped.value.toString()
+}
+
+function getShowcaseDates(rootDir: string, stem: string) {
+  try {
+    const showcasesDir = join(rootDir, 'content/showcases')
+    const files = [
+      `${stem}.de.md`,
+      `${stem}.en.md`,
+      `${stem}.fr.md`,
+      `${stem}.it.md`,
+    ].join(' ')
+
+    // Get all commit dates for the showcase files, sorted from newest to oldest
+    // Note: Accurate dates require a repository clone with sufficient history (avoid --depth 1)
+    const command = `git log --format=%aI -- ${files}`
+    const result = execSync(command, { cwd: showcasesDir, encoding: 'utf-8' })
+
+    const dates = result.trim().split('\n').filter(Boolean)
+
+    return {
+      modified: dates[0],
+      issued: dates.at(-1),
+    }
+  }
+  catch (e) {
+    console.error(`Failed to get git dates for ${stem}`, e)
+    return {
+      modified: undefined,
+      issued: undefined,
+    }
+  }
 }

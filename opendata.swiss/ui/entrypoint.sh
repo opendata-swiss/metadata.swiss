@@ -6,9 +6,9 @@ set -e
 
 # Only clone if content directory does not exist
 if [ ! -d "content" ]; then
-  git clone --depth 1 "https://github.com/${GITHUB_OWNER}/${GITHUB_CMS_REPO}.git" --no-checkout content
+  git clone "https://github.com/${GITHUB_OWNER}/${GITHUB_CMS_REPO}.git" --no-checkout content
   cd content
-  git fetch --depth 1 origin "${GITHUB_REF}"
+  git fetch origin "${GITHUB_REF}"
   git checkout FETCH_HEAD
   cd ..
 fi

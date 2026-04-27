@@ -18,6 +18,8 @@ import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
+import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
+import { useSorting } from '../../app/composables/sort'
 
 const { locale, t } = useI18n()
 
@@ -84,11 +86,12 @@ function scrollToResults() {
   }
 }
 
+const initialSort = 'modified+desc'
 const piveauQueryParams: SearchParamsBase = reactive({
   limit: 10,
   page: route.query.page ? Number(route.query.page) - 1 : 0,
   q: Array.isArray(route.query.q) ? route.query.q.join(' ') : route.query.q || '',
-  sort: 'relevance',
+  sort: initialSort,
 })
 
 const { useSearch } = useShowcaseSearch()
@@ -184,6 +187,25 @@ await Promise.all([
 function showcaseType(showcase: ShowcasesCollectionItem) {
   return showcaseTypes.value.find(type => type.resource === showcase.type)
 }
+
+const { selectedSort } = useSorting({
+  initialSort,
+  sortCallback(sortTerm) {
+    selectedSort.value = Array.isArray(sortTerm) ? sortTerm.join(' ') : sortTerm
+    piveauQueryParams.sort = selectedSort.value
+  },
+})
+
+const sortOptions = computed(() => {
+  return [
+    { value: `title.${locale.value}+asc`, text: t('message.showcase.search.sort_by.title_asc') },
+    { value: `title.${locale.value}+dsc`, text: t('message.showcase.search.sort_by.title_desc') },
+    { value: 'modified+desc', text: t('message.showcase.search.sort_by.newest') },
+    { value: 'modified+asc', text: t('message.showcase.search.sort_by.oldest') },
+    { value: 'issued+desc', text: t('message.showcase.search.sort_by.issued_desc') },
+    { value: 'issued+asc', text: t('message.showcase.search.sort_by.issued_asc') },
+  ]
+})
 </script>
 
 <template>
@@ -203,6 +225,12 @@ function showcaseType(showcase: ShowcasesCollectionItem) {
     />
     <!-- results -->
     <OdsSearchResults :results-count="getSearchResultsCount">
+      <template #header-right>
+        <OdsSortSelect
+          v-model="selectedSort"
+          :options="sortOptions"
+        />
+      </template>
       <div class="ods-card-list">
         <ul class="search-results-list">
           <li
