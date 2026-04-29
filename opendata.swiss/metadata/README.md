@@ -107,6 +107,19 @@ To remove a single catalogue (for example, `bl-dcat`), run:
 ./scripts/catalogues_delete.sh bl-dcat
 ```
 
+#### Listmonk initialization
+
+By default, the local Listmonk instance is configured with `admin/admin` superuser credentials and an API user `admin-api`.
+These can be changed by changing envirnment variables in `.env` file:
+
+```dotenv
+LISTMONK_ADMIN_USER=
+LISTMONK_ADMIN_PASSWORD=
+LISTMONK_ADMIN_API_USER=
+````
+
+On the first start, the stack will bootstrap Listmonk with content from the [listmonk](/listmonk) directory.
+
 To stop the stack, run:
 
 ```sh
