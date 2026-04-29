@@ -192,6 +192,50 @@ delete_default_subscribers() {
   done
 }
 
+# Function to configure SMTP
+configure_smtp() {
+  echo "Configuring SMTP to use Mailpit..."
+
+  # Fetch current settings
+  SETTINGS_JSON=$(curl -s -u "${AUTH_USER}:${AUTH_PASS}" "${LISTMONK_URL}/settings")
+
+  if [ -z "$SETTINGS_JSON" ] || [ "$SETTINGS_JSON" = "null" ]; then
+    echo "Error: Could not fetch current settings."
+    return
+  fi
+
+  # Update the SMTP configuration in the settings JSON
+  # We need to extract the .data object because Listmonk returns settings wrapped in .data
+  # and the PUT /api/settings expects the object that contains the keys to update.
+
+  # Mailpit configuration
+  MAILPIT_SMTP='{
+    "uuid": "default",
+    "name": "Mailpit",
+    "host": "mailpit",
+    "port": 1025,
+    "auth_protocol": "none",
+    "hello_hostname": "localhost",
+    "max_conns": 10,
+    "idle_timeout": "15s",
+    "wait_timeout": "5s",
+    "enabled": true,
+    "email_headers": []
+  }'
+
+  UPDATED_SETTINGS=$(echo "$SETTINGS_JSON" | jq -c --argjson mailpit "$MAILPIT_SMTP" '.data | .smtp = [$mailpit]')
+
+  if [ -z "$UPDATED_SETTINGS" ] || [ "$UPDATED_SETTINGS" = "null" ]; then
+    echo "Error: Failed to process settings JSON with jq."
+    return
+  fi
+
+  echo "Uploading updated SMTP settings..."
+  curl -s -u "${AUTH_USER}:${AUTH_PASS}" -X PUT "${LISTMONK_URL}/settings" \
+    -H "Content-Type: application/json" \
+    -d "$UPDATED_SETTINGS" > /dev/null
+}
+
 # Import templates
 if [ -d "/init/templates" ]; then
   for f in /init/templates/*.html; do
@@ -201,6 +245,7 @@ if [ -d "/init/templates" ]; then
 fi
 
 # Cleanup default Listmonk resources
+configure_smtp
 delete_default_templates
 delete_default_list
 delete_test_campaigns
