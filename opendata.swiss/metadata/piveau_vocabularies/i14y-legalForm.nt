@@ -1,0 +1,1023 @@
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTermSet> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#ConceptScheme> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/name> "Rechtsform eines Unternehmens (identity)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/name> "Legal form of a company (identity)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/name> "Forme juridique d'une entreprise (identity)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/name> "Forma giuridica di una società (identity)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/68d52e964e55c76cac2c464e1dc64265> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/description> "Die Codierung der Rechtsform ist vierstellig. Die ersten zwei Ziffern von «01» bis «05» erlauben eine übergeordnete Einteilung der Rechtsformen. Die zwei letzten Ziffern beschreiben die explizite Rechtsform. Beispielsweise wird bei der Rechtsform «0106» über die ersten zwei Ziffern «01» erkennbar, dass diese Rechtsform im schweizerischen Handelsregister verwendet wird, während die letzten zwei Ziffern «06» der Rechtsform «Aktiengesellschaft» entsprechen."@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/description> "The coding of the legal form has four digits. The first two digits from \"01\" to \"05\" allow for a higher-level classification of legal forms. The last two digits are used to assign the specific legal form. For example, with legal form \"0106\", the first two digits \"01\" indicate that this legal form is used by Swiss commercial registers, while the last two digits \"06\" correspond to the legal form \"Corporation (Ltd)\"."@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/description> "Le codage de la forme juridique est à quatre chiffres. Les deux premiers chiffres, de « 01 » à « 05 », permettent une classification générale des formes juridiques. La forme juridique spécifique est attribuée à l'aide des deux derniers chiffres. Par exemple, dans le cas de la forme juridique « 0106 », les deux premiers chiffres « 01 » indiquent que cette forme juridique est utilisée par les registres du commerce suisses, tandis que les deux derniers chiffres « 06 » correspondent à la forme juridique « société anonyme »."@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/description> "La codifica della forma giuridica è composta da quattro cifre. Le prime due cifre da \"01\" a \"05\" consentono una classificazione delle forme giuridiche di livello generale. Le ultime due cifre sono usate per assegnare la forma giuridica specifica. Ad esempio, nel caso della forma giuridica \"0106\", le prime due cifre \"01\" indicano che questa forma giuridica viene usata nei registri di commercio svizzeri, mentre le ultime due cifre \"06\" corrispondono alla forma giuridica \"società anonima\"."@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/identifier> "legalForm" .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/validFrom> "2025-12-02"^^<http://www.w3.org/2001/XMLSchema#date> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rechtsform eines Unternehmens (identity)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal form of a company (identity)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forme juridique d'une entreprise (identity)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forma giuridica di una società (identity)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/publisher> "Bundesamt für Statistik (BFS)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/publisher> "Federal Statistical Office (FSO)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/publisher> "Ufficio federale di statistica (UFS)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/publisher> "Office Fédéral de la Statistique (OFS)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#definition> "Die Codierung der Rechtsform ist vierstellig. Die ersten zwei Ziffern von «01» bis «05» erlauben eine übergeordnete Einteilung der Rechtsformen. Die zwei letzten Ziffern beschreiben die explizite Rechtsform. Beispielsweise wird bei der Rechtsform «0106» über die ersten zwei Ziffern «01» erkennbar, dass diese Rechtsform im schweizerischen Handelsregister verwendet wird, während die letzten zwei Ziffern «06» der Rechtsform «Aktiengesellschaft» entsprechen."@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#definition> "The coding of the legal form has four digits. The first two digits from \"01\" to \"05\" allow for a higher-level classification of legal forms. The last two digits are used to assign the specific legal form. For example, with legal form \"0106\", the first two digits \"01\" indicate that this legal form is used by Swiss commercial registers, while the last two digits \"06\" correspond to the legal form \"Corporation (Ltd)\"."@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#definition> "Le codage de la forme juridique est à quatre chiffres. Les deux premiers chiffres, de « 01 » à « 05 », permettent une classification générale des formes juridiques. La forme juridique spécifique est attribuée à l'aide des deux derniers chiffres. Par exemple, dans le cas de la forme juridique « 0106 », les deux premiers chiffres « 01 » indiquent que cette forme juridique est utilisée par les registres du commerce suisses, tandis que les deux derniers chiffres « 06 » correspondent à la forme juridique « société anonyme »."@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/2004/02/skos/core#definition> "La codifica della forma giuridica è composta da quattro cifre. Le prime due cifre da \"01\" a \"05\" consentono una classificazione delle forme giuridiche di livello generale. Le ultime due cifre sono usate per assegnare la forma giuridica specifica. Ad esempio, nel caso della forma giuridica \"0106\", le prime due cifre \"01\" indicano che questa forma giuridica viene usata nei registri di commercio svizzeri, mentre le ultime due cifre \"06\" corrispondono alla forma giuridica \"società anonima\"."@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/ns/prov#wasDerivedFrom> <https://www.i14y.admin.ch/en/concepts/89bc55cc-3858-4c13-a5c8-7dc935dff29b/description> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0101> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0103> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0104> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0105> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0106> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0107> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0108> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0109> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0110> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0111> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0113> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0114> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0115> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0116> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0117> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0118> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0119> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0151> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0220> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0221> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0222> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0223> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0224> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0230> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0231> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0232> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0233> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0234> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0302> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0312> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0327> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0328> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0329> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0355> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0361> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0362> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0441> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/0571> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/04> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/hasDefinedTerm> <https://register.ld.admin.ch/i14y/concept/legalForm/05> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <https://cube.link/meta/inHierarchy> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/d32a4c1ff20e1e8f4781e3016262ac62> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://schema.org/includedInDataCatalog> <https://register.ld.admin.ch/i14y/.well-known/void> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/subject> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/0e72dd151ab641dd8049acd772f29372> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/subject> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/e3106bbd06ee562fe9598ffd4e95f5ed> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/dc/terms/conformsTo> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/2bbfab2faa06f114c769348ea80d80da> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://www.w3.org/ns/adms#status> "Standard" .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://rdf-vocabulary.ddialliance.org/xkos#numberOfLevels> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<https://register.ld.admin.ch/i14y/concept/legalForm> <http://purl.org/pav/version> "1.2.0" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/name> "Einzelunternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/name> "Entreprise individuelle"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/name> "Sole proprietorship"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/name> "Impresa individuale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/409e081406630633243db390fe906d54> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/identifier> "0101" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einzelunternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#prefLabel> "Entreprise individuelle"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#prefLabel> "Sole proprietorship"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#prefLabel> "Impresa individuale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://www.w3.org/2004/02/skos/core#notation> "0101" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0101/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0101> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/name> "Kollektivgesellschaft (KlG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/name> "General partnership (GP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/name> "Société en nom collectif (SNC)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/name> "Società in nome collettivo (SNC)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/a5a29fda5ec4e97f2dbbe37a881e5cc2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/identifier> "0103" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kollektivgesellschaft (KlG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#prefLabel> "General partnership (GP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société en nom collectif (SNC)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società in nome collettivo (SNC)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://www.w3.org/2004/02/skos/core#notation> "0103" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0103/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0103> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/name> "Kommanditgesellschaft (KmG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/name> "Limited partnership (LP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/name> "Société en commandite (SCm)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/name> "Società in accomandita (SAc)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/8009ac969d6072bd62b727240388d2b1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/identifier> "0104" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kommanditgesellschaft (KmG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#prefLabel> "Limited partnership (LP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société en commandite (SCm)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società in accomandita (SAc)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://www.w3.org/2004/02/skos/core#notation> "0104" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0104/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0104> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/name> "Kommanditaktiengesellschaft (KmAG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/name> "Corporation with unlimited partners (CUP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/name> "Société en commandite par actions (SCmA)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/name> "Società in accomandita per azioni (SAcA)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/bebd2fa116583aa8e2ac757649073f52> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/identifier> "0105" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kommanditaktiengesellschaft (KmAG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#prefLabel> "Corporation with unlimited partners (CUP)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société en commandite par actions (SCmA)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società in accomandita per azioni (SAcA)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://www.w3.org/2004/02/skos/core#notation> "0105" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0105/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0105> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/name> "Aktiengesellschaft (AG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/name> "Corporation (Ltd)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/name> "Société anonyme (SA)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/name> "Società anonima (SA)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/15233e03a93e8837bb17c1a0cb86bcb8> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/identifier> "0106" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#prefLabel> "Aktiengesellschaft (AG)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#prefLabel> "Corporation (Ltd)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société anonyme (SA)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società anonima (SA)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://www.w3.org/2004/02/skos/core#notation> "0106" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0106/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0106> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/name> "Gesellschaft mit beschränkter Haftung (GmbH)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/name> "Limited liability company (LLC)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/name> "Société à responsabilité limitée (Sàrl)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/name> "Società a garanzia limitata (Sagl)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/f3cc0538ea867820146bfdaf7056d5b3> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/identifier> "0107" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#prefLabel> "Gesellschaft mit beschränkter Haftung (GmbH)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#prefLabel> "Limited liability company (LLC)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société à responsabilité limitée (Sàrl)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società a garanzia limitata (Sagl)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://www.w3.org/2004/02/skos/core#notation> "0107" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0107/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0107> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/name> "Genossenschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/name> "Società cooperativa"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/name> "Société coopérative"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/name> "Cooperative"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/eeafbbf1c2289c93cdeae2ab81f5f3d2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/identifier> "0108" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#prefLabel> "Genossenschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società cooperativa"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société coopérative"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cooperative"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://www.w3.org/2004/02/skos/core#notation> "0108" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0108/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0108> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/name> "Verein"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/name> "Association"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/name> "Associazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/name> "Association"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/751b5d09b01d8f9055c1966ad1c993cf> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/identifier> "0109" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verein"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#prefLabel> "Association"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#prefLabel> "Associazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#prefLabel> "Association"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://www.w3.org/2004/02/skos/core#notation> "0109" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0109/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0109> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/name> "Stiftung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/name> "Fondation"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/name> "Fondazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/name> "Foundation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/fc104f391c7773f2d86d2d90d2371e57> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/identifier> "0110" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#prefLabel> "Stiftung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fondation"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fondazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#prefLabel> "Foundation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://www.w3.org/2004/02/skos/core#notation> "0110" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0110/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0110> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/name> "Zweigniederlassung eines ausländischen Unternehmens"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/name> "Branch of a foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/name> "Succursale d'une entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/name> "Succursale di un'impresa straniera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/e2218bdf8f1f6f13452c5d08c84de601> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/identifier> "0111" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#prefLabel> "Zweigniederlassung eines ausländischen Unternehmens"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#prefLabel> "Branch of a foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#prefLabel> "Succursale d'une entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#prefLabel> "Succursale di un'impresa straniera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://www.w3.org/2004/02/skos/core#notation> "0111" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0111/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0111> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/name> "Besondere Rechtsform"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/name> "Forme juridique particulière"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/name> "Special legal form"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/name> "Forma giuridica speciale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/5728bcf0529e23391accc47bf816206d> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/identifier> "0113" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#prefLabel> "Besondere Rechtsform"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forme juridique particulière"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#prefLabel> "Special legal form"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forma giuridica speciale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://www.w3.org/2004/02/skos/core#notation> "0113" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0113/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0113> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/name> "Kommanditgesellschaft für kollektive Kapitalanlagen (KmGK)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/name> "Limited Partnership for collective investment schemes (LPCI)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/name> "Société en commandite de placements collectifs (SCmPC)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/name> "Società in accomandita per investimenti collettivi di capitale (SAcCol)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/f3b8ae57686c524582ca89f47ccdb0a6> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/identifier> "0114" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kommanditgesellschaft für kollektive Kapitalanlagen (KmGK)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#prefLabel> "Limited Partnership for collective investment schemes (LPCI)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société en commandite de placements collectifs (SCmPC)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società in accomandita per investimenti collettivi di capitale (SAcCol)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://www.w3.org/2004/02/skos/core#notation> "0114" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0114/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0114> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/name> "Société d'investissement à capital variable (SICAV)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/name> "Investmentgesellschaft mit variablem Kapital (SICAV)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/name> "Limited Partnership for collective investment schemes with a variable capital (SICAV)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/name> "Società d'investimento a capitale variabile (SICAV)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/e77d09a3edc323c26f1b3f021c1a70be> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/identifier> "0115" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société d'investissement à capital variable (SICAV)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#prefLabel> "Investmentgesellschaft mit variablem Kapital (SICAV)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#prefLabel> "Limited Partnership for collective investment schemes with a variable capital (SICAV)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società d'investimento a capitale variabile (SICAV)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://www.w3.org/2004/02/skos/core#notation> "0115" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0115/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0115> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/name> "Société d'investissement à capital fixe (SICAF)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/name> "Investmentgesellschaft mit festem Kapital (SICAF)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/name> "Limited Partnership for collective investment schemes with a fixed capital (SICAF)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/name> "Società d'investimento a capitale fisso (SICAF)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/6ac4783f448777031fcf0e37162f725a> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/identifier> "0116" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société d'investissement à capital fixe (SICAF)"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#prefLabel> "Investmentgesellschaft mit festem Kapital (SICAF)"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#prefLabel> "Limited Partnership for collective investment schemes with a fixed capital (SICAF)"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società d'investimento a capitale fisso (SICAF)"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://www.w3.org/2004/02/skos/core#notation> "0116" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0116/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0116> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/name> "Istituto di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/name> "Institut des öffentlichen Rechts"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/name> "Institut de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/name> "Public-law institution"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/7469c926e13ede72239dfb854b575bc1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/identifier> "0117" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#prefLabel> "Istituto di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institut des öffentlichen Rechts"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institut de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#prefLabel> "Public-law institution"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://www.w3.org/2004/02/skos/core#notation> "0117" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0117/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0117> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/name> "Nichtkaufmännische Prokura"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/name> "Non-commercial power of attorney"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/name> "Procuration non-commerciale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/name> "Procura non commerciale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/9007f24e3e3ae5b2ab5db6dbc3050f9f> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/identifier> "0118" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#prefLabel> "Nichtkaufmännische Prokura"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#prefLabel> "Non-commercial power of attorney"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#prefLabel> "Procuration non-commerciale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#prefLabel> "Procura non commerciale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://www.w3.org/2004/02/skos/core#notation> "0118" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0118/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0118> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/name> "Haupt von Gemeinderschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/name> "Representative of the community of property"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/name> "Représentant d'indivision"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/name> "Rappresentanti dell'indivisione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/8efa61431683a9e8abdbab52da3989fa> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/identifier> "0119" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#prefLabel> "Haupt von Gemeinderschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#prefLabel> "Representative of the community of property"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#prefLabel> "Représentant d'indivision"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rappresentanti dell'indivisione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://www.w3.org/2004/02/skos/core#notation> "0119" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0119/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0119> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/name> "Zweigniederlassung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/name> "Branch"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/name> "Succursale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/name> "Succursale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/28bb46dda946d38a38a93aa8e3a5c274> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/identifier> "0151" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#prefLabel> "Zweigniederlassung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#prefLabel> "Branch"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#prefLabel> "Succursale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#prefLabel> "Succursale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://www.w3.org/2004/02/skos/core#notation> "0151" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/01> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0151/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0151> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/name> "Verwaltungseinheit des Bundes"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/name> "Administrative unit of the Confederation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/name> "Unità amministrativa della Confederazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/name> "Unité de l'administration fédérale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/0aedcc2b78608752c8e45e0f1d03176f> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/identifier> "0220" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verwaltungseinheit des Bundes"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#prefLabel> "Administrative unit of the Confederation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unità amministrativa della Confederazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unité de l'administration fédérale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://www.w3.org/2004/02/skos/core#notation> "0220" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0220/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0220> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/name> "Verwaltungseinheit des Kantons"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/name> "Administrative unit of the canton"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/name> "Unità amministrativa del cantone"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/name> "Unité de l'administration cantonale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/9b5dc3be6b76f4141e7563ba3983ec3c> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/identifier> "0221" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verwaltungseinheit des Kantons"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#prefLabel> "Administrative unit of the canton"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unità amministrativa del cantone"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unité de l'administration cantonale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://www.w3.org/2004/02/skos/core#notation> "0221" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0221/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/name> "Verwaltungseinheit des Bezirks"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/name> "Administrative unit of the district"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/name> "Unità amministrativa del distretto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/name> "Unité de l'administration du district"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/bc1b7375c4e96e4f3789fe262171fd35> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/identifier> "0222" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verwaltungseinheit des Bezirks"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#prefLabel> "Administrative unit of the district"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unità amministrativa del distretto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unité de l'administration du district"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://www.w3.org/2004/02/skos/core#notation> "0222" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0222/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0222> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/name> "Verwaltungseinheit der Gemeinde"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/name> "Administrative unit of the commune"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/name> "Unità amministrativa del comune"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/name> "Unité de l'administration communale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/aaca1eb1234881994b0a954335d1bcc4> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/identifier> "0223" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#prefLabel> "Verwaltungseinheit der Gemeinde"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#prefLabel> "Administrative unit of the commune"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unità amministrativa del comune"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unité de l'administration communale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://www.w3.org/2004/02/skos/core#notation> "0223" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0223/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0223> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/name> "Andere öffentlich-rechtliche Verwaltungseinheit"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/name> "Other public-law administrative unit"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/name> "Altra unità amministrativa di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/name> "Autre unité de l'administration de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/5a09565c3869824475a2e17e145804b1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/identifier> "0224" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#prefLabel> "Andere öffentlich-rechtliche Verwaltungseinheit"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other public-law administrative unit"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#prefLabel> "Altra unità amministrativa di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#prefLabel> "Autre unité de l'administration de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://www.w3.org/2004/02/skos/core#notation> "0224" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0224/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0224> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/name> "Einrichtung des öffentlichen Rechts des Bundes"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/name> "Public-law institution of the Confederation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/name> "Institution de droit public fédérale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/name> "Istituzione di diritto pubblico della Confederazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/947dfc561060176dc77bf200c96b27a3> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/identifier> "0230" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einrichtung des öffentlichen Rechts des Bundes"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#prefLabel> "Public-law institution of the Confederation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institution de droit public fédérale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#prefLabel> "Istituzione di diritto pubblico della Confederazione"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://www.w3.org/2004/02/skos/core#notation> "0230" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0230/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0230> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/name> "Einrichtung des öffentlichen Rechts des Kantons"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/name> "Public-law institution of the canton"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/name> "Institution de droit public cantonale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/name> "Istituzione di diritto pubblico del cantone"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/7b89da361982a9ab86bcd773863afee7> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/identifier> "0231" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einrichtung des öffentlichen Rechts des Kantons"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#prefLabel> "Public-law institution of the canton"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institution de droit public cantonale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#prefLabel> "Istituzione di diritto pubblico del cantone"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://www.w3.org/2004/02/skos/core#notation> "0231" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0231/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0231> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/name> "Einrichtung des öffentlichen Rechts des Bezirks"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/name> "Public-law institution of the district"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/name> "Institution de droit public du district"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/name> "Istituzione di diritto pubblico del distretto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/3151a2b3f76aab70fb2008e8bd31c33a> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/identifier> "0232" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einrichtung des öffentlichen Rechts des Bezirks"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#prefLabel> "Public-law institution of the district"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institution de droit public du district"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#prefLabel> "Istituzione di diritto pubblico del distretto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://www.w3.org/2004/02/skos/core#notation> "0232" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0232/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0232> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/name> "Einrichtung des öffentlichen Rechts der Gemeinde"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/name> "Public-law institution of the commune"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/name> "Institution de droit public communale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/name> "Istituzione di diritto pubblico del comune"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/883694a22eb19644b5778f1bd041488e> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/identifier> "0233" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einrichtung des öffentlichen Rechts der Gemeinde"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#prefLabel> "Public-law institution of the commune"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#prefLabel> "Institution de droit public communale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#prefLabel> "Istituzione di diritto pubblico del comune"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://www.w3.org/2004/02/skos/core#notation> "0233" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0233/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0233> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/name> "Andere Einrichtung des öffentlichen Rechts"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/name> "Other public-law institution"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/name> "Autre institution de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/name> "Altra istituzione di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/1bea10616f735bf2ef337032f87adf5f> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/identifier> "0234" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#prefLabel> "Andere Einrichtung des öffentlichen Rechts"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other public-law institution"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#prefLabel> "Autre institution de droit public"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#prefLabel> "Altra istituzione di diritto pubblico"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://www.w3.org/2004/02/skos/core#notation> "0234" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/02> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0234/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0234> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/name> "Société simple"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/name> "Einfache Gesellschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/name> "Società semplice"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/name> "Simple partnership"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/7c4b57054b945b9ff2d1b653dbd56de4> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/identifier> "0302" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#prefLabel> "Société simple"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#prefLabel> "Einfache Gesellschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#prefLabel> "Società semplice"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#prefLabel> "Simple partnership"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://www.w3.org/2004/02/skos/core#notation> "0302" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0302/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0302> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/name> "Betriebsstätte oder Schweizer Vertretung eines ausländischen Unternehmens"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/name> "Permanent establishment or swiss representation of a foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/name> "Établissement stable ou représentant suisse d'une entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/name> "Stabilimento o rappresentanza svizzera di un'impresa straniera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/ff6e83350a90c3656b3df269cd47fa82> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/identifier> "0312" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#prefLabel> "Betriebsstätte oder Schweizer Vertretung eines ausländischen Unternehmens"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#prefLabel> "Permanent establishment or swiss representation of a foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#prefLabel> "Établissement stable ou représentant suisse d'une entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#prefLabel> "Stabilimento o rappresentanza svizzera di un'impresa straniera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://www.w3.org/2004/02/skos/core#notation> "0312" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0312/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0312> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/name> "Ausländisches öffentliches Unternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/name> "Entreprise publique étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/name> "Foreign public company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/name> "Impresa pubblica estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/c7e71918bc0db1a5c50e459a56bef033> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/identifier> "0327" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ausländisches öffentliches Unternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#prefLabel> "Entreprise publique étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#prefLabel> "Foreign public company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#prefLabel> "Impresa pubblica estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://www.w3.org/2004/02/skos/core#notation> "0327" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0327/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0327> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/name> "Ausländische öffentliche Verwaltung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/name> "Administration publique étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/name> "Foreign public administration"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/name> "Amministrazione pubblica estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/06b0834f701488a8268b9bb2927df8b8> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/identifier> "0328" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ausländische öffentliche Verwaltung"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#prefLabel> "Administration publique étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#prefLabel> "Foreign public administration"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#prefLabel> "Amministrazione pubblica estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://www.w3.org/2004/02/skos/core#notation> "0328" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0328/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0328> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/name> "Internationale Organisation"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/name> "Organisation internationale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/name> "Organizzazione internazionale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/name> "International organisation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/e7b10818fe6efa677f604974f3303327> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/identifier> "0329" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#prefLabel> "Internationale Organisation"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#prefLabel> "Organisation internationale"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#prefLabel> "Organizzazione internazionale"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#prefLabel> "International organisation"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://www.w3.org/2004/02/skos/core#notation> "0329" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0329/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0329> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/name> "Übrige Genossenschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/name> "Other cooperative"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/name> "Autre société coopérative"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/name> "Altra società cooperativa"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/5b0c1c82694a83eefb2054a1e58ce55a> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/identifier> "0355" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#prefLabel> "Übrige Genossenschaft"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other cooperative"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#prefLabel> "Autre société coopérative"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#prefLabel> "Altra società cooperativa"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://www.w3.org/2004/02/skos/core#notation> "0355" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0355/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0355> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/name> "Trust"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/name> "Trust"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/name> "Trust"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/name> "Trust"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/6286542f88aaef145cd8c276af3dbad6> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/identifier> "0361" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#prefLabel> "Trust"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#prefLabel> "Trust"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#prefLabel> "Trust"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#prefLabel> "Trust"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://www.w3.org/2004/02/skos/core#notation> "0361" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0361/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0361> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/name> "Fonds"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/name> "Fonds"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/name> "Fund"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/name> "Fondo"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/8b6efb7a7ae3cc6d907edac98806aa82> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/identifier> "0362" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fonds"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fonds"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fund"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#prefLabel> "Fondo"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://www.w3.org/2004/02/skos/core#notation> "0362" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/03> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0362/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0362> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/name> "Entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/name> "Ausländisches Unternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/name> "Foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/name> "Impresa estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/234bb4a2157172a3e759a8e486bc5805> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/identifier> "0441" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/04> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#prefLabel> "Entreprise étrangère"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ausländisches Unternehmen"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#prefLabel> "Foreign company"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#prefLabel> "Impresa estera"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://www.w3.org/2004/02/skos/core#notation> "0441" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/04> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0441/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0441> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/name> "Rechtsform unbestimmt oder unbekannt"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/name> "Forme juridique non déterminée ou inconnue"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/name> "Legal form undefined or unknown"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/name> "Forma giuridica indefinita o sconosciuta"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/5651cf04ead8ef22a3cbe97dece5ae42> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/identifier> "0571" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/05> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rechtsform unbestimmt oder unbekannt"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forme juridique non déterminée ou inconnue"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal form undefined or unknown"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forma giuridica indefinita o sconosciuta"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://www.w3.org/2004/02/skos/core#notation> "0571" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/05> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/0571/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/0571> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_2> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/name> "Rechtsformen, die von den Handelsregistern verwendet werden"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/name> "Legal forms applied by commercial registers"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/name> "Formes juridiques utilisées par les registres du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/name> "Forme giuridiche usate dai registri di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/2eb6bf41e3ea8555513595d65965f78d> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0101> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0103> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0104> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0105> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0106> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0107> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0108> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0109> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0110> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0111> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0113> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0114> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0115> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0116> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0117> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0118> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0119> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0151> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/identifier> "01" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0101> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0103> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0104> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0105> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0106> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0107> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0108> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0109> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0110> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0111> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0113> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0114> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0115> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0116> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0117> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0118> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0119> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0151> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rechtsformen, die von den Handelsregistern verwendet werden"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal forms applied by commercial registers"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Formes juridiques utilisées par les registres du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forme giuridiche usate dai registri di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#notation> "01" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/01/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/01> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/name> "Rechtsformen von öffentlich-rechtlichen Einheiten ohne Handelsregistereintrag"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/name> "Legal forms of public law units not registered in the commercial register"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/name> "Formes juridiques d'entités de droit public sans inscription au registre du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/name> "Forme giuridiche d'unità di diritto pubblico non iscritte nel registro di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/0bf4296c8704323171dbe1929690dd60> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0220> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0221> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0222> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0223> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0224> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0230> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0231> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0232> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0233> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0234> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/identifier> "02" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0220> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0221> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0222> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0223> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0224> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0230> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0231> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0232> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0233> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0234> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#prefLabel> "Rechtsformen von öffentlich-rechtlichen Einheiten ohne Handelsregistereintrag"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#prefLabel> "Legal forms of public law units not registered in the commercial register"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#prefLabel> "Formes juridiques d'entités de droit public sans inscription au registre du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#prefLabel> "Forme giuridiche d'unità di diritto pubblico non iscritte nel registro di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#notation> "02" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/02/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/02> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/name> "Sonstige Rechtsformen von Einheiten ohne Handelsregistereintrag"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/name> "Other legal forms of units not registered in the commercial register"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/name> "Autres formes juridiques d'entités sans inscription au registre du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/name> "Altre forme giuridiche di unità non iscritte nel registro di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/c47dd114687c33ceedff3f22bf7e6eb4> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0302> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0312> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0327> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0328> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0329> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0355> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0361> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0362> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/identifier> "03" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0302> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0312> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0327> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0328> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0329> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0355> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0361> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0362> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#prefLabel> "Sonstige Rechtsformen von Einheiten ohne Handelsregistereintrag"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#prefLabel> "Other legal forms of units not registered in the commercial register"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#prefLabel> "Autres formes juridiques d'entités sans inscription au registre du commerce"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#prefLabel> "Altre forme giuridiche di unità non iscritte nel registro di commercio"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#notation> "03" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/03/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/03> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/name> "Ausländische Einheiten"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/name> "Foreign units"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/name> "Entités étrangères"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/name> "Unità estere"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/d1a76553f51af1d2bb408291de49f09c> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0441> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/identifier> "04" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0441> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ausländische Einheiten"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#prefLabel> "Foreign units"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#prefLabel> "Entités étrangères"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unità estere"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#notation> "04" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/04/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/04> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://schema.org/DefinedTerm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://version.link/Identity> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/name> "Unbestimmt oder unbekannt"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/name> "Undefined or unknown"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/name> "Indéterminé ou inconnu"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/name> "Indefinito o sconosciuto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/ns/shacl#property> <https://register.ld.admin.ch/i14y/concept/legalForm/.well-known/genid/4b64c40ed63d4d5a1ab3a55e1455e165> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/hasPart> <https://register.ld.admin.ch/i14y/concept/legalForm/0571> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/identifier> "05" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/inDefinedTermSet> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#broader> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#narrower> <https://register.ld.admin.ch/i14y/concept/legalForm/0571> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#prefLabel> "Unbestimmt oder unbekannt"@de .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#prefLabel> "Undefined or unknown"@en .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#prefLabel> "Indéterminé ou inconnu"@fr .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#prefLabel> "Indefinito o sconosciuto"@it .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#inScheme> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#notation> "05" .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://schema.org/isPartOf> <https://register.ld.admin.ch/i14y/concept/legalForm/all> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <https://version.link/Version> <https://register.ld.admin.ch/i14y/concept/legalForm/05/version/1.2.0> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://register.ld.admin.ch/i14y/concept/legalForm> .
+<https://register.ld.admin.ch/i14y/concept/legalForm/05> <http://rdf-vocabulary.ddialliance.org/xkos#level> <https://register.ld.admin.ch/i14y/concept/legalForm/level_1> .

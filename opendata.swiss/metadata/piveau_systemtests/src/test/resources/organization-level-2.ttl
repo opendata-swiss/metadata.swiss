@@ -1,0 +1,10 @@
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+[] a foaf:Organization, org:Organization ;
+
+  org:subOrganizationOf <https://opendata.swiss/id/organization/%s> ;
+
+  foaf:name           "Org Level-2" ;
+  dcterms:description "An organization at level two." .
