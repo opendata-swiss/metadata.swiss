@@ -7,7 +7,7 @@
 [] a foaf:Organization, org:Organization  ;
 
   org:subOrganizationOf <https://opendata.swiss/id/organization/%s> ;
-  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
+  org:classification    <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
   foaf:name           "Kanton Zürich Organisationsgruppierung Foo"@de , "Canton of Zurich organizational grouping Foo"@en ;
   dcterms:description "Organisationsgruppierung Foo im Kanton Zürich."@de ;

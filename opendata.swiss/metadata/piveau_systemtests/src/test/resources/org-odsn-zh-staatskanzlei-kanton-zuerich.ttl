@@ -7,7 +7,7 @@
 [] a foaf:Organization, org:Organization ;
 
   org:subOrganizationOf <https://opendata.swiss/id/organization/%s> ;
-  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
+  org:classification    <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
   foaf:name           "Staatskanzlei Kanton Zürich"@de, "(en) Staatskanzlei Kanton Zürich"@en ;
   dcterms:description "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat in administrativen und juristischen Tätigkeiten für verschiedene Dialoggruppen. Zudem ist sie eine Schnittstelle zwischen den Direktionen des Kantons und arbeitet mit den Gemeinden, dem Bund und den Nachbarkantonen zusammen."@de ;

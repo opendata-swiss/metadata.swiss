@@ -1,0 +1,17 @@
+construct {
+    ?s ?p ?o .
+}
+where {
+    graph <https://lindas.admin.ch/fso/i14y> {
+        {
+            BIND(<https://register.ld.admin.ch/i14y/concept/legalForm> AS ?s) .
+            ?s ?p ?o .
+        }
+        union
+        {
+            BIND(<https://register.ld.admin.ch/i14y/concept/legalForm> AS ?scheme) .
+            ?scheme <http://schema.org/hasDefinedTerm> ?s .
+            ?s ?p ?o .
+        }
+    }
+}

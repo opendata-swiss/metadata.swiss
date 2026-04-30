@@ -6,7 +6,7 @@
 # Org Level-0 (top-level)
 [] a foaf:Organization, org:Organization ;
 
-    org:classification <https://opendata.swiss/vocabulary/political-level/canton> ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
     foaf:name           "Kanton Zürich"@de , "Canton of Zurich"@en ;
     dcterms:description "Der Kanton Zürich veröffentlicht offene Behördendaten koordiniert durch die Fach- und Koordinationsstelle Open Government Data des Statistischen Amts und die Abteilung Geoinformation des Amts für Raumentwicklung."@de ;

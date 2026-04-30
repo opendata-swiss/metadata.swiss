@@ -5,7 +5,7 @@
 
 []  a foaf:Organization, org:Organization ;
 
-  org:classification <https://opendata.swiss/vocabulary/political-level/canton> ;
+  org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
   foaf:name           "Kanton Zürich"@de , "%s"@en ;
   dcterms:description "Der Kanton Zürich veröffentlicht offene Behördendaten ..."@de ;
