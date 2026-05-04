@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # Wait for listmonk to be ready and authorized
 echo "Waiting for listmonk API to be ready and authorized..."
 
@@ -15,8 +17,8 @@ if [ -z "$AUTH_PASS" ]; then
   MAX_RETRIES=30
   RETRY_COUNT=0
   while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-    if [ -f "/uploads/install.log" ]; then
-      TOKEN=$(grep "export LISTMONK_ADMIN_API_TOKEN=" /uploads/install.log | cut -d'"' -f2)
+    if [ -f "$DIR/install.log" ]; then
+      TOKEN=$(grep "export LISTMONK_ADMIN_API_TOKEN=" "$DIR/install.log" | cut -d'"' -f2)
       if [ -n "$TOKEN" ]; then
         echo "Successfully extracted Admin API token."
         AUTH_USER="${LISTMONK_ADMIN_API_USER}"
@@ -31,7 +33,7 @@ if [ -z "$AUTH_PASS" ]; then
 fi
 
 if [ -z "$AUTH_PASS" ]; then
-  echo "Error: Token could not be extracted from /uploads/install.log within timeout."
+  echo "Error: Token could not be extracted from install.log within timeout."
   exit 1
 fi
 

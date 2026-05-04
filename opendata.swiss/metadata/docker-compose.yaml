@@ -437,7 +437,7 @@ services:
       LISTMONK_ADMIN_API_USER: ${LISTMONK_ADMIN_API_USER:-admin-api}
       TZ: Etc/UTC
     volumes:
-      - ./uploads:/listmonk/uploads:rw                        # Mount an uploads directory on the host to /listmonk/uploads inside the container.
+      - ./listmonk:/listmonk/uploads:rw                        # Mount an uploads directory on the host to /listmonk/uploads inside the container.
       # To use this, change directory path in Admin -> Settings -> Media to /listmonk/uploads
 
   # listmonk init
@@ -448,7 +448,6 @@ services:
       - listmonk-app
     volumes:
       - ./listmonk:/init
-      - ./uploads:/uploads:ro
     env_file:
       - .env
     command: >
