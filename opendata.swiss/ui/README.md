@@ -167,3 +167,18 @@ The Netlify credentials are [here](https://passbolt.zazuko.com/app/passwords/vie
 In the single Netlify Project, the OAuth App is set up using Client ID and secret. Most importantly, each instance of ODS
 must be added in the [Domain Management](https://app.netlify.com/projects/preeminent-flan-064546/domain-management)
 section.
+
+### Subscriptions
+
+Subscriptions are managed by [Listmonk](https://listmonk.app) and in the dev environment,
+[mailpit](http://localhost:8025) is used to catch all sent emails.
+
+For this configuration to work, make sure to run the [docker compose stack](../metadata/docker-compose.yaml) first.
+Then, set the following environment variables before running the dev instance:
+
+```dotenv
+NUXT_LISTMONK_API_USER=
+NUXT_LISTMONK_API_TOKEN=
+```
+
+Their values can be retrieved from [install.log](../metadata/listmonk/install.log) produced by listmonk installation script.
