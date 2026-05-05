@@ -252,7 +252,8 @@ public class MainVerticle extends AbstractVerticle {
                 errorHandler.notifyErrors();
             } else {
                 logger.info("passing {}", dataset.getURI());
-                pipeContext.pass();
+                // pipeContext.pass();
+                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
             }
         } else {
             pipeContext.pass();
