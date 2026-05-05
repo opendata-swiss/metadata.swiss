@@ -7,7 +7,7 @@
   a foaf:Organization, org:Organization ;
 
   org:subOrganizationOf <https://opendata.swiss/id/organization/zh-bar> ;
-  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
+  org:classification    <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
   foaf:name           "Amt für Abfall, Wasser, Energie und Luft Kanton Zürich"@de, "(en) Amt für Abfall, Wasser, Energie und Luft Kanton Zürich"@en ;
   dcterms:description "Das Amt für Abfall, Wasser, Energie und Luft (AWEL) des Kantons Zürich hat den Auftrag, der Bevölkerung im Kanton Zürich eine gesunde, sichere und attraktive Umwelt zu bieten. Zu den Themen Abfall, Wasser, Energie und Luft stellt das AWEL Fachleuten und Interessierten Informationen zur Verfügung."@de ;

@@ -1,7 +1,6 @@
-package swiss.opendata.piveau.testbench.scenarios.simple;
+package swiss.opendata.piveau.testbench.scenarios.odsn;
 
 import org.eclipse.rdf4j.model.vocabulary.FOAF;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import swiss.opendata.piveau.testbench.BaseSystemTest;
 import swiss.opendata.piveau.testbench.Goal;
@@ -18,7 +17,6 @@ import static swiss.opendata.piveau.testbench.TestConstants.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class OrganizationTest extends BaseSystemTest {
@@ -30,22 +28,22 @@ public class OrganizationTest extends BaseSystemTest {
     }
 
     @Test
-    @DependsOn(Goal.HUB_STARTED)
-    @Provides(Goal.SIMPLE_ORGANIZATION_CREATED)
+    @DependsOn(Goal.HUB_READY)
+    @Provides(Goal.ODSN_ORGANIZATION_CREATED)
     public void createOrganization(TestContext context) throws IOException {
         final long timestamp = System.currentTimeMillis();
         final String organizationId = "test-organization-" + timestamp;
         final String organizationName = "Test Organization " + timestamp;
 
-        String organizationTurtle = ResourceUtils.loadTurtle("/organization.ttl", organizationName);
+        String organizationTurtle = ResourceUtils.loadTurtle("/organization-kt-zh.ttl", organizationName);
 
         String askIfOrganizationExists = """
                 %s
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           a foaf:Organization ;
-                           foaf:name "%s" .
+                        a foaf:Organization ;
+                           foaf:name "%s"@en .
                     }
                 }
                 """.formatted(PREFIXES, organizationName);
@@ -65,43 +63,44 @@ public class OrganizationTest extends BaseSystemTest {
         System.out.println("Minted Organization IRI: " + organizationIRI);
 
         assertNotNull(organizationIRI);
+        assertTrue(organizationIRI.startsWith("https://opendata.swiss/id/organization/"));
 
-        context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "id", organizationId);
-        context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "iri", organizationIRI);
-        context.store(Goal.SIMPLE_ORGANIZATION_CREATED, "name", organizationName);
+        context.store(Goal.ODSN_ORGANIZATION_CREATED, "id", organizationId);
+        context.store(Goal.ODSN_ORGANIZATION_CREATED, "iri", organizationIRI);
+        context.store(Goal.ODSN_ORGANIZATION_CREATED, "name", organizationName);
     }
 
     // @Test
-    // @DependsOn(Goal.SIMPLE_ORGANIZATION_CREATED)
-    // @Provides(Goal.SIMPLE_ORGANIZATION_INDEXED)
+    // @DependsOn(Goal.ODSN_ORGANIZATION_CREATED)
+    // @Provides(Goal.ODSN_ORGANIZATION_INDEXED)
     // public void indexOrganizationAfterCreation(TestContext context) {
-    //     String organizationId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
-    //     String organizationName = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "name", String.class);
+    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+    //     String organizationName = context.get(Goal.ODSN_ORGANIZATION_CREATED, "name", String.class);
 
     //     System.out.println("Checking Organization Document after creation: /organizations/" + organizationId);
     //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(organizationName)));
+    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(organizationName)));
     //     });
     // }
 
     @Test
-    // @DependsOn(Goal.SIMPLE_ORGANIZATION_INDEXED)
-    @DependsOn(Goal.SIMPLE_ORGANIZATION_CREATED)
-    @Provides(Goal.SIMPLE_ORGANIZATION_UPDATED)
+    // @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    @DependsOn(Goal.ODSN_ORGANIZATION_CREATED)
+    @Provides(Goal.ODSN_ORGANIZATION_UPDATED)
     public void updateOrganization(TestContext context) throws IOException {
-        String organizationId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
-        String oldName = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "name", String.class);
+        String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+        String oldName = context.get(Goal.ODSN_ORGANIZATION_CREATED, "name", String.class);
         String newName = oldName + " Updated";
 
-        String organizationTurtle = ResourceUtils.loadTurtle("/organization.ttl", newName);
+        String organizationTurtle = ResourceUtils.loadTurtle("/organization-kt-zh.ttl", newName);
 
         String askIfOrganizationUpdated = """
                 %s
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           a foaf:Organization ;
-                           foaf:name "%s" .
+                        a foaf:Organization ;
+                           foaf:name "%s"@en .
                     }
                 }
                 """.formatted(PREFIXES, newName);
@@ -113,37 +112,37 @@ public class OrganizationTest extends BaseSystemTest {
                 getSparqlEndpoint(), askIfOrganizationUpdated
         ));
 
-        context.store(Goal.SIMPLE_ORGANIZATION_UPDATED, "name", newName);
+        context.store(Goal.ODSN_ORGANIZATION_UPDATED, "name", newName);
     }
 
     // @Test
-    // @DependsOn(Goal.SIMPLE_ORGANIZATION_UPDATED)
-    // @Provides(Goal.SIMPLE_ORGANIZATION_INDEX_UPDATED)
+    // @DependsOn(Goal.ODSN_ORGANIZATION_UPDATED)
+    // @Provides(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
     // public void indexOrganizationAfterUpdate(TestContext context) {
-    //     String organizationId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
-    //     String updatedName = context.get(Goal.SIMPLE_ORGANIZATION_UPDATED, "name", String.class);
+    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+    //     String updatedName = context.get(Goal.ODSN_ORGANIZATION_UPDATED, "name", String.class);
 
     //     System.out.println("Checking Organization Document after update: /organizations/" + organizationId);
     //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedName)));
+    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedName)));
     //     });
     // }
 
     @Test
-    // @DependsOn(Goal.SIMPLE_ORGANIZATION_INDEX_UPDATED)
-    @DependsOn(Goal.SIMPLE_ORGANIZATION_UPDATED)
-    @Provides(Goal.SIMPLE_ORGANIZATION_DELETED)
+    // @DependsOn(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
+    @DependsOn(Goal.ODSN_ORGANIZATION_UPDATED)
+    @Provides(Goal.ODSN_ORGANIZATION_DELETED)
     public void deleteOrganization(TestContext context) {
-        String organizationId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
-        String name = context.get(Goal.SIMPLE_ORGANIZATION_UPDATED, "name", String.class);
+        String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+        String name = context.get(Goal.ODSN_ORGANIZATION_UPDATED, "name", String.class);
 
         String askIfOrganizationExists = """
                 %s
                 ASK {
                     GRAPH ?g {
                         ?organization
-                           a foaf:Organization ;
-                           foaf:name "%s" .
+                        a foaf:Organization ;
+                           foaf:name "%s"@en .
                     }
                 }
                 """.formatted(PREFIXES, name);
@@ -159,59 +158,14 @@ public class OrganizationTest extends BaseSystemTest {
     }
 
     // @Test
-    // @DependsOn(Goal.SIMPLE_ORGANIZATION_DELETED)
-    // @Provides(Goal.SIMPLE_ORGANIZATION_INDEX_DELETED)
+    // @DependsOn(Goal.ODSN_ORGANIZATION_DELETED)
+    // @Provides(Goal.ODSN_ORGANIZATION_INDEX_DELETED)
     // public void deleteIndexAfterOrganizationDeletion(TestContext context) {
-    //     String organizationId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
+    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
 
     //     System.out.println("Checking Organization Document after deletion: /organizations/" + organizationId);
     //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
     //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(404);
     //     });
     // }
-
-    @Test
-    @Disabled
-    public void createOrganization_curl(TestContext context) throws IOException, InterruptedException {
-
-        // fail("on purpose");
-
-        String organizationId = "test-organization-" + System.currentTimeMillis();
-        String organizationName = "Test Organization " + System.currentTimeMillis();
-
-        String organizationTurtle = ResourceUtils.loadTurtle("/organization.ttl", organizationName);
-
-        String askIfOrganizationExists = """
-                %s
-                ASK {
-                    GRAPH ?g {
-                        ?organization
-                           a foaf:Organization ;
-                           foaf:name "%s" .
-                    }
-                }
-                """.formatted(PREFIXES, organizationName);
-
-        assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfOrganizationExists));
-
-        // DEBUG: Run curl to see raw response headers
-        String curlUrl = io.restassured.RestAssured.baseURI + ":" + io.restassured.RestAssured.port + "/organizations/" + organizationId;
-        System.out.println("DEBUG: curl URL: " + curlUrl);
-
-        java.io.File tmpBody = java.io.File.createTempFile("organization", ".ttl");
-        java.nio.file.Files.writeString(tmpBody.toPath(), organizationTurtle);
-
-        ProcessBuilder pb = new ProcessBuilder("curl", "-vi", "-X", "PUT", "-H", "X-API-Key: " + API_KEY, "-H", "Content-Type: text/turtle", "--data-binary", "@" + tmpBody.getAbsolutePath(), curlUrl);
-        System.out.println("DEBUG: curl command: " + String.join(" ", pb.command()));
-        pb.redirectErrorStream(true);
-        Process p = pb.start();
-        String curlOutput = new String(p.getInputStream().readAllBytes());
-        p.waitFor();
-        tmpBody.delete();
-        System.out.println("DEBUG: Curl output:\n" + curlOutput);
-
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
-                getSparqlEndpoint(), askIfOrganizationExists
-        ));
-    }
 }

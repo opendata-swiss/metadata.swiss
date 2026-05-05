@@ -7,7 +7,7 @@
   a foaf:Organization, org:Organization  ;
 
   org:subOrganizationOf <https://opendata.swiss/id/organization/kanton-zuerich> ;
-  org:classification    <https://opendata.swiss/vocabulary/political-level/canton> ;
+  org:classification    <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
 
   foaf:name           "Kanton Zürich Organisationsgruppierung Bar"@de , "Canton of Zurich organizational grouping Bar"@en ;
   dcterms:description "Organisationsgruppierung Bar im Kanton Zürich."@de ;

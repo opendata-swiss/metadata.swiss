@@ -11,5 +11,6 @@ public class TestConstants {
             PREFIX dcat: <http://www.w3.org/ns/dcat#>
             PREFIX dct: <http://purl.org/dc/terms/>
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+            PREFIX org: <http://www.w3.org/ns/org#>
             """;
 }

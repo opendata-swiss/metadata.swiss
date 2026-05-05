@@ -1,0 +1,15 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+[] a dcat:Catalog ;
+dcterms:created "2021-01-14T11:13:51.994837"^^xsd:dateTime ;
+dcterms:description "(Dummy) Das Amt für Abfall, Wasser, Energie und Luft (AWEL) des Kantons Zürich hat den Auftrag, der Bevölkerung im Kanton Zürich eine gesunde, sichere und attraktive Umwelt zu bieten. Zu den Themen Abfall, Wasser, Energie und Luft stellt das AWEL Fachleuten und Interessierten Informationen zur Verfügung."@de ;
+dcterms:modified "2025-10-30T12:33:03.098938"^^xsd:dateTime ;
+dcterms:publisher <https://opendata.swiss/id/organization/awel-kanton-zuerich> ;
+dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+dcterms:title "(Dummy) Amt für Abfall, Wasser, Energie und Luft Kanton Zürich"@de ;
+dcterms:type "ckan"^^xsd:string .
