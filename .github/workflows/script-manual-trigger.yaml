@@ -24,6 +24,7 @@ on:
           - "VOCABULARIES"
           - "DELETE_VOCABULARIES"
           - "TRIGGERS"
+          - "METRICS"
         default: "HARVEST"
       
       arguments:
@@ -97,6 +98,8 @@ jobs:
             ./scripts/vocabularies_delete.sh;
           elif [ "${{ github.event.inputs.action }}" == "TRIGGERS" ]; then
             ./scripts/triggers.sh;
+          elif [ "${{ github.event.inputs.action }}" == "METRICS" ]; then
+            ./scripts/metrics.sh;
           else
             echo "Unknown action: ${{ github.event.inputs.action }}";
             exit 1;
