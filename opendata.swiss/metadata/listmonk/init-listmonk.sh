@@ -167,33 +167,6 @@ delete_test_campaigns() {
   done
 }
 
-# Delete default subscribers (e.g. the ones added to list ID 1)
-delete_default_subscribers() {
-  echo "Checking for default subscribers to remove..."
-  # Listmonk usually doesn't have a "delete all subscribers" but we can delete subscribers from the default list
-  # or list all subscribers and delete them.
-  # First, find the ID of "Default list" if it still exists (or we just deleted it, but we might need its ID)
-
-  # Actually, Listmonk has /api/subscribers
-  SUBS_JSON=$(curl -s -u "${AUTH_USER}:${AUTH_PASS}" "${LISTMONK_URL}/subscribers")
-
-  echo "$SUBS_JSON" | jq -c "$JQ_EXTRACT_ITEMS" | while read -r sub; do
-    [ -z "$sub" ] && continue
-    S_ID=$(echo "$sub" | jq -r '.id // empty')
-    S_EMAIL=$(echo "$sub" | jq -r '.email // empty')
-
-    # Skip if ID or Email is empty
-    [ -z "$S_ID" ] || [ "$S_ID" = "null" ] && continue
-    [ -z "$S_EMAIL" ] || [ "$S_EMAIL" = "null" ] && continue
-
-    # Delete if it's a known demo subscriber or if it looks like a demo one
-    if [ "$S_EMAIL" = "subscriber@example.com" ] || [ "$S_EMAIL" = "admin@listmonk.app" ] || echo "$S_EMAIL" | grep -q "@example.com"; then
-       echo "Deleting subscriber: $S_EMAIL (ID: $S_ID)"
-       curl -s -u "${AUTH_USER}:${AUTH_PASS}" -X DELETE "${LISTMONK_URL}/subscribers/$S_ID"
-    fi
-  done
-}
-
 # Function to configure SMTP
 configure_smtp() {
   echo "Configuring SMTP to use Mailpit..."
@@ -251,6 +224,5 @@ configure_smtp
 delete_default_templates
 delete_default_list
 delete_test_campaigns
-delete_default_subscribers
 
 echo "Initialization complete."

@@ -177,8 +177,10 @@ For this configuration to work, make sure to run the [docker compose stack](../m
 Then, set the following environment variables before running the dev instance:
 
 ```dotenv
-NUXT_LISTMONK_API_USER=
+NUXT_LISTMONK_API_URL=http://localhost:9000/
+NUXT_LISTMONK_API_USER=admin-api
 NUXT_LISTMONK_API_TOKEN=
 ```
 
-Their values can be retrieved from [install.log](../metadata/listmonk/install.log) produced by listmonk installation script.
+The username can be changed [docker-compose.yaml](../metadata/docker-compose.yaml).
+The token can be retrieved from [install.log](../metadata/listmonk/install.log) produced by listmonk installation script.

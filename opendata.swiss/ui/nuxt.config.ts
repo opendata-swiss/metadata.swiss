@@ -65,6 +65,13 @@ export default defineNuxtConfig({
       },
     },
     apiTunerTests: false,
+    listmonk: {
+      api: {
+        url: '',
+        user: '',
+        token: '',
+      },
+    },
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
@@ -73,6 +80,8 @@ export default defineNuxtConfig({
     transpile: ['form-data'],
   },
   routeRules: {
+    '/api/showcases': { basicAuth: true },
+    '/api/subscribe/*': { basicAuth: true },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
@@ -84,6 +93,9 @@ export default defineNuxtConfig({
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
     ],
+    hooks: {
+      'dev:reload': () => import('sharp'),
+    },
   },
   cmsAssets: {
     contentPath: resolve(import.meta.dirname, 'content/assets'),
