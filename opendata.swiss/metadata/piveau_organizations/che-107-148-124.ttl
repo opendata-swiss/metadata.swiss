@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-107-148-124> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Kinder und Jugendmedizin Koniz"@en ;
+    dcterms:identifier "CHE-107.148.124" ;
+    skos:prefLabel "Kinder und Jugendmedizin Koniz"@en ;
+    foaf:homepage <https://www.kjmk.ch> ;
+    foaf:name "Kinder und Jugendmedizin Koniz"@en .
+
+<https://www.kjmk.ch> a foaf:Document .
+

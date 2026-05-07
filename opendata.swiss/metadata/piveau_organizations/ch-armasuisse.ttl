@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-armasuisse> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_ARMASUISSE" ;
+    skos:prefLabel "armasuisse"@de,
+        "armasuisse"@en,
+        "armasuisse"@fr,
+        "armasuisse"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    foaf:name "Bundesamt für Rüstung (armasuisse)"@de,
+        "Federal Office for Defence Procurement (armasuisse)"@en,
+        " Office fédéral de l'armement armasuisse (ar)"@fr,
+        " Ufficio federale dell'armamento armasuisse (ar)"@it .
+

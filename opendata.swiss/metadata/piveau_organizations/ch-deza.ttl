@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-deza> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_DEZA" ;
+    skos:prefLabel "DEZA"@de,
+        "SDC"@en,
+        "DDC"@fr,
+        "DSC"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-eda> ;
+    foaf:homepage <https://www.deza.admin.ch> ;
+    foaf:name "Direktion für Entwicklung und Zusammenarbeit (DEZA)"@de,
+        "Swiss Agency for Development and Cooperation (SDC)"@en,
+        "Direction du développement et de la coopération (DDC)"@fr,
+        "Direzione dello sviluppo e della cooperazione (DSC)"@it .
+
+<https://www.deza.admin.ch> a foaf:Document .
+

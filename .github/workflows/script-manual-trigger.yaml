@@ -25,6 +25,8 @@ on:
           - "DELETE_VOCABULARIES"
           - "TRIGGERS"
           - "METRICS"
+          - "ORGANIZATIONS"
+          - "DELETE_ORGANIZATIONS"
         default: "HARVEST"
 
       arguments:
@@ -108,6 +110,10 @@ jobs:
             ./scripts/triggers.sh;
           elif [ "${{ github.event.inputs.action }}" == "METRICS" ]; then
             ./scripts/metrics.sh;
+          elif [ "${{ github.event.inputs.action }}" == "ORGANIZATIONS" ]; then
+            ./scripts/organizations.sh "${{ github.event.inputs.arguments }}";
+          elif [ "${{ github.event.inputs.action }}" == "DELETE_ORGANIZATIONS" ]; then
+            ./scripts/organizations_delete.sh "${{ github.event.inputs.arguments }}";
           else
             echo "Unknown action: ${{ github.event.inputs.action }}";
             exit 1;

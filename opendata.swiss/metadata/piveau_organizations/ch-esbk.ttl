@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-esbk> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die ESBK beaufsichtigt die Schweizer Spielbanken, veranlagt die Spielbankenabgabe und bekämpft das illegale Geldspiel. Die ESBK ist unabhängig. Administrativ ist sie dem Eidgenössischen Justiz- und Polizeidepartement zugeordnet."@de,
+        "The Federal Gaming Board (FGB) is responsible for supervising Swiss casinos, levying casino tax and combating illegal gambling. The FGB is an independent authority. It is administratively attached to the FDJP."@en,
+        "La CFMJ surveille les maisons de jeu suisses, perçoit l'impôt sur les maisons de jeu et lutte contre le jeu d'argent illégal. La CFMJ est indépendante. Elle est administrativement rattachée au Département fédéral de justice et police."@fr,
+        "La CFCG vigila le case da gioco svizzere, riscuote la tassa sulle case da gioco e lotta contro i giochi in denaro illegali. La CFCG è indipendente. È aggregata amministrativamente al Dipartimento federale di giustizia e polizia."@it ;
+    dcterms:identifier "CH_ESBK" ;
+    skos:prefLabel "ESBK"@de,
+        "ESBK"@en,
+        "CFMJ"@fr,
+        "CFCG"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    foaf:homepage <https://www.esbk.admin.ch> ;
+    foaf:name "Eidgenössische Spielbankenkommission (ESBK)"@de,
+        "Eidgenössische Spielbankenkommission (ESBK)"@en,
+        "Commission fédérale des maisons de jeu (CFMJ)"@fr,
+        "Commissione federale delle case da gioco (CFCG)"@it .
+
+<https://www.esbk.admin.ch> a foaf:Document .
+

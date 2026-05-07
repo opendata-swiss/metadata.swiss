@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-educa> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Als Fachagentur im Auftrag von Bund und Kantonen verbindet Educa die technologischen Entwicklungen mit der Qualitätsentwicklung im Bildungsraum Schweiz."@de,
+        "As a specialist agency commissioned by the Confederation and cantons, we combine technological developments with quality improvements in the Swiss education space."@en,
+        "En tant qu'agence spécialisée mandatée par la Confédération et les cantons, Educa associe les développements technologiques au développement de la qualité dans l’espace suisse de formation. "@fr,
+        "In qualità di agenzia specializzata, su mandato della Confederazione e dei Cantoni, Educa associa gli sviluppi tecnologici allo sviluppo della qualità nel settore della formazione in Svizzera."@it ;
+    dcterms:identifier "CH_EDUCA" ;
+    skos:prefLabel "EDUCA"@de,
+        "EDUCA"@en,
+        "EDUCA"@fr,
+        "EDUCA"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0224> ;
+    foaf:homepage <https://www.educa.ch> ;
+    foaf:name "Educa"@de,
+        "Educa"@en,
+        "Educa"@fr,
+        "Educa"@it .
+
+<https://www.educa.ch> a foaf:Document .
+

@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-swissmedic> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_Swissmedic" ;
+    skos:prefLabel "Schweizerisches Heilmittelinstitut Swissmedic"@de,
+        "Swiss Agency for Therapeutic Products Swissmedic"@en,
+        "Institut suisse des produits thérapeutiques Swissmedic"@fr,
+        "Istituto svizzero per gli agenti terapeutici Swissmedic"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    foaf:name "Schweizerisches Heilmittelinstitut Swissmedic"@de,
+        "Swiss Agency for Therapeutic Products Swissmedic"@en,
+        "Institut suisse des produits thérapeutiques Swissmedic"@fr,
+        "Istituto svizzero per gli agenti terapeutici Swissmedic"@it .
+

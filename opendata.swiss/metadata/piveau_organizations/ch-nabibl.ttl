@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-nabibl> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_NABIBL" ;
+    skos:prefLabel "NB"@de,
+        "NL"@en,
+        "BN"@fr,
+        "BN"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bak> ;
+    foaf:name "Schweizerische Nationalbibliothek (NB)"@de,
+        "Swiss National Library (NL)"@en,
+        "Bibliothèque nationale suisse (BN)"@fr,
+        "Biblioteca nazionale svizzera (BN)"@it .
+

@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bk-dti> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BK_DTI" ;
+    skos:prefLabel "BK-DTI"@de,
+        "FCh-DTI"@en,
+        "ChF-TNI"@fr,
+        "CaF-TDT"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bk> ;
+    foaf:homepage <https://www.bk.admin.ch/bk/de/home/digitale-transformation-ikt-lenkung/bereichdti.html> ;
+    foaf:name "Bereich digitale Transformation und IKT-Lenkung (DTI) der Bundeskanzlei (BK)"@de,
+        "Digital Transformation and ICT Steering Sector (DTI) of the Federal Chancellery (FCh)"@en,
+        "Secteur Transformation numérique et gouvernance de l'informatique (TNI) de la Chancellerie fédérale (ChF)"@fr,
+        "Settore Trasformazione digitale e governance delle TIC (TDT) della Cancelleria federale (CaF)"@it .
+
+<https://www.bk.admin.ch/bk/de/home/digitale-transformation-ikt-lenkung/bereichdti.html> a foaf:Document .
+

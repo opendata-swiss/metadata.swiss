@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-229-707-417> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Inselspital - Universitatsspital Bern"@en ;
+    dcterms:identifier "CHE-229.707.417" ;
+    skos:prefLabel "Inselspital - Universitatsspital Bern"@en ;
+    foaf:homepage <https://www.insel.ch> ;
+    foaf:name "Inselspital - Universitatsspital Bern"@en .
+
+<https://www.insel.ch> a foaf:Document .
+

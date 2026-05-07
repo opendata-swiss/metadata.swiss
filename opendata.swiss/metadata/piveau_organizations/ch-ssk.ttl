@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-ssk> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_SSK" ;
+    skos:prefLabel "SSK"@de,
+        "SSK"@en,
+        "CSI"@fr,
+        "CSI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0224> ;
+    foaf:homepage <https://www.ssk-csi.ch> ;
+    foaf:name "Schweizerische Steuerkonferenz (SSK)"@de,
+        "Schweizerische Steuerkonferenz (SSK)"@en,
+        "Conférence suisse des impôts (CSI)"@fr,
+        "Conferenza svizzera delle imposte (CSI)"@it .
+
+<https://www.ssk-csi.ch> a foaf:Document .
+

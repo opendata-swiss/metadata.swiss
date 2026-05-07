@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-ge-fondationmodus> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_GE_FONDATIONMODUS" ;
+    skos:prefLabel "MODUS"@de,
+        "MODUS"@en,
+        "MODUS"@fr,
+        "MODUS"@it ;
+    foaf:name "FONDATION MODUS (GE)"@de,
+        "FONDATION MODUS (GE)"@en,
+        "FONDATION MODUS (GE)"@fr,
+        "FONDATION MODUS (GE)"@it .
+

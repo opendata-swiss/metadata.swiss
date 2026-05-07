@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gs-vbs> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_GS_VBS" ;
+    skos:prefLabel "GS-VBS"@de,
+        "GS-DDPS"@en,
+        "SG-DDPS"@fr,
+        "SG-DDPS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.vbs.admin.ch> ;
+    foaf:name "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)"@de,
+        "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)"@en,
+        "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)"@fr,
+        "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)"@it .
+
+<https://www.vbs.admin.ch> a foaf:Document .
+

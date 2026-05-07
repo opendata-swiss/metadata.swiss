@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-vtg> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_VTG" ;
+    skos:prefLabel "Vtg"@de,
+        "Vtg"@en,
+        "Def"@fr,
+        "Dif"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    foaf:homepage <https://www.vtg.admin.ch> ;
+    foaf:name "Gruppe Verteidigung (Vtg)"@de,
+        "Defence sector (Vtg)"@en,
+        "Groupement Défense (Def)"@fr,
+        "Aggruppamento Difesa (Dif)"@it .
+
+<https://www.vtg.admin.ch> a foaf:Document .
+

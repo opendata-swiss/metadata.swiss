@@ -9,14 +9,15 @@ from typing import Union
 import requests
 import yaml
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
-from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD
+from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD, ORG, SKOS
 from requests.exceptions import HTTPError
 
-from .api_clients import CkanClient
+from .api_clients import CkanClient, I14YClient
 
 CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
 PIPES_PATH = "../piveau_pipes"
 TRIGGERS_PATH = "../piveau_triggers"
+ORGANIZATIONS_PATH = "../piveau_organizations"
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -195,6 +196,74 @@ def generate_bulk_triggers(pipe_names: list) -> None:
         }, trigger_file, indent=2)
 
 
+def generate_organization_metadata(
+        slug: str,
+        identifier: str,
+        subAgentOf_slug: str,
+        classification_code: str,
+        names: dict,
+        prefLabels: dict,
+        descriptions: dict,
+        homepage: str,
+) -> None:
+    """
+    Generates an RDF metadata file for an organization in Turtle format.
+
+    Args:
+        slug (str):                The slug of the organization.
+        identifier (str):          The identifier of the organization.
+        subAgentOf_slug (str):     The slug of the parent organization, if any.
+        classification_code (str): The classification code of the organization.
+        names (dict):              A dictionary of names for the organization, with language codes as keys.
+        prefLabels (dict):         A dictionary of preferred labels for the organization, with language codes as keys.
+        descriptions (dict):       A dictionary of descriptions for the organization, with language codes as keys.
+        homepage (str):            The URL to the organization's homepage.
+
+    Returns:
+        None
+    """
+    ODSN_ORGA = Namespace("https://opendata.swiss/id/organization/")
+    LEGAL_FORM = Namespace("https://register.ld.admin.ch/i14y/concept/legalForm/")
+
+    g = Graph()
+
+    g.bind("dcterms", DCTERMS)
+    g.bind("foaf", FOAF)
+
+    orga_uri = ODSN_ORGA[slug]
+
+    # Organization
+    g.add((orga_uri, RDF.type, FOAF.Organization))
+    g.add((orga_uri, RDF.type, ORG.Organization))
+    g.add((orga_uri, DCTERMS.identifier, Literal(identifier)))
+
+    if subAgentOf_slug:
+        g.add((orga_uri, ORG.subOrganizationOf, ODSN_ORGA[subAgentOf_slug]))
+    
+    if classification_code:
+        g.add((orga_uri, ORG.classification, LEGAL_FORM[classification_code])) 
+
+    for lang, name in names.items():
+        if name:
+            g.add((orga_uri, FOAF.name, Literal(name, lang=lang)))
+
+    for lang, prefLabel in prefLabels.items():
+        if prefLabel:
+            g.add((orga_uri, SKOS.prefLabel, Literal(prefLabel, lang=lang)))
+
+    for lang, desc in descriptions.items():
+        if desc:
+            g.add((orga_uri, DCTERMS.description, Literal(desc, lang=lang)))
+
+    if homepage:
+        g.add((orga_uri, FOAF.homepage, URIRef(homepage)))
+        g.add((URIRef(homepage), RDF.type, FOAF.Document))
+
+    output_file = Path(ORGANIZATIONS_PATH) / f"{slug}.ttl"
+    g.serialize(destination=output_file, format="turtle")
+    logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
+
+
 # run this locally and push the generated files to repo
 def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True) -> None:
     """
@@ -290,7 +359,48 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
         generate_bulk_triggers(pipe_names)
 
 
+# run this locally and push the generated files to repo
+def generate_organizations() -> None:
+    """
+    Fetches all organizations from I14Y and generates corresponding
+    organization metadata files.
+    """
+    i14y_client = I14YClient()
 
+    try:
+        organizations = i14y_client.get_organizations()
+        logging.info(f"Collected {len(organizations)} organization(s) from I14Y.")
+    except HTTPError as e:
+        logging.error(f"Failed to fetch organizations from I14Y: {e}")
+        return
+    
+    # dictionary to map from the id to the slug. used for populating the 'subAgentOf' fields
+    id_to_slug = {org["id"]: org["slug"] for org in organizations}
+    
+    for i, organization in enumerate(organizations):
+        slug = organization["slug"]
+
+        logging.info(f"({i+1}/{len(organizations)}) Processing organization '{slug}'...")
+
+        # expect only one parent organization. error if more than one.
+        parent_orgs = organization.get("subAgentOf", [])
+        if len(parent_orgs) > 1:
+            logging.error(f"Organization '{slug}' ({organization["identifier"]}) has more than one parent organization: {parent_orgs}. Skipping.")
+            continue
+        elif len(parent_orgs) == 1:
+            parent_org_id = parent_orgs[0].get("id")
+            subAgentOf_slug = id_to_slug.get(parent_org_id)
+
+        generate_organization_metadata(
+            slug=slug,
+            identifier=organization["identifier"],
+            subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",
+            classification_code = (organization.get("classification") or {}).get("code", ""),
+            names=to_dict(organization.get("name" or {})),
+            prefLabels=to_dict(organization.get("prefLabel" or {})),
+            descriptions=to_dict(organization.get("description" or {})),
+            homepage=organization.get("homePage", "")
+        )
 
 def main()-> None:
 
@@ -311,6 +421,11 @@ def main()-> None:
         "generate-all-catalogues", help="Generate all catalogue definition files from CKAN."
     )
     parser_generate_pipes.set_defaults(func=generate_pipe_and_catalogue_files, pipes=False, catalogues=True)
+
+    parser_generate_organizations = subparsers.add_parser(
+        "generate-all-organizations", help="Generate all organization definition files from I14Y."
+    )
+    parser_generate_organizations.set_defaults(func=generate_organizations)
 
     args = parser.parse_args()
 

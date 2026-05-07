@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gs-edi> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_GS_EDI" ;
+    skos:prefLabel "GS-EDI"@de,
+        "GS-EDI"@en,
+        "SG-DFI"@fr,
+        "SG-DFI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:name "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)"@de,
+        "General Secretariat of the Federal Department of Home Affairs (GS-EDI)"@en,
+        "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)"@fr,
+        "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"@it .
+

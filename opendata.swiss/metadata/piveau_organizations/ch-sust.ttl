@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-sust> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_SUST" ;
+    skos:prefLabel "SUST"@de,
+        "STSB"@en,
+        "SESE"@fr,
+        "SISI"@it ;
+    foaf:name "Schweizerische Sicherheitsuntersuchungsstelle (SUST)"@de,
+        "Swiss Transportation Safety Investigation Board (STSB)"@en,
+        "Service suisse d'enquête de sécurité (SESE)"@fr,
+        " Servizio d'inchiesta svizzero sulla sicurezza (SISI)"@it .
+

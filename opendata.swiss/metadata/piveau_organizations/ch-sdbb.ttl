@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-sdbb> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das SDBB ist eine Institution der Schweizerischen Konferenz der kantonalen Erziehungsdirektoren EDK. Es erbringt für die Kantone und Verbundpartner Dienstleistungen in der Berufsbildung und der Berufs-, Studien- und Laufbahnberatung."@de ;
+    dcterms:identifier "CH_SDBB" ;
+    skos:prefLabel "SDBB"@de,
+        "SDBB"@en,
+        "SDBB"@fr,
+        "SDBB"@it ;
+    foaf:homepage <https://www.sdbb.ch> ;
+    foaf:name "SDBB"@de,
+        "SDBB"@en,
+        "SDBB"@fr,
+        "SDBB"@it .
+
+<https://www.sdbb.ch> a foaf:Document .
+

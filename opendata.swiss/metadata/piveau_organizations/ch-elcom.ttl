@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-elcom> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_ELCOM" ;
+    skos:prefLabel "ElCom"@de,
+        "ElCom"@en,
+        "ElCom"@fr,
+        "ElCom"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.elcom.admin.ch/> ;
+    foaf:name "Eidgenössische Elektrizitätskommission (ElCom)"@de,
+        "Federal Electricity Commission (ElCom)"@en,
+        "Commission fédérale de l'électricité (ElCom)"@fr,
+        "Commissione federale dell'energia elettrica (ElCom)"@it .
+
+<https://www.elcom.admin.ch/> a foaf:Document .
+

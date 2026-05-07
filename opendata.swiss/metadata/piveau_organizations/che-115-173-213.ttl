@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-115-173-213> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Universitatsspital Basel"@en ;
+    dcterms:identifier "CHE-115.173.213" ;
+    skos:prefLabel "Universitatsspital Basel"@en ;
+    foaf:homepage <https://www.unispital-basel.ch> ;
+    foaf:name "Universitatsspital Basel"@en .
+
+<https://www.unispital-basel.ch> a foaf:Document .
+

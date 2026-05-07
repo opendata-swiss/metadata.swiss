@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gs-ejpd> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_GS_EJPD" ;
+    skos:prefLabel "GS-EJPD"@de,
+        "GS-FDJP"@en,
+        "SG-DFJP"@fr,
+        "SG-DFGP"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html> ;
+    foaf:name "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)"@de,
+        "General Secretariat Federal Department of Justice and Police (GS-FDJP)"@en,
+        "Secrétariat général Département fédéral de justice et police (SG-DFJP)"@fr,
+        "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)"@it .
+
+<https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html> a foaf:Document .
+

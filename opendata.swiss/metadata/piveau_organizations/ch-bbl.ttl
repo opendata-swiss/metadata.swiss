@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bbl> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BBL" ;
+    skos:prefLabel "BBL"@de,
+        "BBL"@en,
+        "OFCL"@fr,
+        "UFCL"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    foaf:homepage <https://www.bbl.admin.ch> ;
+    foaf:name "Bundesamt für Bauten und Logistik (BBL)"@de,
+        "Federal Office of Construction and Logistics (BBL)"@en,
+        " Office fédéral des constructions et de la logistique (OFCL)"@fr,
+        "Ufficio federale delle costruzioni e della logistica (UFCL)"@it .
+
+<https://www.bbl.admin.ch> a foaf:Document .
+

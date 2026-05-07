@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bfs-poku> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BFS_POKU" ;
+    skos:prefLabel "POKU (BFS)"@de,
+        "POKU (FSO)"@en,
+        "POKU (OFS)"@fr,
+        "POKU (UST)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch1> ;
+    foaf:name "Sektion Politik, Kultur, Medien (POKU) des Bundesamts für Statistik (BFS)"@de,
+        "Politics, Culture and Media Section (POKU) at the Federal Statistical Office (FSO)"@en,
+        "Section Politique, culture, médias (POKU) de l'Office fédéral de la statistique (OFS)"@fr,
+        "Sezione Politica, cultura, media (POKU) presso l'Ufficio federale di statistica (UST)"@it .
+

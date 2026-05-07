@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gs-uvek> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das EDI ist verantwortlich für die sozialen, kulturellen und gesundheitlichen Belange der Schweiz. Zudem ist das EDI zuständig für die Gleichstellung von Frau und Mann und von Menschen mit Behinderungen, die Rassismusbekämpfung, die Statistiken des Bundes und die Meteorologie."@de,
+        "The Federal Department of Home Affairs is responsible for Switzerland’s social, cultural and health-related affairs. The FDHA is also responsible for gender equality, equality of people with disabilities, combating racism, federal statistics and meteorology. "@en,
+        "Le DFI est essentiellement en charge des questions sociales et culturelles, ainsi que des aspects touchant à la santé. L’égalité femmes-hommes, l’égalité des personnes handicapées, la lutte contre le racisme, les statistiques et les prévisions météorologiques font également partie de ses attributions. "@fr,
+        "Il DFI è responsabile delle questioni sociali, culturali e sanitarie della Svizzera. Rientrano nel suo ambito di competenza anche l’uguaglianza fra donna e uomo, le pari opportunità delle persone con disabilità, la lotta al razzismo, le statistiche federali e la meteorologia."@it ;
+    dcterms:identifier "CH_GS_UVEK" ;
+    skos:prefLabel "GS-UVEK"@de,
+        "GS-DETEC"@en,
+        "SG-DETEC"@fr,
+        "SG-DATEC"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.edi.admin.ch> ;
+    foaf:name "Generalsekretariat des UVEK (GS-UVEK)"@de,
+        "General Secretariat DETEC (GS-DETEC)"@en,
+        "Secrétariat général du DETEC (SG-DETEC)"@fr,
+        "Segreteria generale del DATEC (SG-DATEC)"@it .
+
+<https://www.edi.admin.ch> a foaf:Document .
+

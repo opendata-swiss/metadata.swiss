@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-134-885-283> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Youkidoc Kindergesundheit"@en ;
+    dcterms:identifier "CHE-134.885.283" ;
+    skos:prefLabel "Youkidoc Kindergesundheit"@en ;
+    foaf:homepage <https://www.youkidoc.ch> ;
+    foaf:name "Youkidoc Kindergesundheit"@en .
+
+<https://www.youkidoc.ch> a foaf:Document .
+
