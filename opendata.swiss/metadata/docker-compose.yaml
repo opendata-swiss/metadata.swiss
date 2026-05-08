@@ -413,7 +413,7 @@ services:
     hostname: listmonk.example.com                            # Recommend using FQDN for hostname
     depends_on:
       - listmonk-db
-    command: [sh, -c, "./listmonk --install --idempotent --yes --config '' 2> /listmonk/uploads/install.log && ./listmonk --upgrade --yes --config '' && ./listmonk --config ''"]
+    command: [sh, -c, "./listmonk --install --idempotent --yes --config '' 2> /listmonk/uploads/install.sh && ./listmonk --upgrade --yes --config '' && ./listmonk --config ''"]
       # --config (file) param is set to empty so that listmonk only uses the env vars (below) for config.
       # --install --idempotent ensures that DB installation happens only once on an empty DB, on the first ever start.
       # --upgrade automatically runs any DB migrations when a new image is pulled.

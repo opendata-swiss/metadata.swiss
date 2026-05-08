@@ -18,7 +18,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     a tuner:Request ;
       tuner:url <http://localhost:9000/api/subscribers/1> ;
       tuner:method "GET" ;
-      tuner:header ( "Authorization" "token admin-api:zRCx7erWy7ONGels6D8efSiP5s1yB4hi" ) ;
+      tuner:header ( "Authorization" "token admin-api:$LISTMONK_ADMIN_API_TOKEN" ) ;
   ] ;
   tuner:formula {
     <#subscribeToDataset> <#requestToSubmit> ?req .

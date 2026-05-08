@@ -69,7 +69,7 @@ export default defineNuxtConfig({
       api: {
         url: '',
         user: '',
-        token: '',
+        token: process.env.LISTMONK_ADMIN_API_TOKEN,
       },
     },
   },

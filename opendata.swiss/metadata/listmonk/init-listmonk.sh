@@ -17,8 +17,8 @@ if [ -z "$AUTH_PASS" ]; then
   MAX_RETRIES=30
   RETRY_COUNT=0
   while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-    if [ -f "$DIR/install.log" ]; then
-      TOKEN=$(grep "export LISTMONK_ADMIN_API_TOKEN=" "$DIR/install.log" | cut -d'"' -f2)
+    if [ -f "$DIR/install.sh" ]; then
+      TOKEN=$(grep "export LISTMONK_ADMIN_API_TOKEN=" "$DIR/install.sh" | cut -d'"' -f2)
       if [ -n "$TOKEN" ]; then
         echo "Successfully extracted Admin API token."
         AUTH_USER="${LISTMONK_ADMIN_API_USER}"
@@ -33,7 +33,7 @@ if [ -z "$AUTH_PASS" ]; then
 fi
 
 if [ -z "$AUTH_PASS" ]; then
-  echo "Error: Token could not be extracted from install.log within timeout."
+  echo "Error: Token could not be extracted from install.sh within timeout."
   exit 1
 fi
 

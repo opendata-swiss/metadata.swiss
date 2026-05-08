@@ -183,4 +183,4 @@ NUXT_LISTMONK_API_TOKEN=
 ```
 
 The username can be changed [docker-compose.yaml](../metadata/docker-compose.yaml).
-The token can be retrieved from [install.log](../metadata/listmonk/install.log) produced by listmonk installation script.
+The token can be retrieved from [install.sh](../metadata/listmonk/install.sh) produced by listmonk installation script.
