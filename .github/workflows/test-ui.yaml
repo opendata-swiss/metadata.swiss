@@ -42,6 +42,10 @@ jobs:
           repository: ${{ vars.CMS_REPO_TEST }}
           path: opendata.swiss/ui/content
 
+      - name: Prepare piveau backend env
+        working-directory: opendata.swiss/metadata
+        run: cp .env.example .env
+
       - name: Start listmonk
         run: docker compose up -d listmonk-app listmonk-init
         working-directory: opendata.swiss/metadata
