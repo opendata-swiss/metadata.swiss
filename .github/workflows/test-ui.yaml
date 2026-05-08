@@ -47,7 +47,7 @@ jobs:
         run: cp .env.example .env
 
       - name: Start listmonk
-        run: docker compose up -d listmonk-app listmonk-init
+        run: docker compose up -d listmonk-app listmonk-init mailpit
         working-directory: opendata.swiss/metadata
 
       - uses: fabasoad/setup-prolog-action@v1
