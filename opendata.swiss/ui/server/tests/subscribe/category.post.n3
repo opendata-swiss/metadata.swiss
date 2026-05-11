@@ -12,7 +12,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:url </api/subscribe/category> ;
       tuner:method "POST" ;
       tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
-      tuner:query ( "category" "INTR" ) ;
+      tuner:form ( "category" "INTR" ) ;
   ] ;
   <#requestToVerify> [
     a tuner:Request ;

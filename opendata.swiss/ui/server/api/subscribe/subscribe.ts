@@ -2,12 +2,24 @@ import type { H3Event } from 'h3'
 import type * as Linkmonk from './listmonk.types'
 import { getLanguage } from '#server/lib/locale'
 
-export function subscribe(key: 'categories' | 'datasets' | 'organisations', queryParam: 'category' | 'organisation' | 'dataset') {
+type PayloadItem = {
+  name: 'category' | 'organisation' | 'dataset'
+  data: Buffer
+}
+
+export function subscribe(key: 'categories' | 'datasets' | 'organisations', fieldName: PayloadItem['name']) {
   return async (event: H3Event) => {
-    const { user: { email } } = event.context
-    const query = getQuery(event)
-    const values = Array.isArray(query[queryParam]) ? query[queryParam] : [query[queryParam]]
+    const { user: { name, email } } = event.context
+    const payload = await readFormData(event)
+    const values = payload.getAll(fieldName).map(field => field.toString()).filter(Boolean)
     const language = getLanguage(event)
+
+    if (!values.length) {
+      return createError({
+        statusCode: 400,
+        statusMessage: 'No values provided for subscription',
+      })
+    }
 
     const { listmonk: { api: listmonk } } = useRuntimeConfig()
 
@@ -26,7 +38,8 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', quer
     const subscribers: Linkmonk.Envelope<Linkmonk.Subscribers> = await getSubscribers.json()
 
     const subscriber = subscribers.data.results.pop() || {
-      name: '',
+      name,
+      email,
       status: 'enabled',
       lists: [],
       attribs: {
@@ -35,8 +48,9 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', quer
       },
     }
 
+    let res: Response
     if ('id' in subscriber) {
-      await fetch(`${listmonk.url}api/subscribers/${subscriber.id}`, {
+      res = await fetch(`${listmonk.url}api/subscribers/${subscriber.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
           attribs: {
@@ -53,13 +67,22 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', quer
       })
     }
     else {
-      await fetch(`${listmonk.url}api/subscribers`, {
+      res = await fetch(`${listmonk.url}api/subscribers`, {
         method: 'POST',
         body: JSON.stringify(subscriber),
         headers: {
           ...authorization,
           'content-type': 'application/json',
         },
+      })
+    }
+
+    if (!res.ok) {
+      const cause = await res.text()
+      return createError({
+        statusCode: res.status,
+        statusMessage: `Failed to subscribe: ${res.statusText}`,
+        cause,
       })
     }
 
