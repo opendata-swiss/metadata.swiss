@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-sbfi> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Staatssekretariat für Bildung, Forschung und Innovation ist das Kompetenzzentrum des Bundes für national und international ausgerichtete Fragen der BFI-Politik."@de,
+        "The State Secretariat for Education, Research and Innovation is the Swiss federal government's specialised agency for national and international matters concerning ERI policy."@en,
+        "Le Secrétariat d'État à la formation, à la recherche et à l'innovation est le centre de compétences de la Confédération pour les questions de portée nationale ou internationale relevant de la politique FRI."@fr,
+        "La Segreteria di Stato per la formazione, la ricerca e l'innovazione è il centro di competenza della Confederazione per le questioni nazionali e internazionali connesse alla politica in materia di FRI."@it ;
+    dcterms:identifier "CH_SBFI" ;
+    skos:prefLabel "SBFI"@de,
+        "SERI"@en,
+        "SEFRI"@fr,
+        "SEFRI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    foaf:homepage <https://www.sbfi.admin.ch> ;
+    foaf:name "Staatssekretariat für Bildung, Forschung und Innovation (SBFI)"@de,
+        "State Secretariat for Education, Research and Innovation (SERI)"@en,
+        "Secrétariat d'État à la formation, à la recherche et à l'innovation (SEFRI)"@fr,
+        "Segreteria di Stato per la formazione, la ricerca e l'innovazione (SEFRI)"@it .
+
+<https://www.sbfi.admin.ch> a foaf:Document .
+

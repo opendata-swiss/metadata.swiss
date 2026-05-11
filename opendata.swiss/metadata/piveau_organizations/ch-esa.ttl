@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-esa> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_ESA" ;
+    skos:prefLabel "ESA"@de,
+        "ESA"@en,
+        "SFF"@fr,
+        "VFF"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.esa.admin.ch/> ;
+    foaf:name "Eidgenössische Stiftungsaufsicht ESA"@de,
+        "Eidgenössische Stiftungsaufsicht ESA"@en,
+        "Surveillance fédérale des fondations SFF"@fr,
+        "Vigilanza federale sulle fondazioni VFF"@it .
+
+<https://www.esa.admin.ch/> a foaf:Document .
+

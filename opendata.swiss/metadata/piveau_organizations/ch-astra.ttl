@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-astra> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_ASTRA" ;
+    skos:prefLabel "ASTRA"@de,
+        "FEDRO"@en,
+        "OFROU"@fr,
+        "USTRA"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-uvek> ;
+    foaf:name "Bundesamt für Strassen (ASTRA)"@de,
+        "Federal Roads Office (FEDRO)"@en,
+        "Office fédéral des routes (OFROU)"@fr,
+        "Ufficio federale delle strade (USTRA)"@it .
+

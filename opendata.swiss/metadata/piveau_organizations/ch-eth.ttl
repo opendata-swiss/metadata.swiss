@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-eth> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Eidgenössische Technische Hochschule Zürich (ETH Zürich) ist eine Hochschule mit technisch-naturwissenschaftlichem Fokus in Zürich."@de,
+        "The Swiss Federal Institute of Technology in Zurich (ETH Zurich) is a university with a technical and scientific focus in Zurich."@en,
+        "L'École polytechnique fédérale de Zurich (EPFZ) est une haute école spécialisée dans les sciences techniques et naturelles située à Zurich."@fr,
+        "Il Politecnico federale di Zurigo (ETH Zurigo) è un'università a indirizzo tecnico-scientifico con sede a Zurigo."@it ;
+    dcterms:identifier "CH_ETH" ;
+    skos:prefLabel "ETH Zürich"@de,
+        "ETH Zürich"@en,
+        "ETH Zürich"@fr,
+        "ETH Zürich"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0224> ;
+    foaf:homepage <https://www.ethz.ch> ;
+    foaf:name "ETH Zürich"@de,
+        "ETH Zürich"@en,
+        "ETH Zürich"@fr,
+        "ETH Zürich"@it .
+
+<https://www.ethz.ch> a foaf:Document .
+

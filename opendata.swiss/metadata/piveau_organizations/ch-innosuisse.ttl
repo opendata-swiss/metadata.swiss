@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-innosuisse> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_INNOSUISSE" ;
+    skos:prefLabel "Schweizerische Agentur für Innovationsföderung Innosuisse"@de,
+        "Swiss Innovation Agency Innosuisse"@en,
+        "Agence suisse pour l’encouragement de l’innovation Innosuisse"@fr,
+        "Agenzia svizzera per la promozione dell'innovazione Innosuisse"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    foaf:name "Schweizerische Agentur für Innovationsföderung Innosuisse"@de,
+        "Swiss Innovation Agency Innosuisse"@en,
+        "Agence suisse pour l’encouragement de l’innovation Innosuisse"@fr,
+        "Agenzia svizzera per la promozione dell'innovazione Innosuisse"@it .
+

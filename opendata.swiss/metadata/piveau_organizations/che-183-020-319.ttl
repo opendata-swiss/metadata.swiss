@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-183-020-319> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Centre Medicale Qorpus Hirslanden"@en ;
+    dcterms:identifier "CHE-183.020.319" ;
+    skos:prefLabel "Centre Medicale Qorpus Hirslanden"@en ;
+    foaf:homepage <https://www.hirslanden.ch/en/clinique-des-grangettes/centres-et-instituts/qorpus-medical-center.html> ;
+    foaf:name "Centre Medicale Qorpus Hirslanden"@en .
+
+<https://www.hirslanden.ch/en/clinique-des-grangettes/centres-et-instituts/qorpus-medical-center.html> a foaf:Document .
+

@@ -1,0 +1,23 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kbob> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Ressourcen sparen und Qualität steigernDies ist die übergeordnete Zielsetzung der KBOB.Die KBOB wahrt die Interessen ihrer Mitglieder als Bauherren sowie Liegenschaftseigentümer und -besitzer, -bewirtschafter und -betreiber.Als Mitglieder gehören der KBOB die Bau- und Liegenschaftsorgane des Bundes, der Kantone sowie der Städte und Gemeinden an.Die KBOB nimmt insbesondere Koordinationsaufgaben in folgenden Bereichen wahr: Beschaffungs- und Vertragswesen, Planer- und Werkleistungen, Nachhaltigkeit, Digitalisierung und BIM, Bewirtschaftung von Immobilien, Preisänderungsfragen sowie Normen und Standards."@de,
+        "Économiser les ressources tout en améliorant la qualitéTel est l'objectif général de la KBOB.La KBOB défend les intérêts de ses membres en tant que maîtres d'ouvrage, propriétaires, gérants et exploitants d'immeubles.Les membres de la KBOB sont les services de la construction et des immeubles de la Confédération, des cantons ainsi que des villes et des communes.La KBOB assume notamment des tâches de coordination dans les domaines suivants : marchés publics et contrats, prestations de mandataire et travaux de construction, durabilité, numérisation et BIM, exploitation des biens immobiliers, variations de prix ainsi que normes et standards."@fr,
+        "Risparmiare le risorse e migliorare la qualitàQuesto è l'obiettivo principale del KBOB.La KBOB tutela gli interessi dei suoi membri in quanto proprietari di edifici e immobili, gestori e operatori.I membri della KBOB comprendono le autorità edilizie e immobiliari della Confederazione, dei Cantoni, delle città e dei Comuni.In particolare, il KBOB svolge compiti di coordinamento nelle seguenti aree: appalti pubblici e contratti, prestazioni del mandatario e prestazioni d’opera, sostenibilità, digitalizzazione e BIM, gestione degli immobili, questioni relative a variazioni di prezzo, nonché norme e standard."@it ;
+    dcterms:identifier "CH_KBOB" ;
+    skos:prefLabel "KBOB"@de,
+        "KBOB"@en,
+        "KBOB"@fr,
+        "KBOB"@it ;
+    foaf:homepage <https://www.kbob.admin.ch> ;
+    foaf:name "Koordinationskonferenz der Bau- und Liegenschaftsorgane der öffentlichen Bauherren (KBOB)"@de,
+        "KBOB"@en,
+        "Conférence de coordination des services de la construction et des immeubles des maîtres d’ouvrage publics (KBOB)"@fr,
+        "Conferenza di coordinamento degli organi della costruzione e degli immobili dei committenti pubblici (KBOB)"@it .
+
+<https://www.kbob.admin.ch> a foaf:Document .
+

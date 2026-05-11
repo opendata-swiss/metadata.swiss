@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bar> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BAR" ;
+    skos:prefLabel "BAR"@de,
+        "SFA"@en,
+        "AFS"@fr,
+        "AFS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    foaf:homepage <https://www.bar.admin.ch> ;
+    foaf:name "Schweizerisches Bundesarchiv (BAR)"@de,
+        "Swiss Federal Archives (SFA)"@en,
+        "Archives fédérales suisses (AFS)"@fr,
+        "Archivio federale svizzero (AFS)"@it .
+
+<https://www.bar.admin.ch> a foaf:Document .
+

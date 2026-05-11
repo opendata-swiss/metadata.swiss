@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-zivi> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Bundesamt für Zivildienst (ZIVI) ist die zuständige Behörde des Bundes für alle Belange des Zivildienstes."@de,
+        "The Federal Office for Civilian Service (ZIVI) is the federal authority responsible for all matters relating to civilian service."@en,
+        "Autorité de la Confédération responsable de toutes les questions relatives au service civil."@fr,
+        "L’Ufficio federale del servizio civile (CIVI) è l’autorità competente della Confederazione per tutte le questioni concernenti il servizio civile."@it ;
+    dcterms:identifier "CH_ZIVI" ;
+    skos:prefLabel "ZIVI"@de,
+        "ZIVI"@en,
+        "CIVI"@fr,
+        "CIVI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    foaf:homepage <https://www.zivi.admin.ch/> ;
+    foaf:name "Bundesamt für Zivildienst (ZIVI)"@de,
+        "Federal Office of Zivildienst (CIVI)"@en,
+        "Office fédéral du service civil (CIVI)"@fr,
+        "Ufficio federale del servizio civile (CIVI)"@it .
+
+<https://www.zivi.admin.ch/> a foaf:Document .
+

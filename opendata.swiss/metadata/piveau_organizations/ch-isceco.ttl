@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-isceco> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_ISCECO" ;
+    skos:prefLabel "Information Service Center WBF ISCeco"@de,
+        "Information Service Center WBF ISCeco"@en,
+        "Centre de services informatiques du DEFR ISCeco"@fr,
+        "Centro servizi informatici DEFR ISCeco"@it ;
+    foaf:name "Information Service Center WBF ISCeco"@de,
+        "Information Service Center WBF ISCeco"@en,
+        "Centre de services informatiques du DEFR ISCeco"@fr,
+        "Centro servizi informatici DEFR ISCeco"@it .
+

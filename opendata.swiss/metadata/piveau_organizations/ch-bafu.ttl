@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bafu> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das BAFU ist für die nachhaltige Nutzung der natürlichen Ressourcen wie Luft, Boden, Wasser und Wald, für die Klimapolitik, den Schutz vor Naturgefahren und für den Erhalt der Biodiversität zuständig."@de,
+        "The FOEN is responsible for the sustainable use of natural resources such as air, water, soil, and forests, for the climate policy, the protection against natural hazards and for the preservation of biodiversity."@en,
+        "L’OFEV est chargé d’assurer l’exploitation durable des ressources naturelles telles que l'air, l’eau, le sol et la forêt, la politique climatique, la protection contre les dangers naturels et le maintien de la biodiversité."@fr,
+        "L'UFAM è responsabile dell'uso sostenibile delle risorse naturali quali aria, acqua, suolo e foreste, della politica climatica, della protezione dai pericoli naturali e della conservazione della biodiversità."@it ;
+    dcterms:identifier "CH_BAFU" ;
+    skos:prefLabel "BAFU"@de,
+        "FOEN"@en,
+        "OFEV"@fr,
+        "UFAM"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-uvek> ;
+    foaf:homepage <https://bafu.admin.ch> ;
+    foaf:name "Bundesamt für Umwelt (BAFU)"@de,
+        "Federal Office for the Environment (FOEN)"@en,
+        "Office fédéral de l'environnement (OFEV)"@fr,
+        "Ufficio federale dell'ambiente (UFAM)"@it .
+
+<https://bafu.admin.ch> a foaf:Document .
+

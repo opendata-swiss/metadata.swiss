@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-didas> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_DIDAS" ;
+    skos:prefLabel "DIDAS"@de,
+        "DIDAS"@en,
+        "DIDAS"@fr,
+        "DIDAS"@it ;
+    foaf:name "DIDAS"@de,
+        "DIDAS"@en,
+        "DIDAS"@fr,
+        "DIDAS"@it .
+

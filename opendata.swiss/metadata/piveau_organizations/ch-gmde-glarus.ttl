@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gmde-glarus> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_GMDE_GLARUS" ;
+    skos:prefLabel "Gemeinde Glarus"@de,
+        "Commune Glarus"@en,
+        "Commune de Glaris"@fr,
+        "Communi di Glarona"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0223> ;
+    foaf:homepage <https://www.glarus.ch> ;
+    foaf:name "Gemeinde Glarus"@de,
+        "Commune Glarus"@en,
+        "Commune de Glaris"@fr,
+        "Communi di Glarona"@it .
+
+<https://www.glarus.ch> a foaf:Document .
+

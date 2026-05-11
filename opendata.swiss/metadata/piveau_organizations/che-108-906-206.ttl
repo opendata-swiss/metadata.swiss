@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-108-906-206> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Ostschweizer Kantonspital"@en ;
+    dcterms:identifier "CHE-108.906.206" ;
+    skos:prefLabel "Ostschweizer Kantonspital"@en ;
+    foaf:homepage <https://www.h-och.ch> ;
+    foaf:name "Ostschweizer Kantonspital"@en .
+
+<https://www.h-och.ch> a foaf:Document .
+
