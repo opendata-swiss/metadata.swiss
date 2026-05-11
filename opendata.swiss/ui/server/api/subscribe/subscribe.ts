@@ -10,6 +10,7 @@ type PayloadItem = {
 export function subscribe(key: 'categories' | 'datasets' | 'organisations', fieldName: PayloadItem['name']) {
   return async (event: H3Event) => {
     const { user: { name, email } } = event.context
+    const referer = getHeader(event, 'referer')
     const payload = await readFormData(event)
     const values = payload.getAll(fieldName).map(field => field.toString()).filter(Boolean)
     const language = getLanguage(event)
@@ -84,6 +85,10 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
         statusMessage: `Failed to subscribe: ${res.statusText}`,
         cause,
       })
+    }
+
+    if (referer) {
+      return sendRedirect(event, referer)
     }
 
     return {
