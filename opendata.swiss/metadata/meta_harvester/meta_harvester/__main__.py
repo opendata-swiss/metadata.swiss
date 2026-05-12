@@ -278,7 +278,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
 
     try:
         harversters = ckan_client.get_harvesters()
-        harversters = [h for h in harversters if h["type"] not in ["geocat_harvester"]]
+        harversters = [h for h in harversters if h["type"] in ["dcat_ch_rdf", "dcat_ch_i14y_rdf"]]
         logging.info(f"Collected {len(harversters)} harvester(s) from CKAN.")
     except HTTPError as e:
         logging.error(f"Failed to fetch harvester IDs from CKAN: {e}")
