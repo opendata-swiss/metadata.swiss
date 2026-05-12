@@ -205,17 +205,20 @@ public class MainVerticle extends AbstractVerticle {
             
             StringBuilder sb = new StringBuilder();
             if(config.containsKey("catalogue")){
-                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\n");
+                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\t");
+            }
+            if (config.containsKey("org_id")){
+                sb.append("Organization: ").append(config.getString("org_id")).append("\t");
             }
             if (config.containsKey("datasetURI")){
-                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\n");
+                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\t");
             }
             for (String error : errors) {
-                sb.append("- ").append(error).append("\n");
+                sb.append("- ").append(error).append("\t");
             }
             String message = sb.toString();
 
-            logger.warn(message);
+            logger.error(message);
             if (config.containsKey("mailto")) {
                 logger.trace("TODO: Notify data publisher at {}", config.getString("mailto"));
             }   
