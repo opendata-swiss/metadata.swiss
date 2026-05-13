@@ -131,9 +131,9 @@ public class MainVerticle extends AbstractVerticle {
 
     private static Map<String, String> deprecatedLicenceMap = Map.of(
         "NonCommercialAllowed-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_open",
-        "AttributionRequired-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
-        "AskForPermission-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
-        "AttributionRequired-AskForPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
+        "NonCommercialAllowed-CommercialAllowed-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
     );
 
     private static String missingLicense = "The property 'dct:license' is missing for one or more distributions. Each distribution must provide a valid license, and all distributions must use the same Terms of Use. The dataset cannot be imported. Please add the missing license to proceed with the import.";
@@ -167,6 +167,7 @@ public class MainVerticle extends AbstractVerticle {
                     model.add(distribution.asResource(), dctLicense, model.createResource(updatedLicense));
                 } else {
                     invalidLicenseFound = true;
+                    logger.warn("Invalid license: {}", node);
                 }
             }
         }
@@ -177,6 +178,7 @@ public class MainVerticle extends AbstractVerticle {
             writeError.accept(invalidLicense);
         }
         if(validLicenses.size() > 1) {
+            logger.warn("multiple licences found: {}", String.join(", ", validLicenses));
             writeError.accept(inconsistentLicenses);
         }
     }
