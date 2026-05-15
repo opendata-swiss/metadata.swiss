@@ -109,7 +109,7 @@ To remove a single catalogue (for example, `bl-dcat`), run:
 
 #### Listmonk
 
-By default, the local Listmonk instance is configured with `admin/admin` superuser credentials and an API user `admin-api`.
+By default, the local Listmonk instance is configured with `admin/password` superuser credentials and an API user `admin-api`.
 These can be changed by changing envirnment variables in `.env` file:
 
 ```dotenv
