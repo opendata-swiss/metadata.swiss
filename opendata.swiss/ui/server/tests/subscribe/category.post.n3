@@ -1,4 +1,3 @@
-PREFIX tuner: <https://api-tuner.described.at/>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX tuner: <https://api-tuner.described.at/>

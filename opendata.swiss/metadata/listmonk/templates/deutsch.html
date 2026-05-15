@@ -4,9 +4,15 @@
     <title>Default Template</title>
 </head>
 <body>
-<h1>Hello, {{.Subscriber.FirstName}}</h1>
+<h1>Hallo, {{.Subscriber.Name}}</h1>
 <div>
-    <a href="{{ .Tx.Data.link }}">{{ .Tx.Data.name }}</a>
+    <ul>
+    {{ range .Tx.Data.datasets }}
+        <li>
+            <a href="{{ .Tx.Data.datasetPageBaseUrl }}{{ .id }}">{{ .title }}</a>
+        </li>
+    {{ end }}
+    </ul>
 </div>
 <p>Unsubscribe: here</p>
 </body>
