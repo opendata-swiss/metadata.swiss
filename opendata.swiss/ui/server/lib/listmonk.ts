@@ -37,6 +37,18 @@ export default ({ api, template }: NitroRuntimeConfig['listmonk']) => {
       const url = new URL('subscribers', baseUrl)
 
       return {
+        async get(id: string): Promise<Subscriber> {
+          const res = await fetch(new URL(`${id}`, url + '/'), {
+            headers: authorization,
+          })
+
+          if (!res.ok) {
+            throw new Error(`Failed to fetch subscriber ${id}: ${res.status} ${res.statusText}`)
+          }
+
+          return res.json()
+        },
+
         async list({ email }: { email?: string } = {}) {
           const searchUrl = new URL(url)
           if (email) {
