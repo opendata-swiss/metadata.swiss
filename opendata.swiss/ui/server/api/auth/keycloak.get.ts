@@ -3,6 +3,7 @@ export default defineOAuthKeycloakEventHandler({
     await setUserSession(event, {
       user: {
         name: user.name || user.preferred_username || user.email || user.sub,
+        email: user.email,
       },
     })
 
