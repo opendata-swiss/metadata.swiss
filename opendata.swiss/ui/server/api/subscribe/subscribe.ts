@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import listmonk from './listmonk'
+import listmonk from '../../lib/listmonk'
 import { getLanguage } from '#server/lib/locale'
 
 export function subscribe(key: 'categories' | 'datasets' | 'organisations', queryParam: 'category' | 'organisation' | 'dataset') {

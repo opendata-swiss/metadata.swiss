@@ -129,6 +129,7 @@ Set the environment variables as needed:
 - `NUXT_LISTMONK_TEMPLATE_IDS_FR`
 - `NUXT_LISTMONK_TEMPLATE_IDS_IT`
 - `NUXT_LISTMONK_TEMPLATE_IDS_EN`
+- `NUXT_LISTMONK_PREFERENCES_HMAC_KEY`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 

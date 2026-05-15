@@ -43,10 +43,12 @@ export default ({ api, template }: NitroRuntimeConfig['listmonk']) => {
           })
 
           if (!res.ok) {
+            console.error(await res.text())
             throw new Error(`Failed to fetch subscriber ${id}: ${res.status} ${res.statusText}`)
           }
 
-          return res.json()
+          const payload: Envelope<Subscriber> = await res.json()
+          return payload.data
         },
 
         async list({ email }: { email?: string } = {}) {
@@ -60,6 +62,7 @@ export default ({ api, template }: NitroRuntimeConfig['listmonk']) => {
           })
 
           if (!getSubscribers.ok) {
+            console.error(await getSubscribers.text())
             throw new Error(`Failed to fetch subscribers: ${getSubscribers.status} ${getSubscribers.statusText}`)
           }
 

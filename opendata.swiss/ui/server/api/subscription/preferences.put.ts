@@ -1,15 +1,44 @@
 import listmonk from '../../lib/listmonk'
+import type { AppLanguage } from '~/constants/langages'
+import { validatePreferencesToken } from '#server/api/subscription/preferences'
 
 export default defineEventHandler(async (event) => {
   const { listmonk: config } = useRuntimeConfig()
 
-  const query = getQuery(event)
-
   const Listmonk = listmonk(config)
 
-  const subscriber = await Listmonk.subscribers.get(query.id as string)
+  const id = validatePreferencesToken(event)
 
-  return {
-    preferences: subscriber.attribs,
+  const subscriber = await Listmonk.subscribers.get(id)
+  subscriber.attribs = subscriber.attribs || {}
+  subscriber.attribs.datasets = []
+  subscriber.attribs.categories = []
+
+  const form = await readFormData(event)
+  for (const formField of form) {
+    switch (formField[0]) {
+      case 'dataset':
+        subscriber.attribs.datasets.push(formField[1] as string)
+        break
+      case 'category':
+        subscriber.attribs.categories.push(formField[1] as string)
+        break
+      case 'language':
+        subscriber.attribs.language = formField[1] as AppLanguage
+        break
+      default:
+        console.warn(`Unknown form field: ${formField[0]}`)
+        break
+    }
+
+    const updated = await Listmonk.subscribers.update(subscriber.id, {
+      attribs: subscriber.attribs,
+    })
+    if (!updated.ok) {
+      console.error(await updated.text())
+      throw new Error(`Failed to update subscriber ${id}: ${updated.status} ${updated.statusText}`)
+    }
+
+    return null
   }
 })

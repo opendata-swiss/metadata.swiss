@@ -71,6 +71,9 @@ export default defineNuxtConfig({
         user: '',
         token: process.env.LISTMONK_ADMIN_API_TOKEN,
       },
+      preferences: {
+        hmac_key: '',
+      },
       template: {
         datasetPageUrl: 'http://localhost:3000/de/datasets/',
         ids: {

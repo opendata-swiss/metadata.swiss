@@ -1,6 +1,6 @@
 import type { AppLanguage } from '~/constants/langages'
-import type { Subscriber } from '#server/api/subscribe/listmonk'
-import listmonk from '#server/api/subscribe/listmonk'
+import type { Subscriber } from '#server/lib/listmonk'
+import listmonk from '#server/lib/listmonk'
 
 interface Category {
   id: string
