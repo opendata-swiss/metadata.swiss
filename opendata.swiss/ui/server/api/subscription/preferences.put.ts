@@ -1,6 +1,6 @@
 import listmonk from '../../lib/listmonk'
 import type { AppLanguage } from '~/constants/langages'
-import { validatePreferencesToken } from '#server/api/subscription/preferences'
+import { validatePreferencesToken } from '#server/lib/listmonk/token'
 
 export default defineEventHandler(async (event) => {
   const { listmonk: config } = useRuntimeConfig()

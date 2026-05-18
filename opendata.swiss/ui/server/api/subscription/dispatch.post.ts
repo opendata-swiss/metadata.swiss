@@ -1,6 +1,7 @@
 import type { AppLanguage } from '~/constants/langages'
-import type { Subscriber } from '#server/lib/listmonk'
-import listmonk from '#server/lib/listmonk'
+import type { Subscriber } from '#server/lib/listmonk/index.js'
+import listmonk from '#server/lib/listmonk/index.js'
+import { generateToken } from '#server/lib/listmonk/token'
 
 interface Category {
   id: string
@@ -19,6 +20,7 @@ interface SearchResult {
 }
 
 interface TemplateData {
+  unsubscribeLink: string
   datasetPageBaseUrl: string
   datasets: Array<{
     id: string
@@ -68,8 +70,13 @@ export default defineEventHandler(async (event) => {
   let emailsFailed = 0
   let batch: Promise<void>[] = []
   for (const subscriber of subscribers) {
+    const unsubscribeLink = new URL('/subscription/preferences', listmonkConfig.template.datasetPageUrl)
+    unsubscribeLink.searchParams.set('id', subscriber.id.toString())
+    unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString()))
+
     const language = subscriber.attribs?.language || 'de'
     const data: TemplateData = {
+      unsubscribeLink: unsubscribeLink.toString(),
       datasetPageBaseUrl: listmonkConfig.template.datasetPageUrl,
       datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
         id: dataset.id,
