@@ -53,8 +53,9 @@ public class MainVerticle extends AbstractVerticle {
         if (!node.isLiteral()) {
             return false;
         }
-        String identifier = node.asLiteral().getString();
-        return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
+        return true;
+        // String identifier = node.asLiteral().getString();
+        // return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
     }
 
     private static String missingIdentifier = "The property 'dct:identifier' on dcat:Dataset is missing. The dataset cannot be imported without a valid dataset identifier. Please add the missing identifier to proceed with the import.";
