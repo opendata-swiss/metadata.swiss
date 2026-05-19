@@ -1,0 +1,19 @@
+{
+  "id": "ch-uepf",
+  "identifier": "CH_UEPF",
+  "resource": "https://opendata.swiss/id/organization/ch-uepf",
+  "description": {},
+  "name": {
+    "de": "Dienst Überwachung Post- und Fernmeldeverkehr (ÜPF)",
+    "en": "Post and Telecommunications Surveillance Service (PTSS)",
+    "fr": "Service Surveillance de la correspondance par poste et télécommunication (SCPT)",
+    "it": "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni (SCPT)"
+  },
+  "pref_label": {
+    "de": "ÜPF",
+    "en": "PTSS",
+    "fr": "SCPT",
+    "it": "SCPT"
+  },
+  "homepage": "https://www.li.admin.ch"
+}

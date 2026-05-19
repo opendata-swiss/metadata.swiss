@@ -1,0 +1,19 @@
+{
+  "id": "ch-bwl",
+  "identifier": "CH_BWL",
+  "resource": "https://opendata.swiss/id/organization/ch-bwl",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für wirtschaftliche Landesversorgung (BWL)",
+    "en": "Federal Office of wirtschaftliche Landesversorgung (BWL)",
+    "fr": "Office fédéral de wirtschaftliche Landesversorgung (BWL)",
+    "it": "Ufficio federale di wirtschaftliche Landesversorgung (BWL)"
+  },
+  "pref_label": {
+    "de": "BWL",
+    "en": "BWL",
+    "fr": "BWL",
+    "it": "BWL"
+  },
+  "homepage": null
+}

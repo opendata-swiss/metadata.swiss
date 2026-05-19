@@ -1,0 +1,19 @@
+{
+  "id": "ch-armasuisse",
+  "identifier": "CH_ARMASUISSE",
+  "resource": "https://opendata.swiss/id/organization/ch-armasuisse",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Rüstung (armasuisse)",
+    "en": "Federal Office for Defence Procurement (armasuisse)",
+    "fr": " Office fédéral de l'armement armasuisse (ar)",
+    "it": " Ufficio federale dell'armamento armasuisse (ar)"
+  },
+  "pref_label": {
+    "de": "armasuisse",
+    "en": "armasuisse",
+    "fr": "armasuisse",
+    "it": "armasuisse"
+  },
+  "homepage": null
+}

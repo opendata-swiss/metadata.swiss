@@ -1,0 +1,19 @@
+{
+  "id": "ch-blv",
+  "identifier": "CH_BLV",
+  "resource": "https://opendata.swiss/id/organization/ch-blv",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV)",
+    "en": "Federal Food Safety and Veterinary Office (FSVO)",
+    "fr": "Office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV)",
+    "it": "Ufficio federale della sicurezza alimentare e di veterinaria (USAV)"
+  },
+  "pref_label": {
+    "de": "BLV",
+    "en": "FSVO",
+    "fr": "OSAV",
+    "it": "USAV"
+  },
+  "homepage": "https://www.blv.admin.ch"
+}

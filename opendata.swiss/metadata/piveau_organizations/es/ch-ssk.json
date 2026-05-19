@@ -1,0 +1,19 @@
+{
+  "id": "ch-ssk",
+  "identifier": "CH_SSK",
+  "resource": "https://opendata.swiss/id/organization/ch-ssk",
+  "description": {},
+  "name": {
+    "de": "Schweizerische Steuerkonferenz (SSK)",
+    "en": "Schweizerische Steuerkonferenz (SSK)",
+    "fr": "Conférence suisse des impôts (CSI)",
+    "it": "Conferenza svizzera delle imposte (CSI)"
+  },
+  "pref_label": {
+    "de": "SSK",
+    "en": "SSK",
+    "fr": "CSI",
+    "it": "CSI"
+  },
+  "homepage": "https://www.ssk-csi.ch"
+}

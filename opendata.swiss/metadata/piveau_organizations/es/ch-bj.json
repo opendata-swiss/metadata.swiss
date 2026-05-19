@@ -1,0 +1,19 @@
+{
+  "id": "ch-bj",
+  "identifier": "CH_BJ",
+  "resource": "https://opendata.swiss/id/organization/ch-bj",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Justiz (BJ)",
+    "en": "Federal Office of Justice (FOI)",
+    "fr": "Office fédéral de la justice (OFJ)",
+    "it": "Ufficio federale di giustizia (UFG)"
+  },
+  "pref_label": {
+    "de": "BJ",
+    "en": "FOI",
+    "fr": "OFJ",
+    "it": "UFG"
+  },
+  "homepage": null
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ch-stadt-biel-bienne",
+  "identifier": "CH_STADT_BIEL_BIENNE",
+  "resource": "https://opendata.swiss/id/organization/ch-stadt-biel-bienne",
+  "description": {},
+  "name": {
+    "de": "Stadt Biel",
+    "en": "City of Biel",
+    "fr": "Ville de Bienne",
+    "it": "citta di Bienne"
+  },
+  "pref_label": {
+    "de": "Stadt Biel",
+    "en": "City of Biel",
+    "fr": "Ville de Bienne",
+    "it": "citta di Bienne"
+  },
+  "homepage": "https://www.biel-bienne.ch/"
+}

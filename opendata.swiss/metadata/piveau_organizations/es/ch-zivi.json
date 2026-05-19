@@ -1,0 +1,24 @@
+{
+  "id": "ch-zivi",
+  "identifier": "CH_ZIVI",
+  "resource": "https://opendata.swiss/id/organization/ch-zivi",
+  "description": {
+    "de": "Das Bundesamt für Zivildienst (ZIVI) ist die zuständige Behörde des Bundes für alle Belange des Zivildienstes.",
+    "en": "The Federal Office for Civilian Service (ZIVI) is the federal authority responsible for all matters relating to civilian service.",
+    "fr": "Autorité de la Confédération responsable de toutes les questions relatives au service civil.",
+    "it": "L’Ufficio federale del servizio civile (CIVI) è l’autorità competente della Confederazione per tutte le questioni concernenti il servizio civile."
+  },
+  "name": {
+    "de": "Bundesamt für Zivildienst (ZIVI)",
+    "en": "Federal Office of Zivildienst (CIVI)",
+    "fr": "Office fédéral du service civil (CIVI)",
+    "it": "Ufficio federale del servizio civile (CIVI)"
+  },
+  "pref_label": {
+    "de": "ZIVI",
+    "en": "ZIVI",
+    "fr": "CIVI",
+    "it": "CIVI"
+  },
+  "homepage": "https://www.zivi.admin.ch/"
+}

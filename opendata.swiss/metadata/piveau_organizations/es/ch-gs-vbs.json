@@ -1,0 +1,19 @@
+{
+  "id": "ch-gs-vbs",
+  "identifier": "CH_GS_VBS",
+  "resource": "https://opendata.swiss/id/organization/ch-gs-vbs",
+  "description": {},
+  "name": {
+    "de": "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)",
+    "en": "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)",
+    "fr": "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)",
+    "it": "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)"
+  },
+  "pref_label": {
+    "de": "GS-VBS",
+    "en": "GS-DDPS",
+    "fr": "SG-DDPS",
+    "it": "SG-DDPS"
+  },
+  "homepage": "https://www.vbs.admin.ch"
+}

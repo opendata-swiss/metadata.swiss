@@ -1,0 +1,24 @@
+{
+  "id": "ch-are",
+  "identifier": "CH_ARE",
+  "resource": "https://opendata.swiss/id/organization/ch-are",
+  "description": {
+    "de": "Das ARE ist die Fachbehörde des Bundes für Fragen der räumlichen Entwicklung, für die Verkehrspolitik, die nachhaltige Entwicklung sowie die transnationale Zusammenarbeit in räumlichen Belangen.",
+    "en": "The ARE is the federal government's centre of excellence for issues concerning spatial development, transport policy, sustainable development and international cooperation in spatial planning matters.",
+    "fr": "L'ARE est le centre de compétences de la Confédération pour les questions liées au développement territorial, à la politique des transports, au développement durable ainsi qu'à la coopération transnationale en matière de territoire.",
+    "it": "L'ARE è l'autorità federale responsabile per le questioni di sviluppo territoriale, politica dei trasporti, sviluppo sostenibile e collaborazione transnazionale in ambito territoriale."
+  },
+  "name": {
+    "de": "Bundesamt für Raumentwicklung (ARE)",
+    "en": "Federal Office for Spatial Development (ARE)",
+    "fr": "Office fédéral du développement territorial (ARE)",
+    "it": "Ufficio federale dello sviluppo territoriale (ARE)"
+  },
+  "pref_label": {
+    "de": "ARE",
+    "en": "ARE",
+    "fr": "ARE",
+    "it": "ARE"
+  },
+  "homepage": "https://www.are.admin.ch"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "ch-educa",
+  "identifier": "CH_EDUCA",
+  "resource": "https://opendata.swiss/id/organization/ch-educa",
+  "description": {
+    "de": "Als Fachagentur im Auftrag von Bund und Kantonen verbindet Educa die technologischen Entwicklungen mit der Qualitätsentwicklung im Bildungsraum Schweiz.",
+    "en": "As a specialist agency commissioned by the Confederation and cantons, we combine technological developments with quality improvements in the Swiss education space.",
+    "fr": "En tant qu'agence spécialisée mandatée par la Confédération et les cantons, Educa associe les développements technologiques au développement de la qualité dans l’espace suisse de formation. ",
+    "it": "In qualità di agenzia specializzata, su mandato della Confederazione e dei Cantoni, Educa associa gli sviluppi tecnologici allo sviluppo della qualità nel settore della formazione in Svizzera."
+  },
+  "name": {
+    "de": "Educa",
+    "en": "Educa",
+    "fr": "Educa",
+    "it": "Educa"
+  },
+  "pref_label": {
+    "de": "EDUCA",
+    "en": "EDUCA",
+    "fr": "EDUCA",
+    "it": "EDUCA"
+  },
+  "homepage": "https://www.educa.ch"
+}

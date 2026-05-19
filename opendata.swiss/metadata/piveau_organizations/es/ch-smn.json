@@ -1,0 +1,19 @@
+{
+  "id": "ch-smn",
+  "identifier": "CH_SMN",
+  "resource": "https://opendata.swiss/id/organization/ch-smn",
+  "description": {},
+  "name": {
+    "de": "Schweizerisches Nationalmuseum (SNM)",
+    "en": "Swiss National Museum (SNM)",
+    "fr": "Musée national suisse (MNS)",
+    "it": "Museo nazionale svizzero (MNS)"
+  },
+  "pref_label": {
+    "de": "SNM",
+    "en": "SNM",
+    "fr": "MNS",
+    "it": "MNS"
+  },
+  "homepage": "https://www.nationalmuseum.ch"
+}

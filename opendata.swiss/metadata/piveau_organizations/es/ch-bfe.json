@@ -1,0 +1,24 @@
+{
+  "id": "ch-bfe",
+  "identifier": "CH_BFE",
+  "resource": "https://opendata.swiss/id/organization/ch-bfe",
+  "description": {
+    "de": "Das Bundesamt für Energie (BFE) ist das Kompetenzzentrum für Fragen der Energieversorgung und der Energienutzung im Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK).",
+    "en": "The Swiss Federal Office of Energy (SFOE) is the country's competence centre for issues relating to energy supply and energy use at the Federal Department of the Environment, Transport, Energy and Communications (DETEC).  ",
+    "fr": "L'Office fédéral de l'énergie (OFEN) est le centre de compétences du Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC) pour les questions liées à l'approvisionnement en énergie et à son utilisation.",
+    "it": "L'Ufficio federale dell'energia (UFE) è il centro di competenza in materia di approvvigionamento e di impiego dell'energia in seno al Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)."
+  },
+  "name": {
+    "de": "Bundesamt für Energie (BFE)",
+    "en": "Swiss Federal Office of Energy (SFOE)",
+    "fr": "Office fédéral de l'énergie (OFEN)",
+    "it": "Ufficio federale dell'energia (UFE)"
+  },
+  "pref_label": {
+    "de": "BFE",
+    "en": "SFOE",
+    "fr": "OFEN",
+    "it": "UFE"
+  },
+  "homepage": "https://www.bfe.admin.ch"
+}

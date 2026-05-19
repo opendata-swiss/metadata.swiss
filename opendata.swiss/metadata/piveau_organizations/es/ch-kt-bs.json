@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-bs",
+  "identifier": "CH_KT_BS",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-bs",
+  "description": {},
+  "name": {
+    "de": "Kanton Basel-Stadt",
+    "en": "Kanton Basel-Stadt",
+    "fr": "Canton de Bâle-Ville",
+    "it": "Cantone di Basilea Città"
+  },
+  "pref_label": {
+    "de": "Kt. BS",
+    "en": "Kt. BS",
+    "fr": "Kt. BS",
+    "it": "Kt. BS"
+  },
+  "homepage": "https://www.bs.ch"
+}

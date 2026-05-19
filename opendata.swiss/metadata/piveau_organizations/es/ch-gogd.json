@@ -1,0 +1,19 @@
+{
+  "id": "ch-gogd",
+  "identifier": "CH_GOGD",
+  "resource": "https://opendata.swiss/id/organization/ch-gogd",
+  "description": {},
+  "name": {
+    "de": "Geschäftsstelle Open Government Data (OGD)",
+    "en": "Open Government Data Office (OGD)",
+    "fr": "Secrétariat Open Government Data (OGD)",
+    "it": "Segreteria Open Government Data (OGD)"
+  },
+  "pref_label": {
+    "de": "OGD",
+    "en": "OGD",
+    "fr": "OGD",
+    "it": "OGD"
+  },
+  "homepage": "https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/ogd/geschaeftsstelle.html"
+}

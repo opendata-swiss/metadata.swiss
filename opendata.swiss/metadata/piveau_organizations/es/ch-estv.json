@@ -1,0 +1,19 @@
+{
+  "id": "ch-estv",
+  "identifier": "CH_ESTV",
+  "resource": "https://opendata.swiss/id/organization/ch-estv",
+  "description": {},
+  "name": {
+    "de": "Eidgenössische Steuerverwaltung (ESTV)",
+    "en": "Federal Tax Administration (AFC)",
+    "fr": "Administration fédérale des contributions (AFC)",
+    "it": "Amministrazione federale delle contribuzioni (FTA)"
+  },
+  "pref_label": {
+    "de": "ESTV",
+    "en": "AFC",
+    "fr": "AFC",
+    "it": "FTA"
+  },
+  "homepage": null
+}

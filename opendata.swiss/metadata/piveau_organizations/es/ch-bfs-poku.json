@@ -1,0 +1,19 @@
+{
+  "id": "ch-bfs-poku",
+  "identifier": "CH_BFS_POKU",
+  "resource": "https://opendata.swiss/id/organization/ch-bfs-poku",
+  "description": {},
+  "name": {
+    "de": "Sektion Politik, Kultur, Medien (POKU) des Bundesamts für Statistik (BFS)",
+    "en": "Politics, Culture and Media Section (POKU) at the Federal Statistical Office (FSO)",
+    "fr": "Section Politique, culture, médias (POKU) de l'Office fédéral de la statistique (OFS)",
+    "it": "Sezione Politica, cultura, media (POKU) presso l'Ufficio federale di statistica (UST)"
+  },
+  "pref_label": {
+    "de": "POKU (BFS)",
+    "en": "POKU (FSO)",
+    "fr": "POKU (OFS)",
+    "it": "POKU (UST)"
+  },
+  "homepage": null
+}

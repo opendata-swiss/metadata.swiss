@@ -1,0 +1,19 @@
+{
+  "id": "ch-baspo",
+  "identifier": "CH_BASPO",
+  "resource": "https://opendata.swiss/id/organization/ch-baspo",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Sport (BASPO)",
+    "en": "Federal Office of Sport (BASPO)",
+    "fr": "Office fédéral de Sport (BASPO)",
+    "it": "Ufficio federale di Sport (BASPO)"
+  },
+  "pref_label": {
+    "de": "BASPO",
+    "en": "BASPO",
+    "fr": "BASPO",
+    "it": "BASPO"
+  },
+  "homepage": null
+}

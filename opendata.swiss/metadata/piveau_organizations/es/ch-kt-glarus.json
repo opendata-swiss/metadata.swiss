@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-glarus",
+  "identifier": "CH_KT_GLARUS",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-glarus",
+  "description": {},
+  "name": {
+    "de": "Kanton Glarus GL",
+    "en": "Canton Glarus GL",
+    "fr": "Canton de Glaris GL",
+    "it": "Canton Glarona GL"
+  },
+  "pref_label": {
+    "de": "GL",
+    "en": "GL",
+    "fr": "GL",
+    "it": "GL"
+  },
+  "homepage": "https://www.gl.ch"
+}

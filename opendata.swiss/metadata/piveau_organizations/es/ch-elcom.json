@@ -1,0 +1,19 @@
+{
+  "id": "ch-elcom",
+  "identifier": "CH_ELCOM",
+  "resource": "https://opendata.swiss/id/organization/ch-elcom",
+  "description": {},
+  "name": {
+    "de": "Eidgenössische Elektrizitätskommission (ElCom)",
+    "en": "Federal Electricity Commission (ElCom)",
+    "fr": "Commission fédérale de l'électricité (ElCom)",
+    "it": "Commissione federale dell'energia elettrica (ElCom)"
+  },
+  "pref_label": {
+    "de": "ElCom",
+    "en": "ElCom",
+    "fr": "ElCom",
+    "it": "ElCom"
+  },
+  "homepage": "https://www.elcom.admin.ch/"
+}

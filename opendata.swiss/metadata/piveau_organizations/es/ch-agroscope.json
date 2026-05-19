@@ -1,0 +1,19 @@
+{
+  "id": "ch-agroscope",
+  "identifier": "CH_AGROSCOPE",
+  "resource": "https://opendata.swiss/id/organization/ch-agroscope",
+  "description": {},
+  "name": {
+    "de": "Agroscope",
+    "en": "Agroscope",
+    "fr": "Agroscope",
+    "it": "Agroscope"
+  },
+  "pref_label": {
+    "de": "Agroscope",
+    "en": "Agroscope",
+    "fr": "Agroscope",
+    "it": "Agroscope"
+  },
+  "homepage": "https://www.agroscope.admin.ch"
+}

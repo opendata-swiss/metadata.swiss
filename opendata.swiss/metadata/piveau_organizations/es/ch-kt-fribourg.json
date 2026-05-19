@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-fribourg",
+  "identifier": "CH_KT_FRIBOURG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-fribourg",
+  "description": {},
+  "name": {
+    "de": "Kanton Freiburg",
+    "en": "Canton Fribourg",
+    "fr": "Canton de Fribourg",
+    "it": "Cantoni di Friburgo"
+  },
+  "pref_label": {
+    "de": "Kanton Freiburg",
+    "en": "Canton Fribourg",
+    "fr": "Canton de Fribourg",
+    "it": "Cantoni di Friburgo"
+  },
+  "homepage": null
+}

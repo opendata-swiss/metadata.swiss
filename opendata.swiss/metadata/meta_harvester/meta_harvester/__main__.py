@@ -264,6 +264,65 @@ def generate_organization_metadata(
     logger.info(f"Successfully generated RDF triples and saved to '{output_file}'")
 
 
+def generate_organization_json(
+        slug: str,
+        identifier: str,
+        subAgentOf_slug: str,
+        classification_code: str,
+        names: dict,
+        prefLabels: dict,
+        descriptions: dict,
+        homepage: str,
+) -> None:
+    """
+    Generates a JSON document for an organization, for indexing in hub-search/elasticsearch.
+
+    Args:
+        slug (str):                The slug of the organization.
+        identifier (str):          The identifier of the organization.
+        subAgentOf_slug (str):     The slug of the parent organization, if any.
+        classification_code (str): The classification code of the organization.
+        names (dict):              A dictionary of names for the organization, with language codes as keys.
+        prefLabels (dict):         A dictionary of preferred labels for the organization, with language codes as keys.
+        descriptions (dict):       A dictionary of descriptions for the organization, with language codes as keys.
+        homepage (str):            The URL to the organization's homepage.
+
+    Returns:
+        None
+    """
+    
+    ODSN_ORGA = Namespace("https://opendata.swiss/id/organization/")
+    LEGAL_FORM = Namespace("https://register.ld.admin.ch/i14y/concept/legalForm/")
+
+    orga_uri = ODSN_ORGA[slug]
+
+    filtered_descriptions = {
+        lang: desc for lang, desc in descriptions.items() if desc is not None
+    }
+    filtered_names = {
+        lang: name for lang, name in names.items() if name is not None
+    }
+    filtered_prefLabels = {
+        lang: prefLabel for lang, prefLabel in prefLabels.items() if prefLabel is not None
+    }
+    
+    output_file = Path(ORGANIZATIONS_PATH) / "es" / f"{slug}.json"
+    with open(output_file, "w") as orga_file:
+        json.dump({
+            "id": slug,
+            "identifier": identifier,
+            "resource": orga_uri,
+            # "sub_organization_of": ODSN_ORGA[subAgentOf_slug] if subAgentOf_slug else None,
+            # "classification": LEGAL_FORM[classification_code] if classification_code else None,
+            "description": filtered_descriptions,
+            "name": filtered_names,
+            "pref_label": filtered_prefLabels,
+            "homepage": homepage,
+        }, orga_file, indent=2, ensure_ascii=False)
+
+    logger.info(f"Successfully generated JSON and saved to '{output_file}'")
+
+
 # run this locally and push the generated files to repo
 def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = True) -> None:
     """
@@ -392,6 +451,17 @@ def generate_organizations() -> None:
             subAgentOf_slug = id_to_slug.get(parent_org_id)
 
         generate_organization_metadata(
+            slug=slug,
+            identifier=organization["identifier"],
+            subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",
+            classification_code = (organization.get("classification") or {}).get("code", ""),
+            names=to_dict(organization.get("name" or {})),
+            prefLabels=to_dict(organization.get("prefLabel" or {})),
+            descriptions=to_dict(organization.get("description" or {})),
+            homepage=organization.get("homePage", "")
+        )
+
+        generate_organization_json(
             slug=slug,
             identifier=organization["identifier"],
             subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",

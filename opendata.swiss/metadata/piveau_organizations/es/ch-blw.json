@@ -1,0 +1,19 @@
+{
+  "id": "ch-blw",
+  "identifier": "CH_BLW",
+  "resource": "https://opendata.swiss/id/organization/ch-blw",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Landwirtschaft (BLW)",
+    "en": "Federal Office for Agriculture (FOAG)",
+    "fr": "Office fédéral de l'agriculture (OFAG)",
+    "it": "Ufficio federale dell'agricoltura (UFAG)"
+  },
+  "pref_label": {
+    "de": "BLW",
+    "en": "FOAG",
+    "fr": "OFAG",
+    "it": "UFAG"
+  },
+  "homepage": "https://blw.admin.ch"
+}

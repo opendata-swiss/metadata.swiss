@@ -1,0 +1,24 @@
+{
+  "id": "ch-zas",
+  "identifier": "CH_ZAS",
+  "resource": "https://opendata.swiss/id/organization/ch-zas",
+  "description": {
+    "de": "Die ZAS ist im Bereich der 1. Säule, welche die Alters- und Hinterlassenenversicherung AHV, die Invalidenversicherung IV und die Erwerbsersatzordnung EO umfasst, tätig.",
+    "en": "The CCO is active in the field of 1st pillar social insurance: old-age and survivors' insurance OASI, disability insurance DI, compensation for loss of earnings APG.",
+    "fr": "La CdC est active dans le domaine des assurances sociales du 1er pilier : l’assurance-vieillesse et survivants AVS, l’assurance-invalidité AI et les allocations pour perte de gain APG.",
+    "it": "L’UCC è attivo nell’ambito del 1° pilastro: assicurazione vecchiaia e superstiti AVS, invalidità AI e assicurazione perdita di guadagno APG."
+  },
+  "name": {
+    "de": "Zentrale Ausgleichsstelle (ZAS)",
+    "en": "Centrale de compensation (CdC)",
+    "fr": "Centrale de compensation (CdC)",
+    "it": "Ufficio centrale di compensazione (UCC)"
+  },
+  "pref_label": {
+    "de": "ZAS",
+    "en": "CdC",
+    "fr": "CdC",
+    "it": "UCC"
+  },
+  "homepage": "https://www.zas.admin.ch"
+}

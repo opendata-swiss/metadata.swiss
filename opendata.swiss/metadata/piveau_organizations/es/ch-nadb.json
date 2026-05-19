@@ -1,0 +1,19 @@
+{
+  "id": "ch-nadb",
+  "identifier": "CH_NADB",
+  "resource": "https://opendata.swiss/id/organization/ch-nadb",
+  "description": {},
+  "name": {
+    "de": "NaDB - Swiss Data Steward",
+    "en": "NaDB - Swiss Data Steward",
+    "fr": "NaDB - Swiss Data Steward",
+    "it": "NaDB - Swiss Data Steward"
+  },
+  "pref_label": {
+    "de": "NaDB - Swiss Data Steward",
+    "en": "NaDB - Swiss Data Steward",
+    "fr": "NaDB - Swiss Data Steward",
+    "it": "NaDB - Swiss Data Steward"
+  },
+  "homepage": null
+}

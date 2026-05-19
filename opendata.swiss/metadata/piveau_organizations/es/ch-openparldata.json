@@ -1,0 +1,19 @@
+{
+  "id": "ch-openparldata",
+  "identifier": "CH_OPENPARLDATA",
+  "resource": "https://opendata.swiss/id/organization/ch-openparldata",
+  "description": {},
+  "name": {
+    "de": "OpenParlData.ch",
+    "en": "OpenParlData.ch",
+    "fr": "OpenParlData.ch",
+    "it": "OpenParlData.ch"
+  },
+  "pref_label": {
+    "de": "OpenParlData.ch",
+    "en": "OpenParlData.ch",
+    "fr": "OpenParlData.ch",
+    "it": "OpenParlData.ch"
+  },
+  "homepage": null
+}

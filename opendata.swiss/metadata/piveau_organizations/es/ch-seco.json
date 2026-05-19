@@ -1,0 +1,19 @@
+{
+  "id": "ch-seco",
+  "identifier": "CH_SECO",
+  "resource": "https://opendata.swiss/id/organization/ch-seco",
+  "description": {},
+  "name": {
+    "de": "Staatssekretariat für Wirtschaft SECO",
+    "en": "State Secretariat for Economic Affairs SECO",
+    "fr": "Secrétariat d'État à l'économie SECO",
+    "it": "Segreteria di Stato dell'economia SECO"
+  },
+  "pref_label": {
+    "de": "Staatssekretariat für Wirtschaft SECO",
+    "en": "State Secretariat for Economic Affairs SECO",
+    "fr": "Secrétariat d'État à l'économie SECO",
+    "it": "Segreteria di Stato dell'economia SECO"
+  },
+  "homepage": null
+}

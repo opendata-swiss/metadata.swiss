@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-bern",
+  "identifier": "CH_KT_BERN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-bern",
+  "description": {},
+  "name": {
+    "de": "Kanton Bern",
+    "en": "Kanton Bern",
+    "fr": "Canton Berne",
+    "it": "Kanton Bern"
+  },
+  "pref_label": {
+    "de": "Kanton Bern",
+    "en": "Kanton Bern",
+    "fr": "Canton Berne",
+    "it": "Kanton Bern"
+  },
+  "homepage": null
+}

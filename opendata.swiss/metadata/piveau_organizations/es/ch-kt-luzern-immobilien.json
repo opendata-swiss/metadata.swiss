@@ -1,0 +1,21 @@
+{
+  "id": "ch-kt-luzern-immobilien",
+  "identifier": "CH_KT_LUZERN_IMMOBILIEN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-luzern-immobilien",
+  "description": {
+    "de": "Die Dienststelle Immobilien ist das Immobilien-Kompetenzzentrum des Kantons Luzern. Sie vertritt als Eigentümerin und Bauherrin die Interessen des Kantons Luzern und betreibt ein innovatives und nachhaltiges Immobilienmanagement."
+  },
+  "name": {
+    "de": "Dienststelle Immobilien Kanton Luzern",
+    "en": "Real Estate Office of the Canton of Lucerne",
+    "fr": "Service immobilier du canton de Lucerne",
+    "it": "Servizio immobiliare del Cantone di Lucerna"
+  },
+  "pref_label": {
+    "de": "Immobilien (LU)",
+    "en": "Real Estate (LU)",
+    "fr": "Immobilier (LU)",
+    "it": "Immobiliare (LU)"
+  },
+  "homepage": "https://www.immobilien.lu.ch"
+}

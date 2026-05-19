@@ -1,0 +1,24 @@
+{
+  "id": "ch-bakom",
+  "identifier": "CH_BAKOM",
+  "resource": "https://opendata.swiss/id/organization/ch-bakom",
+  "description": {
+    "de": "Als Kompetenzzentrum des Bundes für Medien und Telekommunikation sorgt das BAKOM für einen freien, sicheren und vielfältigen Zugang zur Kommunikation in der Schweiz. Auch ist es ein wichtiger Akteur im Bereich der Digitalisierung. Wir schaffen Rahmenbedingungen, die Innovation fördern, Grundrechte schützen und den digitalen Wandel verantwortungsvoll begleiten. Ausserdem setzen wir uns für eine unabhängige, vielfältige und qualitativ hochwertige Medienlandschaft in der Schweiz ein.",
+    "en": "As the federal government’s competence center for media and telecommunications, OFCOM ensures free, secure and diverse access to communication in Switzerland. It also plays an important role in the field of digitalisation. We create framework conditions that promote innovation, protect fundamental rights and support the digital transformation in a responsible manner. We are also committed to an independent, diverse and high-quality media landscape in Switzerland.",
+    "fr": "En tant que centre de compétence de la Confédération pour les médias et les télécommunications, l'OFCOM veille à ce que chacun puisse accéder librement, en toute sécurité et de manière diversifiée à la communication en Suisse. Il joue également un rôle important dans le domaine de la numérisation. Nous créons des conditions cadres qui favorisent l'innovation, protègent les droits fondamentaux et accompagnent la transformation numérique de manière responsable. Nous nous engageons en outre en faveur d'un paysage médiatique indépendant, diversifié et de qualité en Suisse.",
+    "it": "In qualità di centro di competenza della Confederazione per i media e le telecomunicazioni, l'UFCOM garantisce un accesso libero, sicuro e diversificato alla comunicazione in Svizzera. È inoltre un attore importante nel campo della digitalizzazione. Creiamo le condizioni quadro che promuovono l'innovazione, tutelano i diritti fondamentali e accompagnano in modo responsabile la trasformazione digitale. Ci impegniamo affinché la Svizzera disponga di un panorama mediatico indipendente, vario e di alta qualità."
+  },
+  "name": {
+    "de": "Bundesamt für Kommunikation (BAKOM)",
+    "en": "Federal Office of Communications (OFCOM)",
+    "fr": "Office fédéral de la communication (OFCOM)",
+    "it": "Ufficio federale delle comunicazioni (UFCOM)"
+  },
+  "pref_label": {
+    "de": "BAKOM",
+    "en": "OFCOM",
+    "fr": "OFCOM",
+    "it": "UFCOM"
+  },
+  "homepage": "https://www.bakom.admin.ch"
+}

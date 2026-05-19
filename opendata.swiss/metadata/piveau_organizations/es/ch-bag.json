@@ -1,0 +1,24 @@
+{
+  "id": "ch-bag",
+  "identifier": "CH_BAG",
+  "resource": "https://opendata.swiss/id/organization/ch-bag",
+  "description": {
+    "de": "Das BAG engagiert sich für die Gesundheit der Bevölkerung. Es ist für die nationale Gesundheitspolitik sowie die Kranken- und Unfallversicherung zuständig. Und es macht sich auch auf internationaler Ebene für Gesundheitsthemen stark.",
+    "en": "The Federal Office of Public Health (FOPH) is dedicated to the health of the Swiss population. It’s responsible for national healthcare policy and for health and accident insurance; and it promotes healthcare issues and interests on the international stage.",
+    "fr": "L’OFSP s’engage pour la santé de la population. Responsable de la politique nationale en matière de santé publique ainsi que de l’assurance maladie et accidents, il œuvre également au niveau international en faveur des questions de santé.",
+    "it": "L’UFSP si impegna per la salute della popolazione. È competente per la politica nazionale della sanità nonché per l’assicurazione malattie e infortuni. Inoltre si prodiga anche a livello internazionale per temi riguardanti la salute."
+  },
+  "name": {
+    "de": "Bundesamt für Gesundheit ",
+    "en": "Federal Office of Public Health (FOPH)",
+    "fr": "Office fédéral de la santé publique (OFSP)",
+    "it": "Ufficio federale della sanità pubblica (UFSP)"
+  },
+  "pref_label": {
+    "de": "BAG",
+    "en": "FOPH",
+    "fr": "OFSP",
+    "it": "UFSP"
+  },
+  "homepage": "https://www.bag.admin.ch"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ch-fedpol",
+  "identifier": "CH_FEDPOL",
+  "resource": "https://opendata.swiss/id/organization/ch-fedpol",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Polizei (fedpol)",
+    "en": "Federal Office of Polizei (fedpol)",
+    "fr": "Office fédéral de Polizei (fedpol)",
+    "it": "Ufficio federale di Polizei (fedpol)"
+  },
+  "pref_label": {
+    "de": "fedpol",
+    "en": "fedpol",
+    "fr": "fedpol",
+    "it": "fedpol"
+  },
+  "homepage": null
+}

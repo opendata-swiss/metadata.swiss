@@ -1,0 +1,22 @@
+{
+  "id": "che-108-904-325",
+  "identifier": "CHE-108.904.325",
+  "resource": "https://opendata.swiss/id/organization/che-108-904-325",
+  "description": {
+    "de": "Das USZ steht jeden Tag allen Menschen offen und bietet medizinische Grundversorgung und Spitzenmedizin an zentraler Lage in Zürich.",
+    "en": "The USZ is open to everyone every day and provides primary health care and cutting-edge medicine at the heart of Zurich."
+  },
+  "name": {
+    "de": "Universitätsspital Zürich",
+    "en": "Universitätsspital Zürich",
+    "fr": "Universitätsspital Zürich",
+    "it": "Universitätsspital Zürich"
+  },
+  "pref_label": {
+    "de": "Universitätsspital Zürich",
+    "en": "USZ",
+    "fr": "USZ",
+    "it": "USZ"
+  },
+  "homepage": "https://www.usz.ch"
+}

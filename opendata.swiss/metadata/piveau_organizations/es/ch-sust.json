@@ -1,0 +1,19 @@
+{
+  "id": "ch-sust",
+  "identifier": "CH_SUST",
+  "resource": "https://opendata.swiss/id/organization/ch-sust",
+  "description": {},
+  "name": {
+    "de": "Schweizerische Sicherheitsuntersuchungsstelle (SUST)",
+    "en": "Swiss Transportation Safety Investigation Board (STSB)",
+    "fr": "Service suisse d'enquête de sécurité (SESE)",
+    "it": " Servizio d'inchiesta svizzero sulla sicurezza (SISI)"
+  },
+  "pref_label": {
+    "de": "SUST",
+    "en": "STSB",
+    "fr": "SESE",
+    "it": "SISI"
+  },
+  "homepage": null
+}

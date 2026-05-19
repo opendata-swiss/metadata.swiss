@@ -1,0 +1,19 @@
+{
+  "id": "ch-sem",
+  "identifier": "CH_SEM",
+  "resource": "https://opendata.swiss/id/organization/ch-sem",
+  "description": {},
+  "name": {
+    "de": "Staatssekretariat für Migration (SEM)",
+    "en": "State Secretariat for Migration (SEM)",
+    "fr": "Secrétariat d'État à Migration (SEM)",
+    "it": "Segreteria di Stato per Migration (SEM)"
+  },
+  "pref_label": {
+    "de": "SEM",
+    "en": "SEM",
+    "fr": "SEM",
+    "it": "SEM"
+  },
+  "homepage": null
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ch-bazl",
+  "identifier": "CH_BAZL",
+  "resource": "https://opendata.swiss/id/organization/ch-bazl",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Zivilluftfahrt (BAZL)",
+    "en": "Federal Office of Civil Aviation (FOCA)",
+    "fr": "Office fédéral de l'aviation civile (OFAC)",
+    "it": "Ufficio federale dell'aviazione civile (UFAC)"
+  },
+  "pref_label": {
+    "de": "BAZL",
+    "en": "FOCA",
+    "fr": "OFAC",
+    "it": "UFAC"
+  },
+  "homepage": null
+}

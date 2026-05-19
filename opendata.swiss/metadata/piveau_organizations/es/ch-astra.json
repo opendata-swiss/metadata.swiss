@@ -1,0 +1,19 @@
+{
+  "id": "ch-astra",
+  "identifier": "CH_ASTRA",
+  "resource": "https://opendata.swiss/id/organization/ch-astra",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Strassen (ASTRA)",
+    "en": "Federal Roads Office (FEDRO)",
+    "fr": "Office fédéral des routes (OFROU)",
+    "it": "Ufficio federale delle strade (USTRA)"
+  },
+  "pref_label": {
+    "de": "ASTRA",
+    "en": "FEDRO",
+    "fr": "OFROU",
+    "it": "USTRA"
+  },
+  "homepage": null
+}

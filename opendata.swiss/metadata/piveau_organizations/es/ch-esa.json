@@ -1,0 +1,19 @@
+{
+  "id": "ch-esa",
+  "identifier": "CH_ESA",
+  "resource": "https://opendata.swiss/id/organization/ch-esa",
+  "description": {},
+  "name": {
+    "de": "Eidgenössische Stiftungsaufsicht ESA",
+    "en": "Eidgenössische Stiftungsaufsicht ESA",
+    "fr": "Surveillance fédérale des fondations SFF",
+    "it": "Vigilanza federale sulle fondazioni VFF"
+  },
+  "pref_label": {
+    "de": "ESA",
+    "en": "ESA",
+    "fr": "SFF",
+    "it": "VFF"
+  },
+  "homepage": "https://www.esa.admin.ch/"
+}

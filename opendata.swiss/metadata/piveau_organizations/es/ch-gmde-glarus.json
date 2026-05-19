@@ -1,0 +1,19 @@
+{
+  "id": "ch-gmde-glarus",
+  "identifier": "CH_GMDE_GLARUS",
+  "resource": "https://opendata.swiss/id/organization/ch-gmde-glarus",
+  "description": {},
+  "name": {
+    "de": "Gemeinde Glarus",
+    "en": "Commune Glarus",
+    "fr": "Commune de Glaris",
+    "it": "Communi di Glarona"
+  },
+  "pref_label": {
+    "de": "Gemeinde Glarus",
+    "en": "Commune Glarus",
+    "fr": "Commune de Glaris",
+    "it": "Communi di Glarona"
+  },
+  "homepage": "https://www.glarus.ch"
+}

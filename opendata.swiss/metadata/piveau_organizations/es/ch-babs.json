@@ -1,0 +1,19 @@
+{
+  "id": "ch-babs",
+  "identifier": "CH_BABS",
+  "resource": "https://opendata.swiss/id/organization/ch-babs",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Bevölkerungsschutz (BABS)",
+    "en": "Federal Office for Civil Protection (FOCP)",
+    "fr": "Office fédéral de la protection de la population (OFPP)",
+    "it": "Ufficio federale della protezione della popolazione (UFPP)"
+  },
+  "pref_label": {
+    "de": "BABS",
+    "en": "FOCP",
+    "fr": "OFPP",
+    "it": "UFPP"
+  },
+  "homepage": "https://www.babs.admin.ch"
+}

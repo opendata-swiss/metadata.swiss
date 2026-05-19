@@ -1,0 +1,19 @@
+{
+  "id": "ch-identitas",
+  "identifier": "CH_IDENTITAS",
+  "resource": "https://opendata.swiss/id/organization/ch-identitas",
+  "description": {},
+  "name": {
+    "de": "IDENTITAS AG",
+    "en": "IDENTITAS",
+    "fr": "IDENTITAS SA",
+    "it": "IDENTITAS"
+  },
+  "pref_label": {
+    "de": "IDENTITAS AG",
+    "en": "IDENTITAS",
+    "fr": "IDENTITAS SA",
+    "it": "IDENTITAS"
+  },
+  "homepage": null
+}

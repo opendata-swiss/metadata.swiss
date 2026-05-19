@@ -1,0 +1,19 @@
+{
+  "id": "ch-bar",
+  "identifier": "CH_BAR",
+  "resource": "https://opendata.swiss/id/organization/ch-bar",
+  "description": {},
+  "name": {
+    "de": "Schweizerisches Bundesarchiv (BAR)",
+    "en": "Swiss Federal Archives (SFA)",
+    "fr": "Archives fédérales suisses (AFS)",
+    "it": "Archivio federale svizzero (AFS)"
+  },
+  "pref_label": {
+    "de": "BAR",
+    "en": "SFA",
+    "fr": "AFS",
+    "it": "AFS"
+  },
+  "homepage": "https://www.bar.admin.ch"
+}

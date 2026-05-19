@@ -1,0 +1,19 @@
+{
+  "id": "ch-swisstopo",
+  "identifier": "CH_SWISSTOPO",
+  "resource": "https://opendata.swiss/id/organization/ch-swisstopo",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Landestopografie (swisstopo)",
+    "en": "Federal Office of Topography (swisstopo)",
+    "fr": "Office fédéral de topographie (swisstopo)",
+    "it": "Ufficio federale di topografia (swisstopo)"
+  },
+  "pref_label": {
+    "de": "swisstopo",
+    "en": "swisstopo",
+    "fr": "swisstopo",
+    "it": "swisstopo"
+  },
+  "homepage": "https://www.swisstopo.ch"
+}

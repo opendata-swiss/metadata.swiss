@@ -1,0 +1,19 @@
+{
+  "id": "ch-lustat",
+  "identifier": "CH_LUSTAT",
+  "resource": "https://opendata.swiss/id/organization/ch-lustat",
+  "description": {},
+  "name": {
+    "de": "LUSTAT Statistik Luzern",
+    "en": "LUSTAT Statistik Luzern",
+    "fr": "LUSTAT Statistik Luzern",
+    "it": "LUSTAT Statistik Luzern"
+  },
+  "pref_label": {
+    "de": "LUSTAT",
+    "en": "LUSTAT",
+    "fr": "LUSTAT",
+    "it": "LUSTAT"
+  },
+  "homepage": "https://lustat.ch"
+}

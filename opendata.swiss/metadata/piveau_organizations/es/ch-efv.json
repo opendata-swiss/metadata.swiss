@@ -1,0 +1,19 @@
+{
+  "id": "ch-efv",
+  "identifier": "CH_EFV",
+  "resource": "https://opendata.swiss/id/organization/ch-efv",
+  "description": {},
+  "name": {
+    "de": "Eidgenössische Finanzverwaltung (EFV)",
+    "en": "Federal Finance Administration (FFA)",
+    "fr": "Administration fédérale des finances (AFF)",
+    "it": "Amministrazione federale delle finanze (AFF)"
+  },
+  "pref_label": {
+    "de": "EFV",
+    "en": "FFA",
+    "fr": "AFF",
+    "it": "AFF"
+  },
+  "homepage": null
+}

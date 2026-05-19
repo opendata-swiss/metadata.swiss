@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-bl",
+  "identifier": "CH_KT_BL",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-bl",
+  "description": {},
+  "name": {
+    "de": "Kanton Basel-Landschaft",
+    "en": "Canton Basel-Landschaft",
+    "fr": "Canton Bâle-Campagne",
+    "it": "Canton Basilea Campagna"
+  },
+  "pref_label": {
+    "de": "BL",
+    "en": "BL",
+    "fr": "BL",
+    "it": "BL"
+  },
+  "homepage": "https://www.baselland.ch"
+}

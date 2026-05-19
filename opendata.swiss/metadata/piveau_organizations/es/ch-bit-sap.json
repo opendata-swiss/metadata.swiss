@@ -1,0 +1,19 @@
+{
+  "id": "ch-bit-sap",
+  "identifier": "CH_BIT_SAP",
+  "resource": "https://opendata.swiss/id/organization/ch-bit-sap",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Informatik und Telekommunikation (BIT), SAP",
+    "en": "Federal Office of Information Technology, Systems and Telecommunication (FOITT), SAP",
+    "fr": "Office fédéral de l'informatique et de la télécommunication (OFIT), SAP",
+    "it": "Ufficio federale dell'informatica e della telecomunicazione (UFIT), SAP"
+  },
+  "pref_label": {
+    "de": "BIT (SAP)",
+    "en": "FOITT (SAP)",
+    "fr": "OFIT (SAP)",
+    "it": "UFIT (SAP)"
+  },
+  "homepage": null
+}

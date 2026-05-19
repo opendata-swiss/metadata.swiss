@@ -1,0 +1,19 @@
+{
+  "id": "ch-meteoschweiz",
+  "identifier": "CH_METEOSCHWEIZ",
+  "resource": "https://opendata.swiss/id/organization/ch-meteoschweiz",
+  "description": {},
+  "name": {
+    "de": "MeteoSchweiz",
+    "en": "MeteoSwiss",
+    "fr": "MétéoSuisse",
+    "it": "MeteoSvizzera"
+  },
+  "pref_label": {
+    "de": "MeteoSchweiz",
+    "en": "MeteoSwiss",
+    "fr": "MétéoSuisse",
+    "it": "MeteoSvizzera"
+  },
+  "homepage": "https://www.meteoschweiz.admin.ch"
+}

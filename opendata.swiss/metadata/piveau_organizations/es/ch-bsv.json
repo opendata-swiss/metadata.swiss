@@ -1,0 +1,19 @@
+{
+  "id": "ch-bsv",
+  "identifier": "CH_BSV",
+  "resource": "https://opendata.swiss/id/organization/ch-bsv",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Sozialversicherungen (BSV)",
+    "en": "Federal Social Insurance Office (FSIO)",
+    "fr": "Office fédéral des assurances sociales (OFAS)",
+    "it": "Ufficio federale delle assicurazioni sociali (UFAS)"
+  },
+  "pref_label": {
+    "de": "BSV",
+    "en": "FSIO",
+    "fr": "OFAS",
+    "it": "UFAS"
+  },
+  "homepage": "https://www.bsv.admin.ch/"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ch-snm",
+  "identifier": "CH_SNM",
+  "resource": "https://opendata.swiss/id/organization/ch-snm",
+  "description": {
+    "de": "Unter dem Dach des Schweizerischen Nationalmuseums sind drei Museen sowie das Sammlungszentrum in Affoltern am Albis vereint. Die Museen präsentieren Schweizer Geschichte von den Anfängen bis heute, und erschliessen – auch mit temporären Ausstellungen zu aktuellen Themen – die schweizerischen Identitäten und die Vielfalt der Geschichte und Kultur unseres Landes.",
+    "en": "Under the auspices of the Swiss National Museum, three museums and our Collection Centre in Affoltern am Albis are brought together. The museums showcase the history of Switzerland from its beginnings up to the present day, giving an insight into the Swiss identity and the rich tapestry of our country’s history and culture, with temporary exhibitions covering issues of current interest.",
+    "fr": "Le Musée national suisse regroupe trois musées, ainsi que le Centre des collections à Affoltern am Albis. Les musées présentent l’histoire suisse de ses débuts jusqu’à nos jours et mettent en valeur les différentes identités suisses ainsi que la diversité de l’histoire et de la culture de notre pays, notamment par le biais d’expositions temporaires sur des thèmes actuels.",
+    "it": "Il Museo nazionale svizzero (MNS) riunisce sotto lo stesso tetto tre musei nonché il Centro delle collezioni di Affoltern am Albis. Con le loro mostre i musei presentano la storia della Svizzera dagli inizi ad oggi e valorizzano l’identità svizzera e la varietà storica e culturale del nostro Paese. Le mostre temporanee su temi attuali offrono ulteriori impressioni.",
+    "rm": "Sut il tetg dal Museum naziunal svizzer èn unids trais museums sco er il Center da collecziuns ad Affoltern am Albis. Ils museums preschentan l’istorgia svizra dal cumenzament fin oz e rendan accessiblas er cun exposiziuns temporaras davart temas actuals las identitads svizras e la diversitad da l’istorgia e da la cultura da noss pajais."
+  },
+  "name": {
+    "de": "Schweizerisches Nationalmuseum (SNM)",
+    "en": "Swiss National Museum (SNM)",
+    "fr": "Musée national suisse (MNS)",
+    "it": "Museo nazionale svizzero (MNS)"
+  },
+  "pref_label": {
+    "de": "SNM",
+    "en": "SNM",
+    "fr": "MNS",
+    "it": "MNS"
+  },
+  "homepage": "https://www.nationalmuseum.ch"
+}

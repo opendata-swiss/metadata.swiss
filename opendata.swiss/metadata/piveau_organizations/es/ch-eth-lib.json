@@ -1,0 +1,24 @@
+{
+  "id": "ch-eth-lib",
+  "identifier": "CH_ETH_LIB",
+  "resource": "https://opendata.swiss/id/organization/ch-eth-lib",
+  "description": {
+    "de": "Die ETH-Bibliothek ist die grösste öffentliche naturwissenschaftliche und technische Bibliothek der Schweiz. Die ETH-Bibliothek als zentrale Hochschulbibliothek und Wissenshub der ETH (Eidgenössische Technische Hochschule) Zürich stellt deren Versorgung mit naturwissenschaftlicher und technischer Information sicher. Darüber hinaus bietet sie auch Ressourcen für die Öffentlichkeit und für Firmen aus Forschung und Entwicklung.\n\nQuelle: Wikipedia (https://de.wikipedia.org/wiki/ETH-Bibliothek)",
+    "en": "The ETH Library, serving as the central university library at ETH Zurich, has a notable collection of scientific and technical information. It is considered one of the largest public scientific and technical libraries in Switzerland. Furthermore, it offers resources for the public and companies in research and development.\n\nSource: Wikipedia (https://en.wikipedia.org/wiki/ETH_Library)",
+    "fr": "La bibliothèque de l'École polytechnique fédérale de Zurich (bibliothèque de l'EPFZ, en allemand ETH-Bibliothek) est une bibliothèque publique de Suisse consacrée à la technique et aux sciences naturelles, située à Zurich. Elle fait office à la fois de bibliothèque universitaire centralisée de l'EPFZ et de centre national d'information scientifique et technique. Accessible aux étudiants et aux enseignants, elle offre également des ressources au grand public ainsi qu’aux entreprises issues du secteur de la recherche et développement.\n\nSource: Wikipédia (https://fr.wikipedia.org/wiki/Biblioth%C3%A8que_de_l%27%C3%89cole_polytechnique_f%C3%A9d%C3%A9rale_de_Zurich)",
+    "it": "La biblioteca del Politecnico federale di Zurigo (ETH-Bibliothek Zürich), è la biblioteca pubblica di scienze naturali e tecnica più grande della Svizzera. La biblioteca dell'ETH è la biblioteca universitaria centrale del Politecnico stesso (Eidgenössische Technische Hochschule Zürich, ETH) nonché il centro nazionale di informazione in scienza naturale e tecnologia. Oltre a mettere a disposizione le informazioni per i membri dell'ETH, essa offre risorse anche per il pubblico interessato e per le imprese dei settori ricerca e sviluppo.\n\nFonte: Wikipedia (https://it.wikipedia.org/wiki/Biblioteca_del_Politecnico_federale_di_Zurigo)"
+  },
+  "name": {
+    "de": "ETH-Bibliothek",
+    "en": "ETH-Bibliothek",
+    "fr": "ETH-Bibliothek",
+    "it": "ETH-Bibliothek"
+  },
+  "pref_label": {
+    "de": "ETH",
+    "en": "ETH",
+    "fr": "ETH",
+    "it": "ETH"
+  },
+  "homepage": "https://library.ethz.ch/"
+}

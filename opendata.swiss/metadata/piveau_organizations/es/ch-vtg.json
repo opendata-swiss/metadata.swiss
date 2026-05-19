@@ -1,0 +1,19 @@
+{
+  "id": "ch-vtg",
+  "identifier": "CH_VTG",
+  "resource": "https://opendata.swiss/id/organization/ch-vtg",
+  "description": {},
+  "name": {
+    "de": "Gruppe Verteidigung (Vtg)",
+    "en": "Defence sector (Vtg)",
+    "fr": "Groupement Défense (Def)",
+    "it": "Aggruppamento Difesa (Dif)"
+  },
+  "pref_label": {
+    "de": "Vtg",
+    "en": "Vtg",
+    "fr": "Def",
+    "it": "Dif"
+  },
+  "homepage": "https://www.vtg.admin.ch"
+}

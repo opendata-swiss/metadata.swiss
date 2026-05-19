@@ -1,0 +1,24 @@
+{
+  "id": "ch-esbk",
+  "identifier": "CH_ESBK",
+  "resource": "https://opendata.swiss/id/organization/ch-esbk",
+  "description": {
+    "de": "Die ESBK beaufsichtigt die Schweizer Spielbanken, veranlagt die Spielbankenabgabe und bekämpft das illegale Geldspiel. Die ESBK ist unabhängig. Administrativ ist sie dem Eidgenössischen Justiz- und Polizeidepartement zugeordnet.",
+    "en": "The Federal Gaming Board (FGB) is responsible for supervising Swiss casinos, levying casino tax and combating illegal gambling. The FGB is an independent authority. It is administratively attached to the FDJP.",
+    "fr": "La CFMJ surveille les maisons de jeu suisses, perçoit l'impôt sur les maisons de jeu et lutte contre le jeu d'argent illégal. La CFMJ est indépendante. Elle est administrativement rattachée au Département fédéral de justice et police.",
+    "it": "La CFCG vigila le case da gioco svizzere, riscuote la tassa sulle case da gioco e lotta contro i giochi in denaro illegali. La CFCG è indipendente. È aggregata amministrativamente al Dipartimento federale di giustizia e polizia."
+  },
+  "name": {
+    "de": "Eidgenössische Spielbankenkommission (ESBK)",
+    "en": "Eidgenössische Spielbankenkommission (ESBK)",
+    "fr": "Commission fédérale des maisons de jeu (CFMJ)",
+    "it": "Commissione federale delle case da gioco (CFCG)"
+  },
+  "pref_label": {
+    "de": "ESBK",
+    "en": "ESBK",
+    "fr": "CFMJ",
+    "it": "CFCG"
+  },
+  "homepage": "https://www.esbk.admin.ch"
+}

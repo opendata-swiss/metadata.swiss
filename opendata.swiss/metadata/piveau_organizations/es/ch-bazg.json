@@ -1,0 +1,24 @@
+{
+  "id": "ch-bazg",
+  "identifier": "CH_BAZG",
+  "resource": "https://opendata.swiss/id/organization/ch-bazg",
+  "description": {
+    "de": "Das Bundesamt für Zoll und Grenzsicherheit sorgt für umfassende Sicherheit an der Grenze – zum Wohl von Bevölkerung, Wirtschaft und Staat. Es ist national und international gut vernetzt. Zu seinen Kernaufgaben gehören das sachgerechte und rasche Abfertigen von Handelswaren, der zügige Ablauf des Reiseverkehrs, die Bereiche Sicherheitspolizei und Migration und es verfügt mit der Strafverfolgung über eine eigene Ermittlungsbehörde.",
+    "en": "The Federal Customs and Border Security Office (FOCBS) ensures comprehensive border security for the population, the economy and the state and is well connected nationally and internationally. Its main tasks include the correct and speedy taxation of tradable goods, the rapid handling of tourist traffic as well as the areas of migration and security police. The FOCBS has its own prosecuting authority.",
+    "fr": "L'Office fédéral de la douane et de la sécurité des frontières (OFDF) assure la sécurité globale à la frontière au profit de la population, de l'économie et de l'État. Il collabore étroitement avec d'autres autorités nationales et internationales. Parmi ses tâches principales figurent le dédouanement adéquat et rapide des marchandises de commerce, la gestion fluide du trafic touristique ainsi que les domaines de la police de sécurité et des migrations. Avec le domaine de direction Poursuites pénales, il dispose de sa propre autorité d'enquête.",
+    "it": "L'Ufficio federale della dogana e della sicurezza dei confini (UDSC) garantisce la sicurezza globale al confine a favore di popolazione, economia e Stato ed è ben interconnesso a livello nazionale e internazionale. Tra i suoi compiti principali rientrano la corretta e celere imposizione delle merci commerciabili, la rapida gestione del traffico turistico nonché gli ambiti della migrazione e della polizia di sicurezza. Con il Perseguimento penale l'UDSC dispone di una propria autorità inquirente."
+  },
+  "name": {
+    "de": "Bundesamt für Zoll und Grenzsicherheit (BAZG)",
+    "en": "Federal Office for Customs and Border Security (FOCBS)",
+    "fr": "Office fédéral de la douane et de la sécurité des frontières (OFDF)",
+    "it": "Ufficio federale della dogana e della sicurezza dei confini (UDSC)"
+  },
+  "pref_label": {
+    "de": "BAZG",
+    "en": "FOCBS",
+    "fr": "OFDF",
+    "it": "UDSC"
+  },
+  "homepage": "https://www.bazg.admin.ch/"
+}

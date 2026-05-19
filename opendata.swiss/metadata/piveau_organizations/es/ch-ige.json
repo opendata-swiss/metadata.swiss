@@ -1,0 +1,19 @@
+{
+  "id": "ch-ige",
+  "identifier": "CH_IGE",
+  "resource": "https://opendata.swiss/id/organization/ch-ige",
+  "description": {},
+  "name": {
+    "de": "Eidgenössisches Institut für Geistiges Eigentum (IGE)",
+    "en": "Swiss Federal Institute of Intellectual Property (IPI)",
+    "fr": "Institut Fédéral de la Propriété Intellectuelle (IPI)",
+    "it": "Istituto Federale della Proprietà Intellettuale (IPI)"
+  },
+  "pref_label": {
+    "de": "IGE",
+    "en": "IPI",
+    "fr": "IPI",
+    "it": "IPI"
+  },
+  "homepage": null
+}

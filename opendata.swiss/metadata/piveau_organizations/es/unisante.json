@@ -1,0 +1,15 @@
+{
+  "id": "unisante",
+  "identifier": "Unisante",
+  "resource": "https://opendata.swiss/id/organization/unisante",
+  "description": {},
+  "name": {
+    "en": "Center for Primary Care and Public Health (Unisanté), University of Lausanne, Switzerland",
+    "fr": "Centre universitaire de médecine générale et santé publique (Unisanté), Université de Lausanne, Suisse"
+  },
+  "pref_label": {
+    "en": "Center for Primary Care and Public Health (Unisanté), University of Lausanne, Switzerland",
+    "fr": "Centre universitaire de médecine générale et santé publique (Unisanté), Université de Lausanne, Suisse"
+  },
+  "homepage": "https://www.unisante.ch/"
+}

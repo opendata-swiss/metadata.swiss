@@ -1,0 +1,19 @@
+{
+  "id": "ch-bk",
+  "identifier": "CH_BK",
+  "resource": "https://opendata.swiss/id/organization/ch-bk",
+  "description": {},
+  "name": {
+    "de": "Schweizerische Bundeskanzlei (BK)",
+    "en": "Swiss Federal Chancellery (FCh)",
+    "fr": "Chancellerie fédérale (ChF)",
+    "it": "Cancelleria federale (CaF)"
+  },
+  "pref_label": {
+    "de": "BK",
+    "en": "CCh",
+    "fr": "ChF",
+    "it": "CaF"
+  },
+  "homepage": null
+}

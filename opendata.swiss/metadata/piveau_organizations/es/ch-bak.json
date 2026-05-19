@@ -1,0 +1,19 @@
+{
+  "id": "ch-bak",
+  "identifier": "CH_BAK",
+  "resource": "https://opendata.swiss/id/organization/ch-bak",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Kultur (BAK)",
+    "en": "Federal Office of Culture (FOC)",
+    "fr": "Office fédéral de la culture (OFC)",
+    "it": "Ufficio federale della cultura (UFC)"
+  },
+  "pref_label": {
+    "de": "BAK",
+    "en": "FOC",
+    "fr": "OFC",
+    "it": "UFC"
+  },
+  "homepage": "https://www.bak.admin.ch/"
+}

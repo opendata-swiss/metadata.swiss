@@ -1,0 +1,19 @@
+{
+  "id": "ch-bbl",
+  "identifier": "CH_BBL",
+  "resource": "https://opendata.swiss/id/organization/ch-bbl",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Bauten und Logistik (BBL)",
+    "en": "Federal Office of Construction and Logistics (BBL)",
+    "fr": " Office fédéral des constructions et de la logistique (OFCL)",
+    "it": "Ufficio federale delle costruzioni e della logistica (UFCL)"
+  },
+  "pref_label": {
+    "de": "BBL",
+    "en": "BBL",
+    "fr": "OFCL",
+    "it": "UFCL"
+  },
+  "homepage": "https://www.bbl.admin.ch"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ch-kora",
+  "identifier": "CH_KORA",
+  "resource": "https://opendata.swiss/id/organization/ch-kora",
+  "description": {},
+  "name": {
+    "de": "KORA",
+    "en": "KORA",
+    "fr": "KORA",
+    "it": "KORA"
+  },
+  "pref_label": {
+    "de": "KORA",
+    "en": "KORA",
+    "fr": "KORA",
+    "it": "KORA"
+  },
+  "homepage": null
+}

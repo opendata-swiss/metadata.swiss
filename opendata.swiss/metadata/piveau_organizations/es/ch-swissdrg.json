@@ -1,0 +1,24 @@
+{
+  "id": "ch-swissdrg",
+  "identifier": "CH_SWISSDRG",
+  "resource": "https://opendata.swiss/id/organization/ch-swissdrg",
+  "description": {
+    "de": "Die SwissDRG AG ist eine gemeinsame Institution der Leistungserbringer, der Versicherer und der Kantone im schweizerischen Gesundheitssystem.",
+    "en": "SwissDRG AG is a joint institution of service providers, insurers and cantons in the Swiss healthcare system.",
+    "fr": "SwissDRG SA est une institution commune des fournisseurs de prestations, des assureurs et des cantons dans le système de santé Suisse.",
+    "it": "La SwissDRG SA è un’istituzione comune dei fornitori di prestazioni, degli assicuratori e dei cantoni nell’ambito del sistema sanitario nazionale svizzero."
+  },
+  "name": {
+    "de": "SwissDRG AG",
+    "en": "SwissDRG AG",
+    "fr": "SwissDRG SA",
+    "it": "SwissDRG AG"
+  },
+  "pref_label": {
+    "de": "SwissDRG AG",
+    "en": "SwissDRG AG",
+    "fr": "SwissDRG SA",
+    "it": "SwissDRG AG"
+  },
+  "homepage": "https://www.swissdrg.org"
+}

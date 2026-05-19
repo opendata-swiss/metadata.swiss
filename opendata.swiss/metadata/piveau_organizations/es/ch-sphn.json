@@ -1,0 +1,19 @@
+{
+  "id": "ch-sphn",
+  "identifier": "CH_SPHN",
+  "resource": "https://opendata.swiss/id/organization/ch-sphn",
+  "description": {},
+  "name": {
+    "de": "Swiss Personalized Health Network",
+    "en": "Swiss Personalized Health Network",
+    "fr": "Swiss Personalized Health Network",
+    "it": "Swiss Personalized Health Network"
+  },
+  "pref_label": {
+    "de": "Swiss Personalized Health Network",
+    "en": "Swiss Personalized Health Network",
+    "fr": "Swiss Personalized Health Network",
+    "it": "Swiss Personalized Health Network"
+  },
+  "homepage": null
+}

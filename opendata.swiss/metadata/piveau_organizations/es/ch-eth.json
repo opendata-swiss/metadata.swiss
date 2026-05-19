@@ -1,0 +1,24 @@
+{
+  "id": "ch-eth",
+  "identifier": "CH_ETH",
+  "resource": "https://opendata.swiss/id/organization/ch-eth",
+  "description": {
+    "de": "Die Eidgenössische Technische Hochschule Zürich (ETH Zürich) ist eine Hochschule mit technisch-naturwissenschaftlichem Fokus in Zürich.",
+    "en": "The Swiss Federal Institute of Technology in Zurich (ETH Zurich) is a university with a technical and scientific focus in Zurich.",
+    "fr": "L'École polytechnique fédérale de Zurich (EPFZ) est une haute école spécialisée dans les sciences techniques et naturelles située à Zurich.",
+    "it": "Il Politecnico federale di Zurigo (ETH Zurigo) è un'università a indirizzo tecnico-scientifico con sede a Zurigo."
+  },
+  "name": {
+    "de": "ETH Zürich",
+    "en": "ETH Zürich",
+    "fr": "ETH Zürich",
+    "it": "ETH Zürich"
+  },
+  "pref_label": {
+    "de": "ETH Zürich",
+    "en": "ETH Zürich",
+    "fr": "ETH Zürich",
+    "it": "ETH Zürich"
+  },
+  "homepage": "https://www.ethz.ch"
+}

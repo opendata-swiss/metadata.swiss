@@ -1,0 +1,19 @@
+{
+  "id": "ch-it-logix",
+  "identifier": "CH_IT-Logix",
+  "resource": "https://opendata.swiss/id/organization/ch-it-logix",
+  "description": {},
+  "name": {
+    "de": "IT-Logix",
+    "en": "IT-Logix",
+    "fr": "IT-Logix",
+    "it": "IT-Logix"
+  },
+  "pref_label": {
+    "de": "IT-Logix",
+    "en": "IT-Logix",
+    "fr": "IT-Logix",
+    "it": "IT-Logix"
+  },
+  "homepage": null
+}

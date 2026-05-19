@@ -1,0 +1,19 @@
+{
+  "id": "ch-vd-ocdc",
+  "identifier": "CH_VD_OCDC",
+  "resource": "https://opendata.swiss/id/organization/ch-vd-ocdc",
+  "description": {},
+  "name": {
+    "de": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "en": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "fr": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "it": "VD: Office cantonal de la durabilité et du climat OCDC"
+  },
+  "pref_label": {
+    "de": "OCDC",
+    "en": "OCDC",
+    "fr": "OCDC",
+    "it": "OCDC"
+  },
+  "homepage": "https://www.vd.ch/dadn/ocdc"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "ch-unizh-foeg",
+  "identifier": "CH_UNIZH_FOEG",
+  "resource": "https://opendata.swiss/id/organization/ch-unizh-foeg",
+  "description": {},
+  "name": {
+    "de": "Forschungszentrum Öffentlichkeit und Gesellschaft (fög)",
+    "en": "Research Center for the Public Sphere and Society (fög)",
+    "fr": "",
+    "it": ""
+  },
+  "pref_label": {
+    "de": "fög",
+    "en": "fög",
+    "fr": "fög",
+    "it": "fög"
+  },
+  "homepage": null
+}

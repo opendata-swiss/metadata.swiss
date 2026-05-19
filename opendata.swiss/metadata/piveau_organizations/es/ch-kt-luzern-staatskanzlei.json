@@ -1,0 +1,27 @@
+{
+  "id": "ch-kt-luzern-staatskanzlei",
+  "identifier": "CH_KT_LUZERN_STAATSKANZLEI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-luzern-staatskanzlei",
+  "description": {
+    "de": "Die Staatskanzlei unterstützt den Regierungsrat und den Kantonsrat in organisatorischer Hinsicht bei der Erfüllung der kantonalen Aufgaben und informiert die Öffentlichkeit über die Grundlagen, Organisation, Ziele und Tätigkeiten des Staates.",
+    "en": "",
+    "fr": "",
+    "it": "",
+    "rm": ""
+  },
+  "name": {
+    "de": "Staatskanzlei des Kantons Luzern",
+    "en": "State Chancellery of the Canton of Lucerne",
+    "fr": "Chancellerie d'État du canton de Lucerne",
+    "it": "Cancelleria di Stato del Cantone di Lucerna",
+    "rm": ""
+  },
+  "pref_label": {
+    "de": "Staatskanzlei (LU)",
+    "en": "State Chancellery (LU)",
+    "fr": "Chancellerie d'État (LU)",
+    "it": "Cancelleria di Stato (LU)",
+    "rm": ""
+  },
+  "homepage": "https://www.lu.ch/verwaltung/staatskanzlei"
+}

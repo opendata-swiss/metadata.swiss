@@ -1,0 +1,19 @@
+{
+  "id": "ch-postcom",
+  "identifier": "CH_POSTCOM",
+  "resource": "https://opendata.swiss/id/organization/ch-postcom",
+  "description": {},
+  "name": {
+    "de": "Eidgenössische Postkommission PostCom",
+    "en": "Federal Postal Services Commission PostCom",
+    "fr": "Commission fédérale de la poste PostCom",
+    "it": "Commissione federale delle poste PostCom"
+  },
+  "pref_label": {
+    "de": "Eidgenössische Postkommission PostCom",
+    "en": "Federal Postal Services Commission PostCom",
+    "fr": "Commission fédérale de la poste PostCom",
+    "it": "Commissione federale delle poste PostCom"
+  },
+  "homepage": null
+}

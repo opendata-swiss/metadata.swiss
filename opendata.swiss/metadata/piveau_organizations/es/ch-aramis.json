@@ -1,0 +1,19 @@
+{
+  "id": "ch-aramis",
+  "identifier": "CH_ARAMIS",
+  "resource": "https://opendata.swiss/id/organization/ch-aramis",
+  "description": {},
+  "name": {
+    "de": "ARAMIS",
+    "en": "ARAMIS",
+    "fr": "ARAMIS",
+    "it": "ARAMIS"
+  },
+  "pref_label": {
+    "de": "ARAMIS",
+    "en": "ARAMIS",
+    "fr": "ARAMIS",
+    "it": "ARAMIS"
+  },
+  "homepage": "https://www.aramis.admin.ch"
+}

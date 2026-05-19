@@ -1,0 +1,24 @@
+{
+  "id": "ch-snf",
+  "identifier": "CH_SNF",
+  "resource": "https://opendata.swiss/id/organization/ch-snf",
+  "description": {
+    "de": "Der Schweizerische Nationalfonds (SNF) fördert herausragende Forschung an Hochschulen und anderen Institutionen – von der Chemie über die Medizin bis zur Soziologie. Tausende von Teams schaffen Wissen für eine bessere Zukunft aller Menschen. Gemeinsam mit Partnern gestalten wir den Forschungsplatz Schweiz.",
+    "en": "The Swiss National Science Foundation (SNSF) funds excellent research at universities and other institutions – from chemistry to medicine to sociology. Thousands of teams are generating knowledge for a better future for all. Together with our partners, we play a key role in shaping research in Switzerland.",
+    "fr": "Le Fonds national suisse (FNS) soutient la recherche de haut niveau dans les hautes écoles et d’autres institutions – de la chimie à la sociologie en passant par la médecine. Des milliers d’équipes créent des connaissances pour un avenir meilleur. Avec nos partenaires, nous façonnons la place scientifique suisse.",
+    "it": "Il Fondo nazionale svizzero per la ricerca scientifica (FNS) promuove la ricerca d’eccellenza presso le scuole universitarie e altre istituzioni: dalla chimica alla sociologia passando per la medicina. Sono migliaia i gruppi di ricerca impegnati nel creare il sapere necessario per garantire un futuro migliore all’umanità. Con i nostri partner istituzionali forgiamo la ricerca svizzera."
+  },
+  "name": {
+    "de": "Schweizerischer Nationalfonds zur Förderung der wissenschaftlichen Forschung (SNF)",
+    "en": "Swiss National Science Foundation (SNSF)",
+    "fr": "Fonds national suisse de la recherche scientifique (FNS)",
+    "it": "Fondo nazionale svizzero per la ricerca scientifica (FNS)"
+  },
+  "pref_label": {
+    "de": "SNF",
+    "en": "SNSF",
+    "fr": "FNS",
+    "it": "FNS"
+  },
+  "homepage": "https://www.fns-it.ch"
+}

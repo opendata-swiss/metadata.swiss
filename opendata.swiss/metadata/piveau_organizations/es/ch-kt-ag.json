@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-ag",
+  "identifier": "CH_KT_AG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ag",
+  "description": {},
+  "name": {
+    "de": "Kanton Aargau AG",
+    "en": "Canton Aargau AG",
+    "fr": "Canton d'Argovie AG",
+    "it": "Canton Argovia AG"
+  },
+  "pref_label": {
+    "de": "AG",
+    "en": "AG",
+    "fr": "AG",
+    "it": "AG"
+  },
+  "homepage": null
+}

@@ -1,0 +1,27 @@
+{
+  "id": "ch-kt-luzern",
+  "identifier": "CH_KT_LUZERN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
+  "description": {
+    "de": "",
+    "en": "",
+    "fr": "",
+    "it": "",
+    "rm": ""
+  },
+  "name": {
+    "de": "Kanton Luzern LU",
+    "en": "Canton Luzern LU",
+    "fr": "Canton de Lucerne LU",
+    "it": "Canton Lucerna LU",
+    "rm": ""
+  },
+  "pref_label": {
+    "de": "LU",
+    "en": "LU",
+    "fr": "LU",
+    "it": "LU",
+    "rm": ""
+  },
+  "homepage": "https://www.lu.ch"
+}

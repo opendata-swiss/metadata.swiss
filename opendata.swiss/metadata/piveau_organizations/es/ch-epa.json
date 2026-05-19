@@ -1,0 +1,19 @@
+{
+  "id": "ch-epa",
+  "identifier": "CH_EPA",
+  "resource": "https://opendata.swiss/id/organization/ch-epa",
+  "description": {},
+  "name": {
+    "de": "Eidgenössisches Personalamt EPA",
+    "en": "Eidgenössisches Personalamt EPA",
+    "fr": "Office fédéral du personnel OFPER",
+    "it": "Ufficio federale del personale UFPER"
+  },
+  "pref_label": {
+    "de": "EPA",
+    "en": "EPA",
+    "fr": "OFPER",
+    "it": "UFPER"
+  },
+  "homepage": "https://www.epa.admin.ch"
+}

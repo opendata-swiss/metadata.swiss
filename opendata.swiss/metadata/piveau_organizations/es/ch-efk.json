@@ -1,0 +1,24 @@
+{
+  "id": "ch-efk",
+  "identifier": "CH_EFK",
+  "resource": "https://opendata.swiss/id/organization/ch-efk",
+  "description": {
+    "de": "Die Eidgenössische Finanzkontrolle EFK ist das Finanzaufsichtsorgan der Schweizerischen Eidgenossenschaft.",
+    "en": "The Swiss Federal Audit Office (SFAO) is the financial supervisory body of the Swiss Confederation.",
+    "fr": "Le Contrôle fédéral des finances (CDF) est l'organe de surveillance financière de la Confédération suisse.",
+    "it": "Il Controllo federale delle finanze (CDF) è l'organo di vigilanza finanziaria della Confederazione svizzera."
+  },
+  "name": {
+    "de": "Eidgenössische Finanzkontrolle (EFK)",
+    "en": "Swiss Federal Audit Office (SFAO)",
+    "fr": "Contrôle fédéral des finances (CDF)",
+    "it": "Controllo federale delle finanze (CDF)"
+  },
+  "pref_label": {
+    "de": "EFK",
+    "en": "SFAO",
+    "fr": "CDF",
+    "it": "CDF"
+  },
+  "homepage": "https://www.efk.admin.ch"
+}

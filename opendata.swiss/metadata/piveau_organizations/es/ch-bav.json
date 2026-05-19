@@ -1,0 +1,19 @@
+{
+  "id": "ch-bav",
+  "identifier": "CH_BAV",
+  "resource": "https://opendata.swiss/id/organization/ch-bav",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Verkehr (BAV)",
+    "en": "Federal Office of Transport (FOT)",
+    "fr": "Office fédéral des transports (OFT)",
+    "it": "Ufficio federale dei trasporti (UFT)"
+  },
+  "pref_label": {
+    "de": "BAV",
+    "en": "FOT",
+    "fr": "OFT",
+    "it": "UFT"
+  },
+  "homepage": "https://www.bav.admin.ch"
+}

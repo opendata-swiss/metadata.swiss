@@ -1,0 +1,19 @@
+{
+  "id": "ch-nabibl",
+  "identifier": "CH_NABIBL",
+  "resource": "https://opendata.swiss/id/organization/ch-nabibl",
+  "description": {},
+  "name": {
+    "de": "Schweizerische Nationalbibliothek (NB)",
+    "en": "Swiss National Library (NL)",
+    "fr": "Bibliothèque nationale suisse (BN)",
+    "it": "Biblioteca nazionale svizzera (BN)"
+  },
+  "pref_label": {
+    "de": "NB",
+    "en": "NL",
+    "fr": "BN",
+    "it": "BN"
+  },
+  "homepage": null
+}

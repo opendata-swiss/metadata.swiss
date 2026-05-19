@@ -1,0 +1,21 @@
+{
+  "id": "i14y-test-organisation",
+  "identifier": "i14y-test-organisation",
+  "resource": "https://opendata.swiss/id/organization/i14y-test-organisation",
+  "description": {},
+  "name": {
+    "de": "I14Y Test Organisation_de",
+    "en": "I14Y Test Organisation_en",
+    "fr": "I14Y Test Organisation_fr",
+    "it": "I14Y Test Organisation_it",
+    "rm": "I14Y Test Organisation_rm"
+  },
+  "pref_label": {
+    "de": "I14Y Test Organisation_de",
+    "en": "I14Y Test Organisation_en",
+    "fr": "I14Y Test Organisation_fr",
+    "it": "I14Y Test Organisation_it",
+    "rm": "I14Y Test Organisation_rm"
+  },
+  "homepage": null
+}

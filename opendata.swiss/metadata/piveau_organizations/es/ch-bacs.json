@@ -1,0 +1,19 @@
+{
+  "id": "ch-bacs",
+  "identifier": "CH_BACS",
+  "resource": "https://opendata.swiss/id/organization/ch-bacs",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Cybersicherheit (BACS)",
+    "en": "National Cyber Security Centre (NCSC)",
+    "fr": "Office fédéral de la cybersécurité (OFCS)",
+    "it": "Ufficio federale della cibersicurezza (UFCS)"
+  },
+  "pref_label": {
+    "de": "BACS",
+    "en": "NCSC",
+    "fr": "OFCS",
+    "it": "UFCS"
+  },
+  "homepage": "https://www.ncsc.admin.ch/"
+}

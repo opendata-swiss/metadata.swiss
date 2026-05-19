@@ -1,0 +1,19 @@
+{
+  "id": "ch-bit",
+  "identifier": "CH_BIT",
+  "resource": "https://opendata.swiss/id/organization/ch-bit",
+  "description": {},
+  "name": {
+    "de": "Bundesamt für Informatik und Telekommunikation (BIT)",
+    "en": "Federal Office of Information Technology, Systems and Telecommunication (FOITT)",
+    "fr": "Office fédéral de l'informatique et de la télécommunication (OFIT)",
+    "it": "Ufficio federale dell'informatica e della telecomunicazione (UFIT)"
+  },
+  "pref_label": {
+    "de": "BIT",
+    "en": "FOITT",
+    "fr": "OFIT",
+    "it": "UFIT"
+  },
+  "homepage": null
+}
