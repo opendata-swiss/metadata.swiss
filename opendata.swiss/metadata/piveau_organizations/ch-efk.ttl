@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-efk> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Eidgenössische Finanzkontrolle EFK ist das Finanzaufsichtsorgan der Schweizerischen Eidgenossenschaft."@de,
+        "The Swiss Federal Audit Office (SFAO) is the financial supervisory body of the Swiss Confederation."@en,
+        "Le Contrôle fédéral des finances (CDF) est l'organe de surveillance financière de la Confédération suisse."@fr,
+        "Il Controllo federale delle finanze (CDF) è l'organo di vigilanza finanziaria della Confederazione svizzera."@it ;
+    dcterms:identifier "CH_EFK" ;
+    skos:prefLabel "EFK"@de,
+        "SFAO"@en,
+        "CDF"@fr,
+        "CDF"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    foaf:homepage <https://www.efk.admin.ch> ;
+    foaf:name "Eidgenössische Finanzkontrolle (EFK)"@de,
+        "Swiss Federal Audit Office (SFAO)"@en,
+        "Contrôle fédéral des finances (CDF)"@fr,
+        "Controllo federale delle finanze (CDF)"@it .
+
+<https://www.efk.admin.ch> a foaf:Document .
+

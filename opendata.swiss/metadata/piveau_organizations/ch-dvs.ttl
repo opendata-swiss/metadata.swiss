@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-dvs> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_DVS" ;
+    skos:prefLabel "DVS"@de,
+        "DPS"@en,
+        "ANS"@fr,
+        "ADS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0224> ;
+    foaf:homepage <https://www.digitale-verwaltung-schweiz.ch> ;
+    foaf:name "Digitale Verwaltung Schweiz (DVS)"@de,
+        "Digital Public Services Switzerland (DPS)"@en,
+        "Administration numérique suisse (ANS)"@fr,
+        "Amministrazione digitale Svizzera (ADS)"@it .
+
+<https://www.digitale-verwaltung-schweiz.ch> a foaf:Document .
+

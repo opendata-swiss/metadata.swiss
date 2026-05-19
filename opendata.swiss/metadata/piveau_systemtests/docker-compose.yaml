@@ -3,7 +3,7 @@ services:
   # docker-compose-hub.yml #
   ##########################
   piveau-hub-repo:
-    image: piveau/hub-repo:3.5.1
+    image: piveau/hub-repo:3.5.2
 
     restart: unless-stopped
     logging:

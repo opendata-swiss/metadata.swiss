@@ -73,6 +73,12 @@
       "to_dataset": "Al set di dati",
       "to_search": "Alla ricerca"
     },
+    "subscribe": {
+      "header": "Iscriviti",
+      "to_dataset": "Al set di dati",
+      "to_category": "Alla categoria",
+      "to_publisher": "All'editore"
+    },
     "showcase": {
       "type": {
         "header": "Tipo di contenuto"

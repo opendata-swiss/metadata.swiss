@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-smn> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_SMN" ;
+    skos:prefLabel "SNM"@de,
+        "SNM"@en,
+        "MNS"@fr,
+        "MNS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.nationalmuseum.ch> ;
+    foaf:name "Schweizerisches Nationalmuseum (SNM)"@de,
+        "Swiss National Museum (SNM)"@en,
+        "Musée national suisse (MNS)"@fr,
+        "Museo nazionale svizzero (MNS)"@it .
+
+<https://www.nationalmuseum.ch> a foaf:Document .
+

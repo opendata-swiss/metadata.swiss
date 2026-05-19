@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-baspo> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BASPO" ;
+    skos:prefLabel "BASPO"@de,
+        "BASPO"@en,
+        "BASPO"@fr,
+        "BASPO"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    foaf:name "Bundesamt für Sport (BASPO)"@de,
+        "Federal Office of Sport (BASPO)"@en,
+        "Office fédéral de Sport (BASPO)"@fr,
+        "Ufficio federale di Sport (BASPO)"@it .
+

@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-babs> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BABS" ;
+    skos:prefLabel "BABS"@de,
+        "FOCP"@en,
+        "OFPP"@fr,
+        "UFPP"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    foaf:homepage <https://www.babs.admin.ch> ;
+    foaf:name "Bundesamt für Bevölkerungsschutz (BABS)"@de,
+        "Federal Office for Civil Protection (FOCP)"@en,
+        "Office fédéral de la protection de la population (OFPP)"@fr,
+        "Ufficio federale della protezione della popolazione (UFPP)"@it .
+
+<https://www.babs.admin.ch> a foaf:Document .
+

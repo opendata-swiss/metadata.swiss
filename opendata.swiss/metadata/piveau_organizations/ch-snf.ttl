@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-snf> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Schweizerische Nationalfonds (SNF) fördert herausragende Forschung an Hochschulen und anderen Institutionen – von der Chemie über die Medizin bis zur Soziologie. Tausende von Teams schaffen Wissen für eine bessere Zukunft aller Menschen. Gemeinsam mit Partnern gestalten wir den Forschungsplatz Schweiz."@de,
+        "The Swiss National Science Foundation (SNSF) funds excellent research at universities and other institutions – from chemistry to medicine to sociology. Thousands of teams are generating knowledge for a better future for all. Together with our partners, we play a key role in shaping research in Switzerland."@en,
+        "Le Fonds national suisse (FNS) soutient la recherche de haut niveau dans les hautes écoles et d’autres institutions – de la chimie à la sociologie en passant par la médecine. Des milliers d’équipes créent des connaissances pour un avenir meilleur. Avec nos partenaires, nous façonnons la place scientifique suisse."@fr,
+        "Il Fondo nazionale svizzero per la ricerca scientifica (FNS) promuove la ricerca d’eccellenza presso le scuole universitarie e altre istituzioni: dalla chimica alla sociologia passando per la medicina. Sono migliaia i gruppi di ricerca impegnati nel creare il sapere necessario per garantire un futuro migliore all’umanità. Con i nostri partner istituzionali forgiamo la ricerca svizzera."@it ;
+    dcterms:identifier "CH_SNF" ;
+    skos:prefLabel "SNF"@de,
+        "SNSF"@en,
+        "FNS"@fr,
+        "FNS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0110> ;
+    foaf:homepage <https://www.fns-it.ch> ;
+    foaf:name "Schweizerischer Nationalfonds zur Förderung der wissenschaftlichen Forschung (SNF)"@de,
+        "Swiss National Science Foundation (SNSF)"@en,
+        "Fonds national suisse de la recherche scientifique (FNS)"@fr,
+        "Fondo nazionale svizzero per la ricerca scientifica (FNS)"@it .
+
+<https://www.fns-it.ch> a foaf:Document .
+

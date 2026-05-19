@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bag> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das BAG engagiert sich für die Gesundheit der Bevölkerung. Es ist für die nationale Gesundheitspolitik sowie die Kranken- und Unfallversicherung zuständig. Und es macht sich auch auf internationaler Ebene für Gesundheitsthemen stark."@de,
+        "The Federal Office of Public Health (FOPH) is dedicated to the health of the Swiss population. It’s responsible for national healthcare policy and for health and accident insurance; and it promotes healthcare issues and interests on the international stage."@en,
+        "L’OFSP s’engage pour la santé de la population. Responsable de la politique nationale en matière de santé publique ainsi que de l’assurance maladie et accidents, il œuvre également au niveau international en faveur des questions de santé."@fr,
+        "L’UFSP si impegna per la salute della popolazione. È competente per la politica nazionale della sanità nonché per l’assicurazione malattie e infortuni. Inoltre si prodiga anche a livello internazionale per temi riguardanti la salute."@it ;
+    dcterms:identifier "CH_BAG" ;
+    skos:prefLabel "BAG"@de,
+        "FOPH"@en,
+        "OFSP"@fr,
+        "UFSP"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    foaf:homepage <https://www.bag.admin.ch> ;
+    foaf:name "Bundesamt für Gesundheit "@de,
+        "Federal Office of Public Health (FOPH)"@en,
+        "Office fédéral de la santé publique (OFSP)"@fr,
+        "Ufficio federale della sanità pubblica (UFSP)"@it .
+
+<https://www.bag.admin.ch> a foaf:Document .
+

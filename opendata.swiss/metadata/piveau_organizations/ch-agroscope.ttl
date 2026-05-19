@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-agroscope> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_AGROSCOPE" ;
+    skos:prefLabel "Agroscope"@de,
+        "Agroscope"@en,
+        "Agroscope"@fr,
+        "Agroscope"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    foaf:homepage <https://www.agroscope.admin.ch> ;
+    foaf:name "Agroscope"@de,
+        "Agroscope"@en,
+        "Agroscope"@fr,
+        "Agroscope"@it .
+
+<https://www.agroscope.admin.ch> a foaf:Document .
+

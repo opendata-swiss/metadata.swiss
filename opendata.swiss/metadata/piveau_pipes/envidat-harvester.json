@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://os.zhdk.cloud.switch.ch/performance-test/envidat_catalog.xml",
+            "address": "https://os.zhdk.cloud.switch.ch/opendataswiss-catalog/envidat_catalog.xml",
             "catalogue": "envidat-harvester",
             "preProcessing": true,
             "accept": "application/rdf+xml",
