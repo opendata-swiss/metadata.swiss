@@ -54,6 +54,7 @@ export default defineNuxtConfig({
         siteId: '',
       },
     },
+    appUrl: 'http://localhost:3000/',
     showcases: {
       maxImageWidth: 900,
     },
@@ -75,7 +76,6 @@ export default defineNuxtConfig({
         hmac_key: '',
       },
       template: {
-        datasetPageUrl: 'http://localhost:3000/de/datasets/',
         ids: {
           de: 5,
           fr: 6,

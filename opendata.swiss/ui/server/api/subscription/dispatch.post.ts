@@ -34,6 +34,7 @@ export default defineEventHandler(async (event) => {
       piveauHubSearchUrl: baseUrl,
     },
     listmonk: listmonkConfig,
+    appUrl,
   } = useRuntimeConfig()
   const body = await readFormData(event)
   const digest = body.get('digest')?.toString()
@@ -72,13 +73,13 @@ export default defineEventHandler(async (event) => {
   let batch: Promise<void>[] = []
   for (const subscriber of subscribers) {
     const language = subscriber.attribs?.language || 'de'
-    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, listmonkConfig.template.datasetPageUrl)
+    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)
     unsubscribeLink.searchParams.set('id', subscriber.id.toString())
     unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString()))
 
     const data: TemplateData = {
       unsubscribeLink: unsubscribeLink.toString(),
-      datasetPageBaseUrl: listmonkConfig.template.datasetPageUrl,
+      datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
       datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
         id: dataset.id,
         title: dataset.title[language] || dataset.id,
