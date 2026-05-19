@@ -42,6 +42,14 @@ jobs:
           repository: ${{ vars.CMS_REPO_TEST }}
           path: opendata.swiss/ui/content
 
+      - name: Prepare piveau backend env
+        working-directory: opendata.swiss/metadata
+        run: cp .env.example .env
+
+      - name: Start listmonk
+        run: docker compose up -d listmonk-app listmonk-init mailpit
+        working-directory: opendata.swiss/metadata
+
       - uses: fabasoad/setup-prolog-action@v1
 
       - uses: actions/setup-node@v6
@@ -51,7 +59,7 @@ jobs:
       - run: npm ci
         working-directory: opendata.swiss/ui
 
-      - run: npm run dev &
+      - run: sh ../metadata/listmonk/install.sh; npm run dev &
         working-directory: opendata.swiss/ui
         env:
           NUXT_API_TUNER_TESTS: true

@@ -1,10 +1,17 @@
 const BASIC_AUTH_USERNAME = 'api-tuner'
 const BASIC_AUTH_PASSWORD = 'e2e-tests'
 
+declare module 'nitropack/types' {
+  interface NitroRouteRules {
+    basicAuth?: boolean
+  }
+}
+
 export default defineEventHandler(async (event) => {
   const { apiTunerTests } = useRuntimeConfig()
 
-  if (!(event.path === '/api/showcases' && event.method === 'POST')) {
+  const routeRules = getRouteRules(event)
+  if (!routeRules.basicAuth || !isMethod(event, 'POST')) {
     return
   }
 
@@ -18,6 +25,7 @@ export default defineEventHandler(async (event) => {
     if (username === BASIC_AUTH_USERNAME && password === BASIC_AUTH_PASSWORD) {
       user = {
         name: username,
+        email: 'john@example.com',
       }
     }
     else {
