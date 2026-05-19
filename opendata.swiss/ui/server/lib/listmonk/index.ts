@@ -5,7 +5,10 @@ interface Envelope<T> {
   data: T
 }
 
+export type Frequency = 'daily' | 'weekly'
+
 interface Attribs extends Record<string, unknown> {
+  frequency?: Frequency
   datasets?: string[]
   categories?: string[]
   organisations?: string[]

@@ -51,6 +51,7 @@ export default defineEventHandler(async (event) => {
   searchUrl.searchParams.set('limit', '100')
   searchUrl.searchParams.set('filters', 'dataset')
   searchUrl.searchParams.set('minDate', minDate)
+  searchUrl.searchParams.set('dateType', 'modified')
   const searchRes = await fetch(searchUrl)
 
   if (!searchRes.ok) {
@@ -70,11 +71,11 @@ export default defineEventHandler(async (event) => {
   let emailsFailed = 0
   let batch: Promise<void>[] = []
   for (const subscriber of subscribers) {
-    const unsubscribeLink = new URL('/subscription/preferences', listmonkConfig.template.datasetPageUrl)
+    const language = subscriber.attribs?.language || 'de'
+    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, listmonkConfig.template.datasetPageUrl)
     unsubscribeLink.searchParams.set('id', subscriber.id.toString())
     unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString()))
 
-    const language = subscriber.attribs?.language || 'de'
     const data: TemplateData = {
       unsubscribeLink: unsubscribeLink.toString(),
       datasetPageBaseUrl: listmonkConfig.template.datasetPageUrl,

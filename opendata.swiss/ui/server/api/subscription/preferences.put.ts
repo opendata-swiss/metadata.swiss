@@ -1,3 +1,4 @@
+import type { Frequency } from '../../lib/listmonk'
 import listmonk from '../../lib/listmonk'
 import type { AppLanguage } from '~/constants/langages'
 import { validatePreferencesToken } from '#server/lib/listmonk/token'
@@ -26,19 +27,22 @@ export default defineEventHandler(async (event) => {
       case 'language':
         subscriber.attribs.language = formField[1] as AppLanguage
         break
+      case 'frequency':
+        subscriber.attribs.frequency = formField[1] as Frequency
+        break
       default:
         console.warn(`Unknown form field: ${formField[0]}`)
         break
     }
-
-    const updated = await Listmonk.subscribers.update(subscriber.id, {
-      attribs: subscriber.attribs,
-    })
-    if (!updated.ok) {
-      console.error(await updated.text())
-      throw new Error(`Failed to update subscriber ${id}: ${updated.status} ${updated.statusText}`)
-    }
-
-    return null
   }
+
+  const updated = await Listmonk.subscribers.update(subscriber.id, {
+    attribs: subscriber.attribs,
+  })
+  if (!updated.ok) {
+    console.error(await updated.text())
+    throw new Error(`Failed to update subscriber ${id}: ${updated.status} ${updated.statusText}`)
+  }
+
+  return null
 })
