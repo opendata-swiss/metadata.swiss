@@ -121,6 +121,14 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_REALM`
 - `NUXT_MATOMO_URL`
 - `NUXT_MATOMO_SITE_ID`
+- `NUXT_LISTMONK_API_URL`
+- `NUXT_LISTMONK_API_USER`
+- `NUXT_LISTMONK_API_TOKEN`
+- `NUXT_LISTMONK_TEMPLATE_DATASET_PAGE_URL`
+- `NUXT_LISTMONK_TEMPLATE_IDS_DE`
+- `NUXT_LISTMONK_TEMPLATE_IDS_FR`
+- `NUXT_LISTMONK_TEMPLATE_IDS_IT`
+- `NUXT_LISTMONK_TEMPLATE_IDS_EN`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 

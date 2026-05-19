@@ -71,6 +71,15 @@ export default defineNuxtConfig({
         user: '',
         token: process.env.LISTMONK_ADMIN_API_TOKEN,
       },
+      template: {
+        datasetPageUrl: 'http://localhost:3000/de/datasets/',
+        ids: {
+          de: 5,
+          fr: 6,
+          it: 7,
+          en: 8,
+        },
+      },
     },
   },
   dir: {

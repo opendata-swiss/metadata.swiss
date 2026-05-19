@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import type * as Linkmonk from './listmonk.types'
+import listmonk from './listmonk'
 import { getLanguage } from '#server/lib/locale'
 
 type PayloadItem = {
@@ -22,23 +22,12 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
       })
     }
 
-    const { listmonk: { api: listmonk } } = useRuntimeConfig()
+    const { listmonk: config } = useRuntimeConfig()
 
-    const authorization = {
-      Authorization: `token ${listmonk.user}:${listmonk.token}`,
-    }
+    const Listmonk = listmonk(config)
+    const subscribers = await Listmonk.subscribers.list({ email })
 
-    const getSubscribers = await fetch(`${listmonk.url}api/subscribers?query=subscribers.email = '${email}'`, {
-      headers: authorization,
-    })
-
-    if (!getSubscribers.ok) {
-      throw new Error(`Failed to fetch subscribers: ${getSubscribers.status} ${getSubscribers.statusText}`)
-    }
-
-    const subscribers: Linkmonk.Envelope<Linkmonk.Subscribers> = await getSubscribers.json()
-
-    const subscriber = subscribers.data.results.pop() || {
+    const subscriber = subscribers.pop() || {
       name,
       email,
       status: 'enabled',
@@ -51,31 +40,17 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
 
     let res: Response
     if ('id' in subscriber) {
-      res = await fetch(`${listmonk.url}api/subscribers/${subscriber.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          attribs: {
-            [key]: [...new Set([
-              ...(subscriber.attribs?.[key] || []),
-              ...values,
-            ])],
-          },
-        }),
-        headers: {
-          ...authorization,
-          'content-type': 'application/json',
+      res = await Listmonk.subscribers.update(subscriber.id, {
+        attribs: {
+          [key]: [...new Set([
+            ...(subscriber.attribs?.[key] || []),
+            ...values,
+          ])],
         },
       })
     }
     else {
-      res = await fetch(`${listmonk.url}api/subscribers`, {
-        method: 'POST',
-        body: JSON.stringify(subscriber),
-        headers: {
-          ...authorization,
-          'content-type': 'application/json',
-        },
-      })
+      res = await Listmonk.subscribers.create(subscriber)
     }
 
     if (!res.ok) {
