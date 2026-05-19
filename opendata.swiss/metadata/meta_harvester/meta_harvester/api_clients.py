@@ -174,3 +174,32 @@ class CkanClient:
 
         return result
 
+class I14YClient:
+
+    AGENT_LIST_URL = "https://input-backend.i14y.c.bfs.admin.ch/api/Agent"
+
+    def get_organizations(self) -> list[dict]:
+        """Get all organizations from input-backend.i14y.c.bfs.admin.ch
+
+        Returns
+            list[dict]: I14Y organizations
+        """
+
+        session = requests_retry_session()
+        request = {}
+        response = session.get(self.AGENT_LIST_URL, params=request)
+        response.raise_for_status()
+        organizations = response.json()
+
+        # identifiers look like this: "CH_ZAS", "CHE-229.707.417", ...
+        # we create a URL friendly slug for each identifier, e.g. "CH_ZAS" -> "ch-zas", "CHE-229.707.417" -> "che-229-707-417"
+        # TODO: this is temporary solution until I14Y provides a slug field in the API response
+        for org in organizations:
+            identifier = org.get("identifier")
+            if identifier:
+                slug = identifier.lower().replace("_", "-").replace(".", "-")
+                org["slug"] = slug
+            else:
+                logger.warning(f"Organization with missing 'identifier' field: {org}")
+
+        return organizations

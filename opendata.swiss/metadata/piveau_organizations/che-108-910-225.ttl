@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-108-910-225> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Centre hospitalier universitaire vaudois"@en ;
+    dcterms:identifier "CHE-108.910.225" ;
+    skos:prefLabel "Centre hospitalier universitaire vaudois"@en ;
+    foaf:homepage <https://www.chuv.ch> ;
+    foaf:name "Centre hospitalier universitaire vaudois"@en .
+
+<https://www.chuv.ch> a foaf:Document .
+

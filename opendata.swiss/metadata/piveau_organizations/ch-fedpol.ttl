@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-fedpol> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_FEDPOL" ;
+    skos:prefLabel "fedpol"@de,
+        "fedpol"@en,
+        "fedpol"@fr,
+        "fedpol"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    foaf:name "Bundesamt für Polizei (fedpol)"@de,
+        "Federal Office of Polizei (fedpol)"@en,
+        "Office fédéral de Polizei (fedpol)"@fr,
+        "Ufficio federale di Polizei (fedpol)"@it .
+

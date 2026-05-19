@@ -9,6 +9,7 @@
 - `piveau_profile/`: Piveau profile
 - `piveau_scripts/`: Piveau scripts
 - `piveau_vocabularies/`: Piveau vocabularies
+- `piveau_organizations/`: Organizations
 
 ### Other resources
 
@@ -68,6 +69,27 @@ In case you want to remove them, run:
 To install the default vocabularies, open the shell at [http://localhost:8085/shell.html](http://localhost:8085/shell.html) and run `installVocabularies`.
 This could take some minutes.
 
+
+#### Organizations
+
+To create the organizations, run:
+
+```sh
+./scripts/organizations.sh
+```
+
+To remove all organizations, run:
+
+```sh
+./scripts/organizations_delete.sh
+```
+
+To remove a single organizations (for example, `ch-bafu`), run:
+```sh
+./scripts/organizations_delete.sh ch-bafu
+```
+
+
 #### Catalogues and Harvesting
 
 To create the catalogues, run:
@@ -109,7 +131,7 @@ To remove a single catalogue (for example, `bl-dcat`), run:
 
 #### Listmonk
 
-By default, the local Listmonk instance is configured with `admin/admin` superuser credentials and an API user `admin-api`.
+By default, the local Listmonk instance is configured with `admin/password` superuser credentials and an API user `admin-api`.
 These can be changed by changing envirnment variables in `.env` file:
 
 ```dotenv

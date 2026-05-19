@@ -1,0 +1,23 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-108-904-325> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das USZ steht jeden Tag allen Menschen offen und bietet medizinische Grundversorgung und Spitzenmedizin an zentraler Lage in Zürich."@de,
+        "The USZ is open to everyone every day and provides primary health care and cutting-edge medicine at the heart of Zurich."@en ;
+    dcterms:identifier "CHE-108.904.325" ;
+    skos:prefLabel "Universitätsspital Zürich"@de,
+        "USZ"@en,
+        "USZ"@fr,
+        "USZ"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0234> ;
+    foaf:homepage <https://www.usz.ch> ;
+    foaf:name "Universitätsspital Zürich"@de,
+        "Universitätsspital Zürich"@en,
+        "Universitätsspital Zürich"@fr,
+        "Universitätsspital Zürich"@it .
+
+<https://www.usz.ch> a foaf:Document .
+

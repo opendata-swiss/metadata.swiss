@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-swissdrg> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die SwissDRG AG ist eine gemeinsame Institution der Leistungserbringer, der Versicherer und der Kantone im schweizerischen Gesundheitssystem."@de,
+        "SwissDRG AG is a joint institution of service providers, insurers and cantons in the Swiss healthcare system."@en,
+        "SwissDRG SA est une institution commune des fournisseurs de prestations, des assureurs et des cantons dans le système de santé Suisse."@fr,
+        "La SwissDRG SA è un’istituzione comune dei fornitori di prestazioni, degli assicuratori e dei cantoni nell’ambito del sistema sanitario nazionale svizzero."@it ;
+    dcterms:identifier "CH_SWISSDRG" ;
+    skos:prefLabel "SwissDRG AG"@de,
+        "SwissDRG AG"@en,
+        "SwissDRG SA"@fr,
+        "SwissDRG AG"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0106> ;
+    foaf:homepage <https://www.swissdrg.org> ;
+    foaf:name "SwissDRG AG"@de,
+        "SwissDRG AG"@en,
+        "SwissDRG SA"@fr,
+        "SwissDRG AG"@it .
+
+<https://www.swissdrg.org> a foaf:Document .
+

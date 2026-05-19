@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-ehra> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_EHRA" ;
+    skos:prefLabel "EHRA"@de,
+        "EHRA"@en,
+        "OFRC"@fr,
+        "UFRC"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.bj.admin.ch/bj/de/home/wirtschaft/handelsregister.html> ;
+    foaf:name "Eidgenössisches Amt für das Handelsregister (EHRA)"@de,
+        "Federal Commercial Registry Office (EHRA)"@en,
+        "Office fédéral du registre du commerce (OFRC)"@fr,
+        "Ufficio federale del registro di commercio (UFRC)"@it .
+
+<https://www.bj.admin.ch/bj/de/home/wirtschaft/handelsregister.html> a foaf:Document .
+

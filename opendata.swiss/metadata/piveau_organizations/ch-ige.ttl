@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-ige> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_IGE" ;
+    skos:prefLabel "IGE"@de,
+        "IPI"@en,
+        "IPI"@fr,
+        "IPI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    foaf:name "Eidgenössisches Institut für Geistiges Eigentum (IGE)"@de,
+        "Swiss Federal Institute of Intellectual Property (IPI)"@en,
+        "Institut Fédéral de la Propriété Intellectuelle (IPI)"@fr,
+        "Istituto Federale della Proprietà Intellettuale (IPI)"@it .
+

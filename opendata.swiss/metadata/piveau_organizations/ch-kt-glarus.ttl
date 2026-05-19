@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-glarus> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_KT_GLARUS" ;
+    skos:prefLabel "GL"@de,
+        "GL"@en,
+        "GL"@fr,
+        "GL"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.gl.ch> ;
+    foaf:name "Kanton Glarus GL"@de,
+        "Canton Glarus GL"@en,
+        "Canton de Glaris GL"@fr,
+        "Canton Glarona GL"@it .
+
+<https://www.gl.ch> a foaf:Document .
+

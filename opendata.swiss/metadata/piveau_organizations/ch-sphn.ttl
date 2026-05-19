@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-sphn> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_SPHN" ;
+    skos:prefLabel "Swiss Personalized Health Network"@de,
+        "Swiss Personalized Health Network"@en,
+        "Swiss Personalized Health Network"@fr,
+        "Swiss Personalized Health Network"@it ;
+    foaf:name "Swiss Personalized Health Network"@de,
+        "Swiss Personalized Health Network"@en,
+        "Swiss Personalized Health Network"@fr,
+        "Swiss Personalized Health Network"@it .
+

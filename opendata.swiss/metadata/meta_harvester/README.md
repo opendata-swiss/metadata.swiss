@@ -58,4 +58,13 @@ python -m meta_harvester generate-all-pipes
 
 ---
 
+### `generate-all-organizations`
 
+Fetches all organizations from I14Y and generates the organization definition files (e.g., `ch-bafu.ttl`) in the `piveau_organizations/` directory. 
+
+**Usage:**
+```bash
+python -m meta_harvester generate-all-organizations
+```
+
+---

@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-nkrs> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_NKRS" ;
+    skos:prefLabel "Nationale Krebsregistrierungsstelle (NKRS)"@de,
+        "National Agency for Cancer Registration (NACR)"@en,
+        "Organe national d'enregistrement du cancer (ONEC)"@fr,
+        "Servizio nazionale di registrazione dei tumori (SNRT)"@it ;
+    foaf:name "Nationale Krebsregistrierungsstelle (NKRS)"@de,
+        "National Agency for Cancer Registration (NACR)"@en,
+        "Organe national d'enregistrement du cancer (ONEC)"@fr,
+        "Servizio nazionale di registrazione dei tumori (SNRT)"@it .
+

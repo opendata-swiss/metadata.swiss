@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-stadt-biel-bienne> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_STADT_BIEL_BIENNE" ;
+    skos:prefLabel "Stadt Biel"@de,
+        "City of Biel"@en,
+        "Ville de Bienne"@fr,
+        "citta di Bienne"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0223> ;
+    foaf:homepage <https://www.biel-bienne.ch/> ;
+    foaf:name "Stadt Biel"@de,
+        "City of Biel"@en,
+        "Ville de Bienne"@fr,
+        "citta di Bienne"@it .
+
+<https://www.biel-bienne.ch/> a foaf:Document .
+

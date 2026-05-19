@@ -1,0 +1,23 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-luzern-immobilien> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Dienststelle Immobilien ist das Immobilien-Kompetenzzentrum des Kantons Luzern. Sie vertritt als Eigentümerin und Bauherrin die Interessen des Kantons Luzern und betreibt ein innovatives und nachhaltiges Immobilienmanagement."@de ;
+    dcterms:identifier "CH_KT_LUZERN_IMMOBILIEN" ;
+    skos:prefLabel "Immobilien (LU)"@de,
+        "Real Estate (LU)"@en,
+        "Immobilier (LU)"@fr,
+        "Immobiliare (LU)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-luzern> ;
+    foaf:homepage <https://www.immobilien.lu.ch> ;
+    foaf:name "Dienststelle Immobilien Kanton Luzern"@de,
+        "Real Estate Office of the Canton of Lucerne"@en,
+        "Service immobilier du canton de Lucerne"@fr,
+        "Servizio immobiliare del Cantone di Lucerna"@it .
+
+<https://www.immobilien.lu.ch> a foaf:Document .
+

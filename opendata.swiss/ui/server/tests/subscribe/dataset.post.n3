@@ -11,8 +11,8 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     a tuner:Request ;
       tuner:url </api/subscribe/dataset> ;
       tuner:method "POST" ;
-      tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
-      tuner:query ( "dataset" "dataset1" ) ;
+      tuner:basicAuth ( "api-tuner" "e2e-tests" ) ;
+      tuner:form ( "dataset" "dataset1" ) ;
   ] ;
   <#requestToVerify> [
     a tuner:Request ;
@@ -31,5 +31,37 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?verified tuner:http_code 200 .
     ?verified tuner:body ?subscriber .
     ?verified tuner:jsonPath ( "$.data.attribs.datasets" "dataset1" string:contains ).
+  } ;
+.
+
+<#newSubscriber>
+  a earl:TestCase ;
+  rdfs:label "Subscribe a new subscriber to dataset" ;
+  <#requestToSubmit> [
+    a tuner:Request ;
+      tuner:url </api/subscribe/dataset> ;
+      tuner:method "POST" ;
+      tuner:basicAuth ( "jane" "foobar" ) ;
+      tuner:form ( "dataset" "dataset1" ) ;
+  ] ;
+  <#requestToVerify> [
+    a tuner:Request ;
+      tuner:url <http://localhost:9000/api/subscribers> ;
+      tuner:method "GET" ;
+      tuner:header ( "Authorization" "token admin-api:$LISTMONK_ADMIN_API_TOKEN" ) ;
+      tuner:query ( "query" "subscribers.email = 'jane@example.com'" ) ;
+  ] ;
+  tuner:formula {
+    <#newSubscriber> <#requestToSubmit> ?req .
+    ?req tuner:response ?submitted .
+    ?submitted tuner:http_code 200 .
+
+    <#newSubscriber> <#requestToVerify> ?req1 .
+    ?req1 tuner:response ?verified .
+
+    ?verified tuner:http_code 200 .
+    ?verified tuner:body ?subscriber .
+    ?verified tuner:jsonPath ( "$.data.results[0].email" "jane@example.com" ).
+    ?verified tuner:jsonPath ( "$.data.results[0].attribs.datasets" "dataset1" string:contains ).
   } ;
 .

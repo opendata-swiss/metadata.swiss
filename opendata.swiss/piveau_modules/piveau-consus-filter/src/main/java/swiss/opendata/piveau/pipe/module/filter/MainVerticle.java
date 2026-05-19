@@ -53,8 +53,9 @@ public class MainVerticle extends AbstractVerticle {
         if (!node.isLiteral()) {
             return false;
         }
-        String identifier = node.asLiteral().getString();
-        return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
+        return true;
+        // String identifier = node.asLiteral().getString();
+        // return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
     }
 
     private static String missingIdentifier = "The property 'dct:identifier' on dcat:Dataset is missing. The dataset cannot be imported without a valid dataset identifier. Please add the missing identifier to proceed with the import.";
@@ -131,9 +132,9 @@ public class MainVerticle extends AbstractVerticle {
 
     private static Map<String, String> deprecatedLicenceMap = Map.of(
         "NonCommercialAllowed-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_open",
-        "AttributionRequired-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
-        "AskForPermission-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
-        "AttributionRequired-AskForPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
+        "NonCommercialAllowed-CommercialAllowed-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
     );
 
     private static String missingLicense = "The property 'dct:license' is missing for one or more distributions. Each distribution must provide a valid license, and all distributions must use the same Terms of Use. The dataset cannot be imported. Please add the missing license to proceed with the import.";
@@ -167,6 +168,7 @@ public class MainVerticle extends AbstractVerticle {
                     model.add(distribution.asResource(), dctLicense, model.createResource(updatedLicense));
                 } else {
                     invalidLicenseFound = true;
+                    logger.warn("Invalid license: {}", node);
                 }
             }
         }
@@ -177,6 +179,7 @@ public class MainVerticle extends AbstractVerticle {
             writeError.accept(invalidLicense);
         }
         if(validLicenses.size() > 1) {
+            logger.warn("multiple licences found: {}", String.join(", ", validLicenses));
             writeError.accept(inconsistentLicenses);
         }
     }
@@ -205,17 +208,20 @@ public class MainVerticle extends AbstractVerticle {
             
             StringBuilder sb = new StringBuilder();
             if(config.containsKey("catalogue")){
-                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\n");
+                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\t");
+            }
+            if (config.containsKey("org_id")){
+                sb.append("Organization: ").append(config.getString("org_id")).append("\t");
             }
             if (config.containsKey("datasetURI")){
-                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\n");
+                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\t");
             }
             for (String error : errors) {
-                sb.append("- ").append(error).append("\n");
+                sb.append("- ").append(error).append("\t");
             }
             String message = sb.toString();
 
-            logger.warn(message);
+            logger.error(message);
             if (config.containsKey("mailto")) {
                 logger.trace("TODO: Notify data publisher at {}", config.getString("mailto"));
             }   

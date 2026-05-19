@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bit> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BIT" ;
+    skos:prefLabel "BIT"@de,
+        "FOITT"@en,
+        "OFIT"@fr,
+        "UFIT"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    foaf:name "Bundesamt für Informatik und Telekommunikation (BIT)"@de,
+        "Federal Office of Information Technology, Systems and Telecommunication (FOITT)"@en,
+        "Office fédéral de l'informatique et de la télécommunication (OFIT)"@fr,
+        "Ufficio federale dell'informatica e della telecomunicazione (UFIT)"@it .
+

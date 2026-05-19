@@ -11,7 +11,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:url </api/subscribe/category> ;
       tuner:method "POST" ;
       tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
-      tuner:query ( "category" "INTR" ) ;
+      tuner:form ( "category" "INTR" ) ;
   ] ;
   <#requestToVerify> [
     a tuner:Request ;
@@ -31,4 +31,24 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?verified tuner:body ?subscriber .
     ?verified tuner:jsonPath ( "$.data.attribs.categories" "INTR" string:contains ).
   } ;
+.
+
+<#subscribeWithReferer>
+  a earl:TestCase ;
+  rdfs:label "Subscribe to category" ;
+  <#request> [
+    a tuner:Request ;
+      tuner:url </api/subscribe/category> ;
+      tuner:method "POST" ;
+      tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
+      tuner:header ( "Referer" "http://localhost:3000/de/datasets/test" ) ;
+      tuner:form ( "category" "INTR" ) ;
+  ] ;
+  tuner:formula {
+    <#subscribeWithReferer> <#request> ?req .
+    ?req tuner:response ?res .
+
+    ?res tuner:http_code 302 .
+    ?res tuner:header ( "Location" "http://localhost:3000/de/datasets/test" ) .
+ } ;
 .

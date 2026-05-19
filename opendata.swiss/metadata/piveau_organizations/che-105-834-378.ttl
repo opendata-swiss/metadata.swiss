@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/che-105-834-378> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Universitats-Kinderspital Zurich"@en ;
+    dcterms:identifier "CHE-105.834.378" ;
+    skos:prefLabel "Universitats-Kinderspital Zurich"@en ;
+    foaf:homepage <https://www.kispi.uzh.ch> ;
+    foaf:name "Universitats-Kinderspital Zurich"@en .
+
+<https://www.kispi.uzh.ch> a foaf:Document .
+

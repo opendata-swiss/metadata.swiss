@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-epa> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_EPA" ;
+    skos:prefLabel "EPA"@de,
+        "EPA"@en,
+        "OFPER"@fr,
+        "UFPER"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.epa.admin.ch> ;
+    foaf:name "Eidgenössisches Personalamt EPA"@de,
+        "Eidgenössisches Personalamt EPA"@en,
+        "Office fédéral du personnel OFPER"@fr,
+        "Ufficio federale del personale UFPER"@it .
+
+<https://www.epa.admin.ch> a foaf:Document .
+

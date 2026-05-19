@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-seco> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_SECO" ;
+    skos:prefLabel "Staatssekretariat für Wirtschaft SECO"@de,
+        "State Secretariat for Economic Affairs SECO"@en,
+        "Secrétariat d'État à l'économie SECO"@fr,
+        "Segreteria di Stato dell'economia SECO"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    foaf:name "Staatssekretariat für Wirtschaft SECO"@de,
+        "State Secretariat for Economic Affairs SECO"@en,
+        "Secrétariat d'État à l'économie SECO"@fr,
+        "Segreteria di Stato dell'economia SECO"@it .
+
