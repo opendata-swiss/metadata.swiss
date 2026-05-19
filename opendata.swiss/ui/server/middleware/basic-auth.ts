@@ -1,5 +1,13 @@
-const BASIC_AUTH_USERNAME = 'api-tuner'
-const BASIC_AUTH_PASSWORD = 'e2e-tests'
+const users: Record<string, { password: string, email: string }> = {
+  'api-tuner': {
+    password: 'e2e-tests',
+    email: 'john@example.com',
+  },
+  'jane': {
+    password: 'foobar',
+    email: 'jane@example.com',
+  },
+}
 
 declare module 'nitropack/types' {
   interface NitroRouteRules {
@@ -17,15 +25,17 @@ export default defineEventHandler(async (event) => {
 
   let user
   if (apiTunerTests) {
+    console.warn('Authenticating API with basic auth')
+
     const authHeader = event.node.req.headers['authorization'] || ''
     const encodedCredentials = authHeader.split(' ')[1] || ''
     const decodedCredentials = Buffer.from(encodedCredentials, 'base64').toString('utf-8')
     const [username, password] = decodedCredentials.split(':')
 
-    if (username === BASIC_AUTH_USERNAME && password === BASIC_AUTH_PASSWORD) {
+    if (username && users[username]?.password === password) {
       user = {
         name: username,
-        email: 'john@example.com',
+        email: users[username]!.email,
       }
     }
     else {

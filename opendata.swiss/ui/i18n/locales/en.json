@@ -73,6 +73,12 @@
       "to_dataset": "To dataset",
       "to_search": "To search"
     },
+    "subscribe": {
+      "header": "Subscribe",
+      "to_dataset": "To dataset",
+      "to_category": "To category",
+      "to_publisher": "To publisher"
+    },
     "showcase": {
       "type": {
         "header": "Type of content"

@@ -73,6 +73,12 @@
       "to_dataset": "Vers le jeu de données",
       "to_search": "Vers la recherche"
     },
+    "subscribe": {
+      "header": "S'abonner",
+      "to_dataset": "Vers le jeu de données",
+      "to_category": "Vers la catégorie",
+      "to_publisher": "Vers l'éditeur"
+    },
     "showcase": {
       "type": {
         "header": "Type de contenu"
