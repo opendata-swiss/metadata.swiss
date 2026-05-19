@@ -461,7 +461,7 @@ services:
 
   # Postgres database
   listmonk-db:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     container_name: listmonk_db
     restart: unless-stopped
     ports:
@@ -474,7 +474,7 @@ services:
       timeout: 5s
       retries: 6
     volumes:
-      - ./volumes/listmonk-data:/var/lib/postgresql/data
+      - ./volumes/listmonk-data:/var/lib/postgresql
 
   # SMTP server for development/testing
   mailpit:
