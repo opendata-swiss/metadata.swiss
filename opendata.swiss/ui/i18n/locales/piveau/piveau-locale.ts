@@ -14,6 +14,8 @@ export const piveauLocale = {
         accrualPeriodicity: 'Aktualisierungsfrequenz', // accrual periodicity dct:accrualPeriodicity
         identifiers: 'Identifikator', // identifier dct:identifier
         languages: 'Sprachen', // language dct:language
+        license: 'Nutzungsbedingungen', // license dct:license
+        mediaType: 'Media type', // media_type dcat:mediaType
         isReferencedBy: 'Wird referenziert von',
         qualifiedRelation: 'Qualifizierte Beziehungen',
         sample: 'Datenbeispiel',
@@ -49,6 +51,8 @@ export const piveauLocale = {
         accrualPeriodicity: 'Frequency', // accrual periodicity dct:accrualPeriodicity
         identifiers: 'Identifier', // identifier dct:identifier
         languages: 'Languages', // language dct:language
+        license: 'Terms of use', // license dct:license
+        mediaType: 'Media type', // media_type dcat:mediaType
       },
       tooltip: {
         ...en.tooltip,
@@ -64,14 +68,14 @@ export const piveauLocale = {
         accrualPeriodicity: 'Fréquence de mise à jour', // accrual periodicity dct:accrualPeriodicity
         identifiers: 'Identificateur', // identifier dct:identifier
         languages: 'Langues', // language dct:language
+        license: 'Conditions d\'utilisation', // license dct:license
+        mediaType: 'Media type', // media_type dcat:mediaType
         catalogRecord: 'Fiche de catalogue',
         conformsTo: 'Conforme à',
         resource: 'Ressource',
-        rights: 'Conditions d’utilisation',
+        rights: 'Conditions d\'utilisation',
         status: 'Statut',
-        mediaType: 'Type de média',
         byteSize: 'Taille des données',
-        license: 'Conditions d’utilisation',
         temporalResolution: 'Couverture temporelle',
         type: 'Type de données',
         sample: 'Exemple de données',
@@ -82,19 +86,19 @@ export const piveauLocale = {
         temporal: 'Temporel',
         isVersionOf: 'Est une version de',
         hasVersion: 'A une version',
-        accessRights: 'Droits d’accès',
+        accessRights: 'Droits d\'accès',
         otherIdentifiers: 'Autres identifiants',
         packageFormat: 'Format du paquet',
         compressFormat: 'Format de compression',
         pages: 'Pages',
         provenances: 'Provenance',
         name: 'Nom',
-        tooltipPublisherName: 'Nom de l’éditeur',
-        homepage: 'Page d’accueil',
+        tooltipPublisherName: 'Nom de l\'éditeur',
+        homepage: 'Page d\'accueil',
         email: 'Email',
         telephone: 'Téléphone',
-        organizationName: 'Nom de l’organisation',
-        tooltipPublisherHomepage: 'Page d’accueil de l’éditeur',
+        organizationName: 'Nom de l\'organisation',
+        tooltipPublisherHomepage: 'Page d\'accueil de l\'éditeur',
         address: 'Adresse',
         url: 'URL',
         // TOUS LES CLÉS MANQUANTES ICI POUR FR (voir erreur console)
@@ -108,11 +112,11 @@ export const piveauLocale = {
           conformsTo: 'Conforme à',
           hasVersion: 'A une version',
           updated: 'Date de modification',
-          landingPage: 'Page d’accueil',
+          landingPage: 'Page d\'accueil',
           temporalResolution: 'Couverture temporelle',
           type: 'Type de données',
           sample: 'Exemple de données',
-          license: 'Conditions d’utilisation',
+          license: 'Conditions d\'utilisation',
           relatedResource: 'Ressource liée',
           language: 'Langue',
           otherIdentifier: 'Autres identifiants',
@@ -122,9 +126,9 @@ export const piveauLocale = {
           versionInfo: 'Informations de version',
           provenance: 'Provenance',
           distributions: {
-            rights: 'Conditions d’utilisation',
+            rights: 'Conditions d\'utilisation',
             created: 'Date de publication',
-            licence: 'Conditions d’utilisation',
+            licence: 'Conditions d\'utilisation',
             status: 'Statut',
             mediaType: 'Type de média',
             byteSize: 'Taille des données',
@@ -144,14 +148,14 @@ export const piveauLocale = {
         accrualPeriodicity: 'Intervallo di aggiornamento', // accrual periodicity dct:accrualPeriodicity
         identifiers: 'Identificatore', // identifier dct:identifier
         languages: 'Lingue', // language dct:language
+        license: 'Condizioni d\'uso', // license dct:license
+        mediaType: 'Media type', // media_type dcat:mediaType
         catalogRecord: 'Scheda catalogo',
         conformsTo: 'Conforme a',
         resource: 'Risorsa',
         rights: 'Condizioni d\'uso',
         status: 'Stato',
-        mediaType: 'Tipo di media',
         byteSize: 'Grandezza dei dati',
-        license: 'Condizioni d\'uso',
         temporalResolution: 'Copertura temporale',
         type: 'Tipo di dato',
         sample: 'Esempio di dati',
