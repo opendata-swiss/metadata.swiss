@@ -1,0 +1,54 @@
+{
+  "header": {
+    "id": "ea19d949-fd4d-4797-a0fa-45d3948f4244",
+    "name": "geocat-tpg-geneve",
+    "title": "Geocat TPG Gen\u00e8ve",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-csw",
+          "segmentNumber": 1,
+          "title": "Importing CSW",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://www.geocat.ch/geonetwork/transports-public-genevois/eng/csw?SERVICE=CSW&REQUEST=GetCapabilities",
+            "catalogue": "geocat-tpg-geneve",
+            "preProcessing": true,
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-filter",
+          "segmentNumber": 2,
+          "title": "Filtering",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "org_id": "tpg",
+            "catalogue": "geocat-tpg-geneve",
+            "preProcessing": true
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 3,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

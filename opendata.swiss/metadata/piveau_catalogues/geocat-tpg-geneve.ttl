@@ -1,0 +1,15 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-tpg-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:28:43.229314"^^xsd:dateTime ;
+    dcterms:modified "2026-05-08T07:04:42.797319"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.tpg.ch/> ;
+            foaf:name "Transports publics genevois TPG"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Transports publics genevois TPG"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/ju-kt> a dcat:Catalog ;
+    dcterms:created "2023-02-01T06:02:11.130118"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Jura veröffentlicht auf Open Data Swiss verschiedene Arten von Daten der kantonalen Verwaltung, die dem Prinzip von Open Government Data entsprechen."@de,
+        "The canton of Jura publishes on Open Data Swiss various types of data of the cantonal administration that meets the principle of Open Government Data."@en,
+        "Le canton du Jura publie sur Open Data Swiss différents types de données de l'administration cantonale qui répondent au principe de l'Open Government Data."@fr,
+        "Il Cantone del Giura pubblica su Open Data Swiss vari tipi di dati dell'amministrazione cantonale che soddisfano il principio degli Open Government Data."@it ;
+    dcterms:modified "2026-05-11T07:20:40.634028"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.jura.ch/DEN> ;
+            foaf:name "Kanton Jura"@de,
+                "Canton of Jura"@en,
+                "Canton du Jura"@fr,
+                "Canton Giura"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Jura"@de,
+        "Canton of Jura"@en,
+        "Canton du Jura"@fr,
+        "Canton Giura"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

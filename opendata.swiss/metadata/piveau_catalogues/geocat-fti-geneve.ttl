@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-fti-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:31:12.303736"^^xsd:dateTime ;
+    dcterms:description "Institution de droit public, la Fondation pour les terrains industriels de Genève (FTI) gère les périmètres industriels et artisanaux du canton. Elle accompagne les entreprises en recherche de terrains ou de locaux et facilite leur implantation ainsi que leur développement, en proposant des solutions adaptées à chacune d’elle."@fr ;
+    dcterms:modified "2026-05-08T07:02:24.201498"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.ftige.ch/> ;
+            foaf:name "Fondation pour les terrains industriels de Genève FTI"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Fondation pour les terrains industriels de Genève FTI"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

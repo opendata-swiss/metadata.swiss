@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/so-kt> a dcat:Catalog ;
+    dcterms:created "2023-03-01T09:48:55.942975"^^xsd:dateTime ;
+    dcterms:description "Beginnend mit den Geodaten veröffentlicht der Kanton Solothurn hier nach und nach Datensätze der kantonalen Verwaltung, welche die Anforderungen zur Publikation als Open Government Data erfüllen."@de ;
+    dcterms:modified "2026-05-11T08:01:10.179891"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://so.ch/> ;
+            foaf:name "Kanton Solothurn"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Solothurn"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

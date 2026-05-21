@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/liechtenstein> a dcat:Catalog ;
+    dcterms:created "2024-12-16T08:41:27.578570"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Tiefbau und Geoinformation ist zuständig für den Bau,  Betrieb und Unterhalt der Landstrassen, die Koordination der Geodateninfrastrukur, die Amtliche Vermessung und den ÖREB-Kataster."@de,
+        "The Civil Engineering and Geoinformation Office is responsible for the construction,  operation and maintenance of main roads, the coordination of geodata infrastructure, official surveying and the catastre of Public Law Restrictions on Landownership (PLR-cadastre)."@en ;
+    dcterms:modified "2026-05-11T07:09:06.173353"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.llv.li/de/landesverwaltung/amt-fuer-tiefbau-und-geoinformation> ;
+            foaf:name "Amt für Tiefbau und Geoinformation"@de,
+                "Civil Engineering and Geoinformation Office"@en ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Tiefbau und Geoinformation"@de,
+        "Civil Engineering and Geoinformation Office"@en ;
+    dcterms:type "ckan"^^xsd:string .
+

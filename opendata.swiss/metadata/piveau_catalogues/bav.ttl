@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bav> a dcat:Catalog ;
+    dcterms:created "2016-03-04T15:05:15.999432"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Verkehr (BAV) ist täglich dafür besorgt, die schweizerische Politik im Bereich des öffentlichen Verkehrs umzusetzen und mitzugestalten. Es realisiert damit wesentliche Teile der von Volk, Parlament und Bundesrat beschlossenen Verkehrspolitik. Die Fachleute des BAV sind zuständig für den Personen- und den Güterverkehr auf der Schiene, für die Seilbahnen und Sessellifte, die Busse und die Schiffe."@de,
+        "L'Office fédéral des transports (OFT) veille journellement à concevoir et à mettre en œuvre la politique suisse en matière de transports publics, réalisant ainsi des parties essentielles de la politique des transports décidée par le peuple, le Parlement et le Conseil fédéral. Les spécialistes de l'OFT sont compétents pour le transport de voyageurs et de marchandises sur le rail, pour les téléphériques et les télésièges, les bus et les bateaux."@fr,
+        "L'ufficio federale dei trasporti (UFT) si occupa quotidianamente di attuare e pianificare la politica svizzera nell'ambito dei trasporti pubblici, realizzando così i principi chiave della politica dei trasporti decisa dal Popolo, dal Parlamento e dal Consiglio federale. Gli esperti dell'UFT sono competenti per il trasporto di viaggiatori e di merci con la ferrovia, per gli impianti a fune, gli autobus e i battelli."@it ;
+    dcterms:modified "2026-05-11T07:10:05.169974"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Bundesamt für Verkehr BAV"@de,
+                "Federal Office of Transport FOT"@en,
+                "Office fédéral des transports OFT"@fr,
+                "Ufficio federale dei trasporti UFT"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Verkehr BAV"@de,
+        "Federal Office of Transport FOT"@en,
+        "Office fédéral des transports OFT"@fr,
+        "Ufficio federale dei trasporti UFT"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

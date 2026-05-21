@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/sg-kt-areg> a dcat:Catalog ;
+    dcterms:created "2020-04-06T19:38:39.139725"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Raumentwicklung und Geoinformation des Kantons St.Gallen (AREG) ist verantwortlich für die Raumentwicklungspolitik, die amtliche Vermessung und die Bereitstellung von Geoinformationen. Die Abteilung Geoinformation erbringt als Kompetenzzentrum  digitale Leistungen für die gemeinsame Geodateninfrastruktur des Kantons St.Gallen und der St.Galler Gemeinden und stellt Geodaten für Nutzer ausserhalb der Kantonsverwaltung zur Verfügung."@de,
+        "L'Office d'aménagement du territoire et d'information géographique (AREG) du canton de Saint-Gall est responsable de la politique d'aménagement du territoire, de la mensuration officielle et de la mise à disposition d'informations géographiques. En tant que centre de compétence, le département de géoinformation offre des services numériques pour l'infrastructure de géodonnées et propose des géodonnées aux utilisateurs des secteurs public et privé et des particuliers."@fr ;
+    dcterms:modified "2026-05-11T07:26:58.890271"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.sg.ch/bauen/raumentwicklung.html> ;
+            foaf:name "Amt für Raumentwicklung und Geoinformation (AREG) Kanton St. Gallen"@de,
+                "Office d'aménagement du territoire et d'information géographique du canton de Saint-Gall"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Raumentwicklung und Geoinformation (AREG) Kanton St. Gallen"@de,
+        "Office d'aménagement du territoire et d'information géographique du canton de Saint-Gall"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

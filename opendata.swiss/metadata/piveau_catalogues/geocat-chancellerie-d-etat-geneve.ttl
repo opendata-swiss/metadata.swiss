@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-chancellerie-d-etat-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:27:39.495864"^^xsd:dateTime ;
+    dcterms:description "La chancellerie d'Etat assume les fonctions d'état-major du gouvernement cantonal."@fr ;
+    dcterms:modified "2026-05-08T07:04:59.714590"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.ge.ch/organisation/chancellerie-etat> ;
+            foaf:name "Chancellerie d’État de Genève"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Chancellerie d’État de Genève"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

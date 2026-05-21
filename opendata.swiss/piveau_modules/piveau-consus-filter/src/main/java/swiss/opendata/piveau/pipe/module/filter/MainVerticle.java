@@ -228,41 +228,48 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    private Model getModel(PipeContext pipeContext) {
+        if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
+            return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.NTRIPLES);
+        }
+        if (Lang.RDFXML.getHeaderString().equals(pipeContext.getMimeType())) {
+            return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.RDFXML);
+        }
+
+        return null;
+    }
+
     private void handlePipe(PipeContext pipeContext) {
         if (pipeContext.log().isTraceEnabled()) {
             pipeContext.log().trace(pipeContext.getPipeManager().prettyPrint());
         }
-
-        if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
-            JsonObject config = pipeContext.getConfig();
-            Model model = Piveau.toModel(
-                pipeContext.getStringData().getBytes(),
-                Lang.NTRIPLES
-            );
-            List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
-            if (datasets.size() != 1) {
-                logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
-                return;
-            }
-            Resource dataset = datasets.get(0);
-            config.put("datasetURI", dataset.getURI());
-
-            String organizationID = config.getString("org_id");
-
-            ErrorHandler errorHandler = new ErrorHandler(config);
-            checkIdentifier(model, dataset, organizationID, errorHandler);
-            checkConformsTo(model, dataset, errorHandler);
-            checkLicense(model, dataset, errorHandler);
-
-            if (errorHandler.hasErrors()) {
-                errorHandler.notifyErrors();
-            } else {
-                logger.info("passing {}", dataset.getURI());
-                // pipeContext.pass();
-                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
-            }
-        } else {
+        Model model = getModel(pipeContext);
+        if (model == null) {
             pipeContext.pass();
+            return;
+        }
+        
+        List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
+        if (datasets.size() != 1) {
+            logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
+            return;
+        }
+        Resource dataset = datasets.get(0);
+
+        JsonObject config = pipeContext.getConfig();
+        config.put("datasetURI", dataset.getURI());
+        String organizationID = config.getString("org_id");
+
+        ErrorHandler errorHandler = new ErrorHandler(config);
+        checkIdentifier(model, dataset, organizationID, errorHandler);
+        checkConformsTo(model, dataset, errorHandler);
+        checkLicense(model, dataset, errorHandler);
+
+        if (errorHandler.hasErrors()) {
+            errorHandler.notifyErrors();
+        } else {
+            logger.info("passing {}", pipeContext.getDataInfo());
+            pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
         }
     }
 

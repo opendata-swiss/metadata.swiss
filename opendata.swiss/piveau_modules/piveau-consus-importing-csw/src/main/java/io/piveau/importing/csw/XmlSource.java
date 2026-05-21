@@ -1,6 +1,7 @@
 package io.piveau.importing.csw;
 
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -9,7 +10,6 @@ import java.util.List;
 import java.util.stream.Stream;
 import java.io.IOException;
 import java.io.StringReader;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.Namespace;
@@ -31,6 +31,19 @@ public class XmlSource {
 
     public static Namespace cswNamespace = Namespace.getNamespace("csw", "http://www.opengis.net/cat/csw/2.0.2");
     public static Namespace dcNamespace = Namespace.getNamespace("dc", "http://purl.org/dc/elements/1.1/");
+    public static Namespace dctNamespace = Namespace.getNamespace("dct", "http://purl.org/dc/terms/");
+    public static Namespace dcatNamespace = Namespace.getNamespace("dcat", "http://www.w3.org/ns/dcat#");
+    public static Namespace rdfNamespace = Namespace.getNamespace("rdf", "http://www.w3.org/1999/02/22-rdf-syntax-ns#");
+
+    static String outputSchema;
+    static {
+        try {
+            outputSchema = URLEncoder.encode("http://dcat-ap.ch/schema/dcat-ap-ch/2.0", "UTF-8");
+            System.out.println("Encoded output schema URL: " + outputSchema);
+        } catch (Exception e) {
+            throw new RuntimeException("Error encoding output schema URL", e);
+        }
+    }   
 
     private HttpClient client = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(120))
@@ -43,8 +56,19 @@ public class XmlSource {
         this.client = client;
     }
 
-    public XmlSource(String address, String typeNames) {
-        this.baseURL = address + "?service=CSW&version=2.0.2&request=GetRecords&elementsetname=full&resultType=results&typeNames=" + typeNames;
+    public XmlSource(String address) {
+        this.baseURL = address +
+            "?SERVICE=CSW" +
+            "&VERSION=2.0.2" +
+            "&REQUEST=GetRecords" +
+            "&OUTPUTSCHEMA=" + outputSchema +
+            "&TYPENAMES=csw:Record" +
+            "&ELEMENTSETNAME=full" +
+            "&RESULTTYPE=results" +
+            "&MAXRECORDS=10" + // consider making this configurable
+            "&CONSTRAINTLANGUAGE=CQL_TEXT" +
+            "&CONSTRAINT_LANGUAGE_VERSION=1.1.0" +
+            "&CONSTRAINT=subject='opendata.swiss'";
     }
 
     Stream<List<Element>> getRecordsStream() {
@@ -72,7 +96,7 @@ public class XmlSource {
         setTotalRecords(records);
         setStartPosition(records);
 
-        return records.getChildren("Record", cswNamespace);
+        return records.getChildren(); // rdf:RDF 
     }
 
     private String getResponseText(String requestUrl) throws IOException, InterruptedException {
