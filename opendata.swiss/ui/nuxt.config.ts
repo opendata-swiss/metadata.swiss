@@ -89,7 +89,11 @@ export default defineNuxtConfig({
     pages: resolve(import.meta.dirname, 'pages'),
   },
   build: {
-    transpile: ['form-data'],
+    transpile: [
+      'form-data',
+      '@hyvor/hyvor-talk-vue',
+      '@hyvor/hyvor-talk-base',
+    ],
   },
   routeRules: {
     '/api/showcases': { basicAuth: true },
