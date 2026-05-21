@@ -53,6 +53,9 @@ export default defineNuxtConfig({
         url: '',
         siteId: '',
       },
+      comments: {
+        websiteId: 15455,
+      },
     },
     showcases: {
       maxImageWidth: 900,

@@ -70,6 +70,7 @@ useSeoMeta({
 <template>
   <OdsPage
     v-if="showcase"
+    :comments-id="`showcase-${showcase.id}`"
     :page="showcase"
   >
     <template #header>
