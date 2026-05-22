@@ -87,6 +87,58 @@ spec:
                   key: installation-id
             - name: DISABLE_SHOWCASE_HARVESTING
               value: "true"
+            - name: NUXT_PUBLIC_COMMENTS_WEBSITE_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: public-endpoints
+                  key: comments-website-id
+
+            # Listmonk configuration
+            - name: NUXT_LISTMONK_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: api_url
+            - name: NUXT_LISTMONK_API_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: api_user
+            - name: NUXT_LISTMONK_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: listmonk-secret
+                  key: api_token
+            - name: NUXT_LISTMONK_TEMPLATE_APP_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: template_app_url
+            - name: NUXT_LISTMONK_TEMPLATE_IDS_DE
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: template_ids_de
+            - name: NUXT_LISTMONK_TEMPLATE_IDS_FR
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: template_ids_fr
+            - name: NUXT_LISTMONK_TEMPLATE_IDS_IT
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: template_ids_it
+            - name: NUXT_LISTMONK_TEMPLATE_IDS_EN
+              valueFrom:
+                configMapKeyRef:
+                  name: listmonk-config
+                  key: template_ids_en
+            - name: NUXT_LISTMONK_PREFERENCES_HMAC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: listmonk-secret
+                  key: preferences_hmac_key
           resources:
             limits:
               memory: 2Gi

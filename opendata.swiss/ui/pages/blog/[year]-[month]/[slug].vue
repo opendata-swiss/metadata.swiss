@@ -36,7 +36,11 @@ const breadcrumbs = [
 </script>
 
 <template>
-  <OdsPage v-if="post" :page="post" >
+  <OdsPage
+    v-if="post"
+    :comments-id="`blog-${post.id}`"
+    :page="post"
+  >
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>

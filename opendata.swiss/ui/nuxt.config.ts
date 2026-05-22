@@ -53,6 +53,9 @@ export default defineNuxtConfig({
         url: '',
         siteId: '',
       },
+      comments: {
+        websiteId: 15455,
+      },
     },
     appUrl: 'http://localhost:3000/',
     showcases: {
@@ -89,7 +92,11 @@ export default defineNuxtConfig({
     pages: resolve(import.meta.dirname, 'pages'),
   },
   build: {
-    transpile: ['form-data'],
+    transpile: [
+      'form-data',
+      '@hyvor/hyvor-talk-vue',
+      '@hyvor/hyvor-talk-base',
+    ],
   },
   routeRules: {
     '/api/showcases': { basicAuth: true },

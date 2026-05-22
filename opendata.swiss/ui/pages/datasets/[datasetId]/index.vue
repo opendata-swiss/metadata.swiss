@@ -3,6 +3,8 @@ import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 
+import { Comments } from '@hyvor/hyvor-talk-vue'
+
 import { useDatasetsSearch } from '../../../app/piveau/datasets'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
@@ -39,6 +41,8 @@ const dataset = computed(() => {
 const distributions = computed(() => (dataset.value?.distributions ?? []).sort((a, b) => a.title.localeCompare(b.title)))
 
 const searchBreadcrumb = ref<BreadcrumbItem | null>(null)
+
+const { comments: { websiteId } } = useRuntimeConfig().public
 
 const homePage = await homePageBreadcrumb(locale)
 const breadcrumbs = computed(() => {
@@ -274,6 +278,16 @@ await suspense()
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <Comments
+            :website-id="websiteId"
+            :page-id="`dataset-${dataset.id}`"
+            :page-language="locale"
+          />
         </div>
       </section>
 
