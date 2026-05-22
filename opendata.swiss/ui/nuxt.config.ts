@@ -84,6 +84,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    hyvor: {
+      webhook_secret: '',
+    },
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
