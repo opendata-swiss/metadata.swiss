@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@certible/use-matomo": "^1.1.0",
+    "@hyvor/hyvor-talk-vue": "^1.0.1",
     "@nuxt/content": "^3.10.0",
     "@nuxt/eslint": "^1.12.1",
     "@nuxt/icon": "^2.1.1",

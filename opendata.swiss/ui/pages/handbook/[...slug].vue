@@ -97,6 +97,7 @@ const _navigation = ref([
 <template>
   <OdsHandbookPage
     :page="data"
+    :comments-id="`handbook-${data.id}`"
     :breadcrumbs="breadcrumbs"
   />
 </template>
