@@ -3,6 +3,7 @@ import OdsDatasetCardListItem from './OdsDatasetCardListItem.vue'
 import OdsDatasetListItem from './OdsDatasetListItem.vue'
 import type { LocationQueryRaw } from '#vue-router'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import { waitUntil } from 'async-wait-until'
 
 interface Props {
   items: DcatApChV2DatasetAdapter[]
@@ -32,20 +33,43 @@ const searchParamsEncoded = computed(() => {
     search: params.toString(),
   }
 })
+
+async function loadCommentCounts() {
+  await waitUntil(() => window.hyvorTalkCommentCounts, 1000)
+  window.hyvorTalkCommentCounts.load({ 'website-id': 15455 })
+}
+
+onMounted(loadCommentCounts)
+onUpdated(loadCommentCounts)
 </script>
 
 <template>
-  <div  v-if="props.items && props.listType === 'card'" class="ods-card-list">
+  <div
+    v-if="props.items && props.listType === 'card'"
+    class="ods-card-list"
+  >
     <ul class="search-results-list">
-      <li  v-for="dataset in props.items" :key="dataset.id">
-        <OdsDatasetCardListItem :dataset="dataset" :search-params="searchParamsEncoded" />
+      <li
+        v-for="dataset in props.items"
+        :key="dataset.id"
+      >
+        <OdsDatasetCardListItem
+          :dataset="dataset"
+          :search-params="searchParamsEncoded"
+        />
       </li>
     </ul>
   </div>
 
-  <ul v-if="props.items && props.listType === 'list'" >
-    <li  v-for="dataset in props.items" :key="dataset.id">
-      <OdsDatasetListItem :dataset="dataset" :search-params="searchParamsEncoded" />
+  <ul v-if="props.items && props.listType === 'list'">
+    <li
+      v-for="dataset in props.items"
+      :key="dataset.id"
+    >
+      <OdsDatasetListItem
+        :dataset="dataset"
+        :search-params="searchParamsEncoded"
+      />
     </li>
   </ul>
 </template>
