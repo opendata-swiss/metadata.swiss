@@ -14,6 +14,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RiotException;
 import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -184,6 +185,18 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    public static void checkSpatial(Model model, Resource dataset) {
+        Property dctSpatial = model.createProperty(DCTERMS.SPATIAL.stringValue());
+
+        List<RDFNode> nodes = model.listObjectsOfProperty(dataset, dctSpatial).toList();
+        for (RDFNode node : nodes) {
+            if (node.isLiteral()) {
+                model.removeAll(dataset, dctSpatial, node);
+                logger.warn("Invalid spatial value: {}.", node);
+            }
+        }
+    }
+
     class ErrorHandler implements Consumer<String> {        
         private JsonObject config;
         private List<String> errors = new ArrayList<>();
@@ -229,11 +242,15 @@ public class MainVerticle extends AbstractVerticle {
     }
 
     private Model getModel(PipeContext pipeContext) {
-        if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
-            return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.NTRIPLES);
-        }
-        if (Lang.RDFXML.getHeaderString().equals(pipeContext.getMimeType())) {
-            return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.RDFXML);
+        try {
+            if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.NTRIPLES);
+            }
+            if (Lang.RDFXML.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.RDFXML);
+            }
+        } catch (RiotException e) {
+            logger.error("Failed to parse RDF data from pipe context {}", pipeContext.getDataInfo(), e);
         }
 
         return null;
@@ -264,6 +281,7 @@ public class MainVerticle extends AbstractVerticle {
         checkIdentifier(model, dataset, organizationID, errorHandler);
         checkConformsTo(model, dataset, errorHandler);
         checkLicense(model, dataset, errorHandler);
+        checkSpatial(model, dataset);
 
         if (errorHandler.hasErrors()) {
             errorHandler.notifyErrors();
