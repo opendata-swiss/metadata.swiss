@@ -279,9 +279,7 @@ await suspense()
             </div>
           </div>
         </div>
-      </section>
 
-      <section class="section">
         <div class="container">
           <Comments
             :website-id="websiteId"
