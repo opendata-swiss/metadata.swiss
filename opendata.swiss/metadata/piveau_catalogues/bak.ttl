@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bak> a dcat:Catalog ;
+    dcterms:created "2016-03-04T08:11:43.167794"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Kultur (BAK) ist zuständig für die Kulturpolitik des Bundes und verantwortlich für die Förderung, Erhaltung und Vermittlung kultureller Vielfalt. Es fördert das kulturelle Schaffen in Bereichen wie Kunst und Film, betreut Museen und Sammlungen, unterstützt die Denkmalpflege und engagiert sich in der kulturellen Bildung."@de,
+        "The Federal Office of Culture (FOC) is the expert authority of the Swiss Confederation for cultural policy, cultural promotion, and the preservation of culture. It supports cultural work (art, film), manages museums and collections, promotes cultural heritage and encourages cultural education. "@en,
+        "L'Office fédéral de la culture (OFC) est en charge de la politique culturelle de la Confédération et de l'encouragement, de la conservation et de la mise en valeur de la diversité culturelle. Il soutient la création culturelle dans des domaines comme l'art ou le cinéma, gère des musées et des collections, promeut la conservation du patrimoine et s'engage en faveur de la formation culturelle."@fr,
+        "L'Ufficio federale della cultura (UFC) è responsabile della politica culturale della Confederazione e della promozione, salvaguardia e mediazione della diversità culturale. Esso promuove la creazione culturale in ambiti quali l'arte e il cinema, gestisce musei e collezioni, sostiene la salvaguardia dei monumenti storici e s'impegna a favore della formazione culturale."@it ;
+    dcterms:modified "2026-05-11T07:31:31.143984"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Bundesamt für Kultur BAK"@de,
+                "Federal Office of Culture FOC"@en,
+                "Office fédéral de la culture OFC"@fr,
+                "Ufficio federale della cultura UFC"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Kultur BAK"@de,
+        "Federal Office of Culture FOC"@en,
+        "Office fédéral de la culture OFC"@fr,
+        "Ufficio federale della cultura UFC"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

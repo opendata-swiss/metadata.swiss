@@ -6,23 +6,16 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.Promise;
 import io.vertx.core.Future;
-
-import org.jdom2.Element;
-import org.jdom2.output.XMLOutputter;
-import org.json.JSONObject;
-import org.json.XML;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import java.util.concurrent.atomic.AtomicInteger;
-
 import java.util.Iterator;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import io.vertx.core.eventbus.Message;
+import org.apache.jena.riot.Lang;
+import org.jdom2.Element;
+import org.jdom2.output.XMLOutputter;
 
 
 public class ImportingCswVerticle extends AbstractVerticle {
@@ -38,12 +31,11 @@ public class ImportingCswVerticle extends AbstractVerticle {
         startPromise.complete();
     }
 
-    private Future<Integer> importData(PipeContext pipeContext, String address, String typeNames, String catalogue) {
+    private Future<Integer> importData(PipeContext pipeContext, String address, String catalogue) {
         
-        XmlSource xmlSource = new XmlSource(address, typeNames);
-        Iterator<JSONObject> iterator = xmlSource.getRecordsStream()
+        XmlSource xmlSource = new XmlSource(address);
+        Iterator<Element> iterator = xmlSource.getRecordsStream()
             .flatMap(records -> records.stream())
-            .map(record -> convertToJSON(record))
             .iterator();
 
         Promise<Integer> promise = Promise.promise();
@@ -54,14 +46,16 @@ public class ImportingCswVerticle extends AbstractVerticle {
         logger.info("Starting data import with a delay of {} ms between records", delay);
         vertx.setPeriodic(delay, id -> { // wait between each record to avoid overwhelming the system
             if (iterator.hasNext()) {
-                JSONObject jsonObject = iterator.next();
+                Element record = iterator.next();
+                String result = new XMLOutputter().outputString(record);
+                String dataMimeType = Lang.RDFXML.getHeaderString();
                 ObjectNode dataInfo = new ObjectMapper().createObjectNode()
+                    .put("content", "dcatResource")
                     .put("total", xmlSource.getTotalRecords())
                     .put("current", index.getAndIncrement())
-                    .put("identifier", getIdentifier(jsonObject))
+                    .put("identifier", getIdentifier(record))
                     .put("catalogue", catalogue);
-                String jsonString = jsonObject.toString(4);
-                pipeContext.setResult(jsonString, "application/json", dataInfo).forward();
+                pipeContext.setResult(result, dataMimeType, dataInfo).forward();
                 pipeContext.log().info("Dataset imported: {}", dataInfo);
             } else {
                 vertx.cancelTimer(id); // stop when done
@@ -79,13 +73,18 @@ public class ImportingCswVerticle extends AbstractVerticle {
         return promise.future();
     }
 
-    private String getIdentifier(JSONObject jsonObject) {
-       return jsonObject.getJSONObject("csw:Record").getString("dc:identifier");
-    }
-
-    private JSONObject convertToJSON(Element record) {
-        String xmlString = new XMLOutputter().outputString(record);
-        return XML.toJSONObject(xmlString);
+    private String getIdentifier(Element record) {  
+        Element dataset = record.getChild("Dataset", XmlSource.dcatNamespace);
+        if (dataset == null) {
+            logger.warn("Dataset element not found in record, returning empty string");
+            return "";
+        }
+        String identifier = dataset.getChildText("identifier", XmlSource.dctNamespace);
+        if (identifier == null) {
+            logger.warn("Identifier not found in record, returning empty string");
+            return "";
+        }
+        return identifier;
     }
 
     private void handlePipe(Message<PipeContext> message) {
@@ -94,16 +93,15 @@ public class ImportingCswVerticle extends AbstractVerticle {
         JsonObject config = pipeContext.getConfig();
         String cswUrl = config.getString("address");
         String catalogue = config.getString("catalogue");
-        String typeNames = config.getJsonObject("config", new JsonObject()).getString("typeNames", "dcat");
 
-        logger.info("Starting {} data import for catalogue: {} from CSW URL: {}", typeNames, catalogue, cswUrl);
+        logger.info("Starting data import for catalogue: {} from CSW URL: {}", catalogue, cswUrl);
 
         if (cswUrl == null) {
             pipeContext.setFailure("CSW URL is missing in the pipe configuration.");
             return;
         }
 
-        Future<Integer> importDataFuture = importData(pipeContext, cswUrl, typeNames, catalogue);
+        Future<Integer> importDataFuture = importData(pipeContext, cswUrl, catalogue);
         importDataFuture.onFailure(e -> {
             logger.error("Data import failed for catalogue: {} with error: {}", catalogue, e.getMessage(), e);
             pipeContext.setFailure("Data import failed: " + e.getMessage()).forward();

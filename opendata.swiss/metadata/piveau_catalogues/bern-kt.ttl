@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bern-kt> a dcat:Catalog ;
+    dcterms:created "2020-05-13T09:45:07.999791"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Geoinformation ist das Kompetenzzentrum für räumliche Informationen im Kanton Bern. Die kantonalen Geodaten sind unter Einhaltung der Nutzungsbedingungen kostenlos nutzbar. Das Geoportal des Kantons Bern ist der zentrale Einstiegspunkt für interaktive Karten, Geodaten und Geodienste der kantonalen Verwaltung."@de,
+        "L'Office de la géoinformation est le centre de compétence pour l'information spatiale dans le canton de Berne. Les géodonnées cantonales peuvent être utilisées gratuitement, sous réserve des conditions d'utilisation. Le Géoportail du canton de Berne est le point d'entrée central pour les cartes interactives, les géodonnées et les géoservices de l'administration cantonale."@fr ;
+    dcterms:modified "2026-05-11T07:29:37.224871"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.be.ch/geoportal> ;
+            foaf:name "Amt für Geoinformation des Kantons Bern"@de,
+                "Office de l'information géographique du canton de Berne"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Geoinformation des Kantons Bern"@de,
+        "Office de l'information géographique du canton de Berne"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

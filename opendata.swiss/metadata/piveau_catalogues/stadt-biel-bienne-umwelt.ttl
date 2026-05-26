@@ -1,0 +1,20 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/stadt-biel-bienne-umwelt> a dcat:Catalog ;
+    dcterms:created "2023-07-11T12:12:46.903190"^^xsd:dateTime ;
+    dcterms:description "Biel ist die grösste zweisprachige Stadt der Schweiz und Uhren-Weltmetropole. Sie zählt rund 56 000 Einwohnerinnen und Einwohner. Mit ihrer Weltoffenheit und dank ihrer zentralen Lage zwischen der deutschen und französischen Schweiz entwickelt sie sich stets dynamisch weiter. Am Bielersee und Jurasüdfuss gelegen bietet sie eine hohe Lebensqualität."@de,
+        "Bienne est la plus grande ville bilingue de Suisse et la métropole mondiale de l’horlogerie. Elle compte environ 56 000 habitantes et habitants. Grâce à son ouverture sur le monde et à sa situation centrale entre la Suisse alémanique et la Suisse romande, elle ne cesse de se développer de manière dynamique. Située au bord du lac de Bienne et au pied du Jura, elle jouit d’une qualité de vie remarquable."@fr,
+        "Bienne è la più grande città bilingue della Svizzera e la capitale mondiale dell’orologeria. Conta circa 56 000 abitanti. Grazie al suo cosmopolitismo e alla sua posizione centrale tra la Svizzera tedesca e quella francese, è in costante sviluppo dinamico. Situata sul lago di Bienne e ai piedi delle montagne del Giura, vanta un'elevata qualità di vita."@it ;
+    dcterms:modified "2026-05-11T07:18:53.771306"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.biel-bienne.ch/> ;
+            foaf:name "Planung und Umwelt Stadt Biel"@de,
+                "Planification et environnement Ville de Bienne"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Planung und Umwelt Stadt Biel"@de,
+        "Planification et environnement Ville de Bienne"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

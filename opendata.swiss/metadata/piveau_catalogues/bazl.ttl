@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bazl> a dcat:Catalog ;
+    dcterms:created "2016-09-30T07:56:50.572974"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Zivilluftfahrt (BAZL) ist für die Luftfahrtentwicklung und die Aufsicht über die zivile Luftfahrt in der Schweiz zuständig. Das BAZL gehört zum Eidgenössischen Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK) und ist dafür verantwortlich, dass die Zivilluftfahrt in der Schweiz ein hohes Sicherheitsniveau aufweist und eine nachhaltige Entwicklung verfolgt."@de,
+        "The Federal Office of Civil Aviation (FOCA) is responsible for aviation development and the supervision of civil aviation activities in Switzerland. The FOCA is part of the Federal Department of the Environment, Transport, Energy and Communications (DETEC) and is charged with ensuring that the high safety standards in civil aviation in Switzerland are maintained, and with pursuing a policy of sustainable development. "@en,
+        "L’Office fédéral de l’aviation civile (OFAC) est l’organe compétent en matière de politique aéronautique et de surveillance de l'aviation civile suisse. Placé sous l’autorité du Département fédéral de l’environnement, des transports, de l’énergie et de la communication (DETEC), l’OFAC veille à ce que l’aviation civile suisse bénéficie d’un niveau de sécurité élevé et suive un développement durable."@fr,
+        "L’Ufficio federale dell’aviazione civile (UFAC), che fa parte del Dipartimento federale dell’ambiente, dei trasporti, dell’energia e delle comunicazioni (DATEC), è responsabile dell’evoluzione nel settore aeronautico e della sorveglianza sull’aviazione civile in Svizzera. Esso garantisce uno standard di sicurezza elevato e promuove il principio dello sviluppo sostenibile nell’aviazione civile elvetica. "@it ;
+    dcterms:modified "2026-05-11T07:32:44.886981"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <http://www.bazl.admin.ch> ;
+            foaf:name "Bundesamt für Zivilluftfahrt BAZL"@de,
+                "Federal Office of Civil Aviation FOCA"@en,
+                "Office fédéral de l'aviation civile OFAC"@fr,
+                "Ufficio federale dell’aviazione civile UFAC"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Zivilluftfahrt BAZL"@de,
+        "Federal Office of Civil Aviation FOCA"@en,
+        "Office fédéral de l'aviation civile OFAC"@fr,
+        "Ufficio federale dell’aviazione civile UFAC"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

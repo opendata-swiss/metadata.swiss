@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/amt-fur-geoinformation-kt-sh> a dcat:Catalog ;
+    dcterms:created "2021-11-04T14:52:32.790969"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schaffhausen als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt."@de,
+        "The Office of Geoinformation manages and publishes the geodata of the Canton of Schaffhausen as OGC geodata services and as file downloads. All currently available geodata subject to OGD are listed here."@en,
+        "L'Office de la géoinformation gère et publie les géodonnées du canton de Schaffhouse sous forme de géoservices OGC et de fichiers à télécharger. Toutes les géodonnées actuellement disponibles et soumises à l'OGD sont listées ici."@fr,
+        "L'Ufficio di geoinformazione gestisce e pubblica i geodati del Cantone di Sciaffusa come geoservizi OGC e come file da scaricare. Tutti i geodati attualmente disponibili soggetti all'OGD sono elencati qui."@it ;
+    dcterms:modified "2026-05-11T07:11:08.671326"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://agi.sh.ch> ;
+            foaf:name "Amt für Geoinformation Kanton Schaffhausen"@de,
+                "Office for Geoinformation Canton Schaffhausen"@en,
+                "Office de la géoinformation du canton de Schaffhouse"@fr,
+                "Ufficio di geoinformazione del Cantone di Sciaffusa"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Geoinformation Kanton Schaffhausen"@de,
+        "Office for Geoinformation Canton Schaffhausen"@en,
+        "Office de la géoinformation du canton de Schaffhouse"@fr,
+        "Ufficio di geoinformazione del Cantone di Sciaffusa"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

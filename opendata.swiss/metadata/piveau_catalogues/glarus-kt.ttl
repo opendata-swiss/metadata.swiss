@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/glarus-kt> a dcat:Catalog ;
+    dcterms:created "2021-11-26T07:11:23.757735"^^xsd:dateTime ;
+    dcterms:description "Fachstelle Geoinformation des Kantons Glarus. Zuständig für die kantonale Geodaten-Infrastruktur inklusive Geoportal und Datenbereitstellung."@de ;
+    dcterms:modified "2026-05-11T07:07:27.105949"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.geo.gl.ch> ;
+            foaf:name "Fachstelle Geoinformation des Kantons Glarus"@de,
+                "Office of Geoinformation, Canton of Glarus"@en ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Fachstelle Geoinformation des Kantons Glarus"@de,
+        "Office of Geoinformation, Canton of Glarus"@en ;
+    dcterms:type "ckan"^^xsd:string .
+

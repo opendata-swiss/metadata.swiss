@@ -1,0 +1,33 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/gruppe-verteidigung> a dcat:Catalog ;
+    dcterms:created "2016-03-07T14:24:01.876439"^^xsd:dateTime ;
+    dcterms:description """Die Gruppe Verteidigung ist Teil des Eidg. Departementes für Verteidigung, Bevölkerungsschutz und Sport (VBS), und stellt das planende, führende und verwaltende Rückgrat der Schweizer Armee dar.\r
+\r
+Dank ihrer professionellen Verwaltung kann die Armee zur Kriegsverhinderung und damit zum Frieden in unserem Land beitragen; sie unterstützt die zivilen Behörden in der Abwehr schwerwiegender Bedrohungen der inneren Sicherheit und bei der Bewältigung ausserordentlicher Lagen; und schliesslich koordiniert die Gruppe Verteidigung für die Armee die internationale sicherheitspolitische Kooperation der Schweiz."""@de,
+        """The Defence group is part of the Federal Department of Defence, Civil Protection and Sport (DDPS) and constitutes the planning, leading and administrating backbone of the Swiss Armed Forces.\r
+\r
+Thanks to their professional administration, the armed forces can help to prevent war and thus contribute to peace in our country; they support the civilian authorities in warding off severe inner security threats and in mastering exceptional situations; and finally, the Defence group coordinates Swiss international security policy cooperation for the armed forces."""@en,
+        """Le groupement de la défense est une partie du Département fédéral de la défense, de la protection de la population et des sports (DDPS). Le groupement constitue la colonne vertébrale de l'Armée suisse, en raison des tâches de planification, de conduite et d'administration qui lui incombent.\r
+\r
+Grâce à son administration professionnelle, l'armée peut contribuer à prévenir les guerres et à maintenir notre pays en paix ; elle aide les autorités civiles à se défendre contre les menaces graves sur la sécurité intérieure et à maîtriser les situations extraordinaires. Enfin, le groupement de la défense coordonne pour l'armée la coopération internationale en matière de sécurité de la Suisse."""@fr,
+        """L’aggruppamento Difesa è parte integrante del Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS) e rappresenta la colonna portante dell'Esercito svizzero a livello di pianificazione, condotta e amministrazione.\r
+\r
+L'efficace amministrazione permette all'esercito di contribuire alla prevenzione della guerra e pertanto al mantenimento della pace nel nostro Paese nonché di sostenere le autorità civili nella difesa contro gravi minacce che minano la sicurezza interna e in caso di situazioni straordinarie. L’aggruppamento Difesa coordina inoltre la cooperazione internazionale in materia di politica di sicurezza a favore dell'Esercito svizzero."""@it ;
+    dcterms:modified "2026-05-11T07:31:47.713152"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Gruppe Verteidigung"@de,
+                "Defence Group"@en,
+                "Groupement Défense"@fr,
+                "Aggruppamento Difesa"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Gruppe Verteidigung"@de,
+        "Defence Group"@en,
+        "Groupement Défense"@fr,
+        "Aggruppamento Difesa"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -1,0 +1,54 @@
+{
+  "header": {
+    "id": "e5da47da-5ba5-4807-8ef9-bdd3e4746811",
+    "name": "geocat-geneve-aeroport",
+    "title": "Geocat Geneve aeroport",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-csw",
+          "segmentNumber": 1,
+          "title": "Importing CSW",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://www.geocat.ch/geonetwork/geneve-aeroport/eng/csw?SERVICE=CSW&REQUEST=GetCapabilities",
+            "catalogue": "geocat-geneve-aeroport",
+            "preProcessing": true,
+            "org_name": ""
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-filter",
+          "segmentNumber": 2,
+          "title": "Filtering",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "org_id": "geneve-aeroport",
+            "catalogue": "geocat-geneve-aeroport",
+            "preProcessing": true
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 3,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/astra> a dcat:Catalog ;
+    dcterms:created "2016-01-29T15:00:52.747333"^^xsd:dateTime ;
+    dcterms:description "Das Bundesamt für Strassen (ASTRA) ist die Schweizer Fachbehörde für die Strasseninfrastruktur und den individuellen Strassenverkehr. Im Verantwortungsbereich des eidgenössischen Departements für Umwelt, Verkehr, Energie und Kommunikation (UVEK) wirkt es für eine nachhaltige und sichere Mobilität auf der Strasse. Im Mittelpunkt steht die Sicherstellung der Funktionsfähigkeit des Nationalstrassen und Hauptstrassennetzes."@de,
+        "The Federal Roads Office (FEDRO) is Switzerland's federal authority responsible for road infrastructure and private road transport. It belongs to the Federal Department of the Environment, Transport, Energy and Communications (DETEC), and focuses on securing sustainable and safe mobility on the country's roads. Its principal objective is to secure the functionality of Switzerland's motorway and main road networks."@en,
+        "L'Office fédéral des routes (OFROU) est l'autorité suisse compétente pour l'infrastructure routière et le trafic individuel. Chapeauté par le Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC), il oeuvre en faveur d'une mobilité routière durable et sûre. Son objectif principal est de garantir le bon fonctionnement du réseau des routes nationales et principales."@fr,
+        "L'Ufficio federale delle strade (USTRA) è l'autorità svizzera competente in materia di infrastruttura stradale e traffico stradale privato. Parte integrante del Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC), l'Ufficio è impegnato nella realizzazione di una mobilità sostenibile e sicura sulla strada. Il suo obiettivo principale è di garantire la funzionalità della rete delle strade nazionali e principali."@it ;
+    dcterms:modified "2026-05-11T07:28:22.184745"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.astra.admin.ch> ;
+            foaf:name "Bundesamt für Strassen ASTRA"@de,
+                "Federal Roads Office FEDRO"@en,
+                "Office fédéral des routes OFROU"@fr,
+                "Ufficio federale delle strade USTRA"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Strassen ASTRA"@de,
+        "Federal Roads Office FEDRO"@en,
+        "Office fédéral des routes OFROU"@fr,
+        "Ufficio federale delle strade USTRA"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -413,9 +413,8 @@ function transforming(input) {
     output.distribution.push(dist);
     // console.log("Transformed output:");
 
-    //const { "@context": context, ...outputWithoutContext } = output;
-//
-    //console.log(JSON.stringify(outputWithoutContext, null, 2));
+    const { "@context": context, ...outputWithoutContext } = output;
+    console.log(JSON.stringify(outputWithoutContext, null, 2));
 //
     //console.log("Transformation completed successfully. Returning output.");
     return output

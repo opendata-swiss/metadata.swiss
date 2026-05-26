@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/vermessungsamt-stadt-bern> a dcat:Catalog ;
+    dcterms:created "2016-12-23T11:07:45.321978"^^xsd:dateTime ;
+    dcterms:description "Geoinformation Stadt Bern (ehemals Vermessungsamt) ist die Kompetenzstelle für die Beschaffung, den Zugang und die Verbreitung von Geoinformationen in der Stadt Bern."@de,
+        "The Surveying Office (Geoinformation Stadt Bern) is the centre of competence in the City of Bern for the procurement of, access to and dissemination of geographic information."@en,
+        "L’Office du cadastre (Geoinformation Stadt Bern) est l’organisme compétent pour la collecte, l’accès et la diffusion d’informations géographiques dans la ville de Berne."@fr,
+        "L'ufficio del catasto (Geoinformation Stadt Bern) è il centro di competenza per il reperimento, l'accesso e la diffusione di geoinformazioni nella Città di Berna."@it ;
+    dcterms:modified "2026-05-11T07:28:53.070816"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/tvs/geoinformation> ;
+            foaf:name "Geoinformation Stadt Bern"@de,
+                "The Land Surveying Office of the City of Bern"@en,
+                "L’Office du cadastre de la ville de Berne"@fr,
+                "L'ufficio del catasto nella Città di Berna"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Geoinformation Stadt Bern"@de,
+        "The Land Surveying Office of the City of Bern"@en,
+        "L’Office du cadastre de la ville de Berne"@fr,
+        "L'ufficio del catasto nella Città di Berna"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

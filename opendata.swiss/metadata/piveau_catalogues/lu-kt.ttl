@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/lu-kt> a dcat:Catalog ;
+    dcterms:created "2023-04-23T20:04:21.644229"^^xsd:dateTime ;
+    dcterms:description "Die Geoinformation des Kantons Luzern ist für die Erhebung, Verarbeitung und Verwaltung von raumbezogenen Daten zuständig. Sie leitet, koordiniert und überwacht die Arbeiten der Geoinformation und der amtlichen Vermessung."@de,
+        "Geoinformation of the Canton of Lucerne is responsible for the collection, processing and management of spatial data. It manages, coordinates and monitors the work of geoinformation and of the cadastral surveying."@en,
+        "La géoinformation du canton de Lucerne est responsable de la collecte, du traitement et de la gestion des données à référence spatiale. Elle dirige, coordonne et surveille les travaux de la géoinformation et de la mensuration officielle."@fr,
+        "La Geoinformation del Cantone di Lucerna è responsabile della raccolta, dell'elaborazione e della gestione dei dati territoriali. Gestisce, coordina e monitora il lavoro della geoinformazione e della misurazione ufficiale."@it ;
+    dcterms:modified "2026-05-11T07:18:23.376944"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://geoportal.lu.ch/> ;
+            foaf:name "Geoinformation Kanton Luzern"@de,
+                "Geoinformation Canton of Lucerne"@en,
+                "Géoinformation du canton de Lucerne"@fr,
+                "Geoinformazione del Cantone di Lucerna"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Geoinformation Kanton Luzern"@de,
+        "Geoinformation Canton of Lucerne"@en,
+        "Géoinformation du canton de Lucerne"@fr,
+        "Geoinformazione del Cantone di Lucerna"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
