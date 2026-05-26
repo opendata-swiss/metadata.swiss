@@ -59,13 +59,11 @@ const { page } = defineProps<{
             </div>
           </div>
         </div>
-      </section>
 
-      <section
-        v-if="commentsId"
-        class="section"
-      >
-        <div class="container">
+        <div
+          v-if="commentsId"
+          class="container"
+        >
           <Comments
             :website-id="websiteId"
             :page-id="commentsId"
