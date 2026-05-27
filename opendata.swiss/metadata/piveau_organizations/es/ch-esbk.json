@@ -2,6 +2,16 @@
   "id": "ch-esbk",
   "identifier": "CH_ESBK",
   "resource": "https://opendata.swiss/id/organization/ch-esbk",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Die ESBK beaufsichtigt die Schweizer Spielbanken, veranlagt die Spielbankenabgabe und bekämpft das illegale Geldspiel. Die ESBK ist unabhängig. Administrativ ist sie dem Eidgenössischen Justiz- und Polizeidepartement zugeordnet.",
     "en": "The Federal Gaming Board (FGB) is responsible for supervising Swiss casinos, levying casino tax and combating illegal gambling. The FGB is an independent authority. It is administratively attached to the FDJP.",

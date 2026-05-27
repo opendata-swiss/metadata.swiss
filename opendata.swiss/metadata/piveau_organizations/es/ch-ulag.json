@@ -2,6 +2,16 @@
   "id": "ch-ulag",
   "identifier": "CH_ULAG",
   "resource": "https://opendata.swiss/id/organization/ch-ulag",
+  "classification": {
+    "id": "0106",
+    "label": {
+      "de": "Aktiengesellschaft (AG)",
+      "en": "Corporation (Ltd)",
+      "fr": "Société anonyme (SA)",
+      "it": "Società anonima (SA)"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0106"
+  },
   "description": {},
   "name": {
     "de": "Uli Lippuner AG",

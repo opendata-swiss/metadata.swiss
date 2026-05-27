@@ -2,6 +2,7 @@
   "id": "ch-sphn",
   "identifier": "CH_SPHN",
   "resource": "https://opendata.swiss/id/organization/ch-sphn",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Swiss Personalized Health Network",

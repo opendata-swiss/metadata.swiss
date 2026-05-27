@@ -2,6 +2,16 @@
   "id": "ch-cnai",
   "identifier": "CH_CNAI",
   "resource": "https://opendata.swiss/id/organization/ch-cnai",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {},
   "name": {
     "de": "Kompetenznetzwerk für künstliche Intelligenz (CNAI)",

@@ -2,6 +2,16 @@
   "id": "ch-wbf",
   "identifier": "CH_WBF",
   "resource": "https://opendata.swiss/id/organization/ch-wbf",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Im WBF sind die Kompetenzen der Schweizer Regierung für alle Fragen zu Wirtschaftsangelegenheiten und Handelspolitik vereint. Verfolgen Sie unsere Strategie für Arbeit, Wachstum und Wohlstand in der Schweiz und zur Sicherung einer nachhaltigen Entwicklung. Das Departement fasst zudem die Bereiche Bildung, Forschung und Innovation zusammen. Diese sind grundlegend für unsere Gesellschaft und die wirtschaftliche Leistungsfähigkeit der Schweiz.",
     "en": "The EAER is where the federal government’s expertise on economic affairs and trade policy is concentrated. You can follow our strategy for employment, growth and prosperity in Switzerland and for securing sustainable development. Furthermore, the EAER combines education, research and innovation – three areas that are crucial for our society and for Switzerland’s economic performance.",

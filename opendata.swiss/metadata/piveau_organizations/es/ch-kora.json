@@ -2,6 +2,16 @@
   "id": "ch-kora",
   "identifier": "CH_KORA",
   "resource": "https://opendata.swiss/id/organization/ch-kora",
+  "classification": {
+    "id": "0109",
+    "label": {
+      "de": "Verein",
+      "fr": "Association",
+      "it": "Associazione",
+      "en": "Association"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0109"
+  },
   "description": {},
   "name": {
     "de": "KORA",

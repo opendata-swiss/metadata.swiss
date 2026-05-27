@@ -2,6 +2,16 @@
   "id": "ch-bazg",
   "identifier": "CH_BAZG",
   "resource": "https://opendata.swiss/id/organization/ch-bazg",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das Bundesamt für Zoll und Grenzsicherheit sorgt für umfassende Sicherheit an der Grenze – zum Wohl von Bevölkerung, Wirtschaft und Staat. Es ist national und international gut vernetzt. Zu seinen Kernaufgaben gehören das sachgerechte und rasche Abfertigen von Handelswaren, der zügige Ablauf des Reiseverkehrs, die Bereiche Sicherheitspolizei und Migration und es verfügt mit der Strafverfolgung über eine eigene Ermittlungsbehörde.",
     "en": "The Federal Customs and Border Security Office (FOCBS) ensures comprehensive border security for the population, the economy and the state and is well connected nationally and internationally. Its main tasks include the correct and speedy taxation of tradable goods, the rapid handling of tourist traffic as well as the areas of migration and security police. The FOCBS has its own prosecuting authority.",

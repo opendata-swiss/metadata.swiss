@@ -2,6 +2,16 @@
   "id": "ch-kt-luzern-staatskanzlei",
   "identifier": "CH_KT_LUZERN_STAATSKANZLEI",
   "resource": "https://opendata.swiss/id/organization/ch-kt-luzern-staatskanzlei",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
   "description": {
     "de": "Die Staatskanzlei unterstützt den Regierungsrat und den Kantonsrat in organisatorischer Hinsicht bei der Erfüllung der kantonalen Aufgaben und informiert die Öffentlichkeit über die Grundlagen, Organisation, Ziele und Tätigkeiten des Staates.",
     "en": "",

@@ -2,6 +2,16 @@
   "id": "ch-eda",
   "identifier": "CH_EDA",
   "resource": "https://opendata.swiss/id/organization/ch-eda",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das EDA wahrt die aussenpolitischen Interessen der Schweiz. Es pflegt Beziehungen zu anderen Staaten und zu internationalen Organisationen wie der EU oder der UNO. Es bietet Dienstleistungen für Schweizerinnen und Schweizer im Ausland an. Auch die Entwicklungszusammenarbeit und die humanitäre Hilfe gehören zu seinen Aufgaben. Mit ihren rund 170 Vertretungen ist die Schweiz rund um den Globus präsent.",
     "en": "The FDFA safeguards Switzerland's foreign policy interests. It maintains relations with other states and international organisations such as the EU and UN, and provides services for Swiss citizens abroad. It is also responsible for Switzerland's development cooperation and humanitarian aid. Switzerland maintains a global presence through its approximately 170 representations.",

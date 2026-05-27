@@ -2,6 +2,16 @@
   "id": "ch-gs-edi",
   "identifier": "CH_GS_EDI",
   "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {},
   "name": {
     "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",

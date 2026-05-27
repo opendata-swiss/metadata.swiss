@@ -2,6 +2,16 @@
   "id": "ch-educa",
   "identifier": "CH_EDUCA",
   "resource": "https://opendata.swiss/id/organization/ch-educa",
+  "classification": {
+    "id": "0224",
+    "label": {
+      "de": "Andere öffentlich-rechtliche Verwaltungseinheit",
+      "en": "Other public-law administrative unit",
+      "it": "Altra unità amministrativa di diritto pubblico",
+      "fr": "Autre unité de l'administration de droit public"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0224"
+  },
   "description": {
     "de": "Als Fachagentur im Auftrag von Bund und Kantonen verbindet Educa die technologischen Entwicklungen mit der Qualitätsentwicklung im Bildungsraum Schweiz.",
     "en": "As a specialist agency commissioned by the Confederation and cantons, we combine technological developments with quality improvements in the Swiss education space.",

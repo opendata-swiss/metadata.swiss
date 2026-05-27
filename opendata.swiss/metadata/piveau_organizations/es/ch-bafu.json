@@ -2,6 +2,16 @@
   "id": "ch-bafu",
   "identifier": "CH_BAFU",
   "resource": "https://opendata.swiss/id/organization/ch-bafu",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das BAFU ist für die nachhaltige Nutzung der natürlichen Ressourcen wie Luft, Boden, Wasser und Wald, für die Klimapolitik, den Schutz vor Naturgefahren und für den Erhalt der Biodiversität zuständig.",
     "en": "The FOEN is responsible for the sustainable use of natural resources such as air, water, soil, and forests, for the climate policy, the protection against natural hazards and for the preservation of biodiversity.",

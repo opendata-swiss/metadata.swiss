@@ -2,6 +2,16 @@
   "id": "ch-babs",
   "identifier": "CH_BABS",
   "resource": "https://opendata.swiss/id/organization/ch-babs",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {},
   "name": {
     "de": "Bundesamt für Bevölkerungsschutz (BABS)",

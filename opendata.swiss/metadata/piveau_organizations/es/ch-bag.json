@@ -2,6 +2,16 @@
   "id": "ch-bag",
   "identifier": "CH_BAG",
   "resource": "https://opendata.swiss/id/organization/ch-bag",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das BAG engagiert sich für die Gesundheit der Bevölkerung. Es ist für die nationale Gesundheitspolitik sowie die Kranken- und Unfallversicherung zuständig. Und es macht sich auch auf internationaler Ebene für Gesundheitsthemen stark.",
     "en": "The Federal Office of Public Health (FOPH) is dedicated to the health of the Swiss population. It’s responsible for national healthcare policy and for health and accident insurance; and it promotes healthcare issues and interests on the international stage.",

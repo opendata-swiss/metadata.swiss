@@ -2,6 +2,16 @@
   "id": "ch-zas",
   "identifier": "CH_ZAS",
   "resource": "https://opendata.swiss/id/organization/ch-zas",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Die ZAS ist im Bereich der 1. Säule, welche die Alters- und Hinterlassenenversicherung AHV, die Invalidenversicherung IV und die Erwerbsersatzordnung EO umfasst, tätig.",
     "en": "The CCO is active in the field of 1st pillar social insurance: old-age and survivors' insurance OASI, disability insurance DI, compensation for loss of earnings APG.",

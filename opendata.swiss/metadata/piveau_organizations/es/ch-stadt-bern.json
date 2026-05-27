@@ -2,6 +2,16 @@
   "id": "ch-stadt-bern",
   "identifier": "CH_STADT_BERN",
   "resource": "https://opendata.swiss/id/organization/ch-stadt-bern",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
   "description": {},
   "name": {
     "de": "Stadt Bern",

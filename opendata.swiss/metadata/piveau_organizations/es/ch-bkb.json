@@ -2,6 +2,16 @@
   "id": "ch-bkb",
   "identifier": "CH_BKB",
   "resource": "https://opendata.swiss/id/organization/ch-bkb",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Die BKB ist das Strategieorgan der Bundesverwaltung für die Bereiche Waren- und Dienstleistungsbeschaffung. Sie nimmt insbesondere folgende Aufgaben wahr: Weiterentwicklung des öffentlichen Beschaffungswesens des Bundes, Nachhaltigkeit, Politik, Aus- und Weiterbildung im öffentlichen Beschaffungswesen.",
     "fr": "La CA constitue l'organe stratégique de l'administration fédérale pour l'acquisition de marchandises et de services. Elle remplit en particulier les tâches suivantes: Développement des marchés publics de la Confédération, Développement durable, Politique et formation et perfectionnement.",

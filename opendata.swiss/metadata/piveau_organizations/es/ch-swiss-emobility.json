@@ -2,6 +2,16 @@
   "id": "ch-swiss-emobility",
   "identifier": "CH_SWISS_EMOBILITY",
   "resource": "https://opendata.swiss/id/organization/ch-swiss-emobility",
+  "classification": {
+    "id": "0109",
+    "label": {
+      "de": "Verein",
+      "fr": "Association",
+      "it": "Associazione",
+      "en": "Association"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0109"
+  },
   "description": {
     "de": "Swiss eMobility unterstützt die Schaffung der politischen und institutionellen Grundlagen für die Entwicklung der Elektromobilität in der Schweiz. Wir treten für die Wahrung der Interessen unserer Mitglieder im Zusammenhang mit der Elektromobilität ein.",
     "en": "Swiss eMobility supports the creation of the political and institutional foundations for the development of electromobility in Switzerland. We stand up for the interests of our members in connection with electromobility.",

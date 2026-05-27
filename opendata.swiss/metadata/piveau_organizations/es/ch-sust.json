@@ -2,6 +2,7 @@
   "id": "ch-sust",
   "identifier": "CH_SUST",
   "resource": "https://opendata.swiss/id/organization/ch-sust",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Schweizerische Sicherheitsuntersuchungsstelle (SUST)",

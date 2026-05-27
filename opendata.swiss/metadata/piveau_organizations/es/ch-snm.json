@@ -2,6 +2,16 @@
   "id": "ch-snm",
   "identifier": "CH_SNM",
   "resource": "https://opendata.swiss/id/organization/ch-snm",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
   "description": {
     "de": "Unter dem Dach des Schweizerischen Nationalmuseums sind drei Museen sowie das Sammlungszentrum in Affoltern am Albis vereint. Die Museen präsentieren Schweizer Geschichte von den Anfängen bis heute, und erschliessen – auch mit temporären Ausstellungen zu aktuellen Themen – die schweizerischen Identitäten und die Vielfalt der Geschichte und Kultur unseres Landes.",
     "en": "Under the auspices of the Swiss National Museum, three museums and our Collection Centre in Affoltern am Albis are brought together. The museums showcase the history of Switzerland from its beginnings up to the present day, giving an insight into the Swiss identity and the rich tapestry of our country’s history and culture, with temporary exhibitions covering issues of current interest.",

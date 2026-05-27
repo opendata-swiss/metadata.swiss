@@ -2,6 +2,16 @@
   "id": "ch-snf",
   "identifier": "CH_SNF",
   "resource": "https://opendata.swiss/id/organization/ch-snf",
+  "classification": {
+    "id": "0110",
+    "label": {
+      "de": "Stiftung",
+      "fr": "Fondation",
+      "it": "Fondazione",
+      "en": "Foundation"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0110"
+  },
   "description": {
     "de": "Der Schweizerische Nationalfonds (SNF) fördert herausragende Forschung an Hochschulen und anderen Institutionen – von der Chemie über die Medizin bis zur Soziologie. Tausende von Teams schaffen Wissen für eine bessere Zukunft aller Menschen. Gemeinsam mit Partnern gestalten wir den Forschungsplatz Schweiz.",
     "en": "The Swiss National Science Foundation (SNSF) funds excellent research at universities and other institutions – from chemistry to medicine to sociology. Thousands of teams are generating knowledge for a better future for all. Together with our partners, we play a key role in shaping research in Switzerland.",

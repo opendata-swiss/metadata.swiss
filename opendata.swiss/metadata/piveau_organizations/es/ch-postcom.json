@@ -2,6 +2,7 @@
   "id": "ch-postcom",
   "identifier": "CH_POSTCOM",
   "resource": "https://opendata.swiss/id/organization/ch-postcom",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Eidgenössische Postkommission PostCom",

@@ -2,6 +2,7 @@
   "id": "ch-ge-fondationmodus",
   "identifier": "CH_GE_FONDATIONMODUS",
   "resource": "https://opendata.swiss/id/organization/ch-ge-fondationmodus",
+  "classification": null,
   "description": {},
   "name": {
     "de": "FONDATION MODUS (GE)",

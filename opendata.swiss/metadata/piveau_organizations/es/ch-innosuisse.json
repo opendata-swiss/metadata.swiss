@@ -2,6 +2,7 @@
   "id": "ch-innosuisse",
   "identifier": "CH_INNOSUISSE",
   "resource": "https://opendata.swiss/id/organization/ch-innosuisse",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Schweizerische Agentur für Innovationsföderung Innosuisse",

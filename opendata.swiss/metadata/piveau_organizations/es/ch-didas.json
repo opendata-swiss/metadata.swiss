@@ -2,6 +2,7 @@
   "id": "ch-didas",
   "identifier": "CH_DIDAS",
   "resource": "https://opendata.swiss/id/organization/ch-didas",
+  "classification": null,
   "description": {},
   "name": {
     "de": "DIDAS",

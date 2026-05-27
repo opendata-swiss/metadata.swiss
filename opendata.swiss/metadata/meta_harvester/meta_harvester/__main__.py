@@ -18,6 +18,10 @@ CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
 PIPES_PATH = "../piveau_pipes"
 TRIGGERS_PATH = "../piveau_triggers"
 ORGANIZATIONS_PATH = "../piveau_organizations"
+LEGAL_FORM_VOCAB_PATH = (
+    Path(__file__).resolve().parents[2] / "piveau_vocabularies" / "i14y-legalForm.nt"
+)
+_LEGAL_FORM_LOOKUP = None
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -50,6 +54,53 @@ def to_dict(value: Union[str, dict]) -> dict:
             logger.error(f"Could not decode JSON string: {value}")
             return {}
     return {}
+
+
+def load_legal_form_lookup() -> dict:
+    """
+    Loads legal-form labels from the vocabulary file once and caches them.
+
+    Returns:
+        dict: Mapping by legal-form code, e.g. {"0220": {"id": ..., "label": ..., "resource": ...}}
+    """
+    global _LEGAL_FORM_LOOKUP
+
+    if _LEGAL_FORM_LOOKUP is not None:
+        return _LEGAL_FORM_LOOKUP
+
+    schema = Namespace("http://schema.org/")
+    lookup = {}
+    graph = Graph()
+
+    try:
+        graph.parse(str(LEGAL_FORM_VOCAB_PATH), format="nt")
+    except Exception as e:
+        logger.error(f"Failed to load legal form vocabulary from '{LEGAL_FORM_VOCAB_PATH}': {e}")
+        _LEGAL_FORM_LOOKUP = {}
+        return _LEGAL_FORM_LOOKUP
+
+    for subject, _, identifier in graph.triples((None, schema.identifier, None)):
+        code = str(identifier)
+        labels = {}
+
+        for _, _, pref_label in graph.triples((subject, SKOS.prefLabel, None)):
+            if isinstance(pref_label, Literal) and pref_label.language:
+                labels[pref_label.language] = str(pref_label)
+
+        # Fall back to schema:name if no SKOS labels are present.
+        if not labels:
+            for _, _, name in graph.triples((subject, schema.name, None)):
+                if isinstance(name, Literal) and name.language:
+                    labels[name.language] = str(name)
+
+        lookup[code] = {
+            "id": code,
+            "label": labels,
+            "resource": str(subject),
+        }
+
+    _LEGAL_FORM_LOOKUP = lookup
+    return _LEGAL_FORM_LOOKUP
 
 
 
@@ -305,6 +356,23 @@ def generate_organization_json(
     filtered_prefLabels = {
         lang: prefLabel for lang, prefLabel in prefLabels.items() if prefLabel is not None
     }
+
+    classification = None
+    if classification_code:
+        legal_form_lookup = load_legal_form_lookup()
+        classification = legal_form_lookup.get(classification_code)
+
+        if classification is None:
+            logger.warning(
+                f"No legal form found in vocabulary for classification code '{classification_code}'."
+            )
+            
+            classification = {
+                "id": classification_code,
+                "label": {},
+                "resource": str(LEGAL_FORM[classification_code]),
+            }
+
     
     output_file = Path(ORGANIZATIONS_PATH) / "es" / f"{slug}.json"
     with open(output_file, "w") as orga_file:
@@ -313,7 +381,7 @@ def generate_organization_json(
             "identifier": identifier,
             "resource": orga_uri,
             # "sub_organization_of": ODSN_ORGA[subAgentOf_slug] if subAgentOf_slug else None,
-            # "classification": LEGAL_FORM[classification_code] if classification_code else None,
+            "classification": classification,
             "description": filtered_descriptions,
             "name": filtered_names,
             "pref_label": filtered_prefLabels,

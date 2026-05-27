@@ -2,6 +2,7 @@
   "id": "ch-sfti",
   "identifier": "CH_SFTI",
   "resource": "https://opendata.swiss/id/organization/ch-sfti",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Swiss Fintech Innovations",

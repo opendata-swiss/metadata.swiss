@@ -2,6 +2,16 @@
   "id": "ch-gs-uvek",
   "identifier": "CH_GS_UVEK",
   "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das UVEK kümmert sich um die Stromversorgung, die Verkehrs- und Kommunikationsinfrastruktur, die Raumentwicklung und den Umweltschutz.",
     "en": "Across its seven federal offices, DETEC is responsible for a wide range of tasks, from ensuring a secure electricity supply through maintaining the transport and communications infrastructure, coordinating spatial development and protecting the environment.",

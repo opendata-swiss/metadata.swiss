@@ -2,6 +2,16 @@
   "id": "ch-eth-lib",
   "identifier": "CH_ETH_LIB",
   "resource": "https://opendata.swiss/id/organization/ch-eth-lib",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Die ETH-Bibliothek ist die grösste öffentliche naturwissenschaftliche und technische Bibliothek der Schweiz. Die ETH-Bibliothek als zentrale Hochschulbibliothek und Wissenshub der ETH (Eidgenössische Technische Hochschule) Zürich stellt deren Versorgung mit naturwissenschaftlicher und technischer Information sicher. Darüber hinaus bietet sie auch Ressourcen für die Öffentlichkeit und für Firmen aus Forschung und Entwicklung.\n\nQuelle: Wikipedia (https://de.wikipedia.org/wiki/ETH-Bibliothek)",
     "en": "The ETH Library, serving as the central university library at ETH Zurich, has a notable collection of scientific and technical information. It is considered one of the largest public scientific and technical libraries in Switzerland. Furthermore, it offers resources for the public and companies in research and development.\n\nSource: Wikipedia (https://en.wikipedia.org/wiki/ETH_Library)",

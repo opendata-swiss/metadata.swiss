@@ -2,6 +2,7 @@
   "id": "ch-unizh-foeg",
   "identifier": "CH_UNIZH_FOEG",
   "resource": "https://opendata.swiss/id/organization/ch-unizh-foeg",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Forschungszentrum Öffentlichkeit und Gesellschaft (fög)",

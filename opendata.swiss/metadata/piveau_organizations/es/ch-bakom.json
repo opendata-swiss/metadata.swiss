@@ -2,6 +2,16 @@
   "id": "ch-bakom",
   "identifier": "CH_BAKOM",
   "resource": "https://opendata.swiss/id/organization/ch-bakom",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Als Kompetenzzentrum des Bundes für Medien und Telekommunikation sorgt das BAKOM für einen freien, sicheren und vielfältigen Zugang zur Kommunikation in der Schweiz. Auch ist es ein wichtiger Akteur im Bereich der Digitalisierung. Wir schaffen Rahmenbedingungen, die Innovation fördern, Grundrechte schützen und den digitalen Wandel verantwortungsvoll begleiten. Ausserdem setzen wir uns für eine unabhängige, vielfältige und qualitativ hochwertige Medienlandschaft in der Schweiz ein.",
     "en": "As the federal government’s competence center for media and telecommunications, OFCOM ensures free, secure and diverse access to communication in Switzerland. It also plays an important role in the field of digitalisation. We create framework conditions that promote innovation, protect fundamental rights and support the digital transformation in a responsible manner. We are also committed to an independent, diverse and high-quality media landscape in Switzerland.",

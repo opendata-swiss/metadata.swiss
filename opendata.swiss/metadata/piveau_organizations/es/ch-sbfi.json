@@ -2,6 +2,16 @@
   "id": "ch-sbfi",
   "identifier": "CH_SBFI",
   "resource": "https://opendata.swiss/id/organization/ch-sbfi",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das Staatssekretariat für Bildung, Forschung und Innovation ist das Kompetenzzentrum des Bundes für national und international ausgerichtete Fragen der BFI-Politik.",
     "en": "The State Secretariat for Education, Research and Innovation is the Swiss federal government's specialised agency for national and international matters concerning ERI policy.",

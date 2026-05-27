@@ -2,6 +2,16 @@
   "id": "ch-lustat",
   "identifier": "CH_LUSTAT",
   "resource": "https://opendata.swiss/id/organization/ch-lustat",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
   "description": {},
   "name": {
     "de": "LUSTAT Statistik Luzern",

@@ -2,6 +2,16 @@
   "id": "ch-swissdrg",
   "identifier": "CH_SWISSDRG",
   "resource": "https://opendata.swiss/id/organization/ch-swissdrg",
+  "classification": {
+    "id": "0106",
+    "label": {
+      "de": "Aktiengesellschaft (AG)",
+      "en": "Corporation (Ltd)",
+      "fr": "Société anonyme (SA)",
+      "it": "Società anonima (SA)"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0106"
+  },
   "description": {
     "de": "Die SwissDRG AG ist eine gemeinsame Institution der Leistungserbringer, der Versicherer und der Kantone im schweizerischen Gesundheitssystem.",
     "en": "SwissDRG AG is a joint institution of service providers, insurers and cantons in the Swiss healthcare system.",

@@ -2,6 +2,7 @@
   "id": "ch-seco",
   "identifier": "CH_SECO",
   "resource": "https://opendata.swiss/id/organization/ch-seco",
+  "classification": null,
   "description": {},
   "name": {
     "de": "Staatssekretariat für Wirtschaft SECO",

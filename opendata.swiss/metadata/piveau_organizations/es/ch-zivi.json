@@ -2,6 +2,16 @@
   "id": "ch-zivi",
   "identifier": "CH_ZIVI",
   "resource": "https://opendata.swiss/id/organization/ch-zivi",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Das Bundesamt für Zivildienst (ZIVI) ist die zuständige Behörde des Bundes für alle Belange des Zivildienstes.",
     "en": "The Federal Office for Civilian Service (ZIVI) is the federal authority responsible for all matters relating to civilian service.",

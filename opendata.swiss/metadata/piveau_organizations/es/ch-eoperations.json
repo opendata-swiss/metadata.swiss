@@ -2,6 +2,7 @@
   "id": "ch-eoperations",
   "identifier": "CH_eOperations",
   "resource": "https://opendata.swiss/id/organization/ch-eoperations",
+  "classification": null,
   "description": {},
   "name": {
     "de": "eOperations Schweiz",
