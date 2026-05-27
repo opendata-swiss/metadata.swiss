@@ -30,5 +30,8 @@
     "fr": "SG-DFF",
     "it": "SG-DFF"
   },
-  "homepage": "https://www.efd.admin.ch"
+  "homepage": "https://www.efd.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

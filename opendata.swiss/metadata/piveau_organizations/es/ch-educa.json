@@ -30,5 +30,8 @@
     "fr": "EDUCA",
     "it": "EDUCA"
   },
-  "homepage": "https://www.educa.ch"
+  "homepage": "https://www.educa.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

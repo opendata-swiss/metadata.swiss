@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Universitats-Kinderspital beider Basel"
   },
-  "homepage": "https://www.ukbb.ch"
+  "homepage": "https://www.ukbb.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

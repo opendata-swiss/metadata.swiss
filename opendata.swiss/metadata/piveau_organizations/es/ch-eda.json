@@ -30,5 +30,8 @@
     "fr": "DFAE",
     "it": "DFAE"
   },
-  "homepage": "https://www.eda.admin.ch"
+  "homepage": "https://www.eda.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

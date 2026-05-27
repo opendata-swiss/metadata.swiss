@@ -25,5 +25,47 @@
     "fr": "BN",
     "it": "BN"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-bak",
+  "ancestors": [
+    {
+      "id": "ch-bak",
+      "name": {
+        "de": "Bundesamt für Kultur (BAK)",
+        "en": "Federal Office of Culture (FOC)",
+        "fr": "Office fédéral de la culture (OFC)",
+        "it": "Ufficio federale della cultura (UFC)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "BAK",
+        "en": "FOC",
+        "fr": "OFC",
+        "it": "UFC",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bak",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 0
+    }
+  ]
 }

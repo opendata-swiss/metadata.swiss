@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Hopitaux universitaires de Geneve"
   },
-  "homepage": "https://www.hug.ch"
+  "homepage": "https://www.hug.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

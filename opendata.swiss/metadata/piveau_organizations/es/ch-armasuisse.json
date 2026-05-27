@@ -25,5 +25,28 @@
     "fr": "armasuisse",
     "it": "armasuisse"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-vbs",
+  "ancestors": [
+    {
+      "id": "ch-gs-vbs",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)",
+        "en": "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)",
+        "fr": "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)",
+        "it": "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "GS-VBS",
+        "en": "GS-DDPS",
+        "fr": "SG-DDPS",
+        "it": "SG-DDPS",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-vbs",
+      "hierarchy_level": 0
+    }
+  ]
 }

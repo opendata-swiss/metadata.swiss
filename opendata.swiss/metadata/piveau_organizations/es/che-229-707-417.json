@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Inselspital - Universitatsspital Bern"
   },
-  "homepage": "https://www.insel.ch"
+  "homepage": "https://www.insel.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

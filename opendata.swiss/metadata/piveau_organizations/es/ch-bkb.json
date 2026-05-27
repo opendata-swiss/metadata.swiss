@@ -29,5 +29,8 @@
     "fr": "CA",
     "it": "CA"
   },
-  "homepage": "https://www.bkb.admin.ch"
+  "homepage": "https://www.bkb.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

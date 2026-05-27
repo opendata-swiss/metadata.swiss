@@ -25,5 +25,8 @@
     "fr": "CSI",
     "it": "CSI"
   },
-  "homepage": "https://www.ssk-csi.ch"
+  "homepage": "https://www.ssk-csi.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

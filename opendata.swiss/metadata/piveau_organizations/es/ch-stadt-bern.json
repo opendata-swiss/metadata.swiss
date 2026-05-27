@@ -25,5 +25,8 @@
     "fr": "Ville de Berne",
     "it": "Città di Berna"
   },
-  "homepage": "https://bern.ch"
+  "homepage": "https://bern.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

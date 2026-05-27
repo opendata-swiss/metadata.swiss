@@ -25,5 +25,28 @@
     "fr": "ChF-TNI",
     "it": "CaF-TDT"
   },
-  "homepage": "https://www.bk.admin.ch/bk/de/home/digitale-transformation-ikt-lenkung/bereichdti.html"
+  "homepage": "https://www.bk.admin.ch/bk/de/home/digitale-transformation-ikt-lenkung/bereichdti.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-bk",
+  "ancestors": [
+    {
+      "id": "ch-bk",
+      "name": {
+        "de": "Schweizerische Bundeskanzlei (BK)",
+        "en": "Swiss Federal Chancellery (FCh)",
+        "fr": "Chancellerie fédérale (ChF)",
+        "it": "Cancelleria federale (CaF)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "BK",
+        "en": "CCh",
+        "fr": "ChF",
+        "it": "CaF",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bk",
+      "hierarchy_level": 0
+    }
+  ]
 }

@@ -18,5 +18,8 @@
     "fr": "SDBB",
     "it": "SDBB"
   },
-  "homepage": "https://www.sdbb.ch"
+  "homepage": "https://www.sdbb.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

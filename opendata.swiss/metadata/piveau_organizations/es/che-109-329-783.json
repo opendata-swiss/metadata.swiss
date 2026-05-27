@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Luzerner Kantonsspital"
   },
-  "homepage": "https://www.luks.ch"
+  "homepage": "https://www.luks.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

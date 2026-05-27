@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Kinder und Jugendmedizin Koniz"
   },
-  "homepage": "https://www.kjmk.ch"
+  "homepage": "https://www.kjmk.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

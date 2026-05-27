@@ -25,5 +25,8 @@
     "fr": "ElCom",
     "it": "ElCom"
   },
-  "homepage": "https://www.elcom.admin.ch/"
+  "homepage": "https://www.elcom.admin.ch/",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

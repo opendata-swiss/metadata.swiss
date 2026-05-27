@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Centre hospitalier universitaire vaudois"
   },
-  "homepage": "https://www.chuv.ch"
+  "homepage": "https://www.chuv.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

@@ -30,5 +30,8 @@
     "fr": "Swiss eMobility",
     "it": "Swiss eMobility"
   },
-  "homepage": "https://www.swiss-emobility.ch"
+  "homepage": "https://www.swiss-emobility.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

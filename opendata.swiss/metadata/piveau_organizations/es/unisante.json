@@ -21,5 +21,8 @@
     "en": "Center for Primary Care and Public Health (Unisanté), University of Lausanne, Switzerland",
     "fr": "Centre universitaire de médecine générale et santé publique (Unisanté), Université de Lausanne, Suisse"
   },
-  "homepage": "https://www.unisante.ch/"
+  "homepage": "https://www.unisante.ch/",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

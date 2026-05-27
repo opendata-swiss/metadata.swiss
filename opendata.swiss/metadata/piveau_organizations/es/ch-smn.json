@@ -25,5 +25,8 @@
     "fr": "MNS",
     "it": "MNS"
   },
-  "homepage": "https://www.nationalmuseum.ch"
+  "homepage": "https://www.nationalmuseum.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

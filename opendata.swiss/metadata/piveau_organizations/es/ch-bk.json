@@ -25,5 +25,8 @@
     "fr": "ChF",
     "it": "CaF"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

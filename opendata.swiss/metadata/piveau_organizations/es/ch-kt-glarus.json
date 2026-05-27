@@ -25,5 +25,8 @@
     "fr": "GL",
     "it": "GL"
   },
-  "homepage": "https://www.gl.ch"
+  "homepage": "https://www.gl.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

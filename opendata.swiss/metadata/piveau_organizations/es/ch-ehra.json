@@ -25,5 +25,8 @@
     "fr": "OFRC",
     "it": "UFRC"
   },
-  "homepage": "https://www.bj.admin.ch/bj/de/home/wirtschaft/handelsregister.html"
+  "homepage": "https://www.bj.admin.ch/bj/de/home/wirtschaft/handelsregister.html",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

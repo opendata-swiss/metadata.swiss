@@ -16,5 +16,28 @@
     "fr": "Secrétariat d'État à l'économie SECO",
     "it": "Segreteria di Stato dell'economia SECO"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-wbf",
+  "ancestors": [
+    {
+      "id": "ch-wbf",
+      "name": {
+        "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+        "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+        "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "WBF",
+        "en": "EAR",
+        "fr": "DEFR",
+        "it": "DEFR",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf",
+      "hierarchy_level": 0
+    }
+  ]
 }

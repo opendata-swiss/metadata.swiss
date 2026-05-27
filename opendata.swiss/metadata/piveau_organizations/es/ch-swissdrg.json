@@ -30,5 +30,8 @@
     "fr": "SwissDRG SA",
     "it": "SwissDRG AG"
   },
-  "homepage": "https://www.swissdrg.org"
+  "homepage": "https://www.swissdrg.org",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

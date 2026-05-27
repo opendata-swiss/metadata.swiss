@@ -319,6 +319,8 @@ def generate_organization_json(
         slug: str,
         identifier: str,
         subAgentOf_slug: str,
+        ancestors: list,
+        hierarchy_level: int,
         classification_code: str,
         names: dict,
         prefLabels: dict,
@@ -332,6 +334,8 @@ def generate_organization_json(
         slug (str):                The slug of the organization.
         identifier (str):          The identifier of the organization.
         subAgentOf_slug (str):     The slug of the parent organization, if any.
+        ancestors (list):          Ancestors from immediate parent to root.
+        hierarchy_level (int):     Tree depth of the organization (root = 0).
         classification_code (str): The classification code of the organization.
         names (dict):              A dictionary of names for the organization, with language codes as keys.
         prefLabels (dict):         A dictionary of preferred labels for the organization, with language codes as keys.
@@ -380,12 +384,14 @@ def generate_organization_json(
             "id": slug,
             "identifier": identifier,
             "resource": orga_uri,
-            # "sub_organization_of": ODSN_ORGA[subAgentOf_slug] if subAgentOf_slug else None,
             "classification": classification,
             "description": filtered_descriptions,
             "name": filtered_names,
             "pref_label": filtered_prefLabels,
             "homepage": homepage,
+            "hierarchy_level": hierarchy_level,
+            "sub_organization_of": subAgentOf_slug if subAgentOf_slug else None,
+            "ancestors": ancestors
         }, orga_file, indent=2, ensure_ascii=False)
 
     logger.info(f"Successfully generated JSON and saved to '{output_file}'")
@@ -501,8 +507,62 @@ def generate_organizations() -> None:
         logging.error(f"Failed to fetch organizations from I14Y: {e}")
         return
     
-    # dictionary to map from the id to the slug. used for populating the 'subAgentOf' fields
+    # dictionary to map from the id to the slug. used for populating the 'subAgentOf' and 'ancestors' fields
     id_to_slug = {org["id"]: org["slug"] for org in organizations}
+    slug_to_org = {org["slug"]: org for org in organizations}
+
+    def build_ancestors(parent_slug: str) -> list:
+        ancestors = []
+        current_slug = parent_slug
+        visited = set()
+
+        while current_slug:
+            if current_slug in visited:
+                logger.warning(
+                    f"Detected cycle in organization hierarchy at '{current_slug}'."
+                )
+                break
+
+            visited.add(current_slug)
+            current_org = slug_to_org.get(current_slug)
+
+            if not current_org:
+                logger.warning(
+                    f"Could not resolve ancestor organization for slug '{current_slug}'."
+                )
+                break
+
+            ancestor_name = to_dict(current_org.get("name", {}))
+            ancestor_pref_label = to_dict(current_org.get("prefLabel", {}))
+
+            ancestors.append(
+                {
+                    "id": current_slug,
+                    "name": ancestor_name,
+                    "pref_label": ancestor_pref_label,
+                    "resource": f"https://opendata.swiss/id/organization/{current_slug}",
+                }
+            )
+
+            parent_orgs = current_org.get("subAgentOf", [])
+            if len(parent_orgs) > 1:
+                logger.warning(
+                    f"Ancestor organization '{current_slug}' has multiple parents. Stopping chain at this level."
+                )
+                break
+
+            if len(parent_orgs) == 1:
+                next_parent_id = parent_orgs[0].get("id")
+                current_slug = id_to_slug.get(next_parent_id)
+            else:
+                current_slug = None
+
+        # Re-map levels so that root is always level 0.
+        max_level = len(ancestors) - 1
+        for index, ancestor in enumerate(ancestors):
+            ancestor["hierarchy_level"] = max_level - index
+        
+        return ancestors
     
     for i, organization in enumerate(organizations):
         slug = organization["slug"]
@@ -512,11 +572,16 @@ def generate_organizations() -> None:
         # expect only one parent organization. error if more than one.
         parent_orgs = organization.get("subAgentOf", [])
         if len(parent_orgs) > 1:
-            logging.error(f"Organization '{slug}' ({organization["identifier"]}) has more than one parent organization: {parent_orgs}. Skipping.")
+            logging.error(f"Organization '{slug}' ({organization['identifier']}) has more than one parent organization: {parent_orgs}. Skipping.")
             continue
         elif len(parent_orgs) == 1:
             parent_org_id = parent_orgs[0].get("id")
             subAgentOf_slug = id_to_slug.get(parent_org_id)
+        else:
+            subAgentOf_slug = ""
+
+        ancestors = build_ancestors(subAgentOf_slug) if subAgentOf_slug else []
+        hierarchy_level = len(ancestors)
 
         generate_organization_metadata(
             slug=slug,
@@ -533,6 +598,8 @@ def generate_organizations() -> None:
             slug=slug,
             identifier=organization["identifier"],
             subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",
+            ancestors=ancestors,
+            hierarchy_level=hierarchy_level,
             classification_code = (organization.get("classification") or {}).get("code", ""),
             names=to_dict(organization.get("name" or {})),
             prefLabels=to_dict(organization.get("prefLabel" or {})),

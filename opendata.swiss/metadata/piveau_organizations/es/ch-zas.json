@@ -30,5 +30,47 @@
     "fr": "CdC",
     "it": "UCC"
   },
-  "homepage": "https://www.zas.admin.ch"
+  "homepage": "https://www.zas.admin.ch",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-efv",
+  "ancestors": [
+    {
+      "id": "ch-efv",
+      "name": {
+        "de": "Eidgenössische Finanzverwaltung (EFV)",
+        "en": "Federal Finance Administration (FFA)",
+        "fr": "Administration fédérale des finances (AFF)",
+        "it": "Amministrazione federale delle finanze (AFF)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "EFV",
+        "en": "FFA",
+        "fr": "AFF",
+        "it": "AFF",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-efv",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-gs-efd",
+      "name": {
+        "de": "Generalsekretariat EFD (GS-EFD)",
+        "en": "General Secretariat FDF (GS-FDF)",
+        "fr": "Secrétariat général DFF (SG-DFF)",
+        "it": "Segreteria generale DFF (SG-DFF)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "GS-EFD",
+        "en": "GS-FDF",
+        "fr": "SG-DFF",
+        "it": "SG-DFF",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-efd",
+      "hierarchy_level": 0
+    }
+  ]
 }

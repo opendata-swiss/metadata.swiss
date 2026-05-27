@@ -25,5 +25,8 @@
     "fr": "SG-DDPS",
     "it": "SG-DDPS"
   },
-  "homepage": "https://www.vbs.admin.ch"
+  "homepage": "https://www.vbs.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

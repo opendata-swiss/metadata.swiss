@@ -30,5 +30,8 @@
     "fr": "FNS",
     "it": "FNS"
   },
-  "homepage": "https://www.fns-it.ch"
+  "homepage": "https://www.fns-it.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

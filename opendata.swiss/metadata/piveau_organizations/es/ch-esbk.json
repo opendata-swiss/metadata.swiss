@@ -30,5 +30,28 @@
     "fr": "CFMJ",
     "it": "CFCG"
   },
-  "homepage": "https://www.esbk.admin.ch"
+  "homepage": "https://www.esbk.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-ejpd",
+  "ancestors": [
+    {
+      "id": "ch-gs-ejpd",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)",
+        "en": "General Secretariat Federal Department of Justice and Police (GS-FDJP)",
+        "fr": "Secrétariat général Département fédéral de justice et police (SG-DFJP)",
+        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "GS-EJPD",
+        "en": "GS-FDJP",
+        "fr": "SG-DFJP",
+        "it": "SG-DFGP",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-ejpd",
+      "hierarchy_level": 0
+    }
+  ]
 }

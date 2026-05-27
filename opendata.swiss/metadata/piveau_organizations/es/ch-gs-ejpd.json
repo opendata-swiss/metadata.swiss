@@ -25,5 +25,8 @@
     "fr": "SG-DFJP",
     "it": "SG-DFGP"
   },
-  "homepage": "https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html"
+  "homepage": "https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

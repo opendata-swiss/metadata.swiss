@@ -25,5 +25,8 @@
     "fr": "ARAMIS",
     "it": "ARAMIS"
   },
-  "homepage": "https://www.aramis.admin.ch"
+  "homepage": "https://www.aramis.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

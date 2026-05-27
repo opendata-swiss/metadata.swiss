@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Youkidoc Kindergesundheit"
   },
-  "homepage": "https://www.youkidoc.ch"
+  "homepage": "https://www.youkidoc.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

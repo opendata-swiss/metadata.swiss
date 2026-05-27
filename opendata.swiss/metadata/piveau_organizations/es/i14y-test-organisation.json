@@ -18,5 +18,8 @@
     "it": "I14Y Test Organisation_it",
     "rm": "I14Y Test Organisation_rm"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

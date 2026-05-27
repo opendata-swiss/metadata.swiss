@@ -25,5 +25,8 @@
     "fr": "SFF",
     "it": "VFF"
   },
-  "homepage": "https://www.esa.admin.ch/"
+  "homepage": "https://www.esa.admin.ch/",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

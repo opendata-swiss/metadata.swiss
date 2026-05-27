@@ -25,5 +25,28 @@
     "fr": "OFT",
     "it": "UFT"
   },
-  "homepage": "https://www.bav.admin.ch"
+  "homepage": "https://www.bav.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-uvek",
+  "ancestors": [
+    {
+      "id": "ch-gs-uvek",
+      "name": {
+        "de": "Generalsekretariat des UVEK (GS-UVEK)",
+        "en": "General Secretariat DETEC (GS-DETEC)",
+        "fr": "Secrétariat général du DETEC (SG-DETEC)",
+        "it": "Segreteria generale del DATEC (SG-DATEC)",
+        "rm": ""
+      },
+      "pref_label": {
+        "de": "GS-UVEK",
+        "en": "GS-DETEC",
+        "fr": "SG-DETEC",
+        "it": "SG-DATEC",
+        "rm": ""
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "hierarchy_level": 0
+    }
+  ]
 }

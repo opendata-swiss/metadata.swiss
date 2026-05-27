@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Universitatsspital Basel"
   },
-  "homepage": "https://www.unispital-basel.ch"
+  "homepage": "https://www.unispital-basel.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

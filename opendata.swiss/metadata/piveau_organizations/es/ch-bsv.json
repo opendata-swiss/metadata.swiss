@@ -25,5 +25,28 @@
     "fr": "OFAS",
     "it": "UFAS"
   },
-  "homepage": "https://www.bsv.admin.ch/"
+  "homepage": "https://www.bsv.admin.ch/",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-edi",
+  "ancestors": [
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 0
+    }
+  ]
 }

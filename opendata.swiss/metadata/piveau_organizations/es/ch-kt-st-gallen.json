@@ -16,5 +16,8 @@
     "fr": "Canton St-Gallen",
     "it": "Canton St-Gallen"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

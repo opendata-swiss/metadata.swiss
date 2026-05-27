@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Ostschweizer Kantonspital"
   },
-  "homepage": "https://www.h-och.ch"
+  "homepage": "https://www.h-och.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

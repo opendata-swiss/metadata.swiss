@@ -16,5 +16,8 @@
     "fr": "Commission fédérale de la poste PostCom",
     "it": "Commissione federale delle poste PostCom"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

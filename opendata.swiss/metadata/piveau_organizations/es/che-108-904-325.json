@@ -28,5 +28,8 @@
     "fr": "USZ",
     "it": "USZ"
   },
-  "homepage": "https://www.usz.ch"
+  "homepage": "https://www.usz.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

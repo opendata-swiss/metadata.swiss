@@ -25,5 +25,8 @@
     "fr": "Kt. BS",
     "it": "Kt. BS"
   },
-  "homepage": "https://www.bs.ch"
+  "homepage": "https://www.bs.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

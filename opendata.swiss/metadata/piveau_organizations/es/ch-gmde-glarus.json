@@ -25,5 +25,8 @@
     "fr": "Commune de Glaris",
     "it": "Communi di Glarona"
   },
-  "homepage": "https://www.glarus.ch"
+  "homepage": "https://www.glarus.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

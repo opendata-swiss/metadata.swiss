@@ -30,5 +30,8 @@
     "fr": "ETH Zürich",
     "it": "ETH Zürich"
   },
-  "homepage": "https://www.ethz.ch"
+  "homepage": "https://www.ethz.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

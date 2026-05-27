@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Centre Medicale Qorpus Hirslanden"
   },
-  "homepage": "https://www.hirslanden.ch/en/clinique-des-grangettes/centres-et-instituts/qorpus-medical-center.html"
+  "homepage": "https://www.hirslanden.ch/en/clinique-des-grangettes/centres-et-instituts/qorpus-medical-center.html",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

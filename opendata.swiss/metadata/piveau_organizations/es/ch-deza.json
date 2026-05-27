@@ -25,5 +25,28 @@
     "fr": "DDC",
     "it": "DSC"
   },
-  "homepage": "https://www.deza.admin.ch"
+  "homepage": "https://www.deza.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-eda",
+  "ancestors": [
+    {
+      "id": "ch-eda",
+      "name": {
+        "de": "Eidgenössisches Departement für auswärtige Angelegenheiten (EDA)",
+        "en": "Federal Department of Foreign Affairs (FDFA)",
+        "fr": "Département fédéral des affaires étrangères (DFAE)",
+        "it": "Dipartimento federale degli affari esteri (DFAE)",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "EDA",
+        "en": "FDFA",
+        "fr": "DFAE",
+        "it": "DFAE",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-eda",
+      "hierarchy_level": 0
+    }
+  ]
 }

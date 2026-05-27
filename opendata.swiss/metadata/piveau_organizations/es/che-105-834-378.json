@@ -12,5 +12,8 @@
   "pref_label": {
     "en": "Universitats-Kinderspital Zurich"
   },
-  "homepage": "https://www.kispi.uzh.ch"
+  "homepage": "https://www.kispi.uzh.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

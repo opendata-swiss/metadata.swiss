@@ -30,5 +30,28 @@
     "fr": "ETH",
     "it": "ETH"
   },
-  "homepage": "https://library.ethz.ch/"
+  "homepage": "https://library.ethz.ch/",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-eth",
+  "ancestors": [
+    {
+      "id": "ch-eth",
+      "name": {
+        "de": "ETH Zürich",
+        "en": "ETH Zürich",
+        "fr": "ETH Zürich",
+        "it": "ETH Zürich",
+        "rm": null
+      },
+      "pref_label": {
+        "de": "ETH Zürich",
+        "en": "ETH Zürich",
+        "fr": "ETH Zürich",
+        "it": "ETH Zürich",
+        "rm": null
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-eth",
+      "hierarchy_level": 0
+    }
+  ]
 }

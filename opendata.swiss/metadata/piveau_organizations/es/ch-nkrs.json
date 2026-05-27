@@ -16,5 +16,8 @@
     "fr": "Organe national d'enregistrement du cancer (ONEC)",
     "it": "Servizio nazionale di registrazione dei tumori (SNRT)"
   },
-  "homepage": null
+  "homepage": null,
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }

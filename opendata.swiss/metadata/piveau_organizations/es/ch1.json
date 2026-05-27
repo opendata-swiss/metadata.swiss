@@ -30,5 +30,8 @@
     "fr": "OFS",
     "it": "UFS"
   },
-  "homepage": "https://bfs.admin.ch"
+  "homepage": "https://bfs.admin.ch",
+  "hierarchy_level": 0,
+  "sub_organization_of": null,
+  "ancestors": []
 }
