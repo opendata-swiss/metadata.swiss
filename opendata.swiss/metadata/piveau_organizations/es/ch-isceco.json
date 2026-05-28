@@ -2,8 +2,6 @@
   "id": "ch-isceco",
   "identifier": "CH_ISCECO",
   "resource": "https://opendata.swiss/id/organization/ch-isceco",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "Information Service Center WBF ISCeco",
     "en": "Information Service Center WBF ISCeco",
@@ -16,8 +14,6 @@
     "fr": "Centre de services informatiques du DEFR ISCeco",
     "it": "Centro servizi informatici DEFR ISCeco"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

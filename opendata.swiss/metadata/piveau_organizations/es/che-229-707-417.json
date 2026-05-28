@@ -2,7 +2,6 @@
   "id": "che-229-707-417",
   "identifier": "CHE-229.707.417",
   "resource": "https://opendata.swiss/id/organization/che-229-707-417",
-  "classification": null,
   "description": {
     "en": "Inselspital - Universitatsspital Bern"
   },
@@ -14,6 +13,5 @@
   },
   "homepage": "https://www.insel.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

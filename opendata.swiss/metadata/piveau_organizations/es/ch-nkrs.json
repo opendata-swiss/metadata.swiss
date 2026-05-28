@@ -2,8 +2,6 @@
   "id": "ch-nkrs",
   "identifier": "CH_NKRS",
   "resource": "https://opendata.swiss/id/organization/ch-nkrs",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "Nationale Krebsregistrierungsstelle (NKRS)",
     "en": "National Agency for Cancer Registration (NACR)",
@@ -16,8 +14,6 @@
     "fr": "Organe national d'enregistrement du cancer (ONEC)",
     "it": "Servizio nazionale di registrazione dei tumori (SNRT)"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

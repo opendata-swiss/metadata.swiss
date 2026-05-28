@@ -18,6 +18,10 @@ CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
 PIPES_PATH = "../piveau_pipes"
 TRIGGERS_PATH = "../piveau_triggers"
 ORGANIZATIONS_PATH = "../piveau_organizations"
+ORGANIZATION_BASE_IRI = "https://opendata.swiss/id/organization/"
+LEGAL_FORM_BASE_IRI = "https://register.ld.admin.ch/i14y/concept/legalForm/"
+ODSN_ORGA = Namespace(ORGANIZATION_BASE_IRI)
+LEGAL_FORM = Namespace(LEGAL_FORM_BASE_IRI)
 LEGAL_FORM_VOCAB_PATH = (
     Path(__file__).resolve().parents[2] / "piveau_vocabularies" / "i14y-legalForm.nt"
 )
@@ -54,6 +58,40 @@ def to_dict(value: Union[str, dict]) -> dict:
             logger.error(f"Could not decode JSON string: {value}")
             return {}
     return {}
+
+
+def organization_uri(slug: str) -> str:
+    return f"{ORGANIZATION_BASE_IRI}{slug}"
+
+
+def clean_output_payload(value):
+    """
+    Recursively removes nulls and empty objects from JSON payloads.
+    Empty lists are intentionally preserved.
+    """
+    if isinstance(value, dict):
+        cleaned = {}
+        for key, item in value.items():
+            cleaned_item = clean_output_payload(item)
+            if cleaned_item is None:
+                continue
+            if isinstance(cleaned_item, dict) and not cleaned_item:
+                continue
+            cleaned[key] = cleaned_item
+        return cleaned
+
+    if isinstance(value, list):
+        cleaned_list = []
+        for item in value:
+            cleaned_item = clean_output_payload(item)
+            if cleaned_item is None:
+                continue
+            if isinstance(cleaned_item, dict) and not cleaned_item:
+                continue
+            cleaned_list.append(cleaned_item)
+        return cleaned_list
+
+    return value
 
 
 def load_legal_form_lookup() -> dict:
@@ -273,9 +311,6 @@ def generate_organization_metadata(
     Returns:
         None
     """
-    ODSN_ORGA = Namespace("https://opendata.swiss/id/organization/")
-    LEGAL_FORM = Namespace("https://register.ld.admin.ch/i14y/concept/legalForm/")
-
     g = Graph()
 
     g.bind("dcterms", DCTERMS)
@@ -345,11 +380,7 @@ def generate_organization_json(
     Returns:
         None
     """
-    
-    ODSN_ORGA = Namespace("https://opendata.swiss/id/organization/")
-    LEGAL_FORM = Namespace("https://register.ld.admin.ch/i14y/concept/legalForm/")
-
-    orga_uri = ODSN_ORGA[slug]
+    orga_uri = str(ODSN_ORGA[slug])
 
     filtered_descriptions = {
         lang: desc for lang, desc in descriptions.items() if desc is not None
@@ -377,22 +408,23 @@ def generate_organization_json(
                 "resource": str(LEGAL_FORM[classification_code]),
             }
 
-    
+    payload = clean_output_payload({
+        "id": slug,
+        "identifier": identifier,
+        "resource": orga_uri,
+        "classification": classification,
+        "description": filtered_descriptions,
+        "name": filtered_names,
+        "pref_label": filtered_prefLabels,
+        "homepage": homepage,
+        "hierarchy_level": hierarchy_level,
+        "sub_organization_of": subAgentOf_slug,
+        "ancestors": ancestors,
+    })
+
     output_file = Path(ORGANIZATIONS_PATH) / "es" / f"{slug}.json"
     with open(output_file, "w") as orga_file:
-        json.dump({
-            "id": slug,
-            "identifier": identifier,
-            "resource": orga_uri,
-            "classification": classification,
-            "description": filtered_descriptions,
-            "name": filtered_names,
-            "pref_label": filtered_prefLabels,
-            "homepage": homepage,
-            "hierarchy_level": hierarchy_level,
-            "sub_organization_of": subAgentOf_slug if subAgentOf_slug else None,
-            "ancestors": ancestors
-        }, orga_file, indent=2, ensure_ascii=False)
+        json.dump(payload, orga_file, indent=2, ensure_ascii=False)
 
     logger.info(f"Successfully generated JSON and saved to '{output_file}'")
 
@@ -540,7 +572,7 @@ def generate_organizations() -> None:
                     "id": current_slug,
                     "name": ancestor_name,
                     "pref_label": ancestor_pref_label,
-                    "resource": f"https://opendata.swiss/id/organization/{current_slug}",
+                    "resource": organization_uri(current_slug),
                 }
             )
 
@@ -571,40 +603,44 @@ def generate_organizations() -> None:
 
         # expect only one parent organization. error if more than one.
         parent_orgs = organization.get("subAgentOf", [])
+        subAgentOf_slug = None
         if len(parent_orgs) > 1:
             logging.error(f"Organization '{slug}' ({organization['identifier']}) has more than one parent organization: {parent_orgs}. Skipping.")
             continue
         elif len(parent_orgs) == 1:
             parent_org_id = parent_orgs[0].get("id")
             subAgentOf_slug = id_to_slug.get(parent_org_id)
-        else:
-            subAgentOf_slug = ""
 
         ancestors = build_ancestors(subAgentOf_slug) if subAgentOf_slug else []
         hierarchy_level = len(ancestors)
+        classification_code = (organization.get("classification") or {}).get("code", "")
+        names = to_dict(organization.get("name", {}))
+        pref_labels = to_dict(organization.get("prefLabel", {}))
+        descriptions = to_dict(organization.get("description", {}))
+        homepage = organization.get("homePage", "")
 
         generate_organization_metadata(
             slug=slug,
             identifier=organization["identifier"],
-            subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",
-            classification_code = (organization.get("classification") or {}).get("code", ""),
-            names=to_dict(organization.get("name" or {})),
-            prefLabels=to_dict(organization.get("prefLabel" or {})),
-            descriptions=to_dict(organization.get("description" or {})),
-            homepage=organization.get("homePage", "")
+            subAgentOf_slug=subAgentOf_slug,
+            classification_code=classification_code,
+            names=names,
+            prefLabels=pref_labels,
+            descriptions=descriptions,
+            homepage=homepage,
         )
 
         generate_organization_json(
             slug=slug,
             identifier=organization["identifier"],
-            subAgentOf_slug=subAgentOf_slug if len(parent_orgs) == 1 else "",
+            subAgentOf_slug=subAgentOf_slug,
             ancestors=ancestors,
             hierarchy_level=hierarchy_level,
-            classification_code = (organization.get("classification") or {}).get("code", ""),
-            names=to_dict(organization.get("name" or {})),
-            prefLabels=to_dict(organization.get("prefLabel" or {})),
-            descriptions=to_dict(organization.get("description" or {})),
-            homepage=organization.get("homePage", "")
+            classification_code=classification_code,
+            names=names,
+            prefLabels=pref_labels,
+            descriptions=descriptions,
+            homepage=homepage,
         )
 
 def main()-> None:

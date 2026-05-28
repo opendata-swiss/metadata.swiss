@@ -2,8 +2,6 @@
   "id": "ch-sphn",
   "identifier": "CH_SPHN",
   "resource": "https://opendata.swiss/id/organization/ch-sphn",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "Swiss Personalized Health Network",
     "en": "Swiss Personalized Health Network",
@@ -16,8 +14,6 @@
     "fr": "Swiss Personalized Health Network",
     "it": "Swiss Personalized Health Network"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

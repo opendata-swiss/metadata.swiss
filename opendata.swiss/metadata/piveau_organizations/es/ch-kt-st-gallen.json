@@ -2,8 +2,6 @@
   "id": "ch-kt-st-gallen",
   "identifier": "CH_KT_ST_GALLEN",
   "resource": "https://opendata.swiss/id/organization/ch-kt-st-gallen",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "Kanton St-Gallen",
     "en": "Canton St-Gallen",
@@ -16,8 +14,6 @@
     "fr": "Canton St-Gallen",
     "it": "Canton St-Gallen"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

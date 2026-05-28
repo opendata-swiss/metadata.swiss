@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0224"
   },
-  "description": {},
   "name": {
     "de": "Schweizerische Steuerkonferenz (SSK)",
     "en": "Schweizerische Steuerkonferenz (SSK)",
@@ -27,6 +26,5 @@
   },
   "homepage": "https://www.ssk-csi.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

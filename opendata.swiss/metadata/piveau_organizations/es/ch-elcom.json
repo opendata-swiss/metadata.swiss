@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Eidgenössische Elektrizitätskommission (ElCom)",
     "en": "Federal Electricity Commission (ElCom)",
@@ -27,6 +26,5 @@
   },
   "homepage": "https://www.elcom.admin.ch/",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

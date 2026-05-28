@@ -2,7 +2,6 @@
   "id": "che-183-020-319",
   "identifier": "CHE-183.020.319",
   "resource": "https://opendata.swiss/id/organization/che-183-020-319",
-  "classification": null,
   "description": {
     "en": "Centre Medicale Qorpus Hirslanden"
   },
@@ -14,6 +13,5 @@
   },
   "homepage": "https://www.hirslanden.ch/en/clinique-des-grangettes/centres-et-instituts/qorpus-medical-center.html",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

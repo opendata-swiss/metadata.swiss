@@ -40,15 +40,13 @@
         "de": "Eidgenössische Finanzverwaltung (EFV)",
         "en": "Federal Finance Administration (FFA)",
         "fr": "Administration fédérale des finances (AFF)",
-        "it": "Amministrazione federale delle finanze (AFF)",
-        "rm": null
+        "it": "Amministrazione federale delle finanze (AFF)"
       },
       "pref_label": {
         "de": "EFV",
         "en": "FFA",
         "fr": "AFF",
-        "it": "AFF",
-        "rm": null
+        "it": "AFF"
       },
       "resource": "https://opendata.swiss/id/organization/ch-efv",
       "hierarchy_level": 1
@@ -59,15 +57,13 @@
         "de": "Generalsekretariat EFD (GS-EFD)",
         "en": "General Secretariat FDF (GS-FDF)",
         "fr": "Secrétariat général DFF (SG-DFF)",
-        "it": "Segreteria generale DFF (SG-DFF)",
-        "rm": null
+        "it": "Segreteria generale DFF (SG-DFF)"
       },
       "pref_label": {
         "de": "GS-EFD",
         "en": "GS-FDF",
         "fr": "SG-DFF",
-        "it": "SG-DFF",
-        "rm": null
+        "it": "SG-DFF"
       },
       "resource": "https://opendata.swiss/id/organization/ch-gs-efd",
       "hierarchy_level": 0

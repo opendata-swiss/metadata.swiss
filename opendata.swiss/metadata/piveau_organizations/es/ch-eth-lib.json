@@ -40,15 +40,13 @@
         "de": "ETH Zürich",
         "en": "ETH Zürich",
         "fr": "ETH Zürich",
-        "it": "ETH Zürich",
-        "rm": null
+        "it": "ETH Zürich"
       },
       "pref_label": {
         "de": "ETH Zürich",
         "en": "ETH Zürich",
         "fr": "ETH Zürich",
-        "it": "ETH Zürich",
-        "rm": null
+        "it": "ETH Zürich"
       },
       "resource": "https://opendata.swiss/id/organization/ch-eth",
       "hierarchy_level": 0

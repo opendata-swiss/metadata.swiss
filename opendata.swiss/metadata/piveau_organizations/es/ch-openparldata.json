@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "OpenParlData.ch",
     "en": "OpenParlData.ch",
@@ -25,8 +24,6 @@
     "fr": "OpenParlData.ch",
     "it": "OpenParlData.ch"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

@@ -2,7 +2,6 @@
   "id": "che-107-148-124",
   "identifier": "CHE-107.148.124",
   "resource": "https://opendata.swiss/id/organization/che-107-148-124",
-  "classification": null,
   "description": {
     "en": "Kinder und Jugendmedizin Koniz"
   },
@@ -14,6 +13,5 @@
   },
   "homepage": "https://www.kjmk.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

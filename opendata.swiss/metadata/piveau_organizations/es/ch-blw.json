@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Bundesamt für Landwirtschaft (BLW)",
     "en": "Federal Office for Agriculture (FOAG)",
@@ -35,15 +34,13 @@
         "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
         "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
         "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
-        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)",
-        "rm": null
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
       },
       "pref_label": {
         "de": "WBF",
         "en": "EAR",
         "fr": "DEFR",
-        "it": "DEFR",
-        "rm": null
+        "it": "DEFR"
       },
       "resource": "https://opendata.swiss/id/organization/ch-wbf",
       "hierarchy_level": 0

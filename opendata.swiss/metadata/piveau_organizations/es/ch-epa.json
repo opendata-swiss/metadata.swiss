@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Eidgenössisches Personalamt EPA",
     "en": "Eidgenössisches Personalamt EPA",
@@ -27,6 +26,5 @@
   },
   "homepage": "https://www.epa.admin.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Geschäftsstelle Open Government Data (OGD)",
     "en": "Open Government Data Office (OGD)",
@@ -35,15 +34,13 @@
         "de": "Bundesamt für Statistik (BFS)",
         "en": "Federal Statistical Office (FSO)",
         "fr": "Office Fédéral de la Statistique (OFS)",
-        "it": "Ufficio federale di statistica (UFS)",
-        "rm": null
+        "it": "Ufficio federale di statistica (UFS)"
       },
       "pref_label": {
         "de": "BFS",
         "en": "FSO",
         "fr": "OFS",
-        "it": "UFS",
-        "rm": null
+        "it": "UFS"
       },
       "resource": "https://opendata.swiss/id/organization/ch1",
       "hierarchy_level": 0

@@ -2,8 +2,6 @@
   "id": "ch-didas",
   "identifier": "CH_DIDAS",
   "resource": "https://opendata.swiss/id/organization/ch-didas",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "DIDAS",
     "en": "DIDAS",
@@ -16,8 +14,6 @@
     "fr": "DIDAS",
     "it": "DIDAS"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Bereich digitale Transformation und IKT-Lenkung (DTI) der Bundeskanzlei (BK)",
     "en": "Digital Transformation and ICT Steering Sector (DTI) of the Federal Chancellery (FCh)",
@@ -35,15 +34,13 @@
         "de": "Schweizerische Bundeskanzlei (BK)",
         "en": "Swiss Federal Chancellery (FCh)",
         "fr": "Chancellerie fédérale (ChF)",
-        "it": "Cancelleria federale (CaF)",
-        "rm": null
+        "it": "Cancelleria federale (CaF)"
       },
       "pref_label": {
         "de": "BK",
         "en": "CCh",
         "fr": "ChF",
-        "it": "CaF",
-        "rm": null
+        "it": "CaF"
       },
       "resource": "https://opendata.swiss/id/organization/ch-bk",
       "hierarchy_level": 0

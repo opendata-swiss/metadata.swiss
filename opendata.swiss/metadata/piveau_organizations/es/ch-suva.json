@@ -2,8 +2,6 @@
   "id": "ch-suva",
   "identifier": "CH_SUVA",
   "resource": "https://opendata.swiss/id/organization/ch-suva",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "Suva",
     "en": "Suva",
@@ -16,8 +14,6 @@
     "fr": "Suva",
     "it": "Suva"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

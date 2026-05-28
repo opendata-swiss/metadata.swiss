@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
   },
-  "description": {},
   "name": {
     "de": "Kanton Aargau AG",
     "en": "Canton Aargau AG",
@@ -25,8 +24,6 @@
     "fr": "AG",
     "it": "AG"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

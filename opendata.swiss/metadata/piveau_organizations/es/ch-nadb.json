@@ -2,8 +2,6 @@
   "id": "ch-nadb",
   "identifier": "CH_NADB",
   "resource": "https://opendata.swiss/id/organization/ch-nadb",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "NaDB - Swiss Data Steward",
     "en": "NaDB - Swiss Data Steward",
@@ -16,7 +14,6 @@
     "fr": "NaDB - Swiss Data Steward",
     "it": "NaDB - Swiss Data Steward"
   },
-  "homepage": null,
   "hierarchy_level": 1,
   "sub_organization_of": "ch1",
   "ancestors": [
@@ -26,15 +23,13 @@
         "de": "Bundesamt für Statistik (BFS)",
         "en": "Federal Statistical Office (FSO)",
         "fr": "Office Fédéral de la Statistique (OFS)",
-        "it": "Ufficio federale di statistica (UFS)",
-        "rm": null
+        "it": "Ufficio federale di statistica (UFS)"
       },
       "pref_label": {
         "de": "BFS",
         "en": "FSO",
         "fr": "OFS",
-        "it": "UFS",
-        "rm": null
+        "it": "UFS"
       },
       "resource": "https://opendata.swiss/id/organization/ch1",
       "hierarchy_level": 0

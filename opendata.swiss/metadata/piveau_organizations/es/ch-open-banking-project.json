@@ -2,8 +2,6 @@
   "id": "ch-open-banking-project",
   "identifier": "CH_OPEN_BANKING_PROJECT",
   "resource": "https://opendata.swiss/id/organization/ch-open-banking-project",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "OpenBankingProject.ch",
     "en": "OpenBankingProject.ch",
@@ -16,8 +14,6 @@
     "fr": "OpenBankingProject.ch",
     "it": "OpenBankingProject.ch"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

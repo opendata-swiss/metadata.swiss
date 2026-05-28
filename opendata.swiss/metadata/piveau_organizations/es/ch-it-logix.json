@@ -2,8 +2,6 @@
   "id": "ch-it-logix",
   "identifier": "CH_IT-Logix",
   "resource": "https://opendata.swiss/id/organization/ch-it-logix",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "IT-Logix",
     "en": "IT-Logix",
@@ -16,8 +14,6 @@
     "fr": "IT-Logix",
     "it": "IT-Logix"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

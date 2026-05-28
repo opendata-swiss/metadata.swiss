@@ -2,7 +2,6 @@
   "id": "che-108-907-884",
   "identifier": "CHE-108.907.884",
   "resource": "https://opendata.swiss/id/organization/che-108-907-884",
-  "classification": null,
   "description": {
     "en": "Hopitaux universitaires de Geneve"
   },
@@ -14,6 +13,5 @@
   },
   "homepage": "https://www.hug.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

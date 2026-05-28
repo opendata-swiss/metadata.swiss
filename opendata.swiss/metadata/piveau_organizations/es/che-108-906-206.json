@@ -2,7 +2,6 @@
   "id": "che-108-906-206",
   "identifier": "CHE-108.906.206",
   "resource": "https://opendata.swiss/id/organization/che-108-906-206",
-  "classification": null,
   "description": {
     "en": "Ostschweizer Kantonspital"
   },
@@ -14,6 +13,5 @@
   },
   "homepage": "https://www.h-och.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

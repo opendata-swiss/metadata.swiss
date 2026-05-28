@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Bundesamt für Strassen (ASTRA)",
     "en": "Federal Roads Office (FEDRO)",
@@ -25,7 +24,6 @@
     "fr": "OFROU",
     "it": "USTRA"
   },
-  "homepage": null,
   "hierarchy_level": 1,
   "sub_organization_of": "ch-gs-uvek",
   "ancestors": [

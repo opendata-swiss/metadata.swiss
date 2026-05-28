@@ -40,15 +40,13 @@
         "de": "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)",
         "en": "General Secretariat Federal Department of Justice and Police (GS-FDJP)",
         "fr": "Secrétariat général Département fédéral de justice et police (SG-DFJP)",
-        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)",
-        "rm": null
+        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)"
       },
       "pref_label": {
         "de": "GS-EJPD",
         "en": "GS-FDJP",
         "fr": "SG-DFJP",
-        "it": "SG-DFGP",
-        "rm": null
+        "it": "SG-DFGP"
       },
       "resource": "https://opendata.swiss/id/organization/ch-gs-ejpd",
       "hierarchy_level": 0

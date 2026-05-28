@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
-  "description": {},
   "name": {
     "de": "Direktion für Entwicklung und Zusammenarbeit (DEZA)",
     "en": "Swiss Agency for Development and Cooperation (SDC)",
@@ -35,15 +34,13 @@
         "de": "Eidgenössisches Departement für auswärtige Angelegenheiten (EDA)",
         "en": "Federal Department of Foreign Affairs (FDFA)",
         "fr": "Département fédéral des affaires étrangères (DFAE)",
-        "it": "Dipartimento federale degli affari esteri (DFAE)",
-        "rm": null
+        "it": "Dipartimento federale degli affari esteri (DFAE)"
       },
       "pref_label": {
         "de": "EDA",
         "en": "FDFA",
         "fr": "DFAE",
-        "it": "DFAE",
-        "rm": null
+        "it": "DFAE"
       },
       "resource": "https://opendata.swiss/id/organization/ch-eda",
       "hierarchy_level": 0

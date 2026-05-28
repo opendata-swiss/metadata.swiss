@@ -2,8 +2,6 @@
   "id": "ch-ehealth",
   "identifier": "CH_eHealth",
   "resource": "https://opendata.swiss/id/organization/ch-ehealth",
-  "classification": null,
-  "description": {},
   "name": {
     "de": "eHealth Suisse",
     "en": "eHealth Suisse",
@@ -16,8 +14,6 @@
     "fr": "eHealth Suisse",
     "it": "eHealth Suisse"
   },
-  "homepage": null,
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }

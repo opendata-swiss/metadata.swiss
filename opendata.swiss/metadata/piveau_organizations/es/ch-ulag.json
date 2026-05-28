@@ -12,7 +12,6 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0106"
   },
-  "description": {},
   "name": {
     "de": "Uli Lippuner AG",
     "en": "Uli Lippuner AG",
@@ -27,6 +26,5 @@
   },
   "homepage": "https://www.ulippuner.ch",
   "hierarchy_level": 0,
-  "sub_organization_of": null,
   "ancestors": []
 }
