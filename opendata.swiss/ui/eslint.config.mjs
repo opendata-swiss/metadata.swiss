@@ -23,4 +23,10 @@ export default withNuxt(
     },
   },
   reactPlugin.configs.flat.recommended,
+  {
+    files: ['**/*.test.ts'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
 )

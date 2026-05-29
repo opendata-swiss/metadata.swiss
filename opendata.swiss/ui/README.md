@@ -131,6 +131,7 @@ Set the environment variables as needed:
 - `NUXT_LISTMONK_TEMPLATE_IDS_EN`
 - `NUXT_PUBLIC_COMMENTS_WEBSITE_ID`
 - `NUXT_HYVOR_WEBHOOK_SECRET`
+- `NUXT_HYVOR_PUBLISHER_NOTIFICATION_TEMPLATE_ID`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 

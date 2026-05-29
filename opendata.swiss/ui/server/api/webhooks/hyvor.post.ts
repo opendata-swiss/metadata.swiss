@@ -1,27 +1,29 @@
 import crypto from 'node:crypto'
-import type { Comment, CommentsApiPage, CommentsApiUser } from '@hyvor/hyvor-talk-base'
+import type { Comment, Rating } from '#server/lib/webhooks/hyvor'
+import Hyvor from '#server/lib/webhooks/hyvor'
+import Listmonk from '#server/api/subscribe/listmonk'
+import { HubSearch } from '#server/lib/piveau'
 
-interface Rating {
-  id: number
-  created_at: number | null
-  page: CommentsApiPage | null
-  user: CommentsApiUser | null
-  rating: number
+interface RatingWebhookPayload {
+  event: 'rating.created' | 'rating.updated' | 'rating.deleted'
+  data: Rating
 }
 
-interface WebhookPayload<T> {
-  event: 'comment.create' | 'rating.created' | 'rating.updated' | 'rating.deleted'
-  data: T
+interface CommentWebhookPayload {
+  event: 'comment.create'
+  data: Comment
 }
+
+type WebhookPayload = RatingWebhookPayload | CommentWebhookPayload
 
 export default defineEventHandler(async (event) => {
-  const { hyvor: { webhook_secret } } = useRuntimeConfig(event)
+  const { listmonk, hyvor: config, public: { piveauHubSearchUrl } } = useRuntimeConfig(event)
 
   const body = await readRawBody(event)
   const headers = getRequestHeaders(event)
 
   const expectedSignature = headers['x-signature']
-  const signature = crypto.createHmac('sha256', webhook_secret)
+  const signature = crypto.createHmac('sha256', config.webhook_secret)
     .update(body!)
     .digest('hex')
 
@@ -39,16 +41,15 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const payload: WebhookPayload<unknown> = JSON.parse(body.toString())
+  const payload: WebhookPayload = JSON.parse(body.toString())
+  const hyvor = new Hyvor(config, new Listmonk(listmonk), new HubSearch(piveauHubSearchUrl))
 
   switch (payload.event) {
     case 'comment.create':
-      handleNewComment(payload as WebhookPayload<Comment>)
-      break
+      return hyvor.handleComment(payload.data)
     case 'rating.created':
     case 'rating.updated':
-      handleRating(payload as WebhookPayload<Rating>)
-      break
+      return hyvor.handleRating(payload.data)
     default:
       return createError({
         status: 400,
@@ -56,11 +57,3 @@ export default defineEventHandler(async (event) => {
       })
   }
 })
-
-function handleNewComment(payload: WebhookPayload<Comment>) {
-
-}
-
-function handleRating(payload: WebhookPayload<Rating>) {
-
-}

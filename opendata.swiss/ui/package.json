@@ -10,7 +10,8 @@
     "dev": "HOST=0.0.0.0 nuxt dev",
     "api-tuner": "source ../metadata/listmonk/install.sh; npx api-tuner@0.6.4 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
-    "test": "npm run api-tuner -- server/tests/*.n3",
+    "test:api": "npm run api-tuner -- server/tests/*.n3",
+    "test:mocha": "source ../metadata/listmonk/install.sh; mocha server/tests/**/*.test.ts",
     "prebuild": "vite build src/admin --emptyOutDir",
     "build": "nuxt build",
     "generate": "nuxt generate",
@@ -66,8 +67,13 @@
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/chai": "^5",
+    "@types/mocha": "^10.0.10",
+    "@types/sinon": "^17.0.4",
+    "@types/sinon-chai": "^4.0.0",
     "@types/js-yaml": "^4.0.9",
     "@types/vue-select": "^3.16.8",
+    "chai": "^5",
     "chokidar": "^4.0.3",
     "decap-server": "^3.4.0",
     "dotenv-cli": "^11.0.0",
@@ -75,11 +81,18 @@
     "husky": "^9.1.7",
     "js-yaml": "^4.1.1",
     "lint-staged": "^16.2.7",
-    "shx": "^0.4.0"
+    "mocha": "^11.7.6",
+    "shx": "^0.4.0",
+    "sinon": "^22.0.0",
+    "sinon-chai": "^4.0.1",
+    "tsx": "^4.22.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,ysx,vue}": [
       "eslint --fix --quiet"
     ]
+  },
+  "mocha": {
+    "require": ["tsx", "mocha-setup.js"]
   }
 }

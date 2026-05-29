@@ -1,22 +1,7 @@
-import type { AppLanguage } from '~/constants/langages'
 import type { Subscriber } from '#server/api/subscribe/listmonk'
 import listmonk from '#server/api/subscribe/listmonk'
-
-interface Category {
-  id: string
-}
-
-interface Dataset {
-  id: string
-  categories?: Category[]
-  title: Record<AppLanguage, string>
-}
-
-interface SearchResult {
-  result: {
-    results: Dataset[]
-  }
-}
+import type { Dataset } from '#server/lib/piveau'
+import Piveau from '#server/lib/piveau'
 
 interface TemplateData {
   datasetPageBaseUrl: string
@@ -41,27 +26,25 @@ export default defineEventHandler(async (event) => {
   }
 
   const minDate = digest === 'daily'
-    ? new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString()
-    : new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+    ? new Date(Date.now() - 24 * 60 * 60 * 1000)
+    : new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
 
-  const searchUrl = new URL('search', baseUrl as string)
-  searchUrl.searchParams.set('sort', 'modified+desc')
-  searchUrl.searchParams.set('limit', '100')
-  searchUrl.searchParams.set('filters', 'dataset')
-  searchUrl.searchParams.set('minDate', minDate)
-  const searchRes = await fetch(searchUrl)
+  const piveau = new Piveau(baseUrl)
+  const datasets = await piveau.datasets.search({
+    sort: 'modified+desc',
+    limit: 100,
+    minDate,
+  })
 
-  if (!searchRes.ok) {
+  if (datasets instanceof Error) {
     return createError({
-      statusCode: searchRes.status,
+      statusCode: 500,
       message: 'Failed to fetch latest datasets',
-      cause: await searchRes.text(),
+      cause: datasets.cause,
     })
   }
 
-  const { result: { results: datasets } }: SearchResult = await searchRes.json()
-
-  const Listmonk = listmonk(listmonkConfig)
+  const Listmonk = new listmonk(listmonkConfig)
   const subscribers = await Listmonk.subscribers.list()
 
   let emailsSent = 0
@@ -79,7 +62,7 @@ export default defineEventHandler(async (event) => {
 
     if (data.datasets.length) {
       batch.push((async () => {
-        const res = await Listmonk.transactional.send({
+        const res = await Listmonk.transactional.sendDigest({
           subscriber: subscriber.id,
           language,
           data,
