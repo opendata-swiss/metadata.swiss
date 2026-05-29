@@ -95,5 +95,5 @@ jobs:
       - run: npm ci
         working-directory: opendata.swiss/ui
 
-      - run: npm test:mocha
+      - run: npm run test:mocha
         working-directory: opendata.swiss/ui
