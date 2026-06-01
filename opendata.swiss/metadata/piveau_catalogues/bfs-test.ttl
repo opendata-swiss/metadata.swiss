@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bfs-test> a dcat:Catalog ;
+    dcterms:created "2026-06-01T01:23:45"^^xsd:dateTime ;
+    dcterms:description "BFS Test"@de,
+        "FSO Test"@en,
+        "OFS Test"@fr,
+        "UST Test"@it ;
+    dcterms:modified "2026-06-01T01:23:45"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.bfs.admin.ch> ;
+            foaf:name "Bundesamt für Statistik BFS"@de,
+                "Federal Statistical Office FSO"@en,
+                "Office fédéral de la statistique OFS"@fr,
+                "Ufficio federale di statistica UST"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "BFS Test"@de,
+        "FSO Test"@en,
+        "OFS Test"@fr,
+        "UST Test"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
