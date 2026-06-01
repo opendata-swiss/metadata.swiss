@@ -1,5 +1,6 @@
 {
   "message": {
+    "login_confirmation": "Hai effettuato l'accesso",
     "top_header": {
       "logout": "Disconnettiti",
       "login": "Accedi"
@@ -77,7 +78,8 @@
       "header": "Iscriviti",
       "to_dataset": "Al set di dati",
       "to_category": "Alla categoria",
-      "to_publisher": "All'editore"
+      "to_publisher": "All'editore",
+      "success": "Iscrizione riuscita"
     },
     "showcase": {
       "type": {

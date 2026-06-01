@@ -18,6 +18,22 @@
           v-if="!isMobileMenuOpen"
           style="min-height: calc(100dvh - 128px);"
         >
+          <OdsNotificationBanner
+            v-if="route.query.message"
+            type="success"
+          >
+            {{ t(`message.${route.query.message}`) }}
+
+            <template #buttons>
+              <OdsButton
+                variant="outline"
+                title="Close"
+                icon-right
+                icon="Checkmark"
+                @click="closeMessages"
+              />
+            </template>
+          </OdsNotificationBanner>
           <NuxtPage :page-key="route => route.path" />
         </div>
       </Transition>
@@ -37,8 +53,11 @@ import { useLocale as piveauLocale } from '@piveau/sdk-vue'
 import { onMounted, ref } from 'vue'
 import { useLoginWithRedirect } from '@/composables/login'
 import { initMatomo } from '@certible/use-matomo'
+import OdsNotificationBanner from '~/components/OdsNotificationBanner.vue'
+import OdsButton from '~/components/OdsButton.vue'
 
 const app = useNuxtApp()
+const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
 const { clear } = useUserSession()
@@ -52,7 +71,7 @@ function logout() {
 const navigationItems = await useNavigationItems()
 const isMobileMenuOpen = ref(false)
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 
 const { setLocale, currentLocale } = piveauLocale()
 
@@ -112,6 +131,16 @@ function handleResize() {
   if (window.innerWidth >= 1024) {
     isMobileMenuOpen.value = false
   }
+}
+
+function closeMessages() {
+  router.replace({
+    ...route,
+    query: {
+      ...route.query,
+      message: undefined,
+    },
+  })
 }
 
 onMounted(() => {

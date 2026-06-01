@@ -1,5 +1,6 @@
 {
   "message": {
+    "login_confirmation": "Sie sind angemeldet",
     "top_header": {
       "logout": "Abmelden",
       "login": "Anmelden"
@@ -77,7 +78,8 @@
       "header": "Abonnieren",
       "to_dataset": "Zum Dataset",
       "to_category": "Zur Kategorie",
-      "to_publisher": "Zum Herausgeber"
+      "to_publisher": "Zum Herausgeber",
+      "success": "Abonnement erfolgreich"
     },
     "showcase": {
       "type": {
