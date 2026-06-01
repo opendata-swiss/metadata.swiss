@@ -1,7 +1,7 @@
 import type { Subscriber } from '#server/api/subscribe/listmonk'
 import listmonk from '#server/api/subscribe/listmonk'
 import type { Dataset } from '#server/lib/piveau'
-import Piveau from '#server/lib/piveau'
+import { HubSearch } from '#server/lib/piveau'
 
 interface TemplateData {
   datasetPageBaseUrl: string
@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     ? new Date(Date.now() - 24 * 60 * 60 * 1000)
     : new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
 
-  const piveau = new Piveau(baseUrl)
+  const piveau = new HubSearch(baseUrl)
   const datasets = await piveau.datasets.search({
     sort: 'modified+desc',
     limit: 100,
