@@ -80,12 +80,16 @@ export default defineNuxtConfig({
       },
       template: {
         ids: {
-          de: 5,
-          fr: 6,
-          it: 7,
-          en: 8,
+          de: 6,
+          fr: 7,
+          it: 8,
+          en: 9,
         },
       },
+    },
+    hyvor: {
+      webhook_secret: '',
+      publisherNotificationTemplateId: 5,
     },
   },
   dir: {

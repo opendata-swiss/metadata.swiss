@@ -9,7 +9,7 @@ const { comments: { websiteId } } = useRuntimeConfig().public
 type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading'> & Partial<Pick<PagesCollectionItem, 'body'>>
 
 const { page } = defineProps<{
-  page: Page
+  page?: Page
   commentsId?: string
 }>()
 </script>

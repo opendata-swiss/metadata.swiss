@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import listmonk from '../../lib/listmonk'
+import Listmonk from '../../lib/listmonk'
 import { getLanguage } from '#server/lib/locale'
 
 type PayloadItem = {
@@ -24,8 +24,8 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
 
     const { listmonk: config } = useRuntimeConfig()
 
-    const Listmonk = listmonk(config)
-    const subscribers = await Listmonk.subscribers.list({ email })
+    const listmonk = new Listmonk(config)
+    const subscribers = await listmonk.subscribers.list({ email })
 
     const subscriber = subscribers.pop() || {
       name,
@@ -40,7 +40,7 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
 
     let res: Response
     if ('id' in subscriber) {
-      res = await Listmonk.subscribers.update(subscriber.id, {
+      res = await listmonk.subscribers.update(subscriber.id, {
         attribs: {
           [key]: [...new Set([
             ...(subscriber.attribs?.[key] || []),
@@ -50,7 +50,7 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
       })
     }
     else {
-      res = await Listmonk.subscribers.create(subscriber)
+      res = await listmonk.subscribers.create(subscriber)
     }
 
     if (!res.ok) {
