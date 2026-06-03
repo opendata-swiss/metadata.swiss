@@ -38,12 +38,12 @@ export class HubSearch {
       search: async ({ sort, minDate, limit }: SearchArgs) => {
         const searchUrl = new URL('search', this.baseUrl)
 
-        const searchRes = await fetch(searchUrl)
-
         searchUrl.searchParams.set('filters', 'dataset')
         if (sort) searchUrl.searchParams.set('sort', sort)
         if (limit) searchUrl.searchParams.set('limit', limit.toString())
         if (minDate) searchUrl.searchParams.set('minDate', minDate.toISOString())
+
+        const searchRes = await fetch(searchUrl)
 
         if (!searchRes.ok) {
           return new Error(`Failed to fetch datasets: ${searchRes.status} ${searchRes.statusText}`, {
