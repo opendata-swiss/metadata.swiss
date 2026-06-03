@@ -19,10 +19,10 @@
           style="min-height: calc(100dvh - 128px);"
         >
           <OdsNotificationBanner
-            v-if="route.query.message"
+            v-if="message"
             type="success"
           >
-            {{ t(`message.${route.query.message}`) }}
+            {{ t(`message.${message}`) }}
 
             <template #buttons>
               <OdsButton
@@ -57,7 +57,6 @@ import OdsNotificationBanner from '~/components/OdsNotificationBanner.vue'
 import OdsButton from '~/components/OdsButton.vue'
 
 const app = useNuxtApp()
-const route = useRoute()
 const router = useRouter()
 const config = useRuntimeConfig()
 const { clear } = useUserSession()
@@ -133,14 +132,11 @@ function handleResize() {
   }
 }
 
+const messageCookie = useCookie('message')
+const message = computed(() => messageCookie.value)
+
 function closeMessages() {
-  router.replace({
-    ...route,
-    query: {
-      ...route.query,
-      message: undefined,
-    },
-  })
+  messageCookie.value = undefined
 }
 
 onMounted(() => {

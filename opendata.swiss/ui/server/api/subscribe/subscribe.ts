@@ -65,9 +65,8 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
 
     const messageId = 'subscribe.success'
     if (referer) {
-      const refererUrl = new URL(referer)
-      refererUrl.searchParams.set('message', messageId)
-      return sendRedirect(event, refererUrl.toString())
+      setCookie(event, 'message', messageId, { path: '/' })
+      return sendRedirect(event, referer)
     }
 
     return {
