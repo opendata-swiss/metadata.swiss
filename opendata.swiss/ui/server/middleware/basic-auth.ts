@@ -49,9 +49,8 @@ export default defineEventHandler(async (event) => {
     if (!session.user) {
       const referer = getHeader(event, 'referer')
       if (referer) {
-        const refererUrl = new URL(referer)
-        refererUrl.searchParams.set('message', 'login_confirmation')
-        return loginWithRedirect(event, refererUrl.toString())
+        setCookie(event, 'message', 'login_confirmation')
+        return loginWithRedirect(event, referer)
       }
       else {
         throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
