@@ -86,6 +86,7 @@ export default class {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleRating(payload: Rating) {
 
   }
