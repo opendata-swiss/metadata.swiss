@@ -10,6 +10,7 @@ type PayloadItem = {
 export function subscribe(key: 'categories' | 'datasets' | 'organisations', fieldName: PayloadItem['name']) {
   return async (event: H3Event) => {
     const { user: { name, email } } = event.context
+    const t = await useTranslation(event)
     const referer = getHeader(event, 'referer')
     const payload = await readFormData(event)
     const values = payload.getAll(fieldName).map(field => field.toString()).filter(Boolean)
@@ -62,12 +63,14 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
       })
     }
 
+    const messageId = 'subscribe.success'
     if (referer) {
+      setCookie(event, 'message', messageId, { path: '/' })
       return sendRedirect(event, referer)
     }
 
     return {
-      message: 'Subscription successful',
+      message: t(`message.${messageId}`),
     }
   }
 }

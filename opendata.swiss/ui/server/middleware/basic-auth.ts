@@ -1,3 +1,5 @@
+import { loginWithRedirect } from '#server/lib/login'
+
 const users: Record<string, { password: string, email: string }> = {
   'api-tuner': {
     password: 'e2e-tests',
@@ -43,7 +45,19 @@ export default defineEventHandler(async (event) => {
     }
   }
   else {
-    ({ user } = await requireUserSession(event))
+    const session = await getUserSession(event)
+    if (!session.user) {
+      const referer = getHeader(event, 'referer')
+      if (referer) {
+        const refererUrl = new URL(referer)
+        refererUrl.searchParams.set('message', 'login_confirmation')
+        return loginWithRedirect(event, refererUrl.toString())
+      }
+      else {
+        throw createError({ statusCode: 401, statusMessage: 'Unauthorized' })
+      }
+    }
+    user = session.user
   }
 
   event.context.user = user
