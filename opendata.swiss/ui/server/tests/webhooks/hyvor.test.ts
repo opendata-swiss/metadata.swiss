@@ -45,6 +45,8 @@ describe('Hyvor Webhooks', () => {
           title: 'Dataset',
         },
         body_html: '',
+        status: 'published',
+        history: [],
       }
 
       // when
@@ -123,6 +125,8 @@ describe('Hyvor Webhooks', () => {
             title: 'Test Dataset',
           },
           body_html: '<p>Comment</p>',
+          history: [],
+          status: 'published',
         }
 
         // when
@@ -163,6 +167,8 @@ describe('Hyvor Webhooks', () => {
           email: 'test@example.com',
         },
         body_html: '',
+        status: 'published',
+        history: [],
       }
 
       // when
@@ -170,6 +176,119 @@ describe('Hyvor Webhooks', () => {
 
       // then
       expect(listmonk.transactional.send).not.to.have.been.called
+    })
+
+    it('does not send a notification when created comment is pending', async () => {
+      // given
+      const listmonk = {
+        transactional: {
+          send: sinon.stub().resolves({ ok: true }),
+        },
+      } as unknown as Listmonk
+      const config = {
+        publisherNotificationTemplateId: 4,
+      }
+      const piveau = {
+        datasets: {
+          get: sinon.stub().resolves({
+            id: '123',
+            title: {
+              de: 'Test Dataset',
+            },
+            contact_point: [{
+              name: 'Publisher',
+              email: 'publisher@example.com',
+            }],
+          }),
+        },
+      } as unknown as HubSearch
+      const hyvor = new Hyvor(config, listmonk, piveau)
+      const comment: Comment = {
+        parent: null,
+        page: {
+          identifier: 'dataset-123',
+          url: 'https://example.com/dataset/123',
+          title: 'Dataset',
+        },
+        user: {
+          email: 'test@example.com',
+        },
+        body_html: '',
+        status: 'pending',
+        history: [],
+      }
+
+      // when
+      await hyvor.handleComment(comment)
+
+      // then
+      expect(listmonk.transactional.send).not.to.have.been.called
+    })
+
+    it('sends a notification when a pending was approved', async () => {
+      // given
+      const listmonk = {
+        transactional: {
+          send: sinon.stub().resolves({ ok: true }),
+        },
+      } as unknown as Listmonk
+      const config = {
+        publisherNotificationTemplateId: 4,
+      }
+      const piveau = {
+        datasets: {
+          get: sinon.stub().resolves({
+            id: '123',
+            title: {
+              de: 'Test Dataset',
+            },
+            contact_point: [{
+              name: 'Publisher',
+              email: 'publisher@example.com',
+            }],
+          }),
+        },
+      } as unknown as HubSearch
+      const hyvor = new Hyvor(config, listmonk, piveau)
+      const comment: Comment = {
+        parent: null,
+        page: {
+          identifier: 'dataset-123',
+          url: 'https://example.com/dataset/123',
+          title: 'Dataset',
+        },
+        user: {
+          email: 'test@example.com',
+        },
+        body_html: '',
+        status: 'published',
+        history: [{
+          type: 'moderation',
+          new_status: 'published',
+        }],
+      }
+
+      // when
+      await hyvor.handleComment(comment)
+
+      // then
+      expect(listmonk.transactional.send).not.to.have.been.calledWith(sinon.match({
+        template_id: 4,
+        subscriber_email: 'publisher@example.com',
+        subscriber_mode: 'external',
+        data: {
+          page: {
+            url: 'https://example.com/dataset/123',
+            title: 'Dataset',
+          },
+          publisher: {
+            name: 'Publisher',
+          },
+          author: {
+            email: 'commenter@example.com',
+          },
+        },
+      }))
     })
 
     it('does not send a notification when template id is not configured', async () => {
@@ -191,6 +310,8 @@ describe('Hyvor Webhooks', () => {
           email: 'test@example.com',
         },
         body_html: '',
+        status: 'published',
+        history: [],
       }
 
       // when

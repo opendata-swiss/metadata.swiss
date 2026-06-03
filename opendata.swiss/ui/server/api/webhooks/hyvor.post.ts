@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
   const headers = getRequestHeaders(event)
 
   const expectedSignature = headers['x-signature']
-  const signature = crypto.createHmac('sha256', config.webhook_secret)
+  const signature = crypto.createHmac('sha256', config.webhookSecret)
     .update(body!)
     .digest('hex')
 
@@ -39,6 +39,10 @@ export default defineEventHandler(async (event) => {
       status: 400,
       message: 'Missing body',
     })
+  }
+
+  if (config.webhooksEnabled === false) {
+    return 204
   }
 
   const payload: WebhookPayload = JSON.parse(body.toString())

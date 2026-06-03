@@ -88,7 +88,8 @@ export default defineNuxtConfig({
       },
     },
     hyvor: {
-      webhook_secret: '',
+      webhooksEnabled: false,
+      webhookSecret: '',
       publisherNotificationTemplateId: 5,
     },
   },
