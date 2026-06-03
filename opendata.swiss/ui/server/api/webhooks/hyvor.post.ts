@@ -1,7 +1,7 @@
 import crypto from 'node:crypto'
 import type { Comment, Rating } from '#server/lib/webhooks/hyvor'
 import Hyvor from '#server/lib/webhooks/hyvor'
-import Listmonk from '#server/api/subscribe/listmonk'
+import Listmonk from '#server/lib/listmonk'
 import { HubSearch } from '#server/lib/piveau'
 
 interface RatingWebhookPayload {
