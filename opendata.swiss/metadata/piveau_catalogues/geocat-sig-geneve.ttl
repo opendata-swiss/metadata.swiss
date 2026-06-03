@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-sig-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:29:43.526283"^^xsd:dateTime ;
+    dcterms:description "SIG est une entreprise suisse au service de plus de 500 000 personnes sur le canton de Genève. Chaque jour, elle leur assure des services essentiels : elle fournit l’eau, le gaz, l’électricité, l’énergie thermique et soutient le développement des quartiers intelligents pour Genève. Elle traite les eaux usées, valorise les déchets et met en œuvre des programmes d’efficience énergétique et environnementale. "@fr ;
+    dcterms:modified "2026-05-08T07:04:23.604245"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://ww2.sig-ge.ch/> ;
+            foaf:name "Services industriels Genève SIG"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Services industriels Genève SIG"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

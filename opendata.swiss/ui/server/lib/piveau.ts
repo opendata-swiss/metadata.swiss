@@ -26,6 +26,7 @@ interface SearchArgs {
   sort?: string
   minDate?: Date
   limit?: number
+  dateType: 'issue' | 'modified' | 'temporal'
 }
 
 export class HubSearch {

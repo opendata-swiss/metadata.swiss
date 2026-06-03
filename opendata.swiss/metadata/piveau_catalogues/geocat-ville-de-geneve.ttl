@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-ville-de-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:31:58.143428"^^xsd:dateTime ;
+    dcterms:description "Die Stadt Genf setzt sich in Übereinstimmung mit ihrer Datenpolitik für einen offenen Umgang mit öffentlichen Daten ein, der in allen relevanten Bereichen zur Norm wird (\"offene Daten per Default\"). Im Rahmen der \"Strategie für den freien Zugang zu öffentlichen Daten in der Schweiz\" stellt die Stadt Genf ihre Daten öffentlich in offenen Formaten (Open Source) zur Verfügung, die automatisch gelesen werden können, um sie weiterzuverwenden. Die Stadt Genf setzt auf Transparenz und Effizienz der Verwaltung, Bürgerbeteiligung und Innovation."@de,
+        "In compliance with its data policy, the City of Geneva is firmly committed to an open approach to its public data, making this the norm in all relevant areas (\"open data by default\"). As part of the \"Strategy for free access to public data in Switzerland\", the City of Geneva provides its data publicly in open formats (open source) which can be read automatically with the purpose of being re-used. The City of Geneva favours an approach based on transparency and efficiency of the administration's actions, citizen participation and innovation."@en,
+        "Conformément à sa politique des données, la Ville de Genève s’engage résolument dans une démarche d’ouverture de ses données publiques, faisant de celle-ci la norme partout où c’est pertinent (« open data par défaut »). S’inscrivant dans le cadre de la « Stratégie en matière de libre accès aux données publiques en Suisse », elle met à la disposition du public ses données en privilégiant des formats ouverts (open source) et lisibles de manière automatisée en vue d’une réutilisation. La Ville de Genève privilégie une approche basée sur la transparence et l’efficacité de l’action de l’administration, la participation citoyenne et l’innovation."@fr,
+        "Conformemente alla sua politica sui dati, la Città di Ginevra si impegna fermamente in un percorso di apertura dei suoi dati pubblici, rendendola la norma ovunque sia pertinente (\"open data by default\"). Nell'ambito della \"Strategia per il libero accesso ai dati pubblici in Svizzera\", la Città di Ginevra mette a disposizione del pubblico i propri dati privilegiando formati aperti (open source) che possono essere letti automaticamente per consentire il riutilizzo. La Città di Ginevra promuove un approccio basato sulla trasparenza e sull'efficienza delle azioni amministrative, sulla partecipazione dei cittadini e sull'innovazione."@it ;
+    dcterms:modified "2026-05-08T07:06:57.563192"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.geneve.ch/themes/numerique/numerique-innovant/donnees-ouvertes> ;
+            foaf:name "Stadt Genf"@de,
+                "City of Geneva"@en,
+                "Ville de Genève"@fr,
+                "Città di Ginevra"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Stadt Genf"@de,
+        "City of Geneva"@en,
+        "Ville de Genève"@fr,
+        "Città di Ginevra"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

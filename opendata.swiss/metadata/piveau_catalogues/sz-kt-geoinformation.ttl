@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/sz-kt-geoinformation> a dcat:Catalog ;
+    dcterms:created "2023-03-15T14:23:49.484327"^^xsd:dateTime ;
+    dcterms:description "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schwyz als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt."@de ;
+    dcterms:modified "2026-05-11T07:21:07.467081"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.sz.ch/geoportal> ;
+            foaf:name "Amt für Geoinformation Kanton Schwyz"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Amt für Geoinformation Kanton Schwyz"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

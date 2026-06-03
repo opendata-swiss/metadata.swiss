@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/zh> a dcat:Catalog ;
+    dcterms:created "2016-02-01T08:49:09.776725"^^xsd:dateTime ;
+    dcterms:description "Die Abteilung Geoinformation ist das Kompetenzzentrum für räumliche Informationen im Kanton Zürich. Wir versorgen Gesellschaft, Wirtschaft und öffentliche Verwaltung mit qualitativ hochstehenden Geodaten und Informationen über den Kanton Zürich."@de,
+        """The department of geoinformation is the geospatial competency center of the Canton of Zurich. \r
+We coordinate the acquisition of geodata within the cantonal territory and provide public, private, and government sectors with data of outstanding quality."""@en,
+        """Le département de géomatique est le centre de compétence du system d'information géographique du canton de Zurich.\r
+Nous coordinons l'aquisition des géodonnées d'intérêt commun sur le territoire cantonal et les mettons à disposition des\r
+secteurs public et privé et des particuliers."""@fr,
+        "La divisione della geoinformazione è il centro d'eccellenza del Cantone di Zurigo per dati georeferenziati. Mettiamo a disposizione dati geografici e informazioni di alta qualità per l'economia, la società e la pubblica amministrazione su tutto il cantone."@it ;
+    dcterms:modified "2026-05-11T07:21:52.237282"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.zh.ch/de/baudirektion/amt-fuer-raumentwicklung/organisation.html#-669595383> ;
+            foaf:name "Geoinformation Kanton Zürich"@de,
+                "Department of Geoinformation of the Canton of Zurich"@en,
+                "Département de Géoinformation du Canton de Zurich"@fr,
+                "Dipartimento della geoinformazione del Cantone di Zurigo"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Geoinformation Kanton Zürich"@de,
+        "Department of Geoinformation of the Canton of Zurich"@en,
+        "Département de Géoinformation du Canton de Zurich"@fr,
+        "Dipartimento della geoinformazione del Cantone di Zurigo"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

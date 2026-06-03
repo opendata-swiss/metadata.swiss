@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/valais> a dcat:Catalog ;
+    dcterms:created "2018-07-10T07:35:06.533697"^^xsd:dateTime ;
+    dcterms:description "Das CC GEO ist das Kompetenzzentrum für das kantonale Geoinformationssystem des Kantons Wallis. Es versorgt Gesellschaft, Wirtschaft und öffentliche Verwaltung mit Geodaten über den Kanton Wallis."@de,
+        "Le CC GEO est le centre de compétence du système d'information géographique du Canton du Valais ayant pour but de coordonner, centraliser et diffuser les géodonnées relatives au territoire cantonal."@fr ;
+    dcterms:modified "2026-05-11T07:08:34.024226"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://geo.vs.ch> ;
+            foaf:name "Kanton Wallis - CC GEO"@de,
+                "Canton du Valais - CC GEO"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Wallis - CC GEO"@de,
+        "Canton du Valais - CC GEO"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

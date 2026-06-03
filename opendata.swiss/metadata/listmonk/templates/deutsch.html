@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Default Template</title>
+    <title>Aktuelle Datensatz-Updates</title>
 </head>
 <body>
 <h1>Hallo, {{.Subscriber.Name}}</h1>
@@ -14,6 +14,6 @@
     {{ end }}
     </ul>
 </div>
-<p>Unsubscribe: here</p>
+<p>Abmelden: <a href="{{ .Tx.Data.unsubscribeLink }}">{{ .Tx.Data.unsubscribeLink }}</a></p>
 </body>
 </html>

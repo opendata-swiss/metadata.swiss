@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-imad-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:30:29.324123"^^xsd:dateTime ;
+    dcterms:description "L’institution genevoise de maintien à domicile – imad assure des prestations de soins, d’aide, d’accompagnement et de répit favorisant le maintien à domicile des personnes, tout en préservant leur autonomie."@fr ;
+    dcterms:modified "2026-05-08T07:03:59.322317"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.imad-ge.ch/> ;
+            foaf:name "Institution genevoise de maintien à domicile IMAD"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Institution genevoise de maintien à domicile IMAD"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

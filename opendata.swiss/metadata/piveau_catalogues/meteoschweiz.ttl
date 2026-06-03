@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/meteoschweiz> a dcat:Catalog ;
+    dcterms:created "2016-01-29T12:59:14.538111"^^xsd:dateTime ;
+    dcterms:description "Der nationale Wetter- und Klimadienst. Messstationen, Wetterradars und Satelliten überwachen das Wetter. Aus den Messdaten erstellt MeteoSchweiz Prognosen, Warnungen und Klimaanalysen"@de,
+        "The national weather and climate service. Meteorological stations, weather radars and satellites monitor the weather. Using the collected data, MeteoSwiss generates forecasts, warnings and climate analyses."@en,
+        "Le service météorologique et climatologique national. A partir de l'ensemble des stations de mesure, des radars météorologiques et des satellites MétéoSuisse élabore pronostics, alertes et analyse climatiques."@fr,
+        "Il servizio nazionale di meteorologia e climatologia. Sulla base di dati di stazioni di rilevamento, radar meteorologici e satelliti MeteoSvizzera elabora previsioni del tempo, allerte e le analisi climatologiche."@it ;
+    dcterms:modified "2026-05-11T07:32:00.085178"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.meteoschweiz.admin.ch> ;
+            foaf:name "Bundesamt für Meteorologie und Klimatologie MeteoSchweiz"@de,
+                "Federal Office of Meteorology and Climatology MeteoSwiss"@en,
+                "Office fédéral de météorologie et de climatologie MétéoSuisse"@fr,
+                "Ufficio federale di meteorologia e climatologia MeteoSvizzera"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Bundesamt für Meteorologie und Klimatologie MeteoSchweiz"@de,
+        "Federal Office of Meteorology and Climatology MeteoSwiss"@en,
+        "Office fédéral de météorologie et de climatologie MétéoSuisse"@fr,
+        "Ufficio federale di meteorologia e climatologia MeteoSvizzera"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

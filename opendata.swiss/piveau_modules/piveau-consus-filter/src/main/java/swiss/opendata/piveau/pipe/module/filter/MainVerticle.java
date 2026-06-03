@@ -14,6 +14,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RiotException;
 import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -184,6 +185,18 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    public static void checkSpatial(Model model, Resource dataset) {
+        Property dctSpatial = model.createProperty(DCTERMS.SPATIAL.stringValue());
+
+        List<RDFNode> nodes = model.listObjectsOfProperty(dataset, dctSpatial).toList();
+        for (RDFNode node : nodes) {
+            if (node.isLiteral()) {
+                model.removeAll(dataset, dctSpatial, node);
+                logger.warn("Invalid spatial value: {}.", node);
+            }
+        }
+    }
+
     class ErrorHandler implements Consumer<String> {        
         private JsonObject config;
         private List<String> errors = new ArrayList<>();
@@ -228,41 +241,53 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    private Model getModel(PipeContext pipeContext) {
+        try {
+            if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.NTRIPLES);
+            }
+            if (Lang.RDFXML.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.RDFXML);
+            }
+        } catch (RiotException e) {
+            logger.error("Failed to parse RDF data from pipe context {}", pipeContext.getDataInfo(), e);
+        }
+
+        return null;
+    }
+
     private void handlePipe(PipeContext pipeContext) {
         if (pipeContext.log().isTraceEnabled()) {
             pipeContext.log().trace(pipeContext.getPipeManager().prettyPrint());
         }
-
-        if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
-            JsonObject config = pipeContext.getConfig();
-            Model model = Piveau.toModel(
-                pipeContext.getStringData().getBytes(),
-                Lang.NTRIPLES
-            );
-            List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
-            if (datasets.size() != 1) {
-                logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
-                return;
-            }
-            Resource dataset = datasets.get(0);
-            config.put("datasetURI", dataset.getURI());
-
-            String organizationID = config.getString("org_id");
-
-            ErrorHandler errorHandler = new ErrorHandler(config);
-            checkIdentifier(model, dataset, organizationID, errorHandler);
-            checkConformsTo(model, dataset, errorHandler);
-            checkLicense(model, dataset, errorHandler);
-
-            if (errorHandler.hasErrors()) {
-                errorHandler.notifyErrors();
-            } else {
-                logger.info("passing {}", dataset.getURI());
-                // pipeContext.pass();
-                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
-            }
-        } else {
+        Model model = getModel(pipeContext);
+        if (model == null) {
             pipeContext.pass();
+            return;
+        }
+        
+        List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
+        if (datasets.size() != 1) {
+            logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
+            return;
+        }
+        Resource dataset = datasets.get(0);
+
+        JsonObject config = pipeContext.getConfig();
+        config.put("datasetURI", dataset.getURI());
+        String organizationID = config.getString("org_id");
+
+        ErrorHandler errorHandler = new ErrorHandler(config);
+        checkIdentifier(model, dataset, organizationID, errorHandler);
+        checkConformsTo(model, dataset, errorHandler);
+        checkLicense(model, dataset, errorHandler);
+        checkSpatial(model, dataset);
+
+        if (errorHandler.hasErrors()) {
+            errorHandler.notifyErrors();
+        } else {
+            logger.info("passing {}", pipeContext.getDataInfo());
+            pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
         }
     }
 

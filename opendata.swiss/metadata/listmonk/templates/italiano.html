@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ultimi aggiornamenti dei dataset</title>
+</head>
+<body>
+<h1>Ciao, {{.Subscriber.Name}}</h1>
+<div>
+    <ul>
+    {{ range .Tx.Data.datasets }}
+        <li>
+            <a href="{{ .Tx.Data.datasetPageBaseUrl }}{{ .id }}">{{ .title }}</a>
+        </li>
+    {{ end }}
+    </ul>
+</div>
+<p>Annulla l'iscrizione: <a href="{{ .Tx.Data.unsubscribeLink }}">{{ .Tx.Data.unsubscribeLink }}</a></p>
+</body>
+</html>

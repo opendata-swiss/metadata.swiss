@@ -1,0 +1,18 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/bfh-ipst> a dcat:Catalog ;
+    dcterms:created "2023-12-22T09:07:22.698824"^^xsd:dateTime ;
+    dcterms:description "Das Institut Public Sector Transformation der Berner Fachhochschule begleitet den öffentlichen Sektor bei der digitalen Transformation, öffentlichen Beschaffungen und organisationalem Wandel. Mit praxisrelevanter Lehre und Weiterbildung sowie mit anwendungsorientierter Forschung."@de ;
+    dcterms:modified "2026-05-11T07:10:17.692538"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.bfh.ch/de/forschung/forschungsbereiche/public-sector-transformation/> ;
+            foaf:name "Institut Public Sector Transformation der Berner Fachhochschule"@de,
+                "Institut Public Sector Transformation of the Bern University of Applied Sciences"@en ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Institut Public Sector Transformation der Berner Fachhochschule"@de,
+        "Institut Public Sector Transformation of the Bern University of Applied Sciences"@en ;
+    dcterms:type "ckan"^^xsd:string .
+
