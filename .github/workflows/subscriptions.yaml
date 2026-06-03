@@ -34,12 +34,19 @@ jobs:
             realm: lindas-next-int
           - target_env: TEST
             realm: lindas-next
-    if: |
-      github.event_name != 'workflow_dispatch' || 
-      github.event.inputs.environment == 'all' || 
-      github.event.inputs.environment == matrix.target_env
     steps:
+      - name: Check if environment should run
+        id: check_env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.environment }}" != "all" && "${{ github.event.inputs.environment }}" != "${{ matrix.target_env }}" ]]; then
+            echo "RUN_JOB=false" >> $GITHUB_ENV
+            echo "Skipping ${{ matrix.target_env }} environment"
+          else
+            echo "RUN_JOB=true" >> $GITHUB_ENV
+          fi
+
       - name: Determine digest
+        if: env.RUN_JOB == 'true'
         id: determine_digest
         run: |
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
@@ -51,6 +58,7 @@ jobs:
           fi
 
       - name: Get Keycloak token
+        if: env.RUN_JOB == 'true'
         id: get_token
         run: |
           TOKEN=$(curl -s -X POST "${{ vars.KEYCLOAK_URL }}/realms/${{ matrix.realm }}/protocol/openid-connect/token" \
@@ -68,6 +76,7 @@ jobs:
           echo "token=$TOKEN" >> $GITHUB_OUTPUT
 
       - name: Call Dispatch API (${{ matrix.target_env }})
+        if: env.RUN_JOB == 'true'
         run: |
           BASE_URL="${{ vars[format('LISTMONK_URL_{0}', matrix.target_env)] }}"
           curl -s -X POST "${BASE_URL}/api/subscription/dispatch" \
