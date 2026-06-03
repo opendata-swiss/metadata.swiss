@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Aktuelle Datensatz-Updates</title>
+    <title>Latest dataset updates</title>
 </head>
 <body>
-<h1>Hallo, {{.Subscriber.Name}}</h1>
+<h1>Hello, {{.Subscriber.Name}}</h1>
 <div>
     <ul>
     {{ range .Tx.Data.datasets }}
@@ -14,6 +14,6 @@
     {{ end }}
     </ul>
 </div>
-<p>Abmelden: <a href="{{ .Tx.Data.unsubscribeLink }}">{{ .Tx.Data.unsubscribeLink }}</a></p>
+<p>Unsubscribe: <a href="{{ .Tx.Data.unsubscribeLink }}">{{ .Tx.Data.unsubscribeLink }}</a></p>
 </body>
 </html>

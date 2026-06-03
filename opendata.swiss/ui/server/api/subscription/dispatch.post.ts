@@ -1,6 +1,7 @@
 import type { AppLanguage } from '~/constants/langages'
-import type { Subscriber } from '#server/api/subscribe/listmonk'
-import listmonk from '#server/api/subscribe/listmonk'
+import type { Subscriber } from '#server/lib/listmonk/index.js'
+import listmonk from '#server/lib/listmonk/index.js'
+import { generateToken } from '#server/lib/listmonk/token'
 
 interface Category {
   id: string
@@ -19,6 +20,7 @@ interface SearchResult {
 }
 
 interface TemplateData {
+  unsubscribeLink: string
   datasetPageBaseUrl: string
   datasets: Array<{
     id: string
@@ -32,6 +34,7 @@ export default defineEventHandler(async (event) => {
       piveauHubSearchUrl: baseUrl,
     },
     listmonk: listmonkConfig,
+    appUrl,
   } = useRuntimeConfig()
   const body = await readFormData(event)
   const digest = body.get('digest')?.toString()
@@ -49,6 +52,7 @@ export default defineEventHandler(async (event) => {
   searchUrl.searchParams.set('limit', '100')
   searchUrl.searchParams.set('filters', 'dataset')
   searchUrl.searchParams.set('minDate', minDate)
+  searchUrl.searchParams.set('dateType', 'modified')
   const searchRes = await fetch(searchUrl)
 
   if (!searchRes.ok) {
@@ -69,8 +73,13 @@ export default defineEventHandler(async (event) => {
   let batch: Promise<void>[] = []
   for (const subscriber of subscribers) {
     const language = subscriber.attribs?.language || 'de'
+    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)
+    unsubscribeLink.searchParams.set('id', subscriber.id.toString())
+    unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString()))
+
     const data: TemplateData = {
-      datasetPageBaseUrl: listmonkConfig.template.datasetPageUrl,
+      unsubscribeLink: unsubscribeLink.toString(),
+      datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
       datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
         id: dataset.id,
         title: dataset.title[language] || dataset.id,

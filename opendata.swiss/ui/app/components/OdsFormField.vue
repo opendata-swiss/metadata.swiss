@@ -1,6 +1,10 @@
 <template>
-  <div :class="`form__group__${type}`">
-    <label v-if="label" :for="props.for" :class="labelClasses">
+  <div :class="`form-group form__group__${type}`">
+    <label
+      v-if="label"
+      :for="props.for"
+      :class="labelClasses"
+    >
       {{ label }}
     </label>
     <slot />

@@ -5,7 +5,10 @@ interface Envelope<T> {
   data: T
 }
 
+export type Frequency = 'daily' | 'weekly'
+
 interface Attribs extends Record<string, unknown> {
+  frequency?: Frequency
   datasets?: string[]
   categories?: string[]
   organisations?: string[]
@@ -37,6 +40,20 @@ export default ({ api, template }: NitroRuntimeConfig['listmonk']) => {
       const url = new URL('subscribers', baseUrl)
 
       return {
+        async get(id: string): Promise<Subscriber> {
+          const res = await fetch(new URL(`${id}`, url + '/'), {
+            headers: authorization,
+          })
+
+          if (!res.ok) {
+            console.error(await res.text())
+            throw new Error(`Failed to fetch subscriber ${id}: ${res.status} ${res.statusText}`)
+          }
+
+          const payload: Envelope<Subscriber> = await res.json()
+          return payload.data
+        },
+
         async list({ email }: { email?: string } = {}) {
           const searchUrl = new URL(url)
           if (email) {
@@ -48,6 +65,7 @@ export default ({ api, template }: NitroRuntimeConfig['listmonk']) => {
           })
 
           if (!getSubscribers.ok) {
+            console.error(await getSubscribers.text())
             throw new Error(`Failed to fetch subscribers: ${getSubscribers.status} ${getSubscribers.statusText}`)
           }
 
