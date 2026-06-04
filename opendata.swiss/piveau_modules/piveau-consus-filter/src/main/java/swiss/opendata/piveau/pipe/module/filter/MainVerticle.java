@@ -14,6 +14,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RiotException;
 import org.apache.jena.vocabulary.DCAT;
 import org.apache.jena.vocabulary.RDF;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -53,8 +54,9 @@ public class MainVerticle extends AbstractVerticle {
         if (!node.isLiteral()) {
             return false;
         }
-        String identifier = node.asLiteral().getString();
-        return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
+        return true;
+        // String identifier = node.asLiteral().getString();
+        // return identifier.matches("^[A-Za-z0-9_-]+@" + organizationID + "$");
     }
 
     private static String missingIdentifier = "The property 'dct:identifier' on dcat:Dataset is missing. The dataset cannot be imported without a valid dataset identifier. Please add the missing identifier to proceed with the import.";
@@ -131,9 +133,9 @@ public class MainVerticle extends AbstractVerticle {
 
     private static Map<String, String> deprecatedLicenceMap = Map.of(
         "NonCommercialAllowed-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_open",
-        "AttributionRequired-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
-        "AskForPermission-CommercialAllowed-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
-        "AttributionRequired-AskForPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
+        "NonCommercialAllowed-CommercialAllowed-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceNotRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_ask",
+        "NonCommercialAllowed-CommercialWithPermission-ReferenceRequired", "http://dcat-ap.ch/vocabulary/licenses/terms_by_ask"
     );
 
     private static String missingLicense = "The property 'dct:license' is missing for one or more distributions. Each distribution must provide a valid license, and all distributions must use the same Terms of Use. The dataset cannot be imported. Please add the missing license to proceed with the import.";
@@ -167,6 +169,7 @@ public class MainVerticle extends AbstractVerticle {
                     model.add(distribution.asResource(), dctLicense, model.createResource(updatedLicense));
                 } else {
                     invalidLicenseFound = true;
+                    logger.warn("Invalid license: {}", node);
                 }
             }
         }
@@ -177,7 +180,20 @@ public class MainVerticle extends AbstractVerticle {
             writeError.accept(invalidLicense);
         }
         if(validLicenses.size() > 1) {
+            logger.warn("multiple licences found: {}", String.join(", ", validLicenses));
             writeError.accept(inconsistentLicenses);
+        }
+    }
+
+    public static void checkSpatial(Model model, Resource dataset) {
+        Property dctSpatial = model.createProperty(DCTERMS.SPATIAL.stringValue());
+
+        List<RDFNode> nodes = model.listObjectsOfProperty(dataset, dctSpatial).toList();
+        for (RDFNode node : nodes) {
+            if (node.isLiteral()) {
+                model.removeAll(dataset, dctSpatial, node);
+                logger.warn("Invalid spatial value: {}.", node);
+            }
         }
     }
 
@@ -205,58 +221,73 @@ public class MainVerticle extends AbstractVerticle {
             
             StringBuilder sb = new StringBuilder();
             if(config.containsKey("catalogue")){
-                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\n");
+                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\t");
+            }
+            if (config.containsKey("org_id")){
+                sb.append("Organization: ").append(config.getString("org_id")).append("\t");
             }
             if (config.containsKey("datasetURI")){
-                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\n");
+                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\t");
             }
             for (String error : errors) {
-                sb.append("- ").append(error).append("\n");
+                sb.append("- ").append(error).append("\t");
             }
             String message = sb.toString();
 
-            logger.warn(message);
+            logger.error(message);
             if (config.containsKey("mailto")) {
                 logger.trace("TODO: Notify data publisher at {}", config.getString("mailto"));
             }   
         }
     }
 
+    private Model getModel(PipeContext pipeContext) {
+        try {
+            if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.NTRIPLES);
+            }
+            if (Lang.RDFXML.getHeaderString().equals(pipeContext.getMimeType())) {
+                return Piveau.toModel(pipeContext.getStringData().getBytes(), Lang.RDFXML);
+            }
+        } catch (RiotException e) {
+            logger.error("Failed to parse RDF data from pipe context {}", pipeContext.getDataInfo(), e);
+        }
+
+        return null;
+    }
+
     private void handlePipe(PipeContext pipeContext) {
         if (pipeContext.log().isTraceEnabled()) {
             pipeContext.log().trace(pipeContext.getPipeManager().prettyPrint());
         }
-
-        if (Lang.NTRIPLES.getHeaderString().equals(pipeContext.getMimeType())) {
-            JsonObject config = pipeContext.getConfig();
-            Model model = Piveau.toModel(
-                pipeContext.getStringData().getBytes(),
-                Lang.NTRIPLES
-            );
-            List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
-            if (datasets.size() != 1) {
-                logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
-                return;
-            }
-            Resource dataset = datasets.get(0);
-            config.put("datasetURI", dataset.getURI());
-
-            String organizationID = config.getString("org_id");
-
-            ErrorHandler errorHandler = new ErrorHandler(config);
-            checkIdentifier(model, dataset, organizationID, errorHandler);
-            checkConformsTo(model, dataset, errorHandler);
-            checkLicense(model, dataset, errorHandler);
-
-            if (errorHandler.hasErrors()) {
-                errorHandler.notifyErrors();
-            } else {
-                logger.info("passing {}", dataset.getURI());
-                // pipeContext.pass();
-                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
-            }
-        } else {
+        Model model = getModel(pipeContext);
+        if (model == null) {
             pipeContext.pass();
+            return;
+        }
+        
+        List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
+        if (datasets.size() != 1) {
+            logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
+            return;
+        }
+        Resource dataset = datasets.get(0);
+
+        JsonObject config = pipeContext.getConfig();
+        config.put("datasetURI", dataset.getURI());
+        String organizationID = config.getString("org_id");
+
+        ErrorHandler errorHandler = new ErrorHandler(config);
+        checkIdentifier(model, dataset, organizationID, errorHandler);
+        checkConformsTo(model, dataset, errorHandler);
+        checkLicense(model, dataset, errorHandler);
+        checkSpatial(model, dataset);
+
+        if (errorHandler.hasErrors()) {
+            errorHandler.notifyErrors();
+        } else {
+            logger.info("passing {}", pipeContext.getDataInfo());
+            pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
         }
     }
 

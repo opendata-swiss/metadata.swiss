@@ -2,6 +2,12 @@ import { dirname, resolve } from 'node:path'
 
 const __dirname = dirname(new URL(import.meta.url).pathname)
 
+declare module 'nitropack/types' {
+  interface NitroRouteConfig {
+    basicAuth?: boolean
+  }
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -53,7 +59,11 @@ export default defineNuxtConfig({
         url: '',
         siteId: '',
       },
+      comments: {
+        websiteId: 15455,
+      },
     },
+    appUrl: 'http://localhost:3000/',
     showcases: {
       maxImageWidth: 900,
     },
@@ -65,14 +75,43 @@ export default defineNuxtConfig({
       },
     },
     apiTunerTests: false,
+    listmonk: {
+      api: {
+        url: '',
+        user: '',
+        token: process.env.LISTMONK_ADMIN_API_TOKEN,
+      },
+      preferences: {
+        hmac_key: '',
+      },
+      template: {
+        ids: {
+          de: 6,
+          fr: 7,
+          it: 8,
+          en: 9,
+        },
+      },
+    },
+    hyvor: {
+      webhooksEnabled: false,
+      webhookSecret: '',
+      publisherNotificationTemplateId: 5,
+    },
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
   },
   build: {
-    transpile: ['form-data'],
+    transpile: [
+      'form-data',
+      '@hyvor/hyvor-talk-vue',
+      '@hyvor/hyvor-talk-base',
+    ],
   },
   routeRules: {
+    '/api/showcases': { basicAuth: true },
+    '/api/subscribe/*': { basicAuth: true },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
@@ -84,6 +123,21 @@ export default defineNuxtConfig({
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
     ],
+    hooks: {
+      'dev:reload': () => import('sharp'),
+    },
+    typescript: {
+      tsConfig: {
+        compilerOptions: {
+          skipLibCheck: true,
+          types: [
+            'mocha',
+            'chai',
+            'sinon-chai',
+          ],
+        },
+      },
+    },
   },
   cmsAssets: {
     contentPath: resolve(import.meta.dirname, 'content/assets'),

@@ -1,3 +1,8 @@
+x-db-credentials: &db-credentials                             # Use the default POSTGRES_ credentials if they're available or simply default to "listmonk"
+  POSTGRES_USER: &db-user listmonk                            # for database user, password, and database name
+  POSTGRES_PASSWORD: &db-password listmonk
+  POSTGRES_DB: &db-name listmonk
+
 services:
   piveau-hub-repo:
     image: piveau/hub-repo:3.5.2
@@ -393,3 +398,98 @@ services:
     logging:
       options:
         max-size: "50m"
+
+  ####################
+  # Listmonk         #
+  ####################
+
+  # listmonk app
+  listmonk-app:
+    image: listmonk/listmonk:latest
+    container_name: listmonk_app
+    restart: unless-stopped
+    ports:
+      - "9000:9000"                                           # To change the externally exposed port, change to: $custom_port:9000
+    hostname: listmonk.example.com                            # Recommend using FQDN for hostname
+    depends_on:
+      - listmonk-db
+    command: [sh, -c, "./listmonk --install --idempotent --yes --config '' 2> /listmonk/uploads/install.sh && ./listmonk --upgrade --yes --config '' && ./listmonk --config ''"]
+      # --config (file) param is set to empty so that listmonk only uses the env vars (below) for config.
+      # --install --idempotent ensures that DB installation happens only once on an empty DB, on the first ever start.
+      # --upgrade automatically runs any DB migrations when a new image is pulled.
+
+
+    env_file:
+      - .env
+    environment:                                              # The same params as in config.toml are passed as env vars here.
+      LISTMONK_app__address: 0.0.0.0:9000
+      LISTMONK_db__user: *db-user
+      LISTMONK_db__password: *db-password
+      LISTMONK_db__database: *db-name
+      LISTMONK_db__host: listmonk-db
+      LISTMONK_db__port: 5432
+      LISTMONK_db__ssl_mode: disable
+      LISTMONK_db__max_open: 25
+      LISTMONK_db__max_idle: 25
+      LISTMONK_db__max_lifetime: 300s
+      LISTMONK_ADMIN_USER: ${LISTMONK_ADMIN_USER:-admin}
+      LISTMONK_ADMIN_PASSWORD: ${LISTMONK_ADMIN_PASSWORD:-password}
+      LISTMONK_ADMIN_API_USER: ${LISTMONK_ADMIN_API_USER:-admin-api}
+      TZ: Etc/UTC
+    volumes:
+      - ./listmonk:/listmonk/uploads:rw                        # Mount an uploads directory on the host to /listmonk/uploads inside the container.
+      # To use this, change directory path in Admin -> Settings -> Media to /listmonk/uploads
+
+  # listmonk init
+  listmonk-init:
+    image: alpine:latest
+    container_name: listmonk_init
+    depends_on:
+      - listmonk-app
+    volumes:
+      - ./listmonk:/init
+    env_file:
+      - .env
+    environment:
+      LISTMONK_ADMIN_API_USER: ${LISTMONK_ADMIN_API_USER:-admin-api}
+    command: >
+      sh -c "
+        apk add --no-cache curl jq &&
+        chmod +x /init/init-listmonk.sh &&
+        /init/init-listmonk.sh
+      "
+
+  # Postgres database
+  listmonk-db:
+    image: postgres:18-alpine
+    container_name: listmonk_db
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"                                 # Only bind on the local interface. To connect to Postgres externally, change this to 0.0.0.0
+    environment:
+      <<: *db-credentials
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U listmonk"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    volumes:
+      - ./volumes/listmonk-data:/var/lib/postgresql
+
+  # SMTP server for development/testing
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    environment:
+      MP_MAX_MESSAGES: 500
+      MP_DATABASE: /data/mailpit.db
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+    volumes:
+      - ./volumes/mailpit-data:/data
+
+

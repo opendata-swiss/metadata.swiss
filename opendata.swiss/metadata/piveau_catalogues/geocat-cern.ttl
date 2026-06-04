@@ -1,0 +1,17 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-cern> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:33:40.763481"^^xsd:dateTime ;
+    dcterms:modified "2026-05-08T07:12:58.055283"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://home.cern/> ;
+            foaf:name "European Organization for Nuclear Research CERN"@en,
+                "Organisation européenne pour la recherche nucléaire CERN"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "European Organization for Nuclear Research CERN"@en,
+        "Organisation européenne pour la recherche nucléaire CERN"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

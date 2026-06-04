@@ -1,5 +1,6 @@
 {
   "message": {
+    "login_confirmation": "You have been logged in",
     "top_header": {
       "logout": "Logout",
       "login": "login"
@@ -72,6 +73,13 @@
       "keywords": "Keywords",
       "to_dataset": "To dataset",
       "to_search": "To search"
+    },
+    "subscribe": {
+      "header": "Subscribe",
+      "to_dataset": "To dataset",
+      "to_category": "To category",
+      "to_publisher": "To publisher",
+      "success": "Subscription successful"
     },
     "showcase": {
       "type": {

@@ -1,5 +1,6 @@
 {
   "message": {
+    "login_confirmation": "Hai effettuato l'accesso",
     "top_header": {
       "logout": "Disconnettiti",
       "login": "Accedi"
@@ -72,6 +73,13 @@
       "keywords": "Parole chiave",
       "to_dataset": "Al set di dati",
       "to_search": "Alla ricerca"
+    },
+    "subscribe": {
+      "header": "Iscriviti",
+      "to_dataset": "Al set di dati",
+      "to_category": "Alla categoria",
+      "to_publisher": "All'editore",
+      "success": "Iscrizione riuscita"
     },
     "showcase": {
       "type": {

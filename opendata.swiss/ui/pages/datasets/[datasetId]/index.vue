@@ -3,6 +3,8 @@ import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 
+import { Comments } from '@hyvor/hyvor-talk-vue'
+
 import { useDatasetsSearch } from '../../../app/piveau/datasets'
 import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 
@@ -39,6 +41,8 @@ const dataset = computed(() => {
 const distributions = computed(() => (dataset.value?.distributions ?? []).sort((a, b) => a.title.localeCompare(b.title)))
 
 const searchBreadcrumb = ref<BreadcrumbItem | null>(null)
+
+const { comments: { websiteId } } = useRuntimeConfig().public
 
 const homePage = await homePageBreadcrumb(locale)
 const breadcrumbs = computed(() => {
@@ -203,7 +207,7 @@ await suspense()
                 <OdsTagList :tags="dataset.keywords" />
               </div>
             </div>
-            <div v-if="dataset.catalog" >
+            <div v-if="dataset.catalog">
               <h2 class="h2">
                 {{ t('message.dataset_detail.catalog') }}
               </h2>
@@ -227,12 +231,61 @@ await suspense()
               </div>
               <div class="box">
                 <h2 class="h5">
+                  {{ t(`message.subscribe.header`) }}
+                </h2>
+                <form
+                  method="post"
+                  action="/api/subscribe/dataset"
+                  style="display: inline-block;"
+                  class="subscribe-form"
+                >
+                  <input
+                    type="hidden"
+                    name="dataset"
+                    :value="dataset.id"
+                  >
+                  <input
+                    type="submit"
+                    class="btn btn--outline"
+                    :value="t(`message.subscribe.to_dataset`)"
+                  >
+                </form>
+                <form
+                  v-for="category in dataset.getCategoriesForLanguage(locale)"
+                  :key="category.id"
+                  method="post"
+                  action="/api/subscribe/category"
+                  style="display: inline-block;"
+                  class="subscribe-form"
+                >
+                  <input
+                    type="hidden"
+                    name="category"
+                    :value="category.id"
+                  >
+                  <input
+                    type="submit"
+                    class="btn btn--outline"
+                    :value="`${t(`message.subscribe.to_category`)} ${category.label}`"
+                  >
+                </form>
+              </div>
+              <div class="box">
+                <h2 class="h5">
                   {{ t(`message.dataset_detail.metadata_download`) }}
                 </h2>
                 <OdsMetadataDownloadList :dataset="dataset" />
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="container">
+          <Comments
+            :website-id="websiteId"
+            :page-id="`dataset-${dataset.id}`"
+            :page-language="locale"
+          />
         </div>
       </section>
 
@@ -261,5 +314,18 @@ await suspense()
   @media (min-width: 1280px) {
     min-height: 73.5px;
   }
+}
+
+.subscribe-form input[type=submit] {
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.subscribe-form input[type=submit]:hover {
+  text-decoration: underline;
+}
+
+form.subscribe-form:not(:first-of-type) {
+  margin-top: 1rem;
 }
 </style>

@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/gemeinde-emmen> a dcat:Catalog ;
+    dcterms:created "2022-03-21T06:01:59.584297"^^xsd:dateTime ;
+    dcterms:description "Emmen ist mit mehr als 31'000 Einwohnern nach der Stadt Luzern die Gemeinde mit der zweithöchsten Einwohnerzahl im Kanton Luzern. Gemäss kommunaler GIS-Strategie (https://www.emmen.ch/publikationen/344959) stellt Emmen Geodaten öffentlich zur Verfügung, soweit keine Schutzgründe/Datensicherheitsrestriktionen entgegenstehen. Geodaten werden in Form von Kartendiensten auf dem kommunalen Geoportal: https://www.emmen.ch/gemeindeinzahlen/43855 publiziert und als WMS zur öffentlichen Verfügung gestellt. Die zugrunde liegenden Geodaten und Geodienste werden in geocat.ch dokumentiert, die publizierten WMS auf opendata.swiss sind mit geocat.ch synchronisiert."@de ;
+    dcterms:modified "2026-05-08T07:22:39.575011"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.emmen.ch/> ;
+            foaf:name "Gemeinde Emmen"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Gemeinde Emmen"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

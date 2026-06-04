@@ -1,5 +1,6 @@
 {
   "message": {
+    "login_confirmation": "Vous êtes connecté",
     "top_header": {
       "logout": "Déconnexion",
       "login": "Connexion"
@@ -72,6 +73,13 @@
       "keywords": "Mots-clés",
       "to_dataset": "Vers le jeu de données",
       "to_search": "Vers la recherche"
+    },
+    "subscribe": {
+      "header": "S'abonner",
+      "to_dataset": "Vers le jeu de données",
+      "to_category": "Vers la catégorie",
+      "to_publisher": "Vers l'éditeur",
+      "success": "Abonnement réussi"
     },
     "showcase": {
       "type": {

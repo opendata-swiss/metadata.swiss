@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-hes_so-geneve> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:32:59.286371"^^xsd:dateTime ;
+    dcterms:description "Avec plus de 6'000 étudiantes et étudiants, la HES-SO Genève représente un pôle de compétences riche. Véritable université des métiers, elle délivre des bachelors et des masters. Elle forme des professionnel-le-s des sciences de l'ingénierie, de l'architecture et du paysage, de l’économie et des services, du design et des arts visuels, de la santé, du travail social et de la musique."@fr ;
+    dcterms:modified "2026-05-08T07:00:49.019177"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.hesge.ch/geneve/> ;
+            foaf:name "Haute école spécialisée de Suisse occidentale HES-SO Genève"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Haute école spécialisée de Suisse occidentale HES-SO Genève"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

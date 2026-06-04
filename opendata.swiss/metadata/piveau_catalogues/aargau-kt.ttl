@@ -1,0 +1,16 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/aargau-kt> a dcat:Catalog ;
+    dcterms:created "2024-05-27T21:14:28.026334"^^xsd:dateTime ;
+    dcterms:description "Das AGIS Service Center unterstützt als kantonale Koordinationsstelle die Bereitstellung von Geoinformationen und Metadaten der kantonalen Verwaltung. Die zuständigen kantonalen Fachstellen stellen die öffentlichen Geodaten des Kantons Aargau mittels der Infrastruktur des AGIS Service Center in der Informatik Aargau als Webservices und zum Download bereit."@de ;
+    dcterms:modified "2026-05-11T07:12:18.613467"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <http://www.ag.ch/geoportal> ;
+            foaf:name "AGIS Service Center Kanton Aargau"@de ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "AGIS Service Center Kanton Aargau"@de ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -13,7 +13,7 @@ const { t } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
-const searchInput = ref(route.query.q)
+const searchInput = ref(route.query.q as string)
 
 const onSearch = debounce((value: string) => {
   searchInput.value = value
@@ -67,7 +67,7 @@ const result = computed(() => {
 watch(
   () => route.query.q,
   (value) => {
-    searchInput.value = value
+    searchInput.value = value as string
   },
 )
 </script>

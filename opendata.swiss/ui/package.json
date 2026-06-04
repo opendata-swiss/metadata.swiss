@@ -8,9 +8,10 @@
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
     "predev": "shx test -d content || git clone git@github.com:opendata-swiss/opendata-swiss-cms-content-test.git content",
     "dev": "HOST=0.0.0.0 nuxt dev",
-    "api-tuner": "npx api-tuner@0.5.2 --base-iri http://localhost:3000",
+    "api-tuner": "source ../metadata/listmonk/install.sh; npx api-tuner@0.6.4 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
-    "test": "npm run api-tuner -- server/tests/*.n3",
+    "test:api": "npm run api-tuner -- server/tests/*.n3",
+    "test:mocha": "source ../metadata/listmonk/install.sh; mocha server/tests/**/*.test.ts",
     "prebuild": "vite build src/admin --emptyOutDir",
     "build": "nuxt build",
     "generate": "nuxt generate",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@certible/use-matomo": "^1.1.0",
+    "@hyvor/hyvor-talk-vue": "^1.0.1",
     "@nuxt/content": "^3.10.0",
     "@nuxt/eslint": "^1.12.1",
     "@nuxt/icon": "^2.1.1",
@@ -32,6 +34,7 @@
     "@toast-ui/editor": "^3.2.2",
     "@tpluscode/rdf-ns-builders": "^5.0.0",
     "accept-language": "^3.0.20",
+    "async-wait-until": "^2.0.31",
     "better-sqlite3": "^12.5.0",
     "bootstrap": "^5.3.8",
     "decap-cms-app": "^3.9.0",
@@ -58,14 +61,19 @@
     "vite-plugin-static-copy": "^3.1.4",
     "vue": "^3.5.26",
     "vue-i18n": "^11.2.7",
-    "vue-router": "^4.6.4",
+    "vue-router": "^5.1.0",
     "vue-select": "^4.0.0-beta.6",
     "yaml": "^2.8.2",
     "zod": "^4"
   },
   "devDependencies": {
+    "@types/chai": "^5",
     "@types/js-yaml": "^4.0.9",
+    "@types/mocha": "^10.0.10",
+    "@types/sinon": "^17.0.4",
+    "@types/sinon-chai": "^4.0.0",
     "@types/vue-select": "^3.16.8",
+    "chai": "^5",
     "chokidar": "^4.0.3",
     "decap-server": "^3.4.0",
     "dotenv-cli": "^11.0.0",
@@ -73,11 +81,24 @@
     "husky": "^9.1.7",
     "js-yaml": "^4.1.1",
     "lint-staged": "^16.2.7",
-    "shx": "^0.4.0"
+    "mocha": "^11.7.6",
+    "shx": "^0.4.0",
+    "sinon": "^22.0.0",
+    "sinon-chai": "^4.0.1",
+    "tsx": "^4.22.3"
   },
   "lint-staged": {
     "*.{js,jsx,ts,ysx,vue}": [
       "eslint --fix --quiet"
     ]
+  },
+  "mocha": {
+    "require": [
+      "tsx",
+      "mocha-setup.js"
+    ]
+  },
+  "overrides": {
+    "vue-router": "^5.1.0"
   }
 }

@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/geocat-ge> a dcat:Catalog ;
+    dcterms:created "2026-01-12T15:37:35.908563"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Genf verfolgt seit einigen Jahren eine Open Data Strategie. Auf diesem Portal finden Sie Daten aus der kantonalen Verwaltung die die Prinzipien des Open Government Data erfüllen, sowie sämtliche \"Open-Geodaten\" des Genfer Geoinformationssystems (SITG). ***Die Datensätze finden Sie unter der betreffenden Organisation***"@de,
+        "The canton of Geneva has been committed to making public data open for a few years now. On this portal, you will find all the data from the Geneva cantonal administration that meet the principles of Open Government Data, as well as geodata from the geographic information system of Geneva (SITG) that fall under the OpenData policy."@en,
+        "Le canton de Genève s'est engagé dans une démarche d’ouverture des données publiques depuis plusieurs années. Sur ce portail, vous trouvez toutes les données provenant de l'administration cantonale genevoise qui répondent aux principes de l'Open Government Data, ainsi que les géodonnées OpenData du Système d’Information du Territoire à Genève (SITG)."@fr,
+        "Il cantone di Ginevra si è impegnato in un processo di apertura dei dati pubblici per diversi anni. Su questo portale, è possibile trovare tutti i dati dell'amministrazione del cantone di Ginevra che soddisfano i principi del Open Government Data, inoltre ai geodati OpenData del Sistema Informativo Territoriale di Ginevra (SITG)."@it ;
+    dcterms:modified "2026-05-08T06:57:35.620471"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Kanton Genf"@de,
+                "Canton of Geneva"@en,
+                "Canton de Genève"@fr,
+                "Cantone di Ginevra"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Kanton Genf"@de,
+        "Canton of Geneva"@en,
+        "Canton de Genève"@fr,
+        "Cantone di Ginevra"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

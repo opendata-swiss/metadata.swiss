@@ -121,6 +121,19 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_REALM`
 - `NUXT_MATOMO_URL`
 - `NUXT_MATOMO_SITE_ID`
+- `NUXT_LISTMONK_APP_URL`
+- `NUXT_LISTMONK_API_URL`
+- `NUXT_LISTMONK_API_USER`
+- `NUXT_LISTMONK_API_TOKEN`
+- `NUXT_LISTMONK_TEMPLATE_IDS_DE`
+- `NUXT_LISTMONK_TEMPLATE_IDS_FR`
+- `NUXT_LISTMONK_TEMPLATE_IDS_IT`
+- `NUXT_LISTMONK_TEMPLATE_IDS_EN`
+- `NUXT_LISTMONK_PREFERENCES_HMAC_KEY`
+- `NUXT_PUBLIC_COMMENTS_WEBSITE_ID`
+- `NUXT_HYVOR_WEBHOOKS_ENABLED`
+- `NUXT_HYVOR_WEBHOOK_SECRET`
+- `NUXT_HYVOR_PUBLISHER_NOTIFICATION_TEMPLATE_ID`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 
@@ -167,3 +180,20 @@ The Netlify credentials are [here](https://passbolt.zazuko.com/app/passwords/vie
 In the single Netlify Project, the OAuth App is set up using Client ID and secret. Most importantly, each instance of ODS
 must be added in the [Domain Management](https://app.netlify.com/projects/preeminent-flan-064546/domain-management)
 section.
+
+### Subscriptions
+
+Subscriptions are managed by [Listmonk](https://listmonk.app) and in the dev environment,
+[mailpit](http://localhost:8025) is used to catch all sent emails.
+
+For this configuration to work, make sure to run the [docker compose stack](../metadata/docker-compose.yaml) first.
+Then, set the following environment variables before running the dev instance:
+
+```dotenv
+NUXT_LISTMONK_API_URL=http://localhost:9000/
+NUXT_LISTMONK_API_USER=admin-api
+NUXT_LISTMONK_API_TOKEN=
+```
+
+The username can be changed [docker-compose.yaml](../metadata/docker-compose.yaml).
+The token can be retrieved from [install.sh](../metadata/listmonk/install.sh) produced by listmonk installation script.
