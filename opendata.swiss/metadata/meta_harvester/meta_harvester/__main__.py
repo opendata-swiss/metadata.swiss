@@ -13,6 +13,7 @@ from rdflib.namespace import DCAT, DCTERMS, FOAF, RDF, XSD, ORG, SKOS
 from requests.exceptions import HTTPError
 
 from .api_clients import CkanClient, I14YClient
+from .organization_mapping import resolve_i14y_publisher_slug
 
 CATALOGUES_PATH = os.getenv("CATALOGUES_PATH", "../piveau_catalogues")
 PIPES_PATH = "../piveau_pipes"
@@ -203,6 +204,7 @@ def generate_catalogue_metadata(
     created: str,
     modified: str,
     homepage: str = "https://example.com",
+    publisher_iri: str | None = None,
 ) -> None:
     """
     Generates an RDF metadata file for a catalogue in Turtle format.
@@ -214,6 +216,7 @@ def generate_catalogue_metadata(
         created (str):              The creation timestamp of the metadata (ISO 8601 format).
         modified (str):             The modification timestamp of the metadata (ISO 8601 format).
         homepage(str, optional):    The URL to the publisher's homepage.
+        publisher_iri (str | None): IRI of the publisher organization. Falls back to a blank node if missing.
 
     Returns:
         None
@@ -232,10 +235,14 @@ def generate_catalogue_metadata(
     catalogue_uri = EX[catalogue_name]
 
     # Publisher
-    publisher_bnode = BNode()
-    g.add((catalogue_uri, DCTERMS.publisher, publisher_bnode))
-    g.add((publisher_bnode, RDF.type, FOAF.Agent))
-    g.add((publisher_bnode, FOAF.homepage, URIRef(homepage)))
+    publisher = URIRef(publisher_iri) if publisher_iri else BNode()
+    g.add((catalogue_uri, DCTERMS.publisher, publisher))
+
+    publisher_is_bnode = isinstance(publisher, BNode)
+
+    if publisher_is_bnode:
+        g.add((publisher, RDF.type, FOAF.Agent))
+        g.add((publisher, FOAF.homepage, URIRef(homepage)))
 
     # Catalogue
     g.add((catalogue_uri, RDF.type, DCAT.Catalog))
@@ -245,7 +252,8 @@ def generate_catalogue_metadata(
     for lang, title in org_titles.items():
         if title:
             g.add((catalogue_uri, DCTERMS.title, Literal(title, lang=lang)))
-            g.add((publisher_bnode, FOAF.name, Literal(title, lang=lang)))
+            if publisher_is_bnode:
+                g.add((publisher, FOAF.name, Literal(title, lang=lang)))
 
     for lang, desc in org_descriptions.items():
         if desc:
@@ -496,6 +504,8 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
 
         organization = to_dict(details.get("organization", {}))
         org_titles = to_dict(organization.get("title", "{}"))
+        publisher_slug = resolve_i14y_publisher_slug(ckan_org_id=org_id)
+        publisher_iri = organization_uri(publisher_slug) if publisher_slug else None
 
         if catalogues:
             generate_catalogue_metadata(
@@ -505,6 +515,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
                 created=details["metadata_created"],
                 modified=details["metadata_modified"],
                 homepage=org_url,
+                publisher_iri=publisher_iri,
             )
 
         if pipes:

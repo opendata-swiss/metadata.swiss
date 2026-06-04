@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/dcat-i14y-nationalbibliothek> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "Collecte l’ensemble des publications suisses depuis 1848. Les Archives littéraires suisses, le Cabinet des estampes, la Phonothèque Nationale Suisse et le Centre Dürrenmatt font également partie de la Bibliothèque nationale."@fr,
         "Colleziona tutte le pubblicazioni a partire dal 1848. Alla Biblioteca nazionale sono accorpati l'Archivio svizzero di letteratura, il Gabinetto delle stampe,  la Fonoteca Nazionale Svizzera e il Centre Dürrenmatt."@it ;
     dcterms:modified "2025-05-16T11:24:22.345911"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.nb.admin.ch> ;
-            foaf:name "Schweizerische Nationalbibliothek NB"@de,
-                "Swiss National Library NL"@en,
-                "Bibliothèque nationale suisse BN"@fr,
-                "Biblioteca nazionale svizzera BN"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-nabibl> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Schweizerische Nationalbibliothek NB"@de,
         "Swiss National Library NL"@en,
