@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/gruppe-verteidigung> a dcat:Catalog ;
@@ -18,12 +17,7 @@ Grâce à son administration professionnelle, l'armée peut contribuer à préve
 \r
 L'efficace amministrazione permette all'esercito di contribuire alla prevenzione della guerra e pertanto al mantenimento della pace nel nostro Paese nonché di sostenere le autorità civili nella difesa contro gravi minacce che minano la sicurezza interna e in caso di situazioni straordinarie. L’aggruppamento Difesa coordina inoltre la cooperazione internazionale in materia di politica di sicurezza a favore dell'Esercito svizzero."""@it ;
     dcterms:modified "2026-05-11T07:31:47.713152"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <> ;
-            foaf:name "Gruppe Verteidigung"@de,
-                "Defence Group"@en,
-                "Groupement Défense"@fr,
-                "Aggruppamento Difesa"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-vtg> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Gruppe Verteidigung"@de,
         "Defence Group"@en,
