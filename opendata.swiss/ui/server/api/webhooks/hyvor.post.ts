@@ -10,7 +10,7 @@ interface RatingWebhookPayload {
 }
 
 interface CommentWebhookPayload {
-  event: 'comment.create'
+  event: 'comment.create' | 'comment.update'
   data: Comment
 }
 
@@ -50,6 +50,7 @@ export default defineEventHandler(async (event) => {
 
   switch (payload.event) {
     case 'comment.create':
+    case 'comment.update':
       return hyvor.handleComment(payload.data)
     case 'rating.created':
     case 'rating.updated':
