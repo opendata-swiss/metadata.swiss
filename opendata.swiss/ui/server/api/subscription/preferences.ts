@@ -1,4 +1,4 @@
-import listmonk from '../../lib/listmonk'
+import Listmonk from '../../lib/listmonk'
 import { validatePreferencesToken } from '#server/lib/listmonk/token'
 
 export default defineEventHandler(async (event) => {
@@ -6,9 +6,9 @@ export default defineEventHandler(async (event) => {
 
   const { listmonk: config } = useRuntimeConfig()
 
-  const Listmonk = listmonk(config)
+  const listmonk = new Listmonk(config)
 
-  const subscriber = await Listmonk.subscribers.get(id)
+  const subscriber = await listmonk.subscribers.get(id)
 
   return {
     preferences: subscriber.attribs || {},

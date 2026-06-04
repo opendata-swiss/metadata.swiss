@@ -5,6 +5,14 @@ import type { LocationQueryRaw } from '#vue-router'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { waitUntil } from 'async-wait-until'
 
+declare global {
+  interface Window {
+    hyvorTalkCommentCounts?: {
+      load(arg: { 'website-id': number }): void
+    }
+  }
+}
+
 interface Props {
   items: DcatApChV2DatasetAdapter[]
   listType: 'card' | 'list'
@@ -36,7 +44,7 @@ const searchParamsEncoded = computed(() => {
 
 async function loadCommentCounts() {
   await waitUntil(() => window.hyvorTalkCommentCounts, 1000)
-  window.hyvorTalkCommentCounts.load({ 'website-id': 15455 })
+  window.hyvorTalkCommentCounts!.load({ 'website-id': 15455 })
 }
 
 onMounted(loadCommentCounts)

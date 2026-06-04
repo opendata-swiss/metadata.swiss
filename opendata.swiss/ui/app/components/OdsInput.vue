@@ -1,5 +1,9 @@
 <template>
-  <OdsFormField :for="id" :label="label" :required="required">
+  <OdsFormField
+    :for="id"
+    :label="label"
+    :required="required"
+  >
     <input
       :id="id"
       :type="type"
@@ -16,7 +20,7 @@
       :required="required"
       :accept="accept"
       @input.stop="onInput"
-    />
+    >
     <div
       v-if="message"
       class="badge badge--sm"
@@ -97,7 +101,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: () => undefined,
+    required: true,
   },
   min: {
     type: Number,

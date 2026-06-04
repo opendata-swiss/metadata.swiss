@@ -9,7 +9,7 @@ export function useVocabularySearch() {
     index: 'vocabulary',
     indexDetails: 'vocabularies',
     schema: z.object({
-      pref_label: z.map(z.string(), z.string()),
+      pref_label: z.record(z.string(), z.string()),
       id: z.string(),
       resource: z.string(),
       in_scheme: z.string(),
