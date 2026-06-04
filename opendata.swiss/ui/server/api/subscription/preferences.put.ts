@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   const listmonk = new Listmonk(config)
 
-  const id = validatePreferencesToken(event)
+  const id = validatePreferencesToken(event, config.preferences.hmac_key)
 
   const subscriber = await listmonk.subscribers.get(id)
   subscriber.attribs = subscriber.attribs || {}

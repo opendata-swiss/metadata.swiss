@@ -1,15 +1,13 @@
 import type { H3Event } from 'h3'
 import crypto from 'node:crypto'
 
-export function generateToken(subscriberId: string) {
-  const { listmonk: { preferences: { hmac_key } } } = useRuntimeConfig()
-
-  return crypto.createHmac('sha256', hmac_key)
+export function generateToken(subscriberId: string, key: string) {
+  return crypto.createHmac('sha256', key)
     .update(subscriberId.toString())
     .digest('hex')
 }
 
-export function validatePreferencesToken(event: H3Event) {
+export function validatePreferencesToken(event: H3Event, key: string) {
   const { token, id: subscriber } = getQuery(event)
 
   if (!token) {
@@ -26,7 +24,7 @@ export function validatePreferencesToken(event: H3Event) {
     })
   }
 
-  const expected = generateToken(subscriber.toString())
+  const expected = generateToken(subscriber.toString(), key)
 
   if (token !== expected) {
     throw createError({

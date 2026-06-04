@@ -25,3 +25,4 @@ logs
 content/
 !app/components/content/
 public/cms/
+coverage/
