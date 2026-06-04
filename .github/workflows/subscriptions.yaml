@@ -1,0 +1,86 @@
+name: Dispatch Subscriptions
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # Every day at 07:00
+    - cron: '0 7 * * 1'   # Every Monday at 07:00
+  workflow_dispatch:
+    inputs:
+      digest:
+        description: 'Digest type'
+        required: true
+        default: 'daily'
+        type: choice
+        options:
+          - daily
+          - weekly
+      environment:
+        description: 'Environment to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - INT
+          - TEST
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - target_env: INT
+            realm: lindas-next-int
+          - target_env: TEST
+            realm: lindas-next
+    steps:
+      - name: Check if environment should run
+        id: check_env
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.environment }}" != "all" && "${{ github.event.inputs.environment }}" != "${{ matrix.target_env }}" ]]; then
+            echo "RUN_JOB=false" >> $GITHUB_ENV
+            echo "Skipping ${{ matrix.target_env }} environment"
+          else
+            echo "RUN_JOB=true" >> $GITHUB_ENV
+          fi
+
+      - name: Determine digest
+        if: env.RUN_JOB == 'true'
+        id: determine_digest
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            echo "DIGEST=${{ github.event.inputs.digest }}" >> $GITHUB_ENV
+          elif [ "${{ github.event.schedule }}" == "0 7 * * 1" ]; then
+            echo "DIGEST=weekly" >> $GITHUB_ENV
+          else
+            echo "DIGEST=daily" >> $GITHUB_ENV
+          fi
+
+      - name: Get Keycloak token
+        if: env.RUN_JOB == 'true'
+        id: get_token
+        run: |
+          TOKEN=$(curl -s -X POST "${{ vars.KEYCLOAK_URL }}/realms/${{ matrix.realm }}/protocol/openid-connect/token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets[format('KEYCLOAK_SERVICE_ACCOUNT_CLIENT_ID_{0}', matrix.target_env)] }}" \
+            -d "client_secret=${{ secrets[format('KEYCLOAK_SERVICE_ACCOUNT_CLIENT_SECRET_{0}', matrix.target_env)] }}" | jq -r .access_token)
+          
+          if [ "$TOKEN" == "null" ] || [ -z "$TOKEN" ]; then
+            echo "Failed to get token"
+            exit 1
+          fi
+
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> $GITHUB_OUTPUT
+
+      - name: Call Dispatch API (${{ matrix.target_env }})
+        if: env.RUN_JOB == 'true'
+        run: |
+          BASE_URL="${{ vars[format('LISTMONK_URL_{0}', matrix.target_env)] }}"
+          curl -s -X POST "${BASE_URL}/api/subscription/dispatch" \
+            -H "Authorization: Bearer ${{ steps.get_token.outputs.token }}" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "digest=${{ env.DIGEST }}" \
+            --fail-with-body
