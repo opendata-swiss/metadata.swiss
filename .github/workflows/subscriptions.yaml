@@ -78,7 +78,7 @@ jobs:
       - name: Call Dispatch API (${{ matrix.target_env }})
         if: env.RUN_JOB == 'true'
         run: |
-          BASE_URL="${{ vars[format('LISTMONK_URL_{0}', matrix.target_env)] }}"
+          BASE_URL="${{ vars[format('APP_URL_{0}', matrix.target_env)] }}"
           curl -s -X POST "${BASE_URL}/api/subscription/dispatch" \
             -H "Authorization: Bearer ${{ steps.get_token.outputs.token }}" \
             -H "Content-Type: application/x-www-form-urlencoded" \
