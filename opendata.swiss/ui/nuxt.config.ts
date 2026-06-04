@@ -100,6 +100,7 @@ export default defineNuxtConfig({
     },
     subscription: {
       datasetQueryBatchSize: 100,
+      maxDatasetsPerEmail: 100,
     },
   },
   dir: {

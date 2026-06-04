@@ -25,7 +25,7 @@ export interface DispatchDeps {
 }
 
 export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
-  const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail = 100 } = deps
+  const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
 
   const minDate = digest === 'daily'
     ? new Date(Date.now() - 24 * 60 * 60 * 1000)

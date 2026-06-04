@@ -11,6 +11,7 @@ export default defineEventHandler(async (event) => {
     appUrl,
     subscription: {
       datasetQueryBatchSize: queryPageLimit,
+      maxDatasetsPerEmail,
     },
   } = useRuntimeConfig()
   const body = await readFormData(event)
@@ -29,6 +30,7 @@ export default defineEventHandler(async (event) => {
       appUrl,
       key: listmonkConfig.preferences.hmac_key,
       queryPageLimit,
+      maxDatasetsPerEmail,
     })
 
     return {
