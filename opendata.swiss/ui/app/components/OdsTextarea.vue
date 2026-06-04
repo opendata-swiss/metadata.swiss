@@ -1,5 +1,9 @@
 <template>
-  <OdsFormField :for="id" :label="label" :required="required">
+  <OdsFormField
+    :for="id"
+    :label="label"
+    :required="required"
+  >
     <textarea
       :id="id"
       :class="classes"
@@ -38,7 +42,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: () => undefined,
+    required: true,
   },
   name: {
     type: String,

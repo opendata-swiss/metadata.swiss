@@ -138,7 +138,7 @@ export default defineEventHandler(async (event) => {
         const submittedBy = showcase.de.submittedBy || {
           name: undefined,
           url: [],
-        } as unknown as ShowcasesCollectionItem['submittedBy']
+        } as unknown as Required<ShowcasesCollectionItem>['submittedBy']
 
         match(name as 'submittedBy.name' | 'submittedBy.url')
           .with('submittedBy.name', () => {
@@ -211,14 +211,14 @@ async function extractDataImages(rawBody: string, imagePathPrefix: string, previ
       const match = /^data:(image\/(?<ext>\w+));base64,(?<data>.+)$/.exec(node.url)
       if (match?.groups) {
         const { ext, data } = match.groups
-        if (previousImages.has(data)) {
+        if (data && previousImages.has(data)) {
           node.url = previousImages.get(data)!
         }
-        else {
+        else if (data) {
           const path = `${imagePathPrefix}${previousImages.size}.${ext}`
           images.push({
             path,
-            data: Buffer.from(match.groups.data, 'base64'),
+            data: Buffer.from(data, 'base64'),
           })
           previousImages.set(data, path)
           node.url = path

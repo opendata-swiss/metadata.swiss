@@ -5,6 +5,7 @@ import { dcat, dcterms, rdfs, schema } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
+import { queryCollection } from '@nuxt/content/server'
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 

@@ -2,6 +2,12 @@ import { dirname, resolve } from 'node:path'
 
 const __dirname = dirname(new URL(import.meta.url).pathname)
 
+declare module 'nitropack/types' {
+  interface NitroRouteConfig {
+    basicAuth?: boolean
+  }
+}
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -119,6 +125,18 @@ export default defineNuxtConfig({
     ],
     hooks: {
       'dev:reload': () => import('sharp'),
+    },
+    typescript: {
+      tsConfig: {
+        compilerOptions: {
+          skipLibCheck: true,
+          types: [
+            'mocha',
+            'chai',
+            'sinon-chai',
+          ],
+        },
+      },
     },
   },
   cmsAssets: {

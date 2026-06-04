@@ -1,5 +1,10 @@
 <template>
-  <OdsFormField type="select" :for="id" :label="label" :required="required">
+  <OdsFormField
+    type="select"
+    :for="id"
+    :label="label"
+    :required="required"
+  >
     <div :class="selectWrapperClasses">
       <select
         :id="id"
@@ -12,7 +17,11 @@
         <slot />
       </select>
       <div class="select__icon">
-        <svg role="presentation" aria-hidden="true" viewBox="0 0 24 24">
+        <svg
+          role="presentation"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+        >
           <path
             d="m5.706 10.015 6.669 3.85 6.669-3.85.375.649-7.044 4.067-7.044-4.067z"
           />
@@ -62,7 +71,7 @@ const props = defineProps({
   },
   id: {
     type: String,
-    default: () => undefined,
+    required: true,
   },
   name: {
     type: String,

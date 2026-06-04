@@ -43,7 +43,10 @@ const { page } = defineProps<{
       <section class="section section--py">
         <div class="container container--grid container--reverse-mobile gap--responsive">
           <div class="container__main vertical-spacing">
-            <ContentRenderer :value="page" />
+            <ContentRenderer
+              v-if="page"
+              :value="page"
+            />
           </div>
           <div class="container__aside">
             <div
@@ -52,7 +55,7 @@ const { page } = defineProps<{
             >
               <slot name="before-aside-content" />
               <OdsToc
-                v-if="page.body?.toc?.links.length"
+                v-if="page?.body?.toc?.links.length"
                 :toc="page.body.toc"
               />
               <slot name="aside-content" />

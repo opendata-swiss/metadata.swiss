@@ -1,16 +1,16 @@
 import type { Frequency } from '../../lib/listmonk'
-import listmonk from '../../lib/listmonk'
+import Listmonk from '../../lib/listmonk'
 import type { AppLanguage } from '~/constants/langages'
 import { validatePreferencesToken } from '#server/lib/listmonk/token'
 
 export default defineEventHandler(async (event) => {
   const { listmonk: config } = useRuntimeConfig()
 
-  const Listmonk = listmonk(config)
+  const listmonk = new Listmonk(config)
 
   const id = validatePreferencesToken(event)
 
-  const subscriber = await Listmonk.subscribers.get(id)
+  const subscriber = await listmonk.subscribers.get(id)
   subscriber.attribs = subscriber.attribs || {}
   subscriber.attribs.datasets = []
   subscriber.attribs.categories = []
@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  const updated = await Listmonk.subscribers.update(subscriber.id, {
+  const updated = await listmonk.subscribers.update(subscriber.id, {
     attribs: subscriber.attribs,
   })
   if (!updated.ok) {
