@@ -71,6 +71,7 @@ import { useLoginWithRedirect } from '@/composables/login'
 import { initMatomo } from '@certible/use-matomo'
 import OdsNotificationBanner from '~/components/OdsNotificationBanner.vue'
 import OdsButton from '~/components/OdsButton.vue'
+import { useMessages, useAutoClearMessagesOnRouteChange } from '~/composables/messages'
 
 const app = useNuxtApp()
 const router = useRouter()
@@ -148,19 +149,14 @@ function handleResize() {
   }
 }
 
-const messageCookie = useCookie('message')
-const message = computed(() => messageCookie.value)
+const {
+  message,
+  errorMessage,
+  closeMessages,
+  closeErrorMessages,
+} = useMessages()
 
-const errorMessageCookie = useCookie('message.error')
-const errorMessage = computed(() => errorMessageCookie.value)
-
-function closeMessages() {
-  messageCookie.value = undefined
-}
-
-function closeErrorMessages() {
-  errorMessageCookie.value = undefined
-}
+useAutoClearMessagesOnRouteChange()
 
 onMounted(() => {
   window.addEventListener('resize', handleResize)
