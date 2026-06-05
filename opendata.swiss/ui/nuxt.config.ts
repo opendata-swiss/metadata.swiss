@@ -98,6 +98,10 @@ export default defineNuxtConfig({
       webhookSecret: '',
       publisherNotificationTemplateId: 5,
     },
+    subscription: {
+      datasetQueryBatchSize: 100,
+      maxDatasetsPerEmail: 100,
+    },
   },
   dir: {
     pages: resolve(import.meta.dirname, 'pages'),
@@ -133,6 +137,7 @@ export default defineNuxtConfig({
           types: [
             'mocha',
             'chai',
+            'chai-as-promised',
             'sinon-chai',
           ],
         },
