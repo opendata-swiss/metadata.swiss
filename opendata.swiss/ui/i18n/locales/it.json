@@ -84,8 +84,8 @@
       "to_publisher": "All'editore",
       "success": "Iscrizione riuscita",
       "preferences": {
-        "page_title": "Preferenze di abbonamento",
-        "title": "Affina le preferenze di abbonamento",
+        "page_title": "Preferenze di iscrizione",
+        "title": "Affina le preferenze di iscrizione",
         "legend": "Con quale frequenza desideri ricevere gli aggiornamenti?",
         "frequency": {
           "daily": "Giornaliero",
