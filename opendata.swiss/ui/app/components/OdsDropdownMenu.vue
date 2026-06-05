@@ -103,14 +103,14 @@ onBeforeUnmount(() => {
         <div v-else />
         <OdsButton
           icon="Cancel"
-          title="close menu"
+          :title="t('message.button.close')"
           variant="bare"
           size="sm"
           icon-right
           class="ods-close"
           @click="isOpen = false"
         >
-          <span class="ods-close">{{ t('message.header.navigation.close') }}</span>
+          <span class="ods-close">{{ t('message.button.close') }}</span>
         </OdsButton>
       </div>
       <Transition

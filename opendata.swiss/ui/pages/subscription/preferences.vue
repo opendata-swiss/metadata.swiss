@@ -8,30 +8,30 @@
       >
         <div class="container gap--responsive">
           <h2 class="h2">
-            Fine-tune you subscription preferences
+            {{ t('message.subscribe.preferences.title') }}
           </h2>
           <section>
             <form ref="form">
-              <OdsRadioGroup legend="How often do you want to receive updates?">
+              <OdsRadioGroup :legend="t('message.subscribe.preferences.legend')">
                 <OdsRadio
                   id="daily"
                   name="frequency"
                   value="daily"
-                  label="Daily"
+                  :label="t('message.subscribe.preferences.frequency.daily')"
                   :checked="frequency === 'daily'"
                 />
                 <OdsRadio
                   id="weekly"
                   name="frequency"
                   value="weekly"
-                  label="Weekly"
+                  :label="t('message.subscribe.preferences.frequency.weekly')"
                   :checked="frequency === 'weekly'"
                 />
               </OdsRadioGroup>
 
               <OdsFormField
                 v-if="datasets.length > 0"
-                label="Datasets selected for updates"
+                :label="t('message.subscribe.preferences.datasets_label')"
                 for="dataset"
               >
                 <OdsCheckbox
@@ -46,7 +46,7 @@
 
               <OdsFormField
                 v-if="categories.length > 0"
-                label="Categories selected for updates"
+                :label="t('message.subscribe.preferences.categories_label')"
                 for="dataset"
               >
                 <OdsCheckbox
@@ -59,7 +59,7 @@
                 />
               </OdsFormField>
               <OdsButton
-                title="Update your preferences"
+                :title="t('message.subscribe.preferences.update_button')"
                 variant="outline"
                 @click="updatePreferences"
               />
@@ -67,10 +67,10 @@
           </section>
           <section>
             <h2 class="h2">
-              Or unsubscribe completely
+              {{ t('message.subscribe.preferences.unsubscribe_title') }}
             </h2>
             <OdsButton
-              title="Unsubscribe from all emails"
+              :title="t('message.subscribe.preferences.unsubscribe_button')"
               variant="outline"
             />
           </section>
@@ -91,6 +91,7 @@ import { useRoute } from 'vue-router'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
+import { useI18n } from '#imports'
 
 const route = useRoute()
 const router = useRouter()
@@ -99,6 +100,7 @@ const form = ref<HTMLFormElement>()
 const datasets = ref([])
 const categories = ref([])
 const frequency = ref()
+const { t } = useI18n()
 
 const query = {
   id: route.query.id,
@@ -142,6 +144,7 @@ const datasetsLoaded = preferences.datasets.map(async (id) => {
 datasets.value = (await Promise.all(datasetsLoaded)).sort((a, b) => a.name.localeCompare(b.name))
 
 const message = useCookie('message')
+const errorMessage = useCookie('message-error')
 
 async function updatePreferences() {
   const { data, error } = await useFetch('/api/subscription/preferences', {
@@ -154,11 +157,11 @@ async function updatePreferences() {
   })
 
   if (error) {
-    message.value = 'Preferences updated successfully'
+    message.value = 'subscribe.preferences.updated'
   }
   else {
     console.error(data)
-    alert('Failed to update preferences. Please try again later.')
+    errorMessage.value = 'subscribe.preferences.update_failed'
   }
 }
 </script>

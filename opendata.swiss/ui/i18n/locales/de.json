@@ -29,6 +29,9 @@
         }
       }
     },
+    "button": {
+      "close": "Schliessen"
+    },
     "ods_toc": {
       "contents": "Inhaltverzeichnis"
     },
@@ -79,7 +82,22 @@
       "to_dataset": "Zum Dataset",
       "to_category": "Zur Kategorie",
       "to_publisher": "Zum Herausgeber",
-      "success": "Abonnement erfolgreich"
+      "success": "Abonnement erfolgreich",
+      "preferences": {
+        "title": "Passen Sie Ihre Abonnement-Einstellungen an",
+        "legend": "Wie oft möchten Sie Updates erhalten?",
+        "frequency": {
+          "daily": "Täglich",
+          "weekly": "Wöchentlich"
+        },
+        "datasets_label": "Für Updates ausgewählte Datensätze",
+        "categories_label": "Für Updates ausgewählte Kategorien",
+        "update_button": "Einstellungen aktualisieren",
+        "unsubscribe_title": "Oder vollständig abmelden",
+        "unsubscribe_button": "Von allen E-Mails abmelden",
+        "updated": "Einstellungen erfolgreich aktualisiert",
+        "update_failed": "Aktualisieren der Einstellungen fehlgeschlagen. Bitte versuchen Sie es später erneut."
+      }
     },
     "showcase": {
       "type": {

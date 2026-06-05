@@ -29,6 +29,9 @@
         }
       }
     },
+    "button": {
+      "close": "Chiudi"
+    },
     "ods_toc": {
       "contents": "Contenuti"
     },
@@ -79,7 +82,22 @@
       "to_dataset": "Al set di dati",
       "to_category": "Alla categoria",
       "to_publisher": "All'editore",
-      "success": "Iscrizione riuscita"
+      "success": "Iscrizione riuscita",
+      "preferences": {
+        "title": "Affina le preferenze di abbonamento",
+        "legend": "Con quale frequenza desideri ricevere gli aggiornamenti?",
+        "frequency": {
+          "daily": "Giornaliero",
+          "weekly": "Settimanale"
+        },
+        "datasets_label": "Set di dati selezionati per gli aggiornamenti",
+        "categories_label": "Categorie selezionate per gli aggiornamenti",
+        "update_button": "Aggiorna le preferenze",
+        "unsubscribe_title": "Oppure annulla l’iscrizione completamente",
+        "unsubscribe_button": "Annulla l’iscrizione da tutte le e-mail",
+        "updated": "Preferenze aggiornate correttamente",
+        "update_failed": "Aggiornamento delle preferenze non riuscito. Riprova più tardi."
+      }
     },
     "showcase": {
       "type": {
