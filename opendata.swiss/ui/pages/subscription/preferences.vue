@@ -164,6 +164,10 @@ async function updatePreferences() {
     errorMessage.value = 'subscribe.preferences.update_failed'
   }
 }
+
+useSeoMeta({
+  title: `${t('message.subscribe.preferences.page_title')} | opendata.swiss`,
+})
 </script>
 
 <style scoped>

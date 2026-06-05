@@ -84,6 +84,7 @@
       "to_publisher": "Vers l'éditeur",
       "success": "Abonnement réussi",
       "preferences": {
+        "page_title": "Préférences d’abonnement",
         "title": "Affinez vos préférences d’abonnement",
         "legend": "À quelle fréquence souhaitez-vous recevoir des mises à jour ?",
         "frequency": {

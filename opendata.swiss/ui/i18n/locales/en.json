@@ -83,6 +83,7 @@
       "to_publisher": "To publisher",
       "success": "Subscription successful",
       "preferences": {
+        "page_title": "Subscription preferences",
         "title": "Fine-tune you subscription preferences",
         "legend": "How often do you want to receive updates?",
         "frequency": {

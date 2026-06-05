@@ -84,6 +84,7 @@
       "to_publisher": "Zum Herausgeber",
       "success": "Abonnement erfolgreich",
       "preferences": {
+        "page_title": "Abonnement-Einstellungen",
         "title": "Passen Sie Ihre Abonnement-Einstellungen an",
         "legend": "Wie oft möchten Sie Updates erhalten?",
         "frequency": {

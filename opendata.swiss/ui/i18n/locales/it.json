@@ -84,6 +84,7 @@
       "to_publisher": "All'editore",
       "success": "Iscrizione riuscita",
       "preferences": {
+        "page_title": "Preferenze di abbonamento",
         "title": "Affina le preferenze di abbonamento",
         "legend": "Con quale frequenza desideri ricevere gli aggiornamenti?",
         "frequency": {
