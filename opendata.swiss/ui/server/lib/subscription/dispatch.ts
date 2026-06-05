@@ -38,7 +38,7 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
     dateType: 'modified',
   }).scroll()
 
-  const datasets: Pick<Dataset, 'id' | 'title'>[] = []
+  const datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[] = []
   for await (const page of datasetScroll) {
     datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
   }
@@ -59,7 +59,7 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
       datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
       datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
         id: dataset.id,
-        title: (dataset.title as Record<string, string>)[language] || dataset.id,
+        title: dataset.title[language] || dataset.id,
       })).slice(0, maxDatasetsPerEmail),
     }
 
