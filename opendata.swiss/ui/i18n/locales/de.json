@@ -92,6 +92,7 @@
           "daily": "Täglich",
           "weekly": "Wöchentlich"
         },
+        "language_label": "Bevorzugte Sprache",
         "datasets_label": "Für Updates ausgewählte Datensätze",
         "categories_label": "Für Updates ausgewählte Kategorien",
         "update_button": "Einstellungen aktualisieren",
@@ -100,6 +101,12 @@
         "updated": "Einstellungen erfolgreich aktualisiert",
         "update_failed": "Aktualisieren der Einstellungen fehlgeschlagen. Bitte versuchen Sie es später erneut."
       }
+    },
+    "languages": {
+      "de": "Deutsch",
+      "fr": "Französisch",
+      "it": "Italienisch",
+      "en": "Englisch"
     },
     "showcase": {
       "type": {

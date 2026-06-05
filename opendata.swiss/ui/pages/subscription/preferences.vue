@@ -29,6 +29,22 @@
                 />
               </OdsRadioGroup>
 
+              <OdsSelect
+                id="language"
+                v-model="language"
+                name="language"
+                fit-content
+                :label="t('message.subscribe.preferences.language_label')"
+              >
+                <option
+                  v-for="lang in APP_LANGUAGES"
+                  :key="lang"
+                  :value="lang"
+                >
+                  {{ t('message.languages.' + lang) }}
+                </option>
+              </OdsSelect>
+
               <OdsFormField
                 v-if="datasets.length > 0"
                 :label="t('message.subscribe.preferences.datasets_label')"
@@ -86,12 +102,13 @@ import OdsRadioGroup from '../../app/components/OdsRadioGroup.vue'
 import OdsRadio from '../../app/components/OdsRadio.vue'
 import OdsCheckbox from '../../app/components/OdsCheckbox.vue'
 import OdsFormField from '../../app/components/OdsFormField.vue'
+import OdsSelect from '../../app/components/OdsSelect.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
-import { useI18n } from '#imports'
+import { APP_LANGUAGES, type AppLanguage } from '../../app/constants/langages'
 
 const route = useRoute()
 const router = useRouter()
@@ -100,6 +117,7 @@ const form = ref<HTMLFormElement>()
 const datasets = ref([])
 const categories = ref([])
 const frequency = ref()
+const language = ref<AppLanguage>()
 const { t } = useI18n()
 
 const query = {
@@ -123,6 +141,7 @@ const vocabSearch = useSearch({
 })
 
 frequency.value = preferences.frequency || 'daily'
+language.value = (preferences.language as AppLanguage) || APP_LANGUAGES[0]
 
 const loadCategories = (preferences.categories || []).map(async (category) => {
   await vocabSearch.query.suspense()
@@ -158,6 +177,9 @@ async function updatePreferences() {
 
   if (error) {
     message.value = 'subscribe.preferences.updated'
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
   else {
     console.error(data)

@@ -5,13 +5,17 @@
     :label="label"
     :required="required"
   >
-    <div :class="selectWrapperClasses">
+    <div
+      :class="selectWrapperClasses"
+      :style="fitContent ? { width: 'fit-content' } : {}"
+    >
       <select
         :id="id"
         :class="selectClasses"
         :name="name"
         :required="required"
         :value="modelValue"
+        :style="fitContent ? { width: 'unset' } : {}"
         @change="handleChange"
       >
         <slot />
@@ -94,6 +98,10 @@ const props = defineProps({
   onSelect: {
     type: Function as PropType<(value: string) => void>,
     default: () => ({}),
+  },
+  fitContent: {
+    type: Boolean,
+    default: () => false,
   },
 })
 

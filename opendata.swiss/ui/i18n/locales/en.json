@@ -91,6 +91,7 @@
           "daily": "Daily",
           "weekly": "Weekly"
         },
+        "language_label": "Preferred language",
         "datasets_label": "Datasets selected for updates",
         "categories_label": "Categories selected for updates",
         "update_button": "Update your preferences",
@@ -99,6 +100,12 @@
         "updated": "Preferences updated successfully",
         "update_failed": "Failed to update preferences. Please try again later."
       }
+    },
+    "languages": {
+      "de": "German",
+      "fr": "French",
+      "it": "Italian",
+      "en": "English"
     },
     "showcase": {
       "type": {
