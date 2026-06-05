@@ -103,7 +103,7 @@ onBeforeUnmount(() => {
         <div v-else />
         <OdsButton
           icon="Cancel"
-          :title="t('message.button.close')"
+          :title="t('message.button.close_menu')"
           variant="bare"
           size="sm"
           icon-right

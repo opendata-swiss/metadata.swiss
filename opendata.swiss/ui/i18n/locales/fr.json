@@ -30,7 +30,8 @@
       }
     },
     "button": {
-      "close": "Fermer"
+      "close": "Fermer",
+      "close_menu": "Fermer le menu"
     },
     "ods_toc": {
       "contents": "Table des matières"

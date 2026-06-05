@@ -27,7 +27,7 @@
             <template #buttons>
               <OdsButton
                 variant="outline"
-                title="Close"
+                :title="t('message.button.close')"
                 icon-right
                 icon="Checkmark"
                 @click="closeMessages"
@@ -43,7 +43,7 @@
             <template #buttons>
               <OdsButton
                 variant="outline"
-                title="Close"
+                :title="t('message.button.close')"
                 icon-right
                 icon="Checkmark"
                 @click="closeErrorMessages()"

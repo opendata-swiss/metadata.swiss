@@ -29,7 +29,8 @@
       }
     },
     "button": {
-      "close": "Close"
+      "close": "Close",
+      "close_menu": "Close menu"
     },
     "ods_toc": {
       "contents": "Table of contents"

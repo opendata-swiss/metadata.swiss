@@ -30,7 +30,8 @@
       }
     },
     "button": {
-      "close": "Chiudi"
+      "close": "Chiudi",
+      "close_menu": "Chiudi il menu"
     },
     "ods_toc": {
       "contents": "Contenuti"
