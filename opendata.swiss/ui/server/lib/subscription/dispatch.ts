@@ -2,6 +2,7 @@ import type { AppLanguage } from '~/constants/langages'
 import type { Subscriber } from '../../lib/listmonk'
 import { generateToken } from '../../lib/listmonk/token'
 import type { Dataset, HubSearch } from '../../lib/piveau'
+import type Listmonk from '../../lib/listmonk'
 
 export interface TemplateData {
   unsubscribeLink: string
@@ -16,45 +17,38 @@ export type Digest = 'daily' | 'weekly'
 
 export interface DispatchDeps {
   piveau: HubSearch
-  listSubscribers: () => Promise<Subscriber[]>
-  sendDigest: ({ subscriber, language, data }: { subscriber: number, language: AppLanguage, data: TemplateData }) => Promise<{ ok: boolean, text: () => Promise<string> }>
+  listmonk: Listmonk
   appUrl: string | URL
   key: string
   queryPageLimit?: number
   maxDatasetsPerEmail?: number
 }
 
-export async function dispatchDigestForDatasets(
+type sendDigest = ({ subscriber, language, datasets }: { subscriber: number, language: AppLanguage, datasets: { id: string, title: string }[] }) => Promise<{ ok: boolean, text: () => Promise<string> }>
+
+export async function dispatchDatasetDigest(
   datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[],
   subscribers: Pick<Subscriber, 'id' | 'attribs'>[],
-  deps: Pick<DispatchDeps, 'sendDigest' | 'appUrl' | 'key' | 'maxDatasetsPerEmail'>) {
-  const { sendDigest, appUrl, key, maxDatasetsPerEmail } = deps
-
+  sendDigest: sendDigest,
+  maxDatasetsPerEmail?: number,
+) {
   let emailsSent = 0
   let emailsFailed = 0
   let batch: Promise<void>[] = []
   for (const subscriber of subscribers) {
     const language: AppLanguage = (subscriber.attribs?.language as AppLanguage) || 'de'
-    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)
-    unsubscribeLink.searchParams.set('id', subscriber.id.toString())
-    unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString(), key))
 
-    const data: TemplateData = {
-      unsubscribeLink: unsubscribeLink.toString(),
-      datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
-      datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
+    const datasetsMatched = datasets
+      .filter(matchPreferences(subscriber))
+      .map(dataset => ({
         id: dataset.id,
         title: dataset.title[language] || dataset.id,
-      })).slice(0, maxDatasetsPerEmail),
-    }
+      }))
+      .slice(0, maxDatasetsPerEmail)
 
-    if (data.datasets.length) {
+    if (datasetsMatched.length) {
       batch.push((async () => {
-        const res = await sendDigest({
-          subscriber: subscriber.id,
-          language,
-          data,
-        })
+        const res = await sendDigest({ subscriber: subscriber.id, language, datasets: datasetsMatched })
 
         if (!res.ok) {
           console.error(`Failed to send email to subscriber ${subscriber.id}: ${await res.text()}`)
@@ -78,7 +72,7 @@ export async function dispatchDigestForDatasets(
 }
 
 export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
-  const { piveau, listSubscribers, sendDigest, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
+  const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
 
   const minDate = digest === 'daily'
     ? new Date(Date.now() - 24 * 60 * 60 * 1000)
@@ -96,8 +90,26 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
     datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
   }
 
-  const subscribers = await listSubscribers()
-  return dispatchDigestForDatasets(datasets, subscribers, { sendDigest, appUrl, key, maxDatasetsPerEmail })
+  const subscribers = await listmonk.subscribers.list()
+
+  const sendDigest: sendDigest = async ({ subscriber, language, datasets }) => {
+    const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)
+    unsubscribeLink.searchParams.set('id', subscriber.toString())
+    unsubscribeLink.searchParams.set('token', generateToken(subscriber.toString(), key))
+
+    const data: TemplateData = {
+      unsubscribeLink: unsubscribeLink.toString(),
+      datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
+      datasets: datasets,
+    }
+    return listmonk.transactional.sendDigest({
+      subscriber,
+      language,
+      data,
+    })
+  }
+
+  return dispatchDatasetDigest(datasets, subscribers, sendDigest, maxDatasetsPerEmail)
 }
 
 export function matchPreferences(subscriber: Pick<Subscriber, 'id' | 'attribs'>) {

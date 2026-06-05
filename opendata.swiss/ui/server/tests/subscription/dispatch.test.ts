@@ -1,11 +1,12 @@
 import { expect } from 'chai'
 import sinon from 'sinon'
-import { dispatchDigest, dispatchDigestForDatasets, matchPreferences } from '../../lib/subscription/dispatch'
+import { dispatchDigest, dispatchDatasetDigest, matchPreferences } from '../../lib/subscription/dispatch'
 import type { Dataset, HubSearch } from '../../lib/piveau'
 import type { Subscriber } from '../../lib/listmonk'
+import type Listmonk from '../../lib/listmonk'
 
 describe('subscription/dispatch', () => {
-  describe('dispatchDigest', () => {
+  describe('dispatchDatasetDigest', () => {
     it('filters datasets by subscriber preferences and sends digests', async () => {
       // given
       const datasets = [
@@ -22,21 +23,17 @@ describe('subscription/dispatch', () => {
       const sendDigest = sinon.stub().resolves({ ok: true })
 
       // when
-      const { emailsSent, emailsFailed } = await dispatchDigestForDatasets(datasets, subscribers, {
-        sendDigest,
-        appUrl: 'https://example.com',
-        key: '',
-      })
+      const { emailsSent, emailsFailed } = await dispatchDatasetDigest(datasets, subscribers, sendDigest)
 
       // then
       expect(emailsFailed).to.equal(0)
       expect(emailsSent).to.equal(2)
       // subscriber 1 should receive 2 datasets (cat-1)
       expect(sendDigest.firstCall.args[0]).to.deep.include({ subscriber: 1, language: 'de' })
-      expect(sendDigest.firstCall.args[0].data.datasets).to.have.length(2)
+      expect(sendDigest.firstCall.args[0].datasets).to.have.length(2)
       // subscriber 2 should receive 1 dataset (id b)
       expect(sendDigest.secondCall.args[0]).to.deep.include({ subscriber: 2, language: 'de' })
-      expect(sendDigest.secondCall.args[0].data.datasets).to.have.length(1)
+      expect(sendDigest.secondCall.args[0].datasets).to.have.length(1)
     })
 
     it('limits datasets per email using maxDatasetsPerEmail', async () => {
@@ -52,21 +49,18 @@ describe('subscription/dispatch', () => {
 
       const sendDigest = sinon.stub().resolves({ ok: true })
 
+      const maxDatasetsPerEmail = 2
+
       // when
-      await dispatchDigestForDatasets(datasets, subscribers, {
-        sendDigest,
-        appUrl: 'https://example.com',
-        key: '',
-        maxDatasetsPerEmail: 2,
-      })
+      await dispatchDatasetDigest(datasets, subscribers, sendDigest, maxDatasetsPerEmail)
 
       // then
       expect(sendDigest).to.have.been.calledOnce
       const payload = sendDigest.firstCall.args[0]
       expect(payload).to.deep.include({ subscriber: 1, language: 'de' })
-      expect(payload.data.datasets).to.have.length(2)
+      expect(payload.datasets).to.have.length(2)
       // ensure the two first datasets are taken
-      expect(payload.data.datasets.map((d: { id: string }) => d.id)).to.deep.equal(['a', 'b'])
+      expect(payload.datasets.map((d: { id: string }) => d.id)).to.deep.equal(['a', 'b'])
     })
 
     it('counts failures when transactional send fails', async () => {
@@ -77,23 +71,26 @@ describe('subscription/dispatch', () => {
       const sendDigest = sinon.stub().resolves({ ok: false, text: async () => 'fail' })
 
       // when
-      const res = await dispatchDigestForDatasets(datasets, subscribers, { sendDigest, appUrl: 'https://ex', key: '' })
+      const res = await dispatchDatasetDigest(datasets, subscribers, sendDigest)
 
       // then
       expect(res).to.deep.equal({ emailsSent: 0, emailsFailed: 1 })
     })
+  })
 
+  describe('dispatchDigest', () => {
     it('throws when dataset search fails', async () => {
       // given
       const piveau = {
         datasets: { search: sinon.stub().resolves(Object.assign(new Error('boom'), { cause: new Error('x') })) },
       } as unknown as HubSearch
 
-      const listSubscribers = sinon.stub().resolves([])
-      const sendDigest = sinon.stub().resolves({ ok: true })
+      const listmonk = {
+        subscribers: { list: sinon.stub() },
+      } as unknown as Listmonk
 
       // when / then
-      await expect(dispatchDigest('daily', { piveau, listSubscribers, sendDigest, appUrl: 'https://ex', key: '' }))
+      await expect(dispatchDigest('daily', { piveau, listmonk, appUrl: 'https://ex', key: '' }))
         .to.have.been.rejected
     })
   })
