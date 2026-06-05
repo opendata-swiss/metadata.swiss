@@ -93,6 +93,7 @@ import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
 
 const route = useRoute()
+const router = useRouter()
 
 const form = ref<HTMLFormElement>()
 const datasets = ref([])
@@ -104,6 +105,10 @@ const query = {
   token: route.query.token,
 }
 const { data } = await useFetch('/api/subscription/preferences', { query })
+if (!data.value) {
+  router.replace('/404')
+}
+
 const preferences = data.value.preferences
 
 const { useResource } = useDatasetsSearch()
@@ -136,6 +141,8 @@ const datasetsLoaded = preferences.datasets.map(async (id) => {
 
 datasets.value = (await Promise.all(datasetsLoaded)).sort((a, b) => a.name.localeCompare(b.name))
 
+const message = useCookie('message')
+
 async function updatePreferences() {
   const { data, error } = await useFetch('/api/subscription/preferences', {
     query,
@@ -147,7 +154,7 @@ async function updatePreferences() {
   })
 
   if (error) {
-    alert('Preferences updated successfully')
+    message.value = 'Preferences updated successfully'
   }
   else {
     console.error(data)
