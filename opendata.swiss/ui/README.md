@@ -107,6 +107,7 @@ Pull Requests to the CMS content repositories will trigger a new deployment of t
 
 Set the environment variables as needed:
 
+- `NUXT_APP_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
 - `GITHUB_APP_ID`
@@ -121,7 +122,6 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_REALM`
 - `NUXT_MATOMO_URL`
 - `NUXT_MATOMO_SITE_ID`
-- `NUXT_LISTMONK_APP_URL`
 - `NUXT_LISTMONK_API_URL`
 - `NUXT_LISTMONK_API_USER`
 - `NUXT_LISTMONK_API_TOKEN`
