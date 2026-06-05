@@ -92,6 +92,7 @@
           "daily": "Giornaliero",
           "weekly": "Settimanale"
         },
+        "language_label": "Lingua preferita",
         "datasets_label": "Set di dati selezionati per gli aggiornamenti",
         "categories_label": "Categorie selezionate per gli aggiornamenti",
         "update_button": "Aggiorna le preferenze",
@@ -100,6 +101,12 @@
         "updated": "Preferenze aggiornate correttamente",
         "update_failed": "Aggiornamento delle preferenze non riuscito. Riprova più tardi."
       }
+    },
+    "languages": {
+      "de": "Tedesco",
+      "fr": "Francese",
+      "it": "Italiano",
+      "en": "Inglese"
     },
     "showcase": {
       "type": {

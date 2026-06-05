@@ -92,6 +92,7 @@
           "daily": "Quotidien",
           "weekly": "Hebdomadaire"
         },
+        "language_label": "Langue préférée",
         "datasets_label": "Jeux de données sélectionnés pour les mises à jour",
         "categories_label": "Catégories sélectionnées pour les mises à jour",
         "update_button": "Mettre à jour vos préférences",
@@ -100,6 +101,12 @@
         "updated": "Préférences mises à jour avec succès",
         "update_failed": "Échec de la mise à jour des préférences. Veuillez réessayer plus tard."
       }
+    },
+    "languages": {
+      "de": "Allemand",
+      "fr": "Français",
+      "it": "Italien",
+      "en": "Anglais"
     },
     "showcase": {
       "type": {
