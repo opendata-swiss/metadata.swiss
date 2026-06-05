@@ -1,8 +1,7 @@
 import { expect } from 'chai'
 import sinon from 'sinon'
-import { dispatchDigest, matchPreferences } from '../../lib/subscription/dispatch'
+import { dispatchDigest, dispatchDigestForDatasets, matchPreferences } from '../../lib/subscription/dispatch'
 import type { Dataset, HubSearch } from '../../lib/piveau'
-import type Listmonk from '../../lib/listmonk'
 import type { Subscriber } from '../../lib/listmonk'
 
 describe('subscription/dispatch', () => {
@@ -10,37 +9,21 @@ describe('subscription/dispatch', () => {
     it('filters datasets by subscriber preferences and sends digests', async () => {
       // given
       const datasets = [
-        { id: 'a', title: { de: 'Datensatz A' }, categories: [{ id: 'cat-1' }] },
-        { id: 'b', title: { de: 'Datensatz B' }, categories: [{ id: 'cat-2' }] },
-        { id: 'c', title: { de: 'Datensatz C' }, categories: [{ id: 'cat-1' }] },
+        { id: 'a', title: { de: 'Datensatz A', fr: '', it: '', en: '' }, categories: [{ id: 'cat-1' }] },
+        { id: 'b', title: { de: 'Datensatz B', fr: '', it: '', en: '' }, categories: [{ id: 'cat-2' }] },
+        { id: 'c', title: { de: 'Datensatz C', fr: '', it: '', en: '' }, categories: [{ id: 'cat-1' }] },
+      ]
+      const subscribers: Pick<Subscriber, 'id' | 'attribs'>[] = [
+        { id: 1, attribs: { language: 'de', categories: ['cat-1'] } },
+        { id: 2, attribs: { language: 'de', datasets: ['b'] } },
+        { id: 3, attribs: { language: 'de' } }, // no prefs
       ]
 
-      const piveau = {
-        datasets: {
-          search: () => ({
-            scroll: sinon.stub().returns([datasets]),
-          }),
-        },
-      } as unknown as HubSearch
-
       const sendDigest = sinon.stub().resolves({ ok: true })
-      const listmonk = {
-        subscribers: {
-          list: sinon.stub().resolves([
-            { id: 1, attribs: { language: 'de', categories: ['cat-1'] } },
-            { id: 2, attribs: { language: 'de', datasets: ['b'] } },
-            { id: 3, attribs: { language: 'de' } }, // no prefs
-          ]),
-        },
-        transactional: {
-          sendDigest,
-        },
-      } as unknown as Listmonk
 
       // when
-      const { emailsSent, emailsFailed } = await dispatchDigest('daily', {
-        piveau,
-        listmonk,
+      const { emailsSent, emailsFailed } = await dispatchDigestForDatasets(datasets, subscribers, {
+        sendDigest,
         appUrl: 'https://example.com',
         key: '',
       })
@@ -59,33 +42,19 @@ describe('subscription/dispatch', () => {
     it('limits datasets per email using maxDatasetsPerEmail', async () => {
       // given
       const datasets = [
-        { id: 'a', title: { de: 'A' }, categories: [{ id: 'cat-1' }] },
-        { id: 'b', title: { de: 'B' }, categories: [{ id: 'cat-1' }] },
-        { id: 'c', title: { de: 'C' }, categories: [{ id: 'cat-1' }] },
+        { id: 'a', title: { de: 'A', fr: '', it: '', en: '' }, categories: [{ id: 'cat-1' }] },
+        { id: 'b', title: { de: 'B', fr: '', it: '', en: '' }, categories: [{ id: 'cat-1' }] },
+        { id: 'c', title: { de: 'C', fr: '', it: '', en: '' }, categories: [{ id: 'cat-1' }] },
+      ]
+      const subscribers: Pick<Subscriber, 'id' | 'attribs'>[] = [
+        { id: 1, attribs: { language: 'de', categories: ['cat-1'] } },
       ]
 
-      const piveau = {
-        datasets: {
-          search: () => ({
-            scroll: sinon.stub().returns([datasets]),
-          }),
-        },
-      } as unknown as HubSearch
-
       const sendDigest = sinon.stub().resolves({ ok: true })
-      const listmonk = {
-        subscribers: {
-          list: sinon.stub().resolves([
-            { id: 1, attribs: { language: 'de', categories: ['cat-1'] } },
-          ]),
-        },
-        transactional: { sendDigest },
-      } as unknown as Listmonk
 
       // when
-      await dispatchDigest('daily', {
-        piveau,
-        listmonk,
+      await dispatchDigestForDatasets(datasets, subscribers, {
+        sendDigest,
         appUrl: 'https://example.com',
         key: '',
         maxDatasetsPerEmail: 2,
@@ -102,19 +71,13 @@ describe('subscription/dispatch', () => {
 
     it('counts failures when transactional send fails', async () => {
       // given
-      const datasets = [{ id: 'x', title: { de: 'X' } }]
-      const piveau = {
-        datasets: { search: () => ({
-          scroll: sinon.stub().returns([datasets]),
-        }) },
-      } as unknown as HubSearch
-      const listmonk = {
-        subscribers: { list: sinon.stub().resolves([{ id: 1, attribs: { datasets: ['x'], language: 'de' } }]) },
-        transactional: { sendDigest: sinon.stub().resolves({ ok: false, text: async () => 'fail' }) },
-      } as unknown as Listmonk
+      const datasets = [{ id: 'x', title: { de: 'X', fr: '', it: '', en: '' } }]
+      const subscribers: Pick<Subscriber, 'id' | 'attribs'>[] = [{ id: 1, attribs: { datasets: ['x'], language: 'de' } }]
+
+      const sendDigest = sinon.stub().resolves({ ok: false, text: async () => 'fail' })
 
       // when
-      const res = await dispatchDigest('weekly', { piveau, listmonk, appUrl: 'https://ex', key: '' })
+      const res = await dispatchDigestForDatasets(datasets, subscribers, { sendDigest, appUrl: 'https://ex', key: '' })
 
       // then
       expect(res).to.deep.equal({ emailsSent: 0, emailsFailed: 1 })
@@ -125,12 +88,12 @@ describe('subscription/dispatch', () => {
       const piveau = {
         datasets: { search: sinon.stub().resolves(Object.assign(new Error('boom'), { cause: new Error('x') })) },
       } as unknown as HubSearch
-      const listmonk = {
-        subscribers: { list: sinon.stub() },
-      } as unknown as Listmonk
+
+      const listSubscribers = sinon.stub().resolves([])
+      const sendDigest = sinon.stub().resolves({ ok: true })
 
       // when / then
-      await expect(dispatchDigest('daily', { piveau, listmonk, appUrl: 'https://ex', key: '' }))
+      await expect(dispatchDigest('daily', { piveau, listSubscribers, sendDigest, appUrl: 'https://ex', key: '' }))
         .to.have.been.rejected
     })
   })

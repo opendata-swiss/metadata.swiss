@@ -26,7 +26,8 @@ export default defineEventHandler(async (event) => {
   try {
     const { emailsSent, emailsFailed } = await dispatchDigest(digest, {
       piveau,
-      listmonk: Listmonk,
+      listSubscribers: Listmonk.subscribers.list,
+      sendDigest: Listmonk.transactional.sendDigest,
       appUrl,
       key: listmonkConfig.preferences.hmac_key,
       queryPageLimit,

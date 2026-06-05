@@ -1,7 +1,6 @@
 import type { AppLanguage } from '~/constants/langages'
 import type { Subscriber } from '../../lib/listmonk'
 import { generateToken } from '../../lib/listmonk/token'
-import type Listmonk from '../../lib/listmonk'
 import type { Dataset, HubSearch } from '../../lib/piveau'
 
 export interface TemplateData {
@@ -17,33 +16,19 @@ export type Digest = 'daily' | 'weekly'
 
 export interface DispatchDeps {
   piveau: HubSearch
-  listmonk: Listmonk
+  listSubscribers: () => Promise<Subscriber[]>
+  sendDigest: ({ subscriber, language, data }: { subscriber: number, language: AppLanguage, data: TemplateData }) => Promise<{ ok: boolean, text: () => Promise<string> }>
   appUrl: string | URL
   key: string
   queryPageLimit?: number
   maxDatasetsPerEmail?: number
 }
 
-export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
-  const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
-
-  const minDate = digest === 'daily'
-    ? new Date(Date.now() - 24 * 60 * 60 * 1000)
-    : new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-
-  const datasetScroll = piveau.datasets.search({
-    sort: 'modified+desc',
-    limit: queryPageLimit,
-    minDate,
-    dateType: 'modified',
-  }).scroll()
-
-  const datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[] = []
-  for await (const page of datasetScroll) {
-    datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
-  }
-
-  const subscribers = await listmonk.subscribers.list()
+export async function dispatchDigestForDatasets(
+  datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[],
+  subscribers: Pick<Subscriber, 'id' | 'attribs'>[],
+  deps: Pick<DispatchDeps, 'sendDigest' | 'appUrl' | 'key' | 'maxDatasetsPerEmail'>) {
+  const { sendDigest, appUrl, key, maxDatasetsPerEmail } = deps
 
   let emailsSent = 0
   let emailsFailed = 0
@@ -65,7 +50,7 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
 
     if (data.datasets.length) {
       batch.push((async () => {
-        const res = await listmonk.transactional.sendDigest({
+        const res = await sendDigest({
           subscriber: subscriber.id,
           language,
           data,
@@ -92,7 +77,30 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
   return { emailsSent, emailsFailed }
 }
 
-export function matchPreferences(subscriber: Subscriber) {
+export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
+  const { piveau, listSubscribers, sendDigest, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
+
+  const minDate = digest === 'daily'
+    ? new Date(Date.now() - 24 * 60 * 60 * 1000)
+    : new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+
+  const datasetScroll = piveau.datasets.search({
+    sort: 'modified+desc',
+    limit: queryPageLimit,
+    minDate,
+    dateType: 'modified',
+  }).scroll()
+
+  const datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[] = []
+  for await (const page of datasetScroll) {
+    datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
+  }
+
+  const subscribers = await listSubscribers()
+  return dispatchDigestForDatasets(datasets, subscribers, { sendDigest, appUrl, key, maxDatasetsPerEmail })
+}
+
+export function matchPreferences(subscriber: Pick<Subscriber, 'id' | 'attribs'>) {
   return (dataset: Dataset) => {
     let doesMatch: boolean | undefined = false
 
