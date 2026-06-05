@@ -1,8 +1,8 @@
 import type { AppLanguage } from '~/constants/langages'
 import type { Subscriber } from '../../lib/listmonk'
 import { generateToken } from '../../lib/listmonk/token'
-import type { Dataset, HubSearch } from '../../lib/piveau'
 import type Listmonk from '../../lib/listmonk'
+import type { Dataset, HubSearch } from '../../lib/piveau'
 
 export interface TemplateData {
   unsubscribeLink: string
