@@ -633,7 +633,7 @@
         "unit": "DAY"
       },
       "id": "so-kt-geocat-harvester-trigger",
-      "status": "enabled",
+      "status": "disabled",
       "next": "2026-06-08T13:04:15.000Z"
     }
   ],
