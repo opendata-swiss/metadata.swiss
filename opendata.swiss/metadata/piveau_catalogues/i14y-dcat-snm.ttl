@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/i14y-dcat-snm> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "Le Musée national suisse regroupe trois musées: le Musée national Zurich, le Château de Prangins et le Forum de l’histoire suisse à Schwyz, ainsi que le centre des collections d’Affoltern am Albis. Les musées consacrent leurs expositions à l’histoire de la Suisse, depuis les époques les plus reculées jusqu’à aujourd’hui ; ils fournissent ainsi leur contribution à l’étude des identités suisses et des contrastes et de la variété qui marquent notre histoire et notre culture. Des expositions temporaires sur des sujets plus en prise sur l’actualité complètent leur offre. Les commissaires du MNS organisent des expositions à la maison de la corporation Zur Meisen à Zurich et au Museo doganale Cantine di Gandria."@fr,
         "Il Museo nazionale svizzero (MNS) riunisce sotto lo stesso tetto il Museo nazionale Zurigo, il Castello di Prangins e il Forum della storia svizzera Svitto nonché il Centro delle collezioni di Affoltern am Albis. Con le loro mostre i musei presentano la storia della Svizzera dagli inizi ad oggi e valorizzano l’identità svizzera e la varietà storica e culturale del nostro Paese. Le mostre temporanee su temi attuali offrono ulteriori impressioni. Inoltre l’MNS cura la Casa della corporazione «Zur Meisen» Zurigo e il Museo doganale Cantine di Gandria."@it ;
     dcterms:modified "2026-06-04T12:54:04.963962"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <http://www.nationalmuseum.ch> ;
-            foaf:name "Schweizerisches Nationalmuseum SNM"@de,
-                "Swiss National Museum SNM"@en,
-                "Musée national suisse MNS"@fr,
-                "Museo nazionale svizzero MNS"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-snm> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Schweizerisches Nationalmuseum SNM"@de,
         "Swiss National Museum SNM"@en,
