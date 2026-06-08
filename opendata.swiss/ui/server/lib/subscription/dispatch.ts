@@ -24,6 +24,53 @@ export interface DispatchDeps {
   maxDatasetsPerEmail?: number
 }
 
+type sendDigest = ({ subscriber, language, datasets }: { subscriber: number, language: AppLanguage, datasets: { id: string, title: string }[] }) => Promise<{ ok: boolean, text: () => Promise<string> }>
+
+export async function dispatchDatasetDigest(
+  datasets: Pick<Dataset, 'id' | 'title' | 'categories'>[],
+  subscribers: Pick<Subscriber, 'id' | 'attribs'>[],
+  sendDigest: sendDigest,
+  maxDatasetsPerEmail?: number,
+) {
+  let emailsSent = 0
+  let emailsFailed = 0
+  let batch: Promise<void>[] = []
+  for (const subscriber of subscribers) {
+    const language: AppLanguage = (subscriber.attribs?.language as AppLanguage) || 'de'
+
+    const datasetsMatched = datasets
+      .filter(matchPreferences(subscriber))
+      .map(dataset => ({
+        id: dataset.id,
+        title: dataset.title[language] || dataset.id,
+      }))
+      .slice(0, maxDatasetsPerEmail)
+
+    if (datasetsMatched.length) {
+      batch.push((async () => {
+        const res = await sendDigest({ subscriber: subscriber.id, language, datasets: datasetsMatched })
+
+        if (!res.ok) {
+          console.error(`Failed to send email to subscriber ${subscriber.id}: ${await res.text()}`)
+          emailsFailed++
+        }
+        else {
+          emailsSent++
+        }
+      })())
+    }
+
+    if (batch.length === 50) {
+      await Promise.all(batch)
+      batch = []
+    }
+  }
+
+  await Promise.all(batch)
+
+  return { emailsSent, emailsFailed }
+}
+
 export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
   const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
 
@@ -47,54 +94,27 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
     frequency: digest,
   } })
 
-  let emailsSent = 0
-  let emailsFailed = 0
-  let batch: Promise<void>[] = []
-  for (const subscriber of subscribers) {
-    const language: AppLanguage = (subscriber.attribs?.language as AppLanguage) || 'de'
+  const sendDigest: sendDigest = async ({ subscriber, language, datasets }) => {
     const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)
-    unsubscribeLink.searchParams.set('id', subscriber.id.toString())
-    unsubscribeLink.searchParams.set('token', generateToken(subscriber.id.toString(), key))
+    unsubscribeLink.searchParams.set('id', subscriber.toString())
+    unsubscribeLink.searchParams.set('token', generateToken(subscriber.toString(), key))
 
     const data: TemplateData = {
       unsubscribeLink: unsubscribeLink.toString(),
       datasetPageBaseUrl: new URL(`/${language}/datasets/`, appUrl).toString(),
-      datasets: datasets.filter(matchPreferences(subscriber)).map(dataset => ({
-        id: dataset.id,
-        title: dataset.title[language] || dataset.id,
-      })).slice(0, maxDatasetsPerEmail),
+      datasets: datasets,
     }
-
-    if (data.datasets.length) {
-      batch.push((async () => {
-        const res = await listmonk.transactional.sendDigest({
-          subscriber: subscriber.id,
-          language,
-          data,
-        })
-
-        if (!res.ok) {
-          console.error(`Failed to send email to subscriber ${subscriber.id}: ${await res.text()}`)
-          emailsFailed++
-        }
-        else {
-          emailsSent++
-        }
-      })())
-    }
-
-    if (batch.length === 50) {
-      await Promise.all(batch)
-      batch = []
-    }
+    return listmonk.transactional.sendDigest({
+      subscriber,
+      language,
+      data,
+    })
   }
 
-  await Promise.all(batch)
-
-  return { emailsSent, emailsFailed }
+  return dispatchDatasetDigest(datasets, subscribers, sendDigest, maxDatasetsPerEmail)
 }
 
-export function matchPreferences(subscriber: Subscriber) {
+export function matchPreferences(subscriber: Pick<Subscriber, 'id' | 'attribs'>) {
   return (dataset: Dataset) => {
     let doesMatch: boolean | undefined = false
 
