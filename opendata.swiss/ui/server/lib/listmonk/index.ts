@@ -76,10 +76,18 @@ export default class {
         return payload.data
       },
 
-      list: async ({ email }: { email?: string } = {}) => {
+      list: async ({ email, attribs }: { email?: string, attribs?: Partial<Attribs> } = {}) => {
         const searchUrl = new URL(url)
         if (email) {
           searchUrl.searchParams.set('query', `subscribers.email = '${email}'`)
+        }
+
+        if (attribs) {
+          const query = []
+          for (const [key, value] of Object.entries(attribs)) {
+            query.push(`subscribers.attribs->>'${key}' = '${value}'`)
+          }
+          searchUrl.searchParams.set('query', query.join(' AND '))
         }
 
         const getSubscribers = await fetch(searchUrl, {

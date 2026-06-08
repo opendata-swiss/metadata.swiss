@@ -43,7 +43,9 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
     datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
   }
 
-  const subscribers = await listmonk.subscribers.list()
+  const subscribers = await listmonk.subscribers.list({ attribs: {
+    frequency: digest,
+  } })
 
   let emailsSent = 0
   let emailsFailed = 0
