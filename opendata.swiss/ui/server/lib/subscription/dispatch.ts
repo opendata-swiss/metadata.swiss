@@ -71,8 +71,10 @@ export async function dispatchDatasetDigest(
   return { emailsSent, emailsFailed }
 }
 
-export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
-  const { piveau, listmonk, appUrl, key, queryPageLimit, maxDatasetsPerEmail } = deps
+export async function dispatchDigest(digest: Digest, { key, ...deps }: DispatchDeps) {
+  const { piveau, listmonk, appUrl, queryPageLimit, maxDatasetsPerEmail } = deps
+
+  console.log(`Dispatching ${digest} digest: ${JSON.stringify(deps, null, 2)}`)
 
   const minDate = digest === 'daily'
     ? new Date(Date.now() - 24 * 60 * 60 * 1000)
