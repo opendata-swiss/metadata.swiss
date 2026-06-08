@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/dcat-i14y-uepf> a dcat:Catalog ;
@@ -19,12 +18,7 @@ Le Service SCPT est chargé d'exécuter les mesures de surveillance visant la co
 \r
 Il Servizio SCPT esegue, su incarico delle autorità inquirenti o del Servizio delle attività informative della Confederazione (SIC), la sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni. In altre parole si procura, presso i fornitori di servizi di telecomunicazioni (FST), i dati richiesti dalle autorità inquirenti o del SIC nell'ambito delle loro indagini. I FST sono tenuti a rispettare le istruzioni del Servizio SCPT."""@it ;
     dcterms:modified "2025-12-22T15:51:16.362661"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.li.admin.ch> ;
-            foaf:name "Dienst Überwachung Post- und Fernmeldeverkehr"@de,
-                "Post and Telecommunications Surveillance Service"@en,
-                "Service Surveillance de la correspondance par poste et télécommunication"@fr,
-                "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-uepf> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Dienst Überwachung Post- und Fernmeldeverkehr"@de,
         "Post and Telecommunications Surveillance Service"@en,

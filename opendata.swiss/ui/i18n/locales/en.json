@@ -18,7 +18,6 @@
         "handbook": "Handbook",
         "search": "Search",
         "showcases": "Showcases",
-        "close": "Close",
         "more": "More...",
         "showcase_submit": "Submit a showcase",
         "admin": {
@@ -28,6 +27,10 @@
           "categories": "DCAT Categories"
         }
       }
+    },
+    "button": {
+      "close": "Close",
+      "close_menu": "Close menu"
     },
     "ods_toc": {
       "contents": "Table of contents"
@@ -79,7 +82,30 @@
       "to_dataset": "To dataset",
       "to_category": "To category",
       "to_publisher": "To publisher",
-      "success": "Subscription successful"
+      "success": "Subscription successful",
+      "preferences": {
+        "page_title": "Subscription preferences",
+        "title": "Fine-tune you subscription preferences",
+        "legend": "How often do you want to receive updates?",
+        "frequency": {
+          "daily": "Daily",
+          "weekly": "Weekly"
+        },
+        "language_label": "Preferred language",
+        "datasets_label": "Datasets selected for updates",
+        "categories_label": "Categories selected for updates",
+        "update_button": "Update your preferences",
+        "unsubscribe_title": "Or unsubscribe completely",
+        "unsubscribe_button": "Unsubscribe from all emails",
+        "updated": "Preferences updated successfully",
+        "update_failed": "Failed to update preferences. Please try again later."
+      }
+    },
+    "languages": {
+      "de": "German",
+      "fr": "French",
+      "it": "Italian",
+      "en": "English"
     },
     "showcase": {
       "type": {

@@ -1,0 +1,17 @@
+{
+  "id": "che-108-910-225",
+  "identifier": "CHE-108.910.225",
+  "resource": "https://opendata.swiss/id/organization/che-108-910-225",
+  "description": {
+    "en": "Centre hospitalier universitaire vaudois"
+  },
+  "name": {
+    "en": "Centre hospitalier universitaire vaudois"
+  },
+  "pref_label": {
+    "en": "Centre hospitalier universitaire vaudois"
+  },
+  "homepage": "https://www.chuv.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

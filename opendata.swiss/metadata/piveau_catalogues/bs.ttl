@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/bs> a dcat:Catalog ;
@@ -11,12 +10,7 @@
         "Le canton de Bâle-Ville publie des ensembles de données ouvertes (Open Government Data) provenant des offices et services cantonaux. **Open Data Basel-Stadt** est responsable du soutien aux services administratifs qui publient des données.  "@fr,
         "Il Cantone di Basilea-Città pubblica set di dati aperti (Open Government Data) provenienti dagli uffici e dai servizi cantonali. **Open Data Basel-Stadt** è responsabile del supporto agli uffici amministrativi che pubblicano i dati."@it ;
     dcterms:modified "2026-05-11T15:54:14.795256"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://data.bs.ch> ;
-            foaf:name "Kanton Basel-Stadt"@de,
-                "Canton of Basel-City"@en,
-                "Canton de Bâle-Ville"@fr,
-                "Cantone di Basilea-Città"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-kt-bs> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Kanton Basel-Stadt"@de,
         "Canton of Basel-City"@en,

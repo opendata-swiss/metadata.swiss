@@ -1,0 +1,48 @@
+{
+  "id": "ch-bfs-poku",
+  "identifier": "CH_BFS_POKU",
+  "resource": "https://opendata.swiss/id/organization/ch-bfs-poku",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Sektion Politik, Kultur, Medien (POKU) des Bundesamts für Statistik (BFS)",
+    "en": "Politics, Culture and Media Section (POKU) at the Federal Statistical Office (FSO)",
+    "fr": "Section Politique, culture, médias (POKU) de l'Office fédéral de la statistique (OFS)",
+    "it": "Sezione Politica, cultura, media (POKU) presso l'Ufficio federale di statistica (UST)"
+  },
+  "pref_label": {
+    "de": "POKU (BFS)",
+    "en": "POKU (FSO)",
+    "fr": "POKU (OFS)",
+    "it": "POKU (UST)"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch1",
+  "ancestors": [
+    {
+      "id": "ch1",
+      "name": {
+        "de": "Bundesamt für Statistik (BFS)",
+        "en": "Federal Statistical Office (FSO)",
+        "fr": "Office Fédéral de la Statistique (OFS)",
+        "it": "Ufficio federale di statistica (UFS)"
+      },
+      "pref_label": {
+        "de": "BFS",
+        "en": "FSO",
+        "fr": "OFS",
+        "it": "UFS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch1",
+      "hierarchy_level": 0
+    }
+  ]
+}

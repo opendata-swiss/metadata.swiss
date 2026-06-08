@@ -1,0 +1,30 @@
+{
+  "id": "ch-elcom",
+  "identifier": "CH_ELCOM",
+  "resource": "https://opendata.swiss/id/organization/ch-elcom",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Eidgenössische Elektrizitätskommission (ElCom)",
+    "en": "Federal Electricity Commission (ElCom)",
+    "fr": "Commission fédérale de l'électricité (ElCom)",
+    "it": "Commissione federale dell'energia elettrica (ElCom)"
+  },
+  "pref_label": {
+    "de": "ElCom",
+    "en": "ElCom",
+    "fr": "ElCom",
+    "it": "ElCom"
+  },
+  "homepage": "https://www.elcom.admin.ch/",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

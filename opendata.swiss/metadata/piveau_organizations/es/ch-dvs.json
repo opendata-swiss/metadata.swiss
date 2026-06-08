@@ -1,0 +1,30 @@
+{
+  "id": "ch-dvs",
+  "identifier": "CH_DVS",
+  "resource": "https://opendata.swiss/id/organization/ch-dvs",
+  "classification": {
+    "id": "0224",
+    "label": {
+      "de": "Andere öffentlich-rechtliche Verwaltungseinheit",
+      "en": "Other public-law administrative unit",
+      "it": "Altra unità amministrativa di diritto pubblico",
+      "fr": "Autre unité de l'administration de droit public"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0224"
+  },
+  "name": {
+    "de": "Digitale Verwaltung Schweiz (DVS)",
+    "en": "Digital Public Services Switzerland (DPS)",
+    "fr": "Administration numérique suisse (ANS)",
+    "it": "Amministrazione digitale Svizzera (ADS)"
+  },
+  "pref_label": {
+    "de": "DVS",
+    "en": "DPS",
+    "fr": "ANS",
+    "it": "ADS"
+  },
+  "homepage": "https://www.digitale-verwaltung-schweiz.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

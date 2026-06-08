@@ -1,0 +1,48 @@
+{
+  "id": "ch-baspo",
+  "identifier": "CH_BASPO",
+  "resource": "https://opendata.swiss/id/organization/ch-baspo",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bundesamt für Sport (BASPO)",
+    "en": "Federal Office of Sport (BASPO)",
+    "fr": "Office fédéral de Sport (BASPO)",
+    "it": "Ufficio federale di Sport (BASPO)"
+  },
+  "pref_label": {
+    "de": "BASPO",
+    "en": "BASPO",
+    "fr": "BASPO",
+    "it": "BASPO"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-vbs",
+  "ancestors": [
+    {
+      "id": "ch-gs-vbs",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)",
+        "en": "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)",
+        "fr": "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)",
+        "it": "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)"
+      },
+      "pref_label": {
+        "de": "GS-VBS",
+        "en": "GS-DDPS",
+        "fr": "SG-DDPS",
+        "it": "SG-DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-vbs",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "ch-sbfi",
+  "identifier": "CH_SBFI",
+  "resource": "https://opendata.swiss/id/organization/ch-sbfi",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das Staatssekretariat für Bildung, Forschung und Innovation ist das Kompetenzzentrum des Bundes für national und international ausgerichtete Fragen der BFI-Politik.",
+    "en": "The State Secretariat for Education, Research and Innovation is the Swiss federal government's specialised agency for national and international matters concerning ERI policy.",
+    "fr": "Le Secrétariat d'État à la formation, à la recherche et à l'innovation est le centre de compétences de la Confédération pour les questions de portée nationale ou internationale relevant de la politique FRI.",
+    "it": "La Segreteria di Stato per la formazione, la ricerca e l'innovazione è il centro di competenza della Confederazione per le questioni nazionali e internazionali connesse alla politica in materia di FRI."
+  },
+  "name": {
+    "de": "Staatssekretariat für Bildung, Forschung und Innovation (SBFI)",
+    "en": "State Secretariat for Education, Research and Innovation (SERI)",
+    "fr": "Secrétariat d'État à la formation, à la recherche et à l'innovation (SEFRI)",
+    "it": "Segreteria di Stato per la formazione, la ricerca e l'innovazione (SEFRI)"
+  },
+  "pref_label": {
+    "de": "SBFI",
+    "en": "SERI",
+    "fr": "SEFRI",
+    "it": "SEFRI"
+  },
+  "homepage": "https://www.sbfi.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-wbf",
+  "ancestors": [
+    {
+      "id": "ch-wbf",
+      "name": {
+        "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+        "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+        "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
+      },
+      "pref_label": {
+        "de": "WBF",
+        "en": "EAR",
+        "fr": "DEFR",
+        "it": "DEFR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf",
+      "hierarchy_level": 0
+    }
+  ]
+}

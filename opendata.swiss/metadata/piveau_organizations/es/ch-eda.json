@@ -1,0 +1,36 @@
+{
+  "id": "ch-eda",
+  "identifier": "CH_EDA",
+  "resource": "https://opendata.swiss/id/organization/ch-eda",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das EDA wahrt die aussenpolitischen Interessen der Schweiz. Es pflegt Beziehungen zu anderen Staaten und zu internationalen Organisationen wie der EU oder der UNO. Es bietet Dienstleistungen für Schweizerinnen und Schweizer im Ausland an. Auch die Entwicklungszusammenarbeit und die humanitäre Hilfe gehören zu seinen Aufgaben. Mit ihren rund 170 Vertretungen ist die Schweiz rund um den Globus präsent.",
+    "en": "The FDFA safeguards Switzerland's foreign policy interests. It maintains relations with other states and international organisations such as the EU and UN, and provides services for Swiss citizens abroad. It is also responsible for Switzerland's development cooperation and humanitarian aid. Switzerland maintains a global presence through its approximately 170 representations.",
+    "fr": "Le DFAE sauvegarde les intérêts de la Suisse en matière de politique extérieure. Il entretient des relations avec d’autres États et des organisations internationales telles que l’UE et l’ONU. Il propose des prestations aux citoyennes et citoyens suisses à l’étranger. La coopération au développement et l’aide humanitaire entrent également dans son champ d’activités. La Suisse est présente dans le monde entier grâce à un réseau comptant quelque 170 représentations.",
+    "it": "Il DFAE tutela gli interessi della Svizzera in materia di politica estera. Cura le relazioni con altri Stati e con organizzazioni internazionali come l’UE e l’ONU. Offre servizi alle Svizzere e agli Svizzeri che vivono o si trovano all’estero. I suoi compiti comprendono anche la cooperazione allo sviluppo e l’aiuto umanitario. Grazie alle sue circa 170 rappresentanze, la Svizzera è presente in tutto il mondo."
+  },
+  "name": {
+    "de": "Eidgenössisches Departement für auswärtige Angelegenheiten (EDA)",
+    "en": "Federal Department of Foreign Affairs (FDFA)",
+    "fr": "Département fédéral des affaires étrangères (DFAE)",
+    "it": "Dipartimento federale degli affari esteri (DFAE)"
+  },
+  "pref_label": {
+    "de": "EDA",
+    "en": "FDFA",
+    "fr": "DFAE",
+    "it": "DFAE"
+  },
+  "homepage": "https://www.eda.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

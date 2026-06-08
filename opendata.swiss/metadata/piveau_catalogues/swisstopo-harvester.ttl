@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/swisstopo-harvester> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "Le centre de compétence de la Confédération suisse pour les informations géographiques, c'est-à-dire pour la description, la représentation et l’archivage de données à référence spatiale."@fr,
         "Il centro d’eccellenza della Confederazione Elvetica per geoinformazione, cioè per la descrizione, rappresentazione e archiviazione dei dati georeferenziati (geodati)."@it ;
     dcterms:modified "2026-05-08T07:15:15.214442"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <> ;
-            foaf:name "Bundesamt für Landestopografie swisstopo"@de,
-                "Federal Office of Topography swisstopo"@en,
-                "Office fédéral de topographie swisstopo"@fr,
-                "Ufficio federale di topografia swisstopo"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-swisstopo> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Landestopografie swisstopo"@de,
         "Federal Office of Topography swisstopo"@en,

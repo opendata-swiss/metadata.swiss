@@ -1,0 +1,29 @@
+{
+  "id": "ch-bk-dti-ds",
+  "identifier": "CH_BK_DTI_DS",
+  "resource": "https://opendata.swiss/id/organization/ch-bk-dti-ds",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Digitale Standardleistungen (DS)",
+    "en": "Digitale Standardleistungen DS",
+    "fr": "Services numériques standards (SNS)",
+    "it": "Servizi digitali standard (SDS)"
+  },
+  "pref_label": {
+    "de": "DS",
+    "en": "DS",
+    "fr": "SNS",
+    "it": "SDS"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -27,10 +27,26 @@
             <template #buttons>
               <OdsButton
                 variant="outline"
-                title="Close"
+                :title="t('message.button.close')"
                 icon-right
                 icon="Checkmark"
                 @click="closeMessages"
+              />
+            </template>
+          </OdsNotificationBanner>
+          <OdsNotificationBanner
+            v-if="errorMessage"
+            type="error"
+          >
+            {{ t(`message.${errorMessage}`) }}
+
+            <template #buttons>
+              <OdsButton
+                variant="outline"
+                :title="t('message.button.close')"
+                icon-right
+                icon="Checkmark"
+                @click="closeErrorMessages()"
               />
             </template>
           </OdsNotificationBanner>
@@ -135,8 +151,15 @@ function handleResize() {
 const messageCookie = useCookie('message')
 const message = computed(() => messageCookie.value)
 
+const errorMessageCookie = useCookie('message.error')
+const errorMessage = computed(() => errorMessageCookie.value)
+
 function closeMessages() {
   messageCookie.value = undefined
+}
+
+function closeErrorMessages() {
+  errorMessageCookie.value = undefined
 }
 
 onMounted(() => {

@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/i14y-dcat-harvester-lustat> a dcat:Catalog ;
@@ -14,12 +13,7 @@ LUSTAT statistique Lucerne publie ici progressivement des jeux de données appro
         """LUSTAT statistica Lucerna è il centro di competenza e servizi per la statistica pubblica nel cantone di Lucerna. Con le sue informazioni statistiche oggettive, LUSTAT accompagna i processi di formazione delle opinioni e decisionali in politica, amministrazione, società e affari.  \r
 LUSTAT statistica Lucerna sta gradualmente pubblicando qui oportuni set di dati della statistica cantonale come dati OGD."""@it ;
     dcterms:modified "2024-12-02T14:52:32.906599"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.lustat.ch> ;
-            foaf:name "LUSTAT Statistik Luzern"@de,
-                "LUSTAT Statistics Lucerne"@en,
-                "LUSTAT statistique Lucerne"@fr,
-                "LUSTAT statistica Lucerna"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-lustat> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "LUSTAT Statistik Luzern"@de,
         "LUSTAT Statistics Lucerne"@en,

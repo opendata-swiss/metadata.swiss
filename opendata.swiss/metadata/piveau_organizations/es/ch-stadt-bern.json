@@ -1,0 +1,30 @@
+{
+  "id": "ch-stadt-bern",
+  "identifier": "CH_STADT_BERN",
+  "resource": "https://opendata.swiss/id/organization/ch-stadt-bern",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
+  "name": {
+    "de": "Stadt Bern",
+    "en": "City of Bern",
+    "fr": "Ville de Berne",
+    "it": "Città di Berna"
+  },
+  "pref_label": {
+    "de": "Stadt Bern",
+    "en": "City of Bern",
+    "fr": "Ville de Berne",
+    "it": "Città di Berna"
+  },
+  "homepage": "https://bern.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

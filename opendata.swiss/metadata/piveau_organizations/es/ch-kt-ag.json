@@ -1,0 +1,29 @@
+{
+  "id": "ch-kt-ag",
+  "identifier": "CH_KT_AG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ag",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Kanton Aargau AG",
+    "en": "Canton Aargau AG",
+    "fr": "Canton d'Argovie AG",
+    "it": "Canton Argovia AG"
+  },
+  "pref_label": {
+    "de": "AG",
+    "en": "AG",
+    "fr": "AG",
+    "it": "AG"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

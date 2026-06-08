@@ -1,0 +1,19 @@
+{
+  "id": "ch-eoperations",
+  "identifier": "CH_eOperations",
+  "resource": "https://opendata.swiss/id/organization/ch-eoperations",
+  "name": {
+    "de": "eOperations Schweiz",
+    "en": "eOperations Switzerland",
+    "fr": "eOperations Suisse",
+    "it": "eOperations Svizzera"
+  },
+  "pref_label": {
+    "de": "eOperations Schweiz",
+    "en": "eOperations Switzerland",
+    "fr": "eOperations Suisse",
+    "it": "eOperations Svizzera"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

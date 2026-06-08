@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/are> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "L'ARE est le centre de compétences de la Confédération pour les questions liées au développement territorial, à la politique des transports, au développement durable ainsi qu'à la coopération transnationale en matière de territoire."@fr,
         "L'ARE è l'autorità federale responsabile per le questioni di sviluppo territoriale, politica dei trasporti, sviluppo sostenibile e collaborazione transnazionale in ambito territoriale."@it ;
     dcterms:modified "2026-05-11T07:26:29.665940"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <> ;
-            foaf:name "Bundesamt für Raumentwicklung ARE"@de,
-                "Federal Office for Spatial Development ARE"@en,
-                "Office fédéral du développement territorial ARE"@fr,
-                "Ufficio federale dello sviluppo territoriale ARE"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-are> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Raumentwicklung ARE"@de,
         "Federal Office for Spatial Development ARE"@en,

@@ -1,0 +1,49 @@
+{
+  "id": "ch-blv",
+  "identifier": "CH_BLV",
+  "resource": "https://opendata.swiss/id/organization/ch-blv",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV)",
+    "en": "Federal Food Safety and Veterinary Office (FSVO)",
+    "fr": "Office fédéral de la sécurité alimentaire et des affaires vétérinaires (OSAV)",
+    "it": "Ufficio federale della sicurezza alimentare e di veterinaria (USAV)"
+  },
+  "pref_label": {
+    "de": "BLV",
+    "en": "FSVO",
+    "fr": "OSAV",
+    "it": "USAV"
+  },
+  "homepage": "https://www.blv.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-edi",
+  "ancestors": [
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 0
+    }
+  ]
+}

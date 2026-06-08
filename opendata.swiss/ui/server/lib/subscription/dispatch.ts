@@ -90,7 +90,9 @@ export async function dispatchDigest(digest: Digest, deps: DispatchDeps) {
     datasets.push(...page.map(({ id, title, categories }) => ({ id, title, categories })))
   }
 
-  const subscribers = await listmonk.subscribers.list()
+  const subscribers = await listmonk.subscribers.list({ attribs: {
+    frequency: digest,
+  } })
 
   const sendDigest: sendDigest = async ({ subscriber, language, datasets }) => {
     const unsubscribeLink = new URL(`/${language}/subscription/preferences`, appUrl)

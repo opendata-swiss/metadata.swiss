@@ -1,0 +1,49 @@
+{
+  "id": "ch-swisstopo",
+  "identifier": "CH_SWISSTOPO",
+  "resource": "https://opendata.swiss/id/organization/ch-swisstopo",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bundesamt für Landestopografie (swisstopo)",
+    "en": "Federal Office of Topography (swisstopo)",
+    "fr": "Office fédéral de topographie (swisstopo)",
+    "it": "Ufficio federale di topografia (swisstopo)"
+  },
+  "pref_label": {
+    "de": "swisstopo",
+    "en": "swisstopo",
+    "fr": "swisstopo",
+    "it": "swisstopo"
+  },
+  "homepage": "https://www.swisstopo.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-vbs",
+  "ancestors": [
+    {
+      "id": "ch-gs-vbs",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)",
+        "en": "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)",
+        "fr": "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)",
+        "it": "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)"
+      },
+      "pref_label": {
+        "de": "GS-VBS",
+        "en": "GS-DDPS",
+        "fr": "SG-DDPS",
+        "it": "SG-DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-vbs",
+      "hierarchy_level": 0
+    }
+  ]
+}

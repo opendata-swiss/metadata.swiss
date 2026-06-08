@@ -1,0 +1,30 @@
+{
+  "id": "ch-kt-bs",
+  "identifier": "CH_KT_BS",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-bs",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Kanton Basel-Stadt",
+    "en": "Kanton Basel-Stadt",
+    "fr": "Canton de Bâle-Ville",
+    "it": "Cantone di Basilea Città"
+  },
+  "pref_label": {
+    "de": "Kt. BS",
+    "en": "Kt. BS",
+    "fr": "Kt. BS",
+    "it": "Kt. BS"
+  },
+  "homepage": "https://www.bs.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

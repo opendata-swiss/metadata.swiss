@@ -13,7 +13,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
       tuner:url </api/subscription/dispatch> ;
       tuner:method "POST" ;
       tuner:header ( "Authorization" "Basic YXBpLXR1bmVyOmUyZS10ZXN0cw==" ) ;
-      tuner:form ( "digest" "daily" ) ;
+      tuner:form ( "digest" "weekly" ) ;
   ] ;
   tuner:formula {
     ( <http://localhost:8025/api/v1/messages> ?deleted ) resource:deleteIn [] .

@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/dcat-harvester-identitas> a dcat:Catalog ;
@@ -12,12 +11,7 @@
         """Identitas AG sviluppa e gestisce applicazioni per l'identificazione, la registrazione e il monitoraggio degli animali da reddito e da compagnia. In qualità di fornitore di servizi informatici leader in Svizzera per i dati relativi agli animali e alla produzione vegetale, contribuiamo alla creazione di valore aggiunto per la salute e il benessere degli animali e la sicurezza alimentare. Nella nostra sede centrale di Berna abbiamo circa 110 dipendenti.\r
 """@it ;
     dcterms:modified "2021-09-29T07:15:42.781644"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <http://www.identitas.ch> ;
-            foaf:name "Identitas AG"@de,
-                "Identitas AG"@en,
-                "Identitas AG"@fr,
-                "Identitas AG"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-identitas> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Identitas AG"@de,
         "Identitas AG"@en,

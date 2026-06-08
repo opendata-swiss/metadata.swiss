@@ -1,0 +1,51 @@
+{
+  "id": "ch-bav",
+  "identifier": "CH_BAV",
+  "resource": "https://opendata.swiss/id/organization/ch-bav",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bundesamt für Verkehr (BAV)",
+    "en": "Federal Office of Transport (FOT)",
+    "fr": "Office fédéral des transports (OFT)",
+    "it": "Ufficio federale dei trasporti (UFT)"
+  },
+  "pref_label": {
+    "de": "BAV",
+    "en": "FOT",
+    "fr": "OFT",
+    "it": "UFT"
+  },
+  "homepage": "https://www.bav.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-uvek",
+  "ancestors": [
+    {
+      "id": "ch-gs-uvek",
+      "name": {
+        "de": "Generalsekretariat des UVEK (GS-UVEK)",
+        "en": "General Secretariat DETEC (GS-DETEC)",
+        "fr": "Secrétariat général du DETEC (SG-DETEC)",
+        "it": "Segreteria generale del DATEC (SG-DATEC)",
+        "rm": ""
+      },
+      "pref_label": {
+        "de": "GS-UVEK",
+        "en": "GS-DETEC",
+        "fr": "SG-DETEC",
+        "it": "SG-DATEC",
+        "rm": ""
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/dcat-i14y-swissmedic> a dcat:Catalog ;
@@ -20,12 +19,7 @@ Contrairement aux médicaments, les dispositifs médicaux ne sont soumis à aucu
 \r
 Diversamente dai medicamenti, i dispositivi medici non sono sottoposti ad alcuna omologazione ufficiale. L’attività di Swissmedic nel campo dei dispositivi medici si concentra quindi sulla sorveglianza efficiente del mercato."""@it ;
     dcterms:modified "2025-11-12T12:08:05.300140"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.swissmedic.ch/> ;
-            foaf:name "Swissmedic Schweizerisches Heilmittelinstitut"@de,
-                "Swissmedic Swiss Agency for Therapeutic Products"@en,
-                "Swissmedic Institut suisse des produits thérapeutiques"@fr,
-                "Swissmedic Istituto svizzero per gli agenti terapeutici"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-swissmedic> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Swissmedic Schweizerisches Heilmittelinstitut"@de,
         "Swissmedic Swiss Agency for Therapeutic Products"@en,

@@ -1,0 +1,30 @@
+{
+  "id": "ch-ssk",
+  "identifier": "CH_SSK",
+  "resource": "https://opendata.swiss/id/organization/ch-ssk",
+  "classification": {
+    "id": "0224",
+    "label": {
+      "de": "Andere öffentlich-rechtliche Verwaltungseinheit",
+      "en": "Other public-law administrative unit",
+      "it": "Altra unità amministrativa di diritto pubblico",
+      "fr": "Autre unité de l'administration de droit public"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0224"
+  },
+  "name": {
+    "de": "Schweizerische Steuerkonferenz (SSK)",
+    "en": "Schweizerische Steuerkonferenz (SSK)",
+    "fr": "Conférence suisse des impôts (CSI)",
+    "it": "Conferenza svizzera delle imposte (CSI)"
+  },
+  "pref_label": {
+    "de": "SSK",
+    "en": "SSK",
+    "fr": "CSI",
+    "it": "CSI"
+  },
+  "homepage": "https://www.ssk-csi.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

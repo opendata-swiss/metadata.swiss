@@ -1,10 +1,10 @@
 import Listmonk from '../../lib/listmonk'
-import { validatePreferencesToken } from '#server/lib/listmonk/token'
+import { getIdFromQuery } from '#server/lib/subscription/preferences'
 
 export default defineEventHandler(async (event) => {
   const { listmonk: config } = useRuntimeConfig()
 
-  const id = validatePreferencesToken(event, config.preferences.hmac_key)
+  const id = await getIdFromQuery(event)
 
   const listmonk = new Listmonk(config)
 

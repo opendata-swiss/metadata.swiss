@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/bag> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "L'Office fédéral de la santé publique (OFSP) fait partie du Département fédéral de l'intérieur. De concert avec les cantons, il assume la responsabilité des domaines touchant à la santé publique ainsi que la mise en œuvre de la politique sanitaire. Autorité à vocation nationale, il représente les intérêts sanitaires de la Suisse dans les organisations internationales et auprès d'autres Etats."@fr,
         "L'Ufficio federale della sanità pubblica (UFSP) è incorporato nel Dipartimento federale dell'interno. Unitamente ai Cantoni, è responsabile della salute della popolazione svizzera e dello sviluppo della politica nazionale in materia di salute. In qualità di autorità nazionale rappresenta inoltre gli interessi della Svizzera in materia di sanità in seno a organizzazioni internazionali e nei rapporti con altri Stati."@it ;
     dcterms:modified "2026-05-11T07:27:29.990038"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <> ;
-            foaf:name "Bundesamt für Gesundheit BAG"@de,
-                "Federal Office of Public Health FOPH"@en,
-                "Office fédéral de la santé publique OFSP"@fr,
-                "Ufficio federale della sanità pubblica UFSP"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-bag> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Gesundheit BAG"@de,
         "Federal Office of Public Health FOPH"@en,

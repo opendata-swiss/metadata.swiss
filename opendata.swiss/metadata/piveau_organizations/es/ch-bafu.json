@@ -1,0 +1,57 @@
+{
+  "id": "ch-bafu",
+  "identifier": "CH_BAFU",
+  "resource": "https://opendata.swiss/id/organization/ch-bafu",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das BAFU ist für die nachhaltige Nutzung der natürlichen Ressourcen wie Luft, Boden, Wasser und Wald, für die Klimapolitik, den Schutz vor Naturgefahren und für den Erhalt der Biodiversität zuständig.",
+    "en": "The FOEN is responsible for the sustainable use of natural resources such as air, water, soil, and forests, for the climate policy, the protection against natural hazards and for the preservation of biodiversity.",
+    "fr": "L’OFEV est chargé d’assurer l’exploitation durable des ressources naturelles telles que l'air, l’eau, le sol et la forêt, la politique climatique, la protection contre les dangers naturels et le maintien de la biodiversité.",
+    "it": "L'UFAM è responsabile dell'uso sostenibile delle risorse naturali quali aria, acqua, suolo e foreste, della politica climatica, della protezione dai pericoli naturali e della conservazione della biodiversità."
+  },
+  "name": {
+    "de": "Bundesamt für Umwelt (BAFU)",
+    "en": "Federal Office for the Environment (FOEN)",
+    "fr": "Office fédéral de l'environnement (OFEV)",
+    "it": "Ufficio federale dell'ambiente (UFAM)"
+  },
+  "pref_label": {
+    "de": "BAFU",
+    "en": "FOEN",
+    "fr": "OFEV",
+    "it": "UFAM"
+  },
+  "homepage": "https://bafu.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-uvek",
+  "ancestors": [
+    {
+      "id": "ch-gs-uvek",
+      "name": {
+        "de": "Generalsekretariat des UVEK (GS-UVEK)",
+        "en": "General Secretariat DETEC (GS-DETEC)",
+        "fr": "Secrétariat général du DETEC (SG-DETEC)",
+        "it": "Segreteria generale del DATEC (SG-DATEC)",
+        "rm": ""
+      },
+      "pref_label": {
+        "de": "GS-UVEK",
+        "en": "GS-DETEC",
+        "fr": "SG-DETEC",
+        "it": "SG-DATEC",
+        "rm": ""
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "hierarchy_level": 0
+    }
+  ]
+}

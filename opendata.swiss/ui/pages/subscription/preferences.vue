@@ -8,30 +8,46 @@
       >
         <div class="container gap--responsive">
           <h2 class="h2">
-            Fine-tune you subscription preferences
+            {{ t('message.subscribe.preferences.title') }}
           </h2>
           <section>
             <form ref="form">
-              <OdsRadioGroup legend="How often do you want to receive updates?">
+              <OdsRadioGroup :legend="t('message.subscribe.preferences.legend')">
                 <OdsRadio
                   id="daily"
                   name="frequency"
                   value="daily"
-                  label="Daily"
+                  :label="t('message.subscribe.preferences.frequency.daily')"
                   :checked="frequency === 'daily'"
                 />
                 <OdsRadio
                   id="weekly"
                   name="frequency"
                   value="weekly"
-                  label="Weekly"
+                  :label="t('message.subscribe.preferences.frequency.weekly')"
                   :checked="frequency === 'weekly'"
                 />
               </OdsRadioGroup>
 
+              <OdsSelect
+                id="language"
+                v-model="language"
+                name="language"
+                fit-content
+                :label="t('message.subscribe.preferences.language_label')"
+              >
+                <option
+                  v-for="lang in APP_LANGUAGES"
+                  :key="lang"
+                  :value="lang"
+                >
+                  {{ t('message.languages.' + lang) }}
+                </option>
+              </OdsSelect>
+
               <OdsFormField
                 v-if="datasets.length > 0"
-                label="Datasets selected for updates"
+                :label="t('message.subscribe.preferences.datasets_label')"
                 for="dataset"
               >
                 <OdsCheckbox
@@ -46,7 +62,7 @@
 
               <OdsFormField
                 v-if="categories.length > 0"
-                label="Categories selected for updates"
+                :label="t('message.subscribe.preferences.categories_label')"
                 for="dataset"
               >
                 <OdsCheckbox
@@ -59,7 +75,7 @@
                 />
               </OdsFormField>
               <OdsButton
-                title="Update your preferences"
+                :title="t('message.subscribe.preferences.update_button')"
                 variant="outline"
                 @click="updatePreferences"
               />
@@ -67,10 +83,10 @@
           </section>
           <section>
             <h2 class="h2">
-              Or unsubscribe completely
+              {{ t('message.subscribe.preferences.unsubscribe_title') }}
             </h2>
             <OdsButton
-              title="Unsubscribe from all emails"
+              :title="t('message.subscribe.preferences.unsubscribe_button')"
               variant="outline"
             />
           </section>
@@ -86,24 +102,33 @@ import OdsRadioGroup from '../../app/components/OdsRadioGroup.vue'
 import OdsRadio from '../../app/components/OdsRadio.vue'
 import OdsCheckbox from '../../app/components/OdsCheckbox.vue'
 import OdsFormField from '../../app/components/OdsFormField.vue'
+import OdsSelect from '../../app/components/OdsSelect.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
+import { APP_LANGUAGES, type AppLanguage } from '../../app/constants/langages'
 
 const route = useRoute()
+const router = useRouter()
 
 const form = ref<HTMLFormElement>()
 const datasets = ref([])
 const categories = ref([])
 const frequency = ref()
+const language = ref<AppLanguage>()
+const { t } = useI18n()
 
 const query = {
   id: route.query.id,
   token: route.query.token,
 }
 const { data } = await useFetch('/api/subscription/preferences', { query })
+if (!data.value) {
+  router.replace('/404')
+}
+
 const preferences = data.value.preferences
 
 const { useResource } = useDatasetsSearch()
@@ -116,6 +141,7 @@ const vocabSearch = useSearch({
 })
 
 frequency.value = preferences.frequency || 'daily'
+language.value = (preferences.language as AppLanguage) || APP_LANGUAGES[0]
 
 const loadCategories = (preferences.categories || []).map(async (category) => {
   await vocabSearch.query.suspense()
@@ -136,6 +162,9 @@ const datasetsLoaded = preferences.datasets.map(async (id) => {
 
 datasets.value = (await Promise.all(datasetsLoaded)).sort((a, b) => a.name.localeCompare(b.name))
 
+const message = useCookie('message')
+const errorMessage = useCookie('message-error')
+
 async function updatePreferences() {
   const { data, error } = await useFetch('/api/subscription/preferences', {
     query,
@@ -147,13 +176,20 @@ async function updatePreferences() {
   })
 
   if (error) {
-    alert('Preferences updated successfully')
+    message.value = 'subscribe.preferences.updated'
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
   else {
     console.error(data)
-    alert('Failed to update preferences. Please try again later.')
+    errorMessage.value = 'subscribe.preferences.update_failed'
   }
 }
+
+useSeoMeta({
+  title: `${t('message.subscribe.preferences.page_title')} | opendata.swiss`,
+})
 </script>
 
 <style scoped>

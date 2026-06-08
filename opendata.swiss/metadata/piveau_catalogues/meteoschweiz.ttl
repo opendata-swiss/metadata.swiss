@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/meteoschweiz> a dcat:Catalog ;
@@ -10,12 +9,7 @@
         "Le service météorologique et climatologique national. A partir de l'ensemble des stations de mesure, des radars météorologiques et des satellites MétéoSuisse élabore pronostics, alertes et analyse climatiques."@fr,
         "Il servizio nazionale di meteorologia e climatologia. Sulla base di dati di stazioni di rilevamento, radar meteorologici e satelliti MeteoSvizzera elabora previsioni del tempo, allerte e le analisi climatologiche."@it ;
     dcterms:modified "2026-05-11T07:32:00.085178"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.meteoschweiz.admin.ch> ;
-            foaf:name "Bundesamt für Meteorologie und Klimatologie MeteoSchweiz"@de,
-                "Federal Office of Meteorology and Climatology MeteoSwiss"@en,
-                "Office fédéral de météorologie et de climatologie MétéoSuisse"@fr,
-                "Ufficio federale di meteorologia e climatologia MeteoSvizzera"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-meteoschweiz> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Meteorologie und Klimatologie MeteoSchweiz"@de,
         "Federal Office of Meteorology and Climatology MeteoSwiss"@en,

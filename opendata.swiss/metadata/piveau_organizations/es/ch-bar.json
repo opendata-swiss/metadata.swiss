@@ -1,0 +1,49 @@
+{
+  "id": "ch-bar",
+  "identifier": "CH_BAR",
+  "resource": "https://opendata.swiss/id/organization/ch-bar",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Schweizerisches Bundesarchiv (BAR)",
+    "en": "Swiss Federal Archives (SFA)",
+    "fr": "Archives fédérales suisses (AFS)",
+    "it": "Archivio federale svizzero (AFS)"
+  },
+  "pref_label": {
+    "de": "BAR",
+    "en": "SFA",
+    "fr": "AFS",
+    "it": "AFS"
+  },
+  "homepage": "https://www.bar.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-edi",
+  "ancestors": [
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 0
+    }
+  ]
+}

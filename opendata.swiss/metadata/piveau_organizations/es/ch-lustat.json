@@ -1,0 +1,51 @@
+{
+  "id": "ch-lustat",
+  "identifier": "CH_LUSTAT",
+  "resource": "https://opendata.swiss/id/organization/ch-lustat",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
+  "name": {
+    "de": "LUSTAT Statistik Luzern",
+    "en": "LUSTAT Statistik Luzern",
+    "fr": "LUSTAT Statistik Luzern",
+    "it": "LUSTAT Statistik Luzern"
+  },
+  "pref_label": {
+    "de": "LUSTAT",
+    "en": "LUSTAT",
+    "fr": "LUSTAT",
+    "it": "LUSTAT"
+  },
+  "homepage": "https://lustat.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-luzern",
+  "ancestors": [
+    {
+      "id": "ch-kt-luzern",
+      "name": {
+        "de": "Kanton Luzern LU",
+        "en": "Canton Luzern LU",
+        "fr": "Canton de Lucerne LU",
+        "it": "Canton Lucerna LU",
+        "rm": ""
+      },
+      "pref_label": {
+        "de": "LU",
+        "en": "LU",
+        "fr": "LU",
+        "it": "LU",
+        "rm": ""
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ch-ehra",
+  "identifier": "CH_EHRA",
+  "resource": "https://opendata.swiss/id/organization/ch-ehra",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Eidgenössisches Amt für das Handelsregister (EHRA)",
+    "en": "Federal Commercial Registry Office (EHRA)",
+    "fr": "Office fédéral du registre du commerce (OFRC)",
+    "it": "Ufficio federale del registro di commercio (UFRC)"
+  },
+  "pref_label": {
+    "de": "EHRA",
+    "en": "EHRA",
+    "fr": "OFRC",
+    "it": "UFRC"
+  },
+  "homepage": "https://www.bj.admin.ch/bj/de/home/wirtschaft/handelsregister.html",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

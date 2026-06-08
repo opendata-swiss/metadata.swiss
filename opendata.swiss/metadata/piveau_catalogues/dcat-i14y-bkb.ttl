@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/dcat-i14y-bkb> a dcat:Catalog ;
@@ -10,11 +9,7 @@ Ebene. """@de,
         "En tant que conférence officielle, la Conférence des achats de la Confédération (CA) est l'organe administratif et stratégique de l'administration fédérale pour les acquisitions de biens et de services. Elle se prononce en particulier sur des questions fondamentales ayant trait à la politique et à la stratégie des achats, rédige des recommandations, élabore des instruments de mise en oeuvre, suit et encourage le développement de la législation sur les marchés publics de la Confédération ainsi que l'harmonisation de cette législation à l'échelle nationale."@fr,
         "La Conferenza degli acquisti (CA) è una conferenza delle autorità. È l’organo strategico dell’Amministrazione federale per i settori acquisto di beni e acquisto di prestazioni di servizi. La CA si pronuncia in particolare sulle questioni di fondo in materia di politica e di strategia degli appalti, emana raccomandazioni, elabora istrumenti di attuazione, segue e sostiene lo sviluppo della legislazione sugli appalti pubblici della Confederazione nonché l’armonizzazione di tale legislazione a livello nazionale."@it ;
     dcterms:modified "2025-12-22T15:44:01.485627"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.bkb.admin.ch> ;
-            foaf:name "Beschaffungskonferenz des Bundes BKB"@de,
-                "Conférence des achats de la Confédération CA"@fr,
-                "Conferenza degli acquisti CA"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-bkb> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Beschaffungskonferenz des Bundes BKB"@de,
         "Conférence des achats de la Confédération CA"@fr,
