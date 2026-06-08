@@ -98,6 +98,11 @@ export class HubSearch {
         scrollRes = await this._fetch(scrollUrl)
         if (scrollRes.ok) {
           const searchResult: SearchResult<T> = await scrollRes.json()
+
+          if (searchResult.result.results.length === 0) {
+            break
+          }
+
           yield searchResult.result.results
         }
       } while (scrollRes.ok)
