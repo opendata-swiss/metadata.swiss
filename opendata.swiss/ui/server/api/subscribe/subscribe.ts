@@ -35,6 +35,7 @@ export function subscribe(key: 'categories' | 'datasets' | 'organisations', fiel
       lists: [],
       attribs: {
         language,
+        frequency: 'daily',
         [key]: values,
       },
     }
