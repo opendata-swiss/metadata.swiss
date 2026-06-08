@@ -392,12 +392,15 @@ services:
     logging:
       options:
         max-size: "50m"
+
   piveau-consus-importing-showcases:
     build: ../piveau_modules/piveau-consus-importing-showcases
     restart: unless-stopped
     logging:
       options:
         max-size: "50m"
+    environment:
+      - SHOWCASE_API_ENDPOINT=${SHOWCASE_API_ENDPOINT:-http://piveau-ui/api/showcases}
 
   ####################
   # Listmonk         #
