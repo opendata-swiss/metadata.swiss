@@ -30,17 +30,24 @@ public class ShowcaseApiConnector {
 
 
     public static ShowcaseApiConnector create(Vertx vertx, PipeContext pipeContext) {
-        return new ShowcaseApiConnector(vertx, pipeContext);
+        return create(vertx, pipeContext, null);
     }
 
-    private ShowcaseApiConnector(Vertx vertx, PipeContext pipeContext) {
+    public static ShowcaseApiConnector create(Vertx vertx, PipeContext pipeContext, String showcaseApiAddressDefault) {
+        return new ShowcaseApiConnector(vertx, pipeContext, showcaseApiAddressDefault);
+    }
+
+    private ShowcaseApiConnector(Vertx vertx, PipeContext pipeContext, String showcaseApiAddressDefault) {
         this.pipeContext = pipeContext;
         this.webClient = WebClient.create(vertx);
 
         JsonObject config = pipeContext.getConfig();
 
         this.catalogue = config.getString("catalogue");
-        this.address = config.getString("address");
+
+        // address from pipe segment configuration takes precedence over default address
+        String addressFromPipeSegmentConfiguration = config.getString("address");
+        this.address = addressFromPipeSegmentConfiguration != null ? addressFromPipeSegmentConfiguration : showcaseApiAddressDefault;
     }
 
     public List<String> getIdentifiers() {
@@ -48,6 +55,7 @@ public class ShowcaseApiConnector {
     }
 
     public void fetchAll(Promise<Void> promise) {
+        pipeContext.log().info("Fetching from address: {} ", address);
         webClient.getAbs(address).send().onSuccess(response -> {
             try {
                 Model model = Piveau.toModel(response.bodyAsString(), Lang.JSONLD);
