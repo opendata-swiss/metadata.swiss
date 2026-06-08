@@ -4,7 +4,7 @@ Below, I present the feature of subscribing to dataset changes.
 
 ## Subscribe
 
-On a dataset page, scroll down until you find the "Subscribe" box on the right-hand side. There, you will find a button to subscribe to this specific dataset or one of its categories, if any. Work on subscribing to organizations is ongoing.
+On a dataset page, scroll down until you find the Subscribe box (Abonnieren in the screenshot) on the right-hand side. There, you will find a button to subscribe to this specific dataset or one of its categories, if any. Work on subscribing to organizations is ongoing.
 
 ![1](../images/subscriptions/subscribe.png)
 
