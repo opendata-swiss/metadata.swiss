@@ -35,6 +35,7 @@ CKAN_TO_I14Y_ORG_MAPPING: dict[str, str] = {
     "schweizerische-nationalbibliothek-nb": "ch-nabibl",
     "schweizerisches-bundesarchiv-bar": "ch-bar",
     "swiss-emobility": "ch-swiss-emobility",
+    "schweizerisches-nationalmuseum-snm": "ch-snm",
 }
 
 
