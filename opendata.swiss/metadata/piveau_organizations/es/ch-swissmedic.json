@@ -1,0 +1,38 @@
+{
+  "id": "ch-swissmedic",
+  "identifier": "CH_Swissmedic",
+  "resource": "https://opendata.swiss/id/organization/ch-swissmedic",
+  "name": {
+    "de": "Schweizerisches Heilmittelinstitut Swissmedic",
+    "en": "Swiss Agency for Therapeutic Products Swissmedic",
+    "fr": "Institut suisse des produits thérapeutiques Swissmedic",
+    "it": "Istituto svizzero per gli agenti terapeutici Swissmedic"
+  },
+  "pref_label": {
+    "de": "Schweizerisches Heilmittelinstitut Swissmedic",
+    "en": "Swiss Agency for Therapeutic Products Swissmedic",
+    "fr": "Institut suisse des produits thérapeutiques Swissmedic",
+    "it": "Istituto svizzero per gli agenti terapeutici Swissmedic"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-edi",
+  "ancestors": [
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 0
+    }
+  ]
+}

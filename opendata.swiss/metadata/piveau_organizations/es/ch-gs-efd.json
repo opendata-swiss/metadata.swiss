@@ -1,0 +1,36 @@
+{
+  "id": "ch-gs-efd",
+  "identifier": "CH_GS_EFD",
+  "resource": "https://opendata.swiss/id/organization/ch-gs-efd",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Bundesfinanzen, Finanzmarktstabilität, Steuern – beim EFD dreht sich vieles um den Staatshaushalt und um Finanzpolitik. Es nimmt Steuern und Zölle ein und kontrolliert den Personen- und Warenverkehr an der Grenze. Ausserdem erbringt es Dienstleistungen für die gesamte Bundesverwaltung, von der Informatik über das Personalwesen bis hin zu Bauten und Logistik.",
+    "en": "Federal finances, financial market stability, taxes – at the FDF, there is a lot of emphasis on the state budget and on fiscal policy. The department collects taxes and customs duties, and checks the cross-border movement of people and goods. It also provides services for the entire Federal Administration, from IT to human resources to buildings and logistics.",
+    "fr": "Finances fédérales, stabilité des marchés financiers, fiscalité – la plupart des sujets traités au DFF concernent les finances de l’État et la politique budgétaire. Mais le DFF perçoit aussi les droits de douane et contrôle la circulation des personnes et des marchandises à la frontière. Il fournit aussi des prestations à l’ensemble de l’administration fédérale dans les domaines de l’informatique, des constructions et de la logistique ainsi que du personnel de la Confédération.",
+    "it": "Finanze federali, stabilità della piazza finanziaria, imposte: al DFF molto ruota attorno ai conti pubblici e alla politica finanziaria. Il Dipartimento riscuote imposte e dazi, controlla persone e merci alla frontiera, ma fornisce anche prestazioni di servizi a tutta l’Amministrazione federale, spaziando dall’informatica alle questioni relative al personale fino alla costruzione e alla logistica."
+  },
+  "name": {
+    "de": "Generalsekretariat EFD (GS-EFD)",
+    "en": "General Secretariat FDF (GS-FDF)",
+    "fr": "Secrétariat général DFF (SG-DFF)",
+    "it": "Segreteria generale DFF (SG-DFF)"
+  },
+  "pref_label": {
+    "de": "GS-EFD",
+    "en": "GS-FDF",
+    "fr": "SG-DFF",
+    "it": "SG-DFF"
+  },
+  "homepage": "https://www.efd.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

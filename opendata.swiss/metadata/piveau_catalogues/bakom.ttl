@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/bakom> a dcat:Catalog ;
@@ -20,12 +19,7 @@ L’Ufficio permette ai telespettatori e ai radioascoltatori di informarsi a liv
 L’UFCOM gestisce le frequenze affinché le stazioni radiofoniche, i telefoni cellulari e gli apparecchi senza fili possano comunicare senza interferenze. \r
 Grazie alla sua attività di vigilanza l’UFCOM contribuisce inoltre alla tutela dei consumatori, verificando il rispetto delle disposizioni legali vigenti, in ambiti quali la pubblicità nei programmi radiotelevisivi, i servizi a valore aggiunto offerti tramite i numeri telefonici 090x o l’utilizzazione delle frequenze."""@it ;
     dcterms:modified "2026-05-11T07:27:52.211544"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <> ;
-            foaf:name "Bundesamt für Kommunikation BAKOM"@de,
-                "Federal Office of Communications OFCOM"@en,
-                "Office fédéral de la communication OFCOM"@fr,
-                "Ufficio federale delle comunicazioni UFCOM"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-bakom> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Kommunikation BAKOM"@de,
         "Federal Office of Communications OFCOM"@en,

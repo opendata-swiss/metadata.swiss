@@ -1,0 +1,26 @@
+{
+  "id": "unisante",
+  "identifier": "Unisante",
+  "resource": "https://opendata.swiss/id/organization/unisante",
+  "classification": {
+    "id": "0107",
+    "label": {
+      "de": "Gesellschaft mit beschränkter Haftung (GmbH)",
+      "en": "Limited liability company (LLC)",
+      "fr": "Société à responsabilité limitée (Sàrl)",
+      "it": "Società a garanzia limitata (Sagl)"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0107"
+  },
+  "name": {
+    "en": "Center for Primary Care and Public Health (Unisanté), University of Lausanne, Switzerland",
+    "fr": "Centre universitaire de médecine générale et santé publique (Unisanté), Université de Lausanne, Suisse"
+  },
+  "pref_label": {
+    "en": "Center for Primary Care and Public Health (Unisanté), University of Lausanne, Switzerland",
+    "fr": "Centre universitaire de médecine générale et santé publique (Unisanté), Université de Lausanne, Suisse"
+  },
+  "homepage": "https://www.unisante.ch/",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

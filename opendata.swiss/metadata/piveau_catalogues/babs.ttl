@@ -1,6 +1,5 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <https://example.eu/id/catalogue/babs> a dcat:Catalog ;
@@ -14,12 +13,7 @@ Dans la version 2021 de l'Inventaire, les biens culturels d'importance nationale
         """Inventario della protezione dei beni culturali con oggetti d'importanza nazionale (Inventario PBC)\r
 L’edizione 2021 dell'Inventario comprende circa 3400 oggetti che sono considerati «beni culturali d'importanza nazionale» (costruzioni, collezioni di archivi, biblioteche e musei e siti archeologici). https://map.geo.admin.ch/?topic=kgs  -> IT"""@it ;
     dcterms:modified "2026-05-11T07:32:15.260114"^^xsd:dateTime ;
-    dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <http://www.babs.admin.ch/de/aufgabenbabs/kgs.html> ;
-            foaf:name "Bundesamt für Bevölkerungsschutz BABS"@de,
-                "Federal Office for Civil Protection FOCP"@en,
-                "Office fédéral de la protection de la population OFPP"@fr,
-                "Ufficio federale della protezione della popolazione UFPP"@it ] ;
+    dcterms:publisher <https://opendata.swiss/id/organization/ch-babs> ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
     dcterms:title "Bundesamt für Bevölkerungsschutz BABS"@de,
         "Federal Office for Civil Protection FOCP"@en,

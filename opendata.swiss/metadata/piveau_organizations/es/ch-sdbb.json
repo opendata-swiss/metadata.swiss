@@ -1,0 +1,23 @@
+{
+  "id": "ch-sdbb",
+  "identifier": "CH_SDBB",
+  "resource": "https://opendata.swiss/id/organization/ch-sdbb",
+  "description": {
+    "de": "Das SDBB ist eine Institution der Schweizerischen Konferenz der kantonalen Erziehungsdirektoren EDK. Es erbringt für die Kantone und Verbundpartner Dienstleistungen in der Berufsbildung und der Berufs-, Studien- und Laufbahnberatung."
+  },
+  "name": {
+    "de": "SDBB",
+    "en": "SDBB",
+    "fr": "SDBB",
+    "it": "SDBB"
+  },
+  "pref_label": {
+    "de": "SDBB",
+    "en": "SDBB",
+    "fr": "SDBB",
+    "it": "SDBB"
+  },
+  "homepage": "https://www.sdbb.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

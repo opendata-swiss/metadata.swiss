@@ -1,0 +1,29 @@
+{
+  "id": "ch-bk",
+  "identifier": "CH_BK",
+  "resource": "https://opendata.swiss/id/organization/ch-bk",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Schweizerische Bundeskanzlei (BK)",
+    "en": "Swiss Federal Chancellery (FCh)",
+    "fr": "Chancellerie fédérale (ChF)",
+    "it": "Cancelleria federale (CaF)"
+  },
+  "pref_label": {
+    "de": "BK",
+    "en": "CCh",
+    "fr": "ChF",
+    "it": "CaF"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

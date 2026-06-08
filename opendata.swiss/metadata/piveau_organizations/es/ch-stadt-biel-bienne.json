@@ -1,0 +1,30 @@
+{
+  "id": "ch-stadt-biel-bienne",
+  "identifier": "CH_STADT_BIEL_BIENNE",
+  "resource": "https://opendata.swiss/id/organization/ch-stadt-biel-bienne",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
+  "name": {
+    "de": "Stadt Biel",
+    "en": "City of Biel",
+    "fr": "Ville de Bienne",
+    "it": "citta di Bienne"
+  },
+  "pref_label": {
+    "de": "Stadt Biel",
+    "en": "City of Biel",
+    "fr": "Ville de Bienne",
+    "it": "citta di Bienne"
+  },
+  "homepage": "https://www.biel-bienne.ch/",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -1,0 +1,30 @@
+{
+  "id": "ch-esa",
+  "identifier": "CH_ESA",
+  "resource": "https://opendata.swiss/id/organization/ch-esa",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Eidgenössische Stiftungsaufsicht ESA",
+    "en": "Eidgenössische Stiftungsaufsicht ESA",
+    "fr": "Surveillance fédérale des fondations SFF",
+    "it": "Vigilanza federale sulle fondazioni VFF"
+  },
+  "pref_label": {
+    "de": "ESA",
+    "en": "ESA",
+    "fr": "SFF",
+    "it": "VFF"
+  },
+  "homepage": "https://www.esa.admin.ch/",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ch-openparldata",
+  "identifier": "CH_OPENPARLDATA",
+  "resource": "https://opendata.swiss/id/organization/ch-openparldata",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "OpenParlData.ch",
+    "en": "OpenParlData.ch",
+    "fr": "OpenParlData.ch",
+    "it": "OpenParlData.ch"
+  },
+  "pref_label": {
+    "de": "OpenParlData.ch",
+    "en": "OpenParlData.ch",
+    "fr": "OpenParlData.ch",
+    "it": "OpenParlData.ch"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

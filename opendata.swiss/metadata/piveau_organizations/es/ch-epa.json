@@ -1,0 +1,30 @@
+{
+  "id": "ch-epa",
+  "identifier": "CH_EPA",
+  "resource": "https://opendata.swiss/id/organization/ch-epa",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Eidgenössisches Personalamt EPA",
+    "en": "Eidgenössisches Personalamt EPA",
+    "fr": "Office fédéral du personnel OFPER",
+    "it": "Ufficio federale del personale UFPER"
+  },
+  "pref_label": {
+    "de": "EPA",
+    "en": "EPA",
+    "fr": "OFPER",
+    "it": "UFPER"
+  },
+  "homepage": "https://www.epa.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

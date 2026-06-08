@@ -1,0 +1,49 @@
+{
+  "id": "ch-gogd",
+  "identifier": "CH_GOGD",
+  "resource": "https://opendata.swiss/id/organization/ch-gogd",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Geschäftsstelle Open Government Data (OGD)",
+    "en": "Open Government Data Office (OGD)",
+    "fr": "Secrétariat Open Government Data (OGD)",
+    "it": "Segreteria Open Government Data (OGD)"
+  },
+  "pref_label": {
+    "de": "OGD",
+    "en": "OGD",
+    "fr": "OGD",
+    "it": "OGD"
+  },
+  "homepage": "https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/ogd/geschaeftsstelle.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch1",
+  "ancestors": [
+    {
+      "id": "ch1",
+      "name": {
+        "de": "Bundesamt für Statistik (BFS)",
+        "en": "Federal Statistical Office (FSO)",
+        "fr": "Office Fédéral de la Statistique (OFS)",
+        "it": "Ufficio federale di statistica (UFS)"
+      },
+      "pref_label": {
+        "de": "BFS",
+        "en": "FSO",
+        "fr": "OFS",
+        "it": "UFS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch1",
+      "hierarchy_level": 0
+    }
+  ]
+}

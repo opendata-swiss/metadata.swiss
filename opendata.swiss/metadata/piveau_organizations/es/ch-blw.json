@@ -1,0 +1,49 @@
+{
+  "id": "ch-blw",
+  "identifier": "CH_BLW",
+  "resource": "https://opendata.swiss/id/organization/ch-blw",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bundesamt für Landwirtschaft (BLW)",
+    "en": "Federal Office for Agriculture (FOAG)",
+    "fr": "Office fédéral de l'agriculture (OFAG)",
+    "it": "Ufficio federale dell'agricoltura (UFAG)"
+  },
+  "pref_label": {
+    "de": "BLW",
+    "en": "FOAG",
+    "fr": "OFAG",
+    "it": "UFAG"
+  },
+  "homepage": "https://blw.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-wbf",
+  "ancestors": [
+    {
+      "id": "ch-wbf",
+      "name": {
+        "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+        "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+        "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
+      },
+      "pref_label": {
+        "de": "WBF",
+        "en": "EAR",
+        "fr": "DEFR",
+        "it": "DEFR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf",
+      "hierarchy_level": 0
+    }
+  ]
+}

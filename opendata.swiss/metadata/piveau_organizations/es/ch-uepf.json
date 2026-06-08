@@ -1,0 +1,49 @@
+{
+  "id": "ch-uepf",
+  "identifier": "CH_UEPF",
+  "resource": "https://opendata.swiss/id/organization/ch-uepf",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Dienst Überwachung Post- und Fernmeldeverkehr (ÜPF)",
+    "en": "Post and Telecommunications Surveillance Service (PTSS)",
+    "fr": "Service Surveillance de la correspondance par poste et télécommunication (SCPT)",
+    "it": "Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni (SCPT)"
+  },
+  "pref_label": {
+    "de": "ÜPF",
+    "en": "PTSS",
+    "fr": "SCPT",
+    "it": "SCPT"
+  },
+  "homepage": "https://www.li.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gs-ejpd",
+  "ancestors": [
+    {
+      "id": "ch-gs-ejpd",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)",
+        "en": "General Secretariat Federal Department of Justice and Police (GS-FDJP)",
+        "fr": "Secrétariat général Département fédéral de justice et police (SG-DFJP)",
+        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)"
+      },
+      "pref_label": {
+        "de": "GS-EJPD",
+        "en": "GS-FDJP",
+        "fr": "SG-DFJP",
+        "it": "SG-DFGP"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-ejpd",
+      "hierarchy_level": 0
+    }
+  ]
+}

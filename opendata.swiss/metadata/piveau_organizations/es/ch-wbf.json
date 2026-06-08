@@ -1,0 +1,36 @@
+{
+  "id": "ch-wbf",
+  "identifier": "CH_WBF",
+  "resource": "https://opendata.swiss/id/organization/ch-wbf",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Im WBF sind die Kompetenzen der Schweizer Regierung für alle Fragen zu Wirtschaftsangelegenheiten und Handelspolitik vereint. Verfolgen Sie unsere Strategie für Arbeit, Wachstum und Wohlstand in der Schweiz und zur Sicherung einer nachhaltigen Entwicklung. Das Departement fasst zudem die Bereiche Bildung, Forschung und Innovation zusammen. Diese sind grundlegend für unsere Gesellschaft und die wirtschaftliche Leistungsfähigkeit der Schweiz.",
+    "en": "The EAER is where the federal government’s expertise on economic affairs and trade policy is concentrated. You can follow our strategy for employment, growth and prosperity in Switzerland and for securing sustainable development. Furthermore, the EAER combines education, research and innovation – three areas that are crucial for our society and for Switzerland’s economic performance.",
+    "fr": "Le DEFR est le centre de compétence du gouvernement suisse pour toutes les questions d'économie et de politique commerciale. Prenez connaissance de notre stratégie en matière d'emploi, de croissance et de prospérité en Suisse, et découvrez notre politique de développement durable. Le département chapeaute également la formation, la recherche et l'innovation, trois domaines fondamentaux pour notre société et l'économie de la Suisse.",
+    "it": "Il DEFR riunisce le competenze del governo svizzero per tutte le principali questioni in materia economica e di politica commerciale. Seguite la nostra strategia in materia di lavoro, crescita, benessere e sviluppo sostenibile in Svizzera. In seno al Dipartimento sono inoltre raggruppati i settori della formazione, della ricerca e dell'innovazione, fondamentali per la nostra società e per la produttività del nostro Paese."
+  },
+  "name": {
+    "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+    "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+    "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+    "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
+  },
+  "pref_label": {
+    "de": "WBF",
+    "en": "EAR",
+    "fr": "DEFR",
+    "it": "DEFR"
+  },
+  "homepage": "https://www.wbf.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

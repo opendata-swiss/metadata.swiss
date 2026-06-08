@@ -1,0 +1,39 @@
+{
+  "id": "ch-gs-uvek",
+  "identifier": "CH_GS_UVEK",
+  "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das UVEK kümmert sich um die Stromversorgung, die Verkehrs- und Kommunikationsinfrastruktur, die Raumentwicklung und den Umweltschutz.",
+    "en": "Across its seven federal offices, DETEC is responsible for a wide range of tasks, from ensuring a secure electricity supply through maintaining the transport and communications infrastructure, coordinating spatial development and protecting the environment.",
+    "fr": "Le DETEC s’occupe de différents thèmes : l’électricité, les transports, la communication, l’aménagement du territoire et l’environnement.",
+    "it": "Il DATEC si occupa di approvvigionamento elettrico, infrastrutture dei trasporti e della comunicazione, sviluppo territoriale e protezione dell’ambiente.",
+    "rm": ""
+  },
+  "name": {
+    "de": "Generalsekretariat des UVEK (GS-UVEK)",
+    "en": "General Secretariat DETEC (GS-DETEC)",
+    "fr": "Secrétariat général du DETEC (SG-DETEC)",
+    "it": "Segreteria generale del DATEC (SG-DATEC)",
+    "rm": ""
+  },
+  "pref_label": {
+    "de": "GS-UVEK",
+    "en": "GS-DETEC",
+    "fr": "SG-DETEC",
+    "it": "SG-DATEC",
+    "rm": ""
+  },
+  "homepage": "https://www.uvek.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

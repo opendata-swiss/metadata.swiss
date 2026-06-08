@@ -1,0 +1,30 @@
+{
+  "id": "ch-vd-ocdc",
+  "identifier": "CH_VD_OCDC",
+  "resource": "https://opendata.swiss/id/organization/ch-vd-ocdc",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "en": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "fr": "VD: Office cantonal de la durabilité et du climat OCDC",
+    "it": "VD: Office cantonal de la durabilité et du climat OCDC"
+  },
+  "pref_label": {
+    "de": "OCDC",
+    "en": "OCDC",
+    "fr": "OCDC",
+    "it": "OCDC"
+  },
+  "homepage": "https://www.vd.ch/dadn/ocdc",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

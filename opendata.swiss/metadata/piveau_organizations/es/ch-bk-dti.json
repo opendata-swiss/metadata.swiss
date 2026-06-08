@@ -1,0 +1,49 @@
+{
+  "id": "ch-bk-dti",
+  "identifier": "CH_BK_DTI",
+  "resource": "https://opendata.swiss/id/organization/ch-bk-dti",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Bereich digitale Transformation und IKT-Lenkung (DTI) der Bundeskanzlei (BK)",
+    "en": "Digital Transformation and ICT Steering Sector (DTI) of the Federal Chancellery (FCh)",
+    "fr": "Secteur Transformation numérique et gouvernance de l'informatique (TNI) de la Chancellerie fédérale (ChF)",
+    "it": "Settore Trasformazione digitale e governance delle TIC (TDT) della Cancelleria federale (CaF)"
+  },
+  "pref_label": {
+    "de": "BK-DTI",
+    "en": "FCh-DTI",
+    "fr": "ChF-TNI",
+    "it": "CaF-TDT"
+  },
+  "homepage": "https://www.bk.admin.ch/bk/de/home/digitale-transformation-ikt-lenkung/bereichdti.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-bk",
+  "ancestors": [
+    {
+      "id": "ch-bk",
+      "name": {
+        "de": "Schweizerische Bundeskanzlei (BK)",
+        "en": "Swiss Federal Chancellery (FCh)",
+        "fr": "Chancellerie fédérale (ChF)",
+        "it": "Cancelleria federale (CaF)"
+      },
+      "pref_label": {
+        "de": "BK",
+        "en": "CCh",
+        "fr": "ChF",
+        "it": "CaF"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bk",
+      "hierarchy_level": 0
+    }
+  ]
+}

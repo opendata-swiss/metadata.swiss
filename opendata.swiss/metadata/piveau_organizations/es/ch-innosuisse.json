@@ -1,0 +1,38 @@
+{
+  "id": "ch-innosuisse",
+  "identifier": "CH_INNOSUISSE",
+  "resource": "https://opendata.swiss/id/organization/ch-innosuisse",
+  "name": {
+    "de": "Schweizerische Agentur für Innovationsföderung Innosuisse",
+    "en": "Swiss Innovation Agency Innosuisse",
+    "fr": "Agence suisse pour l’encouragement de l’innovation Innosuisse",
+    "it": "Agenzia svizzera per la promozione dell'innovazione Innosuisse"
+  },
+  "pref_label": {
+    "de": "Schweizerische Agentur für Innovationsföderung Innosuisse",
+    "en": "Swiss Innovation Agency Innosuisse",
+    "fr": "Agence suisse pour l’encouragement de l’innovation Innosuisse",
+    "it": "Agenzia svizzera per la promozione dell'innovazione Innosuisse"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-wbf",
+  "ancestors": [
+    {
+      "id": "ch-wbf",
+      "name": {
+        "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+        "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+        "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
+      },
+      "pref_label": {
+        "de": "WBF",
+        "en": "EAR",
+        "fr": "DEFR",
+        "it": "DEFR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf",
+      "hierarchy_level": 0
+    }
+  ]
+}
