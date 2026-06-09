@@ -4,9 +4,12 @@
       <div class="card__body">
         <p class="meta-info">
           <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
-          <span class="meta-info__item">{{ props.dataset.publisher?.name }}</span>
           <span
-            v-if="props.dataset.releaseDate"
+            v-if="props.dataset.publisher"
+            class="meta-info__item"
+          >{{ props.dataset.publisher?.name }}</span>
+          <span
+            v-if="props.dataset.releaseDate && !props.dataset.modificationDate"
             class="meta-info__item"
           ><NuxtTime
             :datetime="props.dataset.releaseDate"
@@ -27,16 +30,17 @@
       </div>
       <div class="card__footer">
         <div class="card__footer__info">
+          <br>
           <p class="meta-info">
-            <span
-              class="meta-info__item"
-              style="color:magenta"
-            >{{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }}</span>
-            <span class="meta-info__item">{{ props.dataset.keywords.map(k => k.label).join(', ') }}</span>
-            <span
-              class="meta-info__item"
-              style="color:red"
-            >{{ (props.dataset.getOdsFormats ?? []).map(f => f.label).join(', ') }}</span>
+            <span class="meta-info__item">
+              <i>{{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }}</i>
+            </span>
+          </p>
+          <p class="meta-info">
+            <OdsTagList
+              v-if="props.dataset.keywords.length > 0"
+              :tags="[...props.dataset.formats, ...props.dataset.keywords]"
+            />
             <span class="meta-info__item">
               <CommentCount
                 :page-id="`dataset-${props.dataset.id}`"
@@ -75,6 +79,7 @@ import { useI18n } from '#imports'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import type { LocationQueryRaw } from 'vue-router'
 import { CommentCount } from '@hyvor/hyvor-talk-vue'
+import OdsTagList from '../dataset-detail/OdsTagList.vue'
 
 const { t, locale } = useI18n()
 

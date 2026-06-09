@@ -215,6 +215,18 @@ export class DcatApChV2DatasetAdapter {
     return this.#dataset?.getOdsFormats ?? []
   }
 
+  get formats(): TagItem[] {
+    return (this.#dataset?.getOdsFormats ?? []).map((format) => {
+      const tagItem = {
+        id: format.id,
+        label: format.label,
+        size: 'ods',
+        variant: 'light',
+      } as TagItem
+      return tagItem
+    })
+  }
+
   /**
    * Get the keywords of the dataset. The language handling is done by piveau.
    * We convert the keywords into TagItem objects for easier handling in the UI.
@@ -235,7 +247,7 @@ export class DcatApChV2DatasetAdapter {
       const tagItem = {
         id: keyword.id,
         label: keyword.label,
-        size: 'sm',
+        size: 'ods',
       } as TagItem
       return tagItem
     })
