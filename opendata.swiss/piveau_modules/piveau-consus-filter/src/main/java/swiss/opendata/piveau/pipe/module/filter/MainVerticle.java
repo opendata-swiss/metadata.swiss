@@ -9,6 +9,10 @@ import io.vertx.core.Launcher;
 import io.vertx.core.Promise;
 import io.vertx.core.json.JsonObject;
 
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
@@ -197,6 +201,35 @@ public class MainVerticle extends AbstractVerticle {
         }
     }
 
+    public static void checkKeywords(Model model, Resource dataset) {
+        for (RDFNode node : model.listObjectsOfProperty(dataset, DCAT.keyword).toList()) {
+            if (node.isURIResource()) {
+                String keyword = node.asResource().getURI();
+                if (keyword.startsWith("https://register.ld.admin.ch/termdat/")) {
+                    for (RDFNode name : queryLindasForNames(keyword)) {
+                        logger.info("Adding keyword {} for URI {}", name, keyword);
+                        model.add(dataset, DCAT.keyword, name);
+                    }
+                }
+            }
+        }
+    }
+
+    private static List<RDFNode> queryLindasForNames(String keyword) {
+        List<RDFNode> names = new ArrayList<>();
+        Query query = org.apache.jena.query.QueryFactory.create(
+            "PREFIX schema: <http://schema.org/>\n" +
+            "SELECT ?name FROM <https://lindas.admin.ch/fch/termdat> WHERE { <" + keyword + "> schema:name ?name }"
+        );
+        ResultSet resultSet = QueryExecution.service("https://lindas.admin.ch/query").query(query).build().execSelect();
+        while (resultSet.hasNext()) {
+            QuerySolution solution = resultSet.next();
+            names.add(solution.get("name"));
+        }
+
+        return names;
+    }
+
     class ErrorHandler implements Consumer<String> {        
         private JsonObject config;
         private List<String> errors = new ArrayList<>();
@@ -282,6 +315,7 @@ public class MainVerticle extends AbstractVerticle {
         checkConformsTo(model, dataset, errorHandler);
         checkLicense(model, dataset, errorHandler);
         checkSpatial(model, dataset);
+        checkKeywords(model, dataset);
 
         if (errorHandler.hasErrors()) {
             errorHandler.notifyErrors();
