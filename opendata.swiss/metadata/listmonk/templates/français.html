@@ -9,7 +9,7 @@
     <ul>
     {{ range .Tx.Data.datasets }}
         <li>
-            <a href="{{ .Tx.Data.datasetPageBaseUrl }}{{ .id }}">{{ .title }}</a>
+            <a href="{{ $.Tx.Data.datasetPageBaseUrl }}{{ .id }}">{{ .title }}</a>
         </li>
     {{ end }}
     </ul>
