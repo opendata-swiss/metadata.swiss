@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import LanguageSelector from '../LanguageSelector.vue'
-import OdsButton from '../OdsButton.vue'
+import OdsButton from '../content/OdsButton.vue'
 
 import { useI18n } from '#imports'
 
