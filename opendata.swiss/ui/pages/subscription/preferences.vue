@@ -106,7 +106,7 @@ import OdsSelect from '../../app/components/OdsSelect.vue'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
-import OdsButton from '../../app/components/OdsButton.vue'
+import OdsButton from '../../app/components/content/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
 import { APP_LANGUAGES, type AppLanguage } from '../../app/constants/langages'
 

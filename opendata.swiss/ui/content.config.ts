@@ -31,6 +31,8 @@ export default defineContentConfig({
         subHeading: z.string().optional(),
         permalink: z.string().optional(),
         parent: z.string().optional(),
+        heroImage: z.string().optional(),
+        noToc: z.boolean().optional(),
         mainMenu: z.boolean().optional(),
         after: z.string().optional(),
         rawbody: z.string(),

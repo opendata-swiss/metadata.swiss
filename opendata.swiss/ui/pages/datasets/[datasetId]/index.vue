@@ -15,9 +15,10 @@ import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTa
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
-import OdsButton from '../../../app/components/OdsButton.vue'
+import OdsButton from '../../../app/components/content/OdsButton.vue'
 import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
+import Hero from '../../../app/components/OdsHero.vue'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
 
@@ -128,42 +129,38 @@ await suspense()
       </ClientOnly>
     </header>
     <main id="main-content">
-      <section class="hero hero--default">
-        <div class="container container--grid gap--responsive">
-          <div class="hero__content">
-            <OdsDatasetMetaInfo :dataset="dataset" />
-            <h1 class="hero__title">
-              {{ dataset.title }}
-            </h1>
-            <MDC :value="dataset.description" />
-            <!----><!---->
-            <aside
-              v-if="dataset.publisher"
-              class="authors"
-            >
-              <div
-                class="disc-images"
-                aria-hidden="true"
+      <Hero type="default">
+        <template #description>
+          <OdsDatasetMetaInfo :dataset="dataset" />
+
+          <MDC :value="dataset.description" />
+        </template>
+
+        <template #title>
+          {{ dataset.title }}
+        </template>
+
+        <template #authors>
+          <div
+            class="disc-images"
+            aria-hidden="true"
+          >
+            <div class="disc-image">
+              <img
+                src="https://picsum.photos/120/120/?image=29"
+                :title="dataset.publisher.name"
               >
-                <div class="disc-image">
-                  <img
-                    src="https://picsum.photos/120/120/?image=29"
-                    :title="dataset.publisher.name"
-                  >
-                </div>
-              </div>
-              <address class="authors__names">
-                <a
-                  class="link author__name link--external"
-                  target="_blank"
-                  :href="dataset.publisher.resource"
-                >{{ dataset.publisher.name }}</a>
-              </address>
-            </aside>
+            </div>
           </div>
-          <!---->
-        </div>
-      </section>
+          <address class="authors__names">
+            <a
+              class="link author__name link--external"
+              target="_blank"
+              :href="dataset.publisher.resource"
+            >{{ dataset.publisher.name }}</a>
+          </address>
+        </template>
+      </Hero>
       <section class="section">
         <div class="container container--grid gap--responsive">
           <div class="container__main vertical-spacing">

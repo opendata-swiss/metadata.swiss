@@ -72,7 +72,7 @@
 
 <script setup lang="ts">
 import SvgIcon from '../SvgIcon.vue'
-import OdsButton from '../OdsButton.vue'
+import OdsButton from '../content/OdsButton.vue'
 import { useI18n } from '#imports'
 import type { DcatApChV2DistributionAdapter } from './model/dcat-ap-ch-v2-distribution-adapter'
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'

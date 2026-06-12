@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OdsCard from '~/components/OdsCard.vue'
+import OdsCard from './content/OdsCard.vue'
 import SvgIcon from '~/components/SvgIcon.vue'
 
 const { t } = useI18n()
@@ -61,13 +61,19 @@ onUnmounted(() => {
 <template>
   <OdsCard :title="t('message.ods_toc.contents')">
     <ul class="menu text--sm">
-      <li v-for="heading in toc.links" :key="heading.id">
+      <li
+        v-for="heading in toc.links"
+        :key="heading.id"
+      >
         <a
           :href="`#${heading.id}`"
           :class="['menu__item', 'menu__item--border', 'menu__item--condensed', { 'menu__item--active': heading.id === activeHeadingId }]"
         >
           <div>{{ heading.text }}</div>
-          <SvgIcon icon="ArrowAngleBottomLeft" role="menu__item" />
+          <SvgIcon
+            icon="ArrowAngleBottomLeft"
+            role="menu__item"
+          />
         </a>
       </li>
     </ul>

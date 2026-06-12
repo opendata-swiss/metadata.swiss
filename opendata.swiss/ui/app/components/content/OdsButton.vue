@@ -6,10 +6,18 @@
     :title="title"
   >
     <slot name="icon">
-      <SvgIcon v-if="icon" :icon="icon" :size="size" class="btn__icon"/>
+      <SvgIcon
+        v-if="icon"
+        :icon="icon"
+        :size="size"
+        class="btn__icon"
+      />
     </slot>
     <span class="btn__text">
-      <a v-if="href" :href="href">
+      <a
+        v-if="href"
+        :href="href"
+      >
         <slot>{{ title }}</slot>
       </a>
       <slot v-else>{{ title }}</slot>
@@ -19,7 +27,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import SvgIcon from '~/components/SvgIcon.vue'
+import SvgIcon from '../SvgIcon.vue'
 
 const { title, iconOnly = false, ...props } = defineProps<{
   title?: string
