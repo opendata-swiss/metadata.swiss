@@ -24,32 +24,52 @@ const classes = computed(() => {
     </div>
     <div class="card__content">
       <div class="card__body">
-        <p v-if="$slots['top-meta']" class="meta-info">
+        <p
+          v-if="$slots['top-meta']"
+          class="meta-info"
+        >
           <slot name="top-meta" />
         </p>
-        <div class="card__title">
-          <h3>{{ title }}</h3>
-        </div>
-        <div v-if="$slots.image && type === 'universal'" class="card__image">
+        <slot name="title">
+          <div class="card__title">
+            <h3>{{ title }}</h3>
+          </div>
+        </slot>
+        <div
+          v-if="$slots.image && type === 'universal'"
+          class="card__image"
+        >
           <slot name="image" />
         </div>
-        <slot/>
+        <slot />
 
-        <p v-if="$slots['bottom-meta']" class="meta-info">
+        <p
+          v-if="$slots['bottom-meta']"
+          class="meta-info"
+        >
           <slot name="bottom-meta" />
         </p>
-        <div v-if="$slots.icons" class="card__content-icons">
-          <slot name="icons"/>
+        <div
+          v-if="$slots.icons"
+          class="card__content-icons"
+        >
+          <slot name="icons" />
         </div>
       </div>
       <div class="card__footer">
         <div class="card__footer__info">
-          <p v-if="$slots['footer-info']" class="meta-info">
-            <slot name="footer-info"/>
+          <p
+            v-if="$slots['footer-info']"
+            class="meta-info"
+          >
+            <slot name="footer-info" />
           </p>
         </div>
-        <div v-if="$slots['footer-action']" class="card__footer__action">
-          <slot name="footer-action"/>
+        <div
+          v-if="$slots['footer-action']"
+          class="card__footer__action"
+        >
+          <slot name="footer-action" />
         </div>
       </div>
     </div>

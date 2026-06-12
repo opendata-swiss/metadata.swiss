@@ -78,7 +78,7 @@
 
 <script setup lang="ts">
 import { useI18n } from '#imports'
-import OdsCard from '~/components/OdsCard.vue'
+import OdsCard from '../content/OdsCard.vue'
 import SvgIcon from '~/components/SvgIcon.vue'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import type { LocationQueryRaw } from 'vue-router'

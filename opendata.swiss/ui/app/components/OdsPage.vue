@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Comments } from '@hyvor/hyvor-talk-vue'
 import OdsToc from '~/components/OdsToc.vue'
+import Hero from '~/components/OdsHero.vue'
 import type { PagesCollectionItem } from '@nuxt/content'
 
 const { locale } = useI18n()
 
 const { comments: { websiteId } } = useRuntimeConfig().public
-type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading'> & Partial<Pick<PagesCollectionItem, 'body'>>
+type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading' | 'heroImage' | 'noToc'> & Partial<Pick<PagesCollectionItem, 'body'>>
 
 const { page } = defineProps<{
   page?: Page
@@ -19,34 +20,44 @@ const { page } = defineProps<{
     <slot name="header" />
   </header>
   <div id="main-content">
-    <section
+    <Hero
       v-if="page"
-      class="hero hero--default"
+      :type="page.heroImage ? 'main-image' : 'default'"
     >
-      <div class="container container--grid gap--responsive">
-        <div class="hero__content">
-          <h1 class="hero__title">
-            {{ page.heading || page.title }}
-          </h1>
-          <div class="hero__description">
-            <slot name="hero-subheading">
-              <MDC
-                v-if="page.subHeading"
-                :value="page.subHeading"
-              />
-            </slot>
-          </div>
-        </div>
-      </div>
-    </section>
+      <template #title>
+        {{ page.heading || page.title }}
+      </template>
+      <template #description>
+        <slot name="hero-subheading">
+          <MDC
+            v-if="page.subHeading"
+            :value="page.subHeading"
+          />
+        </slot>
+      </template>
+
+      <template
+        v-if="page.heroImage"
+        #image
+      >
+        <NuxtImg :src="page.heroImage" />
+      </template>
+    </Hero>
     <slot>
-      <section class="section section--py">
-        <div class="container container--grid container--reverse-mobile gap--responsive">
+      <section
+        v-if="page"
+        class="section section--py"
+      >
+        <ContentRenderer
+          v-if="page.noToc"
+          :value="page"
+        />
+        <div
+          v-else
+          class="container container--grid container--reverse-mobile gap--responsive"
+        >
           <div class="container__main vertical-spacing">
-            <ContentRenderer
-              v-if="page"
-              :value="page"
-            />
+            <ContentRenderer :value="page" />
           </div>
           <div class="container__aside">
             <div
