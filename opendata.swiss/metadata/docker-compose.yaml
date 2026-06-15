@@ -29,7 +29,7 @@ services:
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
     volumes:
-      - ./piveau_pipes:/usr/verticles/pipes
+      - ./piveau_system_pipes:/usr/verticles/pipes
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
