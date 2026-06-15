@@ -1,4 +1,13 @@
 <template>
   <span class="meta-info__item">
-    <slot /></span>
+    <slot>
+      {{ text }}
+    </slot>
+  </span>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+  text?: string
+}>()
+</script>
