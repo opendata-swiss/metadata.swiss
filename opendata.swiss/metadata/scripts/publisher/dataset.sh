@@ -20,8 +20,6 @@ KEYCLOAK_REALM="lindas-next"
 KEYCLOAK_TOKEN_ENDPOINT="${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/token"
 KEYCLOAK_TOKEN_AUDIENCE="piveau-hub-repo"
 
-HUB_REPO_ENDPOINT="https://piveau-hub-repo.test.ods.zazukoians.org"
-
 echo "${KEYCLOAK_TOKEN_ENDPOINT}"
 
 CATALOGUE_NAME="${1:-}"
