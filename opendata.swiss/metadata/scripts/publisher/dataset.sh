@@ -16,7 +16,10 @@ KEYCLOAK_CLIENT_ID="bfs-publisher-apitest"
 # KEYCLOAK_CLIENT_SECRET env variable required to be set
 
 KEYCLOAK_URL="https://keycloak.zazukoians.org"
-KEYCLOAK_REALM="lindas-next"
+
+# KEYCLOAK_REALM="lindas-next"    # TEST environment: "lindas-next"
+KEYCLOAK_REALM="lindas-next-int"    # INT  environment: "lindas-next-int"
+
 KEYCLOAK_TOKEN_ENDPOINT="${KEYCLOAK_URL}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/token"
 KEYCLOAK_TOKEN_AUDIENCE="piveau-hub-repo"
 
