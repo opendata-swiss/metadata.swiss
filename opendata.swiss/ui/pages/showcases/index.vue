@@ -20,17 +20,13 @@ import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { useVocabularySearch } from '../../app/piveau/vocabularies'
 import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
 import { useSorting } from '../../app/composables/sort'
+import OdsButton from '../../app/components/content/OdsButton.vue'
 
 const { locale, t } = useI18n()
 
+const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()
-
-const { data: showcasesExplanation } = await useAsyncData(route.path, () => {
-  return queryCollection('pages')
-    .where('path', 'LIKE', `%showcases-explanation.${locale.value}`)
-    .first()
-})
 
 const searchInput = ref(route.query.q)
 
@@ -209,7 +205,21 @@ const sortOptions = computed(() => {
 </script>
 
 <template>
-  <OdsPage>
+  <OdsPage :hero="{ image: 'https://picsum.photos/1192/894/?image=29', title: t('message.showcase.hero.title') }">
+    <template #hero-content>
+      <p>
+        {{ t('message.showcase.hero.text') }}
+      </p>
+      <br>
+      <p>
+        <OdsButton
+          variant="outline"
+          :href="localePath('/showcases/submit')"
+        >
+          {{ t('message.header.navigation.showcase_submit') }}
+        </OdsButton>
+      </p>
+    </template>
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
@@ -293,24 +303,6 @@ const sortOptions = computed(() => {
           </li>
         </ul>
       </div>
-      <section class="section bg--secondary-900">
-        <div class="container">
-          <h2 class="section__title">
-            {{ showcasesExplanation.title }}
-          </h2>
-
-          <div class="card card--highlight">
-            <div class="card__content">
-              <div
-                class="card__body"
-                style="padding-bottom: 2em"
-              >
-                <MDC :value="showcasesExplanation.rawbody" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </OdsSearchResults>
   </OdsPage>
 </template>

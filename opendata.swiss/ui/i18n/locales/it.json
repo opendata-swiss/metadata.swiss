@@ -118,6 +118,10 @@
       "submitted_by": "Inviato da",
       "externalLink": "Link esterno",
       "open": "Apri sito web",
+      "hero": {
+        "title": "Cosa sono gli showcase?",
+        "text": "I dataset sono stati utilizzati per creare app, siti web e visualizzazioni. Sono stati presentati in articoli e citati in servizi giornalistici e post di blog. Gli showcase raccolgono i migliori esempi di utilizzo dei dataset per offrire ulteriori spunti, idee e ispirazione."
+      },
       "search": {
         "dataset_references": "{count} set di dati",
                 "prompt": "Cerca showcases",
