@@ -77,7 +77,7 @@ useSeoMeta({
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
 
-    <template #hero-subheading>
+    <template #hero-content>
       <img
         v-if="showcase.image"
         :src="showcase.image"
