@@ -33,6 +33,11 @@ const searchResultToLink = (result: SearchResult) => {
   }
 }
 
+const searchResultToImage = (result: SearchResult) => {
+  const article = blog.find(({ path }) => result.id.startsWith(path))
+  return article?.image || ''
+}
+
 if (error.value) {
   console.error('Failed to fetch blog search sections', error.value)
 }
@@ -59,5 +64,6 @@ useSeoMeta({
     :breadcrumbs="breadcrumbs"
     :data="sections"
     :search-result-to-link="searchResultToLink"
+    :search-result-to-image="searchResultToImage"
   />
 </template>

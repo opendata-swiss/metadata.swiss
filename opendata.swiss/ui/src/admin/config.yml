@@ -178,6 +178,11 @@ collections:
         label: Subheading
         widget: markdown
         i18n: true
+      - name: image
+        label: Image
+        widget: image
+        i18n: true
+        required: true
       - name: body
         label: Body
         widget: markdown
