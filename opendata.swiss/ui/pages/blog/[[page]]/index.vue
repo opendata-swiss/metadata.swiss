@@ -90,9 +90,15 @@ const onSearch = (value) => {
             >
               <OdsCard
                 :title="post.title"
-                type="universal"
                 clickable
               >
+                <template #image>
+                  <NuxtImg
+                    :src="post.image"
+                    :alt="post.title"
+                  />
+                </template>
+
                 <template #top-meta>
                   <NuxtTime
                     class="meta-info__item"
