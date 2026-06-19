@@ -1,21 +1,23 @@
 <template>
   <section
-    class="section section--default bg--secondary-50"
+    :class="{ 'section section--default bg--secondary-50': !small }"
     :aside="aside ? 'true' : 'false'"
   >
     <div class="container">
-      <h3
-        v-if="aside"
-        class="h3"
-      >
-        {{ title || t('message.dataset_search.search_results') }}
-      </h3>
-      <h1
-        v-else
-        class="h1"
-      >
-        {{ title || t('message.dataset_search.search_results') }}
-      </h1>
+      <template v-if="!small">
+        <h3
+          v-if="aside"
+          class="h3"
+        >
+          {{ title || t('message.dataset_search.search_results') }}
+        </h3>
+        <h1
+          v-else
+          class="h1"
+        >
+          {{ title || t('message.dataset_search.search_results') }}
+        </h1>
+      </template>
       <div class="search search--large search--page-result">
         <div class="search__group">
           <input
@@ -67,6 +69,7 @@ interface PropTypes {
   searchInput: string | string[]
   searchPrompt: string
   aside?: boolean
+  small?: boolean
   title?: string
   facetRefs?: Record<string, Ref<string[]>>
   activeFacets?: SearchResultFacetGroupLocalized[]
