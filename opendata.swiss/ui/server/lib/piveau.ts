@@ -1,4 +1,5 @@
 import type { AppLanguage } from '~/constants/langages'
+import type { NodeObject } from 'jsonld'
 
 interface Category {
   id: string
@@ -107,5 +108,40 @@ export class HubSearch {
         }
       } while (scrollRes.ok)
     }.bind(this)
+  }
+}
+
+interface ResourceId {
+  id: string
+  resourceType: string
+  catalogId: string
+}
+
+export class HubRepo {
+  constructor(private baseUrl: string, private authToken: string, private _fetch = fetch) {}
+
+  async getResource({ id, resourceType, catalogId }: ResourceId): Promise<NodeObject> {
+    const url = new URL(`/resources/${resourceType}/${id}?catalogId=${catalogId}`, this.baseUrl)
+
+    const res = await this._fetch(url)
+
+    return res.ok ? res.json() : Promise.reject(res)
+  }
+
+  async putResource(id: ResourceId, body: NodeObject): Promise<void> {
+    const url = new URL(`/resources/${id.resourceType}?id=${id.id}&catalogId=${id.catalogId}`, this.baseUrl)
+
+    const res = await this._fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Authorization': `Bearer ${this.authToken}`,
+        'Content-Type': 'application/ld+json',
+      },
+    })
+
+    if (!res.ok) {
+      return Promise.reject(res)
+    }
   }
 }

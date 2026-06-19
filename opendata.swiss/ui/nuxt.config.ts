@@ -66,12 +66,20 @@ export default defineNuxtConfig({
     appUrl: 'http://localhost:3000/',
     showcases: {
       maxImageWidth: 900,
+      catalogId: 'showcases-ods',
+      resourceType: 'showcase',
     },
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
         realm: 'lindas-next',
         clientId: 'piveau-hub-ui',
+        clients: {
+          hubRepo: {
+            clientId: 'piveau-hub-repo',
+            clientSecret: '',
+          },
+        },
       },
     },
     apiTunerTests: false,

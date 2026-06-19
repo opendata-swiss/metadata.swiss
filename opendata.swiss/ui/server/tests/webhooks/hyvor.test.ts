@@ -1,11 +1,12 @@
-import type { Comment, Page } from '#server/lib/webhooks/hyvor'
+import type { Comment, Page, Rating } from '#server/lib/webhooks/hyvor'
 import Hyvor from '../../lib/webhooks/hyvor'
-import type { HubSearch } from '../../lib/piveau'
+import type { HubRepo, HubSearch } from '../../lib/piveau'
 import type { ListmonkConfig } from '../../lib/listmonk'
 import Listmonk from '../../lib/listmonk'
 import sinon from 'sinon'
 import { expect } from 'chai'
 import waitUntil from 'async-wait-until'
+import type { NitroRuntimeConfig } from 'nitropack/types'
 
 describe('Hyvor Webhooks', () => {
   describe('handleComment', () => {
@@ -17,9 +18,11 @@ describe('Hyvor Webhooks', () => {
         },
       } as unknown as Listmonk
       const config = {
-        publisherNotificationTemplateId: 4,
-      }
-      const piveau = {
+        hyvor: {
+          publisherNotificationTemplateId: 4,
+        },
+      } as unknown as NitroRuntimeConfig
+      const hubSearch = {
         datasets: {
           get: sinon.stub().resolves({
             id: '123',
@@ -33,7 +36,7 @@ describe('Hyvor Webhooks', () => {
           }),
         },
       } as unknown as HubSearch
-      const hyvor = new Hyvor(config, listmonk, piveau)
+      const hyvor = new Hyvor(config, listmonk, hubSearch, {} as HubRepo)
       const comment: Comment = {
         parent: null,
         user: {
@@ -43,6 +46,9 @@ describe('Hyvor Webhooks', () => {
           identifier: 'dataset-123',
           url: 'https://example.com/dataset/123',
           title: 'Dataset',
+          ratings: {
+            average: 0,
+          },
         },
         body_html: '',
         status: 'published',
@@ -97,9 +103,11 @@ describe('Hyvor Webhooks', () => {
           },
         } as ListmonkConfig)
         const config = {
-          publisherNotificationTemplateId: 5,
-        }
-        const piveau = {
+          hyvor: {
+            publisherNotificationTemplateId: 5,
+          },
+        } as unknown as NitroRuntimeConfig
+        const hubSearch = {
           datasets: {
             get: sinon.stub().resolves({
               id: '123',
@@ -113,7 +121,7 @@ describe('Hyvor Webhooks', () => {
             }),
           },
         } as unknown as HubSearch
-        const hyvor = new Hyvor(config, listmonk, piveau)
+        const hyvor = new Hyvor(config, listmonk, hubSearch, {} as HubRepo)
         const comment: Comment = {
           parent: null,
           user: {
@@ -123,6 +131,9 @@ describe('Hyvor Webhooks', () => {
             identifier: 'dataset-123',
             url: 'https://example.com/dataset/123',
             title: 'Test Dataset',
+            ratings: {
+              average: 0,
+            },
           },
           body_html: '<p>Comment</p>',
           history: [],
@@ -157,9 +168,11 @@ describe('Hyvor Webhooks', () => {
         },
       } as unknown as Listmonk
       const config = {
-        publisherNotificationTemplateId: 4,
-      }
-      const hyvor = new Hyvor(config, listmonk, {} as HubSearch)
+        hyvor: {
+          publisherNotificationTemplateId: 4,
+        },
+      } as unknown as NitroRuntimeConfig
+      const hyvor = new Hyvor(config, listmonk, {} as HubSearch, {} as HubRepo)
       const comment: Comment = {
         parent: <Comment>{},
         page: <Page>{},
@@ -186,9 +199,11 @@ describe('Hyvor Webhooks', () => {
         },
       } as unknown as Listmonk
       const config = {
-        publisherNotificationTemplateId: 4,
-      }
-      const piveau = {
+        hyvor: {
+          publisherNotificationTemplateId: 4,
+        },
+      } as unknown as NitroRuntimeConfig
+      const hubSearch = {
         datasets: {
           get: sinon.stub().resolves({
             id: '123',
@@ -202,13 +217,16 @@ describe('Hyvor Webhooks', () => {
           }),
         },
       } as unknown as HubSearch
-      const hyvor = new Hyvor(config, listmonk, piveau)
+      const hyvor = new Hyvor(config, listmonk, hubSearch, {} as HubRepo)
       const comment: Comment = {
         parent: null,
         page: {
           identifier: 'dataset-123',
           url: 'https://example.com/dataset/123',
           title: 'Dataset',
+          ratings: {
+            average: 0,
+          },
         },
         user: {
           email: 'test@example.com',
@@ -233,9 +251,11 @@ describe('Hyvor Webhooks', () => {
         },
       } as unknown as Listmonk
       const config = {
-        publisherNotificationTemplateId: 4,
-      }
-      const piveau = {
+        hyvor: {
+          publisherNotificationTemplateId: 4,
+        },
+      } as unknown as NitroRuntimeConfig
+      const hubSearch = {
         datasets: {
           get: sinon.stub().resolves({
             id: '123',
@@ -249,13 +269,16 @@ describe('Hyvor Webhooks', () => {
           }),
         },
       } as unknown as HubSearch
-      const hyvor = new Hyvor(config, listmonk, piveau)
+      const hyvor = new Hyvor(config, listmonk, hubSearch, {} as HubRepo)
       const comment: Comment = {
         parent: null,
         page: {
           identifier: 'dataset-123',
           url: 'https://example.com/dataset/123',
           title: 'Dataset',
+          ratings: {
+            average: 0,
+          },
         },
         user: {
           email: 'test@example.com',
@@ -299,10 +322,12 @@ describe('Hyvor Webhooks', () => {
         },
       } as unknown as Listmonk
       const config = {
-        publisherNotificationTemplateId: 0,
-      }
-      const piveau = { } as unknown as HubSearch
-      const hyvor = new Hyvor(config, listmonk, piveau)
+        hyvor: {
+          publisherNotificationTemplateId: 0,
+        },
+      } as unknown as NitroRuntimeConfig
+      const hubSearch = { } as unknown as HubSearch
+      const hyvor = new Hyvor(config, listmonk, hubSearch, {} as HubRepo)
       const comment: Comment = {
         parent: null,
         page: <Page>{},
@@ -319,6 +344,85 @@ describe('Hyvor Webhooks', () => {
 
       // then
       expect(listmonk.transactional.send).not.to.have.been.called
+    })
+  })
+
+  describe('handleRating', () => {
+    it('returns error when payload does not contain page data', async () => {
+      // given
+      const hyvor = new Hyvor({} as NitroRuntimeConfig, {} as Listmonk, {} as HubSearch, {} as HubRepo)
+
+      // when
+      const err = await hyvor.handleRating({} as Rating)
+
+      // then
+      expect(err).to.be.an('error')
+    })
+
+    it('returns error when payload page identifier is not in expected format', async () => {
+      // given
+      const hyvor = new Hyvor({} as NitroRuntimeConfig, {} as Listmonk, {} as HubSearch, {} as HubRepo)
+
+      // when
+      const err = await hyvor.handleRating({
+        page: {
+          url: 'https://example.com/dataset/123',
+          title: 'Dataset',
+          identifier: 'dataset-sugus',
+          ratings: {
+            average: 4.5,
+          },
+        },
+      } as unknown as Rating)
+
+      // then
+      expect(err).to.be.an('error')
+    })
+
+    it('retrieves and updates showcase resource', async () => {
+      // given
+      const identifier = 'showcase/sugus'
+      const catalogId = 'showcases-ods'
+      const resourceType = 'showcase'
+      const hubRepo = {
+        getResource: sinon.stub().resolves({}),
+        putResource: sinon.stub().resolves(),
+      } as unknown as HubRepo
+      const config = {
+        showcases: {
+          catalogId,
+          resourceType,
+        },
+      } as NitroRuntimeConfig
+
+      const hyvor = new Hyvor(config, {} as Listmonk, {} as HubSearch, hubRepo)
+
+      // when
+      const res = await hyvor.handleRating({
+        page: {
+          url: 'https://example.com/showcase/123',
+          title: 'Dataset',
+          identifier,
+          ratings: {
+            average: 4.5,
+          },
+        },
+      } as unknown as Rating)
+
+      // then
+      expect(res).to.be.undefined
+      expect(hubRepo.getResource).to.have.been.calledWith(sinon.match({
+        id: 'sugus',
+        catalogId,
+        resourceType,
+      }))
+      expect(hubRepo.putResource).to.have.been.calledWith(sinon.match({
+        id: 'sugus',
+        catalogId,
+        resourceType,
+      }), sinon.match({
+        'schema:rating': 4.5,
+      }))
     })
   })
 })
