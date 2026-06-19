@@ -70,7 +70,7 @@ useSeoMeta({
 <template>
   <OdsPage
     v-if="showcase"
-    :comments-id="`showcase-${showcase.id}`"
+    :comments-id="showcase.stem.replace(/\.\w\w$/, '')"
     :page="showcase"
   >
     <template #header>
