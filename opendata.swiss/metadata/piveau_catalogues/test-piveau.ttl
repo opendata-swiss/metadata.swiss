@@ -1,0 +1,19 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/test-piveau> a dcat:Catalog ;
+    dcterms:created "2016-01-29T09:51:40.591735"^^xsd:dateTime ;
+    dcterms:description "Test"@it,
+        "Test"@en,
+        "Test"@fr,
+        "Test"@de ;
+    dcterms:modified "2026-05-11T07:26:29.665940"^^xsd:dateTime ;
+    dcterms:publisher <https://opendata.swiss/id/organization/test-piveau> ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/ITA> ;
+    dcterms:title "Test"@de,
+        "Test"@en,
+        "Test"@fr,
+        "Test"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

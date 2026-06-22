@@ -5,7 +5,7 @@ x-db-credentials: &db-credentials                             # Use the default 
 
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:3.5.2
+    image: piveau/hub-repo:4.0.1
     restart: unless-stopped
     logging:
       options:
@@ -33,7 +33,7 @@ services:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.4
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.7
     restart: unless-stopped
     logging:
       options:
@@ -93,7 +93,7 @@ services:
   ###########
 
   piveau-consus-importing-rdf:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.10.2
+    image: registry.gitlab.com/piveau/consus/piveau-consus-importing-rdf:1.10.4 # 1.10.5
     restart: unless-stopped
     logging:
       options:
@@ -131,7 +131,7 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.7
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:8.0.0
     restart: unless-stopped
     logging:
       options:
@@ -147,7 +147,7 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
 
   piveau-consus-scheduling:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.0
+    image: registry.gitlab.com/piveau/consus/piveau-consus-scheduling:4.1.2
     restart: unless-stopped
     logging:
       options:
@@ -367,6 +367,16 @@ services:
   ####################
   # Custom services  #
   ####################
+
+  file-server:
+    image: python:3.12-alpine
+    restart: unless-stopped
+    ports:
+      - 8010:8000
+    command: python -m http.server 8000 --directory /files
+    volumes:
+      - ./volumes/file-server:/files:ro
+    
   piveau-consus-importing-csw:
     build: ../piveau_modules/piveau-consus-importing-csw
     restart: unless-stopped
