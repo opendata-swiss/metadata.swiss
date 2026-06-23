@@ -1,7 +1,7 @@
 import type Listmonk from '../../lib/listmonk'
 import type { NitroRuntimeConfig } from 'nitropack/types'
 import type { HubRepo, HubSearch } from '../../lib/piveau'
-import $rdf from '@zazuko/env-node'
+import { rdf, schema } from '@tpluscode/rdf-ns-builders'
 import { ns as piveau } from '../../lib/piveau'
 
 export interface User {
@@ -140,11 +140,11 @@ export default class {
 
     const graph = await this.hubRepo.getResource(id)
     const showcase = graph
-      .has($rdf.ns.rdf.type, piveau.CustomResource)
+      .has(rdf.type, piveau.CustomResource)
 
     showcase
-      .deleteOut($rdf.ns.schema.ratingValue)
-      .addOut($rdf.ns.schema.ratingValue, page.ratings.average)
+      .deleteOut(schema.ratingValue)
+      .addOut(schema.ratingValue, page.ratings.average)
     await this.hubRepo.putResource(id, showcase)
   }
 }

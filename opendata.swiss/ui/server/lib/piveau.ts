@@ -1,6 +1,6 @@
 import type { AppLanguage } from '~/constants/langages'
 import type { NitroRuntimeConfig } from 'nitropack/types'
-import { requestServiceAccountToken } from '#server/lib/auth'
+import { requestServiceAccountToken } from '../lib/auth'
 import $rdf from '@zazuko/env-node'
 import type { AnyPointer } from 'clownface'
 

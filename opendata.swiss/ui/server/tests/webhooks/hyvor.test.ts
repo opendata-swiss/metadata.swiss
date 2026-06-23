@@ -1,12 +1,16 @@
 import type { Comment, Page, Rating } from '#server/lib/webhooks/hyvor'
 import Hyvor from '../../lib/webhooks/hyvor'
 import type { HubRepo, HubSearch } from '../../lib/piveau'
+import { ns } from '../../lib/piveau'
 import type { ListmonkConfig } from '../../lib/listmonk'
 import Listmonk from '../../lib/listmonk'
 import sinon from 'sinon'
 import { expect } from 'chai'
 import waitUntil from 'async-wait-until'
 import type { NitroRuntimeConfig } from 'nitropack/types'
+import $rdf from '@zazuko/env-node'
+import { rdf, schema } from '@tpluscode/rdf-ns-builders'
+import type { GraphPointer } from 'clownface'
 
 describe('Hyvor Webhooks', () => {
   describe('handleComment', () => {
@@ -384,8 +388,14 @@ describe('Hyvor Webhooks', () => {
       const identifier = 'showcase/sugus'
       const catalogId = 'showcases-ods'
       const resourceType = 'showcase'
+
+      const graph = $rdf.clownface()
+        .blankNode()
+        .addOut(rdf.type, ns('CustomResource'))
+        .addOut(schema.ratingValue, 3)
+
       const hubRepo = {
-        getResource: sinon.stub().resolves({}),
+        getResource: sinon.stub().resolves(graph),
         putResource: sinon.stub().resolves(),
       } as unknown as HubRepo
       const config = {
@@ -420,8 +430,8 @@ describe('Hyvor Webhooks', () => {
         id: 'sugus',
         catalogId,
         resourceType,
-      }), sinon.match({
-        'schema:rating': 4.5,
+      }), sinon.match((data: GraphPointer) => {
+        return data.out(schema.ratingValue).value === '4.5'
       }))
     })
   })
