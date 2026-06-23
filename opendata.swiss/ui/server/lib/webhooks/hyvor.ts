@@ -1,6 +1,8 @@
 import type Listmonk from '../../lib/listmonk'
 import type { NitroRuntimeConfig } from 'nitropack/types'
 import type { HubRepo, HubSearch } from '../../lib/piveau'
+import $rdf from '@zazuko/env-node'
+import { ns as piveau } from '../../lib/piveau'
 
 export interface User {
   email: string
@@ -119,8 +121,6 @@ export default class {
   }
 
   async handleRating({ page }: Rating) {
-    const context = { schema: 'http://schema.org/' }
-
     if (!page) {
       return new Error('Rating does not have an associated page')
     }
@@ -138,15 +138,13 @@ export default class {
       id: showcaseId,
     }
 
-    const showcase = await this.hubRepo.getResource(id)
+    const graph = await this.hubRepo.getResource(id)
+    const showcase = graph
+      .has($rdf.ns.rdf.type, piveau.CustomResource)
 
-    showcase['schema:rating'] = page.ratings.average
-    showcase['@context'] = Array.isArray(showcase['@context'])
-      ? [...showcase['@context'], context]
-      : showcase['@context']
-        ? [showcase['@context'], context]
-        : [context]
-
+    showcase
+      .deleteOut($rdf.ns.schema.ratingValue)
+      .addOut($rdf.ns.schema.ratingValue, page.ratings.average)
     await this.hubRepo.putResource(id, showcase)
   }
 }

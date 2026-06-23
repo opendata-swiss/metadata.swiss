@@ -3,11 +3,12 @@ import type { Comment, Rating } from '#server/lib/webhooks/hyvor'
 import Hyvor from '#server/lib/webhooks/hyvor'
 import Listmonk from '#server/lib/listmonk'
 import { HubRepo, HubSearch } from '#server/lib/piveau'
-import { requestServiceAccountToken } from '#server/lib/auth'
 
 interface RatingWebhookPayload {
   event: 'rating.created' | 'rating.updated' | 'rating.deleted'
-  data: Rating
+  data: {
+    rating: Rating
+  }
 }
 
 interface CommentWebhookPayload {
@@ -46,7 +47,11 @@ export default defineEventHandler(async (event) => {
     return 204
   }
 
-  const piveauAuthToken = await requestServiceAccountToken(oauth.keycloak, 'hubRepo')
+  const hubRepoAuth = {
+    serverUrl: oauth.keycloak.serverUrl,
+    realm: oauth.keycloak.realm,
+    credentials: oauth.keycloak.clients.hubRepo,
+  }
   const payload: WebhookPayload = JSON.parse(body.toString())
   const api = new Hyvor(
     {
@@ -55,7 +60,7 @@ export default defineEventHandler(async (event) => {
     },
     new Listmonk(listmonk),
     new HubSearch(piveauHubSearchUrl),
-    new HubRepo(piveauHubRepoUrl, piveauAuthToken, fetch),
+    new HubRepo(piveauHubRepoUrl, hubRepoAuth, fetch),
   )
 
   switch (payload.event) {
@@ -64,7 +69,7 @@ export default defineEventHandler(async (event) => {
       return api.handleComment(payload.data)
     case 'rating.created':
     case 'rating.updated':
-      return api.handleRating(payload.data)
+      return api.handleRating(payload.data.rating)
     default:
       return createError({
         status: 400,

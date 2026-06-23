@@ -1,5 +1,8 @@
 import type { AppLanguage } from '~/constants/langages'
-import type { NodeObject } from 'jsonld'
+import type { NitroRuntimeConfig } from 'nitropack/types'
+import { requestServiceAccountToken } from '#server/lib/auth'
+import $rdf from '@zazuko/env-node'
+import type { AnyPointer } from 'clownface'
 
 interface Category {
   id: string
@@ -30,6 +33,8 @@ interface SearchArgs {
   limit?: number
   dateType?: 'issue' | 'modified' | 'temporal'
 }
+
+export const ns = $rdf.namespace('https://piveau.eu/ns/voc#')
 
 export class HubSearch {
   constructor(private baseUrl: string, private _fetch = fetch) {
@@ -117,31 +122,46 @@ interface ResourceId {
   catalogId: string
 }
 
-export class HubRepo {
-  constructor(private baseUrl: string, private authToken: string, private _fetch = fetch) {}
+type Credentials = NitroRuntimeConfig['oauth']['keycloak']['clients']['hubRepo']
 
-  async getResource({ id, resourceType, catalogId }: ResourceId): Promise<NodeObject> {
+interface OAuthConfig {
+  serverUrl: string
+  realm: string
+  credentials: Credentials
+}
+
+export class HubRepo {
+  constructor(private baseUrl: string, private oauth: OAuthConfig, private _fetch = fetch) {}
+
+  async getResource({ id, resourceType, catalogId }: ResourceId): Promise<AnyPointer> {
     const url = new URL(`/resources/${resourceType}/${id}?catalogId=${catalogId}`, this.baseUrl)
 
-    const res = await this._fetch(url)
+    const res = await $rdf.fetch(url, {
+      fetch: this._fetch,
+    })
+    const dataset = await res.dataset()
 
-    return res.ok ? res.json() : Promise.reject(res)
+    return res.ok ? $rdf.clownface({ dataset }) : Promise.reject(res)
   }
 
-  async putResource(id: ResourceId, body: NodeObject): Promise<void> {
+  async putResource(id: ResourceId, body: AnyPointer): Promise<void> {
+    const authToken = await requestServiceAccountToken(this.oauth.serverUrl, this.oauth.realm, this.oauth.credentials)
+
     const url = new URL(`/resources/${id.resourceType}?id=${id.id}&catalogId=${id.catalogId}`, this.baseUrl)
 
-    const res = await this._fetch(url, {
+    const res = await $rdf.fetch(url, {
+      fetch: this._fetch,
       method: 'PUT',
-      body: JSON.stringify(body),
+      body: body.dataset,
       headers: {
-        'Authorization': `Bearer ${this.authToken}`,
-        'Content-Type': 'application/ld+json',
+        Authorization: `Bearer ${authToken}`,
       },
     })
 
     if (!res.ok) {
-      return Promise.reject(res)
+      return Promise.reject(new Error(`Failed to put resource: ${res.status} ${res.statusText}`, {
+        cause: await res.text(),
+      }))
     }
   }
 }
