@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import OdsButton from './content/OdsButton.vue'
+import OdsButton from './OdsButton.vue'
 import OdsFilterPanel from '~/components/dataset/OdsFilterPanel.vue'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 

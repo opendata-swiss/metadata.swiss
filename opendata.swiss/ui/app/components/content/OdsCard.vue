@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import OdsButton from '../OdsButton.vue'
+
 const { title, type = 'default', clickable = false } = defineProps<{
   title: string
   type?: 'default' | 'highlight' | 'twitter' | 'flat' | 'universal' | 'list'
   clickable?: boolean
+  href?: string
 }>()
 
 const classes = computed(() => {
@@ -66,10 +69,18 @@ const classes = computed(() => {
           </p>
         </div>
         <div
-          v-if="$slots['footer-action']"
+          v-if="$slots['footer-action'] || href"
           class="card__footer__action"
         >
-          <slot name="footer-action" />
+          <slot name="footer-action">
+            <OdsButton
+              v-if="href"
+              :href="href"
+              icon-only
+              icon="ArrowRight"
+              variant="outline"
+            />
+          </slot>
         </div>
       </div>
     </div>

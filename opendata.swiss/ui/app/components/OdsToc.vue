@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OdsCard from './content/OdsCard.vue'
+import OdsCard from './OdsCard.vue'
 import SvgIcon from '~/components/SvgIcon.vue'
 
 const { t } = useI18n()

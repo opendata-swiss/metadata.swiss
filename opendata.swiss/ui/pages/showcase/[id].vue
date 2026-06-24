@@ -5,7 +5,7 @@ import OdsInfoBlock from '../../app/components/OdsInfoBlock.vue'
 import OdsTagItem from '../../app/components/OdsTagItem.vue'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsCard from '../../app/components/content/OdsCard.vue'
-import OdsButton from '../../app/components/content/OdsButton.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies.js'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 

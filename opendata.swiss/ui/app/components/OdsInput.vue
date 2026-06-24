@@ -69,7 +69,7 @@ const props = defineProps({
     default: () => undefined,
   },
   onInput: {
-    type: Function as PropType<(event: Event) => void>,
+    type: Function as PropType<(event: InputEvent) => void>,
     default: () => ({}),
   },
   messageType: {

@@ -70,7 +70,7 @@ import { onMounted, ref } from 'vue'
 import { useLoginWithRedirect } from '@/composables/login'
 import { initMatomo } from '@certible/use-matomo'
 import OdsNotificationBanner from '~/components/OdsNotificationBanner.vue'
-import OdsButton from './components/content/OdsButton.vue'
+import OdsButton from './components/OdsButton.vue'
 import { useMessages, useAutoClearMessagesOnRouteChange } from '~/composables/messages'
 
 const app = useNuxtApp()

@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import SvgIcon from '../SvgIcon.vue'
+import SvgIcon from './SvgIcon.vue'
 
 const { title, iconOnly = false, ...props } = defineProps<{
   title?: string
