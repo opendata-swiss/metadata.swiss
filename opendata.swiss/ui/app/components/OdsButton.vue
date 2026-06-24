@@ -6,8 +6,19 @@
     :title="title"
   >
     <slot name="icon">
+      <a
+        v-if="href && icon"
+        :href="localePath(href)"
+      >
+        <SvgIcon
+          v-if="icon"
+          :icon="icon"
+          :size="size"
+          class="btn__icon"
+        />
+      </a>
       <SvgIcon
-        v-if="icon"
+        v-else-if="icon"
         :icon="icon"
         :size="size"
         class="btn__icon"
@@ -16,7 +27,7 @@
     <span class="btn__text">
       <a
         v-if="href"
-        :href="href"
+        :href="localePath(href)"
       >
         <slot>{{ title }}</slot>
       </a>
@@ -28,6 +39,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import SvgIcon from './SvgIcon.vue'
+
+const localePath = useLocalePath()
 
 const { title, iconOnly = false, ...props } = defineProps<{
   title?: string
