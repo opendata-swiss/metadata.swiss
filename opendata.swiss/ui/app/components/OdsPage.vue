@@ -7,7 +7,7 @@ import type { PagesCollectionItem } from '@nuxt/content'
 const { locale } = useI18n()
 
 const { comments: { websiteId } } = useRuntimeConfig().public
-type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading' | 'heroImage' | 'noToc'> & Partial<Pick<PagesCollectionItem, 'body'>>
+type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading' | 'heroImage' | 'fullWidth'> & Partial<Pick<PagesCollectionItem, 'body'>>
 
 const { page } = defineProps<{
   page?: Page
@@ -49,7 +49,7 @@ const { page } = defineProps<{
         class="section section--py"
       >
         <ContentRenderer
-          v-if="page.noToc"
+          v-if="page.fullWidth"
           :value="page"
         />
         <div
