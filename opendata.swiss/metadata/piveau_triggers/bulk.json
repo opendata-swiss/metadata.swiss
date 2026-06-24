@@ -670,17 +670,6 @@
       "next": "2026-06-24T14:57:24.000Z"
     }
   ],
-  "so-kt-geocat-harvester": [
-    {
-      "interval": {
-        "value": 1,
-        "unit": "DAY"
-      },
-      "id": "so-kt-geocat-harvester-trigger",
-      "status": "enabled",
-      "next": "2026-06-24T15:02:24.000Z"
-    }
-  ],
   "dcat-harvester-amt-fur-mobilitat-kanton-zurich": [
     {
       "interval": {
