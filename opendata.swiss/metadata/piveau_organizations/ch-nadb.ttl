@@ -10,7 +10,6 @@
         "NaDB - Swiss Data Steward"@en,
         "NaDB - Swiss Data Steward"@fr,
         "NaDB - Swiss Data Steward"@it ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch1> ;
     foaf:name "NaDB - Swiss Data Steward"@de,
         "NaDB - Swiss Data Steward"@en,
         "NaDB - Swiss Data Steward"@fr,
