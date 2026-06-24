@@ -7,6 +7,7 @@ import { useDatasetsSearch } from '../../../../app/piveau/datasets'
 import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
 import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
+import OdsPreview from '../../../../app/components/dataset-detail/OdsPreview.vue'
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/content/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
@@ -40,6 +41,21 @@ const distribution = computed(() => {
   }
   const dists = dataset.value.distributions.find(d => d.id === distributionId) ?? undefined
   return dists
+})
+
+const previewUrl = computed(() => {
+  if (!distribution.value) {
+    return ''
+  }
+  return distribution.value.downloadUrls[0] || distribution.value.accessUrls[0] || ''
+})
+
+const previewFormat = computed(() => {
+  return distribution.value?.format?.toLowerCase() || ''
+})
+
+const isPreviewVisible = computed(() => {
+  return Boolean(previewUrl.value && ['wms', 'ods', 'xlsx', 'xls'].includes(previewFormat.value))
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
@@ -128,6 +144,7 @@ await suspense()
         </div>
       </div>
     </section>
+
     <section class="section">
       <div class="container container--grid gap--responsive">
         <div class="container__main vertical-spacing">
@@ -222,6 +239,16 @@ await suspense()
         </div>
       </div>
     </section>
+    <div
+      v-if="isPreviewVisible"
+      class="box"
+    >
+      <OdsPreview
+        :download-url="previewUrl"
+        :file-format="previewFormat"
+        :title="distribution.title"
+      />
+    </div>
     <section class="section publication-back-button-section">
       <div class="container">
         <OdsButton

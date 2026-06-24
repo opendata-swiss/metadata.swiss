@@ -29,7 +29,12 @@ export default defineNuxtConfig({
     dirs: ['~/components/content'],
   },
   devtools: { enabled: true },
-  css: ['~/assets/main.css'],
+  css: [
+    '~/assets/main.css',
+    'piveau-preview-plugin/style.css',
+    'ag-grid-community/styles/ag-grid.css',
+    'ag-grid-community/styles/ag-theme-quartz.css',
+  ],
   content: {
     build: {
       markdown: {
