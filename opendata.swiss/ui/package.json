@@ -33,6 +33,7 @@
     "@piveau/sdk-vue": "1.0.0-beta.13",
     "@toast-ui/editor": "^3.2.2",
     "@tpluscode/rdf-ns-builders": "^5.0.0",
+    "@zazuko/env-node": "^3.1.0",
     "accept-language": "^3.0.20",
     "async-wait-until": "^2.0.31",
     "better-sqlite3": "^12.5.0",
