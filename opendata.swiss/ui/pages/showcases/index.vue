@@ -3,23 +3,19 @@ import { computed, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useI18n } from '#imports'
 import { useSeoMeta } from 'nuxt/app'
-import { getCurrentTranslation } from '../../app/lib/getCurrentTranslation'
 import type { SearchParamsBase } from '@piveau/sdk-core/hubSearch'
 
 import OdsPage from '../../app/components/OdsPage.vue'
 import { homePageBreadcrumb } from '../../app/composables/breadcrumbs.js'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
-import OdsCard from '../../app/components/content/OdsCard.vue'
-import SvgIcon from '../../app/components/SvgIcon.vue'
 import { useShowcaseSearch, facets } from '../../app/piveau/showcases'
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 import OdsSearchPanel from '../../app/components/OdsSearchPanel.vue'
 import OdsSearchResults from '../../app/components/OdsSearchResults.vue'
 import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFacetSync'
-import type { ShowcasesCollectionItem } from '@nuxt/content'
-import { useVocabularySearch } from '../../app/piveau/vocabularies'
 import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
 import { useSorting } from '../../app/composables/sort'
+import OdsShowcaseCard from '../../app/components/showcases/OdsShowcaseCard.vue'
 
 const { locale, t } = useI18n()
 
@@ -173,20 +169,7 @@ onMounted(() => {
   })
 })
 
-const { query: showcaseTypesQuery, getSearchResultsEnhanced: showcaseTypes } = useVocabularySearch().useSearch({
-  queryParams: {
-    vocabulary: 'showcase-types',
-  },
-})
-
-await Promise.all([
-  query.suspense,
-  showcaseTypesQuery.suspense,
-])
-
-function showcaseType(showcase: ShowcasesCollectionItem) {
-  return showcaseTypes.value.find(type => type.resource === showcase.type)
-}
+await query.suspense()
 
 const { selectedSort } = useSorting({
   initialSort,
@@ -237,59 +220,7 @@ const sortOptions = computed(() => {
             v-for="showcase in getSearchResultsEnhanced"
             :key="showcase.id"
           >
-            <OdsCard
-              style="height: 100%;"
-              :title="getCurrentTranslation(showcase.title, locale.value)"
-              clickable
-            >
-              <template #image>
-                <img
-                  :src="showcase.image[0]"
-                  :alt="getCurrentTranslation(showcase.title, locale.value)"
-                >
-              </template>
-
-              <template #top-meta>
-                <div>
-                  <span
-                    v-if="showcaseType(showcase)"
-                    class="meta-info__item"
-                  >{{ showcaseType(showcase).pref_label }}</span>
-                  <span class="meta-info__item">
-                    {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
-                  </span>
-                </div>
-              </template>
-
-              <template #footer-info>
-                <div>
-                  <span
-                    v-for="tag in showcase.keywords"
-                    :key="tag.id"
-                    class="tag"
-                  >
-                    {{ tag.label }}
-                  </span>
-                </div>
-              </template>
-
-              <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
-
-              <template #footer-action>
-                <NuxtLinkLocale
-                  :to="{ name: 'showcase-id', params: { id: showcase.id } }"
-                  type="false"
-                  class="btn btn--outline btn--icon-only"
-                  aria-label="false"
-                >
-                  <SvgIcon
-                    icon="ArrowRight"
-                    role="btn"
-                  />
-                  <span class="btn__text">Weiterlesen</span>
-                </NuxtLinkLocale>
-              </template>
-            </OdsCard>
+            <OdsShowcaseCard :showcase="showcase" />
           </li>
         </ul>
       </div>

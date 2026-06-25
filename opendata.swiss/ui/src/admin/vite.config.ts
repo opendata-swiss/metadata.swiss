@@ -36,6 +36,7 @@ export default defineConfig({
   build: {
     outDir: '../../public/admin',
   },
+  envPrefix: 'NUXT_',
   plugins: [
     nodePolyfills(),
     viteStaticCopy({
