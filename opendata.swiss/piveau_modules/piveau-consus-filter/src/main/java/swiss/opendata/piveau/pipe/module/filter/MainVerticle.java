@@ -226,8 +226,8 @@ public class MainVerticle extends AbstractVerticle {
             if (config.containsKey("org_id")){
                 sb.append("Organization: ").append(config.getString("org_id")).append("\t");
             }
-            if (config.containsKey("datasetURI")){
-                sb.append("Dataset: ").append(config.getString("datasetURI")).append("\t");
+            if (config.containsKey("identifier")){
+                sb.append("Identifier: ").append(config.getString("identifier")).append("\t");
             }
             for (String error : errors) {
                 sb.append("- ").append(error).append("\t");
@@ -266,28 +266,36 @@ public class MainVerticle extends AbstractVerticle {
             return;
         }
         
-        List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();  
-        if (datasets.size() != 1) {
-            logger.warn("Expected exactly one dcat:Dataset, but found {}. Skipping this pipe execution.", datasets.size());
+        List<Resource> datasets = model.listResourcesWithProperty(RDF.type, DCAT.Dataset).toList();
+        Set<Resource> dcatResources = new HashSet<>(datasets); // the same resource could be both a Dataset and a DatasetSeries, so we use a Set to avoid duplicates
+        dcatResources.addAll(model.listResourcesWithProperty(RDF.type, model.createResource(DCAT.NAMESPACE + "DatasetSeries")).toList());
+        dcatResources.addAll(model.listResourcesWithProperty(RDF.type, DCAT.DataService).toList());
+       
+        if (dcatResources.size() != 1) {
+            logger.warn("Expected exactly one dcat resource (Dataset, DatasetSeries or DataService), but found {}. Skipping this pipe execution.", dcatResources.size());
             return;
         }
-        Resource dataset = datasets.get(0);
+        Resource resource = dcatResources.iterator().next();
 
-        JsonObject config = pipeContext.getConfig();
-        config.put("datasetURI", dataset.getURI());
-        String organizationID = config.getString("org_id");
+        if(datasets.contains(resource)) {
+            // if resource is a Dataset, we perform checks (and possibly make little changes to it)
+            JsonObject config = pipeContext.getConfig();
+            ErrorHandler errorHandler = new ErrorHandler(config);
+            checkIdentifier(model, resource, config.getString("org_id"), errorHandler);
+            checkConformsTo(model, resource, errorHandler);
+            checkLicense(model, resource, errorHandler);
+            checkSpatial(model, resource);
 
-        ErrorHandler errorHandler = new ErrorHandler(config);
-        checkIdentifier(model, dataset, organizationID, errorHandler);
-        checkConformsTo(model, dataset, errorHandler);
-        checkLicense(model, dataset, errorHandler);
-        checkSpatial(model, dataset);
-
-        if (errorHandler.hasErrors()) {
-            errorHandler.notifyErrors();
+            if (errorHandler.hasErrors()) {
+                errorHandler.notifyErrors();
+            } else {
+                logger.info("dataset {}", pipeContext.getDataInfo());
+                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
+            }
         } else {
-            logger.info("passing {}", pipeContext.getDataInfo());
-            pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
+            logger.info("resource {}", pipeContext.getDataInfo());
+            // we propagate the resource as is, without any checks or modifications
+            pipeContext.pass();
         }
     }
 
