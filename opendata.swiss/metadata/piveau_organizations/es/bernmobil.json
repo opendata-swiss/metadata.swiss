@@ -1,0 +1,26 @@
+{
+  "id": "bernmobil",
+  "identifier": "bernmobil",
+  "resource": "https://opendata.swiss/id/organization/bernmobil",
+  "description": {
+    "de": "Öffentlicher Verkehr in Bern und Umgebung",
+    "en": "Public transport in and around the city of Bern, Switzerland",
+    "fr": "Transports publics dans et autour de la ville de Berne",
+    "it": "Trasporto pubblico nella città di Berna e dintorni"
+  },
+  "name": {
+    "de": "BERNMOBIL",
+    "en": "BERNMOBIL",
+    "fr": "BERNMOBIL",
+    "it": "BERNMOBIL"
+  },
+  "pref_label": {
+    "de": "BERNMOBIL",
+    "en": "BERNMOBIL",
+    "fr": "BERNMOBIL",
+    "it": "BERNMOBIL"
+  },
+  "homepage": "https://ckan.opendata.swiss/uploads/group/logo.jpg",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

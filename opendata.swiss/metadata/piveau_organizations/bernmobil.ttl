@@ -1,0 +1,24 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/bernmobil> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Öffentlicher Verkehr in Bern und Umgebung"@de,
+        "Public transport in and around the city of Bern, Switzerland"@en,
+        "Transports publics dans et autour de la ville de Berne"@fr,
+        "Trasporto pubblico nella città di Berna e dintorni"@it ;
+    dcterms:identifier "bernmobil" ;
+    skos:prefLabel "BERNMOBIL"@de,
+        "BERNMOBIL"@en,
+        "BERNMOBIL"@fr,
+        "BERNMOBIL"@it ;
+    foaf:homepage <https://ckan.opendata.swiss/uploads/group/logo.jpg> ;
+    foaf:name "BERNMOBIL"@de,
+        "BERNMOBIL"@en,
+        "BERNMOBIL"@fr,
+        "BERNMOBIL"@it .
+
+<https://ckan.opendata.swiss/uploads/group/logo.jpg> a foaf:Document .
+

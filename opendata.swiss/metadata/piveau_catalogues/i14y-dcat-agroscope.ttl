@@ -1,0 +1,33 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-agroscope> a dcat:Catalog ;
+    dcterms:created "2026-06-18T14:35:59.741430"^^xsd:dateTime ;
+    dcterms:description """Agroscope ist das Kompetenzzentrum des Bundes für landwirtschaftliche Forschung und ist dem Bundesamt für Landwirtschaft (BLW) angegliedert. Agroscope leistet einen bedeutenden Beitrag für eine nachhaltige Land- und Ernährungswirtschaft sowie eine intakte Umwelt und trägt damit zur Verbesserung der Lebensqualität bei.\r
+\r
+Die Forschung erfolgt entlang der gesamten Wertschöpfungskette der Land- und Ernährungswirtschaft. Ziele sind eine wettbewerbsfähige und multifunktionale Landwirtschaft, hochwertige Lebensmittel für eine gesunde Ernährung sowie eine intakte Umwelt. Dabei richtet sich die Forschungsanstalt auf die Bedürfnisse ihrer Leistungsempfänger aus."""@de,
+        """Agroscope is the Swiss centre of excellence for agricultural research, and is affiliated with the Federal Office for Agriculture (FOAG). Agroscope makes an important contribution to a sustainable agriculture and food sector as well as to an intact environment, thereby contributing to an improved quality of life.\r
+\r
+Agroscope researches along the entire value chain of the agriculture and the food sector. Its goals are a competitive and multifunctional agricultural sector, high-quality food for a healthy diet, and an intact environment. In pursuing these aims, the research institute gears itself to the needs of its service recipients."""@en,
+        """Agroscope, centre de compétence de la Confédération pour la recherche agronomique, apporte une contribution importante à une filière agroalimentaire durable et à un environnement préservé, contribuant ainsi à une meilleure qualité de vie pour tous.\r
+\r
+L‘activité de recherche d'Agroscope s'étend à toute la chaîne de création de valeur de la filière agroalimentaire et vise une agriculture compétitive et multifonctionnelle, des aliments de qualité pour une alimentation saine ainsi qu'un environnement intact. Agroscope axe son travail de recherche sur les besoins des bénéficiaires de ses prestations."""@fr,
+        """Agroscope è il centro di competenza della Confederazione per la ricerca agronomica ed è aggregato all'Ufficio federale dell'agricoltura (UFAG). Agroscope fornisce un contributo significativo per una filiera agroalimentare sostenibile e un ambiente incontaminato, concorrendo a migliorare la qualità della vita.\r
+\r
+La ricerca contempla l'intera catena del valore della filiera agroalimentare, avendo come obiettivi un'agricoltura multifunzionale e competitiva, derrate alimentari d'alta qualità per un'alimentazione sana e un ambiente incontaminato. Al contempo, l'istituto di ricerca si concentra sulle esigenze dei destinatari delle proprie prestazioni."""@it ;
+    dcterms:modified "2026-06-18T14:35:59.741437"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.agroscope.admin.ch/agroscope/de/home.html> ;
+            foaf:name "Agroscope"@de,
+                "Agroscope"@en,
+                "Agroscope"@fr,
+                "Agroscope"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Agroscope"@de,
+        "Agroscope"@en,
+        "Agroscope"@fr,
+        "Agroscope"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
