@@ -126,5 +126,13 @@ ex:Showcase_Shape a sh:NodeShape ;
           sh:severity sh:Violation ;
           pv:mappingClass "Keywords" ;
           pv:mappingName "keywords"
+      ], [
+          sh:path schema:ratingValue ;
+          sh:nodeKind sh:Literal ;
+          sh:datatype xsd:decimal ;
+          sh:minCount 0 ;
+          sh:maxCount 1 ;
+          pv:mappingClass "Numeric" ;
+          pv:mappingName "rating"
       ]
       .
