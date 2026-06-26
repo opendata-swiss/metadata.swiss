@@ -68,8 +68,6 @@ const { showcase } = defineProps<{
   showcase: PiveauShowcase
 }>()
 
-console.log(showcase)
-
 const { data: showcaseTypes, ensureLoaded } = useShowcaseTypes()
 await ensureLoaded()
 
