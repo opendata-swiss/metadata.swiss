@@ -1,13 +1,14 @@
 <template>
   <OdsCard
     style="height: 100%;"
-    :title="getCurrentTranslation(showcase.title, locale.value)"
+    :title="showcase.title ? getCurrentTranslation(showcase.title, locale) : ''"
     clickable
   >
     <template #image>
       <img
+        v-if="showcase.image"
         :src="showcase.image[0]"
-        :alt="getCurrentTranslation(showcase.title, locale.value)"
+        :alt="showcase.title ? getCurrentTranslation(showcase.title, locale) : ''"
       >
     </template>
 
@@ -35,7 +36,7 @@
       </div>
     </template>
 
-    <MDC :value="getCurrentTranslation(showcase.abstract, locale.value)" />
+    <MDC :value="getCurrentTranslation(showcase.abstract, locale)" />
 
     <template #footer-action>
       <NuxtLinkLocale
@@ -58,13 +59,13 @@
 import OdsCard from '~/components/content/OdsCard.vue'
 import SvgIcon from '~/components/SvgIcon.vue'
 import { getCurrentTranslation } from '~/lib/getCurrentTranslation'
-import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { useShowcaseTypes } from '~~/composables/useShowcaseTypes'
+import type { PiveauShowcase } from '~/piveau/showcases'
 
 const { locale, t } = useI18n()
 
 const { showcase } = defineProps<{
-  showcase: ShowcaseCollectionItem
+  showcase: PiveauShowcase
 }>()
 
 console.log(showcase)
@@ -72,7 +73,7 @@ console.log(showcase)
 const { data: showcaseTypes, ensureLoaded } = useShowcaseTypes()
 await ensureLoaded()
 
-function showcaseType(showcase: ShowcasesCollectionItem) {
+function showcaseType(showcase: PiveauShowcase) {
   return showcaseTypes.value?.find(type => type.resource === showcase.type)
 }
 </script>

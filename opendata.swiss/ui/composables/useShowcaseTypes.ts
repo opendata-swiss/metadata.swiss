@@ -5,7 +5,7 @@ import { useVocabularySearch } from '~/piveau/vocabularies'
  * and once on the client. Subsequent consumers reuse the same data.
  */
 export function useShowcaseTypes() {
-  type ShowcaseType = { resource: string, pref_label: string }
+  type ShowcaseType = { resource: string, pref_label?: string }
 
   const data = useState<ShowcaseType[]>('showcase-types:data', () => [])
   const loaded = useState<boolean>('showcase-types:loaded', () => false)

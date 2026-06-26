@@ -32,8 +32,10 @@ const { query, getSearchResultsEnhanced } = useSearch({
 
 await query.suspense()
 
-console.log(loaded)
-console.log(getSearchResultsEnhanced!.value)
+const combined = computed(() => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return [...loaded, ...getSearchResultsEnhanced.value as any] as any
+})
 </script>
 
 <template>
@@ -44,7 +46,7 @@ console.log(getSearchResultsEnhanced!.value)
     :title="title"
   >
     <OdsShowcaseCard
-      v-for="showcase in [...loaded, ...getSearchResultsEnhanced]"
+      v-for="showcase in combined"
       :key="showcase.id"
       :showcase="showcase"
     />
