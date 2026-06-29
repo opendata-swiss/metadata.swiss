@@ -1,0 +1,118 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix pv: <https://piveau.eu/ns/voc#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+
+
+pv:Organization_Shape
+    a sh:NodeShape ;
+    sh:name "Organization"@en ;
+    sh:property [
+        sh:maxCount 1 ;
+        pv:mappingClass "StandardText" ;
+        pv:mappingName "id" ;
+    ] ;
+    sh:property [
+        pv:mappingClass "Integer" ;
+        sh:maxCount 1 ;
+        pv:mappingName "hierarchy_level" ;
+    ] ;
+    sh:property [
+        pv:mappingClass "Nested" ;
+        pv:mappingName "ancestors" ;
+        pv:mappingProperty [
+            sh:maxCount 1 ;
+            pv:mappingClass "StandardText" ;
+            pv:mappingName "id" ;
+        ] ;
+        pv:mappingProperty [
+            sh:nodeKind sh:Literal ;
+            pv:mappingClass "SimpleMultiLang" ;
+            pv:mappingName "name" ;
+        ] ;
+        pv:mappingProperty [
+            sh:nodeKind sh:Literal ;
+            pv:mappingClass "SimpleMultiLang" ;
+            pv:mappingName "pref_label" ;
+           ] ;
+        pv:mappingProperty [
+            sh:nodeKind sh:IRI ;
+            sh:maxCount 1 ;
+            pv:mappingClass "StandardKeyword" ;
+            pv:mappingName "resource"
+        ] ;
+        pv:mappingProperty [
+            pv:mappingClass "Integer" ;
+            sh:maxCount 1 ;
+            pv:mappingName "hierarchy_level" ;
+        ] ;
+    ] ;
+    sh:property [
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:path dct:identifier ;
+        sh:nodeKind sh:Literal ;
+        pv:mappingClass "StandardText" ;
+        pv:mappingName "identifier" ;
+    ] ;
+    sh:property [
+        sh:path org:subOrganizationOf ;
+        sh:nodeKind sh:Literal ;
+        pv:mappingClass "StandardText" ;
+        pv:mappingName "sub_organization_of" ;
+    ] ;
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:nodeKind sh:Literal ;
+        pv:mappingClass "SimpleMultiLang" ;
+        pv:mappingName "pref_label" ;
+    ] ;
+    sh:property [
+        sh:path  org:classification ;
+        pv:mappingClass "Theme" ;
+        pv:mappingName "classification" ;
+    ] ; 
+    sh:property [
+        sh:path foaf:homepage ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        pv:mappingClass "StandardDisabled" ;
+        pv:mappingName "homepage" ;
+    ] ;
+    sh:property [
+        sh:path foaf:name ;
+        sh:nodeKind sh:Literal ;
+        pv:mappingClass "SimpleMultiLang" ;
+        pv:mappingName "name" ;
+    ] ;
+    sh:property [
+        sh:path dct:description ;
+        sh:nodeKind sh:Literal ;
+        pv:mappingClass "SimpleMultiLang" ;
+        pv:mappingName "description" ;
+    ] ;
+    sh:property [
+        sh:path foaf:mbox ;
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        pv:mappingClass "StandardDisabled" ;
+        pv:mappingName "email" ;
+    ] ;
+    sh:property [
+        sh:nodeKind sh:IRI ;
+        sh:maxCount 1 ;
+        pv:mappingClass "StandardKeyword" ;
+        pv:mappingName "resource"
+    ] ;
+    sh:targetClass org:Organization .
