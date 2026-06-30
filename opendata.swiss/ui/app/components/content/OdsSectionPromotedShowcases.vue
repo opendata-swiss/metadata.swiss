@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OdsSection from './OdsSection.vue'
+import OdsSection, { type SectionLayout } from './OdsSection.vue'
 import OdsShowcaseCard from '~/components/showcases/OdsShowcaseCard.vue'
 import { useShowcaseSearch } from '~/piveau/showcases'
 
@@ -7,6 +7,7 @@ const { showcases, max } = defineProps<{
   title: string
   max: number
   showcases: Array<{ id: string, label: string }>
+  layout: SectionLayout
 }>()
 
 const { useResource, useSearch } = useShowcaseSearch()
@@ -40,7 +41,7 @@ const combined = computed(() => {
 
 <template>
   <OdsSection
-    layout="grid--items-5"
+    :layout="layout"
     accent-color="100"
     text-color="600"
     :title="title"

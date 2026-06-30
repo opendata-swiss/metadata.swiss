@@ -1,5 +1,31 @@
 import CMS from 'decap-cms-app'
 
+const layout = [{
+  label: 'One Card',
+  value: 'grid--items-1',
+}, {
+  label: 'Two Cards',
+  value: 'grid--items-2',
+}, {
+  label: 'Three Cards',
+  value: 'grid--items-3',
+}, {
+  label: 'Four Cards',
+  value: 'grid--items-4',
+}, {
+  label: 'Five Cards',
+  value: 'grid--items-5',
+}, {
+  label: 'Two columns',
+  value: 'grid--responsive-cols-2',
+}, {
+  label: 'Three columns',
+  value: 'grid--responsive-cols-3',
+}, {
+  label: 'Four columns',
+  value: 'grid--responsive-cols-4',
+}]
+
 function registerEditorComponent({ id, label, fields = [], content }) {
   const propsPattern = /:?(?<name>\w+)=(?:"(?<value>[^"]*)"|'(?<jsonValue>[^']*)')/g
   // Match outer block `::id ... ::` while allowing nested `::Name ... ::` blocks inside `content`.
@@ -89,22 +115,7 @@ registerEditorComponent({
     name: 'layout',
     label: 'Layout',
     widget: 'select',
-    options: [{
-      label: 'One Card',
-      value: 'grid--items-1',
-    }, {
-      label: 'Two Cards',
-      value: 'grid--items-2',
-    }, {
-      label: 'Three Cards',
-      value: 'grid--items-3',
-    }, {
-      label: 'Four Cards',
-      value: 'grid--items-4',
-    }, {
-      label: 'Five Cards',
-      value: 'grid--items-5',
-    }],
+    options: layout,
   }, {
     name: 'accentColor',
     label: 'Accent Color',
@@ -164,6 +175,11 @@ registerEditorComponent({
     max: 5,
     default: 5,
     json: true,
+  }, {
+    name: 'layout',
+    label: 'Layout',
+    widget: 'select',
+    options: layout,
   }, {
     name: 'showcases',
     label: 'Showcases',
