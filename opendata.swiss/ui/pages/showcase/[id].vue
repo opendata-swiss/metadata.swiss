@@ -70,14 +70,14 @@ useSeoMeta({
 <template>
   <OdsPage
     v-if="showcase"
-    :comments-id="`showcase-${showcase.id}`"
+    :comments-id="showcase.stem.replace(/\.\w\w$/, '')"
     :page="showcase"
   >
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
 
-    <template #hero-subheading>
+    <template #hero-content>
       <img
         v-if="showcase.image"
         :src="showcase.image"

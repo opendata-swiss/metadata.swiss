@@ -118,6 +118,10 @@
       "submitted_by": "Übermittelt von",
       "externalLink": "Externer Link",
       "open": "Website starten",
+      "hero": {
+        "title": "Was sind Showcases?",
+        "text": "Datensätze wurden verwendet, um Apps, Websites und Visualisierungen zu erstellen. Sie wurden in Artikeln vorgestellt und in Berichten sowie Blogbeiträgen erwähnt. Showcases bündeln die besten Beispiele für die Nutzung von Datensätzen, um zusätzliche Einblicke, Ideen und Inspiration zu bieten."
+      },
       "search": {
         "dataset_references": "{count} Datensätze",
                 "prompt": "Nach Showcases suchen...",

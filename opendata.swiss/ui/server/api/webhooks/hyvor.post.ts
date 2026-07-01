@@ -2,11 +2,13 @@ import crypto from 'node:crypto'
 import type { Comment, Rating } from '#server/lib/webhooks/hyvor'
 import Hyvor from '#server/lib/webhooks/hyvor'
 import Listmonk from '#server/lib/listmonk'
-import { HubSearch } from '#server/lib/piveau'
+import { HubRepo, HubSearch } from '#server/lib/piveau'
 
 interface RatingWebhookPayload {
   event: 'rating.created' | 'rating.updated' | 'rating.deleted'
-  data: Rating
+  data: {
+    rating: Rating
+  }
 }
 
 interface CommentWebhookPayload {
@@ -17,13 +19,13 @@ interface CommentWebhookPayload {
 type WebhookPayload = RatingWebhookPayload | CommentWebhookPayload
 
 export default defineEventHandler(async (event) => {
-  const { listmonk, hyvor: config, public: { piveauHubSearchUrl } } = useRuntimeConfig(event)
+  const { oauth, listmonk, showcases, hyvor, public: { piveauHubRepoUrl, piveauHubSearchUrl } } = useRuntimeConfig(event)
 
   const body = await readRawBody(event)
   const headers = getRequestHeaders(event)
 
   const expectedSignature = headers['x-signature']
-  const signature = crypto.createHmac('sha256', config.webhookSecret)
+  const signature = crypto.createHmac('sha256', hyvor.webhookSecret)
     .update(body!)
     .digest('hex')
 
@@ -41,20 +43,33 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  if (config.webhooksEnabled === false) {
+  if (hyvor.webhooksEnabled === false) {
     return 204
   }
 
+  const hubRepoAuth = {
+    serverUrl: oauth.keycloak.serverUrl,
+    realm: oauth.keycloak.realm,
+    credentials: oauth.keycloak.clients.hubRepo,
+  }
   const payload: WebhookPayload = JSON.parse(body.toString())
-  const hyvor = new Hyvor(config, new Listmonk(listmonk), new HubSearch(piveauHubSearchUrl))
+  const api = new Hyvor(
+    {
+      hyvor,
+      showcases,
+    },
+    new Listmonk(listmonk),
+    new HubSearch(piveauHubSearchUrl),
+    new HubRepo(piveauHubRepoUrl, hubRepoAuth, fetch),
+  )
 
   switch (payload.event) {
     case 'comment.create':
     case 'comment.update':
-      return hyvor.handleComment(payload.data)
+      return api.handleComment(payload.data)
     case 'rating.created':
     case 'rating.updated':
-      return hyvor.handleRating(payload.data)
+      return api.handleRating(payload.data.rating)
     default:
       return createError({
         status: 400,

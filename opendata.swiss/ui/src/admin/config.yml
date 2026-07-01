@@ -114,6 +114,11 @@ collections:
         widget: markdown
         i18n: true
         required: false
+      - name: heroImage
+        label: Image displayed on the top of the page
+        widget: image
+        i18n: duplicate
+        required: false
       - name: parent
         label: Parent page
         widget: relation
@@ -127,6 +132,12 @@ collections:
         label: Show in main menu
         widget: boolean
         default: true
+        i18n: duplicate
+        required: false
+      - name: fullWidth
+        label: Disables sidebar
+        widget: boolean
+        default: false
         i18n: duplicate
         required: false
       - name: after
@@ -178,6 +189,11 @@ collections:
         label: Subheading
         widget: markdown
         i18n: true
+      - name: image
+        label: Image
+        widget: image
+        i18n: true
+        required: true
       - name: body
         label: Body
         widget: markdown

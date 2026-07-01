@@ -58,6 +58,7 @@ export default defineContentConfig({
         slug: z.string().optional(),
         date: z.date().optional(),
         subHeading: z.string().optional(),
+        image: z.string(),
       }),
     }),
     showcases: defineCollection({

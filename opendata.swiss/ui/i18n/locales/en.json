@@ -117,6 +117,10 @@
       "submitted_by": "Submitted by",
       "externalLink": "External Link",
       "open": "Open website",
+      "hero": {
+        "title": "What are showcases?",
+        "text": "Datasets have been used to build apps, websites and visualizations. They've been featured in articles, and written about in news reports and blog posts. Showcases collect together the best examples of datasets in use, to provide further insight, ideas, and inspiration."
+      },
       "search": {
         "dataset_references": "{count} dataset(s)",
                 "prompt": "Search showcases",
