@@ -2,7 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useI18n } from '#imports'
 
-import OdsButton from './content/OdsButton.vue'
+import OdsButton from './OdsButton.vue'
 import SvgIcon from './SvgIcon.vue'
 import type { OdsNavTabItem } from './headers/model/ods-nav-tab-item'
 import { NuxtLinkLocale } from '#components'

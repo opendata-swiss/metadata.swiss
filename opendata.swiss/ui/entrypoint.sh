@@ -13,6 +13,11 @@ if [ ! -d "content" ]; then
   cd ..
 fi
 
+# log sha of HEAD commit of the content repository
+COMMIT_SHA=$(git -C content rev-parse HEAD)
+SHORT_SHA=$(printf "%s" "$COMMIT_SHA" | cut -c1-12)
+echo "Content repo HEAD: $SHORT_SHA (full: $COMMIT_SHA, ref: ${GITHUB_REF})"
+
 npm run build
 
 node .output/server/index.mjs
