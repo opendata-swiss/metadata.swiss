@@ -24,6 +24,9 @@ const layout = [{
 }, {
   label: 'Four columns',
   value: 'grid--responsive-cols-4',
+}, {
+  label: 'Slideshow',
+  value: 'slideshow',
 }]
 
 function registerEditorComponent({ id, label, fields = [], content }) {
