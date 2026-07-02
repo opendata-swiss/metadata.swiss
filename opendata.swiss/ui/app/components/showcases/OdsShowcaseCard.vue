@@ -36,7 +36,10 @@
       </div>
     </template>
 
-    <MDC :value="getCurrentTranslation(showcase.abstract, locale)" />
+    <MDC
+      v-if="!noExcerpt"
+      :value="getCurrentTranslation(showcase.abstract, locale)"
+    />
 
     <template #footer-action>
       <NuxtLinkLocale
@@ -66,6 +69,7 @@ const { locale, t } = useI18n()
 
 const { showcase } = defineProps<{
   showcase: PiveauShowcase
+  noExcerpt?: boolean
 }>()
 
 const { data: showcaseTypes, ensureLoaded } = useShowcaseTypes()
