@@ -16,7 +16,7 @@ import { syncFacetsFromRoute, useFacetSync } from '../../app/composables/useFace
 import OdsSortSelect from '../../app/components/dataset/OdsSortSelect.vue'
 import { useSorting } from '../../app/composables/sort'
 import OdsShowcaseCard from '../../app/components/showcases/OdsShowcaseCard.vue'
-import OdsButton from '../../app/components/content/OdsButton.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
 
 const { locale, t } = useI18n()
 
