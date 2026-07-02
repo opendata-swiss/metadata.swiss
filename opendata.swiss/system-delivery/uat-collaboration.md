@@ -5,7 +5,7 @@ This document describes the collaboration between the development team and the c
 | Feature Status | Additional Label | What it means in practice | Who owns it? |
 | :--- | :--- | :--- | :--- |
 | **In Progress** |  | Work is active. Feature is not yet available in the Test environment. | Developer |
-| **Done** | `Test-Ready` | **Handover Point:** Code is merged, feature passed internal QA, and is live in the Test environment for the customer to test. | Developer (to signal) |
+| **Done** | `Test-Ready` | **Handover Point:** Code is merged, feature passed internal QA, and is live in the ABN environment for the customer to test. | Developer (to signal) |
 | **Done** | `BLOCKED` | **Defect Found:** A defect (bug) is preventing sign-off. The original feature stays in "Done" while the defect is fixed. | Customer (to report) |
 | **Reviewed** |  | **Final Acceptance:** The feature is verified and signed off by the customer. | Customer |
 
