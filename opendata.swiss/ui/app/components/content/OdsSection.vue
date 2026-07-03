@@ -86,10 +86,8 @@
 </template>
 
 <script setup lang="ts">
-import { Swiper } from 'swiper/vue'
 import type { SwiperOptions } from 'swiper/types'
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
-import SvgIcon from '~/components/SvgIcon.vue'
 
 export type SectionLayout = 'grid--items-1' | 'grid--items-2' | 'grid--items-3' | 'grid--items-4' | 'grid--items-5' | 'grid--responsive-cols-2' | 'grid--responsive-cols-3' | 'grid--responsive-cols-4' | 'slideshow'
 
