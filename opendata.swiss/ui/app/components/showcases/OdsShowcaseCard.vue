@@ -3,6 +3,7 @@
     style="height: 100%;"
     :title="showcase.title ? getCurrentTranslation(showcase.title, locale) : ''"
     clickable
+    :slideshow-card="slideshowCard"
   >
     <template #image>
       <img
@@ -70,6 +71,7 @@ const { locale, t } = useI18n()
 const { showcase } = defineProps<{
   showcase: PiveauShowcase
   noExcerpt?: boolean
+  slideshowCard?: boolean
 }>()
 
 const { data: showcaseTypes, ensureLoaded } = useShowcaseTypes()

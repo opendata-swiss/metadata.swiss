@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { SwiperSlide } from 'swiper/vue'
 import OdsSection, { type SectionLayout } from './OdsSection.vue'
 import OdsShowcaseCard from '~/components/showcases/OdsShowcaseCard.vue'
 import { useShowcaseSearch } from '~/piveau/showcases'
@@ -47,24 +46,12 @@ const combined = computed(() => {
     text-color="600"
     :title="title"
   >
-    <template v-if="layout === 'slideshow'">
-      <SwiperSlide
-        v-for="showcase in combined"
-        :key="showcase.id"
-      >
-        <OdsShowcaseCard
-          :showcase="showcase"
-          no-excerpt
-        />
-      </SwiperSlide>
-    </template>
-    <template v-else>
-      <OdsShowcaseCard
-        v-for="showcase in combined"
-        :key="showcase.id"
-        :showcase="showcase"
-        no-excerpt
-      />
-    </template>
+    <OdsShowcaseCard
+      v-for="showcase in combined"
+      :key="showcase.id"
+      :showcase="showcase"
+      no-excerpt
+      :slideshow-card="layout === 'slideshow'"
+    />
   </OdsSection>
 </template>

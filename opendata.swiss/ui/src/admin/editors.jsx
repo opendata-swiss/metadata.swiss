@@ -107,6 +107,31 @@ registerEditorComponent({
   label: 'Hero Search',
 })
 
+const slideshowOptions = [{
+  name: 'speed',
+  label: 'Speed [ms]',
+  widget: 'number',
+  default: 500,
+  value_type: 'int',
+  step: 50,
+}, {
+  name: 'autoplay',
+  widget: 'object',
+  collapsed: true,
+  summary: 'Autoplay enabled={{enabled}}, delay={{delay}}',
+  fields: [{
+    name: 'enabled',
+    widget: 'boolean',
+  }, {
+    name: 'delay',
+    label: 'Delay [s]',
+    widget: 'number',
+    default: 2.5,
+    value_type: 'float',
+    step: 0.5,
+  }],
+}]
+
 registerEditorComponent({
   id: 'OdsSection',
   label: 'Section',
@@ -119,6 +144,14 @@ registerEditorComponent({
     label: 'Layout',
     widget: 'select',
     options: layout,
+  }, {
+    name: 'slideshowOptions',
+    label: 'Slideshow Options',
+    hint: 'Only applicable when layout is set to "slideshow"',
+    widget: 'object',
+    json: true,
+    collapsed: true,
+    fields: slideshowOptions,
   }, {
     name: 'accentColor',
     label: 'Accent Color',
@@ -144,6 +177,11 @@ registerEditorComponent({
     widget: 'select',
     options: ['default', 'highlight', 'twitter', 'flat', 'universal', 'list'],
   }, {
+    name: 'slideshowCard',
+    label: 'Slideshow Card',
+    hint: 'Tick when using slideshow layout',
+    widget: 'boolean',
+  }, {
     name: 'title',
     label: 'Title',
     widget: 'string',
@@ -165,7 +203,7 @@ registerEditorComponent({
 
 registerEditorComponent({
   id: 'OdsSectionPromotedShowcases',
-  label: 'Promoted Showcases',
+  label: 'Latest Showcases',
   fields: [{
     name: 'title',
     label: 'Title',
@@ -175,14 +213,22 @@ registerEditorComponent({
     label: 'Max',
     widget: 'number',
     min: 1,
-    max: 5,
-    default: 5,
+    value_type: 'int',
+    step: 1,
     json: true,
   }, {
     name: 'layout',
     label: 'Layout',
     widget: 'select',
     options: layout,
+  }, {
+    name: 'slideshowOptions',
+    label: 'Slideshow Options',
+    hint: 'Only applicable when layout is set to "slideshow"',
+    widget: 'object',
+    json: true,
+    collapsed: true,
+    fields: slideshowOptions,
   }, {
     name: 'showcases',
     label: 'Showcases',
