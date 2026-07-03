@@ -86,10 +86,16 @@
 </template>
 
 <script setup lang="ts">
-import type { SwiperOptions } from 'swiper/types'
+import type { AutoplayOptions, SwiperOptions } from 'swiper/types'
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
 
 export type SectionLayout = 'grid--items-1' | 'grid--items-2' | 'grid--items-3' | 'grid--items-4' | 'grid--items-5' | 'grid--responsive-cols-2' | 'grid--responsive-cols-3' | 'grid--responsive-cols-4' | 'slideshow'
+
+type SlideshowOptions = Omit<SwiperOptions, 'autoplay'> & {
+  autoplay?: AutoplayOptions & {
+    enabled: boolean
+  }
+}
 
 const {
   id = Math.ceil(Math.random() * 10),
@@ -103,7 +109,7 @@ const {
   layout?: SectionLayout
   accentColor?: '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
   textColor?: '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
-  slideshowOptions?: SwiperOptions
+  slideshowOptions?: SlideshowOptions
 }>()
 
 const sectionClasses = computed(() => {
