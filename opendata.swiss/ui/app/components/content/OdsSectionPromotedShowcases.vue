@@ -3,40 +3,37 @@ import OdsSection, { type SectionLayout } from './OdsSection.vue'
 import OdsShowcaseCard from '~/components/showcases/OdsShowcaseCard.vue'
 import { useShowcaseSearch } from '~/piveau/showcases'
 
-const { showcases, max } = defineProps<{
+const { max: limit } = defineProps<{
   title: string
   max: number
-  showcases: Array<{ id: string, label: string }>
   layout: SectionLayout
 }>()
 
-const { useResource, useSearch } = useShowcaseSearch()
+const { useSearch } = useShowcaseSearch()
 
-const loading = showcases.map(({ id }) => {
-  return useResource(id)
-})
-
-const loaded = (await Promise.all(loading.map(async ({ query, resultEnhanced }) => {
-  await query.suspense()
-
-  return resultEnhanced
-}))).map(({ value }) => value).filter(Boolean)
-
-const { query, getSearchResultsEnhanced } = useSearch({
+const { query: latestShowcasesQuery, getSearchResultsEnhanced: latestShowcases } = useSearch({
   queryParams: {
-    limit: max - loaded.length,
+    limit,
+    sort: 'issued+desc',
   },
   additionalParams: {
     resource: 'showcase',
   },
 })
 
-await query.suspense()
-
-const combined = computed(() => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return [...loaded, ...getSearchResultsEnhanced.value as any] as any
+const { query: pinnedShowcasesQuery, getSearchResultsEnhanced: pinnedShowcases } = useSearch({
+  queryParams: {
+    sort: 'issued+desc',
+  },
+  additionalParams: {
+    resource: 'showcase',
+  },
 })
+
+await Promise.all([
+  latestShowcasesQuery.suspense(),
+  pinnedShowcasesQuery.suspense(),
+])
 </script>
 
 <template>
@@ -47,7 +44,12 @@ const combined = computed(() => {
     :title="title"
   >
     <OdsShowcaseCard
-      v-for="showcase in combined"
+      v-for="showcase in pinnedShowcases"
+      :key="showcase.id"
+      :showcase="showcase"
+    />
+    <OdsShowcaseCard
+      v-for="showcase in latestShowcases"
       :key="showcase.id"
       :showcase="showcase"
     />

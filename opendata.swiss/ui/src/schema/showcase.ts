@@ -3,6 +3,7 @@ import { APP_LANGUAGES } from '../../app/constants/langages.js'
 
 export const shape = {
   active: z.boolean(),
+  pinned: z.boolean(),
   title: z.string().optional(),
   image: z.string().optional(),
   url: z.string().optional(),

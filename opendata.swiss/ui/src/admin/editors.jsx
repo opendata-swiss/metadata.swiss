@@ -172,22 +172,14 @@ registerEditorComponent({
     label: 'Max',
     widget: 'number',
     min: 1,
-    max: 5,
     default: 5,
+    step: 1,
+    value_type: 'int',
     json: true,
   }, {
     name: 'layout',
     label: 'Layout',
     widget: 'select',
     options: layout,
-  }, {
-    name: 'showcases',
-    label: 'Showcases',
-    hint: 'Hand-pick showcase to promote. More will be loaded dynamically to fill the section to the max number.',
-    widget: 'piveau-showcase',
-    piveau: {
-      search: import.meta.env.NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL || 'https://piveau-hub-search.int.ods.zazukoians.org/',
-    },
-    json: true,
   }],
 })

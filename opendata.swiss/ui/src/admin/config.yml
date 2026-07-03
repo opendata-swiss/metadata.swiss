@@ -213,6 +213,11 @@ collections:
         widget: boolean
         default: true
         i18n: duplicate
+      - label: Pinned
+        name: pinned
+        widget: boolean
+        default: true
+        i18n: duplicate
       - label: Title
         name: title
         widget: string
