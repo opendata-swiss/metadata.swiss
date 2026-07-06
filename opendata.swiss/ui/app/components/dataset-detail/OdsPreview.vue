@@ -1,29 +1,72 @@
 <template>
-  <!-- Logic for later -->
-  <!-- <section class="section" v-if="['CSV', 'ODS', 'XLSX', 'XLS'].includes(distribution.format)"> -->
-  <section>
+  <section v-if="hasPreview">
     <div class="container container--grid ">
       <div class="container__preview container__main vertical-spacing">
         <h2 class="h2">
           Preview
         </h2>
         <DistributionVisualisation
-          download-url="https://www.data.gouv.fr/api/1/datasets/r/860eac55-acd1-4811-98ad-9af4fd361658"
-          file-format="csv"
-          title="Data Preview"
+          :download-url="downloadUrl"
+          :file-format="previewFormat"
+          :title="title"
           :show-ai-tab="false"
-          primaryColor="var(--color-primary-600)"
+          primary-color="var(--color-primary-600)"
           api-base-url="https://data.europa.eu/api/hub/preview/dataPreview"
-          buttonBorderRadius="0px"
+          button-border-radius="0px"
         />
       </div>
     </div>
   </section>
-  <!-- </section> -->
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { computed, ref, watchEffect } from 'vue'
 import { DistributionVisualisation } from 'piveau-preview-plugin'
+
+const props = withDefaults(defineProps<{
+  downloadUrl: string
+  fileFormat: string
+  title?: string
+}>(), {
+  title: 'Data Preview',
+})
+
+const SUPPORTED_PREVIEW_FORMATS = ['csv', 'tsv', 'ods', 'xlsx', 'xls'] as const
+type SupportedPreviewFormat = typeof SUPPORTED_PREVIEW_FORMATS[number]
+
+const FORMAT_ALIASES: Record<string, SupportedPreviewFormat> = {
+  'excel xlsx': 'xlsx',
+  'excel xls': 'xls',
+}
+
+const normalizedFormat = computed(() => props.fileFormat.trim().toLowerCase())
+
+const normalizedPreviewFormat = computed<SupportedPreviewFormat | null>(() => {
+  const alias = FORMAT_ALIASES[normalizedFormat.value]
+  if (alias) {
+    return alias
+  }
+
+  const format = normalizedFormat.value as SupportedPreviewFormat
+  return SUPPORTED_PREVIEW_FORMATS.includes(format) ? format : null
+})
+
+const previewFormat = ref<SupportedPreviewFormat>('csv')
+
+watchEffect(() => {
+  if (normalizedPreviewFormat.value) {
+    previewFormat.value = normalizedPreviewFormat.value
+  }
+})
+
+const hasPreview = computed(() => {
+  return Boolean(
+    props.downloadUrl
+    && normalizedPreviewFormat.value,
+  )
+})
+
+const { downloadUrl, title } = props
 </script>
 
 <style scoped>

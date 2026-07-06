@@ -17,7 +17,6 @@ import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
 
 const { locale, t } = useI18n()
-
 const route = useRoute()
 const router = useRouter()
 const datasetId = route.params.datasetId as string
@@ -25,8 +24,14 @@ const distributionId = route.params.distributionId as string
 
 const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
-
 const { suspense } = query
+
+const SUPPORTED_PREVIEW_FORMATS = ['csv', 'tsv', 'ods', 'xlsx', 'xls'] as const
+
+const FORMAT_ALIASES: Record<string, typeof SUPPORTED_PREVIEW_FORMATS[number]> = {
+  'excel xlsx': 'xlsx',
+  'excel xls': 'xls',
+}
 
 const dataset = computed(() => {
   if (!resultEnhanced.value) {
@@ -47,15 +52,16 @@ const previewUrl = computed(() => {
   if (!distribution.value) {
     return ''
   }
-  return distribution.value.downloadUrls[0] || distribution.value.accessUrls[0] || ''
+  return distribution.value.accessUrls[0] || ''
 })
 
 const previewFormat = computed(() => {
-  return distribution.value?.format?.toLowerCase() || ''
+  const format = distribution.value?.format?.trim().toLowerCase() || ''
+  return FORMAT_ALIASES[format] ?? format
 })
 
 const isPreviewVisible = computed(() => {
-  return Boolean(previewUrl.value && ['wms', 'ods', 'xlsx', 'xls'].includes(previewFormat.value))
+  return Boolean(previewUrl.value && SUPPORTED_PREVIEW_FORMATS.includes(previewFormat.value as typeof SUPPORTED_PREVIEW_FORMATS[number]))
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
