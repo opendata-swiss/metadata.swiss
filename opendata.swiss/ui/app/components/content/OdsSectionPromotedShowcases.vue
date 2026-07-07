@@ -52,6 +52,8 @@ await Promise.all([
       v-for="showcase in latestShowcases"
       :key="showcase.id"
       :showcase="showcase"
+      no-excerpt
+      :slideshow-card="layout === 'slideshow'"
     />
   </OdsSection>
 </template>
