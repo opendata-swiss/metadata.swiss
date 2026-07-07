@@ -165,6 +165,11 @@ collections:
     create: true
     i18n: true
     fields:
+      - label: Pinned
+        name: pinned
+        widget: boolean
+        default: true
+        i18n: duplicate
       - label: Title
         name: title
         widget: string
@@ -210,6 +215,11 @@ collections:
     fields:
       - label: Active
         name: active
+        widget: boolean
+        default: true
+        i18n: duplicate
+      - label: Pinned
+        name: pinned
         widget: boolean
         default: true
         i18n: duplicate

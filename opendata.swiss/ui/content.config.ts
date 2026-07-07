@@ -55,6 +55,7 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         title: z.string(),
+        pinned: z.boolean(),
         slug: z.string().optional(),
         date: z.date().optional(),
         subHeading: z.string().optional(),

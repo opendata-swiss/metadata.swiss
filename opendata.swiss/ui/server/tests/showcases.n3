@@ -85,9 +85,9 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
   } ;
 .
 
-<#identifier>
+<#pinned>
   a earl:TestCase ;
-  rdfs:label "Sets slug as dcterms:identifier" ;
+  rdfs:label "Pinned showcase property" ;
   tuner:formula {
     (</api/showcases> ?res) resource:getIn [] .
 
@@ -95,7 +95,7 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
 
     {
       ?body log:includes {
-        </showcase/showcase> dcterms:identifier "showcase" .
+        </showcase/showcase> piveau:pinned true .
       } .
     }!tuner:assertThat .
   } ;
