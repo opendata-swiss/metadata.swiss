@@ -12,14 +12,16 @@ export function useShowcaseTypes() {
   const pending = useState<boolean>('showcase-types:pending', () => false)
   const error = useState<unknown | null>('showcase-types:error', () => null)
 
-  // Set up the vocabulary search once; it's cheap to create, the fetch is gated below.
+  // Single shared in-flight promise per request + client session
+  const inflight = useState<Promise<void> | null>('showcase-types:inflight', () => null)
+
   const { query, getSearchResultsEnhanced } = useVocabularySearch().useSearch({
     queryParams: { vocabulary: 'showcase-types' },
   })
 
-  async function ensureLoaded() {
-    if (loaded.value || pending.value) return data
+  async function runFetch() {
     pending.value = true
+    error.value = null
     try {
       await query.suspense()
       data.value = getSearchResultsEnhanced.value ?? []
@@ -32,6 +34,19 @@ export function useShowcaseTypes() {
     finally {
       pending.value = false
     }
+  }
+
+  async function ensureLoaded() {
+    if (loaded.value) return data
+
+    if (!inflight.value) {
+      inflight.value = runFetch().finally(() => {
+        inflight.value = null
+      })
+    }
+
+    // Await the shared promise so ALL callers wait for completion
+    await inflight.value
     return data
   }
 
