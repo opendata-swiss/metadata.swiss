@@ -1,5 +1,8 @@
 <template>
-  <Icon :name="iconName" :class="['icon', 'icon--base', ...iconClasses]" />
+  <Icon
+    :name="iconName"
+    :class="['icon', 'icon--base', ...iconClasses]"
+  />
 </template>
 
 <script setup lang="ts">
@@ -9,7 +12,7 @@ interface PropTypes {
   icon: string
   size?: 'sm' | 'base' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'
   spin?: boolean
-  role?: 'btn' | 'menu__item' | 'navigation'
+  role?: 'btn' | 'menu__item' | 'navigation' | 'presentation'
 }
 
 const props = defineProps<PropTypes>()

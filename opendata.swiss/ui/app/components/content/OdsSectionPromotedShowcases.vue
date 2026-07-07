@@ -50,6 +50,8 @@ const combined = computed(() => {
       v-for="showcase in combined"
       :key="showcase.id"
       :showcase="showcase"
+      no-excerpt
+      :slideshow-card="layout === 'slideshow'"
     />
   </OdsSection>
 </template>
