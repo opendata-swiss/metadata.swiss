@@ -28,7 +28,7 @@ services:
       - ../piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.4
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.5
 
     restart: unless-stopped
     logging:
