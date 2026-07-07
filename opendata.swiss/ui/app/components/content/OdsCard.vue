@@ -11,11 +11,31 @@ const { slideshowCard, ...props } = defineProps<CardProps & {
 <template>
   <template v-if="slideshowCard">
     <SwiperSlide>
-      <Card v-bind="props" />
+      <Card v-bind="props">
+        <template
+          v-for="(index, name) in $slots"
+          #[name]="data"
+        >
+          <slot
+            :name="name"
+            v-bind="data"
+          />
+        </template>
+      </Card>
     </SwiperSlide>
   </template>
   <Card
     v-else
     v-bind="props"
-  />
+  >
+    <template
+      v-for="(index, name) in $slots"
+      #[name]="data"
+    >
+      <slot
+        :name="name"
+        v-bind="data"
+      />
+    </template>
+  </Card>
 </template>
