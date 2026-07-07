@@ -105,7 +105,7 @@ public class DatasetTest extends BaseSystemTest {
     public void indexDataset_issued(TestContext context) {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.issued"), equalTo("2021-04-26T00:00:00Z"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.issued"), equalTo("2021-04-26"));
     }
 
     @Test
@@ -139,7 +139,7 @@ public class DatasetTest extends BaseSystemTest {
     public void indexDataset_modified(TestContext context) {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.modified"), equalTo("2021-04-26T00:00:00Z"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.modified"), equalTo("2021-04-26"));
     }
 
     @Test
@@ -292,7 +292,7 @@ public class DatasetTest extends BaseSystemTest {
     public void indexDataset_distribution_modified(TestContext context) {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].modified"), equalTo("2019-04-26T00:00:00Z"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].modified"), equalTo("2019-04-26"));
     }
 
     @Test
@@ -300,7 +300,7 @@ public class DatasetTest extends BaseSystemTest {
     public void indexDataset_distribution_issued(TestContext context) {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].issued"), equalTo("2019-04-26T00:00:00Z"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.distributions[0].issued"), equalTo("2019-04-26"));
     }
 
     @Test
