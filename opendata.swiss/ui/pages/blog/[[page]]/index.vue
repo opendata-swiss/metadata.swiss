@@ -1,9 +1,8 @@
 <script setup>
 import OdsPage from '../../../app/components/OdsPage.vue'
 import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs.js'
-import SvgIcon from '../../../app/components/SvgIcon.vue'
 import OdsBreadcrumbs from '../../../app/components/OdsBreadcrumbs.vue'
-import OdsCard from '../../../app/components/content/OdsCard.vue'
+import OdsBlogPostCard from '../../../app/components/blog/OdsBlogPostCard.vue'
 import OdsPagination from '../../../app/components/OdsPagination.vue'
 import OdsSearchPanel from '../../../app/components/OdsSearchPanel.vue'
 import { useRouter } from 'vue-router'
@@ -15,7 +14,7 @@ const localePath = useLocalePath()
 const PAGE_SIZE = 1 // Number of posts per page
 const page = parseInt(route.params.page) || 1
 
-const { data } = await useAsyncData(route.path, () => {
+const { data: posts } = await useAsyncData(route.path, () => {
   return queryCollection('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
@@ -32,19 +31,6 @@ const { data: pageCount } = await useAsyncData(route.path + '_pageCount', () => 
 
 useSeoMeta({
   title: `${t('message.header.navigation.blog')} | opendata.swiss`,
-})
-
-const posts = computed(() => {
-  return data.value?.map((post) => {
-    const date = new Date(post.date)
-
-    return {
-      ...post,
-      year: date.getFullYear(),
-      month: date.getMonth() + 1,
-      slug: post.slug || post.path.split('/').pop().replace(`.${locale.value}`, ''),
-    }
-  }) || []
 })
 
 const breadcrumbs = [
@@ -88,39 +74,7 @@ const onSearch = (value) => {
               v-for="post in posts"
               :key="post.id"
             >
-              <OdsCard
-                :title="post.title"
-                clickable
-              >
-                <template #image>
-                  <NuxtImg
-                    :src="post.image"
-                    :alt="post.title"
-                  />
-                </template>
-
-                <template #top-meta>
-                  <NuxtTime
-                    class="meta-info__item"
-                    :datetime="new Date(post.date)"
-                    relative
-                  />
-                </template>
-                <template #footer-action>
-                  <NuxtLinkLocale
-                    :to="{ name: 'blog-year-month-slug', params: { year: post.year, month: post.month, slug: post.slug } }"
-                    type="false"
-                    class="btn btn--outline btn--icon-only"
-                    aria-label="false"
-                  >
-                    <SvgIcon
-                      icon="ArrowRight"
-                      role="btn"
-                    />
-                    <span class="btn__text">Weiterlesen</span>
-                  </NuxtLinkLocale>
-                </template>
-              </OdsCard>
+              <OdsBlogPostCard :post="post" />
             </li>
           </ul>
         </div>
