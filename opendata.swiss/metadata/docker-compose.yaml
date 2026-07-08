@@ -408,7 +408,7 @@ services:
 
   # listmonk app
   listmonk-app:
-    image: listmonk/listmonk:latest
+    image: listmonk/listmonk:v6.2.0
     container_name: listmonk_app
     restart: unless-stopped
     ports:
