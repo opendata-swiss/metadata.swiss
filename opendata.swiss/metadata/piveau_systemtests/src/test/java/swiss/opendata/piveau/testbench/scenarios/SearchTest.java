@@ -29,11 +29,25 @@ public class SearchTest extends BaseSystemTest {
     public void verifySimpleSearch(TestContext context) {
         String datasetId = context.get(Goal.SIMPLE_DATASET_CREATED, "id", String.class);
 
-        System.out.println("Checking Global Search: /search?q=foo");
+        System.out.println("Checking Global Search: /search?q=fizfaz");
         await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
             RestAssured.given().queryParam("q", "fizfaz").when().get("/search").then().statusCode(200)
                     // Piveau Search response: { "result": { "count": N, "results": [...] } }
                     .body("result.count", greaterThan(0)).body("result.results.id", hasItem(datasetId));
+        });
+    }
+
+    @Test
+    @DependsOn(Goal.SIMPLE_ORGANIZATION_INDEXED)
+    @Provides(Goal.SIMPLE_ORGANIZATION_SEARCH_VERIFIED)
+    public void verifySimpleOrganizationSearch(TestContext context) {
+        String orgId = context.get(Goal.SIMPLE_ORGANIZATION_CREATED, "id", String.class);
+
+        System.out.println("Checking Global Search: /search?q=orgaorga");
+        await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            RestAssured.given().queryParam("q", "orgaorga").when().get("/search").then().statusCode(200)
+                    // Piveau Search response: { "result": { "count": N, "results": [...] } }
+                    .body("result.count", greaterThan(0)).body("result.results.id", hasItem(orgId));
         });
     }
 
