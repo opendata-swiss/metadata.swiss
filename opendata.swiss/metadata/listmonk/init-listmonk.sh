@@ -194,6 +194,7 @@ configure_smtp() {
     "max_conns": 10,
     "idle_timeout": "15s",
     "wait_timeout": "5s",
+    "msg_retry_delay": "1m",
     "enabled": true,
     "email_headers": []
   }'
