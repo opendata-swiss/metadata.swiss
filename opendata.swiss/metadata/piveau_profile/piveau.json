@@ -15,6 +15,13 @@
       "path": "dcat-ap-ch.hub.shapes.ttl",
       "name": "catalog",
       "shapeUri": "http://data.europa.eu/r5r/Catalog_Shape"
+    },
+    {
+      "id": "organization",
+      "description": "Model for an organization",
+      "path": "organization.ttl",
+      "name": "organization",
+      "shapeUri": "https://piveau.eu/ns/voc#Organization_Shape"
     }
   ],
   "resources": [
