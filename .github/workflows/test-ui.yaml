@@ -81,6 +81,8 @@ jobs:
         working-directory: opendata.swiss/ui
         env:
           NUXT_API_TUNER_TESTS: true
+          NUXT_LISTMONK_API_URL: http://localhost:9000/
+          NUXT_LISTMONK_API_USER: admin-api
 
       - run: npx wait-on http://localhost:3000 -t 30s
         working-directory: opendata.swiss/ui
