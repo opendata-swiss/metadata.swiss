@@ -11,7 +11,7 @@
     "api-tuner": ". ../metadata/listmonk/install.sh; npx api-tuner@0.6.5 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
     "test:api": "npm run api-tuner -- server/tests/**/*.n3 server/tests/*.n3",
-    "test:mocha": "source ../metadata/listmonk/install.sh; mocha server/tests/**/*.test.ts",
+    "test:mocha": ". ../metadata/listmonk/install.sh; mocha server/tests/**/*.test.ts",
     "prebuild": "vite build src/admin --emptyOutDir",
     "build": "nuxt build",
     "generate": "nuxt generate",

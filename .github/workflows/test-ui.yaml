@@ -77,7 +77,7 @@ jobs:
       - run: npm ci
         working-directory: opendata.swiss/ui
 
-      - run: sh ../metadata/listmonk/install.sh; npm run dev &
+      - run: . ../metadata/listmonk/install.sh; npm run dev > ui.log 2>&1 &
         working-directory: opendata.swiss/ui
         env:
           NUXT_API_TUNER_TESTS: true
@@ -88,6 +88,23 @@ jobs:
       - run: npm run test:api -- --silent
         working-directory: opendata.swiss/ui
         shell: bash
+
+      - name: Collect app logs
+        if: failure()
+        run: |
+          docker compose logs --no-log-prefix mailpit > mailpit.log
+          docker compose logs --no-log-prefix listmonk-app > listmonk-app.log
+          docker compose logs --no-log-prefix listmonk-init > listmonk-init.log
+        working-directory: opendata.swiss/metadata
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: ui-test-results
+          path: |
+            opendata.swiss/metadata/listmonk/install.sh
+            opendata.swiss/metadata/*.log
+            opendata.swiss/ui/ui.log
 
   mocha-tests:
     runs-on: ubuntu-latest
@@ -116,3 +133,4 @@ jobs:
 
       - run: npm run test:mocha
         working-directory: opendata.swiss/ui
+        shell: bash
