@@ -139,6 +139,7 @@ export default defineNuxtConfig({
     plugins: [
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
+      '~~/server/plugins/log-config',
     ],
     hooks: {
       'dev:reload': () => import('sharp'),

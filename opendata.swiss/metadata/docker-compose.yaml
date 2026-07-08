@@ -86,6 +86,7 @@ services:
       - NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
       - NUXT_LISTMONK_API_URL=http://localhost:9000/
       - NUXT_LISTMONK_API_USER=admin-api
+      - LOG_CONFIG=true
       - GITHUB_OWNER=opendata-swiss
       - GITHUB_CMS_REPO=opendata-swiss-cms-content-test
       - GITHUB_APP_REPO=metadata.swiss
