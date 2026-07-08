@@ -4,7 +4,7 @@ export default defineNitroPlugin(() => {
       app,
       showcases,
       listmonk,
-      public: publicConfig,
+      'public': publicConfig,
       hyvor,
       subscription,
     } = useRuntimeConfig()
