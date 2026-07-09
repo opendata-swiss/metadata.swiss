@@ -78,6 +78,9 @@ To create the organizations, run:
 ./scripts/organizations.sh
 ```
 
+After creating all organizations, run shell command `buildOrganizationHierarchy` in hub-search to populate the ancestors fields.
+
+
 To remove all organizations, run:
 
 ```sh
