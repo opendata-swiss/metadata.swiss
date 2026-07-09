@@ -4,7 +4,7 @@ const __dirname = dirname(new URL(import.meta.url).pathname)
 
 declare module 'nitropack/types' {
   interface NitroRouteConfig {
-    basicAuth?: boolean
+    basicAuth?: string[]
   }
 }
 
@@ -127,8 +127,9 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    '/api/showcases': { basicAuth: true },
-    '/api/subscribe/*': { basicAuth: true },
+    '/api/showcases': { basicAuth: ['POST'] },
+    '/api/subscribe/*': { basicAuth: ['POST'] },
+    '/api/subscription/preferences': { basicAuth: ['POST', 'GET'] },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
