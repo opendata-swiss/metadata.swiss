@@ -129,7 +129,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/showcases': { basicAuth: ['POST'] },
     '/api/subscribe/*': { basicAuth: ['POST'] },
-    '/api/subscription/preferences': { basicAuth: ['POST', 'GET'] },
+    '/api/subscription/preferences': { basicAuth: ['PUT', 'GET'] },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
