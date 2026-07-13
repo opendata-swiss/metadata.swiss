@@ -25,7 +25,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        environment: [test, int]
+        environment:
+          - ref
+          - abn
 
     steps:
       - name: Configure some variables
@@ -65,7 +67,7 @@ jobs:
           body: |
             Your ${{ matrix.environment }} preview environment is deployed! 🚀
             **URL:** https://${{ steps.vars.outputs.branch }}.${{ matrix.environment }}-previews.ods.zazukoians.org/
-            **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.    
+            **Note:** It may take a few minutes for the DNS to propagate, the certificate to be generated and the preview to be reachable.
 
       - name: Stop preview environment
         if: github.event.action == 'closed'

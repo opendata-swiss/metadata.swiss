@@ -2,29 +2,29 @@ name: Dispatch Subscriptions
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # Every day at 08:00
+    - cron: "0 8 * * *" # Every day at 08:00
       timezone: "Europe/Zurich"
-    - cron: '0 8 * * 1'   # Every Monday at 08:00
+    - cron: "0 8 * * 1" # Every Monday at 08:00
       timezone: "Europe/Zurich"
   workflow_dispatch:
     inputs:
       digest:
-        description: 'Digest type'
+        description: "Digest type"
         required: true
-        default: 'daily'
+        default: "daily"
         type: choice
         options:
           - daily
           - weekly
       environment:
-        description: 'Environment to run'
+        description: "Environment to run"
         required: true
-        default: 'all'
+        default: "all"
         type: choice
         options:
           - all
-          - INT
-          - TEST
+          - REF
+          - ABN
 
 jobs:
   dispatch:
@@ -32,10 +32,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - target_env: INT
-            realm: lindas-next-int
-          - target_env: TEST
-            realm: lindas-next
+          - target_env: REF
+            realm: lindas-next-ref
+          - target_env: ABN
+            realm: lindas-next-abn
     steps:
       - name: Check if environment should run
         id: check_env
@@ -68,7 +68,7 @@ jobs:
             -d "grant_type=client_credentials" \
             -d "client_id=${{ secrets[format('KEYCLOAK_SERVICE_ACCOUNT_CLIENT_ID_{0}', matrix.target_env)] }}" \
             -d "client_secret=${{ secrets[format('KEYCLOAK_SERVICE_ACCOUNT_CLIENT_SECRET_{0}', matrix.target_env)] }}" | jq -r .access_token)
-          
+
           if [ "$TOKEN" == "null" ] || [ -z "$TOKEN" ]; then
             echo "Failed to get token"
             exit 1
