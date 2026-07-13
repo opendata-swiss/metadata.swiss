@@ -86,6 +86,7 @@ jobs:
           NUXT_HYVOR_WEBHOOKS_ENABLED: true
           LOG_CONFIG: true
           NUXT_PUBLIC_PIVEAU_HUB_REPO_URL: http://localhost:8081/
+          HUB_REPO_API_KEY: ${{ secrets.HUB_REPO_API_KEY }}
 
       - run: npx wait-on http://localhost:3000 -t 30s
         working-directory: opendata.swiss/ui
