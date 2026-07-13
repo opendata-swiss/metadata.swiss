@@ -24,7 +24,7 @@ jobs:
         working-directory: opendata.swiss/ui
       - run: npm run lint
         working-directory: opendata.swiss/ui
-  
+
   typecheck:
     runs-on: ubuntu-latest
 
@@ -65,8 +65,10 @@ jobs:
         run: cp .env.example .env
 
       - name: Start listmonk
-        run: docker compose up -d listmonk-app listmonk-init mailpit
+        run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo
         working-directory: opendata.swiss/metadata
+        env:
+          PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA: ${{ secrets.PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA }}
 
       - uses: fabasoad/setup-prolog-action@v1
 
@@ -77,16 +79,42 @@ jobs:
       - run: npm ci
         working-directory: opendata.swiss/ui
 
-      - run: sh ../metadata/listmonk/install.sh; npm run dev &
+      - run: . ../metadata/listmonk/install.sh; npm run dev > ui.log 2>&1 &
         working-directory: opendata.swiss/ui
         env:
           NUXT_API_TUNER_TESTS: true
+          NUXT_LISTMONK_API_URL: http://localhost:9000/
+          NUXT_LISTMONK_API_USER: admin-api
+          NUXT_HYVOR_WEBHOOKS_ENABLED: true
+          LOG_CONFIG: true
+          NUXT_PUBLIC_PIVEAU_HUB_REPO_URL: http://localhost:8081/
 
       - run: npx wait-on http://localhost:3000 -t 30s
         working-directory: opendata.swiss/ui
 
       - run: npm run test:api -- --silent
         working-directory: opendata.swiss/ui
+        shell: bash
+        env:
+          HUB_REPO_API_KEY: ${{ secrets.HUB_REPO_API_KEY }}
+
+      - name: Collect app logs
+        if: failure()
+        run: |
+          docker compose logs --no-log-prefix piveau-hub-repo > hub-repo.log
+          docker compose logs --no-log-prefix mailpit > mailpit.log
+          docker compose logs --no-log-prefix listmonk-app > listmonk-app.log
+          docker compose logs --no-log-prefix listmonk-init > listmonk-init.log
+        working-directory: opendata.swiss/metadata
+
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: ui-test-results
+          path: |
+            opendata.swiss/metadata/listmonk/install.sh
+            opendata.swiss/metadata/*.log
+            opendata.swiss/ui/ui.log
 
   mocha-tests:
     runs-on: ubuntu-latest
@@ -115,3 +143,4 @@ jobs:
 
       - run: npm run test:mocha
         working-directory: opendata.swiss/ui
+        shell: bash

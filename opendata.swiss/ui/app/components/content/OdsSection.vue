@@ -13,35 +13,17 @@
         v-if="layout === 'slideshow'"
         class="carousel carousel--cards"
       >
-        <Swiper
-          :speed="slideshowOptions?.speed"
-          :auto-height="false"
-          :loop="false"
-          :slides-per-view="1"
-          :space-between="20"
-          :autoplay="slideshowOptions?.autoplay"
-          :breakpoints="breakpoints"
-          :modules="slideshowModules"
-          :keyboard="{
-            enabled: true,
-            onlyInViewport: false,
-          }"
-          :navigation="{
-            nextEl: `#carousel-next-${id}`,
-            prevEl: `#carousel-prev-${id}`,
-          }"
-          :simulate-touch="true"
-          :slide-to-clicked-slide="false"
-          :pagination="{
-            type: 'bullets',
-            el: `#carousel-pagination-${id}`,
-            clickable: true,
-            bulletClass: 'carousel__bullet',
-            bulletActiveClass: 'carousel__bullet--active',
-          }"
+        <swiper-container
+          ref="swiperEl"
+          init="false"
         >
-          <slot />
-        </Swiper>
+          <template
+            v-for="vnode in slideshowChildren"
+            :key="vnode.key ?? undefined"
+          >
+            <component :is="vnode" />
+          </template>
+        </swiper-container>
         <div class="carousel__fonctions">
           <div
             :id="`carousel-pagination-${id}`"
@@ -86,8 +68,10 @@
 </template>
 
 <script setup lang="ts">
+import type { SwiperContainer } from 'swiper/element'
 import type { AutoplayOptions, SwiperOptions } from 'swiper/types'
-import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
+import SvgIcon from '../SvgIcon.vue'
+import { Fragment, isVNode, type VNodeChild, Comment, onMounted, ref } from 'vue'
 
 export type SectionLayout = 'grid--items-1' | 'grid--items-2' | 'grid--items-3' | 'grid--items-4' | 'grid--items-5' | 'grid--responsive-cols-2' | 'grid--responsive-cols-3' | 'grid--responsive-cols-4' | 'slideshow'
 
@@ -98,19 +82,21 @@ type SlideshowOptions = Omit<SwiperOptions, 'autoplay'> & {
 }
 
 const {
-  id = Math.ceil(Math.random() * 10),
+  id,
   accentColor = '200',
   textColor = '400',
   layout = 'grid--responsive-cols-3',
   slideshowOptions,
 } = defineProps<{
-  id?: number
+  id?: string
   title?: string
   layout?: SectionLayout
   accentColor?: '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
   textColor?: '50' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900'
   slideshowOptions?: SlideshowOptions
 }>()
+
+const { autoplay, speed = 500 } = slideshowOptions || {}
 
 const sectionClasses = computed(() => {
   if (layout === 'slideshow') {
@@ -151,13 +137,66 @@ const breakpoints = {
   },
 }
 
-const slideshowModules = computed(() => {
-  const coreModules = [Navigation, Pagination, A11y]
+const slots = useSlots()
 
-  if (slideshowOptions?.autoplay?.enabled) {
-    return [...coreModules, Autoplay]
+// Reference to the web component instance
+const swiperEl = ref<HTMLElement | null>(null)
+
+function flatten(children: VNodeChild[]): VNode[] {
+  const out: VNode[] = []
+  for (const c of children ?? []) {
+    if (c == null || c === '' || c === false) continue
+    if (!isVNode(c)) continue
+    if (c.type === Comment) continue
+    if (c.type === Fragment && Array.isArray(c.children)) out.push(...flatten(c.children))
+    else out.push(c)
   }
+  return out
+}
 
-  return coreModules
+const slideshowChildren = computed(() => {
+  const raw = slots.default?.() ?? []
+  return flatten(raw).map((v, i) =>
+    h('swiper-slide', { key: v.key ?? `auto-${i}` }, { default: () => [v] }),
+  )
+})
+
+// Initialize Swiper Web Component on the client with object options via properties
+onMounted(() => {
+  const el = swiperEl.value as SwiperContainer
+  if (!el) return
+  console.debug('[OdsSection] SSR children before init:',
+    Array.from(el.children).map(n => ({ tag: n.tagName, html: n.innerHTML.slice(0, 120) + '…' })))
+  const autoplayProp = autoplay?.enabled ? { delay: (autoplay.delay || 2.5) * 1000 } : false
+  Object.assign(el, {
+    speed,
+    autoHeight: false,
+    loop: false,
+    slidesPerView: 1,
+    spaceBetween: 20,
+    breakpoints,
+    simulateTouch: true,
+    slideToClickedSlide: false,
+    keyboard: {
+      enabled: true,
+      onlyInViewport: false,
+    },
+    navigation: {
+      nextEl: `#carousel-next-${id}`,
+      prevEl: `#carousel-prev-${id}`,
+    },
+    pagination: {
+      type: 'bullets',
+      el: `#carousel-pagination-${id}`,
+      clickable: true,
+      bulletClass: 'carousel__bullet',
+      bulletActiveClass: 'carousel__bullet--active',
+    },
+    autoplay: autoplayProp,
+  })
+
+  if (typeof el.initialize === 'function') {
+    el.initialize()
+  }
 })
 </script>

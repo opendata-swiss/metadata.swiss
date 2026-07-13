@@ -37,6 +37,7 @@ const { data: latestPosts } = await useAsyncData('blog-latest', async () => {
 
 <template>
   <OdsSection
+    id="latest-news"
     :layout="layout"
     accent-color="100"
     text-color="600"

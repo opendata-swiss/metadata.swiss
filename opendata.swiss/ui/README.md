@@ -80,6 +80,7 @@ To run API tests, set the environment variable below to enable basic auth for th
 
 ```bash
 NUXT_API_TUNER_TESTS=true
+HUB_REPO_API_KEY=... #value from metadata compose stack 
 ```
 
 Then, run the tests with:

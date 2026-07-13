@@ -84,6 +84,9 @@ services:
     environment:
       - NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084/
       - NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
+      - NUXT_LISTMONK_API_URL=http://localhost:9000/
+      - NUXT_LISTMONK_API_USER=admin-api
+      - LOG_CONFIG=true
       - GITHUB_OWNER=opendata-swiss
       - GITHUB_CMS_REPO=opendata-swiss-cms-content-test
       - GITHUB_APP_REPO=metadata.swiss
@@ -408,7 +411,7 @@ services:
 
   # listmonk app
   listmonk-app:
-    image: listmonk/listmonk:latest
+    image: listmonk/listmonk:v6.2.0
     container_name: listmonk_app
     restart: unless-stopped
     ports:

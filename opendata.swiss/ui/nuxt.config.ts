@@ -4,7 +4,7 @@ const __dirname = dirname(new URL(import.meta.url).pathname)
 
 declare module 'nitropack/types' {
   interface NitroRouteConfig {
-    basicAuth?: boolean
+    basicAuth?: string[]
   }
 }
 
@@ -30,6 +30,11 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   css: ['~/assets/main.css'],
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => tag.startsWith('swiper-'),
+    },
+  },
   content: {
     build: {
       markdown: {
@@ -122,8 +127,9 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    '/api/showcases': { basicAuth: true },
-    '/api/subscribe/*': { basicAuth: true },
+    '/api/showcases': { basicAuth: ['POST'] },
+    '/api/subscribe/*': { basicAuth: ['POST'] },
+    '/api/subscription/preferences': { basicAuth: ['PUT', 'GET'] },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
@@ -134,6 +140,7 @@ export default defineNuxtConfig({
     plugins: [
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
+      '~~/server/plugins/log-config',
     ],
     hooks: {
       'dev:reload': () => import('sharp'),

@@ -3,7 +3,6 @@
     style="height: 100%;"
     :title="showcase.title ? getCurrentTranslation(showcase.title, locale) : ''"
     clickable
-    :slideshow-card="slideshowCard"
   >
     <template #image>
       <img
@@ -15,10 +14,9 @@
 
     <template #top-meta>
       <div>
-        <span
-          v-if="showcaseType(showcase)"
-          class="meta-info__item"
-        >{{ showcaseType(showcase)!.pref_label }}</span>
+        <span class="meta-info__item">
+          {{ (showcaseType(showcase) && showcaseType(showcase)!.pref_label) || '' }}
+        </span>
         <span class="meta-info__item">
           {{ t('message.showcase.search.dataset_references', { count: showcase.references.length }) }}
         </span>
@@ -71,7 +69,6 @@ const { locale, t } = useI18n()
 const { showcase } = defineProps<{
   showcase: PiveauShowcase
   noExcerpt?: boolean
-  slideshowCard?: boolean
 }>()
 
 const { data: showcaseTypes, ensureLoaded } = useShowcaseTypes()
