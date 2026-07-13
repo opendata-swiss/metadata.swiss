@@ -2,18 +2,17 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX earl: <http://www.w3.org/ns/earl#>
 PREFIX tuner: <https://api-tuner.described.at/>
 
-<#createCatalog>
-  a tuner:Request ;
-  tuner:url </catalogues/showcases-ods> ;
-  tuner:method "PUT" ;
-  tuner:body <file:../../../../metadata/piveau_catalogues/showcases-ods.ttl> ;
-  tuner:header ( "Content-Type" "text/turtle" ) ;
-  tuner:header ( "X-API-KEY" "aeNiengaejohsoohe0iequolieRaicei" ) ;
-.
-
 <#createShowcase>
   a earl:TestCase ;
   rdfs:label "Create showcase" ;
+  <#createCatalog> [
+    a tuner:Request ;
+    tuner:url </catalogues/showcases-ods> ;
+    tuner:method "PUT" ;
+    tuner:body <file:../../../../metadata/piveau_catalogues/showcases-ods.ttl> ;
+    tuner:header ( "Content-Type" "text/turtle" ) ;
+    tuner:header ( "X-API-KEY" "$HUB_REPO_API_KEY" ) ;
+  ] ;
   <#request> [
     a tuner:Request ;
     tuner:method "PUT" ;
@@ -22,9 +21,14 @@ PREFIX tuner: <https://api-tuner.described.at/>
     tuner:header ( "Content-Type" "application/ld+json" ) ;
   ] ;
   tuner:formula {
-    <#createShowcase> <#request> ?req .
-    ?req tuner:response ?res .
+    <#createShowcase> <#createCatalog> ?ccReq .
+    ?ccReq tuner:response ?ccRes .
 
-    ?res tuner:http_status 200 .
+    ?ccRes tuner:http_code 204 .
+
+    <#createShowcase> <#request> ?csReq .
+    ?csReq tuner:response ?res .
+
+    ?res tuner:http_code 200 .
   } ;
 .

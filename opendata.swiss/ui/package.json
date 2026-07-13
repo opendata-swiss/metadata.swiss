@@ -8,7 +8,7 @@
     "decap": "rimraf public/admin && (cd ../..; PORT=8088 decap-server) & dotenv -- vite src/admin",
     "predev": "shx test -d content || git clone git@github.com:opendata-swiss/opendata-swiss-cms-content-test.git content",
     "dev": "HOST=0.0.0.0 nuxt dev",
-    "preapi-tuner": "npx api-tuner@0.6.4 --base-iri http://localhost:8081 server/tests/hub-repo/populate.n3",
+    "preapi-tuner": "dotenv -- npx api-tuner@0.6.6 --base-iri http://localhost:8081 server/tests/hub-repo/populate.n3",
     "api-tuner": ". ../metadata/listmonk/install.sh; npx api-tuner@0.6.6 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
     "test:api": "npm run api-tuner -- server/tests/**/*.test.n3 server/tests/*.test.n3",
