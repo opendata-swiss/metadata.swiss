@@ -67,6 +67,8 @@ jobs:
       - name: Start listmonk
         run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo
         working-directory: opendata.swiss/metadata
+        env:
+          PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA: ${{ secrets.PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA }}
 
       - uses: fabasoad/setup-prolog-action@v1
 
