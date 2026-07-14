@@ -40,7 +40,7 @@ jobs:
           node-version: "lts/*"
       - run: npm ci
         working-directory: opendata.swiss/ui
-      - run: npx nuxt typecheck
+      - run: npm run typecheck
         working-directory: opendata.swiss/ui
 
   api-tests:

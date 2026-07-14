@@ -11,6 +11,7 @@
     "preapi-tuner": "dotenv -- npx api-tuner@0.6.6 --base-iri http://localhost:8081 server/tests/hub-repo/populate.n3",
     "api-tuner": ". ../metadata/listmonk/install.sh; npx api-tuner@0.6.6 --base-iri http://localhost:3000",
     "lint": "eslint --quiet",
+    "typecheck": "nuxt typecheck",
     "test:api": "npm run api-tuner -- server/tests/**/*.test.n3 server/tests/*.test.n3",
     "test:mocha": ". ../metadata/listmonk/install.sh; mocha server/tests/**/*.test.ts",
     "prebuild": "vite build src/admin --emptyOutDir",
