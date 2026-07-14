@@ -70,7 +70,7 @@ import { useI18n } from '#imports'
 
 import OdsTermsOfUseIcon from './OdsTermsOfUseIcon.vue'
 import OdsRelativeDateToggle from '../OdsRelativeDateToggle.vue'
-import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter'
+import type { DcatApChV2DatasetAdapter } from './model/dcat-ap-ch-v2-dataset-adapter.js'
 
 const { locale, t } = useI18n()
 

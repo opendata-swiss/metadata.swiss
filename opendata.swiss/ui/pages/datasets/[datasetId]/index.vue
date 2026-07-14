@@ -16,8 +16,8 @@ import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import OdsButton from '../../../app/components/OdsButton.vue'
-import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
+import OdsDatasetDetailHeader from '../../../app/components/dataset-detail/OdsDatasetDetailHeader.vue'
 import Hero from '../../../app/components/OdsHero.vue'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
@@ -131,6 +131,11 @@ await suspense()
     <main id="main-content">
       <Hero type="default">
         <template #description>
+          <OdsDatasetDetailHeader :dataset="dataset" />
+        </template>
+      </Hero>
+      <Hero type="default">
+        <template #description>
           <OdsDatasetMetaInfo :dataset="dataset" />
 
           <MDC :value="dataset.description" />
@@ -203,12 +208,6 @@ await suspense()
               <div>
                 <OdsTagList :tags="dataset.keywords" />
               </div>
-            </div>
-            <div v-if="dataset.catalog">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.catalog') }}
-              </h2>
-              <OdsDatasetCatalogPanel :dataset="dataset" />
             </div>
           </div>
           <div class="hidden container__aside md:block">
@@ -304,8 +303,8 @@ await suspense()
 
 <style lang="scss" scoped>
 #main-header {
-  // avoid layout shift from ssr to csr
-   @media (min-width: 1024px) {
+  /* avoid layout shift from ssr to csr */
+  @media (min-width: 1024px) {
     min-height: 65.5px;
   }
   @media (min-width: 1280px) {
