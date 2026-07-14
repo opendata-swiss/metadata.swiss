@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-deza> a dcat:Catalog ;
+    dcterms:created "2026-06-18T14:22:16.918779"^^xsd:dateTime ;
+    dcterms:description "Die Direktion für Entwicklung und Zusammenarbeit (DEZA) ist die Agentur für internationale Zusammenarbeit im Eidgenössischen Departement für auswärtige Angelegenheiten (EDA). Die DEZA ist zuständig für die Gesamtkoordination der Entwicklungs- und Ostzusammenarbeit mit andern Bundesämtern sowie für die humanitäre Hilfe des Bundes."@de,
+        "The Swiss Agency for Development and Cooperation (SDC) is the agency for international cooperation of the Federal Department of Foreign Affairs (FDFA). The SDC is responsible for the overall coordination with other federal authorities of development and cooperation with Eastern Europe as well as for humanitarian aid delivered by the Swiss Confederation."@en,
+        "La Direction du développement et de la coopération (DDC) est l’organe du Département fédéral des affaires étrangères (DFAE) responsable des activités de Coopération internationale de la Suisse. Lui incombent la coordination de la coopération au développement et de la coopération avec l'Europe de l’Est avec d’autres offices de la Confédération, ainsi que l’Aide humanitaire de la Suisse."@fr,
+        "La Direzione dello sviluppo e della cooperazione (DSC) è l’agenzia del Dipartimento federale degli affari esteri (DFAE) preposta alla cooperazione internazionale della Svizzera. Alla DSC competono il coordinamento generale, con altri servizi federali, della cooperazione allo sviluppo e della cooperazione con l’Europa dell’Est nonché l’aiuto umanitario della Confederazione."@it ;
+    dcterms:modified "2026-06-18T14:22:16.918783"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.eda.admin.ch/deza/en/home.html> ;
+            foaf:name "Direktion für Entwicklung und Zusammenarbeit DEZA"@de,
+                "Swiss Agency for Development and Cooperation SDC"@en,
+                "Direction du développement et de la coopération DDC"@fr,
+                "Direzione dello sviluppo e della cooperazione DSC"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Direktion für Entwicklung und Zusammenarbeit DEZA"@de,
+        "Swiss Agency for Development and Cooperation SDC"@en,
+        "Direction du développement et de la coopération DDC"@fr,
+        "Direzione dello sviluppo e della cooperazione DSC"@it ;
+    dcterms:type "ckan"^^xsd:string .
+
