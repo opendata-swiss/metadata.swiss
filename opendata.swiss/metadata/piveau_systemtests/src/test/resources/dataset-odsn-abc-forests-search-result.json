@@ -87,7 +87,12 @@
             "https://data.example.org/data/345"
         ],
         "accrual_periodicity": {
-            "label": "annual",
+            "label": {
+                "de": "jährlich",
+                "en": "annual",
+                "fr": "annuel",
+                "it": "annuale"
+            },
             "resource": "http://publications.europa.eu/resource/authority/frequency/ANNUAL"
         },
         "description": {

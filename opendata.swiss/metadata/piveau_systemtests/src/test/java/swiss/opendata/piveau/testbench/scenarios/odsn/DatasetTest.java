@@ -174,6 +174,10 @@ public class DatasetTest extends BaseSystemTest {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
         org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.resource"), equalTo("http://publications.europa.eu/resource/authority/frequency/ANNUAL"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.label.de"), equalTo("jährlich"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.label.en"), equalTo("annual"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.label.fr"), equalTo("annuel"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.label.it"), equalTo("annuale"));
     }
 
     @Test
