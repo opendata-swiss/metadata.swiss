@@ -219,7 +219,7 @@ dcatap:Catalog_Shape
           sh:minCount 1 ;
           sh:path dct:publisher ;
           sh:severity sh:Violation ;
-          pv:mappingClass "Agent" ;
+          pv:mappingClass "AgentMultiLang" ;
           pv:mappingName "publisher"
       ], [
           sh:minCount 1 ;
@@ -434,7 +434,7 @@ dcatap:Dataset_Shape
           sh:maxCount 1 ;
           sh:path dct:publisher ;
           sh:severity sh:Violation ;
-          pv:mappingClass "Agent" ;
+          pv:mappingClass "AgentMultiLang" ;
           pv:mappingName "publisher"
       ], [
           sh:path dct:spatial ;
@@ -461,7 +461,7 @@ dcatap:Dataset_Shape
           sh:maxCount 1 ;
           sh:path dct:accrualPeriodicity ;
           sh:severity sh:Violation ;
-          pv:mappingClass "Frequency" ;
+          pv:mappingClass "FrequencyMultiLang" ;
           pv:mappingName "accrual_periodicity"
       ], [
           sh:path dct:conformsTo ;
