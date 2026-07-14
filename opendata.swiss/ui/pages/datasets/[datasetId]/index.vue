@@ -10,10 +10,8 @@ import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail
 
 import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs'
 import OdsBreadcrumbs, { type BreadcrumbItem } from '../../../app/components/OdsBreadcrumbs.vue'
-import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
-import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import OdsButton from '../../../app/components/OdsButton.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
@@ -129,22 +127,26 @@ await suspense()
       </ClientOnly>
     </header>
     <main id="main-content">
-      <Hero type="default">
-        <template #description>
+      <section class="section section--default bg--secondary-50">
+        <div class="container">
+          <span class="dataset-label">{{ t('message.dataset_detail.dataset') }}</span>
           <OdsDatasetDetailHeader :dataset="dataset" />
-        </template>
-      </Hero>
+        </div>
+      </section>
+
       <Hero type="default">
-        <template #description>
-          <OdsDatasetMetaInfo :dataset="dataset" />
-
-          <MDC :value="dataset.description" />
-        </template>
-
         <template #title>
           {{ dataset.title }}
         </template>
-
+        <template #description>
+          <MDC :value="dataset.description" />
+          <div
+            v-if="dataset.keywords.length > 0"
+            class="keywords"
+          >
+            <OdsTagList :tags="dataset.keywords" />
+          </div>
+        </template>
         <template #authors>
           <div
             class="disc-images"
@@ -169,18 +171,6 @@ await suspense()
       <section class="section">
         <div class="container container--grid gap--responsive">
           <div class="container__main vertical-spacing">
-            <div class="container__mobile">
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.header.navigation.terms_of_use`) }}
-                </h2>
-                <OdsDetailTermsOfUse
-                  v-for="value in dataset.licenses"
-                  :key="value.id"
-                  :license="value"
-                />
-              </div>
-            </div>
             <h2 class="h2">
               {{ t('message.dataset_detail.distributions') }}
             </h2>
@@ -193,38 +183,12 @@ await suspense()
               :table-entries="dataset.propertyTable"
               type="block"
             />
-            <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.categories') }}
-              </h2>
-              <div>
-                <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
-              </div>
-            </div>
-            <div v-if="dataset.keywords.length > 0">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.keywords') }}
-              </h2>
-              <div>
-                <OdsTagList :tags="dataset.keywords" />
-              </div>
-            </div>
           </div>
           <div class="hidden container__aside md:block">
             <div
               id="aside-content"
               class="sticky sticky--top"
             >
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.header.navigation.terms_of_use`) }}
-                </h2>
-                <OdsDetailTermsOfUse
-                  v-for="value in dataset.licenses"
-                  :key="value.id"
-                  :license="value"
-                />
-              </div>
               <div class="box">
                 <h2 class="h5">
                   {{ t(`message.subscribe.header`) }}
@@ -323,5 +287,23 @@ await suspense()
 
 form.subscribe-form:not(:first-of-type) {
   margin-top: 1rem;
+}
+
+.dataset-label {
+  position: relative;
+  background-color: #e6f0fa;
+  color: #1976d2;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 1px solid #b3d4fc;
+  margin-bottom: 48px;;
+}
+.keywords {
+  margin-top: 40px;
 }
 </style>

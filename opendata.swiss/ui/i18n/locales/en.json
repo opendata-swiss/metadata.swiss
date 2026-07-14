@@ -64,6 +64,7 @@
       "published_on": "Published",
       "created_on": "Created",
       "modified_on": "Last updated ",
+      "publisher": "Publisher",
       "categories": "Categories",
       "download": "Download",
       "go_to_resource": "Go to resource",
