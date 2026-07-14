@@ -10,7 +10,7 @@ import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetail
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
-import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue'
+import OdsDistributionDetailHeader from '../../../../app/components/distribution/OdsDistributionDetailHeader.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
@@ -100,27 +100,15 @@ await suspense()
         <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
       </ClientOnly>
     </header>
+    <section class="section section--default bg--secondary-50">
+      <div class="container">
+        <span class="dataset-label">{{ t('message.dataset_detail.distribution') }}</span>
+        <OdsDistributionDetailHeader :distribution="distribution" />
+      </div>
+    </section>
     <section class="hero hero--default">
       <div class="container container--grid gap--responsive">
         <div class="hero__content">
-          <span class="distribution-label">{{ t('message.dataset_detail.distribution') }}</span>
-
-          <p class="meta-info">
-            <span
-              v-if="distribution.releaseDate"
-              class="meta-info__item"
-            >
-              {{ t('message.dataset_detail.published_on') }}
-              <OdsRelativeDateToggle :date="distribution.releaseDate" />
-            </span>
-            <span
-              v-if="distribution.modified"
-              class="meta-info__item"
-            >
-              {{ t('message.dataset_detail.modified_on') }}
-              <OdsRelativeDateToggle :date="distribution.modified" />
-            </span>
-          </p>
           <h1 class="hero__title">
             {{ distribution.title }}
           </h1>
@@ -133,7 +121,7 @@ await suspense()
         <div class="container__main vertical-spacing">
           <div class="container__mobile">
             <div
-              v-if="distribution.downloadUrls.length > 0"
+              v-if="distribution.downloadUrls.length > 0 && distribution.downloadUrls"
               class="box"
             >
               <h2 class="h5">
@@ -221,6 +209,7 @@ await suspense()
           </div>
         </div>
       </div>
+      <pre>{{ distribution }}</pre>
     </section>
     <section class="section publication-back-button-section">
       <div class="container">
@@ -258,5 +247,20 @@ await suspense()
   @media (min-width: 1280px) {
     min-height: 73.5px;
   }
+}
+
+.dataset-label {
+  position: relative;
+  background-color: #e6f0fa;
+  color: #1976d2;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 1px solid #b3d4fc;
+  margin-bottom: 48px;;
 }
 </style>

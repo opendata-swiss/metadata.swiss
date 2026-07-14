@@ -149,6 +149,7 @@ await suspense()
         </template>
         <template #authors>
           <div
+            v-if="dataset.publisher && dataset.publisher.name"
             class="disc-images"
             aria-hidden="true"
           >
@@ -159,7 +160,10 @@ await suspense()
               >
             </div>
           </div>
-          <address class="authors__names">
+          <address
+            v-if="dataset.publisher && dataset.publisher.resource"
+            class="authors__names"
+          >
             <a
               class="link author__name link--external"
               target="_blank"

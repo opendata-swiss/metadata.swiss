@@ -77,7 +77,8 @@
       "metadata": "Métadonnées",
       "keywords": "Mots-clés",
       "to_dataset": "Vers le jeu de données",
-      "to_search": "Vers la recherche"
+      "to_search": "Vers la recherche",
+      "format": "Format"
     },
     "subscribe": {
       "header": "S'abonner",
@@ -125,15 +126,15 @@
       },
       "search": {
         "dataset_references": "{count} jeux de données",
-                "prompt": "Rechercher des showcases",
-                "sort_by": {
-                    "newest": "Mises à jour récentes",
-                    "oldest": "Anciennes mises à jour",
-                    "issued_desc": "Nouveaux showcases",
-                    "issued_asc": "Anciens showcases",
-                    "title_asc": "A-Z",
-                    "title_desc": "Z-A"
-                },
+        "prompt": "Rechercher des showcases",
+        "sort_by": {
+          "newest": "Mises à jour récentes",
+          "oldest": "Anciennes mises à jour",
+          "issued_desc": "Nouveaux showcases",
+          "issued_asc": "Anciens showcases",
+          "title_asc": "A-Z",
+          "title_desc": "Z-A"
+        },
         "submit_prompt": {
           "title": "Votre vitrine ici?",
           "abstract": "Soumettez votre propre vitrine pour partager votre projet avec la communauté, promouvoir vos jeux de données et inspirer les autres.",
