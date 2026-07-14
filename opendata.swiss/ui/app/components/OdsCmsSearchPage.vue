@@ -79,6 +79,7 @@ watch(
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
       <OdsSearchPanel
         v-model:search-input="searchInput"
+        small
         :search-prompt="searchPrompt"
         @search="onSearch"
       />
