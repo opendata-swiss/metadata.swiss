@@ -80,8 +80,7 @@ import { v4 as uuidv4 } from 'uuid'
 import OdsFormField from '~/components/OdsFormField.vue'
 
 const selectId = ref('')
-const selected = defineModel({
-  type: Array as () => unknown[],
+const selected = defineModel<unknown[]>({
   default: () => [],
 })
 const Deselect = { render: () => h('span', '×') }
