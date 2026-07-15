@@ -5,7 +5,6 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDatasetsSearch } from '../../../../app/piveau/datasets'
 import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
-import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
@@ -147,15 +146,6 @@ await suspense()
                 :byte-size="distribution.formattedByteSize"
               />
             </div>
-            <div class="box">
-              <h2 class="h5">
-                {{ t(`message.header.navigation.terms_of_use`) }}
-              </h2>
-              <OdsDetailTermsOfUse
-                v-if="distribution.license"
-                :license="distribution.license"
-              />
-            </div>
           </div>
           <h2 class="h2">
             {{ t('message.dataset_detail.additional_information') }}
@@ -195,15 +185,6 @@ await suspense()
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
-              />
-            </div>
-            <div class="box">
-              <h2 class="h5">
-                {{ t(`message.header.navigation.terms_of_use`) }}
-              </h2>
-              <OdsDetailTermsOfUse
-                v-if="distribution.license"
-                :license="distribution.license"
               />
             </div>
           </div>
