@@ -5,6 +5,8 @@ services:
     # Resource caps for GitHub Actions runners
     mem_limit: 4g
     cpus: 2.0
+    volumes:
+      - ./volumes/elasticsearch-logs:/usr/share/elasticsearch/logs
   piveau-hub-repo:
     environment:
       - JAVA_OPTS=-Xms300m -Xmx1g

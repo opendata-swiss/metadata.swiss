@@ -125,6 +125,7 @@ jobs:
             opendata.swiss/metadata/listmonk/install.sh
             opendata.swiss/metadata/*.log
             opendata.swiss/ui/ui.log
+            opendata.swiss/metadata/volumes/elasticsearch-logs/*
 
   mocha-tests:
     runs-on: ubuntu-latest
