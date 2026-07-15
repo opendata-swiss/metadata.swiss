@@ -94,7 +94,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     a tuner:Request ;
       tuner:url </api/webhooks/hyvor> ;
       tuner:method "POST" ;
-      tuner:header ( "X-Signature" "d3fade0960eee51f3816b038cea8e0aa25611d3045de38d75039634c4179d4ac" ) ;
+      tuner:header ( "X-Signature" "9c73fd76fec5e9a59eb511bad6533db49269b8a09bbc4491302dcabb3b75b885" ) ;
       tuner:body <file:payloads/comment.created.json> ;
   ] ;
   tuner:formula {

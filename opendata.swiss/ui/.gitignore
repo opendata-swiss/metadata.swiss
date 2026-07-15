@@ -26,3 +26,6 @@ content/
 !app/components/content/
 public/cms/
 coverage/
+
+# test files
+server/tests/hub-repo/test-dataset.*.json

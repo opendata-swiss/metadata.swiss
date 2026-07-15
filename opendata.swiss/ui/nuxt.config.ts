@@ -77,7 +77,7 @@ export default defineNuxtConfig({
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
-        realm: 'lindas-next',
+        realm: 'lindas-next-ref',
         clientId: 'piveau-hub-ui',
         clients: {
           hubRepo: {
