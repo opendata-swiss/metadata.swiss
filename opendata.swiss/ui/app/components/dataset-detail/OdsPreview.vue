@@ -11,7 +11,7 @@
           :title="title"
           :show-ai-tab="false"
           primary-color="var(--color-primary-600)"
-          api-base-url="https://data.europa.eu/api/hub/preview/dataPreview"
+          api-base-url="https://piveau-hub-data-preview.abn.ods.zazukoians.org/dataPreview"
           button-border-radius="0px"
         />
       </div>
