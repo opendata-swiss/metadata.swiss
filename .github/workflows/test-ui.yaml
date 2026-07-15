@@ -64,7 +64,15 @@ jobs:
         working-directory: opendata.swiss/metadata
         run: cp .env.example .env
 
-      - name: Start listmonk
+      - name: Prepare kernel settings for ES
+        run: |
+          sudo sysctl -w vm.max_map_count=262144
+
+      - name: Start elasticsearch
+        run: docker compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch
+        working-directory: opendata.swiss/metadata
+
+      - name: Start other services
         run: docker compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo piveau-metrics-validating-shacl piveau-hub-search
         working-directory: opendata.swiss/metadata
         env:
