@@ -55,7 +55,6 @@ services:
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.18.3
-
     restart: unless-stopped
     logging:
       options:

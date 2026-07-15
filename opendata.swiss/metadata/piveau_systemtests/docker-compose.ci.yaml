@@ -1,0 +1,10 @@
+services:
+  elasticsearch:
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    # Resource caps for GitHub Actions runners
+    mem_limit: 1g
+    cpus: 1.0

@@ -1,0 +1,23 @@
+services:
+  elasticsearch:
+    environment:
+      - ES_JAVA_OPTS=-Xms2g -Xmx2g
+    # Resource caps for GitHub Actions runners
+    mem_limit: 4g
+    cpus: 2.0
+  piveau-hub-repo:
+    environment:
+      - JAVA_OPTS=-Xms300m -Xmx1g
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1000M
+  piveau-hub-search:
+    environment:
+      - JAVA_OPTS=-Xms300m -Xmx1g
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 10000M
