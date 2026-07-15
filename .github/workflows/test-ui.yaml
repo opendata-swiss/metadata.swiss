@@ -68,8 +68,11 @@ jobs:
         run: |
           sudo sysctl -w vm.max_map_count=262144
           mkdir -p volumes/{graphdb,elasticsearch}-data
+          mkdir -p volumes/elasticsearch-logs
           sudo chown -R 1000:1000 ./volumes/elasticsearch-data
           sudo chmod -R 755 ./volumes/elasticsearch-data
+          sudo chown -R 1000:1000 ./volumes/elasticsearch-logs
+          sudo chmod -R 755 ./volumes/elasticsearch-logs
 
       - name: Start elasticsearch
         run: docker compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch
