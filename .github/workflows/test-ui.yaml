@@ -65,6 +65,7 @@ jobs:
         run: cp .env.example .env
 
       - name: Prepare env for ES
+        working-directory: opendata.swiss/metadata
         run: |
           sudo sysctl -w vm.max_map_count=262144
           mkdir -p volumes/{graphdb,elasticsearch}-data
