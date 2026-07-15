@@ -103,6 +103,8 @@ jobs:
         run: |
           docker compose logs --no-log-prefix piveau-hub-repo > hub-repo.log
           docker compose logs --no-log-prefix mailpit > mailpit.log
+          docker compose logs --no-log-prefix elasticsearch > elasticsearch.log
+          docker compose logs --no-log-prefix piveau-hub-search > piveau-hub-search.log
           docker compose logs --no-log-prefix listmonk-app > listmonk-app.log
           docker compose logs --no-log-prefix listmonk-init > listmonk-init.log
         working-directory: opendata.swiss/metadata
