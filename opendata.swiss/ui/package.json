@@ -38,7 +38,6 @@
     "@zazuko/env-node": "^3.1.0",
     "accept-language": "^3.0.20",
     "async-wait-until": "^2.0.31",
-    "better-sqlite3": "^12.5.0",
     "bootstrap": "^5.3.8",
     "decap-cms-app": "^3.9.0",
     "eslint": "^9.39.2",
@@ -107,8 +106,5 @@
   },
   "overrides": {
     "vue-router": "^5.1.0"
-  },
-  "allowScripts": {
-    "better-sqlite3@12.8.0": true
   }
 }
