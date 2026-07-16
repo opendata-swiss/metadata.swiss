@@ -187,11 +187,12 @@ await suspense()
                 {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.downloadUrls"
+                :urls="distribution.downloadUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="Download"
               />
             </div>
             <div
@@ -202,11 +203,12 @@ await suspense()
                 Access
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.accessUrls"
+                :urls="distribution.accessUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="External"
               />
             </div>
           </div>
@@ -231,11 +233,12 @@ await suspense()
                 {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.downloadUrls"
+                :urls="distribution.downloadUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="Download"
               />
             </div>
             <div
@@ -246,11 +249,12 @@ await suspense()
                 Access
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.accessUrls"
+                :urls="distribution.accessUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="External"
               />
             </div>
           </div>

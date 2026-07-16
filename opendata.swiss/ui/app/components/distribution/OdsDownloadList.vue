@@ -1,15 +1,16 @@
 <template>
   <ul class="download-items">
     <li
-      v-for="url in props.downloadUrls"
+      v-for="url in props.urls"
       :key="url"
     >
       <OdsDownloadListItem
-        :download-url="url"
+        :url="url"
         :name="props.name"
         :format="props.format"
         :languages="props.languages"
         :byte-size="props.byteSize"
+        :icon="props.icon"
       />
     </li>
   </ul>
@@ -20,11 +21,11 @@ import OdsDownloadListItem from './OdsDownloadListItem.vue'
 
 interface OdsDownloadListProps {
   name: string
-  downloadUrls: string[]
+  urls: string[]
   format?: string
   languages?: string[]
   byteSize?: string
+  icon: string
 }
-
 const props = defineProps<OdsDownloadListProps>()
 </script>
