@@ -10,6 +10,7 @@ import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
 import OdsDistributionDetailHeader from '../../../../app/components/distribution/OdsDistributionDetailHeader.vue'
+import OdsHero from '../../../../app/components/OdsHero.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
@@ -105,16 +106,17 @@ await suspense()
         <OdsDistributionDetailHeader :distribution="distribution" />
       </div>
     </section>
-    <section class="hero hero--default">
-      <div class="container container--grid gap--responsive">
-        <div class="hero__content">
-          <h1 class="hero__title">
-            {{ distribution.title }}
-          </h1>
-          <MDC :value="distribution.description ?? ''" />
-        </div>
-      </div>
-    </section>
+    <OdsHero
+      type="default"
+      floating
+    >
+      <template #title>
+        {{ distribution.title }}
+      </template>
+      <template #description>
+        <MDC :value="distribution.description ?? ''" />
+      </template>
+    </OdsHero>
     <section class="section">
       <div class="container container--grid gap--responsive">
         <div class="container__main vertical-spacing">

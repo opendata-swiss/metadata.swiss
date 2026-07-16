@@ -134,7 +134,10 @@ await suspense()
         </div>
       </section>
 
-      <Hero type="default">
+      <Hero
+        type="default"
+        floating
+      >
         <template #title>
           {{ dataset.title }}
         </template>

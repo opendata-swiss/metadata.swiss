@@ -118,7 +118,7 @@
     </div>
 
     <!-- Column 5: Kategorien -->
-    <div class="metadata-col">
+    <div class="metadata-col metadata-col--categories">
       <div class="metadata-col-header">
         <SvgIcon
           icon="Tag"
@@ -134,8 +134,8 @@
           >
             <OdsTagItem
               v-for="category in props.distribution.dataset.getCategoriesForLanguage(locale)"
-              :key="category.id"
               :id="category.id"
+              :key="category.id"
               :label="category.label"
               size="sm"
               variant="default"
@@ -170,11 +170,25 @@ const props = defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>
+@use '@/assets/ods/ods_breakpoints.scss' as media;
+
 .metadata-header {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 24px;
   width: 100%;
+
+  @include media.respond-to-sm {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include media.respond-to-md {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include media.respond-to-lg {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
   //padding: 24px;
   // background-color: var(--color-secondary-10, rgba(0, 150, 136, 0.03));
  // border: 1px solid var(--color-secondary-100, #dfe4e9);
@@ -182,7 +196,7 @@ const props = defineProps<Props>()
  // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
  // margin-bottom: 24px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 599px) {
     grid-template-columns: 1fr;
     gap: 20px;
     padding: 16px;
@@ -193,6 +207,36 @@ const props = defineProps<Props>()
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+@include media.respond-to-md {
+  .metadata-col--categories {
+    text-align: right;
+
+    .metadata-col-header {
+      width: 100%;
+    }
+
+    .col-content {
+      width: 100%;
+    }
+
+    .category-tags {
+    }
+  }
+}
+
+/* If the last card is alone in its row, let it span the full row width. */
+@media (min-width: 600px) and (max-width: 904px) {
+  .metadata-col--categories {
+    grid-column: 1 / -1;
+  }
+}
+
+@include media.respond-to-lg {
+  .metadata-col--categories {
+    grid-column: 1 / -1;
+  }
 }
 
 .metadata-col-header {
@@ -293,10 +337,20 @@ const props = defineProps<Props>()
 }
 
 .categories-wrapper {
+  width: 100%;
+
   .category-tags {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 6px;
+    width: 100%;
+
+    :deep(.tag-item) {
+      margin-right: 0;
+      flex: 0 0 auto;
+      max-width: 100%;
+    }
   }
 }
 
