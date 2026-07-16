@@ -73,7 +73,7 @@ jobs:
           sudo chmod -R 755 ./volumes/elasticsearch-data
 
       - name: Start elasticsearch
-        run: docker compose -f docker-compose.yaml -f docker-compose.ci.yaml up -d elasticsearch
+        run: docker compose up -d elasticsearch
         working-directory: opendata.swiss/metadata
 
       - name: Start other services
