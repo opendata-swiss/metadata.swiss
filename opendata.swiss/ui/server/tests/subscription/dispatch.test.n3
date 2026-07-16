@@ -8,6 +8,13 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
 <#sendSubscriptionEmails>
   a earl:TestCase ;
   rdfs:label "Send" ;
+  <#subscribe> [
+    a tuner:Request ;
+    tuner:url </api/subscribe/dataset> ;
+    tuner:method "POST" ;
+    tuner:basicAuth ( "jane" "foobar" ) ;
+    tuner:form ( "dataset" "hyvor-test" ) ;
+  ] ;
   <#requestToSend> [
     a tuner:Request ;
       tuner:url </api/subscription/dispatch> ;
@@ -18,6 +25,10 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
   tuner:formula {
     ( <http://localhost:8025/api/v1/messages> ?deleted ) resource:deleteIn [] .
     ?deleted tuner:http_code 200 .
+
+    <#sendSubscriptionEmails> <#subscribe> ?subscribe .
+    ?subscribe tuner:response ?subscribeRes .
+    ?subscribeRes tuner:http_code 200 .
 
     <#sendSubscriptionEmails> <#requestToSend> ?req .
     ?req tuner:response ?res .
