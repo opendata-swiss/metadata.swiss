@@ -14,6 +14,7 @@ import OdsHero from '../../../../app/components/OdsHero.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
+import SvgIcon from '../../../../app/components/SvgIcon.vue'
 
 const { locale, t } = useI18n()
 
@@ -40,6 +41,38 @@ const distribution = computed(() => {
   }
   const dists = dataset.value.distributions.find(d => d.id === distributionId) ?? undefined
   return dists
+})
+
+const hasDownloadUrl = computed(() => {
+  const dist = distribution.value
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const downloadUrls = dist.downloadUrls
+  if (downloadUrls.length > 0) {
+    // we have at least one download url
+    return true
+  }
+  // empty array return false
+  return false
+})
+
+const hasAccessUrl = computed(() => {
+  const dist = distribution.value
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const accessUrls = dist.accessUrls
+  if (accessUrls.length > 0) {
+    // we have at least one accessUrl url
+    return true
+  }
+  // empty array return false
+  return false
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
@@ -102,7 +135,32 @@ await suspense()
     </header>
     <section class="section section--default bg--secondary-50">
       <div class="container">
-        <span class="dataset-label">{{ t('message.dataset_detail.distribution') }}</span>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 32px;">
+          <span class="dataset-label">{{ t('message.dataset_detail.distribution') }}</span>
+          <a
+            v-if="hasDownloadUrl"
+            class="big-button"
+            target="_blank"
+          >
+            <SvgIcon
+              icon="Download"
+              size="xl"
+            />
+            <span>{{ t('message.dataset_detail.download') }} {{ distribution.format }}</span>
+          </a>
+          <a
+            v-if="hasAccessUrl && !hasDownloadUrl"
+            :href="distribution.accessUrls[0]"
+            target="_blank"
+            class="big-button"
+          >
+            <SvgIcon
+              icon="External"
+              size="xl"
+            />
+            <span>Go To {{ distribution.format }}</span>
+          </a>
+        </div>
         <OdsDistributionDetailHeader :distribution="distribution" />
       </div>
     </section>
@@ -122,11 +180,11 @@ await suspense()
         <div class="container__main vertical-spacing">
           <div class="container__mobile">
             <div
-              v-if="distribution.downloadUrls.length > 0 && distribution.downloadUrls"
+              v-if="hasDownloadUrl"
               class="box"
             >
               <h2 class="h5">
-                Download
+                {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
                 :download-urls="distribution.downloadUrls"
@@ -136,7 +194,10 @@ await suspense()
                 :byte-size="distribution.formattedByteSize"
               />
             </div>
-            <div class="box">
+            <div
+              v-if="hasAccessUrl"
+              class="box"
+            >
               <h2 class="h5">
                 Access
               </h2>
@@ -167,7 +228,7 @@ await suspense()
               class="box"
             >
               <h2 class="h5">
-                Download
+                {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
                 :download-urls="distribution.downloadUrls"
@@ -177,7 +238,10 @@ await suspense()
                 :byte-size="distribution.formattedByteSize"
               />
             </div>
-            <div class="box">
+            <div
+              v-if="hasAccessUrl && !hasDownloadUrl"
+              class="box"
+            >
               <h2 class="h5">
                 Access
               </h2>
@@ -192,7 +256,6 @@ await suspense()
           </div>
         </div>
       </div>
-      <pre>{{ distribution }}</pre>
     </section>
     <section class="section publication-back-button-section">
       <div class="container">
@@ -244,6 +307,18 @@ await suspense()
   margin-right: 10px;
   vertical-align: middle;
   border: 1px solid #b3d4fc;
-  margin-bottom: 48px;;
+  height: fit-content;
+}
+
+.big-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-primary-600);
+  color: white;
+  padding: 12px;
+  padding-right: 24px;
+  text-decoration: none;
 }
 </style>

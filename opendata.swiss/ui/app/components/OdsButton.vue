@@ -9,6 +9,7 @@
       <a
         v-if="href && icon"
         :href="localePath(href)"
+        :target="linkTarget"
       >
         <SvgIcon
           v-if="icon"
@@ -28,6 +29,7 @@
       <a
         v-if="href"
         :href="localePath(href)"
+        :target="linkTarget"
       >
         <slot>{{ title }}</slot>
       </a>
@@ -51,6 +53,7 @@ const { title, iconOnly = false, ...props } = defineProps<{
   icon?: string
   href?: string
   submit?: boolean
+  target?: '_blank' | '_self'
 }>()
 
 const classes = computed(() => {
@@ -76,6 +79,9 @@ const classes = computed(() => {
   }
 
   return classes
+})
+const linkTarget = computed(() => {
+  return props.target ?? '_self'
 })
 </script>
 

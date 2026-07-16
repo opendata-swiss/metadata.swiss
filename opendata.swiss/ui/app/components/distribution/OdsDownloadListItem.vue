@@ -19,7 +19,7 @@
           >{{ props.format }}</span>
           <span
             v-if="props.byteSize"
-            class="meta-info__item"
+            class="meta-info__item dont-break-word"
           >{{ props.byteSize }}</span>
           <span
             v-if="props.languages?.length"
@@ -55,5 +55,9 @@ const props = defineProps<OdsDownloadListItemProps>()
     text-overflow: hidden;
     overflow-x: hidden;
     word-break: break-word;
+  }
+
+  .dont-break-word {
+    white-space: nowrap;
   }
 </style>

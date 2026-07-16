@@ -1,34 +1,6 @@
 <template>
-  <div class="download-item">
-    <!-- spacer if no download URLs -->
-    <SvgIcon
-      v-if="!props.distribution.downloadUrls.length"
-      title="No download available. This is probably an api. Check details"
-      icon="Download"
-      size="xl"
-      class="download-item__icon disabled"
-    />
-
-    <a
-      v-for="downloadUrl in props.distribution.downloadUrls"
-      :key="downloadUrl"
-      :href="downloadUrl"
-      target="_blank"
-      rel="noopener"
-      :title="'Download ' + props.distribution.title"
-      class="download-item__link"
-    >
-      <SvgIcon
-        icon="Download"
-        size="xl"
-        class="download-item__icon"
-      />
-    </a>
-
-    <NuxtLinkLocale
-      :to="`/datasets/${props.distribution.dataset.id}/distribution/${props.distribution.id}`"
-      class="no-underline no-overvlow"
-    >
+  <div class="distribution-item">
+    <div class="content">
       <h3
         class="download-item__title"
         :title="props.distribution.title"
@@ -48,7 +20,7 @@
             v-if="props.distribution.releaseDate"
             class="meta-info__item"
           >
-            <OdsRelativeDateToggle :date="props.distribution.modified ? props.distribution.modified : props.distribution.releaseDate" />
+            <OdsRelativeDateToggle :date="props.distribution.modificationDate ? props.distribution.modificationDate : props.distribution.releaseDate" />
           </span>
           <span
             v-if="props.distribution.formattedByteSize"
@@ -56,17 +28,56 @@
           >{{ props.distribution.formattedByteSize }}
           </span>
         </p>
-        <OdsButton
-          icon="ArrowRight"
-          variant="bare"
-          size="sm"
-          class="download-item__button"
-          icon-right
-        >
-          <span>{{ t('message.dataset_detail.details') }}</span>
-        </OdsButton>
       </div>
-    </NuxtLinkLocale>
+    </div>
+    <div class="call-to-action">
+      <div>
+        <a
+          v-if="hasDownloadUrl"
+          :href="distribution.downloadUrls[0]"
+          target="_blank"
+          rel="noopener"
+          :title="t('message.dataset_detail.download')+ ' ' + props.distribution.format"
+          class="download-item__link"
+        >
+          <SvgIcon
+            icon="Download"
+            size="sm"
+            class="download-item__icon"
+          />
+        </a>
+        <a
+          v-if="hasAccessUrl && !hasDownloadUrl"
+          :href="distribution.accessUrls[0]"
+          target="_blank"
+          rel="noopener"
+          :title="t('message.dataset_detail.go_to_resource')+ ' ' + props.distribution.format"
+          class="download-item__link"
+        >
+          <SvgIcon
+            icon="External"
+            size="sm"
+            class="download-item__icon"
+          />
+        </a>
+      </div>
+      <div>
+        <NuxtLinkLocale
+          :to="`/datasets/${props.distribution.dataset.id}/distribution/${props.distribution.id}`"
+          class="no-underline no-overvlow"
+        >
+          <OdsButton
+            icon="ArrowRight"
+            variant="bare"
+            size="sm"
+            class="download-item__button"
+            icon-right
+          >
+            <span>{{ t('message.dataset_detail.details') }}</span>
+          </OdsButton>
+        </NuxtLinkLocale>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -84,6 +95,37 @@ interface DistributionProps {
 }
 
 const props = defineProps<DistributionProps>()
+
+const hasDownloadUrl = computed(() => {
+  const dist = props.distribution
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const downloadUrls = dist.downloadUrls
+  if (downloadUrls.length > 0) {
+    // we have at least one download url
+    return true
+  }
+  // empty array return false
+  return false
+})
+const hasAccessUrl = computed(() => {
+  const dist = props.distribution.accessUrls
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const accessUrls = props.distribution.accessUrls
+  if (accessUrls.length > 0) {
+    // we have at least one accessUrl url
+    return true
+  }
+  // empty array return false
+  return false
+})
 </script>
 
 <style scoped lang="scss">
@@ -107,9 +149,32 @@ const props = defineProps<DistributionProps>()
   white-space: nowrap;
 }
 
+.distribution-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--color-secondary-200);
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.distribution-item:last-child {
+  border-bottom: none;
+}
 .footer {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-end;
+}
+.call-to-action {
+   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+  }
 }
 </style>
