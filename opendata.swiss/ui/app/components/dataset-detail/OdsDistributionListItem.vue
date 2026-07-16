@@ -129,20 +129,6 @@ const hasAccessUrl = computed(() => {
 </script>
 
 <style scoped lang="scss">
-.disabled {
-  fill: lightgray;
-  stroke: lightgray;
-  color: lightgray;
-}
-.no-underline {
-  text-decoration: none;
-}
-
-.no-overvlow {
-  overflow-x: hidden;
-  flex-grow: 1;
-}
-
 .download-item__title {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -156,7 +142,7 @@ const hasAccessUrl = computed(() => {
   border-bottom-style: solid;
   border-color: var(--color-secondary-200);
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 24px;
 }
 
 .distribution-item:last-child {
@@ -168,9 +154,10 @@ const hasAccessUrl = computed(() => {
   align-items: flex-end;
 }
 .call-to-action {
-   display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding-top: 12px;
   a {
     display: flex;
     flex-direction: row;
