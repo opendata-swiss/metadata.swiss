@@ -63,4 +63,20 @@ public class SearchTest extends BaseSystemTest {
             RestAssured.given().queryParam("limit", 10).queryParam("page", 0).queryParam("q", "Waldbestand im Kanton ABC").queryParam("sort", "relevance").queryParam("facets", "{\"catalog\":[\"" + catalogId + "\"],\"categories\":[\"ENVI\"],\"publisher\":[\"Verein ABC\"],\"format\":[\"CSV\"],\"license\":[\"http://dcat-ap.ch/vocabulary/licenses/cc-by/4.0\"],\"keywords\":[\"forests\"]}").queryParam("filters", "dataset").when().get("/search").then().statusCode(200).body("result.count", greaterThan(0)).body("result.results.id", hasItem(datasetId));
         });
     }
+
+    @Test
+    @DependsOn(Goal.ODSN_SHOWCASE_INDEXED)
+    @Provides(Goal.ODSN_SHOWCASE_SEARCH_VERIFIED)
+    public void verifyOdsnShowcaseSearch(TestContext context) {
+        String showcaseId = context.get(Goal.ODSN_SHOWCASE_CREATED, "id", String.class);
+
+        System.out.println("Checking Global Search: /search?q=mietpreisentwicklung");
+        await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            RestAssured.given().queryParam("q", "mietpreisentwicklung").when().get("/search").then().statusCode(200)
+                    // Piveau Search response: { "result": { "count": N, "results": [...] } }
+                    .body("result.count", greaterThan(0)).body("result.results.id", hasItem(showcaseId));
+        });
+
+        // TODO: http://localhost:8084/search?filters=resource&resource=showcase
+    }
 }

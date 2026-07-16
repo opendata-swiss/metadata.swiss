@@ -204,4 +204,45 @@ public class CatalogTest extends BaseSystemTest {
         context.store(Goal.ODSN_CATALOG_VARIA_CREATED, "id", catalogId);
         context.store(Goal.ODSN_CATALOG_VARIA_CREATED, "iri", catalogIRI);
     }
+
+    @Test
+    @DependsOn(Goal.HUB_READY)
+    @Provides(Goal.ODSN_CATALOG_SHOWCASES_CREATED)
+    public void createCatalogShowcases(TestContext context) throws IOException {
+        final long timestamp = System.currentTimeMillis();
+        final String catalogId = "showcases-catalog-" + timestamp;
+        final String catalogTitle = "Showcases Catalog " + timestamp;
+
+        String catalogTurtle = ResourceUtils.loadTurtle("/catalog-odsn-showcases.ttl", catalogTitle);
+
+        String askIfCatalogExists = """
+                %s
+                ASK {
+                    GRAPH ?g {
+                        ?catalog a dcat:Catalog ;
+                           dct:title "%s" .
+                    }
+                }
+                """.formatted(PREFIXES, catalogTitle);
+
+        assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
+
+        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(catalogTurtle).when().put("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 201, 204)));
+
+        // Verify Side Effect: SPARQL
+        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
+                getSparqlEndpoint(), askIfCatalogExists
+        ));
+
+        // Extract the minted catalogue IRI from the API
+        String catalogRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/catalogues/" + catalogId).then().statusCode(200).extract().body().asString();
+        String catalogIRI = SideEffectUtils.extractSubjectIri(catalogRdf, DCAT.CATALOG.stringValue());
+        System.out.println("Minted Catalogue IRI: " + catalogIRI);
+
+        assertNotNull(catalogIRI);
+        assertTrue(catalogIRI.startsWith("https://opendata.swiss/id/catalogue/"));
+
+        context.store(Goal.ODSN_CATALOG_SHOWCASES_CREATED, "id", catalogId);
+        context.store(Goal.ODSN_CATALOG_SHOWCASES_CREATED, "iri", catalogIRI);
+    }
 }
