@@ -51,6 +51,47 @@ dcatap:Agent_Shape
       ] ;
     sh:targetClass foaf:Agent .
 
+dcatap:QualifiedAttributionAgent_MappingShape
+    a sh:NodeShape ;
+    sh:name "Qualified attribution agent mapping"@en ;
+    sh:property [
+          sh:maxCount 1 ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "resource"
+      ], [
+          sh:maxCount 1 ;
+          sh:path foaf:name ;
+          pv:mappingClass "StandardText" ;
+          pv:mappingName "name"
+      ], [
+          sh:path foaf:homepage ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "homepage"
+      ], [
+          sh:path foaf:mbox ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "mbox"
+      ] .
+
+dcatap:QualifiedAttribution_MappingShape
+    a sh:NodeShape ;
+    sh:name "Qualified attribution mapping"@en ;
+    sh:property [
+          sh:maxCount 1 ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "resource"
+      ], [
+          sh:path dcat:hadRole ;
+          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingName "had_role"
+      ], [
+          sh:maxCount 1 ;
+          sh:path prov:agent ;
+          pv:mappingClass "Nested" ;
+          pv:mappingName "agent" ;
+          pv:mappingLink dcatap:QualifiedAttributionAgent_MappingShape
+      ] .
+
 dcatap:CatalogRecord_Shape
     a sh:NodeShape ;
     sh:name "Catalog Record"@en ;
@@ -566,8 +607,9 @@ dcatap:Dataset_Shape
       ], [
           sh:path prov:qualifiedAttribution ;
           sh:severity sh:Violation ;
-          pv:mappingClass "StandardResourceKeyword" ;
-          pv:mappingName "qualified_attribution"
+          pv:mappingClass "Nested" ;
+          pv:mappingName "qualified_attribution" ;
+          pv:mappingLink dcatap:QualifiedAttribution_MappingShape
     #   ], [
     #       sh:path prov:wasGeneratedBy ;
     #       sh:severity sh:Violation ;
