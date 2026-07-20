@@ -102,6 +102,7 @@ jobs:
         if: failure()
         run: |
           docker compose logs --no-log-prefix piveau-hub-repo > hub-repo.log
+          docker compose logs --no-log-prefix piveau-hub-search > hub-search.log
           docker compose logs --no-log-prefix mailpit > mailpit.log
           docker compose logs --no-log-prefix listmonk-app > listmonk-app.log
           docker compose logs --no-log-prefix listmonk-init > listmonk-init.log
