@@ -50,12 +50,12 @@ public class ShowcaseTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseTurtle).when().put("/resources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 201, 204)));
+        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseTurtle).when().put("/customresources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 201, 204)));
 
         org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
 
         // Extract the minted showcase IRI from the API
-        String showcaseRdf = io.restassured.RestAssured.given().header("X-API-Key", API_KEY).accept("text/turtle").when().get("/resources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(200).extract().body().asString();
+        String showcaseRdf = io.restassured.RestAssured.given().header("X-API-Key", API_KEY).accept("text/turtle").when().get("/customresources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(200).extract().body().asString();
         String showcaseIRI = SideEffectUtils.extractSubjectIri(showcaseRdf, "https://example.org/Showcase");
         System.out.println("Minted Showcase IRI: " + showcaseIRI);
         
@@ -174,7 +174,7 @@ public class ShowcaseTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseUpdateTurtle).when().put("/resources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseUpdateTurtle).when().put("/customresources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
 
         org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
     }
@@ -211,7 +211,7 @@ public class ShowcaseTest extends BaseSystemTest {
 
         assertTrue(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists), "showcase exists");
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).when().delete("/resources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).when().delete("/customresources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
 
         // Verify Side Effect: SPARQL
         org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> !SideEffectUtils.checkSparqlAsk(
