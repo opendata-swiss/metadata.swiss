@@ -77,6 +77,11 @@ public class SearchTest extends BaseSystemTest {
                     .body("result.count", greaterThan(0)).body("result.results.id", hasItem(showcaseId));
         });
 
-        // TODO: http://localhost:8084/search?filters=resource&resource=showcase
+        System.out.println("Checking Showcase Search: /search?filters=resource&resource=showcase");
+        await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            RestAssured.given().queryParam("filters", "resource").queryParam("resource", "showcase").when().get("/search").then().statusCode(200)
+                    // Piveau Search response: { "result": { "count": N, "results": [...] } }
+                    .body("result.count", greaterThan(0)).body("result.results.id", hasItem(showcaseId));
+        });
     }
 }
