@@ -8,50 +8,40 @@
     <template #top-meta>
       <div>
         <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
+        <span
+          v-if="props.dataset.releaseDate && !props.dataset.modificationDate"
+          class="meta-info__item"
+        ><NuxtTime
+          :datetime="props.dataset.releaseDate"
+          :locale="locale"
+        /></span>
+        <span
+          v-if="props.dataset.modificationDate"
+          class="meta-info__item"
+        ><NuxtTime
+          :datetime="props.dataset.modificationDate"
+          :locale="locale"
+        /></span>
       </div>
     </template>
+    <div>
+      <div>
+        <span class="meta-info__item">{{ props.dataset.publisher?.name }}</span>
+      </div>
+    </div>
     <p>{{ props.dataset.description }} </p>
-    <template #bottom-meta>
-      <span class="meta-info__item">{{ props.dataset.publisher?.name }}</span>
-      <span
-        v-if="props.dataset.releaseDate"
-        class="meta-info__item"
-      ><NuxtTime
-        :datetime="props.dataset.releaseDate"
-        :locale="locale"
-      /></span>
-      <span
-        v-if="props.dataset.modificationDate"
-        class="meta-info__item"
-      ><NuxtTime
-        :datetime="props.dataset.modificationDate"
-        :locale="locale"
-      /></span>
-    </template>
-    <template #icons>
-      <SvgIcon
-        icon="Youtube"
-        size="xl"
-      />
-      <SvgIcon
-        icon="EasyLanguage"
-        size="xl"
-      />
-      <SvgIcon
-        icon="SignLanguage"
-        size="xl"
-      />
-    </template>
+
     <template #footer-info>
-      <span
-        class="meta-info__item"
-        style="color:magenta"
-      >{{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }}</span>
-      <span class="meta-info__item">{{ props.dataset.keywords.map(k => k.label).join(', ') }}</span>
-      <span
-        class="meta-info__item"
-        style="color:red"
-      >{{ (props.dataset.getOdsFormats ?? []).map(f => f.label).join(', ') }}</span>
+      <p>
+        <span class="meta-info__item">
+          <i> {{ props.dataset.getCategoriesForLanguage(locale).map(k => k.label).join(', ') }} </i>
+        </span>
+      </p>
+      <OdsTagList
+        v-if="props.dataset.keywords.length > 0"
+        :tags="[...props.dataset.formats, ...props.dataset.keywords]"
+      />
+
       <span class="meta-info__item">
         <CommentCount
           :page-id="`dataset-${props.dataset.id}`"
@@ -83,6 +73,7 @@ import SvgIcon from '~/components/SvgIcon.vue'
 import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import type { LocationQueryRaw } from 'vue-router'
 import { CommentCount } from '@hyvor/hyvor-talk-vue'
+import OdsTagList from '../dataset-detail/OdsTagList.vue'
 
 const { t, locale } = useI18n()
 

@@ -1,6 +1,9 @@
 <template>
   <ul class="list list--flex list--wrap">
-    <li v-for="c in props.tags" :key="c.id">
+    <li
+      v-for="c in props.tags"
+      :key="c.id"
+    >
       <OdsTagItem
         :id="c.id"
         :label="c.label"
