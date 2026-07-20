@@ -64,8 +64,20 @@ jobs:
         working-directory: opendata.swiss/metadata
         run: cp .env.example .env
 
-      - name: Start listmonk
-        run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo
+      - name: Prepare env for ES
+        working-directory: opendata.swiss/metadata
+        run: |
+          sudo sysctl -w vm.max_map_count=262144
+          mkdir -p volumes/{graphdb,elasticsearch}-data
+          sudo chown -R 1000:1000 ./volumes/elasticsearch-data
+          sudo chmod -R 755 ./volumes/elasticsearch-data
+
+      - name: Start elasticsearch
+        run: docker compose up -d elasticsearch
+        working-directory: opendata.swiss/metadata
+
+      - name: Start other services
+        run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo piveau-metrics-validating-shacl piveau-hub-search
         working-directory: opendata.swiss/metadata
         env:
           PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA: ${{ secrets.PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA }}
@@ -88,6 +100,8 @@ jobs:
           NUXT_HYVOR_WEBHOOKS_ENABLED: true
           LOG_CONFIG: true
           NUXT_PUBLIC_PIVEAU_HUB_REPO_URL: http://localhost:8081/
+          NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL: http://localhost:8084/
+          NUXT_OAUTH_KEYCLOAK_CLIENTS_HUB_REPO_CLIENT_SECRET: ${{ secrets.KEYCLOAK_HUB_REPO_CLIENT_SECRET_REF }}
 
       - run: npx wait-on http://localhost:3000 -t 30s
         working-directory: opendata.swiss/ui
@@ -104,6 +118,8 @@ jobs:
           docker compose logs --no-log-prefix piveau-hub-repo > hub-repo.log
           docker compose logs --no-log-prefix piveau-hub-search > hub-search.log
           docker compose logs --no-log-prefix mailpit > mailpit.log
+          docker compose logs --no-log-prefix elasticsearch > elasticsearch.log
+          docker compose logs --no-log-prefix piveau-hub-search > piveau-hub-search.log
           docker compose logs --no-log-prefix listmonk-app > listmonk-app.log
           docker compose logs --no-log-prefix listmonk-init > listmonk-init.log
         working-directory: opendata.swiss/metadata

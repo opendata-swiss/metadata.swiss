@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     },
   },
   content: {
+    experimental: { nativeSqlite: true },
     build: {
       markdown: {
         toc: {
@@ -58,8 +59,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       rootDir: __dirname,
-      piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
-      piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      piveauHubRepoUrl: 'https://piveau-hub-repo.ref.ods.zazukoians.org/',
+      piveauHubSearchUrl: 'https://piveau-hub-search.ref.ods.zazukoians.org/',
       matomo: {
         url: '',
         siteId: '',
@@ -77,7 +78,7 @@ export default defineNuxtConfig({
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
-        realm: 'lindas-next',
+        realm: 'lindas-next-ref',
         clientId: 'piveau-hub-ui',
         clients: {
           hubRepo: {

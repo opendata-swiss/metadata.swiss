@@ -1,6 +1,7 @@
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX earl: <http://www.w3.org/ns/earl#>
 PREFIX tuner: <https://api-tuner.described.at/>
+prefix math: <http://www.w3.org/2000/10/swap/math#>
 
 <#createShowcase>
   a earl:TestCase ;
@@ -30,5 +31,41 @@ PREFIX tuner: <https://api-tuner.described.at/>
     ?csReq tuner:response ?res .
 
     ?res tuner:http_code 200 .
+  } ;
+.
+
+<#createDataset>
+  a earl:TestCase ;
+  rdfs:label "Create Hyvor test dataset" ;
+  <#createCatalog> [
+    a tuner:Request ;
+    tuner:url </catalogues/test-datasets> ;
+    tuner:method "PUT" ;
+    tuner:body <file:test-datasets.ttl> ;
+    tuner:header ( "Content-Type" "text/turtle" ) ;
+    tuner:header ( "X-API-KEY" "$HUB_REPO_API_KEY" ) ;
+  ] ;
+  <#request> [
+    a tuner:Request ;
+    tuner:method "PUT" ;
+    tuner:url </catalogues/test-datasets/resources/origin?originalId=hyvor-test> ;
+    tuner:body <file:test-dataset.modified.json> ;
+    tuner:header ( "Content-Type" "application/ld+json" ) ;
+    tuner:header ( "X-API-KEY" "$HUB_REPO_API_KEY" ) ;
+  ] ;
+  tuner:formula {
+    """node -e 'process.env.MODIFIED=new Date().toISOString();require("child_process").execSync("cat test-dataset.json | envsubst > test-dataset.modified.json",{stdio:"inherit"})'"""^tuner:exec .
+
+    <#createDataset> <#createCatalog> ?catalogReq .
+    ?catalogReq tuner:response ?catalogRes .
+
+    ?catalogRes tuner:http_code 204 .
+
+    <#createDataset> <#request> ?datasetReq .
+    ?datasetReq tuner:response ?res .
+
+    ?res tuner:http_code ?code .
+
+    { ?code math:lessThan 400 }!tuner:assertThat .
   } ;
 .

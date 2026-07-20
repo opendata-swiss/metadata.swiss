@@ -80,7 +80,10 @@ To run API tests, set the environment variable below to enable basic auth for th
 
 ```bash
 NUXT_API_TUNER_TESTS=true
+NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084/
+NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
 HUB_REPO_API_KEY=... #value from metadata compose stack 
+NUXT_OAUTH_KEYCLOAK_CLIENTS_HUB_REPO_CLIENT_SECRET=...
 ```
 
 Then, run the tests with:

@@ -14,6 +14,10 @@ services:
       - 8081:8080
       - 8085:8085
       - 5002:5000
+    healthcheck:
+      test: curl -s -f http://localhost:8081/ >/dev/null || exit 1
+      interval: 5s
+      timeout: 3s
     environment:
       - PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
@@ -33,7 +37,7 @@ services:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.4
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.8
     restart: unless-stopped
     logging:
       options:

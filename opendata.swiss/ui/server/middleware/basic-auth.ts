@@ -9,6 +9,10 @@ const users: Record<string, { password: string, email: string }> = {
     password: 'foobar',
     email: 'jane@example.com',
   },
+  'frank': {
+    password: 'foobar',
+    email: 'frank@example.com',
+  },
 }
 
 declare module 'nitropack/types' {
