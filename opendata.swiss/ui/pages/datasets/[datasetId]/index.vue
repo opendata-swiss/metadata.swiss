@@ -30,6 +30,8 @@ const { query, isSuccess, resultEnhanced } = useResource(datasetId)
 
 const { suspense } = query
 
+const localePath = useLocalePath()
+
 const dataset = computed(() => {
   if (!resultEnhanced.value) {
     return undefined
@@ -116,6 +118,30 @@ watch(() => route.query.search,
   { immediate: true },
 )
 
+const toDatasetSearchRoute = computed(() => {
+  const currentBreadcrumbs = breadcrumbs.value
+  if (!currentBreadcrumbs) {
+    return { path: '/datasets' }
+  }
+  const breadcrumbWithSearch = currentBreadcrumbs[currentBreadcrumbs.length - 2]
+  if (breadcrumbWithSearch.route) {
+    return breadcrumbWithSearch.route
+  }
+  return { path: breadcrumbWithSearch.path, query: {} }
+})
+
+const toDatasetSearchHref = computed(() => localePath(toDatasetSearchRoute.value))
+
+function goToDatsetSearch() {
+  console.log('got to ', toDatasetSearchHref)
+  router.push(toDatasetSearchHref.value)
+}
+
+function setTagAndGotToDatasetSearch(tag: TagItem) {
+  console.log(tag)
+  console.log(toDatasetSearchHref)
+  console.log(toDatasetSearchRoute.value)
+}
 await suspense()
 </script>
 
@@ -147,7 +173,10 @@ await suspense()
             v-if="dataset.keywords.length > 0"
             class="keywords"
           >
-            <OdsTagList :tags="dataset.keywords" />
+            <OdsTagList
+              :tags="dataset.keywords"
+              @tag-clicked="setTagAndGotToDatasetSearch"
+            />
           </div>
         </template>
         <template #authors>
@@ -264,7 +293,7 @@ await suspense()
             variant="outline"
             class="btn--back"
             size="sm"
-            @click="router.back()"
+            @click="goToDatsetSearch()"
           />
         </div>
       </section>

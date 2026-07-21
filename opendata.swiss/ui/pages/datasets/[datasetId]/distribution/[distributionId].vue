@@ -18,6 +18,8 @@ import SvgIcon from '../../../../app/components/SvgIcon.vue'
 
 const { locale, t } = useI18n()
 
+const localePath = useLocalePath()
+
 const route = useRoute()
 const router = useRouter()
 const datasetId = route.params.datasetId as string
@@ -120,6 +122,11 @@ useSeoMeta({
   title: () => `${distribution.value?.title} | ${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
 
+const toDatasetHref = computed(() => localePath('/datasets/' + datasetId))
+
+function gotToDataset() {
+  router.push(toDatasetHref.value)
+}
 await suspense()
 </script>
 
@@ -164,6 +171,7 @@ await suspense()
         <OdsDistributionDetailHeader :distribution="distribution" />
       </div>
     </section>
+
     <OdsHero
       type="default"
       floating
@@ -268,7 +276,7 @@ await suspense()
           icon="ArrowLeft"
           variant="outline"
           class="btn--back"
-          @click="router.back()"
+          @click="gotToDataset()"
         />
       </div>
     </section>
