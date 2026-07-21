@@ -4,8 +4,13 @@ import { defineNitroPlugin } from '#imports'
 const executed = new WeakSet()
 
 export default defineNitroPlugin(async (nitro) => {
-  if (import.meta.dev || process.env.DISABLE_SHOWCASE_HARVESTING === 'true') {
+  if (import.meta.dev) {
     console.warn('Skipping Showcase Harvesting trigger in development mode')
+    return
+  }
+
+  if (process.env.DISABLE_SHOWCASE_HARVESTING === 'true') {
+    console.warn('Showcase Harvesting trigger disabled with DISABLE_SHOWCASE_HARVESTING flag')
     return
   }
 
