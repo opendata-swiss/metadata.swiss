@@ -10,11 +10,6 @@ on:
         options:
           - "ref"
           - "abn"
-      branch:
-        description: "CMS branch"
-        required: false
-        type: string
-        default: "main"
 
 jobs:
   restart:
@@ -44,18 +39,10 @@ jobs:
           K8S_API_URL: ${{ secrets.K8S_API_URL }}
           K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
 
-      - name: Determine namespace
-        run: |
-          if [ "${{ github.event.inputs.branch }}" = "main" ]; then
-            echo "NAMESPACE=ods-${{ github.event.inputs.env }}" >> "$GITHUB_ENV"
-          else
-            echo "NAMESPACE=ods-${{ github.event.inputs.env }}-previews" >> "$GITHUB_ENV"
-          fi
-
       - name: Restart deployment
         working-directory: ./opendata.swiss/ui/k8s
         run: |
-          kubectl -n "${NAMESPACE}" \
+          kubectl -n "ods-${{ github.event.inputs.env }}" \
             --field-manager=flux-client-side-apply \
             rollout restart deployment \
             --selector=app.kubernetes.io/app=piveau-ui
