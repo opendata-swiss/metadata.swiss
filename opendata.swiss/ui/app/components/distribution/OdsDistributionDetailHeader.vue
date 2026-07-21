@@ -244,7 +244,7 @@ const props = defineProps<Props>()
   align-items: center;
   gap: 8px;
   padding-bottom: 8px;
-  border-bottom: 1px dashed var(--color-secondary-200, #acb4bd);
+  border-bottom: 1px solid var(--color-secondary-200, #acb4bd);
 }
 
 .col-icon {

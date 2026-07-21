@@ -139,7 +139,7 @@ function goToDatsetSearch() {
 
 function setTagAndGotToDatasetSearch(tag: TagItem) {
   console.log(tag)
-  console.log(toDatasetSearchHref)
+  console.log(toDatasetSearchHref.value)
   console.log(toDatasetSearchRoute.value)
 }
 await suspense()
@@ -193,14 +193,18 @@ await suspense()
             </div>
           </div>
           <address
-            v-if="dataset.publisher && dataset.publisher.resource"
+            v-if="dataset.publisher && dataset.publisher.name"
             class="authors__names"
           >
             <a
+              v-if="dataset.publisher.resource"
               class="link author__name link--external"
               target="_blank"
               :href="dataset.publisher.resource"
             >{{ dataset.publisher.name }}</a>
+            <div v-else>
+              {{ dataset.publisher.name }}
+            </div>
           </address>
         </template>
       </Hero>

@@ -15,6 +15,7 @@ import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-det
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
 import SvgIcon from '../../../../app/components/SvgIcon.vue'
+import OdsTagList from '../../../../app/components/dataset-detail/OdsTagList.vue'
 
 const { locale, t } = useI18n()
 
@@ -181,6 +182,42 @@ await suspense()
       </template>
       <template #description>
         <MDC :value="distribution.description ?? ''" />
+        <div
+          v-if="dataset.keywords.length > 0"
+          class="keywords"
+        >
+          <OdsTagList
+            :tags="dataset.keywords"
+          />
+        </div>
+      </template>
+      <template #authors>
+        <div
+          v-if="dataset.publisher && dataset.publisher.name"
+          class="disc-images"
+          aria-hidden="true"
+        >
+          <div class="disc-image">
+            <img
+              src="https://picsum.photos/120/120/?image=29"
+              :title="dataset.publisher.name"
+            >
+          </div>
+        </div>
+        <address
+          v-if="dataset.publisher && dataset.publisher.name"
+          class="authors__names"
+        >
+          <a
+            v-if="dataset.publisher.resource"
+            class="link author__name link--external"
+            target="_blank"
+            :href="dataset.publisher.resource"
+          >{{ dataset.publisher.name }}</a>
+          <div v-else>
+            {{ dataset.publisher.name }}
+          </div>
+        </address>
       </template>
     </OdsHero>
     <section class="section">
@@ -332,5 +369,9 @@ await suspense()
   padding: 12px;
   padding-right: 24px;
   text-decoration: none;
+}
+
+.keywords {
+  margin-top: 40px;
 }
 </style>
