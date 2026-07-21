@@ -19,7 +19,6 @@ export default defineNitroPlugin(async (nitro) => {
   const installationId = process.env.GITHUB_APP_INSTALLATION_ID
   const privateKey = process.env.GITHUB_APP_PRIVATE_KEY
   const githubOrg = process.env.GITHUB_OWNER
-  const cmsRepo = process.env.GITHUB_CMS_REPO
   const appRepo = process.env.GITHUB_APP_REPO
 
   if (!appId || !installationId || !privateKey) {
@@ -36,13 +35,7 @@ export default defineNitroPlugin(async (nitro) => {
 
     const { token } = await auth({ type: 'installation' })
 
-    let environment = 'TEST'
-    if (cmsRepo === 'opendata-swiss-cms-content-int') {
-      environment = 'INT'
-    }
-    else if (cmsRepo === 'opendata-swiss-cms-content') {
-      environment = 'PROD'
-    }
+    const environment = process.env.ENV || 'PROD'
 
     const response = await fetch(`https://api.github.com/repos/${githubOrg}/${appRepo}/actions/workflows/script-manual-trigger.yaml/dispatches`, {
       method: 'POST',
