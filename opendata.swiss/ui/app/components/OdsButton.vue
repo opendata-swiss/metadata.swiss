@@ -94,5 +94,8 @@ const linkTarget = computed(() => {
 .btn--outline-negative, .btn--outline-negative a {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
+a {
+  text-decoration: none;
+}
 /* end fixes */
 </style>
