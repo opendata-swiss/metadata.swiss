@@ -102,6 +102,7 @@ const computedClasses = computed(() => {
   position: relative;
   z-index: 1;
   margin-top: 0;
+  padding-top: 0 !important;
 
   @include media.respond-to-md {
     margin-top: 0px;
@@ -113,7 +114,7 @@ const computedClasses = computed(() => {
   }
 
   @include media.respond-to-lg {
-    margin-top: -130px;
+    margin-top: -70px;
 
     .hero__content {
       background-color: rgb(255, 255, 255);
