@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix piveau: <https://piveau.eu/ns/voc#> .
+@prefix schema: <http://schema.org/> .
+
+[] a <https://example.org/Showcase>, piveau:CustomResource,
+
+    dcat:Resource ;
+
+    dcterms:identifier "%s" ;
+    dcterms:type <https://opendata.swiss/vocabulary/showcase-type/application> ;
+    dcterms:title "%s"@de ;
+    schema:image "https://repository-images.githubusercontent.com/788945570/img.jpg" ;
+    dcterms:abstract "Dieses interaktive Dashboard zeigt..."@de ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+    dcterms:references <https://opendata.swiss/set/data/523-staatskanzlei-kanton-zuerich> ;
+    dcat:keyword "bern" .

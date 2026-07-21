@@ -5,7 +5,7 @@ x-db-credentials: &db-credentials                             # Use the default 
 
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:3.5.2
+    image: piveau/hub-repo:4.0.6
     restart: unless-stopped
     logging:
       options:
@@ -139,7 +139,7 @@ services:
       - ./piveau_scripts:/usr/verticles/scripts
 
   piveau-consus-exporting-hub:
-    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:6.0.7
+    image: registry.gitlab.com/piveau/consus/piveau-consus-exporting-hub:8.0.2
     restart: unless-stopped
     logging:
       options:

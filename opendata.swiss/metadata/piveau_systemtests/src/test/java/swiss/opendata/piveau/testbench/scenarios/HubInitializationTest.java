@@ -39,7 +39,7 @@ public class HubInitializationTest extends BaseSystemTest {
 
         assertTrue(hubSearchLogs.contains("Successfully loaded piveau profile 'opendata-swiss' from directory '/piv-profile'"), "Logs should indicate profile loaded");
 
-        assertTrue(hubSearchLogs.contains("Loaded shape successfully for dataset"), "Logs should indicate dataset shape loaded");
+        //assertTrue(hubSearchLogs.contains("Loaded shape successfully for dataset"), "Logs should indicate dataset shape loaded");  // this is not logged anymore in piveau-hub-search:5.3.8
         assertTrue(hubSearchLogs.contains("Loaded shape successfully for catalogue"), "Logs should indicate catalogue shape loaded");
         assertTrue(hubSearchLogs.contains("Loaded shape successfully for vocabulary"), "Logs should indicate vocabulary shape loaded");
 
