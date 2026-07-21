@@ -145,9 +145,6 @@ const hasAccessUrl = computed(() => {
   padding-bottom: 24px;
 }
 
-.distribution-item:last-child {
-  border-bottom: none;
-}
 .footer {
   display: flex;
   justify-content: space-between;
