@@ -103,7 +103,7 @@ jobs:
           NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL: http://localhost:8084/
           NUXT_OAUTH_KEYCLOAK_CLIENTS_HUB_REPO_CLIENT_SECRET: ${{ secrets.KEYCLOAK_HUB_REPO_CLIENT_SECRET_REF }}
 
-      - run: npx wait-on http://localhost:3000 -t 30s
+      - run: npx wait-on http://localhost:3000/healthz -t 30s
         working-directory: opendata.swiss/ui
 
       - run: npm run test:api -- --silent
