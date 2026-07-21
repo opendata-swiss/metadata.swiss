@@ -94,6 +94,7 @@ services:
       - GITHUB_OWNER=opendata-swiss
       - GITHUB_CMS_REPO=opendata-swiss-cms-content-test
       - GITHUB_APP_REPO=metadata.swiss
+      - DISABLE_SHOWCASE_HARVESTING=true
 
   ###########
   #### CONSUS

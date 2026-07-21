@@ -111,6 +111,7 @@ Pull Requests to the CMS content repositories will trigger a new deployment of t
 
 Set the environment variables as needed:
 
+- `ENV`
 - `NUXT_APP_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
