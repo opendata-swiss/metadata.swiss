@@ -12,17 +12,26 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
   },
+  "description": {
+    "de": "",
+    "en": "",
+    "fr": "",
+    "it": "",
+    "rm": ""
+  },
   "name": {
     "de": "Kanton Basel-Landschaft",
     "en": "Canton Basel-Landschaft",
     "fr": "Canton Bâle-Campagne",
-    "it": "Canton Basilea Campagna"
+    "it": "Canton Basilea Campagna",
+    "rm": ""
   },
   "pref_label": {
     "de": "BL",
     "en": "BL",
     "fr": "BL",
-    "it": "BL"
+    "it": "BL",
+    "rm": ""
   },
   "homepage": "https://www.baselland.ch",
   "hierarchy_level": 0,

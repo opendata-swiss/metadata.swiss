@@ -38,6 +38,7 @@ await Promise.all([
 
 <template>
   <OdsSection
+    id="promoted-showcases"
     :layout="layout"
     accent-color="100"
     text-color="600"

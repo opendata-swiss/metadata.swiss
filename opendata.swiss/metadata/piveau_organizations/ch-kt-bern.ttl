@@ -11,8 +11,11 @@
         "Canton Berne"@fr,
         "Kanton Bern"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.be.ch> ;
     foaf:name "Kanton Bern"@de,
         "Kanton Bern"@en,
         "Canton Berne"@fr,
         "Kanton Bern"@it .
+
+<https://www.be.ch> a foaf:Document .
 

@@ -3,7 +3,7 @@ import Listmonk from '#server/lib/listmonk'
 import { validatePreferencesToken } from '#server/lib/listmonk/token'
 
 export async function getIdFromQuery(event: H3Event) {
-  const userSession = await requireUserSession(event)
+  const { user } = event.context
 
   const { id, token } = getQuery(event)
   if (!id) {
@@ -20,7 +20,7 @@ export async function getIdFromQuery(event: H3Event) {
 
   const subscriber = await new Listmonk(listmonk).subscribers.get(id.toString())
 
-  if (subscriber.email === userSession.user.email) {
+  if (subscriber.email === user.email) {
     return id.toString()
   }
 

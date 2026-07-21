@@ -4,7 +4,7 @@ const __dirname = dirname(new URL(import.meta.url).pathname)
 
 declare module 'nitropack/types' {
   interface NitroRouteConfig {
-    basicAuth?: boolean
+    basicAuth?: string[]
   }
 }
 
@@ -30,7 +30,13 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   css: ['~/assets/main.css'],
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => tag.startsWith('swiper-'),
+    },
+  },
   content: {
+    experimental: { nativeSqlite: true },
     build: {
       markdown: {
         toc: {
@@ -53,8 +59,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       rootDir: __dirname,
-      piveauHubRepoUrl: 'https://piveau-hub-repo.int.ods.zazukoians.org/',
-      piveauHubSearchUrl: 'https://piveau-hub-search.int.ods.zazukoians.org/',
+      piveauHubRepoUrl: 'https://piveau-hub-repo.ref.ods.zazukoians.org/',
+      piveauHubSearchUrl: 'https://piveau-hub-search.ref.ods.zazukoians.org/',
       matomo: {
         url: '',
         siteId: '',
@@ -72,7 +78,7 @@ export default defineNuxtConfig({
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
-        realm: 'lindas-next',
+        realm: 'lindas-next-ref',
         clientId: 'piveau-hub-ui',
         clients: {
           hubRepo: {
@@ -122,8 +128,9 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    '/api/showcases': { basicAuth: true },
-    '/api/subscribe/*': { basicAuth: true },
+    '/api/showcases': { basicAuth: ['POST'] },
+    '/api/subscribe/*': { basicAuth: ['POST'] },
+    '/api/subscription/preferences': { basicAuth: ['PUT', 'GET'] },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
@@ -134,6 +141,7 @@ export default defineNuxtConfig({
     plugins: [
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
+      '~~/server/plugins/log-config',
     ],
     hooks: {
       'dev:reload': () => import('sharp'),

@@ -8,9 +8,9 @@ on:
         required: true
         type: choice
         options:
-          - "TEST"
-          - "INT"
-        default: "TEST"
+          - "REF"
+          - "ABN"
+        default: "REF"
 
       action:
         description: "Action to perform"
@@ -51,8 +51,8 @@ jobs:
         working-directory: ./opendata.swiss/metadata
         run: rm -f .env
 
-      - name: Generate .env file (INT)
-        if: ${{ github.event.inputs.environment == 'INT' }}
+      - name: Generate .env file (REF)
+        if: ${{ github.event.inputs.environment == 'REF' }}
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
@@ -63,16 +63,16 @@ jobs:
           echo "PIVEAU_METRICS_CACHE_ENDPOINT=${PIVEAU_METRICS_CACHE_ENDPOINT}" >> .env
           echo "PIVEAU_METRICS_CACHE_API_KEY=${PIVEAU_METRICS_CACHE_API_KEY}" >> .env
         env:
-          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_INT }}
-          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_INT }}
-          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_INT }}
-          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_INT }}
-          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_INT }}
-          PIVEAU_METRICS_CACHE_ENDPOINT: ${{ secrets.PIVEAU_METRICS_CACHE_ENDPOINT_INT }}
-          PIVEAU_METRICS_CACHE_API_KEY: ${{ secrets.PIVEAU_METRICS_CACHE_API_KEY_INT }}
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_REF }}
+          HUB_REPO_ENDPOINT: ${{ vars.HUB_REPO_ENDPOINT_REF }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ vars.CONSUS_SCHEDULING_ENDPOINT_REF }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_REF }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_REF }}
+          PIVEAU_METRICS_CACHE_ENDPOINT: ${{ vars.PIVEAU_METRICS_CACHE_ENDPOINT_REF }}
+          PIVEAU_METRICS_CACHE_API_KEY: ${{ secrets.PIVEAU_METRICS_CACHE_API_KEY_REF }}
 
-      - name: Generate .env file (TEST)
-        if: ${{ github.event.inputs.environment == 'TEST' }}
+      - name: Generate .env file (ABN)
+        if: ${{ github.event.inputs.environment == 'ABN' }}
         working-directory: ./opendata.swiss/metadata
         run: |
           echo "PIVEAU_HUB_API_KEY=${PIVEAU_HUB_API_KEY}" >> .env
@@ -83,13 +83,13 @@ jobs:
           echo "PIVEAU_METRICS_CACHE_ENDPOINT=${PIVEAU_METRICS_CACHE_ENDPOINT}" >> .env
           echo "PIVEAU_METRICS_CACHE_API_KEY=${PIVEAU_METRICS_CACHE_API_KEY}" >> .env
         env:
-          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_TEST }}
-          HUB_REPO_ENDPOINT: ${{ secrets.HUB_REPO_ENDPOINT_TEST }}
-          CONSUS_SCHEDULING_ENDPOINT: ${{ secrets.CONSUS_SCHEDULING_ENDPOINT_TEST }}
-          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_TEST }}
-          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_TEST }}
-          PIVEAU_METRICS_CACHE_ENDPOINT: ${{ secrets.PIVEAU_METRICS_CACHE_ENDPOINT_TEST }}
-          PIVEAU_METRICS_CACHE_API_KEY: ${{ secrets.PIVEAU_METRICS_CACHE_API_KEY_TEST }}
+          PIVEAU_HUB_API_KEY: ${{ secrets.PIVEAU_HUB_API_KEY_ABN }}
+          HUB_REPO_ENDPOINT: ${{ vars.HUB_REPO_ENDPOINT_ABN }}
+          CONSUS_SCHEDULING_ENDPOINT: ${{ vars.CONSUS_SCHEDULING_ENDPOINT_ABN }}
+          CONSUS_SCHEDULING_USERNAME: ${{ secrets.CONSUS_SCHEDULING_USERNAME_ABN }}
+          CONSUS_SCHEDULING_PASSWORD: ${{ secrets.CONSUS_SCHEDULING_PASSWORD_ABN }}
+          PIVEAU_METRICS_CACHE_ENDPOINT: ${{ vars.PIVEAU_METRICS_CACHE_ENDPOINT_ABN }}
+          PIVEAU_METRICS_CACHE_API_KEY: ${{ secrets.PIVEAU_METRICS_CACHE_API_KEY_ABN }}
 
       - name: Run the selected action
         working-directory: ./opendata.swiss/metadata

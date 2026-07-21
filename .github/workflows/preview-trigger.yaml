@@ -15,8 +15,8 @@ on:
         required: true
         type: choice
         options:
-          - "int"
-          - "test"
+          - "ref"
+          - "abn"
       deployment_name:
         description: "Subdomain to deploy"
         required: true

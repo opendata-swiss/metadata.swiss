@@ -58,7 +58,7 @@ const onSearch = (value) => {
     </template>
     <OdsSearchPanel
       v-model:search-input="searchInput"
-      aside
+      small
       :search-prompt="t('message.blog.search_prompt')"
       @search="onSearch"
     />

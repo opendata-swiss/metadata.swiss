@@ -229,15 +229,6 @@ registerEditorComponent({
     json: true,
     collapsed: true,
     fields: slideshowOptions,
-  }, {
-    name: 'showcases',
-    label: 'Showcases',
-    hint: 'Hand-pick showcase to promote. More will be loaded dynamically to fill the section to the max number.',
-    widget: 'piveau-showcase',
-    piveau: {
-      search: import.meta.env.NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL || 'https://piveau-hub-search.int.ods.zazukoians.org/',
-    },
-    json: true,
   }],
 })
 

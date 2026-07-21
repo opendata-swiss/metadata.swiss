@@ -74,6 +74,14 @@ export default defineConfig({
             }
             else {
               config.backend.repo = `${process.env.GITHUB_OWNER}/${process.env.GITHUB_CMS_REPO}`
+
+              for (const collection of config.collections) {
+                for (const field of collection.fields) {
+                  if ('piveau' in field && piveauHubSearch) {
+                    field.piveau.search = piveauHubSearch
+                  }
+                }
+              }
             }
 
             return yaml.dump(config)
