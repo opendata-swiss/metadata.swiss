@@ -18,6 +18,12 @@ export default defineNitroPlugin(async (nitro) => {
     return
   }
 
+  const environment = process.env.ENV
+  if (!environment) {
+    console.error('Cannot trigger showcase harvesting. ENV variable is missing')
+    return
+  }
+
   executed.add(nitro)
 
   const appId = process.env.GITHUB_APP_ID
@@ -39,8 +45,6 @@ export default defineNitroPlugin(async (nitro) => {
     })
 
     const { token } = await auth({ type: 'installation' })
-
-    const environment = process.env.ENV || 'PROD'
 
     const response = await fetch(`https://api.github.com/repos/${githubOrg}/${appRepo}/actions/workflows/script-manual-trigger.yaml/dispatches`, {
       method: 'POST',
