@@ -134,7 +134,7 @@ export class HubRepo {
   constructor(private baseUrl: string, private oauth: OAuthConfig, private _fetch = fetch) {}
 
   async getResource({ id, resourceType, catalogId }: ResourceId): Promise<AnyPointer> {
-    const url = new URL(`/resources/${resourceType}/${id}?catalogId=${catalogId}`, this.baseUrl)
+    const url = new URL(`/customresources/${resourceType}/${id}?catalogId=${catalogId}`, this.baseUrl)
 
     const res = await $rdf.fetch(url, {
       fetch: this._fetch,
@@ -147,7 +147,7 @@ export class HubRepo {
   async putResource(id: ResourceId, body: AnyPointer): Promise<void> {
     const authToken = await requestServiceAccountToken(this.oauth.serverUrl, this.oauth.realm, this.oauth.credentials)
 
-    const url = new URL(`/resources/${id.resourceType}?id=${id.id}&catalogId=${id.catalogId}`, this.baseUrl)
+    const url = new URL(`/customresources/${id.resourceType}?id=${id.id}&catalogId=${id.catalogId}`, this.baseUrl)
 
     const res = await $rdf.fetch(url, {
       fetch: this._fetch,
