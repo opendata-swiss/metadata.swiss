@@ -132,6 +132,7 @@ useSeoMeta({
               <template v-if="dataset.getPublisher">
                 {{ ` ${t('message.showcase.dataset_from')}` }}
                 <a
+                  v-if="dataset.getPublisher.homepage"
                   :href="dataset.getPublisher.homepage"
                   rel="noopener noreferrer"
                   class="link--external"
@@ -139,6 +140,9 @@ useSeoMeta({
                 >
                   {{ dataset.getPublisher.name }}
                 </a>
+                <template v-else>
+                  {{ dataset.getPublisher.name }}
+                </template>
               </template>
             </li>
           </ul>
