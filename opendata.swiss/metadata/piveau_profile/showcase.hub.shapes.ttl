@@ -118,8 +118,9 @@ ex:Showcase_Shape a sh:NodeShape ;
           sh:minCount 1 ;
           sh:maxCount 1 ;
           sh:nodeKind sh:IRI ;
-          pv:mappingClass "StandardResourceKeyword" ;
+          pv:mappingClass "Nested" ;
           pv:mappingName "type" ;
+          pv:mappingLink ex:SkosConcept_MappingShape
       ], [
           sh:nodeKind sh:Literal ;
           sh:path dcat:keyword ;
@@ -136,3 +137,19 @@ ex:Showcase_Shape a sh:NodeShape ;
           pv:mappingName "rating"
       ]
       .
+
+ex:SkosConcept_MappingShape a sh:NodeShape ;
+    sh:name "SKOS concept mapping"@en ;
+    sh:property [
+          sh:maxCount 1 ;
+          pv:mappingClass "StandardText" ;
+          pv:mappingName "id"
+      ], [
+          sh:maxCount 1 ;
+          pv:mappingClass "SimpleMultiLang" ;
+          pv:mappingName "label"
+      ], [
+          sh:maxCount 1 ;
+          pv:mappingClass "StandardKeyword" ;
+          pv:mappingName "resource"
+      ] .
