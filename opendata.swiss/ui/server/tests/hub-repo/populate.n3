@@ -17,7 +17,7 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
   <#request> [
     a tuner:Request ;
     tuner:method "PUT" ;
-    tuner:url </resources/showcase?catalogId=showcases-ods&id=showcase> ;
+    tuner:url </customresources/showcase?catalogId=showcases-ods&id=showcase> ;
     tuner:body <file:showcase.json> ;
     tuner:header ( "Content-Type" "application/ld+json" ) ;
   ] ;
