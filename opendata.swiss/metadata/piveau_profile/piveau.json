@@ -48,8 +48,7 @@
             }, {
               "name": "type",
               "title": "Type",
-              "path": "type",
-              "plain": true
+              "path": "type"
             }
         ],
         "searchParams": []
