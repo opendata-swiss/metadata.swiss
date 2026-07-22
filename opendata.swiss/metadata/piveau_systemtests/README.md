@@ -23,11 +23,6 @@ Annotations on test methods:
 `GlobalTestRunner` scans the package `swiss.opendata.piveau.testbench.scenarios` for test methods.
 
 
-## Prepare
-
-Adjust `PIVEAU_HUB_SEARCH_API_KEY` in your environment to match with the one used in [TestConstants](src/test/java/swiss/opendata/piveau/testbench/TestConstants.java)
-
-
 ## Execution Modes
 
 There are three execution modes:

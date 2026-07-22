@@ -85,7 +85,9 @@ public class SearchTest extends BaseSystemTest {
                     // Piveau Search response: { "result": { "count": N, "results": [...] } }
                     .log().body()
                     .body("result.count", greaterThan(0))
-                    .body("result.results.id", hasItem(showcaseId));
+                    .body("result.results.id", hasItem(showcaseId))
+                    .body("result.facets.find { it.id == 'type' }.items.id", hasItem("application"))
+                    .body("result.facets.find { it.id == 'type' }.items.title.it", hasItem("Applicazione"));
         });
     }
 }
