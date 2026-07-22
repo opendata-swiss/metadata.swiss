@@ -80,6 +80,10 @@ To run API tests, set the environment variable below to enable basic auth for th
 
 ```bash
 NUXT_API_TUNER_TESTS=true
+NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL=http://localhost:8084/
+NUXT_PUBLIC_PIVEAU_HUB_REPO_URL=http://localhost:8081/
+HUB_REPO_API_KEY=... #value from metadata compose stack 
+NUXT_OAUTH_KEYCLOAK_CLIENTS_HUB_REPO_CLIENT_SECRET=...
 ```
 
 Then, run the tests with:
@@ -107,6 +111,7 @@ Pull Requests to the CMS content repositories will trigger a new deployment of t
 
 Set the environment variables as needed:
 
+- `ENV`
 - `NUXT_APP_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_SEARCH_URL`
 - `NUXT_PUBLIC_PIVEAU_HUB_REPO_URL`
@@ -120,6 +125,7 @@ Set the environment variables as needed:
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_ID`
 - `NUXT_OAUTH_KEYCLOAK_CLIENT_SECRET`
 - `NUXT_OAUTH_KEYCLOAK_REALM`
+- `NUXT_OAUTH_KEYCLOAK_CLIENTS_HUB_REPO_CLIENT_SECRET`
 - `NUXT_MATOMO_URL`
 - `NUXT_MATOMO_SITE_ID`
 - `NUXT_LISTMONK_API_URL`
@@ -134,6 +140,9 @@ Set the environment variables as needed:
 - `NUXT_HYVOR_WEBHOOKS_ENABLED`
 - `NUXT_HYVOR_WEBHOOK_SECRET`
 - `NUXT_HYVOR_PUBLISHER_NOTIFICATION_TEMPLATE_ID`
+- `NUXT_SHOWCASES_MAX_IMAGE_WIDTH`
+- `NUXT_SHOWCASES_CATALOG_ID`
+- `NUXT_SHOWCASES_RESOURCE_TYPE`
 
 The value for `GITHUB_APP_*` must be that of a GitHub App, installed in the organisation with access to the correct repository.  
 

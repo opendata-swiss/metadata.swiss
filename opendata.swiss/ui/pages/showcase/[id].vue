@@ -5,7 +5,7 @@ import OdsInfoBlock from '../../app/components/OdsInfoBlock.vue'
 import OdsTagItem from '../../app/components/OdsTagItem.vue'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsCard from '../../app/components/content/OdsCard.vue'
-import OdsButton from '../../app/components/content/OdsButton.vue'
+import OdsButton from '../../app/components/OdsButton.vue'
 import { useVocabularySearch } from '../../app/piveau/vocabularies.js'
 import { useDatasetsSearch } from '../../app/piveau/datasets.js'
 
@@ -70,14 +70,14 @@ useSeoMeta({
 <template>
   <OdsPage
     v-if="showcase"
-    :comments-id="`showcase-${showcase.id}`"
+    :comments-id="showcase.stem.replace(/\.\w\w$/, '')"
     :page="showcase"
   >
     <template #header>
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
     </template>
 
-    <template #hero-subheading>
+    <template #hero-content>
       <img
         v-if="showcase.image"
         :src="showcase.image"

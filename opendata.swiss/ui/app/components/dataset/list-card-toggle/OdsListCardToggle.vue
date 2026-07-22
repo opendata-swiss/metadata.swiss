@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import OdsButton from '../../content/OdsButton.vue'
+import OdsButton from '../../OdsButton.vue'
 
 const { t } = useI18n()
 

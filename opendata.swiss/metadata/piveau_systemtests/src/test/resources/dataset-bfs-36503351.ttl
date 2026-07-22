@@ -1,0 +1,68 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+_:36503351
+    rdf:type dcat:Dataset ;
+    dcat:keyword "Mobilität und Verkehr"@de, "Mobility and transport"@en, "Statistiques des villes suisses 2026"@fr, "Mobilitad e traffic"@rm, "Mobilità e trasporti"@it, "Statistica delle città svizzere 2026"@it, "Mobilité et transports"@fr, "Statistics on Swiss Cities and Towns 2026"@en, "Statistik der Schweizer Städte 2026"@de ;
+    dcterms:license <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+    dcterms:spatial "Politische Gemeinden", "Gemeinden" ;
+    dcat:landingPage "https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08" ;
+    dcterms:temporal [
+        rdf:type dcterms:PeriodOfTime ;
+        schema:endDate "2023-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+        schema:startDate "2023-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+    ] ;
+    dcat:theme <http://publications.europa.eu/resource/authority/data-theme/TRAN> ;
+    dcterms:description "Dieses Dataset präsentiert die jährlichen Zahlen der Statistik der Schweizer Städte 2026 - durchschnittliche Arbeitswegzeit und Arbeitswegdistanz."@de, "Ce dataset présente les chiffres annuels des Statistiques des villes suisses 2026 - Durée et longueur moyennes du trajet pour se rendre au travail."@fr ;
+    dcterms:relation <https://www.admin.ch/opc/de/classified-compilation/19920252/index.html> ;
+    dcterms:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
+    dcterms:title "Arbeitswegzeit und Arbeitswegdistanz"@de, "Durée et longueur du trajet des pendulaires"@fr ;
+    dcterms:language <http://publications.europa.eu/resource/authority/language/DEU>, <http://publications.europa.eu/resource/authority/language/FRA> ;
+    dcat:distribution [
+        rdf:type dcat:Distribution ;
+        dcterms:title "Daten im Browser anschauen"@de ;
+        dcterms:language <http://publications.europa.eu/resource/authority/language/DEU> ;
+        dcterms:issued "2026-04-28T07:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        dcterms:license <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+        dcat:accessURL "https://stats.swiss/vis?lc=de&dfds=disseminate&dfid=DF_SSV_LABMAR_08&dfag=CH1.SSV&dfvs=2026.1.0" ;
+        dcterms:identifier "link-36503376-de@bundesamt-fur-statistik-bfs" ;
+    ], [
+        rdf:type dcat:Distribution ;
+        dcat:mediaType "text/html" ;
+        dcterms:description "Ce dataset présente les chiffres annuels des Statistiques des villes suisses 2026 - Durée et longueur moyennes du trajet pour se rendre au travail."@fr ;
+        dcterms:title "Durée et longueur du trajet des pendulaires"@fr ;
+        dcterms:language <http://publications.europa.eu/resource/authority/language/FRA> ;
+        dcterms:issued "2026-04-28T07:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        dcterms:license <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+        dcat:accessURL "https://www.bfs.admin.ch/asset/fr/DF_SSV_LABMAR_08" ;
+        dcterms:identifier "36503367-fr@bundesamt-fur-statistik-bfs" ;
+    ], [
+        rdf:type dcat:Distribution ;
+        dcat:mediaType "text/html" ;
+        dcterms:description "Dieses Dataset präsentiert die jährlichen Zahlen der Statistik der Schweizer Städte 2026 - durchschnittliche Arbeitswegzeit und Arbeitswegdistanz."@de ;
+        dcterms:title "Arbeitswegzeit und Arbeitswegdistanz"@de ;
+        dcterms:language <http://publications.europa.eu/resource/authority/language/DEU> ;
+        dcterms:issued "2026-04-28T07:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        dcterms:license <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+        dcat:accessURL "https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08" ;
+        dcterms:identifier "36503367-de@bundesamt-fur-statistik-bfs" ;
+    ], [
+        rdf:type dcat:Distribution ;
+        dcterms:title "Consulter les données dans le navigateur"@fr ;
+        dcterms:language <http://publications.europa.eu/resource/authority/language/FRA> ;
+        dcterms:issued "2026-04-28T07:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+        dcterms:license <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+        dcat:accessURL "https://stats.swiss/vis?lc=fr&dfds=disseminate&dfid=DF_SSV_LABMAR_08&dfag=CH1.SSV&dfvs=2026.1.0" ;
+        dcterms:identifier "link-36503376-fr@bundesamt-fur-statistik-bfs" ;
+    ] ;
+    dcterms:publisher <https://www.bfs.admin.ch/> ;
+    dcterms:issued "2026-04-28T07:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    dcterms:identifier "%s" ;
+    dcat:contactPoint [
+        rdf:type vcard:Organization ;
+        vcard:hasEmail <mailto:auskunftsdienst@bfs.admin.ch> ;
+        vcard:fn "info@bfs.admin.ch" ;
+    ] .

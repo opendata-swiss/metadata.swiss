@@ -1,6 +1,8 @@
 import type Listmonk from '../../lib/listmonk'
 import type { NitroRuntimeConfig } from 'nitropack/types'
-import type { HubSearch } from '../../lib/piveau'
+import type { HubRepo, HubSearch } from '../../lib/piveau'
+import { rdf, schema } from '@tpluscode/rdf-ns-builders'
+import { ns as piveau } from '../../lib/piveau'
 
 export interface User {
   email: string
@@ -9,7 +11,10 @@ export interface User {
 export interface Page {
   url: string
   title: string
-  identifier: `dataset-${string}`
+  identifier: `dataset-${string}` | `showcase/${string}`
+  ratings: {
+    average: number
+  }
 }
 
 export interface Comment {
@@ -34,14 +39,18 @@ export interface Rating {
 
 export default class {
   constructor(
-    private config: Pick<NitroRuntimeConfig['hyvor'], 'publisherNotificationTemplateId'>,
+    private config: {
+      hyvor: Pick<NitroRuntimeConfig['hyvor'], 'publisherNotificationTemplateId'>
+      showcases: Pick<NitroRuntimeConfig['showcases'], 'catalogId' | 'resourceType'>
+    },
     private listmonk: Listmonk,
-    private piveau: HubSearch,
+    private hubSearch: HubSearch,
+    private hubRepo: HubRepo,
   ) {
   }
 
   private shouldNotifyAboutComment(comment: Comment): boolean {
-    if (!this.config.publisherNotificationTemplateId) {
+    if (!this.config.hyvor.publisherNotificationTemplateId) {
       console.log('Publisher notification template ID not configured')
       return false
     }
@@ -71,7 +80,7 @@ export default class {
     }
 
     const datasetId = payload.page.identifier.substring('dataset-'.length)
-    const dataset = await this.piveau.datasets.get(datasetId)
+    const dataset = await this.hubSearch.datasets.get(datasetId)
 
     if (dataset instanceof Error) {
       return dataset
@@ -84,7 +93,7 @@ export default class {
     }
 
     const res = await this.listmonk.transactional.send({
-      template_id: this.config.publisherNotificationTemplateId,
+      template_id: this.config.hyvor.publisherNotificationTemplateId,
       subscriber_email: publisher.email,
       data: {
         page: {
@@ -111,8 +120,31 @@ export default class {
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handleRating(payload: Rating) {
+  async handleRating({ page }: Rating) {
+    if (!page) {
+      return new Error('Rating does not have an associated page')
+    }
 
+    const hyvorPageId = page.identifier
+    const showcaseId = /showcase\/(.+)/.exec(hyvorPageId)?.[1]
+
+    if (!showcaseId) {
+      return new Error(`Failed to extract showcase ID from Hyvor page identifier '${hyvorPageId}'`)
+    }
+
+    const id = {
+      resourceType: this.config.showcases.resourceType,
+      catalogId: this.config.showcases.catalogId,
+      id: showcaseId,
+    }
+
+    const graph = await this.hubRepo.getResource(id)
+    const showcase = graph
+      .has(rdf.type, piveau.CustomResource)
+
+    showcase
+      .deleteOut(schema.ratingValue)
+      .addOut(schema.ratingValue, page.ratings.average)
+    await this.hubRepo.putResource(id, showcase)
   }
 }

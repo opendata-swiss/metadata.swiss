@@ -9,11 +9,15 @@ const users: Record<string, { password: string, email: string }> = {
     password: 'foobar',
     email: 'jane@example.com',
   },
+  'frank': {
+    password: 'foobar',
+    email: 'frank@example.com',
+  },
 }
 
 declare module 'nitropack/types' {
   interface NitroRouteRules {
-    basicAuth?: boolean
+    basicAuth?: string[]
   }
 }
 
@@ -21,7 +25,7 @@ export default defineEventHandler(async (event) => {
   const { apiTunerTests } = useRuntimeConfig()
 
   const routeRules = getRouteRules(event)
-  if (!routeRules.basicAuth || !isMethod(event, 'POST')) {
+  if (!routeRules.basicAuth?.includes(event.method)) {
     return
   }
 

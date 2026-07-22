@@ -492,7 +492,7 @@ def generate_pipe_and_catalogue_files(pipes: bool = True, catalogues: bool = Tru
         if org_id:
             full_org_details = ckan_client.get_organization_details(organization_id=org_id)
             if full_org_details:
-                org_url = full_org_details.get("url", "https://example.com")
+                org_url = full_org_details.get("url", "https://example.com").strip()
             else:
                 logging.warning(
                     f"No org url for '{catalogue_name}' provided."

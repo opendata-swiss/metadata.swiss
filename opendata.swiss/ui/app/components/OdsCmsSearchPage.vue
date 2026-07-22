@@ -39,12 +39,13 @@ const { data } = defineProps<{
   data: SearchData[]
   breadcrumbs: BreadcrumbItem[]
   searchResultToLink: (result: SearchResult) => RouteLocationRaw
+  searchResultToImage?: (result: SearchResult) => string
 }>()
 
 const miniSearch = computed(() => {
   const ms = new MiniSearch({
-    fields: ['title', 'titles', 'content'],
-    storeFields: ['title', 'titles', 'content'],
+    fields: ['title', 'content'],
+    storeFields: ['title', 'content'],
     searchOptions: {
       prefix: true,
       fuzzy: 0.2,
@@ -78,6 +79,7 @@ watch(
       <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
       <OdsSearchPanel
         v-model:search-input="searchInput"
+        small
         :search-prompt="searchPrompt"
         @search="onSearch"
       />
@@ -91,6 +93,16 @@ watch(
         clickable
       >
         <p>{{ article.content }}</p>
+
+        <template
+          v-if="searchResultToImage"
+          #image
+        >
+          <NuxtImg
+            :src="searchResultToImage(article)"
+            :alt="article.title"
+          />
+        </template>
 
         <template #footer-action>
           <NuxtLinkLocale

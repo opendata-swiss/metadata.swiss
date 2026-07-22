@@ -118,6 +118,10 @@
       "submitted_by": "Soumis par",
       "externalLink": "Lien externe",
       "open": "Ouvrir le site web",
+      "hero": {
+        "title": "Que sont les showcases ?",
+        "text": "Les jeux de données ont été utilisés pour créer des applications, des sites web et des visualisations. Ils ont été mis en avant dans des articles et mentionnés dans des reportages et des billets de blog. Les showcases rassemblent les meilleurs exemples d’utilisation des jeux de données afin de fournir davantage d’éclairage, d’idées et d’inspiration."
+      },
       "search": {
         "dataset_references": "{count} jeux de données",
                 "prompt": "Rechercher des showcases",

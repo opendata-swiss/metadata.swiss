@@ -7,12 +7,35 @@ import type { PagesCollectionItem } from '@nuxt/content'
 const { locale } = useI18n()
 
 const { comments: { websiteId } } = useRuntimeConfig().public
-type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading' | 'heroImage' | 'noToc'> & Partial<Pick<PagesCollectionItem, 'body'>>
+type Page = Pick<PagesCollectionItem, 'heading' | 'title' | 'subHeading' | 'heroImage' | 'fullWidth'> & Partial<Pick<PagesCollectionItem, 'body'>>
 
-const { page } = defineProps<{
+const { page, hero: heroProp } = defineProps<{
   page?: Page
   commentsId?: string
+  hero?: {
+    image?: string
+    title: string
+  }
 }>()
+
+const hero = computed(() => {
+  if (page) {
+    return {
+      image: page.heroImage,
+      title: page.heading || page.title,
+      content: page.subHeading,
+    }
+  }
+
+  if (heroProp) {
+    return {
+      ...heroProp,
+      content: undefined,
+    }
+  }
+
+  return null
+})
 </script>
 
 <template>
@@ -21,26 +44,27 @@ const { page } = defineProps<{
   </header>
   <div id="main-content">
     <Hero
-      v-if="page"
-      :type="page.heroImage ? 'main-image' : 'default'"
+      v-if="hero"
+      :type="hero.image ? 'main-image' : 'default'"
+      class="hero--title-only"
     >
       <template #title>
-        {{ page.heading || page.title }}
+        {{ hero.title }}
       </template>
       <template #description>
-        <slot name="hero-subheading">
+        <slot name="hero-content">
           <MDC
-            v-if="page.subHeading"
-            :value="page.subHeading"
+            v-if="hero.content"
+            :value="hero.content"
           />
         </slot>
       </template>
 
       <template
-        v-if="page.heroImage"
+        v-if="hero.image"
         #image
       >
-        <NuxtImg :src="page.heroImage" />
+        <NuxtImg :src="hero.image" />
       </template>
     </Hero>
     <slot>
@@ -49,7 +73,7 @@ const { page } = defineProps<{
         class="section section--py"
       >
         <ContentRenderer
-          v-if="page.noToc"
+          v-if="page.fullWidth"
           :value="page"
         />
         <div

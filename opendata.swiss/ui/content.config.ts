@@ -32,7 +32,7 @@ export default defineContentConfig({
         permalink: z.string().optional(),
         parent: z.string().optional(),
         heroImage: z.string().optional(),
-        noToc: z.boolean().optional(),
+        fullWidth: z.boolean().optional(),
         mainMenu: z.boolean().optional(),
         after: z.string().optional(),
         rawbody: z.string(),
@@ -55,9 +55,11 @@ export default defineContentConfig({
       type: 'page',
       schema: z.object({
         title: z.string(),
+        pinned: z.boolean(),
         slug: z.string().optional(),
         date: z.date().optional(),
         subHeading: z.string().optional(),
+        image: z.string(),
       }),
     }),
     showcases: defineCollection({

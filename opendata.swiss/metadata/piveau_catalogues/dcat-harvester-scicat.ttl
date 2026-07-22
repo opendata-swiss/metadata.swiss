@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-harvester-scicat> a dcat:Catalog ;
+    dcterms:created "2026-06-17T14:32:40.679799"^^xsd:dateTime ;
+    dcterms:description "SciCat is a community driven scientific metadata catalog designed to simplify metadata management, enabling data sharing, discovery, and collaboration. By providing a central hub for metadata, SciCat makes data easily findable and accessible for the entire community. With flexible integration into diverse infrastructures and a clear path to data publication, SciCat empowers organizations to foster an open and innovative data culture, driving high-quality science forward."@en ;
+    dcterms:modified "2026-06-17T14:32:40.679806"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.scicatproject.org/> ;
+            foaf:name "SciCat"@de,
+                "SciCat"@en,
+                "SciCat"@fr,
+                "SciCat"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "SciCat"@de,
+        "SciCat"@en,
+        "SciCat"@fr,
+        "SciCat"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -70,22 +70,73 @@ public class OrganizationTest extends BaseSystemTest {
         context.store(Goal.ODSN_ORGANIZATION_CREATED, "name", organizationName);
     }
 
-    // @Test
-    // @DependsOn(Goal.ODSN_ORGANIZATION_CREATED)
-    // @Provides(Goal.ODSN_ORGANIZATION_INDEXED)
-    // public void indexOrganizationAfterCreation(TestContext context) {
-    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
-    //     String organizationName = context.get(Goal.ODSN_ORGANIZATION_CREATED, "name", String.class);
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_CREATED)
+    @Provides(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganizationAfterCreation(TestContext context) {
+        String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+        String organizationName = context.get(Goal.ODSN_ORGANIZATION_CREATED, "name", String.class);
 
-    //     System.out.println("Checking Organization Document after creation: /organizations/" + organizationId);
-    //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(organizationName)));
-    //     });
-    // }
+        System.out.println("Checking Organization Document after creation: /organizations/" + organizationId);
+        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(organizationName)));
+        });
+
+        // the response is logged, so it's available for example in target/surefire-reports/TEST-swiss.opendata.piveau.testbench.GlobalTestRunner.xml - then search for "indexOrganizationAfterCreation" in the logfile
+        String json = io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().log().body().statusCode(200).extract().body().asString();
+        context.store(Goal.ODSN_ORGANIZATION_INDEXED, "json", json);
+    }
 
     @Test
-    // @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
-    @DependsOn(Goal.ODSN_ORGANIZATION_CREATED)
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganization_resource(TestContext context) {
+        String json = context.get(Goal.ODSN_ORGANIZATION_INDEXED, "json", String.class);
+        String organizationIRI = context.get(Goal.ODSN_ORGANIZATION_CREATED, "iri", String.class);
+
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.resource"), equalTo(organizationIRI));
+    }
+    
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganization_name(TestContext context) {
+        String json = context.get(Goal.ODSN_ORGANIZATION_INDEXED, "json", String.class);
+        String organizationName = context.get(Goal.ODSN_ORGANIZATION_CREATED, "name", String.class);
+        
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.name.en"), equalTo(organizationName));
+    }
+    
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganization_description(TestContext context) {
+        String json = context.get(Goal.ODSN_ORGANIZATION_INDEXED, "json", String.class);
+        
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.description.en"), equalTo("The Canton of Zurich publishes Open Government Data ..."));
+    }
+    
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganization_homepage(TestContext context) {
+        String json = context.get(Goal.ODSN_ORGANIZATION_INDEXED, "json", String.class);
+
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.homepage"), equalTo("https://www.zh.ch/opendata"));
+    }
+
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
+    public void indexOrganization_classification(TestContext context) {
+        String json = context.get(Goal.ODSN_ORGANIZATION_INDEXED, "json", String.class);
+
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.classification"), hasSize(1));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.classification[0].resource"), equalTo("https://register.ld.admin.ch/i14y/concept/legalForm/0221"));
+    }
+
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEXED)
     @Provides(Goal.ODSN_ORGANIZATION_UPDATED)
     public void updateOrganization(TestContext context) throws IOException {
         String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
@@ -115,22 +166,21 @@ public class OrganizationTest extends BaseSystemTest {
         context.store(Goal.ODSN_ORGANIZATION_UPDATED, "name", newName);
     }
 
-    // @Test
-    // @DependsOn(Goal.ODSN_ORGANIZATION_UPDATED)
-    // @Provides(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
-    // public void indexOrganizationAfterUpdate(TestContext context) {
-    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
-    //     String updatedName = context.get(Goal.ODSN_ORGANIZATION_UPDATED, "name", String.class);
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_UPDATED)
+    @Provides(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
+    public void indexOrganizationAfterUpdate(TestContext context) {
+        String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+        String updatedName = context.get(Goal.ODSN_ORGANIZATION_UPDATED, "name", String.class);
 
-    //     System.out.println("Checking Organization Document after update: /organizations/" + organizationId);
-    //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedName)));
-    //     });
-    // }
+        System.out.println("Checking Organization Document after update: /organizations/" + organizationId);
+        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(200).body("result.id", equalTo(organizationId)).body("result.name", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedName)));
+        });
+    }
 
     @Test
-    // @DependsOn(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
-    @DependsOn(Goal.ODSN_ORGANIZATION_UPDATED)
+    @DependsOn(Goal.ODSN_ORGANIZATION_INDEX_UPDATED)
     @Provides(Goal.ODSN_ORGANIZATION_DELETED)
     public void deleteOrganization(TestContext context) {
         String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
@@ -157,15 +207,15 @@ public class OrganizationTest extends BaseSystemTest {
         ));
     }
 
-    // @Test
-    // @DependsOn(Goal.ODSN_ORGANIZATION_DELETED)
-    // @Provides(Goal.ODSN_ORGANIZATION_INDEX_DELETED)
-    // public void deleteIndexAfterOrganizationDeletion(TestContext context) {
-    //     String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_DELETED)
+    @Provides(Goal.ODSN_ORGANIZATION_INDEX_DELETED)
+    public void deleteIndexAfterOrganizationDeletion(TestContext context) {
+        String organizationId = context.get(Goal.ODSN_ORGANIZATION_CREATED, "id", String.class);
 
-    //     System.out.println("Checking Organization Document after deletion: /organizations/" + organizationId);
-    //     org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-    //         io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(404);
-    //     });
-    // }
+        System.out.println("Checking Organization Document after deletion: /organizations/" + organizationId);
+        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/organizations/" + organizationId).then().statusCode(404);
+        });
+    }
 }

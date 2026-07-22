@@ -54,8 +54,8 @@ JQ_EXTRACT_ITEMS='if type == "array" then .[] elif .data | type == "array" then 
 
 # Function to import a template
 import_template() {
-  local file=$1
-  local name=$(basename "$file" .html)
+  file=$1
+  name=$(basename "$file" .html)
   echo "Importing template: $name"
 
   content=$(cat "$file")
@@ -194,6 +194,7 @@ configure_smtp() {
     "max_conns": 10,
     "idle_timeout": "15s",
     "wait_timeout": "5s",
+    "msg_retry_delay": "1m",
     "enabled": true,
     "email_headers": []
   }'
@@ -211,6 +212,18 @@ configure_smtp() {
     -d "$UPDATED_SETTINGS" > /dev/null
 }
 
+# Initialize test subscriber
+initialize_test_subscriber() {
+  email="jane@example.com"
+  name="Jane"
+  attribs='{"datasets":["hyvor-test"], "frequency": "daily"}'
+
+  echo "Creating subscriber $email..."
+  curl -s -u "${AUTH_USER}:${AUTH_PASS}" -X POST "${LISTMONK_URL}/subscribers" \
+    -H "Content-Type: application/json" \
+    -d "$(jq -n --arg email "$email" --arg name "$name" --argjson attribs "$attribs" '{email: $email, name: $name, status: "enabled", attribs: $attribs, lists: []}')" > /dev/null
+}
+
 # Import templates
 if [ -d "/init/templates" ]; then
   for f in /init/templates/*.html; do
@@ -224,5 +237,6 @@ configure_smtp
 delete_default_templates
 delete_default_list
 delete_test_campaigns
+initialize_test_subscriber
 
 echo "Initialization complete."

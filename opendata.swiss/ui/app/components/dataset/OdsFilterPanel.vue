@@ -60,7 +60,7 @@ import { useI18n } from '#imports'
 
 import type { SearchResultFacetGroupLocalized } from '@piveau/sdk-vue'
 import OdsMultiSelect from './OdsMultiSelect.vue'
-import OdsButton from '../content/OdsButton.vue'
+import OdsButton from '../OdsButton.vue'
 import OdsActiveFilters from './OdsActiveFilters.vue'
 import SvgIcon from '~/components/SvgIcon.vue'
 

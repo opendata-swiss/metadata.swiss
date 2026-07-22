@@ -9,7 +9,7 @@ import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDe
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsPreview from '../../../../app/components/dataset-detail/OdsPreview.vue'
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
-import OdsButton from '../../../../app/components/content/OdsButton.vue'
+import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
 import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'

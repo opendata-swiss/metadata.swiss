@@ -1,8 +1,11 @@
 <script setup lang="ts">
-const { title, type = 'default', clickable = false } = defineProps<{
+import OdsButton from '../OdsButton.vue'
+
+const { title, type = 'default', clickable = false, href } = defineProps<{
   title: string
   type?: 'default' | 'highlight' | 'twitter' | 'flat' | 'universal' | 'list'
   clickable?: boolean
+  href?: string
 }>()
 
 const classes = computed(() => {
@@ -24,12 +27,12 @@ const classes = computed(() => {
     </div>
     <div class="card__content">
       <div class="card__body">
-        <p
+        <div
           v-if="$slots['top-meta']"
           class="meta-info"
         >
           <slot name="top-meta" />
-        </p>
+        </div>
         <slot name="title">
           <div class="card__title">
             <h3>{{ title }}</h3>
@@ -43,12 +46,12 @@ const classes = computed(() => {
         </div>
         <slot />
 
-        <p
+        <div
           v-if="$slots['bottom-meta']"
           class="meta-info"
         >
           <slot name="bottom-meta" />
-        </p>
+        </div>
         <div
           v-if="$slots.icons"
           class="card__content-icons"
@@ -58,18 +61,26 @@ const classes = computed(() => {
       </div>
       <div class="card__footer">
         <div class="card__footer__info">
-          <p
+          <div
             v-if="$slots['footer-info']"
             class="meta-info"
           >
             <slot name="footer-info" />
-          </p>
+          </div>
         </div>
         <div
-          v-if="$slots['footer-action']"
+          v-if="$slots['footer-action'] || href"
           class="card__footer__action"
         >
-          <slot name="footer-action" />
+          <slot name="footer-action">
+            <OdsButton
+              v-if="href"
+              :href="href"
+              icon-only
+              icon="ArrowRight"
+              variant="outline"
+            />
+          </slot>
         </div>
       </div>
     </div>

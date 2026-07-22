@@ -1,7 +1,7 @@
 import { remark } from 'remark'
 import strip from 'strip-markdown'
 import remarkFrontmatter from 'remark-frontmatter'
-import { dcat, dcterms, rdfs, schema } from '@tpluscode/rdf-ns-builders'
+import { dcat, dcterms, rdfs, schema, xsd } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -23,6 +23,7 @@ interface AggregateShowcase {
   'tag': string[]
   'modified': string | undefined
   'issued': string | undefined
+  'pinned': boolean
 }
 
 const ldContext = {
@@ -52,6 +53,10 @@ const ldContext = {
     '@id': schema.text.value,
     '@container': '@language',
   },
+  pinned: {
+    '@id': 'piveau:pinned',
+    '@type': xsd.boolean.value,
+  },
   identifier: dcterms.identifier.value,
   image: schema.image.value,
   tag: dcat.keyword.value,
@@ -63,7 +68,7 @@ const ldContext = {
 export default defineEventHandler(async (event) => {
   const { public: { rootDir } } = useRuntimeConfig(event)
   const showcases = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type')
+    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type', 'pinned')
     .where('active', '=', true)
     .all()
 
@@ -92,6 +97,7 @@ export default defineEventHandler(async (event) => {
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
         'tag': showcase.tags || [],
+        'pinned': showcase.pinned || false,
         modified,
         issued,
       }

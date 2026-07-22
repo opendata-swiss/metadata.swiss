@@ -4,7 +4,7 @@ const __dirname = dirname(new URL(import.meta.url).pathname)
 
 declare module 'nitropack/types' {
   interface NitroRouteConfig {
-    basicAuth?: boolean
+    basicAuth?: string[]
   }
 }
 
@@ -35,7 +35,13 @@ export default defineNuxtConfig({
     'ag-grid-community/styles/ag-grid.css',
     'ag-grid-community/styles/ag-theme-quartz.css',
   ],
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => tag.startsWith('swiper-'),
+    },
+  },
   content: {
+    experimental: { nativeSqlite: true },
     build: {
       markdown: {
         toc: {
@@ -71,12 +77,20 @@ export default defineNuxtConfig({
     appUrl: 'http://localhost:3000/',
     showcases: {
       maxImageWidth: 900,
+      catalogId: 'showcases-ods',
+      resourceType: 'showcase',
     },
     oauth: {
       keycloak: {
         serverUrl: 'https://keycloak.zazukoians.org/',
-        realm: 'lindas-next',
+        realm: 'lindas-next-ref',
         clientId: 'piveau-hub-ui',
+        clients: {
+          hubRepo: {
+            clientId: 'piveau-hub-repo',
+            clientSecret: '',
+          },
+        },
       },
     },
     apiTunerTests: false,
@@ -119,8 +133,9 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    '/api/showcases': { basicAuth: true },
-    '/api/subscribe/*': { basicAuth: true },
+    '/api/showcases': { basicAuth: ['POST'] },
+    '/api/subscribe/*': { basicAuth: ['POST'] },
+    '/api/subscription/preferences': { basicAuth: ['PUT', 'GET'] },
     '*/showcases/submit': { ssr: false },
   },
   compatibilityDate: '2025-07-15',
@@ -131,6 +146,7 @@ export default defineNuxtConfig({
     plugins: [
       '~~/server/plugins/zod-locale',
       '~~/server/plugins/showcase-harvesting-trigger',
+      '~~/server/plugins/log-config',
     ],
     hooks: {
       'dev:reload': () => import('sharp'),

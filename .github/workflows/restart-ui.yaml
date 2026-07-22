@@ -1,0 +1,48 @@
+name: Restart deployments
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Environment to restart"
+        required: true
+        type: choice
+        options:
+          - "ref"
+          - "abn"
+
+jobs:
+  restart:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v5
+        with:
+          version: v1.35.0
+
+      - name: Configure cluster context
+        run: |
+          kubectl config set-cluster default "--server=${K8S_API_URL}" --insecure-skip-tls-verify=true
+          kubectl config set-credentials default "--token=${K8S_TOKEN}"
+          kubectl config set-context default --cluster=default --namespace=ods-${{ github.event.inputs.env }}-previews --user=default
+          kubectl config use-context default
+        env:
+          K8S_API_URL: ${{ secrets.K8S_API_URL }}
+          K8S_TOKEN: ${{ secrets.K8S_TOKEN }}
+
+      - name: Restart deployment
+        working-directory: ./opendata.swiss/ui/k8s
+        run: |
+          kubectl -n "ods-${{ github.event.inputs.env }}" \
+            --field-manager=flux-client-side-apply \
+            rollout restart deployment \
+            --selector=app.kubernetes.io/app=piveau-ui

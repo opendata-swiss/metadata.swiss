@@ -1,3 +1,4 @@
+PREFIX schema: <http://schema.org/>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX tuner: <https://api-tuner.described.at/>
@@ -45,13 +46,20 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     a tuner:Request ;
       tuner:url </api/webhooks/hyvor> ;
       tuner:method "POST" ;
-      tuner:header ( "X-Signature" "29de6c7527e154df270b4dd81a79418486815c3467ebf1596afbb518731acddb" ) ;
+      tuner:header ( "X-Signature" "86ae6ee4c79d291260f29969795a9db838cb131e51f202d880d75e0ef1f87260" ) ;
       tuner:body <file:payloads/rating.created.json> ;
   ] ;
   tuner:formula {
     <#ratingCreated> <#request> ?req .
     ?req tuner:response ?res .
     ?res tuner:http_code 204 .
+
+    ( <http://localhost:8081/resources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
+
+    ?hubRes tuner:body ?showcase .
+    ?showcase log:includes {
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 5 .
+    } .
  } ;
 .
 
@@ -62,13 +70,20 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     a tuner:Request ;
       tuner:url </api/webhooks/hyvor> ;
       tuner:method "POST" ;
-      tuner:header ( "X-Signature" "0e47882c2f9c86b8d5ee99fe26ca0996c39029410fe1675d3e9505a30d973165" ) ;
+      tuner:header ( "X-Signature" "ab30b91122f2b5f2578bc7b68dcc4ee613730a222d4ff5a32c4abd08b8b1025a" ) ;
       tuner:body <file:payloads/rating.updated.json> ;
   ] ;
   tuner:formula {
     <#ratingUpdated> <#request> ?req .
     ?req tuner:response ?res .
     ?res tuner:http_code 204 .
+
+    ( <http://localhost:8081/resources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
+
+    ?hubRes tuner:body ?showcase .
+    ?showcase log:includes {
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 3.8 .
+    } .
  } ;
 .
 
@@ -79,7 +94,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     a tuner:Request ;
       tuner:url </api/webhooks/hyvor> ;
       tuner:method "POST" ;
-      tuner:header ( "X-Signature" "d3fade0960eee51f3816b038cea8e0aa25611d3045de38d75039634c4179d4ac" ) ;
+      tuner:header ( "X-Signature" "9c73fd76fec5e9a59eb511bad6533db49269b8a09bbc4491302dcabb3b75b885" ) ;
       tuner:body <file:payloads/comment.created.json> ;
   ] ;
   tuner:formula {

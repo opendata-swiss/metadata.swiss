@@ -15,7 +15,7 @@ import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTa
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
-import OdsButton from '../../../app/components/content/OdsButton.vue'
+import OdsButton from '../../../app/components/OdsButton.vue'
 import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
 import Hero from '../../../app/components/OdsHero.vue'

@@ -10,7 +10,7 @@ Dependencies only downwards
 [...] Done
 ---------------------------
 
-[.. ] Geo Meta Harvesting (CSW importer)
+[...] Geo Meta Harvesting (CSW importer)
 [.  ] Dataset edit (manual, upload, API)
 [.  ] Dataset workflow
 
@@ -28,8 +28,8 @@ Dependencies only downwards
 [.  ] Multi tenant support in decap CMS ("Mandantenfähigkeit")
 [.  ] Keycloak Integration decap CMS
 
-[   ] Rate Datasets, Showcases ("5-stars")
-[   ] Comment Datasets, Showcases, Handbook, Blogs
+[.. ] Rate Datasets, Showcases ("5-stars")
+[...] Comment Datasets, Showcases, Handbook, Blogs
 [   ] Favorite Datasets, Showcases
 
 [.  ] Dataset semantic search
@@ -46,15 +46,15 @@ Dependencies only downwards
 
 ------[ Jun 30 ]--------------------------------
 
-[   ] Distribution Preview
+[.. ] Distribution Preview
 
 [...] Statistics of portal usage (I14Y matomo re-use)
 
-[   ] Landing Page
+[.. ] Landing Page
 
 [...] Static content (CMS) workflow/activation
 [...] Static content (CMS) display
-[.. ] Static content (CMS) edit
+[...] Static content (CMS) edit
 
 [...] Blog workflow
 [...] Blog search & display
@@ -62,16 +62,17 @@ Dependencies only downwards
 
 [.  ] Showcase linked to Organization
 [...] Showcase submission
-[.. ] Showcase workflow
+[...] Showcase workflow
 [.. ] Showcase search & display
 [...] Showcase edit (in decap CMS)
 [   ] Possibility to remove/delete accidental decap content from git repo (including git history)
 
-[.  ] Subscribe to Datasets, Themes, Organizations (RSS feed not enough, email subscription or better)
+[.  ] Subscribe to Organizations
+[...] Subscribe to Datasets, Themes
 
-[   ] Metadata Quality UI (DCAT-AP CH conformance, linkchecker) - TBD: existing ODS dashboard AND|OR piveau metrics UI
-[.. ] Linkchecker (Distributions)
-[.. ] DCAT-AP CH conformance check
+[   ] Metadata Quality UI (DCAT-AP CH conformance, linkchecker) --> keeping existing ODS dashboard
+[   ] Linkchecker (Distributions)
+[   ] DCAT-AP CH conformance check
 
 [...] Handbook workflow
 [...] Handbook search & display
@@ -80,9 +81,9 @@ Dependencies only downwards
 [.. ] DCAT-AP CH V3 Metadata
 [.  ] Organization search & display
 [.. ] Organization edit
-[.. ] Keycloak/eIAM Integration piveau
+[...] Keycloak/eIAM Integration piveau
 
-[.. ] (106) Harvester metadata import guard (reject datasets with missing terms-of-use/license)
+[...] (106) Harvester metadata import guard (reject datasets with missing terms-of-use/license)
 [.. ] Dataset search & display
 [...] DCAT-AP Harvesting
 [.. ] Harvester Monitoring
