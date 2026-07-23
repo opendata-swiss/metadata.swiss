@@ -17,8 +17,9 @@ import OdsButton from '../../../app/components/OdsButton.vue'
 import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
 import OdsDatasetDetailHeader from '../../../app/components/dataset-detail/OdsDatasetDetailHeader.vue'
 import Hero from '../../../app/components/OdsHero.vue'
-import { useSeoMeta } from 'nuxt/app'
+import { useRuntimeConfig, useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
+import type { TagItem } from '../../../app/components/OdsTagItem.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()
@@ -29,6 +30,7 @@ const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
 
 const { suspense } = query
+const { piveauHubRepoUrl } = useRuntimeConfig().public
 
 const localePath = useLocalePath()
 
@@ -142,6 +144,7 @@ function setTagAndGotToDatasetSearch(tag: TagItem) {
   console.log(toDatasetSearchHref.value)
   console.log(toDatasetSearchRoute.value)
 }
+
 await suspense()
 </script>
 
@@ -285,6 +288,34 @@ await suspense()
             :website-id="websiteId"
             :page-id="`dataset-${dataset.id}`"
             :page-language="locale"
+          />
+        </div>
+      </section>
+      <section>
+        <div style="display:flex; flex-direction: row; gap:12px">
+          <OdsButton
+            :title="'JSON-LD'"
+            variant="outline"
+            class="btn--back"
+            size="sm"
+            icon="Download"
+            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['jsonld']"
+          />
+          <OdsButton
+            :title="'TTL'"
+            variant="outline"
+            class="btn--back"
+            size="sm"
+            icon="Download"
+            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['ttl']"
+          />
+          <OdsButton
+            :title="'XML'"
+            variant="outline"
+            class="btn--back"
+            size="sm"
+            icon="Download"
+            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['rdf']"
           />
         </div>
       </section>
