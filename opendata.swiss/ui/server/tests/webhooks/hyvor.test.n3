@@ -54,7 +54,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?req tuner:response ?res .
     ?res tuner:http_code 204 .
 
-    ( <http://localhost:8081/resources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
+    ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
     ?hubRes tuner:body ?showcase .
     ?showcase log:includes {
@@ -78,7 +78,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?req tuner:response ?res .
     ?res tuner:http_code 204 .
 
-    ( <http://localhost:8081/resources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
+    ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
     ?hubRes tuner:body ?showcase .
     ?showcase log:includes {

@@ -148,7 +148,9 @@ public class ShowcaseTest extends BaseSystemTest {
     public void indexShowcase_type(TestContext context) {
         String json = context.get(Goal.ODSN_SHOWCASE_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.type"), equalTo("https://opendata.swiss/vocabulary/showcase-type/application"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.type.id"), equalTo("application"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.type.resource"), equalTo("https://opendata.swiss/vocabulary/showcase-type/application"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.type.label.it"), equalTo("Applicazione"));
     }
 
     @Test
