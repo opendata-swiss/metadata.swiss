@@ -140,7 +140,10 @@ await suspense()
           {{ dataset.title }}
         </template>
 
-        <template #authors>
+        <template
+          v-if="dataset.publisher"
+          #authors
+        >
           <div
             class="disc-images"
             aria-hidden="true"

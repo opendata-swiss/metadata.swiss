@@ -8,7 +8,6 @@
       size="xl"
       class="download-item__icon disabled"
     />
-
     <a
       v-for="downloadUrl in props.distribution.downloadUrls"
       :key="downloadUrl"
