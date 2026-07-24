@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-gvl> a dcat:Catalog ;
+    dcterms:created "2026-07-17T09:00:11.619331"^^xsd:dateTime ;
+    dcterms:description "Die Gebäudeversicherung Luzern ist ein selbständiges Non-Profit-Unternehmen und wurde 1810 gegründet. Sie ist organisatorisch als selbstständige Anstalt dem kantonalen Justiz- und Sicherheitsdepartement angegliedert und engagiert sich auf Grundlage des Gebäudeversicherungsgesetzes für den Schutz der Bevölkerung und sämtlicher Gebäude im Kanton Luzern. "@de,
+        "The Buildings Insurance Lucerne is an independent, nonprofit organization founded in 1810. Organizationally, it operates as an independent agency affiliated with the Cantonal Department of Justice and Security and, in accordance with the Buildings Insurance Act, is committed to protecting the population and all buildings in the canton of Lucerne."@en,
+        "L'Assurance des bâtiments de Lucerne est une entreprise indépendante à but non lucratif fondée en 1810. Sur le plan organisationnel, elle est rattachée au Département cantonal de la justice et de la sécurité en tant qu'établissement autonome et s'engage, en vertu de la loi sur l'assurance des bâtiments, à protéger la population et l'ensemble des bâtiments du canton de Lucerne."@fr ;
+    dcterms:modified "2026-07-22T07:41:43.130610"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.gvl.ch/de> ;
+            foaf:name "Gebäudeversicherung Luzern"@de,
+                "Buildings Insurance Lucerne"@en,
+                "Assurance des bâtiments de Lucerne"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Gebäudeversicherung Luzern"@de,
+        "Buildings Insurance Lucerne"@en,
+        "Assurance des bâtiments de Lucerne"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

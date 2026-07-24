@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-dige> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:59:00.811454"^^xsd:dateTime ;
+    dcterms:description """Der Grundauftrag der Dienststelle Gesundheit und Sport (DIGE) besteht in der Sicherstellung der medizinischen Versorgung, der Beaufsichtigung des öffentlichen Gesundheitswesens sowie der Förderung und Erhaltung der Gesundheit der Luzerner Bevölkerung. Die Dienststelle setzt die strategischen und finanzpolitischen Ziele des GSD im Bereich der Spitäler um.\r
+\r
+Die Dienststelle umfasst die Abteilungen Humanmedizin, Gesundheitsförderung, Heilmittel, Gesundheitsversorgung, Sportförderung sowie Zahnmedizin."""@de,
+        """The primary mission of the Department of Health and Sports (DIGE) is to ensure medical care, oversee the public health system, and promote and maintain the health of Lucerne’s population. The department implements the GSD’s strategic and fiscal policy objectives in the area of hospitals.\r
+\r
+The department comprises the divisions of Human Medicine, Health Promotion, Pharmaceuticals, Health Care, Sports Promotion, and Dentistry."""@en,
+        """La mission principale de l'Office de la santé et du sport (DIGE) consiste à garantir la prise en charge médicale, à superviser le système de santé publique ainsi qu’à promouvoir et à préserver la santé de la population lucernoise. Le service met en œuvre les objectifs stratégiques et financiers du GSD dans le domaine hospitalier.\r
+\r
+Le service comprend les départements suivants : médecine humaine, promotion de la santé, produits thérapeutiques, soins de santé, promotion du sport et médecine dentaire."""@fr ;
+    dcterms:modified "2026-07-22T07:43:14.238282"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://gesundheit.lu.ch/> ;
+            foaf:name "Dienststelle Gesundheit und Sport"@de,
+                "Department of Health and Sports"@en,
+                "Office de la santé et du sport"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Gesundheit und Sport"@de,
+        "Department of Health and Sports"@en,
+        "Office de la santé et du sport"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

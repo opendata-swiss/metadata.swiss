@@ -1,8 +1,8 @@
 {
   "header": {
-    "id": "e6235c4d-2859-4267-8edd-2b6ef8cc15dd",
-    "name": "dcat-harvester-scicat",
-    "title": "DCAT Harvester SciCat",
+    "id": "96ef0db4-7637-4721-af53-4637e6723e5a",
+    "name": "kt-lu-mzj-geocat-harvester",
+    "title": "Kt. LU MZJ - geocat harvester",
     "context": "piveau",
     "transport": "payload",
     "version": "1.0.0"
@@ -11,19 +11,17 @@
     "segments": [
       {
         "header": {
-          "name": "piveau-consus-importing-rdf",
+          "name": "piveau-consus-importing-csw",
           "segmentNumber": 1,
-          "title": "Importing RDF",
+          "title": "Importing CSW",
           "processed": false
         },
         "body": {
           "config": {
-            "address": "https://os.zhdk.cloud.switch.ch/opendataswiss-catalog/scicat_catalog.xml",
-            "catalogue": "dcat-harvester-scicat",
+            "address": "https://www.geocat.ch/geonetwork/lu-mzj/ger/csw?",
+            "catalogue": "kt-lu-mzj",
             "preProcessing": true,
-            "accept": "application/rdf+xml",
-            "inputFormat": "application/rdf+xml",
-            "org_name": "PSI Data Catalog"
+            "org_name": "Department of Military, Civil Defense, and Execution of Penal Sentences and Justice"
           }
         }
       },
@@ -36,8 +34,8 @@
         },
         "body": {
           "config": {
-            "org_id": "psi_data_catalog",
-            "catalogue": "dcat-harvester-scicat",
+            "org_id": "lu-mzj",
+            "catalogue": "kt-lu-mzj",
             "preProcessing": true
           }
         }

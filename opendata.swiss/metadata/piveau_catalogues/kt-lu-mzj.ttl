@@ -1,0 +1,29 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-mzj> a dcat:Catalog ;
+    dcterms:created "2026-07-17T09:00:55.858309"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Militär, Zivilschutz und Justizvollzug ist eine Leistungserbringerin für die öffentliche Sicherheit und stellt die gesetzlich geforderten Aufgaben zugunsten der Armee, des Zivilschutzes, des Justizvollzuges sicher.\r
+\r
+Die Dienststelle umfasst die Abteilungen Militär, Zivilschutz, Bevölkerungsschutz/KFS, Vollzugs- und Bewährungsdienst, die Justizvollzugsanstalt Grosshof sowie die Justizvollzugsanstalt Wauwilermoos."""@de,
+        """The Department of Military, Civil Defense, and Execution of Penal Sentences and Justice is a service provider for public safety and carries out the tasks required by law on behalf of the armed forces, civil defense, and the corrections system.\r
+\r
+The department comprises the Military, Civil Defense, Civil Protection/KFS, and Corrections and Probation divisions, as well as the Grosshof Correctional Facility and the Wauwilermoos Correctional Facility.\r
+"""@en,
+        """L'Office des affaires militaires, de la protection civile et de l'exécution des peines est un prestataire de services dans le domaine de la sécurité publique et assure les missions prévues par la loi au profit de l'armée, de la protection civile et de l'exécution des peines.\r
+\r
+L'Office comprend les divisions suivantes : affaires militaires, protection civile, protection de la population/KFS, service d'exécution des peines et de probation, ainsi que les établissements pénitentiaires de Grosshof et de Wauwilermoos."""@fr ;
+    dcterms:modified "2026-07-22T07:40:06.686986"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://mzj.lu.ch/> ;
+            foaf:name "Dienststelle Militär, Zivilschutz und Justizvollzug, Zivilschutz"@de,
+                "Department of Military, Civil Defense, and Execution of Penal Sentences and Justice"@en,
+                "Office des affaires militaires, de la protection civile et de l'exécution des peines"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Militär, Zivilschutz und Justizvollzug, Zivilschutz"@de,
+        "Department of Military, Civil Defense, and Execution of Penal Sentences and Justice"@en,
+        "Office des affaires militaires, de la protection civile et de l'exécution des peines"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

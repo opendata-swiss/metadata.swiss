@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-uwe> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:55:20.776895"^^xsd:dateTime ;
+    dcterms:description """Zum Leistungsauftrag der Dienststelle Umwelt und Energie gehören die Umweltbeobachtung, Information und Beratung, die Prüfung von umweltrelevanten Vorhaben, der Schutz von Umweltgütern (z.B. Grundwasser), die Kontrolle u.a. von Abfallanlagen und Feuerungen sowie die Förderung von erneuerbaren Energien und Energieeffizienz. \r
+\r
+Die Dienststelle umfasst die Abteilungen Gewässer und Boden, Entsorgung und Risiko, Energie, Luft, Lärm & Strahlen sowie die Zentralen Dienste."""@de,
+        """The mandate of the Department of Environment and Energy includes environmental monitoring, providing information and advice, reviewing environmentally relevant projects, protecting environmental resources (e.g., groundwater), inspecting waste facilities and combustion plants, among other things, and promoting renewable energy and energy efficiency.\r
+\r
+The department comprises the divisions of Water and Soil, Waste Management and Risk, Energy, Air, Noise & Radiation, and Central Services."""@en,
+        """Le mandat de prestations de l'Office de l'environnement et de l'énergie comprend la surveillance de l'environnement, l'information et le conseil, l'examen des projets ayant une incidence sur l'environnement, la protection des ressources environnementales (par exemple les eaux souterraines), le contrôle, entre autres, des installations de traitement des déchets et des installations de combustion, ainsi que la promotion des énergies renouvelables et de l'efficacité énergétique.\r
+\r
+L'Office comprend les divisions Eaux et sols, Gestion des déchets et risques, Énergie,  Air, bruit et rayonnements, ainsi que les services centraux."""@fr ;
+    dcterms:modified "2026-07-22T07:40:20.194589"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://uwe.lu.ch/> ;
+            foaf:name "Dienststelle Umwelt und Energie"@de,
+                "Department of Environment and Energy"@en,
+                "Office de l'environnement et de l'énergie"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Umwelt und Energie"@de,
+        "Department of Environment and Energy"@en,
+        "Office de l'environnement et de l'énergie"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

@@ -5,18 +5,18 @@
 
 <https://example.eu/id/catalogue/dcat-harvester-scicat> a dcat:Catalog ;
     dcterms:created "2026-06-17T14:32:40.679799"^^xsd:dateTime ;
-    dcterms:description "SciCat is a community driven scientific metadata catalog designed to simplify metadata management, enabling data sharing, discovery, and collaboration. By providing a central hub for metadata, SciCat makes data easily findable and accessible for the entire community. With flexible integration into diverse infrastructures and a clear path to data publication, SciCat empowers organizations to foster an open and innovative data culture, driving high-quality science forward."@en ;
-    dcterms:modified "2026-06-17T14:32:40.679806"^^xsd:dateTime ;
+    dcterms:description "The PSI Data Catalog is the central repository directory for scientific metadata generated at the Paul Scherrer Institut (PSI). Powered by SciCat—a community-driven, open-source metadata management framework co-developed by PSI—the catalog provides discoverability and standardized access pathways to petabyte-scale datasets produced across PSI’s large-scale research facilities, including the Swiss Light Source (SLS), the Swiss Spallation Neutron Source (SINQ), and the SwissFEL X-ray free-electron laser."@en ;
+    dcterms:modified "2026-07-13T10:59:15.989396"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.scicatproject.org/> ;
-            foaf:name "SciCat"@de,
-                "SciCat"@en,
-                "SciCat"@fr,
-                "SciCat"@it ] ;
+            foaf:homepage <https://discovery.psi.ch> ;
+            foaf:name "PSI Data Catalog"@de,
+                "PSI Data Catalog"@en,
+                "PSI Data Catalog"@fr,
+                "PSI Data Catalog"@it ] ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
-    dcterms:title "SciCat"@de,
-        "SciCat"@en,
-        "SciCat"@fr,
-        "SciCat"@it ;
+    dcterms:title "PSI Data Catalog"@de,
+        "PSI Data Catalog"@en,
+        "PSI Data Catalog"@fr,
+        "PSI Data Catalog"@it ;
     dcterms:type "ckan"^^xsd:string .
 

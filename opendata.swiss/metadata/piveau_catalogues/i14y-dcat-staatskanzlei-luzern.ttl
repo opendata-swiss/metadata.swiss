@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-staatskanzlei-luzern> a dcat:Catalog ;
+    dcterms:created "2026-07-20T10:09:12.003214"^^xsd:dateTime ;
+    dcterms:description "Die Staatskanzlei ist die Stabsstelle von Regierung und Parlament des Kantons Luzern"@de,
+        "The State Chancellery is the administrative office of the government and parliament of the canton of Lucerne"@en,
+        "La Chancellerie d'État est le service administratif du gouvernement et du parlement du canton de Lucerne"@fr,
+        "La Cancelleria dello Stato è l'organo di supporto del Governo e del Parlamento del Cantone di Lucerna"@it ;
+    dcterms:modified "2026-07-22T06:56:51.306481"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.lu.ch/verwaltung/staatskanzlei> ;
+            foaf:name "Staatskanzlei Luzern"@de,
+                "State Chancellery Luzern"@en,
+                "Chancellerie d'Etat Lucerne"@fr,
+                "Cancelleria dello Stato Lucerna"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Staatskanzlei Luzern"@de,
+        "State Chancellery Luzern"@en,
+        "Chancellerie d'Etat Lucerne"@fr,
+        "Cancelleria dello Stato Lucerna"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

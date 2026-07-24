@@ -8,7 +8,7 @@
     dcterms:description """Materials Cloud is a platform built to enable the seamless sharing and dissemination of resources in computational materials science, offering educational, research, and archiving tools; simulation software and services; and curated and raw data. These underpin published results and empower data-based discovery, compliant with data management plans and the FAIR principles.\r
 \r
 In the Materials Cloud you can browse, explore, download, or deposit raw and curated data (in the Discover, Explore, and Archive sections); you can access cloud or redeployable simulation services (from AiiDAlab turnkey simulations to the Quantum Mobile virtual machine, the AiiDA registry of plugins and workflows, and the OSSCAR notebooks, in the Work section), and you can use all our educational material, tutorials and lectures (in the Learn section)."""@en ;
-    dcterms:modified "2026-06-17T14:31:26.234821"^^xsd:dateTime ;
+    dcterms:modified "2026-07-13T11:05:30.710230"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
             foaf:homepage <https://www.materialscloud.org/> ;
             foaf:name "Materials Cloud"@de,

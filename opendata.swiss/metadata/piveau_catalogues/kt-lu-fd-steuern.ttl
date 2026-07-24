@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-fd-steuern> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:58:03.681552"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Steuern setzt das Steuergesetz um. Dafür schafft sie die notwendigen materiellen, technischen und organisatorischen Voraussetzungen. Der Fokus liegt dabei auf Effizienz, Transparenz und Kundenorientierung. \r
+\r
+Die Dienststelle umfasst die Abteilungen Wertschriften und Verrechnungssteuer, Immobilienbewertung, Natürliche Personen, Juristische Personen, Services sowie Informatik."""@de,
+        """The Tax Department enforces tax laws. To this end, it establishes the necessary material, technical, and organizational conditions. The focus is on efficiency, transparency, and customer service.\r
+\r
+The department comprises the following divisions: Securities and Withholding Tax, Real Estate Valuation, Individuals, Legal Entities, Services, and Information Technology."""@en,
+        """L'Office des impôts met en œuvre la législation fiscale. À cette fin, il met en place les conditions matérielles, techniques et organisationnelles nécessaires. L'accent est mis sur l'efficacité, la transparence et l'orientation client.\r
+\r
+L'Office comprend les divisions suivantes : Titres et impôt anticipé, Évaluation immobilière, Personnes physiques, Personnes morales, Services et Informatique."""@fr ;
+    dcterms:modified "2026-07-22T07:40:37.600786"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://steuern.lu.ch/> ;
+            foaf:name "Dienststelle Steuern"@de,
+                "Tax Department"@en,
+                "Office des impôts"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Steuern"@de,
+        "Tax Department"@en,
+        "Office des impôts"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+
