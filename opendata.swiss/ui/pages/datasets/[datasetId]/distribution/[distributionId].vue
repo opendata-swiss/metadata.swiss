@@ -5,17 +5,21 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useDatasetsSearch } from '../../../../app/piveau/datasets'
 import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
-import OdsDetailTermsOfUse from '../../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
-import OdsRelativeDateToggle from '../../../../app/components/OdsRelativeDateToggle.vue'
+import OdsDistributionDetailHeader from '../../../../app/components/distribution/OdsDistributionDetailHeader.vue'
+import OdsHero from '../../../../app/components/OdsHero.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
+import SvgIcon from '../../../../app/components/SvgIcon.vue'
+import OdsTagList from '../../../../app/components/dataset-detail/OdsTagList.vue'
 
 const { locale, t } = useI18n()
+
+const localePath = useLocalePath()
 
 const route = useRoute()
 const router = useRouter()
@@ -40,6 +44,38 @@ const distribution = computed(() => {
   }
   const dists = dataset.value.distributions.find(d => d.id === distributionId) ?? undefined
   return dists
+})
+
+const hasDownloadUrl = computed(() => {
+  const dist = distribution.value
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const downloadUrls = dist.downloadUrls
+  if (downloadUrls.length > 0) {
+    // we have at least one download url
+    return true
+  }
+  // empty array return false
+  return false
+})
+
+const hasAccessUrl = computed(() => {
+  const dist = distribution.value
+
+  if (!dist) {
+    // we are not ready
+    return false
+  }
+  const accessUrls = dist.accessUrls
+  if (accessUrls.length > 0) {
+    // we have at least one accessUrl url
+    return true
+  }
+  // empty array return false
+  return false
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
@@ -87,6 +123,11 @@ useSeoMeta({
   title: () => `${distribution.value?.title} | ${dataset.value?.title} | ${t('message.header.navigation.datasets')} | opendata.swiss`,
 })
 
+const toDatasetHref = computed(() => localePath('/datasets/' + datasetId))
+
+function gotToDataset() {
+  router.push(toDatasetHref.value)
+}
 await suspense()
 </script>
 
@@ -100,72 +141,118 @@ await suspense()
         <OdsBreadcrumbs :breadcrumbs="breadcrumbs" />
       </ClientOnly>
     </header>
-    <section class="hero hero--default">
-      <div class="container container--grid gap--responsive">
-        <div class="hero__content">
-          <span class="distribution-label">{{ t('message.dataset_detail.distribution') }}</span>
-
-          <p class="meta-info">
-            <span
-              v-if="distribution.releaseDate"
-              class="meta-info__item"
-            >
-              {{ t('message.dataset_detail.published_on') }}
-              <OdsRelativeDateToggle :date="distribution.releaseDate" />
-            </span>
-            <span
-              v-if="distribution.modified"
-              class="meta-info__item"
-            >
-              {{ t('message.dataset_detail.modified_on') }}
-              <OdsRelativeDateToggle :date="distribution.modified" />
-            </span>
-          </p>
-          <h1 class="hero__title">
-            {{ distribution.title }}
-          </h1>
-          <MDC :value="distribution.description ?? ''" />
+    <section class="section section--default bg--secondary-50">
+      <div class="container">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 32px;">
+          <span class="dataset-label">{{ t('message.dataset_detail.distribution') }}</span>
+          <a
+            v-if="hasDownloadUrl"
+            class="big-button"
+            target="_blank"
+          >
+            <SvgIcon
+              icon="Download"
+              size="xl"
+            />
+            <span>{{ t('message.dataset_detail.download') }} {{ distribution.format }}</span>
+          </a>
+          <a
+            v-if="hasAccessUrl && !hasDownloadUrl"
+            :href="distribution.accessUrls[0]"
+            target="_blank"
+            class="big-button"
+          >
+            <SvgIcon
+              icon="External"
+              size="xl"
+            />
+            <span>Go To {{ distribution.format }}</span>
+          </a>
         </div>
+        <OdsDistributionDetailHeader :distribution="distribution" />
       </div>
     </section>
+
+    <OdsHero
+      type="default"
+    >
+      <template #title>
+        {{ distribution.title }}
+      </template>
+      <template #description>
+        <MDC :value="distribution.description ?? ''" />
+        <div
+          v-if="dataset.keywords.length > 0"
+          class="keywords"
+        >
+          <OdsTagList
+            :tags="dataset.keywords"
+          />
+        </div>
+      </template>
+      <template #authors>
+        <div
+          v-if="dataset.publisher && dataset.publisher.name"
+          class="disc-images"
+          aria-hidden="true"
+        >
+          <div class="disc-image">
+            <img
+              src="https://picsum.photos/120/120/?image=29"
+              :title="dataset.publisher.name"
+            >
+          </div>
+        </div>
+        <address
+          v-if="dataset.publisher && dataset.publisher.name"
+          class="authors__names"
+        >
+          <a
+            v-if="dataset.publisher.resource"
+            class="link author__name link--external"
+            target="_blank"
+            :href="dataset.publisher.resource"
+          >{{ dataset.publisher.name }}</a>
+          <div v-else>
+            {{ dataset.publisher.name }}
+          </div>
+        </address>
+      </template>
+    </OdsHero>
     <section class="section">
       <div class="container container--grid gap--responsive">
         <div class="container__main vertical-spacing">
           <div class="container__mobile">
             <div
-              v-if="distribution.downloadUrls.length > 0"
+              v-if="hasDownloadUrl"
               class="box"
             >
               <h2 class="h5">
-                Download
+                {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.downloadUrls"
+                :urls="distribution.downloadUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="Download"
               />
             </div>
-            <div class="box">
+            <div
+              v-if="hasAccessUrl"
+              class="box"
+            >
               <h2 class="h5">
                 Access
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.accessUrls"
+                :urls="distribution.accessUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
-              />
-            </div>
-            <div class="box">
-              <h2 class="h5">
-                {{ t(`message.header.navigation.terms_of_use`) }}
-              </h2>
-              <OdsDetailTermsOfUse
-                v-if="distribution.license"
-                :license="distribution.license"
+                icon="External"
               />
             </div>
           </div>
@@ -187,35 +274,31 @@ await suspense()
               class="box"
             >
               <h2 class="h5">
-                Download
+                {{ t('message.dataset_detail.download') }}
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.downloadUrls"
+                :urls="distribution.downloadUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
+                icon="Download"
               />
             </div>
-            <div class="box">
+            <div
+              v-if="hasAccessUrl && !hasDownloadUrl"
+              class="box"
+            >
               <h2 class="h5">
                 Access
               </h2>
               <OdsDownloadList
-                :download-urls="distribution.accessUrls"
+                :urls="distribution.accessUrls"
                 :name="distribution.title"
                 :format="distribution.format"
                 :languages="distribution.languages"
                 :byte-size="distribution.formattedByteSize"
-              />
-            </div>
-            <div class="box">
-              <h2 class="h5">
-                {{ t(`message.header.navigation.terms_of_use`) }}
-              </h2>
-              <OdsDetailTermsOfUse
-                v-if="distribution.license"
-                :license="distribution.license"
+                icon="External"
               />
             </div>
           </div>
@@ -229,7 +312,7 @@ await suspense()
           icon="ArrowLeft"
           variant="outline"
           class="btn--back"
-          @click="router.back()"
+          @click="gotToDataset()"
         />
       </div>
     </section>
@@ -258,5 +341,36 @@ await suspense()
   @media (min-width: 1280px) {
     min-height: 73.5px;
   }
+}
+
+.dataset-label {
+  position: relative;
+  background-color: #e6f0fa;
+  color: #1976d2;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 1px solid #b3d4fc;
+  height: fit-content;
+}
+
+.big-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  background-color: var(--color-primary-600);
+  color: white;
+  padding: 12px;
+  padding-right: 24px;
+  text-decoration: none;
+}
+
+.keywords {
+  margin-top: 40px;
 }
 </style>

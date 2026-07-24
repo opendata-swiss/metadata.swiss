@@ -2,6 +2,7 @@ import type { LinkedDataFormats } from '@piveau/sdk-vue'
 import type { Dataset } from '../../../model/dataset'
 import type { DcatApChV2DatasetAdapter } from './dcat-ap-ch-v2-dataset-adapter'
 import { OdsTableEntry, OdsTableEntryType } from './table-entry'
+import type { OdsLicense } from '~/piveau/get-ods-licenses'
 
 type EnhancedDistribution = Dataset['getDistributions'][number]
 
@@ -84,7 +85,6 @@ export class DcatApChV2DistributionAdapter {
     }
 
     const byteSizeValue = byteSizeNode.data[0]?.data
-
     if (!byteSizeValue || typeof byteSizeValue !== 'string') {
       return ''
     }
@@ -196,7 +196,10 @@ export class DcatApChV2DistributionAdapter {
    */
   get license() {
     const lic = this.#distribution?.license
-    return lic
+    if (lic) {
+      return lic as OdsLicense
+    }
+    return undefined
   }
 
   /**
@@ -237,7 +240,7 @@ export class DcatApChV2DistributionAdapter {
    *
    * @returns {Date | undefined} The modified date as a Date object, or undefined if not available or invalid.
    */
-  get modified() {
+  get modificationDate() {
     const modifiedDateString = this.#distribution?.modified || ''
     if (!modifiedDateString) {
       return undefined
@@ -297,10 +300,14 @@ export class DcatApChV2DistributionAdapter {
       if (!(node.type === 'node') || !node.data) {
         continue
       }
-
       const newTableEntry = new OdsTableEntry(node.label, node.id, OdsTableEntryType.Node)
       newTableEntries.push(newTableEntry)
-      newTableEntry.addPiveauPropertyTableEntry(node.data || [])
+      if (node.id === 'byteSize') {
+        newTableEntry.addPiveauPropertyTableEntry([{ type: 'value', id: 'byteSize_value', data: this.formattedByteSize }])
+      }
+      else {
+        newTableEntry.addPiveauPropertyTableEntry(node.data || [])
+      }
     }
     return newTableEntries.sort((a, b) => a.label.localeCompare(b.label))
   }
