@@ -14,8 +14,8 @@ import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTa
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import OdsButton from '../../../app/components/OdsButton.vue'
-import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
 import OdsDatasetDetailHeader from '../../../app/components/dataset-detail/OdsDatasetDetailHeader.vue'
+import OdsMetadataDownload from '../../../app/components/dataset-detail/OdsMetadataDownload.vue'
 import Hero from '../../../app/components/OdsHero.vue'
 import { useRuntimeConfig, useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
@@ -30,7 +30,6 @@ const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
 
 const { suspense } = query
-const { piveauHubRepoUrl } = useRuntimeConfig().public
 
 const localePath = useLocalePath()
 
@@ -165,7 +164,6 @@ await suspense()
 
       <Hero
         type="default"
-        floating
       >
         <template #title>
           {{ dataset.title }}
@@ -226,6 +224,7 @@ await suspense()
               :table-entries="dataset.propertyTable"
               type="block"
             />
+            <OdsMetadataDownload :dataset="dataset" />
           </div>
           <div class="hidden container__aside md:block">
             <div
@@ -273,12 +272,6 @@ await suspense()
                   >
                 </form>
               </div>
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.dataset_detail.metadata_download`) }}
-                </h2>
-                <OdsMetadataDownloadList :dataset="dataset" />
-              </div>
             </div>
           </div>
         </div>
@@ -288,34 +281,6 @@ await suspense()
             :website-id="websiteId"
             :page-id="`dataset-${dataset.id}`"
             :page-language="locale"
-          />
-        </div>
-      </section>
-      <section>
-        <div style="display:flex; flex-direction: row; gap:12px">
-          <OdsButton
-            :title="'JSON-LD'"
-            variant="outline"
-            class="btn--back"
-            size="sm"
-            icon="Download"
-            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['jsonld']"
-          />
-          <OdsButton
-            :title="'TTL'"
-            variant="outline"
-            class="btn--back"
-            size="sm"
-            icon="Download"
-            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['ttl']"
-          />
-          <OdsButton
-            :title="'XML'"
-            variant="outline"
-            class="btn--back"
-            size="sm"
-            icon="Download"
-            :href="piveauHubRepoUrl + 'datasets' + dataset.getLinkedData['rdf']"
           />
         </div>
       </section>

@@ -175,7 +175,6 @@ await suspense()
 
     <OdsHero
       type="default"
-      floating
     >
       <template #title>
         {{ distribution.title }}

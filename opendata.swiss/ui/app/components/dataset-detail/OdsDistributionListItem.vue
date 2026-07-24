@@ -68,7 +68,7 @@
         >
           <OdsButton
             icon="ArrowRight"
-            variant="bare"
+            variant="outline"
             size="sm"
             class="download-item__button"
             icon-right
