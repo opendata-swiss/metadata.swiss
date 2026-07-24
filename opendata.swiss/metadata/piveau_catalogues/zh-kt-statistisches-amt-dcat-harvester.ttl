@@ -5,12 +5,12 @@
 
 <https://example.eu/id/catalogue/zh-kt-statistisches-amt-dcat-harvester> a dcat:Catalog ;
     dcterms:created "2021-01-14T11:22:32.193418"^^xsd:dateTime ;
-    dcterms:description "Das Statistische Amt ist das Kompetenzzentrum für die öffentliche Statistik im Kanton Zürich. Wir versorgen Bevölkerung, Verwaltung, Politik, Gemeinden, Medien, Firmen und sonstige Organisationen mit qualitativ hochstehenden Daten, Informationen und Fakten zum Kanton Zürich. Inhaltlich arbeiten wir unabhängig und objektiv."@de ;
+    dcterms:description "Das Amt für Statistik und Daten umfasst das Kompetenzzentrum Daten des Kantons Zürich, organisiert, koordiniert und steuert die politische Teilhabe inkl. der Wahlen und Abstimmungen im Kanton und beobachtet die Entwicklung des Kantons mit statistischen Methoden. Wir versorgen Bevölkerung, Verwaltung, Politik, Gemeinden, Medien, Firmen und sonstige Organisationen mit qualitativ hochstehenden Daten, Information und Fakten zum Kanton Zürich. Inhaltlich arbeiten wir unabhängig und objektiv."@de ;
     dcterms:modified "2025-10-30T12:28:19.635219"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt.html> ;
-            foaf:name "Statistisches Amt Kanton Zürich"@de ] ;
+            foaf:homepage <https://www.zh.ch/amt-fuer-statistik-und-daten> ;
+            foaf:name "Amt für Statistik und Daten Kanton Zürich"@de ] ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
-    dcterms:title "Statistisches Amt Kanton Zürich"@de ;
+    dcterms:title "Amt für Statistik und Daten Kanton Zürich"@de ;
     dcterms:type "ckan"^^xsd:string .
 
