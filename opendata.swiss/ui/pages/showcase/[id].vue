@@ -54,7 +54,8 @@ const showcaseType = resultEnhanced.value
 
 const showcaseCategories = computed(() => showcaseCategoriesRaw.filter(Boolean))
 
-const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
+const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id: uri }) => {
+  const id = uri.split('/').pop()
   const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
   await query.suspense()
   return resultEnhanced.value
@@ -128,6 +129,21 @@ useSeoMeta({
               <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.getId } }">
                 {{ dataset.getTitle }}
               </NuxtLinkLocale>
+              <template v-if="dataset.getPublisher">
+                {{ ` ${t('message.showcase.dataset_from')}` }}
+                <a
+                  v-if="dataset.getPublisher.homepage"
+                  :href="dataset.getPublisher.homepage"
+                  rel="noopener noreferrer"
+                  class="link--external"
+                  target="_blank"
+                >
+                  {{ dataset.getPublisher.name }}
+                </a>
+                <template v-else>
+                  {{ dataset.getPublisher.name }}
+                </template>
+              </template>
             </li>
           </ul>
         </OdsInfoBlock>
@@ -137,6 +153,7 @@ useSeoMeta({
         >
           <OdsTagItem
             v-for="tag in showcase.tags"
+            :id="`tag-${tag}`"
             :key="tag"
             :label="tag"
           />
