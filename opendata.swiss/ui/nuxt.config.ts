@@ -59,8 +59,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       rootDir: __dirname,
-      piveauHubRepoUrl: 'https://piveau-hub-repo.ref.ods.zazukoians.org/',
-      piveauHubSearchUrl: 'https://piveau-hub-search.ref.ods.zazukoians.org/',
+      // piveauHubRepoUrl: 'https://piveau-hub-repo.ref.ods.zazukoians.org/',
+      piveauHubRepoUrl: 'https://demo.piveau.io/api/hub/search',
+      piveauHubSearchUrl: 'htttps://demo.piveau.io/api/hub/repo',
+      // piveauHubSearchUrl: 'https://piveau-hub-search.ref.ods.zazukoians.org/',
       matomo: {
         url: '',
         siteId: '',

@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Startseite",
         "datasets": "Datensätze",
+        "organizations": "Organisationen",
         "blog": "Blog",
         "about": "Über uns",
         "contact": "Kontakt",
@@ -51,6 +52,9 @@
         "title_asc": "nach Titel sortieren (a-z)",
         "title_desc": "nach Titel sortieren (z-a)"
       }
+    },
+    "organization_search": {
+      "search_placeholder": "Organisationen suchen"
     },
     "dataset_detail": {
       "dataset": "Dataset",

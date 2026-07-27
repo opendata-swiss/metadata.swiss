@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Accueil",
         "datasets": "Jeux de données",
+        "organizations": "Organisations",
         "blog": "Blog",
         "about": "À propos de nous",
         "contact": "Contact",
@@ -51,6 +52,9 @@
         "title_asc": "par titre (a-z)",
         "title_desc": "par titre (z-a)"
       }
+    },
+    "organization_search": {
+      "search_placeholder": "Rechercher des organisations"
     },
     "dataset_detail": {
       "dataset": "Jeu de données",
