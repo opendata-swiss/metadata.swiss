@@ -78,8 +78,6 @@
     "@types/sinon": "^17.0.4",
     "@types/sinon-chai": "^4.0.0",
     "@types/vue-select": "^3.16.8",
-    "@unrs/resolver-binding-darwin-arm64": "^1.12.2",
-    "@unrs/resolver-binding-darwin-x64": "^1.12.2",
     "chai": "^5",
     "chai-as-promised": "^8.0.2",
     "chokidar": "^4.0.3",
