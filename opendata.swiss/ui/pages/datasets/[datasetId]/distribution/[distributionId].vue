@@ -108,6 +108,8 @@ const hasAccessUrl = computed(() => {
   }
   // empty array return false
   return false
+})
+
 const previewUrl = computed(() => {
   if (!distribution.value) {
     return ''
@@ -178,7 +180,7 @@ await suspense()
 
 <template>
   <main
-    v-if="isSuccess && distribution"
+    v-if="isSuccess && distribution && dataset"
     id="main-content"
   >
     <header id="main-header">
