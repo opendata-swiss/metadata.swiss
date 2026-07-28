@@ -37,7 +37,8 @@ services:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.8
+    # image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.8
+    image: dockerhub.fokus.fraunhofer.de:5000/piveau/hub/piveau-hub-search:latest
     restart: unless-stopped
     logging:
       options:
@@ -178,7 +179,7 @@ services:
   ############
 
   piveau-metrics-validating-shacl:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.4.0
+    image: piveau/metrics-validating-shacl:4.4.3
     restart: unless-stopped
     logging:
       options:
