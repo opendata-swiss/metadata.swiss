@@ -1,0 +1,24 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-vif> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:56:24.881315"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Verkehr und Infrastruktur (vif) stellt die Mobilität der Bevölkerung und Wirtschaft sicher. Sie ist verantwortlich für Planung, Bau, Betrieb und Werterhaltung von Kantonsstrassen und sorgt für Verbesserungen der Infrastrukturen für den öffentlichen Verkehr sowie den Fuss- und Veloverkehr. Zudem gehört der Schutz von Menschen, Tieren und Sachwerten vor Hochwassergefahren zum Grundauftrag der Dienststelle.\r
+\r
+Die Dienststelle umfasst die Abteilungen Mobilität, Planung Strassen, Realisierung Strassen, zentras - Betrieb Strassen, Naturgefahren sowie Zentrale Dienste und Finanzen."""@de,
+        "The Department of Traffic and Infrastructure (vif) ensures mobility for residents and businesses. It is responsible for the planning, construction, operation, and maintenance of cantonal roads and works to improve infrastructure for public transportation, as well as for pedestrians and cyclists. In addition, protecting people, animals, and property from flood hazards is part of the agency’s core mission."@en,
+        "L'Office de la circulation et de l'infrastructure (vif) assure la mobilité de la population et des entreprises. Il est chargé de la planification, de la construction, de l'exploitation et de l'entretien des routes cantonales et veille à l'amélioration des infrastructures destinées aux transports publics, ainsi qu'aux piétons et aux cyclistes. La protection des personnes, des animaux et des biens contre les risques d'inondation fait également partie de la mission fondamentale du service."@fr ;
+    dcterms:modified "2026-07-22T07:40:54.333793"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://vif.lu.ch/> ;
+            foaf:name "Dienststelle Verkehr und Infrastruktur"@de,
+                "Department of Traffic and Infrastructure"@en,
+                "Office de la circulation et de l'infrastructure"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Verkehr und Infrastruktur"@de,
+        "Department of Traffic and Infrastructure"@en,
+        "Office de la circulation et de l'infrastructure"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

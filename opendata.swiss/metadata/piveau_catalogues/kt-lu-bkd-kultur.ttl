@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-bkd-kultur> a dcat:Catalog ;
+    dcterms:created "2026-07-17T09:01:35.132841"^^xsd:dateTime ;
+    dcterms:description "Die Dienststelle Kultur setzt sich zusammen aus den Abteilungen Archäologie, Denkmalpflege, Kulturförderung & Vermittlung, Museum Luzern und Zentral- und Hochschulbibliothek. Die Kernaufgaben der Dienststelle sind es, Kultur zu fördern, zu pflegen und zu vermitteln. Das Ziel ist es, das vielfältige, zeitgenössische Kunst- und Kulturschaffen zu fördern, das kulturelle Erbe zu bewahren und zu vermitteln, und den kulturellen Austausch sowie die Teilhabe der Bevölkerung an der Kultur anzuregen."@de,
+        "The Department of Culture consists of the divisions of Archaeology, Historic Preservation, Cultural Promotion & Outreach, the Museum Luzern, and the Central and University Library. The department’s core responsibilities are to promote, preserve, and share culture. The goal is to promote diverse, contemporary artistic and cultural creation, to preserve and share cultural heritage, and to encourage cultural exchange and public participation in culture."@en,
+        "L'office de la culture regroupe les départements suivants : archéologie, conservation du patrimoine, promotion et médiation culturelles, Musée de Lucerne, ainsi que la bibliothèque centrale et universitaire. Les missions principales du Service consistent à promouvoir, préserver et diffuser la culture. L'objectif est de promouvoir la création artistique et culturelle contemporaine dans toute sa diversité, de préserver et de faire connaître le patrimoine culturel, ainsi que d'encourager les échanges culturels et la participation de la population à la vie culturelle."@fr ;
+    dcterms:modified "2026-07-22T07:42:07.537342"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.lu.ch/verwaltung/BKD/bkd_dienststellen/bkd_kultur> ;
+            foaf:name "Dienststelle Kultur"@de,
+                "Department of Culture"@en,
+                "Office de la culture"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Kultur"@de,
+        "Department of Culture"@en,
+        "Office de la culture"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

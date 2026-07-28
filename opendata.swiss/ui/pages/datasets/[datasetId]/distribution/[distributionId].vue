@@ -6,6 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useDatasetsSearch } from '../../../../app/piveau/datasets'
 import { homePageBreadcrumb } from '../../../../app/composables/breadcrumbs.js'
 import OdsDetailsTable from '../../../../app/components/dataset-detail/OdsDetailsTable.vue'
+import OdsPreview from '../../../../app/components/dataset-detail/OdsPreview.vue'
 import OdsBreadcrumbs from '../../../../app/components/OdsBreadcrumbs.vue'
 import OdsButton from '../../../../app/components/OdsButton.vue'
 import OdsDownloadList from '../../../../app/components/distribution/OdsDownloadList.vue'
@@ -28,8 +29,39 @@ const distributionId = route.params.distributionId as string
 
 const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
-
 const { suspense } = query
+
+const SUPPORTED_PREVIEW_FORMATS = ['csv', 'tsv', 'ods', 'xlsx', 'xls'] as const
+type SupportedPreviewFormat = typeof SUPPORTED_PREVIEW_FORMATS[number]
+
+const FORMAT_ALIASES: Record<string, SupportedPreviewFormat> = {
+  'excel xlsx': 'xlsx',
+  'excel xls': 'xls',
+  'text/csv': 'csv',
+  'text/tab-separated-values': 'tsv',
+  'application/vnd.oasis.opendocument.spreadsheet': 'ods',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'xlsx',
+  'application/vnd.ms-excel': 'xls',
+}
+
+function normalizePreviewFormat(format: string): SupportedPreviewFormat | '' {
+  const normalized = format.trim().toLowerCase()
+  if (!normalized) {
+    return ''
+  }
+
+  const formatParts = normalized.split(/[/#]/)
+  const lastPart = formatParts[formatParts.length - 1] || normalized
+  const alias = FORMAT_ALIASES[normalized] ?? FORMAT_ALIASES[lastPart]
+
+  if (alias) {
+    return alias
+  }
+
+  return SUPPORTED_PREVIEW_FORMATS.includes(lastPart as SupportedPreviewFormat)
+    ? lastPart as SupportedPreviewFormat
+    : ''
+}
 
 const dataset = computed(() => {
   if (!resultEnhanced.value) {
@@ -76,6 +108,19 @@ const hasAccessUrl = computed(() => {
   }
   // empty array return false
   return false
+const previewUrl = computed(() => {
+  if (!distribution.value) {
+    return ''
+  }
+  return distribution.value.downloadUrls[0] || distribution.value.accessUrls[0] || ''
+})
+
+const previewFormat = computed(() => {
+  return normalizePreviewFormat(distribution.value?.format || '')
+})
+
+const isPreviewVisible = computed(() => {
+  return Boolean(previewUrl.value && previewFormat.value)
 })
 
 const firstBreadcrumb = await homePageBreadcrumb(locale)
@@ -305,6 +350,20 @@ await suspense()
         </div>
       </div>
     </section>
+    <!------------- start ------------------>
+    <!-- Preview of Tabular Distributions -->
+    <!-- supported formats: CSV, XLSX, XLS, ODT, TSV -->
+    <div
+      v-if="isPreviewVisible"
+      class="box"
+    >
+      <OdsPreview
+        :download-url="previewUrl"
+        :file-format="previewFormat"
+        :title="distribution.title"
+      />
+    </div>
+    <!------------- end --------------->
     <section class="section publication-back-button-section">
       <div class="container">
         <OdsButton

@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-lawa> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:53:35.321943"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Landwirtschaft und Wald fördert die Land- und Forstwirtschaftsbetriebe und schafft bessere Rahmenbedingungen für die primäre Produktion. Sie strebt artenreiche, naturnahe ländliche Räume an und stellt die nachhaltige Nutzung des staatlichen Fischerei- und Jagdregals sicher.\r
+\r
+Die Dienststelle umfasst die Abteilungen Landwirtschaft, Wald, Natur, Jagd und Fischerei sowie Zentrale Dienste."""@de,
+        """The Department of Agriculture and Forestry supports agricultural and forestry operations and creates better conditions for primary production. It strives to foster biodiverse, near-natural rural areas and ensures the sustainable use of the state’s fishing and hunting rights.\r
+\r
+The department comprises the divisions of Agriculture, Forestry, Nature, Hunting, and Fisheries, as well as Central Services."""@en,
+        """L'office de l'agriculture et des forêts soutient les exploitations agricoles et forestières et crée des conditions-cadres plus favorables à la production primaire. Il œuvre en faveur d'espaces ruraux riches en biodiversité et proches de la nature, et veille à l'exploitation durable des droits de pêche et de chasse appartenant à l'État.\r
+\r
+Le Service comprend les départements de l'agriculture, des forêts, de la nature, de la chasse et de la pêche, ainsi que les services centraux."""@fr ;
+    dcterms:modified "2026-07-22T07:39:28.217755"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://lawa.lu.ch/> ;
+            foaf:name "Dienststelle Landwirtschaft und Wald"@de,
+                "Department of Agriculture and Forestry"@en,
+                "Office de l'agriculture et des forêts"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Landwirtschaft und Wald"@de,
+        "Department of Agriculture and Forestry"@en,
+        "Office de l'agriculture et des forêts"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+
