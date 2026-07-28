@@ -2,7 +2,7 @@
   "header": {
     "id": "dcb1cbeb-87ae-4b61-9db0-39b620c8ad5f",
     "name": "i14y-dcat-harvester-lustat",
-    "title": "I14Y DCAT Harvester LUSTAT",
+    "title": "I14Y DCAT LUSTAT",
     "context": "piveau",
     "transport": "payload",
     "version": "1.0.0"
