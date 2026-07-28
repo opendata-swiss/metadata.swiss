@@ -78,6 +78,8 @@
     "@types/sinon": "^17.0.4",
     "@types/sinon-chai": "^4.0.0",
     "@types/vue-select": "^3.16.8",
+    "@unrs/resolver-binding-darwin-arm64": "^1.12.2",
+    "@unrs/resolver-binding-darwin-x64": "^1.12.2",
     "chai": "^5",
     "chai-as-promised": "^8.0.2",
     "chokidar": "^4.0.3",
@@ -94,7 +96,7 @@
     "tsx": "^4.22.3"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,ysx,vue}": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "eslint --fix --quiet"
     ]
   },

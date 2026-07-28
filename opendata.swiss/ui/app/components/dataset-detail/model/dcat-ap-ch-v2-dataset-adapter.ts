@@ -215,6 +215,18 @@ export class DcatApChV2DatasetAdapter {
     return this.#dataset?.getOdsFormats ?? []
   }
 
+  get formats(): TagItem[] {
+    return (this.#dataset?.getOdsFormats ?? []).map((format) => {
+      const tagItem = {
+        id: format.id,
+        label: format.label,
+        size: 'ods',
+        variant: 'default',
+      } as unknown as TagItem
+      return tagItem
+    })
+  }
+
   /**
    * Get the keywords of the dataset. The language handling is done by piveau.
    * We convert the keywords into TagItem objects for easier handling in the UI.
@@ -231,14 +243,16 @@ export class DcatApChV2DatasetAdapter {
    * Good practice: mark the language of the keywords with the [ISO 639-1] language code such as "geodata"@en.
    */
   get keywords(): TagItem[] {
-    return (this.#dataset?.getKeywords ?? []).map((keyword) => {
-      const tagItem = {
-        id: keyword.id,
-        label: keyword.label,
-        size: 'sm',
-      } as TagItem
-      return tagItem
-    })
+    return (this.#dataset?.getKeywords ?? [])
+      .map((keyword) => {
+        const tagItem = {
+          id: keyword.id,
+          label: keyword.label,
+          size: 'sm',
+        } as TagItem
+        return tagItem
+      })
+      .sort((a, b) => (a.label ?? '').localeCompare(b.label ?? ''))
   }
 
   /**
