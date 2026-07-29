@@ -2,7 +2,7 @@
   "header": {
     "id": "795af522-2bcb-4fbc-963f-f38b1f99db57",
     "name": "lu-kt-geocat-harvester",
-    "title": "LU-Kt - Geocat Harvester",
+    "title": "LU-Kt - Geocat Harvester - deprecated",
     "context": "piveau",
     "transport": "payload",
     "version": "1.0.0"
@@ -18,10 +18,10 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/LU/ger/csw",
+            "address": "-",
             "catalogue": "lu-kt",
             "preProcessing": true,
-            "org_name": "Geoinformation Canton of Lucerne"
+            "org_name": "Canton of Lucerne"
           }
         }
       },
@@ -34,7 +34,7 @@
         },
         "body": {
           "config": {
-            "org_id": "geoinformation_kanton_luzern",
+            "org_id": "kanton_luzern",
             "catalogue": "lu-kt",
             "preProcessing": true
           }

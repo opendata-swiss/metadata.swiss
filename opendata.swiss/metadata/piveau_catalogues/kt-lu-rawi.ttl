@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-rawi> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:54:19.196822"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Raum und Wirtschaft gestaltet die räumliche und wirtschaftliche Entwicklung im Kanton Luzern. Sie unterstützt Gemeinden, Wirtschaft und Bevölkerung mit Geoinformationen, koordiniert Baubewilligungen und erarbeitet gemeinsam mit Partnern zukunftsfähige Lösungen.\r
+\r
+Die Dienststelle umfasst die Abteilungen Baubewilligungen, Geoinformation, Raumentwicklung, Wirtschaftsentwicklung sowie Digitalisierung, Innovation und Services."""@de,
+        """The Department of Spatial Planning and Economy shapes spatial and economic development in the Canton of Lucerne. It supports municipalities, businesses, and residents with geoinformation, coordinates building permits, and works with partners to develop sustainable solutions.\r
+\r
+The office comprises the departments of Building Permits, Geoinformation, Spatial Development, Economic Development, and Digitalization, Innovation, and Services."""@en,
+        """L'office du territoire et de l'économie pilote le développement territorial et économique du canton de Lucerne. Il apporte son soutien aux communes, aux acteurs économiques et à la population grâce à des informations géospatiales, coordonne les permis de construire et élabore, en collaboration avec ses partenaires, des solutions tournées vers l'avenir.\r
+\r
+Le service comprend les divisions suivantes : Permis de construire, Information géospatiale, Développement territorial, Développement économique, ainsi que Numérisation, Innovation et Services."""@fr ;
+    dcterms:modified "2026-07-22T07:39:43.766909"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://rawi.lu.ch/> ;
+            foaf:name "Dienststelle Raum und Wirtschaft"@de,
+                "Department of Spatial Planning and Economy"@en,
+                "Office du territoire et de l'économie"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Raum und Wirtschaft"@de,
+        "Department of Spatial Planning and Economy"@en,
+        "Office du territoire et de l'économie"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+
