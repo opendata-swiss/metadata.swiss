@@ -617,7 +617,11 @@ dcatap:Dataset_Shape
                       ],  [
                           pv:mappingClass "StandardText" ;
                           pv:mappingName "publisher_id"
-                      ]
+                      ] ,[
+                          sh:path  org:classification ;
+                          pv:mappingClass "Theme" ;
+                          pv:mappingName "classification" ;
+                      ] 
       ], [
           sh:maxCount 1 ;
           pv:mappingClass "Nested" ;
