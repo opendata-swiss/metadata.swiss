@@ -219,7 +219,7 @@ dcatap:Catalog_Shape
           sh:minCount 1 ;
           sh:path dct:publisher ;
           sh:severity sh:Violation ;
-          pv:mappingClass "Agent" ;
+          pv:mappingClass "AgentMultiLang" ;
           pv:mappingName "publisher"
       ], [
           sh:minCount 1 ;
@@ -614,7 +614,14 @@ dcatap:Dataset_Shape
                           sh:maxCount 1 ;
                           pv:mappingClass "StandardResourceKeyword" ;
                           pv:mappingName "is_part_of"
-                      ]
+                      ],  [
+                          pv:mappingClass "StandardText" ;
+                          pv:mappingName "publisher_id"
+                      ] ,[
+                          sh:path  org:classification ;
+                          pv:mappingClass "Theme" ;
+                          pv:mappingName "classification" ;
+                      ] 
       ], [
           sh:maxCount 1 ;
           pv:mappingClass "Nested" ;
