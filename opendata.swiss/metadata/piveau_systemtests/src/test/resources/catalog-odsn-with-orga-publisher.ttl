@@ -1,0 +1,31 @@
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix gsp: <http://www.opengis.net/ont/geosparql#> .
+
+# this catalog points to an organization for its publisher
+<https://data.example.org/id/catalogue/staatskanzlei-kanton-zuerich-fiz>
+    a dcat:Catalog ;
+
+    dct:title "%s"@en ,
+              "Offene Daten Fiz staatskanzlei-kanton-zuerich"@de ,
+              "Données ouvertes Fiz staatskanzlei-kanton-zuerich"@fr ,
+              "Dati aperti Fiz staatskanzlei-kanton-zuerich"@it ;
+
+    dct:description "Datenkatalog Fiz staatskanzlei-kanton-zuerich"@de ,
+                    "Data Catalog Fiz staatskanzlei-kanton-zuerich"@en ,
+                    "Catalogue de données Fiz staatskanzlei-kanton-zuerich"@fr ,
+                    "Catalogo dati Fiz staatskanzlei-kanton-zuerich"@it ;
+
+    dct:publisher <https://opendata.swiss/id/organization/staatskanzlei-kanton-zuerich> ;
+
+    dct:language <http://publications.europa.eu/resource/authority/language/DEU> ,
+                <http://publications.europa.eu/resource/authority/language/FRA> ,
+                <http://publications.europa.eu/resource/authority/language/ITA>,
+                <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dct:license <http://dcat-ap.ch/vocabulary/licenses/terms_open> ;
+
+    dct:issued "2021-01-07T00:00:00"^^xsd:dateTime ;
+    dct:modified "2021-01-07T00:00:00"^^xsd:dateTime .

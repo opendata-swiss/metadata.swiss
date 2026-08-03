@@ -11,7 +11,6 @@ import swiss.opendata.piveau.testbench.utils.ResourceUtils;
 import swiss.opendata.piveau.testbench.utils.SideEffectUtils;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import static swiss.opendata.piveau.testbench.TestConstants.*;
 import static org.hamcrest.Matchers.*;
@@ -49,12 +48,23 @@ public class DatasetTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(datasetTurtle).when().put("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId).then().statusCode(is(oneOf(200, 201, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(datasetTurtle)
+            .when().put("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId)
+            .then().statusCode(is(oneOf(200, 201, 204)));
 
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
 
         // Extract the minted dataset IRI from the API
-        String datasetRdf = io.restassured.RestAssured.given().header("X-API-Key", API_KEY).accept("text/turtle").when().get("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId).then().statusCode(200).extract().body().asString();
+        String datasetRdf = io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .accept("text/turtle")
+            .when().get("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId)
+            .then().statusCode(200)
+            .extract().body().asString();
+        
         String datasetIRI = SideEffectUtils.extractSubjectIri(datasetRdf, "http://www.w3.org/ns/dcat#Dataset");
         System.out.println("Minted Dataset IRI: " + datasetIRI);
 
@@ -71,14 +81,55 @@ public class DatasetTest extends BaseSystemTest {
     public void indexDatasetAfterCreation(TestContext context) {
         String datasetId = context.get(Goal.ODSN_DATASET_CREATED, "id", String.class);
 
-        System.out.println("Checking Dataset Document after creation: /datasets/" + datasetId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(60)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/datasets/" + datasetId).then().statusCode(200).body("result.id", equalTo(datasetId)).body("result.contact_point", hasSize(2)).body("result.contact_point.name", hasItems("Abteilung Wald ABC", "Sekretariat ABC")).body("result.contact_point.email", hasItems("mailto:forests@abc.example.org", "mailto:sekretariat@abc.example.org")).body("result.description.de", equalTo("In diesem Dataset finden Sie Daten zum Waldbestand im Kanton ABC")).body("result.description.en", equalTo("This dataset contains information regarding the forests in Canton ABC")).body("result.description.it", equalTo("Questo set di dati contiene informazioni sulle foreste del Canton ABC")).body("result.identifier", hasItem(datasetId)).body("result.publisher.type", equalTo("Organization")).body("result.publisher.name", equalTo("Verein ABC")).body("result.title.de", equalTo("Waldbestand ABC")).body("result.title.en", equalTo("Forests of ABC")).body("result.title.it", equalTo("Foreste di ABC"));
-        });
-
+        System.out.println("Checking Dataset Document after creation: /datasets/" + datasetId);        
+        
         // the response is logged, so it's available for example in target/surefire-reports/TEST-swiss.opendata.piveau.testbench.GlobalTestRunner.xml - then search for "indexDatasetAfterCreation" in the logfile
-        String json = io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/datasets/" + datasetId).then().log().body().statusCode(200).extract().body().asString();
-        context.store(Goal.ODSN_DATASET_INDEXED, "json", json);
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
+            String json = io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/datasets/" + datasetId)
+                .then().statusCode(200)
+
+                .body("result.id", equalTo(datasetId))
+                .body("result.identifier", hasItem(datasetId))
+                .body("result.title.de", equalTo("Waldbestand ABC"))
+                .body("result.title.en", equalTo("Forests of ABC"))
+                .body("result.title.it", equalTo("Foreste di ABC"))
+
+                .log().body()
+                .extract().body().asString();
+
+            context.store(Goal.ODSN_DATASET_INDEXED, "json", json);
+        });
+    }
+    
+    @Test
+    @DependsOn(Goal.ODSN_DATASET_INDEXED)
+    public void indexDataset_description(TestContext context) {
+        String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.description.de"), equalTo("In diesem Dataset finden Sie Daten zum Waldbestand im Kanton ABC"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.description.en"), equalTo("This dataset contains information regarding the forests in Canton ABC"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.description.it"), equalTo("Questo set di dati contiene informazioni sulle foreste del Canton ABC"));
+    }
+
+    @Test
+    @DependsOn(Goal.ODSN_DATASET_INDEXED)
+    public void indexDataset_publisher(TestContext context) {
+        String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.type"), equalTo("Organization"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.name.de"), equalTo("Verein ABC"));
+    }
+
+    @Test
+    @DependsOn(Goal.ODSN_DATASET_INDEXED)
+    public void indexDataset_contact_point(TestContext context) {
+        String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
+        io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.contact_point"), hasSize(2));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.contact_point.name"), hasItems("Abteilung Wald ABC", "Sekretariat ABC"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.contact_point.email"), hasItems("mailto:forests@abc.example.org", "mailto:sekretariat@abc.example.org"));
     }
 
     @Test
@@ -174,6 +225,7 @@ public class DatasetTest extends BaseSystemTest {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
         org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.resource"), equalTo("http://publications.europa.eu/resource/authority/frequency/ANNUAL"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.accrual_periodicity.label.fr"), equalTo("annuel"));
     }
 
     @Test
@@ -430,9 +482,14 @@ public class DatasetTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(datasetUpdateTurtle).when().put("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(datasetUpdateTurtle)
+            .when().put("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId)
+            .then().statusCode(is(oneOf(200, 204)));
 
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists));
     }
 
     @Test
@@ -442,8 +499,13 @@ public class DatasetTest extends BaseSystemTest {
         String datasetId = context.get(Goal.ODSN_DATASET_CREATED, "id", String.class);
 
         System.out.println("Checking Dataset Document after update: /datasets/" + datasetId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/datasets/" + datasetId).then().statusCode(200).body("result.id", equalTo(datasetId)).body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo("Updated Forests of ABC")));
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
+            io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/datasets/" + datasetId)
+                .then().statusCode(200)
+                .body("result.id", equalTo(datasetId))
+                .body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo("Updated Forests of ABC")));
         });
     }
 
@@ -467,10 +529,12 @@ public class DatasetTest extends BaseSystemTest {
 
         assertTrue(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfDatasetExists), "dataset exists");
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).when().delete("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY).when().delete("/catalogues/" + catalogId + "/datasets/origin?originalId=" + datasetId)
+            .then().statusCode(is(oneOf(200, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> !SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> !SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfDatasetExists
         ));
     }
@@ -482,8 +546,11 @@ public class DatasetTest extends BaseSystemTest {
         String datasetId = context.get(Goal.ODSN_DATASET_CREATED, "id", String.class);
 
         System.out.println("Checking Dataset Document after deletion: /datasets/" + datasetId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/datasets/" + datasetId).then().statusCode(404);
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
+            io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/datasets/" + datasetId)
+                .then().statusCode(404);
         });
     }
 }
