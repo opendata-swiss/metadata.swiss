@@ -32,7 +32,7 @@ services:
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
-      - PIVEAU_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=WARN
     volumes:
       - ./piveau_system_pipes:/usr/verticles/pipes
       - ./piveau_profile:/piv-profile:ro
@@ -59,7 +59,7 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
-      - PIVEAU_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=WARN
     volumes:
       - ./piveau_profile:/piv-profile:ro
 
