@@ -1,39 +1,59 @@
 # Handbook
 
-Handbook is a collection of articles divided into sections. Both are managed as an individual collection in Decap CMS.
-
-## Sections
-
-Sections are separate published pages which group articles together. In decap, make sure to select the grouping so that related articles are displayed together.
+The Handbook is managed as a single collection in Decap CMS. All entries (both sections and articles) live in the same collection and are organized using the fields described below.
 
 ![](../images/decap-handbook-collection.png)
 
-## Articles
+## Structure: sections and articles
 
-Articles are the individual entries in the handbook. Each article belongs to a section, which determines its URL and navigation placement.
+- A section is simply a top‑level handbook entry (no parent selected). It groups related child articles under it.
+- An article can optionally reference another handbook entry as its parent. This creates the hierarchy and determines the URL and breadcrumb trail.
 
-### Fields
+## Fields (as configured in Decap)
 
-In addition to section and the standard content fields, handbook articles have two special fields.
+- Active (boolean)
+  - Controls whether the entry is visible. Leave on (default) to publish; turn off to hide without deleting.
+- Title (string)
+  - The main title shown on the page and in lists.
+- Breadcrumb title (string, optional)
+  - Overrides the breadcrumb label. If empty, the main Title is used.
+- Slug (string)
+  - Lowercase letters, numbers and hyphens only. This is the URL segment for the entry.
+- Parent article (relation, optional)
+  - Select another handbook entry to nest under it. Top‑level sections have no parent.
+- After (relation, optional)
+  - Optional ordering hint. When set, the entry is placed after the selected sibling within the same parent.
+- Body (markdown)
+  - The content of the page.
 
-#### Breadcrumb title
+## URLs and breadcrumbs
 
-Overrides the breadcrumb text on the top of the page. If not set, the main title is used.
+The URL is built by joining the `slug` of the entry and all of its parents, in order, under `/handbook`.
 
-#### Permalink
+Example: a section entry
 
-Permalinks have a special purpose of defining the URLs strucutre of the handbook and the construction of breadcrumbs. It's best explained on an example of multiple articles in the section "Vorbereiten":
+- Entry: "Vorbereiten" (section)
+  - Breadcrumb title: (optional — if empty, uses Title)
+  - Slug: `vorbereiten`
+  - Parent: (none — top‑level section)
+  - URL: `/handbook/vorbereiten`
+  - Breadcrumbs: `Handbuch > Vorbereiten`
 
-1. Page "Für jedes Dataset"
-   - Breadcrumb Title: Dataset
-   - Permalink: `dataset`
+Example in the section "Vorbereiten":
+
+1. Entry: "Für jedes Dataset"
+   - Breadcrumb title: Dataset
+   - Slug: `dataset`
+   - Parent: (none — this is the section)
    - URL: `/handbook/vorbereiten/dataset`
    - Breadcrumbs: `Handbuch > Vorbereiten > Dataset`
-2. Page "Organisatorische Anforderungen prüfen"
-   - Breadcrumb Title: (empty)
-   - Permalink: `dataset/organisatorischer-check`
+2. Entry: "Organisatorische Anforderungen prüfen"
+   - Breadcrumb title: (empty)
+   - Slug: `organisatorischer-check`
+   - Parent: `dataset`
    - URL: `/handbook/vorbereiten/dataset/organisatorischer-check`
    - Breadcrumbs: `Handbuch > Vorbereiten > Dataset > Organisatorische Anforderungen prüfen`
 
-The permalink defines the full path segment after the section. It can include slashes to create sub-levels within the section.
-The breadcrumbs are by constructed by matching each segment with permalinks of other articles in the same section. If a matching article is found, its breadcrumb title (or main title if empty) is used in the breadcrumb trail.
+Notes
+- Use `Breadcrumb title` to provide short labels for long page titles in the breadcrumb trail.
+- Keep `Slug` short, lowercase, and descriptive; it forms part of the URL and is also used to resolve parent/child relationships.
