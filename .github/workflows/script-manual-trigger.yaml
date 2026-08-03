@@ -105,7 +105,7 @@ jobs:
           elif [ "${{ github.event.inputs.action }}" == "VOCABULARIES" ]; then
             ./scripts/vocabularies.sh;
           elif [ "${{ github.event.inputs.action }}" == "DELETE_VOCABULARIES" ]; then
-            ./scripts/vocabularies_delete.sh;
+            ./scripts/vocabularies_delete.sh "${{ github.event.inputs.arguments }}";
           elif [ "${{ github.event.inputs.action }}" == "TRIGGERS" ]; then
             ./scripts/triggers.sh;
           elif [ "${{ github.event.inputs.action }}" == "METRICS" ]; then
