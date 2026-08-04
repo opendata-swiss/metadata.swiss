@@ -1,39 +1,23 @@
 <template>
-  <button
-    :type="!submit ? 'button' : undefined"
+  <component
+    :is="tag"
+    v-bind="tagAttrs"
     :class="['btn', 'btn--base', classes]"
     :aria-label="title"
     :title="title"
   >
     <slot name="icon">
-      <a
-        v-if="href && icon"
-        :href="localePath(href)"
-      >
-        <SvgIcon
-          v-if="icon"
-          :icon="icon"
-          :size="size"
-          class="btn__icon"
-        />
-      </a>
       <SvgIcon
-        v-else-if="icon"
+        v-if="icon"
         :icon="icon"
         :size="size"
         class="btn__icon"
       />
     </slot>
     <span class="btn__text">
-      <a
-        v-if="href"
-        :href="localePath(href)"
-      >
-        <slot>{{ title }}</slot>
-      </a>
-      <slot v-else>{{ title }}</slot>
+      <slot>{{ title }}</slot>
     </span>
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -51,6 +35,7 @@ const { title, iconOnly = false, ...props } = defineProps<{
   icon?: string
   href?: string
   submit?: boolean
+  target?: '_blank' | '_self'
 }>()
 
 const classes = computed(() => {
@@ -77,6 +62,28 @@ const classes = computed(() => {
 
   return classes
 })
+
+const tag = computed(() => {
+  return props.href ? 'a' : 'button'
+})
+
+const linkTarget = computed(() => {
+  return props.target ?? '_self'
+})
+
+const tagAttrs = computed(() => {
+  if (props.href) {
+    return {
+      href: localePath(props.href),
+      target: linkTarget.value,
+      rel: linkTarget.value === '_blank' ? 'noopener noreferrer' : undefined,
+    }
+  }
+
+  return {
+    type: !props.submit ? 'button' : undefined,
+  }
+})
 </script>
 
 <style scoped>
@@ -85,8 +92,11 @@ const classes = computed(() => {
   color: var(--color-primary-600) !important;
 }
 
-.btn--outline-negative, .btn--outline-negative a {
+.btn--outline-negative {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+a {
+  text-decoration: none;
 }
 /* end fixes */
 </style>

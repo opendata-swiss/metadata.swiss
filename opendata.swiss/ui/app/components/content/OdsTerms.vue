@@ -3,7 +3,8 @@
     <img
       :src="imageSrc"
       :alt="t(`message.terms_of_use.ods_${termsName}.title`)"
-      :title="t(`message.terms_of_use.ods_${termsName}.title`)">
+      :title="t(`message.terms_of_use.ods_${termsName}.title`)"
+    >
   </div>
   <ul>
     <li>{{ t(`message.terms_of_use.ods_${termsName}.condition_1`) }}</li>

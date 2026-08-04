@@ -7,7 +7,8 @@
       target="_blank"
       rel="noopener noreferrer"
       class="link--external"
-    >{{ props.value.label }}</a>
+    >{{ props.value.label }}
+    </a>
   </span>
   <span
     v-if="value.nodeType === odsTableEntryType.Email"
