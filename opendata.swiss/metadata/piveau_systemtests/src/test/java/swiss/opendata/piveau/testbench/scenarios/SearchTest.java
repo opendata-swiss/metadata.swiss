@@ -189,9 +189,10 @@ public class SearchTest extends BaseSystemTest {
                 .body("result.facets.find { it.id == 'categories' }.items.id", hasItem("ENVI"))
                 .body("result.facets.find { it.id == 'categories' }.items.title.it", hasItem("Ambiente"))
 
-                // TODO: 'publisher' facet is ATM not populated -- https://github.com/opendata-swiss/metadata.swiss/pull/326#issuecomment-5131347111
-                .body("result.facets.find { it.id == 'publisher' }.items.id", hasItem("some id"))
-                .body("result.facets.find { it.id == 'publisher' }.items.title.de", hasItem("Verein ABC"))
+                // TODO: using "AgentMultiLang" in the profile, the 'publisher' facet is ATM not populated -- https://github.com/opendata-swiss/metadata.swiss/pull/326#issuecomment-5131347111
+                .body("result.facets.find { it.id == 'publisher' }.items.id", hasItem("Verein ABC"))
+                .body("result.facets.find { it.id == 'publisher' }.items.title", hasItem("Verein ABC"))
+                // .body("result.facets.find { it.id == 'publisher' }.items.title.de", hasItem("Verein ABC"))
 
                 .body("result.facets.find { it.id == 'keywords' }.items.id", hasItem("forests"))
                 .body("result.facets.find { it.id == 'keywords' }.items.title", hasItem("forests"))

@@ -119,7 +119,12 @@ public class DatasetTest extends BaseSystemTest {
         String json = context.get(Goal.ODSN_DATASET_INDEXED, "json", String.class);
         io.restassured.path.json.JsonPath jp = new io.restassured.path.json.JsonPath(json);
         org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.type"), equalTo("Organization"));
-        org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.name.de"), equalTo("Verein ABC"));
+        
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.name"), equalTo("Verein ABC"));
+        org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.resource"), equalTo("https://data.example.org/org/abc"));
+
+        // TODO:
+        // org.hamcrest.MatcherAssert.assertThat(jp.get("result.publisher.name.de"), equalTo("Verein ABC"));
     }
 
     @Test
