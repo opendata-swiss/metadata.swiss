@@ -180,7 +180,7 @@ services:
   ############
 
   piveau-metrics-validating-shacl:
-    image: piveau/metrics-validating-shacl:4.4.3
+    image: piveau/metrics-validating-shacl:4.4.4
     restart: unless-stopped
     logging:
       options:
@@ -210,7 +210,7 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-annotator:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.3
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.5
     restart: unless-stopped
     logging:
       options:
@@ -221,7 +221,7 @@ services:
       - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   piveau-metrics-accessibility:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.7
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.9
     restart: unless-stopped
     logging:
       options:
@@ -233,7 +233,7 @@ services:
       - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   piveau-metrics-score:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.2
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.5
     restart: unless-stopped
     logging:
       options:
