@@ -15,8 +15,8 @@ import OdsHero from '../../../../app/components/OdsHero.vue'
 import { DcatApChV2DatasetAdapter } from '../../../../app/components/dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
 import { useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage } from '../breadcrumb-session-stoage'
-import SvgIcon from '../../../../app/components/SvgIcon.vue'
 import OdsTagList from '../../../../app/components/dataset-detail/OdsTagList.vue'
+import OdsItemKind from '../../../../app/components/dataset-detail/OdsItemKind.vue'
 
 const { locale, t } = useI18n()
 
@@ -190,31 +190,22 @@ await suspense()
     </header>
     <section class="section section--default bg--secondary-50">
       <div class="container">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 32px;">
-          <span class="dataset-label">{{ t('message.dataset_detail.distribution') }}</span>
-          <a
+        <div class="first-header">
+          <OdsItemKind :kind="t('message.dataset_detail.distribution')" />
+          <OdsButton
             v-if="hasDownloadUrl"
-            class="big-button"
-            target="_blank"
-          >
-            <SvgIcon
-              icon="Download"
-              size="xl"
-            />
-            <span>{{ t('message.dataset_detail.download') }} {{ distribution.format }}</span>
-          </a>
-          <a
+            :href="distribution.downloadUrls[0]"
+            variant="outline-negative"
+            :title="t('message.dataset_detail.download') + ' ' + distribution.format "
+            icon="Download"
+          />
+          <OdsButton
             v-if="hasAccessUrl && !hasDownloadUrl"
             :href="distribution.accessUrls[0]"
-            target="_blank"
-            class="big-button"
-          >
-            <SvgIcon
-              icon="External"
-              size="xl"
-            />
-            <span>Go To {{ distribution.format }}</span>
-          </a>
+            variant="outline-negative"
+            :title="t('message.dataset_detail.go_to_resource') + ' ' + distribution.format "
+            icon="External"
+          />
         </div>
         <OdsDistributionDetailHeader :distribution="distribution" />
       </div>
@@ -381,22 +372,8 @@ await suspense()
 </template>
 
 <style lang="scss" scoped>
-.distribution-label {
-  position: relative;
-  background-color: #e6f0fa;
-  color: #1976d2;
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: middle;
-  border: 1px solid #b3d4fc;
-}
-
 #main-header {
-   @media (min-width: 1024px) {
+  @media (min-width: 1024px) {
     min-height: 65.5px;
   }
   @media (min-width: 1280px) {
@@ -404,31 +381,19 @@ await suspense()
   }
 }
 
-.dataset-label {
-  position: relative;
-  background-color: #e6f0fa;
-  color: #1976d2;
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: middle;
-  border: 1px solid #b3d4fc;
-  height: fit-content;
-}
-
-.big-button {
+.first-header {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  background-color: var(--color-primary-600);
-  color: white;
-  padding: 12px;
-  padding-right: 24px;
-  text-decoration: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 32px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
 }
 
 .keywords {
