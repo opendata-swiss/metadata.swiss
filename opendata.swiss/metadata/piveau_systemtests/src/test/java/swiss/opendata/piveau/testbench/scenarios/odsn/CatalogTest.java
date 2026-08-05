@@ -49,15 +49,25 @@ public class CatalogTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(catalogTurtle).when().put("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 201, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(catalogTurtle)
+            .when().put("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 201, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfCatalogExists
         ));
 
         // Extract the minted catalogue IRI from the API
-        String catalogRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/catalogues/" + catalogId).then().statusCode(200).extract().body().asString();
+        String catalogRdf = io.restassured.RestAssured.given()
+            .accept("text/turtle")
+            .when().get("/catalogues/" + catalogId)
+            .then().statusCode(200)
+            .extract().body().asString();
+        
         String catalogIRI = SideEffectUtils.extractSubjectIri(catalogRdf, DCAT.CATALOG.stringValue());
         System.out.println("Minted Catalogue IRI: " + catalogIRI);
 
@@ -77,8 +87,13 @@ public class CatalogTest extends BaseSystemTest {
         String catalogTitle = context.get(Goal.ODSN_CATALOG_CREATED, "title", String.class);
 
         System.out.println("Checking Catalog Document after creation: /catalogues/" + catalogId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/catalogues/" + catalogId).then().statusCode(200).body("result.id", equalTo(catalogId)).body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(catalogTitle)));
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/catalogues/" + catalogId)
+                .then().statusCode(200)
+                .body("result.id", equalTo(catalogId))
+                .body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(catalogTitle)));
         });
     }
 
@@ -102,10 +117,15 @@ public class CatalogTest extends BaseSystemTest {
                 }
                 """.formatted(PREFIXES, newTitle);
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(catalogTurtle).when().put("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(catalogTurtle)
+            .when().put("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfCatalogUpdated
         ));
 
@@ -120,8 +140,14 @@ public class CatalogTest extends BaseSystemTest {
         String updatedTitle = context.get(Goal.ODSN_CATALOG_UPDATED, "title", String.class);
 
         System.out.println("Checking Catalog Document after update: /catalogues/" + catalogId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/catalogues/" + catalogId).then().statusCode(200).body("result.id", equalTo(catalogId)).body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedTitle)));
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080))
+                .port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/catalogues/" + catalogId)
+                .then().statusCode(200)
+                .body("result.id", equalTo(catalogId))
+                .body("result.title", hasEntry(is(oneOf("en", "de", "fr", "it", "rm")), equalTo(updatedTitle)));
         });
     }
 
@@ -144,10 +170,13 @@ public class CatalogTest extends BaseSystemTest {
 
         assertTrue(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).when().delete("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .when().delete("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> !SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> !SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfCatalogExists
         ));
     }
@@ -159,9 +188,70 @@ public class CatalogTest extends BaseSystemTest {
         String catalogId = context.get(Goal.ODSN_CATALOG_CREATED, "id", String.class);
 
         System.out.println("Checking Catalog Document after deletion: /catalogues/" + catalogId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
-            io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/catalogues/" + catalogId).then().statusCode(404);
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+            io.restassured.RestAssured.given()
+                .baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080))
+                .port(getServicePort(SEARCH_SERVICE_NAME, 8080))
+                .when().get("/catalogues/" + catalogId)
+                .then().statusCode(404);
         });
+    }
+
+    @Test
+    @DependsOn(Goal.ODSN_ORGANIZATION_HIERARCHY_INDEXED)
+    @Provides(Goal.ODSN_CATALOG_WITH_ORGA_PUBLISHER_CREATED)
+    public void createCatalogWithOrgaPublisher(TestContext context) throws IOException {
+        final long timestamp = System.currentTimeMillis();
+        final String catalogId = "staatskanzlei-kt-zh-fiz-" + timestamp;
+        final String catalogTitle = "Opendata Fiz staatskanzlei-kanton-zuerich " + timestamp;
+
+        String catalogTurtle = ResourceUtils.loadTurtle("/catalog-odsn-with-orga-publisher.ttl", catalogTitle);
+
+        String askIfCatalogExists = """
+                %s
+                ASK {
+                    GRAPH ?g {
+                        ?catalog a dcat:Catalog ;
+                            dct:title "%s"@en ;
+                            dct:publisher <https://opendata.swiss/id/organization/staatskanzlei-kanton-zuerich> ;
+                    }
+                    GRAPH ?gOrg {
+                        <https://opendata.swiss/id/organization/staatskanzlei-kanton-zuerich> a org:Organization ;
+                            org:subOrganizationOf <https://opendata.swiss/id/organization/zh-foo> ;
+                            org:classification    <https://register.ld.admin.ch/i14y/concept/legalForm/0221> .
+                    }
+                }
+                """.formatted(PREFIXES, catalogTitle);
+
+        assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
+
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(catalogTurtle)
+            .when().put("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 201, 204)));
+
+        // Verify Side Effect: SPARQL
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(
+                getSparqlEndpoint(), askIfCatalogExists
+        ));
+
+        // Extract the minted catalogue IRI from the API
+        String catalogRdf = io.restassured.RestAssured.given()
+            .accept("text/turtle")
+            .when().get("/catalogues/" + catalogId)
+            .then().statusCode(200)
+            .extract().body().asString();
+        
+        String catalogIRI = SideEffectUtils.extractSubjectIri(catalogRdf, DCAT.CATALOG.stringValue());
+        System.out.println("Minted Catalogue IRI: " + catalogIRI);
+
+        assertNotNull(catalogIRI);
+        assertTrue(catalogIRI.startsWith("https://opendata.swiss/id/catalogue/"));
+
+        context.store(Goal.ODSN_CATALOG_WITH_ORGA_PUBLISHER_CREATED, "id", catalogId);
+        context.store(Goal.ODSN_CATALOG_WITH_ORGA_PUBLISHER_CREATED, "iri", catalogIRI);
     }
 
     @Test
@@ -186,15 +276,25 @@ public class CatalogTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(catalogTurtle).when().put("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 201, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(catalogTurtle)
+            .when().put("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 201, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfCatalogExists
         ));
 
         // Extract the minted catalogue IRI from the API
-        String catalogRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/catalogues/" + catalogId).then().statusCode(200).extract().body().asString();
+        String catalogRdf = io.restassured.RestAssured.given()
+            .accept("text/turtle")
+            .when().get("/catalogues/" + catalogId)
+            .then().statusCode(200)
+            .extract().body().asString();
+        
         String catalogIRI = SideEffectUtils.extractSubjectIri(catalogRdf, DCAT.CATALOG.stringValue());
         System.out.println("Minted Catalogue IRI: " + catalogIRI);
 
@@ -227,15 +327,25 @@ public class CatalogTest extends BaseSystemTest {
 
         assertFalse(SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfCatalogExists));
 
-        io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(catalogTurtle).when().put("/catalogues/" + catalogId).then().statusCode(is(oneOf(200, 201, 204)));
+        io.restassured.RestAssured.given()
+            .header("X-API-Key", API_KEY)
+            .contentType("text/turtle")
+            .body(catalogTurtle)
+            .when().put("/catalogues/" + catalogId)
+            .then().statusCode(is(oneOf(200, 201, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfCatalogExists
         ));
 
         // Extract the minted catalogue IRI from the API
-        String catalogRdf = io.restassured.RestAssured.given().accept("text/turtle").when().get("/catalogues/" + catalogId).then().statusCode(200).extract().body().asString();
+        String catalogRdf = io.restassured.RestAssured.given()
+            .accept("text/turtle")
+            .when().get("/catalogues/" + catalogId)
+            .then().statusCode(200)
+            .extract().body().asString();
+        
         String catalogIRI = SideEffectUtils.extractSubjectIri(catalogRdf, DCAT.CATALOG.stringValue());
         System.out.println("Minted Catalogue IRI: " + catalogIRI);
 

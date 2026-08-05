@@ -11,12 +11,10 @@ import swiss.opendata.piveau.testbench.utils.ResourceUtils;
 import swiss.opendata.piveau.testbench.utils.SideEffectUtils;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import static swiss.opendata.piveau.testbench.TestConstants.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -52,7 +50,7 @@ public class ShowcaseTest extends BaseSystemTest {
 
         io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseTurtle).when().put("/customresources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 201, 204)));
 
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
 
         // Extract the minted showcase IRI from the API
         String showcaseRdf = io.restassured.RestAssured.given().header("X-API-Key", API_KEY).accept("text/turtle").when().get("/customresources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(200).extract().body().asString();
@@ -73,7 +71,7 @@ public class ShowcaseTest extends BaseSystemTest {
         String showcaseId = context.get(Goal.ODSN_SHOWCASE_CREATED, "id", String.class);
 
         System.out.println("Checking Showcase Document after creation: /resources/showcase/" + showcaseId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(60)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
             io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/resources/showcase/" + showcaseId).then().statusCode(200).body("result.id", equalTo(showcaseId)).body("result.title.de", equalTo("Mietpreisentwicklung in Bern"));
         });
 
@@ -154,7 +152,7 @@ public class ShowcaseTest extends BaseSystemTest {
     }
 
     @Test
-    @DependsOn(Goal.ODSN_SHOWCASE_SEARCH_VERIFIED)
+    @DependsOn(Goal.ODSN_SHOWCASE_FACETED_SEARCH_VERIFIED)
     @Provides(Goal.ODSN_SHOWCASE_UPDATED)
     public void updateShowcase(TestContext context) throws IOException {
         String catalogId = context.get(Goal.ODSN_CATALOG_SHOWCASES_CREATED, "id", String.class);
@@ -178,7 +176,7 @@ public class ShowcaseTest extends BaseSystemTest {
 
         io.restassured.RestAssured.given().header("X-API-Key", API_KEY).contentType("text/turtle").body(showcaseUpdateTurtle).when().put("/customresources/showcase?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
 
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> SideEffectUtils.checkSparqlAsk(getSparqlEndpoint(), askIfShowcaseExists));
     }
 
     @Test
@@ -188,7 +186,7 @@ public class ShowcaseTest extends BaseSystemTest {
         String showcaseId = context.get(Goal.ODSN_SHOWCASE_CREATED, "id", String.class);
 
         System.out.println("Checking Showcase Document after update: /resources/showcase/" + showcaseId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
             io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/resources/showcase/" + showcaseId).then().statusCode(200).body("result.id", equalTo(showcaseId)).body("result.title.de", equalTo("Updated Mietpreisentwicklung in Bern"));
         });
     }
@@ -216,7 +214,7 @@ public class ShowcaseTest extends BaseSystemTest {
         io.restassured.RestAssured.given().header("X-API-Key", API_KEY).when().delete("/customresources/showcase/origin?catalogId=" + catalogId + "&id=" + showcaseId).then().statusCode(is(oneOf(200, 204)));
 
         // Verify Side Effect: SPARQL
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).until(() -> !SideEffectUtils.checkSparqlAsk(
+        org.awaitility.Awaitility.await().atMost(PT5S).until(() -> !SideEffectUtils.checkSparqlAsk(
                 getSparqlEndpoint(), askIfShowcaseExists
         ));
     }
@@ -228,7 +226,7 @@ public class ShowcaseTest extends BaseSystemTest {
         String showcaseId = context.get(Goal.ODSN_SHOWCASE_CREATED, "id", String.class);
 
         System.out.println("Checking Showcase Document after deletion: /resources/showcase/" + showcaseId);
-        org.awaitility.Awaitility.await().atMost(Duration.ofSeconds(30)).pollInterval(Duration.ofSeconds(2)).untilAsserted(() -> {
+        org.awaitility.Awaitility.await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
             io.restassured.RestAssured.given().baseUri("http://" + getServiceHost(SEARCH_SERVICE_NAME, 8080)).port(getServicePort(SEARCH_SERVICE_NAME, 8080)).when().get("/resources/showcase/" + showcaseId).then().statusCode(404);
         });
     }

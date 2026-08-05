@@ -3,8 +3,7 @@ services:
   # docker-compose-hub.yml #
   ##########################
   piveau-hub-repo:
-    image: piveau/hub-repo:4.0.6
-
+    image: piveau/hub-repo:4.1.1
     restart: unless-stopped
     logging:
       options:
@@ -28,8 +27,7 @@ services:
       - ../piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.8
-
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.9
     restart: unless-stopped
     logging:
       options:
