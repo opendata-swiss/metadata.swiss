@@ -143,6 +143,6 @@ spec:
                   key: preferences_hmac_key
           resources:
             limits:
-              memory: 2Gi
+              memory: 4Gi
             requests:
-              memory: 1Gi
+              memory: 2Gi
