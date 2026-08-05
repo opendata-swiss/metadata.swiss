@@ -134,6 +134,8 @@ spec:
                 configMapKeyRef:
                   name: listmonk-config
                   key: template_ids_en
+            - name: NUXT_HYVOR_PUBLISHER_NOTIFICATION_TEMPLATE_ID
+              value: "9"
             - name: NUXT_LISTMONK_PREFERENCES_HMAC_KEY
               valueFrom:
                 secretKeyRef:
