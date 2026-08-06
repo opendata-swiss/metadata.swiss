@@ -40,7 +40,7 @@ Blog posts are managed in Decap CMS as a single collection. Each entry represent
 - Date: 2026-07-30
 - Sub heading: Die wichtigsten Neuerungen auf einen Blick
 - Image: `/images/blog/neues-im-portal.jpg`
-- URL: `/blog/neues-im-portal`
+- URL: `/blog/2026-7/neues-im-portal`
 
 Notes
 - Keep `Slug` short, lowercase, and descriptive; avoid special characters.
