@@ -1,7 +1,7 @@
 import { remark } from 'remark'
 import strip from 'strip-markdown'
 import remarkFrontmatter from 'remark-frontmatter'
-import { dcat, dcterms, rdfs, schema, xsd } from '@tpluscode/rdf-ns-builders'
+import { dcat, dcterms, rdfs, schema, xsd, prov, foaf } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -24,51 +24,75 @@ interface AggregateShowcase {
   'modified': string | undefined
   'issued': string | undefined
   'pinned': boolean
+  'qualifiedAttribution': Array<{
+    '@type': 'prov:Attribution'
+    'prov:agent': string | {
+      '@type': 'prov:Person' | 'prov:Organization'
+      'foaf:name': string
+      'foaf:homepage'?: string[]
+    }
+    'dcat:hadRole': string
+  }>
 }
 
 const ldContext = {
-  id: '@id',
-  label: rdfs.label.value,
-  type: {
+  'id': '@id',
+  'dcat': dcat().value,
+  'prov': prov().value,
+  'label': rdfs.label.value,
+  'foaf': foaf().value,
+  'foaf:homepage': {
+    '@type': '@id',
+  },
+  'type': {
     '@id': dcterms.type.value,
     '@type': '@id',
   },
-  categories: {
+  'categories': {
     '@id': dcat.theme.value,
     '@type': '@id',
   },
-  datasets: {
+  'datasets': {
     '@id': dcterms.references.value,
     '@type': '@id',
   },
-  title: {
+  'title': {
     '@id': dcterms.title.value,
     '@container': '@language',
   },
-  abstract: {
+  'abstract': {
     '@id': dcterms.abstract.value,
     '@container': '@language',
   },
-  text: {
+  'text': {
     '@id': schema.text.value,
     '@container': '@language',
   },
-  pinned: {
+  'pinned': {
     '@id': 'piveau:pinned',
     '@type': xsd.boolean.value,
   },
-  identifier: dcterms.identifier.value,
-  image: schema.image.value,
-  tag: dcat.keyword.value,
-  modified: dcterms.modified.value,
-  issued: dcterms.issued.value,
-  Dataset: dcat.Dataset.value,
-  piveau: 'https://piveau.eu/ns/voc#',
+  'dcat:hadRole': {
+    '@id': 'dcat:hadRole',
+    '@type': '@id',
+  },
+  'prov:agent': {
+    '@id': 'prov:agent',
+    '@type': '@id',
+  },
+  'identifier': dcterms.identifier.value,
+  'image': schema.image.value,
+  'tag': dcat.keyword.value,
+  'modified': dcterms.modified.value,
+  'issued': dcterms.issued.value,
+  'Dataset': dcat.Dataset.value,
+  'piveau': 'https://piveau.eu/ns/voc#',
+  'qualifiedAttribution': prov.qualifiedAttribution.value,
 }
 export default defineEventHandler(async (event) => {
   const { public: { rootDir } } = useRuntimeConfig(event)
   const showcases = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type', 'pinned')
+    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type', 'pinned', 'relationships')
     .where('active', '=', true)
     .all()
 
@@ -100,6 +124,7 @@ export default defineEventHandler(async (event) => {
         'pinned': showcase.pinned || false,
         modified,
         issued,
+        'qualifiedAttribution': [],
       }
       arr.push(aggregate)
     }
@@ -107,6 +132,11 @@ export default defineEventHandler(async (event) => {
     aggregate.title[lang] = showcase.title || undefined
     aggregate.abstract[lang] = showcase.description || undefined
     aggregate.text[lang] = await stripMarkdown(showcase.rawbody) || undefined
+    if (lang === 'de') {
+      aggregate.qualifiedAttribution = showcase.relationships
+        ?.map(toAttribution)
+        .filter(qa => !!qa) || []
+    }
 
     return arr
   }, Promise.resolve<AggregateShowcase[]>([]))
@@ -169,5 +199,39 @@ function getShowcaseDates(rootDir: string, stem: string) {
       modified: undefined,
       issued: undefined,
     }
+  }
+}
+
+function toAttribution(relationship: Required<ShowcasesCollectionItem>['relationships'][number]): AggregateShowcase['qualifiedAttribution'][number] | undefined {
+  const attribution: Omit<AggregateShowcase['qualifiedAttribution'][number], 'prov:agent'> = {
+    '@type': 'prov:Attribution',
+    'dcat:hadRole': `urn:example:isotc211/CI_RoleCode/${relationship.role}`,
+  }
+
+  switch (relationship.type) {
+    case 'organization':
+      return {
+        ...attribution,
+        'prov:agent': `https://opendata.swiss/id/organization/${relationship.organization[0]!.id}`,
+      }
+    case 'person':
+      return {
+        ...attribution,
+        'prov:agent': {
+          '@type': 'prov:Person',
+          'foaf:name': relationship.name,
+        },
+      }
+    case 'organization-external':
+      return {
+        ...attribution,
+        'prov:agent': {
+          '@type': 'prov:Organization',
+          'foaf:name': relationship.name,
+          'foaf:homepage': relationship.url || [],
+        },
+      }
+    default:
+      return undefined
   }
 }
