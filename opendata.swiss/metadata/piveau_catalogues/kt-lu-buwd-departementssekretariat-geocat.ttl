@@ -1,0 +1,28 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-buwd-departementssekretariat-geocat> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:48:49.037482"^^xsd:dateTime ;
+    dcterms:description """Das Departementssekretariat ist die Stabsstelle des Bau-, Umwelt- und Wirtschaftsdepartements. Es unterstützt die Departementsleitung bei der politischen, strategischen und betrieblichen Führung, nimmt die administrative Leitung des Departements wahr und koordiniert die Verwaltungstätigkeiten innerhalb des Departements und gegen aussen.\r
+\r
+Das Departementssekretariat umfasst die Bereiche Administration, Finanzen und Controlling, Digitalisierung und Informatik, Kommunikation, Politik und Strategie sowie Recht."""@de,
+        """The Departmental Secretariat serves as the staff unit for the Department of Construction, Environment, and Economic Affairs. It supports the department’s leadership in political, strategic, and operational management, oversees the department’s administrative management, and coordinates administrative activities both within the department and externally.\r
+\r
+The Departmental Secretariat comprises the divisions of Administration, Finance and Controlling, Digitalization and Information Technology, Communications, Policy and Strategy, and Legal Affairs."""@en,
+        """Le Secrétariat du Département est l'organe d'état-major du Département des travaux publics, de l'environnement et de l'économie. Il assiste la direction du département dans la conduite politique, stratégique et opérationnelle, assure la gestion administrative du département et coordonne les activités administratives tant au sein du département qu'à l'extérieur.\r
+\r
+Le secrétariat du département comprend les services suivants : administration, finances et contrôle de gestion, numérisation et informatique, communication, politique et stratégie, ainsi que le service juridique."""@fr ;
+    dcterms:modified "2026-07-22T06:53:51.880991"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.lu.ch/verwaltung/BUWD/buwd_dienststellen/buwd_departementssekretariat> ;
+            foaf:name "Departementssekretariat BUWD"@de,
+                "Departmental Secretariat BUWD"@en,
+                "Secrétariat du Département BUWD"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Departementssekretariat BUWD"@de,
+        "Departmental Secretariat BUWD"@en,
+        "Secrétariat du Département BUWD"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

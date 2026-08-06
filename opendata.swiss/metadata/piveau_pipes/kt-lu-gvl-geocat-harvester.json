@@ -1,0 +1,54 @@
+{
+  "header": {
+    "id": "5edd6bd4-9303-4328-b517-11c183f1ea34",
+    "name": "kt-lu-gvl-geocat-harvester",
+    "title": "Kt. LU GVL- geocat harvester",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-csw",
+          "segmentNumber": 1,
+          "title": "Importing CSW",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://www.geocat.ch/geonetwork/lu-gvl/ger/csw?",
+            "catalogue": "kt-lu-gvl",
+            "preProcessing": true,
+            "org_name": "Buildings Insurance Lucerne"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-filter",
+          "segmentNumber": 2,
+          "title": "Filtering",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "org_id": "jsd-gvl",
+            "catalogue": "kt-lu-gvl",
+            "preProcessing": true
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 3,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

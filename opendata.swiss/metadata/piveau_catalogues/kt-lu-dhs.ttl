@@ -1,0 +1,31 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-dhs> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:59:41.468346"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle setzt sich zusammen aus den Abteilungen Handelsregister und Staatsarchiv. \r
+\r
+Das Handelsregister ist eine öffentliche Quelle für wirtschaftliche Informationen über Unternehmen. Es dient in erster Linie der Rechtssicherheit im Geschäftsverkehr und dem Vertrauensschutz (Publizitätsfunktion).\r
+\r
+Das Staatsarchiv sichert einzigartiges Kulturgut und stellt dieses zur Erforschung der Geschichte des Kantons, seiner Gemeinden, Körperschaften, Firmen, Vereinen, Verbänden, Parteien der Bewohnerinnen und Bewohner aus fast 1000 Jahren bereit. Die Benutzung dieses Archivguts steht Personen offen. Das Archiv berät die kantonale Verwaltung, weltliche und kirchliche Gemeinden bei der Verwaltung ihrer Unterlagen und unterstützt sie bei der Vorbereitung von Ablieferungen. Es leistet damit einen Beitrag zur Rechtsstaatlichkeit.\r
+"""@de,
+        """The department consists of the Commercial Register and State Archives divisions.\r
+\r
+The Commercial Register is a public source of economic information about companies. Its primary purpose is to ensure legal certainty in business transactions and to protect legitimate expectations (publicity function)."""@en,
+        """L'office se compose des départements du registre du commerce et des archives d'État.\r
+\r
+Le registre du commerce est une source publique d'informations économiques sur les entreprises. Il sert avant tout à garantir la sécurité juridique dans les relations commerciales et à protéger la confiance légitime (fonction de publicité)."""@fr ;
+    dcterms:modified "2026-07-22T07:41:28.057752"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://handelsregister.lu.ch/> ;
+            foaf:name "Dienststelle Handelsregister und Staatsarchiv"@de,
+                "Department of Commercial Register and State Archives"@en,
+                "Office du registre du commerce et des archives d'État"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Handelsregister und Staatsarchiv"@de,
+        "Department of Commercial Register and State Archives"@en,
+        "Office du registre du commerce et des archives d'État"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

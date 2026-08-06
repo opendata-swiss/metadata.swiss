@@ -5,21 +5,21 @@
 
 <https://example.eu/id/catalogue/lu-kt> a dcat:Catalog ;
     dcterms:created "2023-04-23T20:04:21.644229"^^xsd:dateTime ;
-    dcterms:description "Die Geoinformation des Kantons Luzern ist für die Erhebung, Verarbeitung und Verwaltung von raumbezogenen Daten zuständig. Sie leitet, koordiniert und überwacht die Arbeiten der Geoinformation und der amtlichen Vermessung."@de,
-        "Geoinformation of the Canton of Lucerne is responsible for the collection, processing and management of spatial data. It manages, coordinates and monitors the work of geoinformation and of the cadastral surveying."@en,
-        "La géoinformation du canton de Lucerne est responsable de la collecte, du traitement et de la gestion des données à référence spatiale. Elle dirige, coordonne et surveille les travaux de la géoinformation et de la mensuration officielle."@fr,
-        "La Geoinformation del Cantone di Lucerna è responsabile della raccolta, dell'elaborazione e della gestione dei dati territoriali. Gestisce, coordina e monitora il lavoro della geoinformazione e della misurazione ufficiale."@it ;
-    dcterms:modified "2026-05-11T07:18:23.376944"^^xsd:dateTime ;
+    dcterms:description "Der Kanton Luzern veröffentlicht hier schrittweise geeignete Datensammlungen der kantonalen Verwaltung als OGD-Daten."@de,
+        "The Canton of Lucerne is gradually publishing here suitable datasets from the cantonal administration as OGD data."@en,
+        "Le canton de Lucerne publie ici progressivement des jeux de données appropriées de l'administration cantonale sous forme de données OGD."@fr,
+        "Il cantone di Lucerna sta gradualmente pubblicando qui oportuni set di dati dell'amministrazione cantonale come dati OGD."@it ;
+    dcterms:modified "2026-07-20T10:46:47.355000"^^xsd:dateTime ;
     dcterms:publisher [ a foaf:Agent ;
-            foaf:homepage <https://geoportal.lu.ch/> ;
-            foaf:name "Geoinformation Kanton Luzern"@de,
-                "Geoinformation Canton of Lucerne"@en,
-                "Géoinformation du canton de Lucerne"@fr,
-                "Geoinformazione del Cantone di Lucerna"@it ] ;
+            foaf:homepage <https://www.lu.ch/> ;
+            foaf:name "Kanton Luzern"@de,
+                "Canton of Lucerne"@en,
+                "Canton de Lucerne"@fr,
+                "Cantone di Lucerna"@it ] ;
     dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
-    dcterms:title "Geoinformation Kanton Luzern"@de,
-        "Geoinformation Canton of Lucerne"@en,
-        "Géoinformation du canton de Lucerne"@fr,
-        "Geoinformazione del Cantone di Lucerna"@it ;
+    dcterms:title "Kanton Luzern"@de,
+        "Canton of Lucerne"@en,
+        "Canton de Lucerne"@fr,
+        "Cantone di Lucerna"@it ;
     dcterms:type "ckan"^^xsd:string .
 

@@ -1,0 +1,56 @@
+{
+  "header": {
+    "id": "40e18cad-4d2b-4fb1-80f1-1758e74552a9",
+    "name": "i14y-dcat-immobilien-kt-lu",
+    "title": "I14Y DCAT Immobilien Kt. LU",
+    "context": "piveau",
+    "transport": "payload",
+    "version": "1.0.0"
+  },
+  "body": {
+    "segments": [
+      {
+        "header": {
+          "name": "piveau-consus-importing-rdf",
+          "segmentNumber": 1,
+          "title": "Importing RDF",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "address": "https://api.i14y.admin.ch/api/public/v1/catalogs/504f1026-e801-4d72-98e3-f2d6bf2b9b3b/dcat/exports/rdf",
+            "catalogue": "i14y-dcat-immobilien-kt-lu",
+            "preProcessing": true,
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Department of Real Estate"
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-filter",
+          "segmentNumber": 2,
+          "title": "Filtering",
+          "processed": false
+        },
+        "body": {
+          "config": {
+            "org_id": "immobilien-lu",
+            "catalogue": "i14y-dcat-immobilien-kt-lu",
+            "preProcessing": true
+          }
+        }
+      },
+      {
+        "header": {
+          "name": "piveau-consus-exporting-hub",
+          "segmentNumber": 3,
+          "title": "Exporting hub",
+          "processed": false
+        },
+        "body": {}
+      }
+    ]
+  }
+}

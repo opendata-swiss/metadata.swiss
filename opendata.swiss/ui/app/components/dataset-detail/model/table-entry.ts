@@ -122,4 +122,5 @@ export enum OdsTableEntryType {
   Email = 'email',
   Telephone = 'telephone',
   Node = 'node',
+  Metadata = 'metadata',
 }

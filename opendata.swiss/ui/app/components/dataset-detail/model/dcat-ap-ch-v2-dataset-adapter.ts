@@ -79,7 +79,6 @@ export class DcatApChV2DatasetAdapter {
    */
   getCategoriesForLanguage(lang: AppLanguage): TagItem[] {
     const categories = this.#dataset?.getCategories ?? []
-
     const tagItems = categories.map((cat) => {
       let preferredLabel = cat.label[lang]
       if (!preferredLabel) {

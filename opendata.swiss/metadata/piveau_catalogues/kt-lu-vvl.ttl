@@ -1,0 +1,22 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/kt-lu-vvl> a dcat:Catalog ;
+    dcterms:created "2026-07-17T08:57:26.035573"^^xsd:dateTime ;
+    dcterms:description "Der Verkehrsverbund Luzern (VVL) existiert seit dem 1. Januar 2010 als öffentlich-rechtliche Anstalt mit eigener Rechtspersönlichkeit. Der VVL plant und finanziert den öV im Kanton Luzern. Er strebt einen leistungsfähigen und attraktiven öV an. Ebenfalls ist die Geschäftsstelle des Tarifverbundes Passepartout administrativ beim VVL angesiedelt."@de,
+        "The Lucerne Public Transportation Association (VVL) has existed since January 1, 2010, as a public-law institution with its own legal personality. The VVL plans and finances public transportation in the canton of Lucerne. It strives to provide efficient and attractive public transportation. The administrative office of the Passepartout fare network is also affiliated with the VVL."@en,
+        "L'association de transport de Lucerne (VVL) existe depuis le 1er janvier 2010 en tant qu'établissement de droit public doté d'une personnalité juridique propre. La VVL planifie et finance les transports publics dans le canton de Lucerne. Elle a pour objectif de mettre en place un réseau de transports publics performant et attractif. Le secrétariat de la communauté tarifaire Passepartout est également rattaché administrativement à la VVL."@fr ;
+    dcterms:modified "2026-07-22T07:41:10.155005"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://www.vvl.ch/> ;
+            foaf:name "Verkehrsverbund Luzern"@de,
+                "Public Transportation Association"@en,
+                "Association de transport de Lucerne"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Verkehrsverbund Luzern"@de,
+        "Public Transportation Association"@en,
+        "Association de transport de Lucerne"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

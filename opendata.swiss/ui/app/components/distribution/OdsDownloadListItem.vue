@@ -2,11 +2,11 @@
   <div>
     <a
       class="download-item"
-      :href="props.downloadUrl"
+      :href="props.url"
       target="_blank"
     >
       <SvgIcon
-        icon="Download"
+        :icon="icon"
         size="xl"
         class="download-item__icon"
       />
@@ -19,12 +19,16 @@
           >{{ props.format }}</span>
           <span
             v-if="props.byteSize"
-            class="meta-info__item"
+            class="meta-info__item dont-break-word"
           >{{ props.byteSize }}</span>
           <span
-            v-if="props.languages?.length"
+            v-for="(language, index) in props.languages ?? []"
+            :key="`${language}-${index}`"
             class="meta-info__item"
-          >{{ props.languages.join(', ') }}</span>
+            style="white-space: nowrap;"
+          >
+            {{ language }}
+          </span>
         </p>
       </div>
     </a>
@@ -35,11 +39,12 @@
 import SvgIcon from '../SvgIcon.vue'
 
 interface OdsDownloadListItemProps {
-  downloadUrl: string
+  url: string
   name: string
   format?: string
   languages?: string[]
   byteSize?: string
+  icon: string
 }
 
 const props = defineProps<OdsDownloadListItemProps>()
@@ -55,5 +60,9 @@ const props = defineProps<OdsDownloadListItemProps>()
     text-overflow: hidden;
     overflow-x: hidden;
     word-break: break-word;
+  }
+
+  .dont-break-word {
+    white-space: nowrap;
   }
 </style>

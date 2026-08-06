@@ -3,6 +3,7 @@ package swiss.opendata.piveau.testbench;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Duration;
 import java.util.List;
 
 public class TestConstants {
@@ -18,6 +19,9 @@ public class TestConstants {
             PREFIX foaf: <http://xmlns.com/foaf/0.1/>
             PREFIX org: <http://www.w3.org/ns/org#>
             """;
+
+    public static final Duration PT5S = Duration.ofSeconds(5);
+    public static final Duration PT2S = Duration.ofSeconds(2);
 
     private static String resolveApiKey() {
         String apiKey = readApiKeyFromDotEnv();

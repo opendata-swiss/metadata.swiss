@@ -22,6 +22,8 @@ export const piveauLocale = {
         temporalResolution: 'Zeitliche Abdeckung',
         compressFormat: 'Komprimierungsformat',
         packageFormat: 'Paketformat',
+        byteSize: 'Dateigrösse',
+
       },
       tooltip: {
         ...de.tooltip,
@@ -53,6 +55,7 @@ export const piveauLocale = {
         languages: 'Languages', // language dct:language
         license: 'Terms of use', // license dct:license
         mediaType: 'Media type', // media_type dcat:mediaType
+        byteSize: 'File size',
       },
       tooltip: {
         ...en.tooltip,

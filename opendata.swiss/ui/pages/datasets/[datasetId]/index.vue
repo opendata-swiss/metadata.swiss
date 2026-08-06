@@ -10,17 +10,16 @@ import { DcatApChV2DatasetAdapter } from '../../../app/components/dataset-detail
 
 import { homePageBreadcrumb } from '../../../app/composables/breadcrumbs'
 import OdsBreadcrumbs, { type BreadcrumbItem } from '../../../app/components/OdsBreadcrumbs.vue'
-import OdsDetailTermsOfUse from '../../../app/components/dataset-detail/OdsDetailTermsOfUse.vue'
 import OdsDetailsTable from '../../../app/components/dataset-detail/OdsDetailsTable.vue'
 import OdsTagList from '../../../app/components/dataset-detail/OdsTagList.vue'
-import OdsDatasetMetaInfo from '../../../app/components/dataset-detail/OdsDatasetMetaInfo.vue'
 import OdsDistributionList from '../../../app/components/dataset-detail/OdsDistributionList.vue'
 import OdsButton from '../../../app/components/OdsButton.vue'
-import OdsDatasetCatalogPanel from '../../../app/components/dataset-detail/OdsDatasetCatalogPanel.vue'
-import OdsMetadataDownloadList from '../../../app/components/dataset-detail/OdsMetadataDownloadList.vue'
+import OdsDatasetDetailHeader from '../../../app/components/dataset-detail/OdsDatasetDetailHeader.vue'
+import OdsMetadataDownload from '../../../app/components/dataset-detail/OdsMetadataDownload.vue'
 import Hero from '../../../app/components/OdsHero.vue'
-import { useSeoMeta } from 'nuxt/app'
+import { useRuntimeConfig, useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
+import type { TagItem } from '../../../app/components/OdsTagItem.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()
@@ -31,6 +30,8 @@ const { useResource } = useDatasetsSearch()
 const { query, isSuccess, resultEnhanced } = useResource(datasetId)
 
 const { suspense } = query
+
+const localePath = useLocalePath()
 
 const dataset = computed(() => {
   if (!resultEnhanced.value) {
@@ -118,6 +119,31 @@ watch(() => route.query.search,
   { immediate: true },
 )
 
+const toDatasetSearchRoute = computed(() => {
+  const currentBreadcrumbs = breadcrumbs.value
+  if (!currentBreadcrumbs) {
+    return { path: '/datasets' }
+  }
+  const breadcrumbWithSearch = currentBreadcrumbs[currentBreadcrumbs.length - 2]
+  if (breadcrumbWithSearch.route) {
+    return breadcrumbWithSearch.route
+  }
+  return { path: breadcrumbWithSearch.path, query: {} }
+})
+
+const toDatasetSearchHref = computed(() => localePath(toDatasetSearchRoute.value))
+
+function goToDatsetSearch() {
+  console.log('got to ', toDatasetSearchHref)
+  router.push(toDatasetSearchHref.value)
+}
+
+function setTagAndGotToDatasetSearch(tag: TagItem) {
+  console.log(tag)
+  console.log(toDatasetSearchHref.value)
+  console.log(toDatasetSearchRoute.value)
+}
+
 await suspense()
 </script>
 
@@ -129,19 +155,34 @@ await suspense()
       </ClientOnly>
     </header>
     <main id="main-content">
-      <Hero type="default">
-        <template #description>
-          <OdsDatasetMetaInfo :dataset="dataset" />
+      <section class="section section--default bg--secondary-50">
+        <div class="container">
+          <span class="dataset-label">{{ t('message.dataset_detail.dataset') }}</span>
+          <OdsDatasetDetailHeader :dataset="dataset" />
+        </div>
+      </section>
 
-          <MDC :value="dataset.description" />
-        </template>
-
+      <Hero
+        type="default"
+      >
         <template #title>
           {{ dataset.title }}
         </template>
-
+        <template #description>
+          <MDC :value="dataset.description" />
+          <div
+            v-if="dataset.keywords.length > 0"
+            class="keywords"
+          >
+            <OdsTagList
+              :tags="dataset.keywords"
+              @tag-clicked="setTagAndGotToDatasetSearch"
+            />
+          </div>
+        </template>
         <template #authors>
           <div
+            v-if="dataset.publisher && dataset.publisher.name"
             class="disc-images"
             aria-hidden="true"
           >
@@ -152,30 +193,25 @@ await suspense()
               >
             </div>
           </div>
-          <address class="authors__names">
+          <address
+            v-if="dataset.publisher && dataset.publisher.name"
+            class="authors__names"
+          >
             <a
+              v-if="dataset.publisher.resource"
               class="link author__name link--external"
               target="_blank"
               :href="dataset.publisher.resource"
             >{{ dataset.publisher.name }}</a>
+            <div v-else>
+              {{ dataset.publisher.name }}
+            </div>
           </address>
         </template>
       </Hero>
       <section class="section">
         <div class="container container--grid gap--responsive">
           <div class="container__main vertical-spacing">
-            <div class="container__mobile">
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.header.navigation.terms_of_use`) }}
-                </h2>
-                <OdsDetailTermsOfUse
-                  v-for="value in dataset.licenses"
-                  :key="value.id"
-                  :license="value"
-                />
-              </div>
-            </div>
             <h2 class="h2">
               {{ t('message.dataset_detail.distributions') }}
             </h2>
@@ -188,44 +224,13 @@ await suspense()
               :table-entries="dataset.propertyTable"
               type="block"
             />
-            <div v-if="dataset.getCategoriesForLanguage(locale).length > 0">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.categories') }}
-              </h2>
-              <div>
-                <OdsTagList :tags="dataset.getCategoriesForLanguage(locale)" />
-              </div>
-            </div>
-            <div v-if="dataset.keywords.length > 0">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.keywords') }}
-              </h2>
-              <div>
-                <OdsTagList :tags="dataset.keywords" />
-              </div>
-            </div>
-            <div v-if="dataset.catalog">
-              <h2 class="h2">
-                {{ t('message.dataset_detail.catalog') }}
-              </h2>
-              <OdsDatasetCatalogPanel :dataset="dataset" />
-            </div>
+            <OdsMetadataDownload :dataset="dataset" />
           </div>
           <div class="hidden container__aside md:block">
             <div
               id="aside-content"
               class="sticky sticky--top"
             >
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.header.navigation.terms_of_use`) }}
-                </h2>
-                <OdsDetailTermsOfUse
-                  v-for="value in dataset.licenses"
-                  :key="value.id"
-                  :license="value"
-                />
-              </div>
               <div class="box">
                 <h2 class="h5">
                   {{ t(`message.subscribe.header`) }}
@@ -267,12 +272,6 @@ await suspense()
                   >
                 </form>
               </div>
-              <div class="box">
-                <h2 class="h5">
-                  {{ t(`message.dataset_detail.metadata_download`) }}
-                </h2>
-                <OdsMetadataDownloadList :dataset="dataset" />
-              </div>
             </div>
           </div>
         </div>
@@ -294,7 +293,7 @@ await suspense()
             variant="outline"
             class="btn--back"
             size="sm"
-            @click="router.back()"
+            @click="goToDatsetSearch()"
           />
         </div>
       </section>
@@ -304,8 +303,8 @@ await suspense()
 
 <style lang="scss" scoped>
 #main-header {
-  // avoid layout shift from ssr to csr
-   @media (min-width: 1024px) {
+  /* avoid layout shift from ssr to csr */
+  @media (min-width: 1024px) {
     min-height: 65.5px;
   }
   @media (min-width: 1280px) {
@@ -324,5 +323,23 @@ await suspense()
 
 form.subscribe-form:not(:first-of-type) {
   margin-top: 1rem;
+}
+
+.dataset-label {
+  position: relative;
+  background-color: #e6f0fa;
+  color: #1976d2;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: 1px solid #b3d4fc;
+  margin-bottom: 48px;;
+}
+.keywords {
+  margin-top: 40px;
 }
 </style>

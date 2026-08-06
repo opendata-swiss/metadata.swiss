@@ -1,0 +1,29 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/i14y-dcat-immobilien-kt-lu> a dcat:Catalog ;
+    dcterms:created "2026-07-17T10:04:40.490112"^^xsd:dateTime ;
+    dcterms:description """Die Dienststelle Immobilien ist das Immobilien-Kompetenzzentrum des Kantons Luzern. Sie vertritt als Eigentümerin und Bauherrin die Interessen des Kantons Luzern und betreibt ein innovatives und nachhaltiges Immobilienmanagement.\r
+\r
+Die Dienststelle umfasst die Abteilungen Portfoliomanagement, Baumanagement, Bewirtschaftung sowie Zentrale Dienste.\r
+"""@de,
+        """The Department of Real Estate is the real estate center of excellence for the Canton of Lucerne. As the owner and project owner, it represents the interests of the Canton of Lucerne and practices innovative and sustainable real estate management.\r
+\r
+The office comprises the departments of Portfolio Management, Construction Management, Property Management, and Central Services."""@en,
+        """L'Office de l'immobilier est le centre de compétences en matière immobilière du canton de Lucerne. En tant que propriétaire et maître d'ouvrage, il défend les intérêts du canton de Lucerne et met en œuvre une gestion immobilière innovante et durable.\r
+\r
+L'Office comprend les départements Gestion de portefeuille, Direction des travaux, Exploitation et Services centraux."""@fr ;
+    dcterms:modified "2026-07-22T07:42:29.063159"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <https://immobilien.lu.ch/> ;
+            foaf:name "Dienststelle Immobilien"@de,
+                "Department of Real Estate"@en,
+                "Office de l'immobilier"@fr ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Dienststelle Immobilien"@de,
+        "Department of Real Estate"@en,
+        "Office de l'immobilier"@fr ;
+    dcterms:type "ckan"^^xsd:string .
+

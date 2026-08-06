@@ -64,6 +64,7 @@
       "published_on": "Published",
       "created_on": "Created",
       "modified_on": "Last updated ",
+      "publisher": "Publisher",
       "categories": "Categories",
       "download": "Download",
       "go_to_resource": "Go to resource",
@@ -75,7 +76,8 @@
       "metadata": "Metadata",
       "keywords": "Keywords",
       "to_dataset": "To dataset",
-      "to_search": "To search"
+      "to_search": "To search",
+      "format": "Format"
     },
     "subscribe": {
       "header": "Subscribe",
@@ -123,15 +125,15 @@
       },
       "search": {
         "dataset_references": "{count} dataset(s)",
-                "prompt": "Search showcases",
-                "sort_by": {
-                    "newest": "Recently updated",
-                    "oldest": "Oldest updated",
-                    "issued_desc": "Newest showcases",
-                    "issued_asc": "Oldest showcases",
-                    "title_asc": "A-Z",
-                    "title_desc": "Z-A"
-                },
+        "prompt": "Search showcases",
+        "sort_by": {
+          "newest": "Recently updated",
+          "oldest": "Oldest updated",
+          "issued_desc": "Newest showcases",
+          "issued_asc": "Oldest showcases",
+          "title_asc": "A-Z",
+          "title_desc": "Z-A"
+        },
         "submit_prompt": {
           "title": "Your showcase here?",
           "abstract": "Submit your own showcase to share your project with the community, advertise your datasets and inspire others.",

@@ -23,7 +23,7 @@
             "preProcessing": true,
             "accept": "application/rdf+xml",
             "inputFormat": "application/rdf+xml",
-            "org_name": "SciCat"
+            "org_name": "PSI Data Catalog"
           }
         }
       },
@@ -36,7 +36,7 @@
         },
         "body": {
           "config": {
-            "org_id": "scicat",
+            "org_id": "psi_data_catalog",
             "catalogue": "dcat-harvester-scicat",
             "preProcessing": true
           }

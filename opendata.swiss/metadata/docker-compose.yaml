@@ -5,7 +5,7 @@ x-db-credentials: &db-credentials                             # Use the default 
 
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:4.0.6
+    image: piveau/hub-repo:4.1.1
     restart: unless-stopped
     logging:
       options:
@@ -34,12 +34,13 @@ services:
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
       - PIVEAU_HUB_BASE_URI=https://opendata.swiss/
       - PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA=${PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA}
+      - PIVEAU_LOG_LEVEL=WARN
     volumes:
       - ./piveau_system_pipes:/usr/verticles/pipes
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.8
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.9
     restart: unless-stopped
     logging:
       options:
@@ -60,6 +61,7 @@ services:
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
       - PIVEAU_FEATURE_FLAGS=${PIVEAU_FEATURE_FLAGS}
       - PIVEAU_PROFILE=${PIVEAU_PROFILE}
+      - PIVEAU_LOG_LEVEL=WARN
     volumes:
       - ./piveau_profile:/piv-profile:ro
 
@@ -150,8 +152,8 @@ services:
       - JAVA_OPTS=-Xms200m -Xmx1g
       - PIVEAU_HUB_APIKEY=${PIVEAU_HUB_API_KEY}
       - OTEL_SDK_DISABLED=true
-      - PIVEAU_PIPE_LOG_LEVEL=trace
-      - PIVEAU_LOG_LEVEL=TRACE
+      - PIVEAU_PIPE_LOG_LEVEL=warn
+      - PIVEAU_LOG_LEVEL=WARN
       - OTEL_SDK_DISABLED=false
       - OTEL_SERVICE_NAME=piveau-consus-exporting-hub
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4317
@@ -180,7 +182,7 @@ services:
   ############
 
   piveau-metrics-validating-shacl:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-validating-shacl:4.4.0
+    image: piveau/metrics-validating-shacl:4.4.4
     restart: unless-stopped
     logging:
       options:
@@ -189,8 +191,8 @@ services:
       - 8181:8080
     environment:
       - JAVA_OPTS=-Xms1g -Xmx2g
-      - PIVEAU_LOG_LEVEL=trace
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=warn
+      - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   piveau-metrics-cache:
     image: registry.gitlab.com/piveau/metrics/piveau-metrics-cache:5.8.3
@@ -211,18 +213,18 @@ services:
       - JAVA_OPTS=-Xms1g -Xmx2g
 
   piveau-metrics-annotator:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.3
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-annotator:2.1.5
     restart: unless-stopped
     logging:
       options:
         max-size: "50m"
     environment:
       - JAVA_OPTS=-Xms1g -Xmx2g
-      - PIVEAU_LOG_LEVEL=trace
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=warn
+      - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   piveau-metrics-accessibility:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.7
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-accessibility:2.1.9
     restart: unless-stopped
     logging:
       options:
@@ -230,19 +232,19 @@ services:
     environment:
       - PIVEAU_ACCESSIBILITY_PERSISTENCE_CONFIG={"mongoDbClient":{"connection_string":"mongodb://mongodb:27017"},"collection":"datasets"}
       - JAVA_OPTS=-Xms1g -Xmx2g
-      - PIVEAU_LOG_LEVEL=trace
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=warn
+      - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   piveau-metrics-score:
-    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.2
+    image: registry.gitlab.com/piveau/metrics/piveau-metrics-score:3.2.5
     restart: unless-stopped
     logging:
       options:
         max-size: "50m"
     environment:
       - JAVA_OPTS=-Xms1g -Xmx2g
-      - PIVEAU_LOG_LEVEL=trace
-      - PIVEAU_PIPE_LOG_LEVEL=TRACE
+      - PIVEAU_LOG_LEVEL=warn
+      - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   qlever:
       image: ghcr.io/zazukoians/qlever-server:latest

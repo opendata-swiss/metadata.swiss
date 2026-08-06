@@ -199,12 +199,14 @@ public class MainVerticle extends AbstractVerticle {
 
     class ErrorHandler implements Consumer<String> {        
         private JsonObject config;
+        private JsonObject dataInfo;
         private List<String> errors = new ArrayList<>();
 
         // may need additional arguments for sending notifications (e.g. email client, API client, etc.)
-        public ErrorHandler(JsonObject config) {
+        public ErrorHandler(JsonObject config, JsonObject dataInfo) {
             super();
             this.config = config;
+            this.dataInfo = dataInfo;
         }
 
         @Override
@@ -226,8 +228,8 @@ public class MainVerticle extends AbstractVerticle {
             if (config.containsKey("org_id")){
                 sb.append("Organization: ").append(config.getString("org_id")).append("\t");
             }
-            if (config.containsKey("identifier")){
-                sb.append("Identifier: ").append(config.getString("identifier")).append("\t");
+            if (dataInfo.containsKey("identifier")){
+                sb.append("Identifier: ").append(dataInfo.getString("identifier")).append("\t");
             }
             for (String error : errors) {
                 sb.append("- ").append(error).append("\t");
@@ -277,10 +279,13 @@ public class MainVerticle extends AbstractVerticle {
         }
         Resource resource = dcatResources.iterator().next();
 
+        JsonObject dataInfo = pipeContext.getDataInfo();
+
         if(datasets.contains(resource)) {
             // if resource is a Dataset, we perform checks (and possibly make little changes to it)
             JsonObject config = pipeContext.getConfig();
-            ErrorHandler errorHandler = new ErrorHandler(config);
+            
+            ErrorHandler errorHandler = new ErrorHandler(config, dataInfo);
             checkIdentifier(model, resource, config.getString("org_id"), errorHandler);
             checkConformsTo(model, resource, errorHandler);
             checkLicense(model, resource, errorHandler);
@@ -289,11 +294,11 @@ public class MainVerticle extends AbstractVerticle {
             if (errorHandler.hasErrors()) {
                 errorHandler.notifyErrors();
             } else {
-                logger.info("dataset {}", pipeContext.getDataInfo());
-                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), pipeContext.getDataInfo()).forward();
+                logger.info("dataset {}", dataInfo);
+                pipeContext.setResult(Piveau.presentAs(model, Lang.NTRIPLES), Lang.NTRIPLES.getHeaderString(), dataInfo).forward();
             }
         } else {
-            logger.info("resource {}", pipeContext.getDataInfo());
+            logger.info("resource {}", dataInfo);
             // we propagate the resource as is, without any checks or modifications
             pipeContext.pass();
         }
