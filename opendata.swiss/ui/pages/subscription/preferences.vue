@@ -151,7 +151,7 @@ const loadCategories = (preferences.categories || []).map(async (category) => {
 })
 categories.value = (await Promise.all(loadCategories)).filter(Boolean)
 
-const datasetsLoaded = preferences.datasets.map(async (id) => {
+const datasetsLoaded = (preferences.datasets || []).map(async (id) => {
   const { query, resultEnhanced } = useResource(id)
   await query.suspense()
   return {
