@@ -30,6 +30,9 @@ import java.util.function.Consumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class MainVerticle extends AbstractVerticle {
 
     private static final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
@@ -220,23 +223,23 @@ public class MainVerticle extends AbstractVerticle {
 
         public void notifyErrors() {
             if (!hasErrors()) return;
-            
-            StringBuilder sb = new StringBuilder();
-            if(config.containsKey("catalogue")){
-                sb.append("Catalogue: ").append(config.getString("catalogue")).append("\t");
-            }
-            if (config.containsKey("org_id")){
-                sb.append("Organization: ").append(config.getString("org_id")).append("\t");
-            }
-            if (dataInfo.containsKey("identifier")){
-                sb.append("Identifier: ").append(dataInfo.getString("identifier")).append("\t");
-            }
-            for (String error : errors) {
-                sb.append("- ").append(error).append("\t");
-            }
-            String message = sb.toString();
 
-            logger.error(message);
+            for (String error : errors) {
+                ObjectNode logData = new ObjectMapper().createObjectNode();
+                if(config.containsKey("catalogue")){
+                    logData.put("catalogue", config.getString("catalogue"));
+                }
+                if (config.containsKey("org_id")){
+                    logData.put("organization", config.getString("org_id"));
+                }   
+                if (dataInfo.containsKey("identifier")){
+                    logData.put("identifier", dataInfo.getString("identifier"));
+                }
+                logData.put("error", error);
+
+                logger.error("Validation error: {}", logData);
+            }
+
             if (config.containsKey("mailto")) {
                 logger.trace("TODO: Notify data publisher at {}", config.getString("mailto"));
             }   
