@@ -1,136 +1,143 @@
 <template>
   <div
     v-if="props.dataset"
-    class="metadata-header"
+    class="panel"
   >
-    <!-- Column 1: Aktualisierung -->
-    <div class="metadata-col">
-      <div class="metadata-col-header">
-        <SvgIcon
-          icon="Clock"
-          class="col-icon"
-        />
-        <span class="col-title">{{ t('message.dataset_detail.details') }}</span>
-      </div>
-      <div class="col-content">
-        <div
-          v-if="props.dataset.modificationDate"
-          class="meta-item"
-        >
-          <span class="meta-label">{{ t('message.dataset_detail.modified_on') }}</span>
-          <OdsRelativeDateToggle :date="props.dataset.modificationDate" />
+    <!-- first row -->
+    <div
+      class="metadata-header"
+    >
+      <!-- Column 1: Aktualisierung -->
+      <div class="metadata-col">
+        <div class="metadata-col-header">
+          <SvgIcon
+            icon="Clock"
+            class="col-icon"
+          />
+          <span class="col-title">{{ t('message.dataset_detail.details') }}</span>
         </div>
-        <div
-          v-if="props.dataset.releaseDate"
-          class="meta-item"
-        >
-          <span class="meta-label">{{ t('message.dataset_detail.released') }}</span>
-          <OdsRelativeDateToggle :date="props.dataset.releaseDate" />
-        </div>
-        <div
-          v-if="props.dataset.frequency?.label"
-          class="meta-item"
-        >
-          <span class="meta-label">{{ t('message.dataset_detail.frequency') }}</span>
-          <span class="frequency-text">{{ props.dataset.frequency.label }}</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column 2: Nutzungsbedingungen -->
-    <div class="metadata-col">
-      <div class="metadata-col-header">
-        <SvgIcon
-          icon="Certificate"
-          class="col-icon"
-        />
-        <span class="col-title">{{ t('message.header.navigation.terms_of_use') }}</span>
-      </div>
-      <div class="col-content">
-        <div class="license-wrapper">
+        <div class="col-content">
           <div
-            v-for="license in props.dataset.licenses"
-            :key="license.id"
-            class="license-item"
+            v-if="props.dataset.modificationDate"
+            class="meta-item"
           >
-            <OdsTermsOfUseIcon
-              :license="license"
-              class="license-icon"
-            />
+            <span class="meta-label">{{ t('message.dataset_detail.modified_on') }}</span>
+            <OdsRelativeDateToggle :date="props.dataset.modificationDate" />
           </div>
-          <span
-            v-if="!props.dataset.licenses || props.dataset.licenses.length === 0"
-            class="meta-empty"
-          >-</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column 3: Organisation -->
-    <div class="metadata-col">
-      <div class="metadata-col-header">
-        <SvgIcon
-          icon="Building"
-          class="col-icon"
-        />
-        <span class="col-title">{{ t('message.dataset_detail.publisher') }}</span>
-      </div>
-      <div class="col-content">
-        <div class="publisher-wrapper">
-          <a
-            v-if="props.dataset.publisher?.resource"
-            :href="props.dataset.publisher.resource"
-            target="_blank"
-            class="publisher-link"
-          >
-            {{ props.dataset.publisher.name }}
-            <SvgIcon
-              icon="External"
-              class="external-icon"
-            />
-          </a>
-          <span
-            v-else-if="props.dataset.publisher?.name"
-            class="publisher-text"
-          >
-            {{ props.dataset.publisher.name }}
-          </span>
-          <span
-            v-else
-            class="meta-empty"
-          >-</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column 4: Kategorien -->
-    <div class="metadata-col">
-      <div class="metadata-col-header">
-        <SvgIcon
-          icon="Tag"
-          class="col-icon"
-        />
-        <span class="col-title">{{ t('message.dataset_detail.categories') }}</span>
-      </div>
-      <div class="col-content">
-        <div class="categories-wrapper">
           <div
-            v-if="props.dataset.getCategoriesForLanguage(locale).length > 0"
-            class="category-tags"
+            v-if="props.dataset.releaseDate"
+            class="meta-item"
           >
-            <OdsTagItem
-              v-for="category in props.dataset.getCategoriesForLanguage(locale)"
-              :key="category.id"
-              :id="category.id"
-              :label="category.label"
-              size="sm"
-              variant="default"
-            />
+            <span class="meta-label">{{ t('message.dataset_detail.released') }}</span>
+            <OdsRelativeDateToggle :date="props.dataset.releaseDate" />
           </div>
-          <span
-            v-else
-            class="meta-empty"
-          >-</span>
+          <div
+            v-if="props.dataset.frequency?.label"
+            class="meta-item"
+          >
+            <span class="meta-label">{{ t('message.dataset_detail.frequency') }}</span>
+            <span class="frequency-text">{{ props.dataset.frequency.label }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Nutzungsbedingungen -->
+      <div class="metadata-col">
+        <div class="metadata-col-header">
+          <SvgIcon
+            icon="Certificate"
+            class="col-icon"
+          />
+          <span class="col-title">{{ t('message.header.navigation.terms_of_use') }}</span>
+        </div>
+        <div class="col-content">
+          <div class="license-wrapper">
+            <div
+              v-for="license in props.dataset.licenses"
+              :key="license.id"
+              class="license-item"
+            >
+              <OdsTermsOfUseIcon
+                :license="license"
+                class="license-icon"
+              />
+            </div>
+            <span
+              v-if="!props.dataset.licenses || props.dataset.licenses.length === 0"
+              class="meta-empty"
+            >-</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3: Organisation -->
+      <div class="metadata-col">
+        <div class="metadata-col-header">
+          <SvgIcon
+            icon="Building"
+            class="col-icon"
+          />
+          <span class="col-title">{{ t('message.dataset_detail.publisher') }}</span>
+        </div>
+        <div class="col-content">
+          <div class="publisher-wrapper">
+            <a
+              v-if="props.dataset.publisher?.resource"
+              :href="props.dataset.publisher.resource"
+              target="_blank"
+              class="publisher-link"
+            >
+              {{ props.dataset.publisher.name }}
+              <SvgIcon
+                icon="External"
+                class="external-icon"
+              />
+            </a>
+            <span
+              v-else-if="props.dataset.publisher?.name"
+              class="publisher-text"
+            >
+              {{ props.dataset.publisher.name }}
+            </span>
+            <span
+              v-else
+              class="meta-empty"
+            >-</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- second row -->
+    <div>
+      <!-- Column 4: Kategorien -->
+      <div class="metadata-col  metadata-col-full">
+        <div class="metadata-col-header">
+          <SvgIcon
+            icon="Tag"
+            class="col-icon"
+          />
+          <span class="col-title">{{ t('message.dataset_detail.categories') }}</span>
+        </div>
+        <div class="col-content">
+          <div class="categories-wrapper">
+            <div
+              v-if="props.dataset.getCategoriesForLanguage(locale).length > 0"
+              class="category-tags"
+            >
+              <OdsTagItem
+                v-for="category in props.dataset.getCategoriesForLanguage(locale)"
+                :id="category.id"
+                :key="category.id"
+                :label="category.label"
+                size="sm"
+                variant="default"
+              />
+            </div>
+            <span
+              v-else
+              class="meta-empty"
+            >-</span>
+          </div>
         </div>
       </div>
     </div>
@@ -156,17 +163,16 @@ const props = defineProps<Props>()
 </script>
 
 <style lang="scss" scoped>
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 .metadata-header {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
   width: 100%;
-  //padding: 24px;
-  // background-color: var(--color-secondary-10, rgba(0, 150, 136, 0.03));
- // border: 1px solid var(--color-secondary-100, #dfe4e9);
- // border-radius: 12px;
- // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
- // margin-bottom: 24px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -179,6 +185,10 @@ const props = defineProps<Props>()
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.metadata-col-full {
+  grid-column: 1 / -1;
 }
 
 .metadata-col-header {
