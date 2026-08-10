@@ -254,14 +254,34 @@ collections:
                 widget: piveau-organization
                 piveau:
                   search: https://piveau-hub-search.test.ods.zazukoians.org/
-              - label: Role
+              - &role_field
+                label: Role
                 name: role
                 widget: select
+                hint: Extracted from http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
                 options:
                   - label: Author
                     value: author
-                  - label: Collaborator
-                    value: collaborator
+                  - label: Custodian
+                    value: custodian
+                  - label: Distributor
+                    value: distributor
+                  - label: Originator
+                    value: originator
+                  - label: Owner
+                    value: owner
+                  - label: Point of contact
+                    value: pointOfContact
+                  - label: Principal investigator
+                    value: principalInvestigator
+                  - label: Processor
+                    value: processor
+                  - label: Publisher
+                    value: publisher
+                  - label: Resource provider
+                    value: resourceProvider
+                  - label: User
+                    value: user
           - label: External organization
             name: organization-external
             widget: object
@@ -274,14 +294,7 @@ collections:
                 label: Url (separate multiple entries with a comma)
                 widget: list
                 required: false
-              - label: Role
-                name: role
-                widget: select
-                options:
-                  - label: Author
-                    value: author
-                  - label: Collaborator
-                    value: collaborator
+              - *role_field
           - label: Person
             name: person
             widget: object
@@ -290,14 +303,7 @@ collections:
               - label: Name
                 name: name
                 widget: string
-              - label: Role
-                name: role
-                widget: select
-                options:
-                  - label: Author
-                    value: author
-                  - label: Collaborator
-                    value: collaborator
+              - *role_field
       - label: Category
         name: categories
         widget: piveau-vocabulary

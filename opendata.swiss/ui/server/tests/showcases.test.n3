@@ -61,7 +61,7 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> prov:qualifiedAttribution ?qa .
-        ?qa dcat:hadRole <urn:example:isotc211/CI_RoleCode/author> ;
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author> ;
             prov:agent <https://opendata.swiss/id/organization/ch-bafu> .
       } .
     }!tuner:assertThat .
@@ -78,9 +78,9 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> prov:qualifiedAttribution ?qa .
-        ?qa dcat:hadRole <urn:example:isotc211/CI_RoleCode/collaborator> ;
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider> ;
             prov:agent ?agent .
-        ?agent a prov:Organization ;
+        ?agent a foaf:Organization ;
                foaf:name "Foobar" ;
                foaf:homepage <http://example.com/foobar> .
       } .
@@ -98,9 +98,9 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> prov:qualifiedAttribution ?qa .
-        ?qa dcat:hadRole <urn:example:isotc211/CI_RoleCode/author> ;
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author> ;
             prov:agent ?agent .
-         ?agent a prov:Person ;
+         ?agent a foaf:Person ;
                 foaf:name "John Doe" .
       } .
     }!tuner:assertThat .

@@ -6,6 +6,7 @@ import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
 import { queryCollection } from '@nuxt/content/server'
+import $rdf from '@zazuko/env-node'
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
 
@@ -27,7 +28,7 @@ interface AggregateShowcase {
   'qualifiedAttribution': Array<{
     '@type': 'prov:Attribution'
     'prov:agent': string | {
-      '@type': 'prov:Person' | 'prov:Organization'
+      '@type': 'foaf:Person' | 'foaf:Organization'
       'foaf:name': string
       'foaf:homepage'?: string[]
     }
@@ -202,10 +203,12 @@ function getShowcaseDates(rootDir: string, stem: string) {
   }
 }
 
+const ResponsiblePartyRole = $rdf.namespace('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/')
+
 function toAttribution(relationship: Required<ShowcasesCollectionItem>['relationships'][number]): AggregateShowcase['qualifiedAttribution'][number] | undefined {
   const attribution: Omit<AggregateShowcase['qualifiedAttribution'][number], 'prov:agent'> = {
     '@type': 'prov:Attribution',
-    'dcat:hadRole': `urn:example:isotc211/CI_RoleCode/${relationship.role}`,
+    'dcat:hadRole': ResponsiblePartyRole(relationship.role).value,
   }
 
   switch (relationship.type) {
@@ -218,7 +221,7 @@ function toAttribution(relationship: Required<ShowcasesCollectionItem>['relation
       return {
         ...attribution,
         'prov:agent': {
-          '@type': 'prov:Person',
+          '@type': 'foaf:Person',
           'foaf:name': relationship.name,
         },
       }
@@ -226,7 +229,7 @@ function toAttribution(relationship: Required<ShowcasesCollectionItem>['relation
       return {
         ...attribution,
         'prov:agent': {
-          '@type': 'prov:Organization',
+          '@type': 'foaf:Organization',
           'foaf:name': relationship.name,
           'foaf:homepage': relationship.url || [],
         },
