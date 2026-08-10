@@ -204,6 +204,7 @@ function getShowcaseDates(rootDir: string, stem: string) {
 }
 
 const ResponsiblePartyRole = $rdf.namespace('http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/')
+const Organization = $rdf.namespace('https://opendata.swiss/id/organization/')
 
 function toAttribution(relationship: Required<ShowcasesCollectionItem>['relationships'][number]): AggregateShowcase['qualifiedAttribution'][number] | undefined {
   const attribution: Omit<AggregateShowcase['qualifiedAttribution'][number], 'prov:agent'> = {
@@ -215,7 +216,7 @@ function toAttribution(relationship: Required<ShowcasesCollectionItem>['relation
     case 'organization':
       return {
         ...attribution,
-        'prov:agent': `https://opendata.swiss/id/organization/${relationship.organization[0]!.id}`,
+        'prov:agent': Organization(relationship.organization[0]!.id).value,
       }
     case 'person':
       return {
