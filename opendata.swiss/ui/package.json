@@ -98,7 +98,7 @@
     "vue-tsc": "^3.3.7"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,ysx,vue}": [
+    "*.{js,jsx,ts,tsx,vue}": [
       "eslint --fix --quiet"
     ]
   },
