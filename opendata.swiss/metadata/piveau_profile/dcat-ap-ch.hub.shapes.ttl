@@ -65,7 +65,7 @@ dcatap:CatalogRecord_Shape
           sh:minCount 1 ;
           sh:path dct:modified ;
           sh:severity sh:Violation ;
-          sh:shape dcatap:DateOrDateTimeDataType_Shape ;
+          sh:node dcatap:DateOrDateTimeDataType_Shape ;
           pv:mappingClass "DateTime" ;
           pv:mappingName "modified"
       ], [
@@ -482,7 +482,7 @@ dcatap:Dataset_Shape
           sh:maxCount 1 ;
           sh:path dct:issued ;
           sh:severity sh:Violation ;
-          sh:shape dcatap:DateOrDateTimeDataType_Shape ;
+          sh:node dcatap:DateOrDateTimeDataType_Shape ;
           pv:mappingClass "DateTime" ;
           pv:mappingName "issued"
       ], [
@@ -494,7 +494,7 @@ dcatap:Dataset_Shape
           sh:maxCount 1 ;
           sh:path dct:modified ;
           sh:severity sh:Violation ;
-          sh:shape dcatap:DateOrDateTimeDataType_Shape ;
+          sh:node dcatap:DateOrDateTimeDataType_Shape ;
           pv:mappingClass "DateTime" ;
           pv:mappingName "modified"
     #   ], [
@@ -961,7 +961,7 @@ dcatap:PeriodOfTime_Shape
           sh:maxCount 1 ;
           sh:path dcat:endDate ;
           sh:severity sh:Violation ;
-          sh:shape dcatap:DateOrDateTimeDataType_Shape
+          sh:node dcatap:DateOrDateTimeDataType_Shape
       ], [
           sh:maxCount 1 ;
           sh:path time:hasBeginning ;
@@ -974,7 +974,7 @@ dcatap:PeriodOfTime_Shape
           sh:maxCount 1 ;
           sh:path dcat:startDate ;
           sh:severity sh:Violation ;
-          sh:shape dcatap:DateOrDateTimeDataType_Shape
+          sh:node dcatap:DateOrDateTimeDataType_Shape
       ] ;
     sh:targetClass dct:PeriodOfTime .
 
