@@ -35,8 +35,6 @@ Das UI gliedert sich in zwei Teile: das **Frontend**, das die Benutzeroberfläch
 | piveau `hub` / `search` | ausgehend | HTTPS, REST (JSON) | Datensatzsuche, Facetten und Detailansichten; Ermittlung neu publizierter Datensätze für die Benachrichtigungen; Ermittlung der Kontaktstelle eines Datensatzes |
 | piveau `hub` / `repo` | ausgehend | HTTPS, RDF (Custom Resources) | Lesen und Zurückschreiben von Showcase-Ressourcen, insbesondere der aggregierten Bewertungen; authentisiert über ein Keycloak-Servicekonto |
 | piveau (Harvesting) | eingehend | HTTPS, JSON-LD | piveau ruft die Showcases API ab — nach Plan sowie nach Änderungen an den Inhalten ausgelöst — und übernimmt die Showcases in den Katalog |
-| GitHub – CMS-Content-Repository | aus- und eingehend | Git, GitHub API | Bezug der redaktionellen Inhalte beim Build; Ablage von Redaktions- und Einreichungsänderungen als Pull Request |
-| GitHub App | ausgehend | GitHub API | Technische Identität des UI gegenüber GitHub: Commits und Pull Requests für Showcase-Einreichungen sowie Auslösen des Harvesting-Workflows |
 | Keycloak / eIAM | ausgehend | OIDC | Anmeldung der Benutzenden; Bezug von Servicekonto-Tokens für schreibende Zugriffe auf piveau |
 | listmonk | ausgehend | HTTPS, REST | Verwaltung der Abonnentinnen und Abonnenten sowie Versand der Benachrichtigungs- und Transaktions-E-Mails |
 | Hyvor | aus- und eingehend | Widget (Browser), Webhook (HMAC-signiert) | Kommentieren und Bewerten von Datensätzen, Showcases, Handbuch und Blog; Rückmeldung der Ereignisse an die Webhooks API |
