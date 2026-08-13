@@ -282,7 +282,7 @@ CMS.registerEditorComponent({
     return `<video controls width="100%" src="${data.video_file}"></video>`
   },
   isValid: function (data) {
-    return data.video_file && data.video_file.match(/\.mov|\.mp4|\.webm$/)
+    return data.video_file && data.video_file.match(/\.(mov|mp4|webm)$/i)
   },
 })
 
