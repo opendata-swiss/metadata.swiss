@@ -11,6 +11,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <surefire.additional.argLine></surefire.additional.argLine>
         <junit.version>5.10.2</junit.version>
         <testcontainers.version>1.19.7</testcontainers.version>
         <rest-assured.version>5.4.0</rest-assured.version>
@@ -149,6 +150,7 @@
                 <version>3.2.5</version>
                 <configuration>
                     <argLine>
+                        ${surefire.additional.argLine}
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.21/aspectjweaver-1.9.21.jar"
                         --add-opens java.base/java.util=ALL-UNNAMED
                         --add-opens java.base/java.lang.reflect=ALL-UNNAMED
@@ -193,6 +195,12 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>docker-api-compat</id>
+            <properties>
+                <surefire.additional.argLine>-Dapi.version=1.41</surefire.additional.argLine>
+            </properties>
         </profile>
     </profiles>
 
