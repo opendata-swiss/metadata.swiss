@@ -6,7 +6,7 @@
 
 <https://opendata.swiss/vocabulary/showcase-types>
     a owl:Ontology, skos:ConceptScheme ;
-    skos:prefLabel 
+    skos:prefLabel
         "Showcase Types"@en,
         "Types de vitrine"@fr,
         "Showcase-Typen"@de,
@@ -15,35 +15,44 @@
 <application>
     a skos:Concept ;
     skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
-    skos:prefLabel 
+    skos:prefLabel
         "Application"@en ,
         "Application"@fr ,
-        "Anwendung"@de ,
+        "Applikation"@de ,
         "Applicazione"@it .
 
 <data_visualization>
     a skos:Concept ;
     skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
-    skos:prefLabel 
+    skos:prefLabel
         "Data Visualization"@en ,
         "Visualisation des données"@fr ,
-        "Datenvisualisierung"@de ,
+        "Daten-Visualisierung"@de ,
         "Visualizzazione dei dati"@it .
 
 <event>
     a skos:Concept ;
     skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
-    skos:prefLabel 
+    skos:prefLabel
         "Event"@en ,
         "Événement"@fr ,
         "Veranstaltung"@de ,
         "Evento"@it .
 
-<blog_article>
+<blog_media>
     a skos:Concept ;
     skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
-    skos:prefLabel 
-        "Blog/Article"@en ,
-        "Blog/Article"@fr ,
-        "Blog/Artikel"@de ,
-        "Blog/Articolo"@it .
+    skos:prefLabel
+        "Blog and media"@en ,
+        "Blog et média"@fr ,
+        "Blog und Medienartikel"@de ,
+        "Blog e media"@it .
+
+<article>
+    a skos:Concept ;
+    skos:inScheme <https://opendata.swiss/vocabulary/showcase-types> ;
+    skos:prefLabel
+        "Scientific article"@en ,
+        "Article scientifique"@fr ,
+        "Wissenschaftliche Arbeit"@de ,
+        "Articolo scientifico"@it .
