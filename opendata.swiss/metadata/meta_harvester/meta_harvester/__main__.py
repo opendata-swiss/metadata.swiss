@@ -176,7 +176,7 @@ def generate_pipe(
     data["header"]["name"] = name
     data["header"]["title"] = title
 
-    data["body"]["segments"][0]["body"]["config"]["address"] = http_client
+    data["body"]["segments"][0]["body"]["config"]["address"] = http_client.strip('?')
     data["body"]["segments"][0]["body"]["config"]["catalogue"] = catalogue
     data["body"]["segments"][0]["body"]["config"]["org_name"] = org_name
 

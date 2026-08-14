@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-dige/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-dige/ger/csw",
             "catalogue": "kt-lu-dige",
             "preProcessing": true,
             "org_name": "Department of Health and Sports"
