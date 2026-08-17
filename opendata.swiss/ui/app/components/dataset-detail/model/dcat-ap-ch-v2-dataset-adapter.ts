@@ -79,7 +79,14 @@ export class DcatApChV2DatasetAdapter {
    */
   getCategoriesForLanguage(lang: AppLanguage): TagItem[] {
     const categories = this.#dataset?.getCategories ?? []
-    const tagItems = categories.map((cat) => {
+    const tagItems = categories.flatMap((cat) => {
+      const categoryLabes = cat.label
+      if (!categoryLabes) {
+        // some datasets are using unknown vacabularies
+        // warn and drop them
+        console.warn(`No labels for category\ndataset title: ${this.#dataset.getTitle}\ndataset: ${this.#dataset.getId}\nid: ${cat.id}\nresource: <${cat.resource}>\nlabels: ${cat.label}`)
+        return []
+      }
       let preferredLabel = cat.label[lang]
       if (!preferredLabel) {
         // Try other APP_LANGUAGES
@@ -98,7 +105,7 @@ export class DcatApChV2DatasetAdapter {
         id: cat.id,
         label: preferredLabel,
       } as TagItem
-      return tagItem
+      return [tagItem]
     })
 
     return tagItems
