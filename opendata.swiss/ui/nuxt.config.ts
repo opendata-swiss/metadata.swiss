@@ -5,6 +5,7 @@ const __dirname = dirname(new URL(import.meta.url).pathname)
 declare module 'nitropack/types' {
   interface NitroRouteConfig {
     basicAuth?: string[]
+    anonymous?: boolean
   }
 }
 
@@ -133,10 +134,10 @@ export default defineNuxtConfig({
     ],
   },
   routeRules: {
-    '/api/showcases': { basicAuth: ['POST'] },
+    '/api/showcases': { anonymous: true, basicAuth: ['POST'] },
     '/api/subscribe/*': { basicAuth: ['POST'] },
     '/api/subscription/preferences': { basicAuth: ['PUT', 'GET'] },
-    '*/showcases/submit': { ssr: false },
+    '*/showcases/submit': { anonymous: true, ssr: false },
   },
   compatibilityDate: '2025-07-15',
   nitro: {

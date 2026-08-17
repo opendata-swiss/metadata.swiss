@@ -18,6 +18,7 @@ const users: Record<string, { password: string, email: string }> = {
 declare module 'nitropack/types' {
   interface NitroRouteRules {
     basicAuth?: string[]
+    anonymous?: boolean
   }
 }
 
@@ -25,7 +26,7 @@ export default defineEventHandler(async (event) => {
   const { apiTunerTests } = useRuntimeConfig()
 
   const routeRules = getRouteRules(event)
-  if (!routeRules.basicAuth?.includes(event.method)) {
+  if (routeRules.anonymous || !routeRules.basicAuth?.includes(event.method)) {
     return
   }
 
