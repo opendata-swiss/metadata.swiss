@@ -36,7 +36,7 @@
             class="meta-item"
           >
             <span class="meta-label">{{ t('message.dataset_detail.frequency') }}</span>
-            <span class="frequency-text">{{ props.dataset.frequency.label }}</span>
+            <span class="frequency-text">{{ props.dataset.frequencyForLanguage(locale) }}</span>
           </div>
         </div>
       </div>

@@ -6,6 +6,8 @@ import type { Catalog } from '~/piveau/get-ods-catalog-info'
 import type { TagItem } from '../../OdsTagItem.vue'
 import type { AppLanguage } from '~/constants/langages'
 import { APP_LANGUAGES } from '~/constants/langages'
+import type { } from '@piveau/sdk-core'
+import type { an } from 'vue-router/dist/index-BQLwgiyK.js'
 
 export class DcatApChV2DatasetAdapter {
   #dataset: Dataset
@@ -87,20 +89,11 @@ export class DcatApChV2DatasetAdapter {
         console.warn(`No labels for category\ndataset title: ${this.#dataset.getTitle}\ndataset: ${this.#dataset.getId}\nid: ${cat.id}\nresource: <${cat.resource}>\nlabels: ${cat.label}`)
         return []
       }
-      let preferredLabel = cat.label[lang]
+      const preferredLabel = this.getLabelByLangagePrecedence(lang, cat)
       if (!preferredLabel) {
-        // Try other APP_LANGUAGES
-        for (const fallbackLang of APP_LANGUAGES) {
-          if (cat.label[fallbackLang]) {
-            preferredLabel = cat.label[fallbackLang]
-            break
-          }
-        }
+        return []
       }
-      // If still undefined, take any available label
-      if (!preferredLabel) {
-        preferredLabel = Object.values(cat.label)[0] ?? ''
-      }
+
       const tagItem = {
         id: cat.id,
         label: preferredLabel,
@@ -285,6 +278,17 @@ export class DcatApChV2DatasetAdapter {
     return this.#dataset.getOdsAccrualPeriodicity
   }
 
+  frequencyForLanguage(lang: string) {
+    const frequencyResource = this.frequency
+    if (!frequencyResource) {
+      return undefined
+    }
+    if (!frequencyResource.label) {
+      return undefined
+    }
+    return this.getLabelByLangagePrecedence(lang, frequencyResource as unknown as any)
+  }
+
   get propertyTable() {
     const rootNode = this.#dataset.getPropertyTable
 
@@ -307,5 +311,37 @@ export class DcatApChV2DatasetAdapter {
       newTableEntry.addPiveauPropertyTableEntry(node.data || [])
     }
     return newTableEntries.sort((a, b) => a.label.localeCompare(b.label))
+  }
+
+  /**
+   * Get the label with langage precedence.
+   * @param lang the langage
+   * @param resource  the available labels
+   * @returns a string of the best label candidate available
+   */
+  private getLabelByLangagePrecedence(
+    lang: string,
+    resource: { label?: Record<string, string | undefined> | undefined },
+  ): string {
+    const labels = resource.label
+    if (!labels) {
+      return ''
+    }
+
+    let preferredLabel = labels[lang]
+    if (!preferredLabel) {
+      for (const fallbackLang of APP_LANGUAGES) {
+        if (labels[fallbackLang]) {
+          preferredLabel = labels[fallbackLang]
+          break
+        }
+      }
+    }
+
+    if (!preferredLabel) {
+      preferredLabel = Object.values(labels)[0] ?? ''
+    }
+
+    return preferredLabel
   }
 }
