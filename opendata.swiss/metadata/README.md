@@ -34,7 +34,6 @@ Then, you will need to create a `.env` file, based on the `.env.example` file, a
 > chown -R 1000:1000 ./volumes/elasticsearch-data
 > chmod -R 755 ./volumes/elasticsearch-data
 > chown -R 65534:0 volumes/qlever-data
-> touch volumes/qlever-data/empty.nt
 > ```
 
 Finally, you can start the stack with:

@@ -23,7 +23,7 @@ services:
       - PIVEAU_HUB_SHELL_CONFIG={"http":{},"telnet":{}}
       # - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://graphdb:7200/repositories", "queryEndpoint":"/piveau", "queryAuthEndpoint":"/piveau/statements", "graphEndpoint":"/piveau/rdf-graphs/service", "graphAuthEndpoint":"/piveau/rdf-graphs/service"}
       - PIVEAU_TRIPLESTORE_CONFIG={"address":"http://mitmproxy:8888", "queryEndpoint":"/", "queryAuthEndpoint":"/", "graphEndpoint":"/", "graphAuthEndpoint":"/"}
-      - PIVEAU_HUB_VALIDATOR={"enabled":false,"metricsPipeName":"metrics","history":false}
+      - PIVEAU_HUB_VALIDATOR={"enabled":true,"metricsPipeName":"metrics","history":false}
       # - PIVEAU_DEFAULT_PULSE=2000
       - PIVEAU_HUB_SEARCH_SERVICE=${PIVEAU_HUB_SEARCH_SERVICE}
       - JAVA_OPTS=-Xms1g -Xmx2g
@@ -247,14 +247,12 @@ services:
       - PIVEAU_PIPE_LOG_LEVEL=WARN
 
   qlever:
-      image: ghcr.io/zazukoians/qlever-server:latest
+      image: ghcr.io/zazukoians/qlever-server:v0.10.0
       container_name: qlever
       user: "65534:0"
       stop_grace_period: 0s
       ports:
         - "7001:7001"
-      environment:
-        - FORCE_INDEXING=true
       env_file:
         - qlever-empty.env
       volumes:
