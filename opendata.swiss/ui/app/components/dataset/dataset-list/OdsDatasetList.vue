@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import OdsDatasetCardListItem from './OdsDatasetCardListItem.vue'
-import OdsDatasetListItem from './OdsDatasetListItem.vue'
+import OdsDatasetCardListItem from './card/OdsDatasetCardListItem.vue'
+import OdsDatasetListItem from './list/OdsDatasetListItem.vue'
 import type { LocationQueryRaw } from '#vue-router'
-import type { DcatApChV2DatasetAdapter } from '../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter'
+import type { DcatApChV2DatasetAdapter } from '../../dataset-detail/model/dcat-ap-ch-v2-dataset-adapter.js'
 import { waitUntil } from 'async-wait-until'
 
 declare global {

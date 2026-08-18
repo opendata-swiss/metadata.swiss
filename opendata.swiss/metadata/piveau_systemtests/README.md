@@ -37,6 +37,12 @@ There are three execution modes:
 mvn test
 ```
 
+If Docker API negotiation fails with a message like "client version 1.32 is too old", run with the compatibility profile:
+
+```
+mvn test -Pdocker-api-compat
+```
+
 ---
 
 ### Run a focused test and its dependencies (useful for reproducing failed tests)

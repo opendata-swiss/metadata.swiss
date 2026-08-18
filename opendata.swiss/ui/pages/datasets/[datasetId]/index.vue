@@ -20,6 +20,7 @@ import Hero from '../../../app/components/OdsHero.vue'
 import { useRuntimeConfig, useSeoMeta } from 'nuxt/app'
 import { getDatasetBreadcrumbFromSessionStorage, storeDatasetBreadcrumbInSessionStorage } from './breadcrumb-session-stoage'
 import type { TagItem } from '../../../app/components/OdsTagItem.vue'
+import OdsItemKind from '../../../app/components/dataset-detail/OdsItemKind.vue'
 
 const { locale, t } = useI18n()
 const route = useRoute()
@@ -157,7 +158,28 @@ await suspense()
     <main id="main-content">
       <section class="section section--default bg--secondary-50">
         <div class="container">
-          <span class="dataset-label">{{ t('message.dataset_detail.dataset') }}</span>
+          <div class="first-header">
+            <OdsItemKind :kind="t('message.dataset_detail.dataset')" />
+            <form
+              method="post"
+              action="/api/subscribe/dataset"
+              style="display: inline-block;"
+              class="subscribe-form"
+            >
+              <input
+                type="hidden"
+                name="dataset"
+                :value="dataset.id"
+              >
+              <OdsButton
+                type="submit"
+                class="btn"
+                :title="t(`message.subscribe.header`)"
+                icon="Plus"
+                variant="outline-negative"
+              />
+            </form>
+          </div>
           <OdsDatasetDetailHeader :dataset="dataset" />
         </div>
       </section>
@@ -325,21 +347,22 @@ form.subscribe-form:not(:first-of-type) {
   margin-top: 1rem;
 }
 
-.dataset-label {
-  position: relative;
-  background-color: #e6f0fa;
-  color: #1976d2;
-  padding: 2px 10px;
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: middle;
-  border: 1px solid #b3d4fc;
-  margin-bottom: 48px;;
-}
 .keywords {
   margin-top: 40px;
+}
+
+.first-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 32px;
+
+  @media (min-width: 600px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
 }
 </style>

@@ -134,6 +134,8 @@ spec:
                 configMapKeyRef:
                   name: listmonk-config
                   key: template_ids_en
+            - name: NUXT_HYVOR_PUBLISHER_NOTIFICATION_TEMPLATE_ID
+              value: "9"
             - name: NUXT_LISTMONK_PREFERENCES_HMAC_KEY
               valueFrom:
                 secretKeyRef:
@@ -141,6 +143,29 @@ spec:
                   key: preferences_hmac_key
           resources:
             limits:
-              memory: 2Gi
+              memory: 4Gi
             requests:
-              memory: 1Gi
+              memory: 2Gi
+          livenessProbe:
+            httpGet:
+              path: /api/healthz
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/healthz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /api/healthz
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30

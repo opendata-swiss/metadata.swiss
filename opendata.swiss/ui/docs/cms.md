@@ -31,7 +31,7 @@ Pages are the static content of the website: home page, "about" pages, etc. They
 
 ### Blog
 
-TBD
+[Read more](cms/blog.md)
 
 ### Handbook
 
