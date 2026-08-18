@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-rawi/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-rawi/ger/csw",
             "catalogue": "kt-lu-rawi",
             "preProcessing": true,
             "org_name": "Department of Spatial Planning and Economy"

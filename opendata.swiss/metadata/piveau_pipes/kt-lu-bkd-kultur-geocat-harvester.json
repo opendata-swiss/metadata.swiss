@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-dku/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-dku/ger/csw",
             "catalogue": "kt-lu-bkd-kultur",
             "preProcessing": true,
             "org_name": "Department of Culture"

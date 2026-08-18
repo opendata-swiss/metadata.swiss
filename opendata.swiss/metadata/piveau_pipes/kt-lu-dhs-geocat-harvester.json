@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-dhs/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-dhs/ger/csw",
             "catalogue": "kt-lu-dhs",
             "preProcessing": true,
             "org_name": "Department of Commercial Register and State Archives"
