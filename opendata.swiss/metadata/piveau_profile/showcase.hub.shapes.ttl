@@ -4,7 +4,6 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix schema: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix pv: <https://piveau.eu/ns/voc#> .
 @prefix ex: <https://example.org/> .
 
@@ -127,14 +126,6 @@ ex:Showcase_Shape a sh:NodeShape ;
           sh:severity sh:Violation ;
           pv:mappingClass "Keywords" ;
           pv:mappingName "keywords"
-      ], [
-          sh:path schema:ratingValue ;
-          sh:nodeKind sh:Literal ;
-          sh:datatype xsd:decimal ;
-          sh:minCount 0 ;
-          sh:maxCount 1 ;
-          pv:mappingClass "Numeric" ;
-          pv:mappingName "rating"
       ]
       .
 
