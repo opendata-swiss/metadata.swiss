@@ -618,7 +618,10 @@ dcatap:Dataset_Shape
                       ],  [
                           pv:mappingClass "StandardText" ;
                           pv:mappingName "publisher_id"
-                      ] , [
+                      ], [
+                          pv:mappingClass "StandardText" ;
+                          pv:mappingName "publisher_ancestors"
+                      ], [
                           sh:path  org:classification ;
                           pv:mappingClass "Theme" ;
                           pv:mappingName "classification"
