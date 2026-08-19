@@ -32,9 +32,9 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
   } ;
 .
 
-<#categories>
+<#themes>
   a earl:TestCase ;
-  rdfs:label "Categories are resources" ;
+  rdfs:label "Themes are resources" ;
   tuner:formula {
     (</api/showcases> ?res) resource:getIn [] .
 

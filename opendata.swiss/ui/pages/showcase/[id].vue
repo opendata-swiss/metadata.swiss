@@ -22,12 +22,12 @@ const { data: showcase } = await useAsyncData(route.path, async () => {
   const germanTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
     .where('active', '=', true)
-    .select('submittedBy')
+    .select('contactDetails')
     .first()
 
   return {
     ...currentTranslation,
-    submittedBy: germanTranslation.submittedBy,
+    contactDetails: germanTranslation.contactDetails,
   }
 })
 
@@ -142,12 +142,12 @@ useSeoMeta({
           />
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.submittedBy"
+          v-if="showcase.contactDetails"
           :title="t('message.showcase.submitted_by')"
         >
-          <p>{{ showcase.submittedBy.name }}</p>
+          <p>{{ showcase.contactDetails.name }}</p>
           <a
-            v-for="link in showcase.submittedBy.url"
+            v-for="link in showcase.contactDetails.url"
             :key="link"
             class="link--external"
             target="_blank"

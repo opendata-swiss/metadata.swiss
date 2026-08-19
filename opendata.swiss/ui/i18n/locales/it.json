@@ -142,33 +142,104 @@
         }
       },
       "submission_form": {
-        "group_italian": "Italiano",
-        "group_french": "Francese",
-        "group_german": "Tedesco",
-        "group_english": "Inglese",
-        "group_general": "Generale",
+        "title": "Invia il tuo showcase",
+        "paragraph": {
+          "top": "Siamo lieti che tu voglia condividere il tuo progetto Open Data. Compila il modulo per creare un showcase. I campi contrassegnati da un asterisco (*) sono obbligatori. Esamineremo quindi la tua richiesta e ti contatteremo al più presto.",
+          "more": "Per ottimizzare la comunicazione relativa al tuo showcase e rafforzarne la visibilità sul portale e sui social network, ti proponiamo di rispondere ad alcune domande aggiuntive. Le tue risposte ci consentiranno di redigere il testo descrittivo (riquadro rosso qui a fianco).\n\nTutte le domande sono facoltative: rispondi solo a quelle che ritieni piùpertinenti, al resto pensiamo noi!"
+        },
+        "top_section": "Siamo lieti che tu voglia condividere il tuo progetto Open Data. Compila il modulo per creare un showcase. I campi contrassegnati da un asterisco (*) sono obbligatori. Esamineremo quindi la tua richiesta e ti contatteremo al più presto.",
+        "header": {
+          "contact": "Dati di contatto",
+          "more": "Raccontaci qualcosa in più",
+          "showcase_information": "Informazioni sullo showcase"
+        },
         "success_message": "Lo showcase è stato inviato.",
         "failure_message": "L'invio dello showcase non è riuscito.",
-        "field_title": "Titolo",
-        "field_body": "Descrizione",
-        "field_url": "Sito web",
-        "field_type": "Tipo di contenuto",
-        "field_image": "Immagine",
-        "field_tags": {
-          "label": "Tag",
-          "prompt": "Inserisci i tag separati da virgole"
-        },
-        "field_categories": {
-          "label": "Categorie",
-          "prompt": "Seleziona una o più categorie"
-        },
-        "field_datasets": {
-          "label": "Set di dati",
-          "prompt": "Digita per cercare set di dati..."
-        },
-        "field_submitted_by": {
-          "name": "Inviato da",
-          "url": "Link al sito web"
+        "field": {
+          "title": "Titolo dello showcase",
+          "url": "URL dello showcase",
+          "type": "Tipo di contenuto",
+          "images": "Immagini",
+          "tags": {
+            "label": "Tag",
+            "prompt": "Inserisci i tag separati da virgole"
+          },
+          "keywords": {
+            "label": "Parole chiave",
+            "prompt": ""
+          },
+          "themes": {
+            "label": "Tema/i",
+            "prompt": "Seleziona una o più temi"
+          },
+          "datasets": {
+            "label": "Set di dati utilizzato/i",
+            "prompt": "Digita per cercare set di dati..."
+          },
+          "created_by": "Creato da",
+          "submitted_by": {
+            "name": "Inviato da",
+            "url": "Link al sito web"
+          },
+          "contact_details": {
+            "name": "Cognome Nome",
+            "email": "E-mail (non verrà pubblicato)",
+            "github": "Account GitHub (sarà pubblicato)"
+          },
+          "more": {
+            "who_are_you": {
+              "label": "Chi sei?",
+              "mission": "{mainObjective} (Ad esempio: migliorare i trasporti, sensibilizzare\nsul clima, ecc.)",
+              "mainObjective": "Qual è la tua missione o il tuo obiettivo principale?",
+              "organization": "Nome della tua organizzazione o del tuo team"
+            },
+            "goal": {
+              "label": "Qual è l’obiettivo del vostro showcase in una frase? ",
+              "hint": "A quale domanda risponde il vostro showcase? A quale esigenza o problema si rivolge?",
+              "help": "Per aiutarvi, potete formulare la vostra risposta in questo modo: «Grazie a questo showcase, l’utente può…»"
+            },
+            "why": {
+              "label": "Perché avete utilizzato proprio questi dati?",
+              "hint": "Perché questi dati sono utili per questo showcase? (Esempio: soddisfano una determinata esigenza, sono accessibili, ricchi di informazioni aggiornate)",
+              "what": "Quali tecnologie o strumenti utilizzate per sfruttare questi dati?",
+              "challenges": "Esistono limiti o sfide nell’utilizzo di questi dati?"
+            },
+            "users": {
+              "label": "Chi sono gli utenti finali (end-users)?",
+              "how": "{usefulness} (Esempio: semplificazione di un servizio, risoluzione di un problema.)",
+              "usefulness": "In che modo questo showcase è utile per loro?",
+              "benefits": "{whichFields} Potete fornire esempi concreti di applicazione? La vostra vetrina è già utilizzata in questi settori?",
+              "whichFields": "Quali settori traggono vantaggio dal riutilizzo di questi dati?"
+            },
+            "challengesBefore": {
+              "label": "Quali sfide dovevano affrontare gli utenti finali (end-users) PRIMA di utilizzare la vostra vetrina?",
+              "hint": "{majorChallenges} (Esempio: accesso ai dati, mancanza di risorse, complessità tecnica.)",
+              "majorChallenges": "Sfide principali",
+              "overcome": "{overcomeHow} (Esempio: strumenti utilizzati, soluzioni trovate.)",
+              "overcomeHow": "Come sono state superate?"
+            },
+            "challengesCreating": {
+              "label": "Quali sfide avete affrontato VOI per creare questa vetrina?",
+              "preparing": "Avete dovuto preparare o pulire i dati prima di utilizzarli?",
+              "finding": "Avete trovato facilmente i dati?",
+              "identifying": "Come avete identificato le fonti di dati pertinenti?",
+              "accessing": "Avete incontrato difficoltà nell’accedere ai dati? (Esempio: restrizioni di licenza, qualità dei dati)"
+            },
+            "getMost": {
+              "label": "Cosa deve fare l’utente per utilizzare al meglio questo showcase?",
+              "access": "Link e istruzioni di accesso",
+              "conditions": "Ci sono condizioni particolari da rispettare (gratuità, registrazione, restrizioni d’uso)?",
+              "tips": "Avete suggerimenti o consigli per un utilizzo ottimale?"
+            },
+            "anythingElse": {
+              "label": "Desiderate aggiungere qualcosa?",
+              "mentionHint": "Avete degli {hashtags} da condividere o delle {people} da menzionare? (Si prega di fornire i link ai social network o al sito in questione)",
+              "hashtags": "hashtag",
+              "people": "persone",
+              "visualsHint": "Avete delle {visuals} o materiali aggiuntivi da condividere?",
+              "visuals": "immagini"
+            }
+          }
         },
         "submit_button": "Invia"
       }
@@ -246,7 +317,6 @@
       "showcases": {
         "post": {
           "error": {
-            "missing_content": "Almeno una lingua deve avere un titolo (min. 5 caratteri) e un corpo (min. 100 caratteri).",
             "submission_exists": "Esiste già una segnalazione con lo stesso titolo.",
             "unspecified_error": "Si è verificato un errore imprevisto. Riprova più tardi."
           },

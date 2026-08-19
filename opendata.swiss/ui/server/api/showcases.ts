@@ -1,7 +1,7 @@
 import { remark } from 'remark'
 import strip from 'strip-markdown'
 import remarkFrontmatter from 'remark-frontmatter'
-import { dcat, dcterms, rdfs, schema, xsd } from '@tpluscode/rdf-ns-builders'
+import { dcat, dcterms, schema, xsd } from '@tpluscode/rdf-ns-builders'
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
@@ -15,25 +15,29 @@ interface AggregateShowcase {
   '@type': string[]
   'type': string
   'title': Record<string, string | undefined>
-  'image': string | undefined
+  'images': string[]
   'abstract': Record<string, string | undefined>
-  'categories': string[]
+  'themes': string[]
   'datasets': Array<{ identifier: string, label: string }>
   'text': Record<string, string | undefined>
-  'tag': string[]
+  'keywords': string[]
   'modified': string | undefined
   'issued': string | undefined
   'pinned': boolean
 }
 
-const ldContext = {
+type TypeCoercion = { '@id': string, '@type': string }
+type Container = { '@id': string, '@container': string }
+type Mappings = { Dataset: string, piveau: string }
+type Context = Record<keyof Omit<AggregateShowcase, '@type'>, string | TypeCoercion | Container> & Mappings
+
+const ldContext: Context = {
   id: '@id',
-  label: rdfs.label.value,
   type: {
     '@id': dcterms.type.value,
     '@type': '@id',
   },
-  categories: {
+  themes: {
     '@id': dcat.theme.value,
     '@type': '@id',
   },
@@ -58,17 +62,18 @@ const ldContext = {
     '@type': xsd.boolean.value,
   },
   identifier: dcterms.identifier.value,
-  image: schema.image.value,
-  tag: dcat.keyword.value,
+  images: schema.image.value,
+  keywords: dcat.keyword.value,
   modified: dcterms.modified.value,
   issued: dcterms.issued.value,
   Dataset: dcat.Dataset.value,
   piveau: 'https://piveau.eu/ns/voc#',
 }
+
 export default defineEventHandler(async (event) => {
   const { public: { rootDir } } = useRuntimeConfig(event)
   const showcases = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type', 'pinned')
+    .select('title', 'themes', 'datasets', 'description', 'rawbody', 'stem', 'images', 'keywords', 'type', 'pinned')
     .where('active', '=', true)
     .all()
 
@@ -91,12 +96,12 @@ export default defineEventHandler(async (event) => {
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         'type': showcase.type,
         'title': {},
-        'image': showcase.image,
+        'images': showcase.images || [],
         'abstract': {},
-        'categories': showcase.categories || [],
+        'themes': showcase.themes || [],
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
-        'tag': showcase.tags || [],
+        'keywords': showcase.keywords || [],
         'pinned': showcase.pinned || false,
         modified,
         issued,
@@ -104,9 +109,9 @@ export default defineEventHandler(async (event) => {
       arr.push(aggregate)
     }
 
-    aggregate.title[lang] = showcase.title || undefined
-    aggregate.abstract[lang] = showcase.description || undefined
-    aggregate.text[lang] = await stripMarkdown(showcase.rawbody) || undefined
+    aggregate.title[lang] = showcase.title || ''
+    aggregate.abstract[lang] = showcase.description || ''
+    aggregate.text[lang] = await stripMarkdown(showcase.rawbody) || ''
 
     return arr
   }, Promise.resolve<AggregateShowcase[]>([]))

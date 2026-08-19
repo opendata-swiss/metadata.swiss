@@ -16,11 +16,13 @@
       :required="required"
     />
     <div
-      v-if="message"
+      v-if="message || $slots.message"
       class="badge badge--sm"
       :class="`badge--${messageType}`"
     >
-      {{ message }}
+      <slot name="message">
+        {{ message }}
+      </slot>
     </div>
   </OdsFormField>
 </template>
