@@ -49,7 +49,7 @@
     "nuxt-auth-utils": "^0.5.26",
     "nuxt-basic-auth-module": "^1.4.1",
     "pinia": "^3.0.4",
-    "piveau-preview-plugin": "^2.3.0",
+    "piveau-preview-plugin": "^2.3.3",
     "react-bootstrap-typeahead": "^6.4.1",
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",

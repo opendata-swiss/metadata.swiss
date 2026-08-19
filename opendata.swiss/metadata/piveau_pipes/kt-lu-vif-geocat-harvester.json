@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-vif/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-vif/ger/csw",
             "catalogue": "kt-lu-vif",
             "preProcessing": true,
             "org_name": "Department of Traffic and Infrastructure"

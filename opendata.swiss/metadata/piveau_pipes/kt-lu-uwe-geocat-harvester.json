@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-uwe/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-uwe/ger/csw",
             "catalogue": "kt-lu-uwe",
             "preProcessing": true,
             "org_name": "Department of Environment and Energy"

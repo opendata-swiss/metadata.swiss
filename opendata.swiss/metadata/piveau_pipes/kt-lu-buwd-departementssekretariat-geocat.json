@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-buwd/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-buwd/ger/csw",
             "catalogue": "kt-lu-buwd-departementssekretariat-geocat",
             "preProcessing": true,
             "org_name": "Departmental Secretariat BUWD"

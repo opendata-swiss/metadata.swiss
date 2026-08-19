@@ -115,6 +115,7 @@
       },
       "categories": "Categories",
       "datasets": "Datasets",
+      "dataset_from": "from",
       "tags": "Tags",
       "submitted_by": "Submitted by",
       "externalLink": "External Link",

@@ -1,6 +1,11 @@
 import { z } from 'zod/v4'
 import { APP_LANGUAGES } from '../../app/constants/langages.js'
 
+export const relationshipRole = z.enum([
+  'author',
+  'collaborator',
+])
+
 export const shape = {
   active: z.boolean(),
   pinned: z.boolean(),
@@ -30,6 +35,29 @@ export const shape = {
     getMost: z.string().optional(),
     anythingElse: z.string().optional(),
   }).optional(),
+  relationships: z.array(
+    z.discriminatedUnion('type', [
+      z.object({
+        type: z.literal('organization'),
+        organization: z.array(z.object({
+          id: z.string(),
+          label: z.string(),
+        })).nonempty(),
+        role: relationshipRole,
+      }),
+      z.object({
+        type: z.literal('organization-external'),
+        name: z.string(),
+        url: z.array(z.string()).optional(),
+        role: relationshipRole,
+      }),
+      z.object({
+        type: z.literal('person'),
+        name: z.string(),
+        role: relationshipRole,
+      }),
+    ]),
+  ).optional(),
   rawbody: z.string().optional(),
 }
 

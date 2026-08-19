@@ -245,6 +245,72 @@ collections:
         name: url
         widget: string
         i18n: duplicate
+      - label: Relationships
+        name: relationships
+        i18n: false
+        required: false
+        widget: list
+        types:
+          - label: Organization
+            name: organization
+            widget: object
+            summary: '{{fields.organization}} ({{fields.role}})'
+            fields:
+              - label: Organization
+                name: organization
+                widget: piveau-organization
+                piveau:
+                  search: https://piveau-hub-search.test.ods.zazukoians.org/
+              - &role_field
+                label: Role
+                name: role
+                widget: select
+                hint: Extracted from http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole
+                options:
+                  - label: Author
+                    value: author
+                  - label: Custodian
+                    value: custodian
+                  - label: Distributor
+                    value: distributor
+                  - label: Originator
+                    value: originator
+                  - label: Owner
+                    value: owner
+                  - label: Point of contact
+                    value: pointOfContact
+                  - label: Principal investigator
+                    value: principalInvestigator
+                  - label: Processor
+                    value: processor
+                  - label: Publisher
+                    value: publisher
+                  - label: Resource provider
+                    value: resourceProvider
+                  - label: User
+                    value: user
+          - label: External organization
+            name: organization-external
+            widget: object
+            summary: '{{fields.name}} ({{fields.role}})'
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - name: url
+                label: Url (separate multiple entries with a comma)
+                widget: list
+                required: false
+              - *role_field
+          - label: Person
+            name: person
+            widget: object
+            summary: '{{fields.name}} ({{fields.role}})'
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - *role_field
       - label: Themes
         name: themes
         widget: piveau-vocabulary

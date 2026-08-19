@@ -1,8 +1,8 @@
 {
   "header": {
-    "id": "96ef0db4-7637-4721-af53-4637e6723e5a",
-    "name": "kt-lu-mzj-geocat-harvester",
-    "title": "Kt. LU MZJ - geocat harvester",
+    "id": "b5d922db-2b83-4bf0-a240-87c45069ffb5",
+    "name": "dcat-bag-kuv",
+    "title": "DCAT BAG KUV",
     "context": "piveau",
     "transport": "payload",
     "version": "1.0.0"
@@ -11,17 +11,19 @@
     "segments": [
       {
         "header": {
-          "name": "piveau-consus-importing-csw",
+          "name": "piveau-consus-importing-rdf",
           "segmentNumber": 1,
-          "title": "Importing CSW",
+          "title": "Importing RDF",
           "processed": false
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-mzj/ger/csw",
-            "catalogue": "kt-lu-mzj",
+            "address": "https://kvd.bag.admin.ch/api/opendata/catalog.xml",
+            "catalogue": "dcat-bag-kuv",
             "preProcessing": true,
-            "org_name": "Department of Military, Civil Defense, and Execution of Penal Sentences and Justice"
+            "accept": "application/rdf+xml",
+            "inputFormat": "application/rdf+xml",
+            "org_name": "Health and Accident Insurance Directorate"
           }
         }
       },
@@ -34,8 +36,8 @@
         },
         "body": {
           "config": {
-            "org_id": "lu-mzj",
-            "catalogue": "kt-lu-mzj",
+            "org_id": "direktionsbereich-kranken-und-unfallversicherung",
+            "catalogue": "dcat-bag-kuv",
             "preProcessing": true
           }
         }
