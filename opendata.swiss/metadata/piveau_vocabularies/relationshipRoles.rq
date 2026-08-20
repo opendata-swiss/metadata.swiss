@@ -9,6 +9,4 @@ CONSTRUCT {
         skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole> ;
         a ?type ;
         skos:prefLabel ?label .
-
-    FILTER (lang(?label) IN ("en", "de", "fr", "it"))
 }
