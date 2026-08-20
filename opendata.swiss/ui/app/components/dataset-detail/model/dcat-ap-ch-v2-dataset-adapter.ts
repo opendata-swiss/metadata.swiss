@@ -296,7 +296,7 @@ export class DcatApChV2DatasetAdapter {
       return []
     }
 
-    const ignoredNode = ['catalogRecord']
+    const ignoredNode = ['catalogRecord', 'accrualPeriodicity']
     const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id))
 
     const newTableEntries: OdsTableEntry[] = []
