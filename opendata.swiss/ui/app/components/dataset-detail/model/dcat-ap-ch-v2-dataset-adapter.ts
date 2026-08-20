@@ -7,7 +7,6 @@ import type { TagItem } from '../../OdsTagItem.vue'
 import type { AppLanguage } from '~/constants/langages'
 import { APP_LANGUAGES } from '~/constants/langages'
 import type { } from '@piveau/sdk-core'
-import type { an } from 'vue-router/dist/index-BQLwgiyK.js'
 
 export class DcatApChV2DatasetAdapter {
   #dataset: Dataset
@@ -286,7 +285,7 @@ export class DcatApChV2DatasetAdapter {
     if (!frequencyResource.label) {
       return undefined
     }
-    return this.getLabelByLangagePrecedence(lang, frequencyResource as unknown as any)
+    return this.getLabelByLangagePrecedence(lang, frequencyResource as unknown as { label?: Record<string, string | undefined> | undefined })
   }
 
   get propertyTable() {
