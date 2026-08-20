@@ -110,5 +110,8 @@
   },
   "overrides": {
     "vue-router": "^5.1.0"
+  },
+  "allowScripts": {
+    "sharp@0.32.6": true
   }
 }
