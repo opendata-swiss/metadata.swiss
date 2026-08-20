@@ -80,6 +80,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const images: Array<{ image: string }> = []
+  let email: string | undefined
   let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, github?: string } = {
     type: 'person',
     role: 'pointOfContact',
@@ -133,7 +134,7 @@ export default defineEventHandler(async (event) => {
       .with(P.string.startsWith('contactDetails.'), (field) => {
         const key = field.slice('contactDetails.'.length)
         if (key === 'email') {
-          // TODO: use email to send notification from Listmonk
+          email = key
           return
         }
 
@@ -150,6 +151,11 @@ export default defineEventHandler(async (event) => {
       .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
       })
+  }
+
+  if (!email) {
+    setCookie(event, 'message', 'server.api.showcases.post.failure', { path: '/' })
+    return createError({ statusCode: 400, statusMessage: 'Email is required' })
   }
 
   toAll(showcase, 'images', images)

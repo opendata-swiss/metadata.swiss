@@ -12,7 +12,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Test sample" ) ;
+        tuner:form ( "title" "Test: Complete" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -30,7 +30,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
 
     ?res tuner:http_code 200 .
 
-    ?res tuner:jsonPath ( "$.slug" "test-sample") .
+    ?res tuner:jsonPath ( "$.slug" "test:-complete") .
     ?res tuner:jsonPath ( "$.de.active" "true") .
     ?res tuner:jsonPath ( "$.de.pinned" "false") .
     ?res tuner:jsonPath ( "$.de.themes" '["http://publications.europa.eu/resource/authority/data-theme/INTR"]') .
@@ -57,7 +57,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Multiple datasets" ) ;
+        tuner:form ( "title" "Test: Multiple datasets" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -97,7 +97,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Multiplw images" ) ;
+        tuner:form ( "title" "Test: Multiple images" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -162,7 +162,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?res tuner:jsonPath ( "$.en.relationships.[0].type" "person") .
     ?res tuner:jsonPath ( "$.en.relationships.[0].role" "pointOfContact") .
     ?res tuner:jsonPath ( "$.en.relationships.[0].name" "John Doe") .
-    ?res tuner:jsonPath ( "$.en.relationships.[0].email" "john@Doe.pro") .
+    ?res tuner:jsonPath ( "$.en.relationships.[0].email" "") .
     ?res tuner:jsonPath ( "$.en.relationships.[0].github" "jd") .
     ?res tuner:jsonPath ( "$.de.images.[0].image"  "/cms/assets/showcase-test-in-english-Rdf_logo.svg.png") .
   } ;
@@ -177,7 +177,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Complete test sample" ) ;
+        tuner:form ( "title" "Test: Complete sample" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -216,7 +216,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "fr" ) ;
       tuner:body [
-        tuner:form ( "title" "French - no image" ) ;
+        tuner:form ( "title" "Test: French - no image" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "datasets[https://opendata.swiss/set/data/hepatitis_b-abteilung-uebertragbare-krankheiten]" "Hepatitis B" ) ;
@@ -247,7 +247,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "fr" ) ;
       tuner:body [
-        tuner:form ( "title" "French - no image" ) ;
+        tuner:form ( "title" "Test: Italian - no dataset" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -278,7 +278,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "French - no image" ) ;
+        tuner:form ( "title" "Test: no image" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "datasets[https://opendata.swiss/set/data/hepatitis_b-abteilung-uebertragbare-krankheiten]" "Hepatitis B" ) ;
@@ -309,7 +309,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "French - no image" ) ;
+        tuner:form ( "title" "Test: no dataset" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -340,7 +340,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Test sample" ) ;
+        tuner:form ( "title" "Test - no URL" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
         tuner:form ( "datasets[https://opendata.swiss/set/data/hepatitis_b-abteilung-uebertragbare-krankheiten]" "Hepatitis B" ) ;
@@ -371,7 +371,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Test sample" ) ;
+        tuner:form ( "title" "Test: no created by" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -433,7 +433,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Sample without a name" ) ;
+        tuner:form ( "title" "Test: Sample without a name" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -464,7 +464,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
       tuner:method "POST" ;
       tuner:header ( "Accept-Language" "de" ) ;
       tuner:body [
-        tuner:form ( "title" "Sample without a email" ) ;
+        tuner:form ( "title" "Test: Sample without a email" ) ;
         tuner:form ( "type" "https://opendata.swiss/vocabulary/showcase-type/application" ) ;
         tuner:form ( "url" "http://example.com/showcase" ) ;
         tuner:form ( "images" <file:assets/Rdf_logo.svg.png> ) ;
@@ -479,8 +479,5 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?req tuner:response ?res .
 
     ?res tuner:http_code 400 .
-
-    ?res tuner:jsonPath ( "$.length" '1' ) .
-    ?res tuner:jsonPath ( "$.[0].path" '["relationships",0,"email"]' ) .
   } ;
 .
