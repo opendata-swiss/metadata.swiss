@@ -11,7 +11,9 @@ export const shape = {
   active: z.boolean(),
   pinned: z.boolean(),
   title: z.string().min(5),
-  images: z.array(z.string()).min(1),
+  images: z.array(z.object({
+    image: z.string().nonempty(),
+  })).min(1),
   url: z.string(),
   themes: z.array(z.string()).optional(),
   type: z.string(),

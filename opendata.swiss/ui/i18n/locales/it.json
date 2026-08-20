@@ -117,7 +117,7 @@
       "categories": "Categorie",
       "datasets": "Set di dati",
       "dataset_from": "da",
-      "tags": "Tag",
+      "keywords": "Parole chiave",
       "submitted_by": "Inviato da",
       "externalLink": "Link esterno",
       "open": "Apri sito web",
@@ -161,10 +161,6 @@
           "url": "URL dello showcase",
           "type": "Tipo di contenuto",
           "images": "Immagini",
-          "tags": {
-            "label": "Tag",
-            "prompt": "Inserisci i tag separati da virgole"
-          },
           "keywords": {
             "label": "Parole chiave",
             "prompt": ""

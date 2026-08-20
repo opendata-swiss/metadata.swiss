@@ -117,7 +117,7 @@
       "categories": "Kategorien",
       "datasets": "Datensätze",
       "dataset_from": "von",
-      "tags": "Tags",
+      "keywords": "Schlagwörter",
       "submitted_by": "Übermittelt von",
       "externalLink": "Externer Link",
       "open": "Website starten",
@@ -162,10 +162,6 @@
           "url": "URL des Showcases",
           "type": "Art des Inhalts",
           "images": "Bilder",
-          "tags": {
-            "label": "Tags",
-            "prompt": "Geben Sie die Tags durch Kommas getrennt ein"
-          },
           "keywords": {
             "label": "Schlüsselwörter",
             "prompt": ""

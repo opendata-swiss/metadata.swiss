@@ -16,7 +16,7 @@ interface AggregateShowcase {
   '@type': string[]
   'type': string
   'title': Record<string, string | undefined>
-  'images': string[]
+  'images': Array<{ url: string }>
   'abstract': Record<string, string | undefined>
   'themes': string[]
   'datasets': Array<{ identifier: string, label: string }>
@@ -88,6 +88,10 @@ const ldContext: Context = {
   },
   'identifier': dcterms.identifier.value,
   'images': schema.image.value,
+  'url': {
+    '@id': schema.url.value,
+    '@type': '@id',
+  },
   'keywords': dcat.keyword.value,
   'modified': dcterms.modified.value,
   'issued': dcterms.issued.value,
@@ -122,7 +126,7 @@ export default defineEventHandler(async (event) => {
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         'type': showcase.type,
         'title': {},
-        'images': showcase.images || [],
+        'images': showcase.images.map(image => ({ url: image.image })) || [],
         'abstract': {},
         'themes': showcase.themes || [],
         'datasets': mapDatasets(showcase.datasets) || [],

@@ -44,7 +44,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?res tuner:jsonPath ( "$.de.relationships.[0].name" "John Doe") .
     ?res tuner:jsonPath ( "$.de.relationships.[0].email" "john@Doe.pro") .
     ?res tuner:jsonPath ( "$.de.relationships.[0].github" "jd") .
-    ?res tuner:jsonPath ( "$.de.images.[0]" "Rdf_logo.svg.png" string:endsWith ) .
+    ?res tuner:jsonPath ( "$.de.images.[0].image" "Rdf_logo.svg.png" string:endsWith ) .
   } ;
 .
 
@@ -117,9 +117,9 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
 
     ?res tuner:http_code 200 .
 
-    ?res tuner:jsonPath ( "$.de.images.[0]" "Rdf_logo.svg.png" string:endsWith ) .
-    ?res tuner:jsonPath ( "$.de.images.[1]" "shacl-256.png" string:endsWith ) .
-    ?res tuner:jsonPath ( "$.de.images.[2]" "sparql-256.png" string:endsWith ) .
+    ?res tuner:jsonPath ( "$.de.images.[0].image" "Rdf_logo.svg.png" string:endsWith ) .
+    ?res tuner:jsonPath ( "$.de.images.[1].image" "shacl-256.png" string:endsWith ) .
+    ?res tuner:jsonPath ( "$.de.images.[2].image" "sparql-256.png" string:endsWith ) .
   } ;
 .
 
@@ -164,7 +164,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?res tuner:jsonPath ( "$.en.relationships.[0].name" "John Doe") .
     ?res tuner:jsonPath ( "$.en.relationships.[0].email" "john@Doe.pro") .
     ?res tuner:jsonPath ( "$.en.relationships.[0].github" "jd") .
-    ?res tuner:jsonPath ( "$.de.images.[0]"  "/cms/assets/showcase-test-in-english-Rdf_logo.svg.png") .
+    ?res tuner:jsonPath ( "$.de.images.[0].image"  "/cms/assets/showcase-test-in-english-Rdf_logo.svg.png") .
   } ;
 .
 

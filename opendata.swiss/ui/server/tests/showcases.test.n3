@@ -1,3 +1,4 @@
+PREFIX schema: <http://schema.org/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
@@ -172,6 +173,22 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
       ?body log:includes {
         </showcase/showcase> dcterms:references ?datset .
         ?datset dcterms:identifier "https://opendata.swiss/set/data/85787-bundesamt-fur-statistik-bfs" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#images>
+  a earl:TestCase ;
+  rdfs:label "Images are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> schema:image ?image .
+        ?image schema:url <http://localhost:3000/cms/92.png> .
       } .
     }!tuner:assertThat .
   } ;

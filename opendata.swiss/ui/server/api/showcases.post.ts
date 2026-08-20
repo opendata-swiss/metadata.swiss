@@ -79,7 +79,7 @@ export default defineEventHandler(async (event) => {
     logger.info('Initialized filesystem storage backend')
   }
 
-  const images: string[] = []
+  const images: Array<{ image: string }> = []
   let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, email: string, github?: string } = {
     type: 'person',
     role: 'pointOfContact',
@@ -101,9 +101,9 @@ export default defineEventHandler(async (event) => {
         }
       })
       .with('keywords', () => {
-        const tags = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
-        if (tags.length > 0) {
-          toAll(showcase, 'keywords', tags)
+        const keywords = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+        if (keywords.length > 0) {
+          toAll(showcase, 'keywords', keywords)
         }
       })
       .with('themes', () => {
@@ -117,7 +117,7 @@ export default defineEventHandler(async (event) => {
       .with('images', () => {
         const imagePath = `assets/showcase-${showcase.slug}-${filename}`
         uploads.push(storage!.writeImage.bind(storage, imagePath, data))
-        images.push(`/cms/${imagePath}`)
+        images.push({ image: `/cms/${imagePath}` })
       })
       .with('createdBy', () => {
         toAll(showcase, 'createdBy', data.toString())

@@ -22,12 +22,13 @@ const { data: showcase } = await useAsyncData(route.path, async () => {
   const germanTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
     .where('active', '=', true)
-    .select('contactDetails')
+    .select('relationships')
     .first()
 
   return {
     ...currentTranslation,
-    contactDetails: germanTranslation.contactDetails,
+    contactDetails: germanTranslation?.relationships
+      .find(relationship => relationship.type === 'pointOfContact'),
   }
 })
 
@@ -42,8 +43,8 @@ const breadcrumbs = [
   },
 ]
 
-const showcaseCategoriesRaw = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
-  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId } })
+const showcaseCategoriesRaw = await Promise.all(showcase.value?.themes.map(async (themeId) => {
+  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: themeId } })
   await query.suspense()
   return resultEnhanced.value
 }))
@@ -148,14 +149,14 @@ useSeoMeta({
           </ul>
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.tags.length > 0"
-          :title="t('message.showcase.tags')"
+          v-if="showcase.keywords?.length > 0"
+          :title="t('message.showcase.keywords')"
         >
           <OdsTagItem
-            v-for="tag in showcase.tags"
-            :id="`tag-${tag}`"
-            :key="tag"
-            :label="tag"
+            v-for="keyword in showcase.keywords"
+            :id="`keyword-${keyword}`"
+            :key="keyword"
+            :label="keyword"
           />
         </OdsInfoBlock>
         <OdsInfoBlock

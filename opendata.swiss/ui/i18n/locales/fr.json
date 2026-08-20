@@ -117,7 +117,7 @@
       "categories": "Catégories",
       "datasets": "Jeux de données",
       "dataset_from": "de",
-      "tags": "Tags",
+      "keywords": "Mots-clés",
       "submitted_by": "Soumis par",
       "externalLink": "Lien externe",
       "open": "Ouvrir le site web",
@@ -163,7 +163,7 @@
           "images": "Images",
           "keywords": {
             "label": "Mots-clés",
-            "prompt": "Entrez les tags séparés par des virgules"
+            "prompt": "Entrez les mots-clés séparés par des virgules"
           },
           "themes": {
             "label": "Thème(s)",
