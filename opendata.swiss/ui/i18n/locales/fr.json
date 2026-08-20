@@ -117,7 +117,7 @@
       "categories": "Catégories",
       "datasets": "Jeux de données",
       "dataset_from": "de",
-      "tags": "Tags",
+      "keywords": "Mots-clés",
       "submitted_by": "Soumis par",
       "externalLink": "Lien externe",
       "open": "Ouvrir le site web",
@@ -143,33 +143,98 @@
         }
       },
       "submission_form": {
-        "group_italian": "Italien",
-        "group_french": "Français",
-        "group_german": "Allemand",
-        "group_english": "Anglais",
-        "group_general": "Général",
+        "title": "Créer un showcase",
+        "paragraph": {
+          "top": "Nous sommes heureux que vous souhaitiez partager votre projet Open Data. Veuillez compléter le formulaire pour créer un showcase. Les champs avec un astérisque (*) sont obligatoires. Nous\nexaminerons ensuite votre demande et vous contacterons dans les plus brefs délais.",
+          "more": "Afin d'optimiser la communication autour de votre showcase et d'en renforcer la visibilité sur le portail ainsi que les réseaux sociaux, nous vous proposons de répondre à quelques questions complémentaires. Vos réponses nous permettront de rédiger le texte descriptif (encadré rouge ci-contre).\n\nToutes les questions sont facultatives : répondez uniquement à celles qui vous paraissent les plus pertinentes, nous nous chargeons du reste !"
+        },
+        "header": {
+          "contact": "Contact",
+          "more": "Dites-nous en un peu plus",
+          "showcase_information": "Informations sur le showcase"
+        },
+        "top_section": "Nous sommes heureux que vous souhaitiez partager votre projet Open Data. Veuillez compléter le formulaire pour créer un showcase. Les champs avec un astérisque (*) sont obligatoires. Nous examinerons ensuite votre demande et vous contacterons dans les plus brefs délais.",
         "success_message": "Le showcase a été soumis.",
         "failure_message": "La soumission du showcase a échoué.",
-        "field_title": "Titre",
-        "field_body": "Description",
-        "field_url": "Site web",
-        "field_type": "Type de contenu",
-        "field_image": "Image",
-        "field_tags": {
-          "label": "Tags",
-          "prompt": "Entrez les tags séparés par des virgules"
-        },
-        "field_categories": {
-          "label": "Catégories",
-          "prompt": "Sélectionnez une ou plusieurs catégories"
-        },
-        "field_datasets": {
-          "label": "Jeux de données",
-          "prompt": "Tapez pour rechercher des jeux de données..."
-        },
-        "field_submitted_by": {
-          "name": "Soumis par",
-          "url": "Liens vers le site web"
+        "field": {
+          "title": "Titre du showcase",
+          "url": "URL du showcase",
+          "type": "Type de contenu",
+          "images": "Images",
+          "keywords": {
+            "label": "Mots-clés",
+            "prompt": "Entrez les mots-clés séparés par des virgules"
+          },
+          "themes": {
+            "label": "Thème(s)",
+            "prompt": "Sélectionnez une ou plusieurs thèmes"
+          },
+          "datasets": {
+            "label": "Jeu(x) de données utilisé(s)",
+            "prompt": "Tapez pour rechercher des jeux de données..."
+          },
+          "created_by": "Créé par",
+          "submitted_by": {
+            "name": "Soumis par",
+            "url": "Liens vers le site web"
+          },
+          "contact_details": {
+            "name": "Nom Prénom",
+            "email": "Adresse e-mail (ne sera pas publiée)",
+            "github": "Compte GitHub (sera publié)"
+          },
+          "more": {
+            "who_are_you": {
+              "label": "Qui êtes vous ?",
+              "organization": "Nom de votre organisation ou équipe",
+              "mission": "{mainObjective} (Par exemple : améliorer les transports, sensibiliser au climat, etc.)",
+              "mainObjective": "Quelle est votre mission ou votre objectif principal ?"
+            },
+            "goal": {
+              "label": "Quel est l’objectif de votre showcase en une phrase ?",
+              "hint": "A quelle question répond votre showcase ? Quel besoin ou problème adresse-t-il ?",
+              "help": "Pour vous aider, vous pouvez formuler votre réponse ainsi : « Grâce à ce showcase, l’utilisateur peut…»"
+            },
+            "why": {
+
+            },
+            "users": {
+              "label": "Qui sont les utilisateurs finaux (end-users) ?",
+              "hint": "{usefulness} (Exemple : simplification d’un service, résolution d’un problème.)",
+              "usefulness": "En quoi ce showcase leur est utile ?",
+              "benefits": "{whichFields} Pouvez-vous donner des exemples concrets d’application ? Votre showcase est-il déjà utilisé dans ces domaines ?",
+              "whichFields": "Quels domaines bénéficient de la réutilisation de ces données ?"
+
+            },
+            "challengesBefore": {
+              "label": "Quels défis rencontraient les utilisateurs finaux (end-users) AVANT d'utiliser votre showcase ?",
+              "hint": "{majorChallenges} (Exemple : accès aux données, manque de ressources, complexité technique.)",
+              "majorChallenges": "Défis majeurs",
+              "overcome": "{overcomeHow} (Exemple : outils utilisés, solutions trouvées.)",
+              "overcomeHow": "Comment ont-ils été surmontés ?"
+            },
+            "challengesCreating": {
+              "label": "Quels défis avez-VOUS rencontrés pour créer ce showcase ?",
+              "preparing": "Avez-vous dû préparer ou nettoyer les données avant de les utiliser ?",
+              "finding": "Avez-vous trouvé facilement les données ?",
+              "identifying": "Comment avez-vous identifié les sources de données pertinentes ?",
+              "accessing": "Avez-vous rencontré des difficultés pour accéder aux données ? (Exemple : restrictions de licence,\nqualité des données)"
+            },
+            "getMost": {
+              "label": "Que doit faire l'utilisateur pour utiliser au mieux ce showcase ?",
+              "access": "Lien et instructions d’accès",
+              "conditions": "Y a-t-il des conditions particulières à respecter (gratuité, inscription, restrictions d’utilisation) ?",
+              "tips": "Avez-vous des astuces ou des conseils pour une meilleure utilisation ?"
+            },
+            "anythingElse": {
+              "label": "Souhaitez-vous ajouter quelque chose ?",
+              "mentionHint": "Avez-vous des {hashtags} à partager ou des {people} à mentionner ? (Merci de fournir les liens vers les réseaux sociaux ou le site concerné)",
+              "visualsHint": "Avez-vous des {visuals} ou supports supplémentaires à partager ?",
+              "visuals": "visuals",
+              "hashtags": "hashtags",
+              "people": "personnes"
+            }
+          }
         },
         "submit_button": "Soumettre"
       }
@@ -247,7 +312,6 @@
       "showcases": {
         "post": {
           "error": {
-            "missing_content": "Au moins une langue doit avoir un titre (min. 5 caractères) et un contenu (min. 100 caractères).",
             "submission_exists": "Une soumission avec exactement le même titre existe déjà.",
             "unspecified_error": "Une erreur s'est produite lors de la soumission. Veuillez réessayer plus tard."
           },

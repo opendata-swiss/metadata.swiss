@@ -19,6 +19,7 @@
       :readonly="readonly"
       :required="required"
       :accept="accept"
+      :multiple="multiple"
       @input.stop="onInput"
     >
     <div
@@ -134,6 +135,10 @@ const props = defineProps({
   accept: {
     type: String,
     default: () => undefined,
+  },
+  multiple: {
+    type: Boolean,
+    default: () => false,
   },
 })
 

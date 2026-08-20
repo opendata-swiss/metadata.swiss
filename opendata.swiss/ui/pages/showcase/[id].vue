@@ -22,12 +22,13 @@ const { data: showcase } = await useAsyncData(route.path, async () => {
   const germanTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
     .where('active', '=', true)
-    .select('submittedBy')
+    .select('relationships')
     .first()
 
   return {
     ...currentTranslation,
-    submittedBy: germanTranslation.submittedBy,
+    contactDetails: germanTranslation?.relationships
+      .find(relationship => relationship.type === 'pointOfContact'),
   }
 })
 
@@ -42,8 +43,8 @@ const breadcrumbs = [
   },
 ]
 
-const showcaseCategoriesRaw = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
-  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId } })
+const showcaseCategoriesRaw = await Promise.all(showcase.value?.themes.map(async (themeId) => {
+  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: themeId } })
   await query.suspense()
   return resultEnhanced.value
 }))
@@ -148,23 +149,23 @@ useSeoMeta({
           </ul>
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.tags.length > 0"
-          :title="t('message.showcase.tags')"
+          v-if="showcase.keywords?.length > 0"
+          :title="t('message.showcase.keywords')"
         >
           <OdsTagItem
-            v-for="tag in showcase.tags"
-            :id="`tag-${tag}`"
-            :key="tag"
-            :label="tag"
+            v-for="keyword in showcase.keywords"
+            :id="`keyword-${keyword}`"
+            :key="keyword"
+            :label="keyword"
           />
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.submittedBy"
+          v-if="showcase.contactDetails"
           :title="t('message.showcase.submitted_by')"
         >
-          <p>{{ showcase.submittedBy.name }}</p>
+          <p>{{ showcase.contactDetails.name }}</p>
           <a
-            v-for="link in showcase.submittedBy.url"
+            v-for="link in showcase.contactDetails.url"
             :key="link"
             class="link--external"
             target="_blank"

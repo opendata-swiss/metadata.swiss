@@ -16,12 +16,12 @@ interface AggregateShowcase {
   '@type': string[]
   'type': string
   'title': Record<string, string | undefined>
-  'image': string | undefined
+  'images': Array<{ url: string }>
   'abstract': Record<string, string | undefined>
-  'categories': string[]
+  'themes': string[]
   'datasets': Array<{ identifier: string, label: string }>
   'text': Record<string, string | undefined>
-  'tag': string[]
+  'keywords': string[]
   'modified': string | undefined
   'issued': string | undefined
   'pinned': boolean
@@ -36,7 +36,12 @@ interface AggregateShowcase {
   }>
 }
 
-const ldContext = {
+type ImplicitTypeCoercion = { '@type': '@id' }
+type TypeCoercion = { '@id': string, '@type': string }
+type Container = { '@id': string, '@container': string }
+type Context = Record<string, string | ImplicitTypeCoercion | TypeCoercion | Container>
+
+const ldContext: Context = {
   'id': '@id',
   'dcat': dcat().value,
   'prov': prov().value,
@@ -49,7 +54,7 @@ const ldContext = {
     '@id': dcterms.type.value,
     '@type': '@id',
   },
-  'categories': {
+  'themes': {
     '@id': dcat.theme.value,
     '@type': '@id',
   },
@@ -82,18 +87,23 @@ const ldContext = {
     '@type': '@id',
   },
   'identifier': dcterms.identifier.value,
-  'image': schema.image.value,
-  'tag': dcat.keyword.value,
+  'images': schema.image.value,
+  'url': {
+    '@id': schema.url.value,
+    '@type': '@id',
+  },
+  'keywords': dcat.keyword.value,
   'modified': dcterms.modified.value,
   'issued': dcterms.issued.value,
   'Dataset': dcat.Dataset.value,
   'piveau': 'https://piveau.eu/ns/voc#',
   'qualifiedAttribution': prov.qualifiedAttribution.value,
 }
+
 export default defineEventHandler(async (event) => {
   const { public: { rootDir } } = useRuntimeConfig(event)
   const showcases = await queryCollection(event, 'showcases')
-    .select('title', 'categories', 'datasets', 'description', 'rawbody', 'stem', 'image', 'tags', 'type', 'pinned', 'relationships')
+    .select('title', 'themes', 'datasets', 'description', 'rawbody', 'stem', 'images', 'keywords', 'type', 'pinned', 'relationships')
     .where('active', '=', true)
     .all()
 
@@ -116,12 +126,12 @@ export default defineEventHandler(async (event) => {
         '@type': ['Showcase', 'Dataset', 'piveau:CustomResource'],
         'type': showcase.type,
         'title': {},
-        'image': showcase.image,
+        'images': showcase.images.map(image => ({ url: image.image })) || [],
         'abstract': {},
-        'categories': showcase.categories || [],
+        'themes': showcase.themes || [],
         'datasets': mapDatasets(showcase.datasets) || [],
         'text': {},
-        'tag': showcase.tags || [],
+        'keywords': showcase.keywords || [],
         'pinned': showcase.pinned || false,
         modified,
         issued,
@@ -130,9 +140,9 @@ export default defineEventHandler(async (event) => {
       arr.push(aggregate)
     }
 
-    aggregate.title[lang] = showcase.title || undefined
-    aggregate.abstract[lang] = showcase.description || undefined
-    aggregate.text[lang] = await stripMarkdown(showcase.rawbody) || undefined
+    aggregate.title[lang] = showcase.title || ''
+    aggregate.abstract[lang] = showcase.description || ''
+    aggregate.text[lang] = await stripMarkdown(showcase.rawbody) || ''
     if (lang === 'de') {
       aggregate.qualifiedAttribution = showcase.relationships
         ?.map(toAttribution)
