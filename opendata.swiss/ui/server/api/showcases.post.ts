@@ -80,11 +80,10 @@ export default defineEventHandler(async (event) => {
   }
 
   const images: Array<{ image: string }> = []
-  let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, email: string, github?: string } = {
+  let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, github?: string } = {
     type: 'person',
     role: 'pointOfContact',
     name: '',
-    email: '',
   }
 
   for (const { name, data, filename } of reqBody) {
@@ -132,8 +131,13 @@ export default defineEventHandler(async (event) => {
         }
       })
       .with(P.string.startsWith('contactDetails.'), (field) => {
-        const k = field.slice('contactDetails.'.length) as keyof typeof pointOfContact
-        pointOfContact = Object.assign(pointOfContact, { [k]: data.toString() })
+        const key = field.slice('contactDetails.'.length)
+        if (key === 'email') {
+          // TODO: use email to send notification from Listmonk
+          return
+        }
+
+        pointOfContact = Object.assign(pointOfContact, { [key]: data.toString() })
       })
       .with(P.string.startsWith('more.'), (field) => {
         const more: Required<ShowcasesCollectionItem>['more'] = showcase.de.more || {}

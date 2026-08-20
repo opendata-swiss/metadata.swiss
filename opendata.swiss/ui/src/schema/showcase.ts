@@ -52,7 +52,6 @@ export const shape = {
       z.object({
         type: z.literal('person'),
         name: z.string().nonempty(),
-        email: z.string().nonempty(),
         github: z.string().optional(),
         role: relationshipRole,
       }),

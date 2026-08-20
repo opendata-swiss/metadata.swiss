@@ -310,6 +310,10 @@ collections:
               - label: Name
                 name: name
                 widget: string
+              - label: Name
+                name: github
+                widget: string
+                required: false
               - *role_field
       - label: Themes
         name: themes
@@ -337,6 +341,7 @@ collections:
       - name: keywords
         label: Keywords
         widget: list
+        i18n: true
       - name: createdBy
         label: Created by
         widget: string

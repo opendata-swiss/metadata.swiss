@@ -42,7 +42,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?res tuner:jsonPath ( "$.de.relationships.[0].type" "person") .
     ?res tuner:jsonPath ( "$.de.relationships.[0].role" "pointOfContact") .
     ?res tuner:jsonPath ( "$.de.relationships.[0].name" "John Doe") .
-    ?res tuner:jsonPath ( "$.de.relationships.[0].email" "john@Doe.pro") .
+    ?res tuner:jsonPath ( "$.de.relationships.[0].email" "") . # email cannot be stored
     ?res tuner:jsonPath ( "$.de.relationships.[0].github" "jd") .
     ?res tuner:jsonPath ( "$.de.images.[0].image" "Rdf_logo.svg.png" string:endsWith ) .
   } ;
