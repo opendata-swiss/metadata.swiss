@@ -11,7 +11,7 @@ import type { AppLanguage, AppLanguage as Language } from '~/constants/langages'
 import { APP_LANGUAGES, APP_LANGUAGES as languages } from '~/constants/langages'
 import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
 
-type FormDataFieldNames = keyof ShowcasesCollectionItem
+type FormDataFieldNames = keyof ShowcasesCollectionItem | 'contactDetails'
 type ShowcaseTranslation = Omit<Partial<ShowcasesCollectionItem>, 'body'> & {
   body: ''
 }
@@ -27,9 +27,9 @@ const empty = (): ShowcaseTranslation => ({
   datasets: [],
   keywords: [],
   body: '',
+  relationships: [],
 })
 
-type ContactDetailsField = keyof Required<Required<ShowcasesCollectionItem>['contactDetails']>
 type MoreDetailsField = keyof Required<Required<ShowcasesCollectionItem>['more']>
 
 export default defineEventHandler(async (event) => {
@@ -80,6 +80,13 @@ export default defineEventHandler(async (event) => {
   }
 
   const images: string[] = []
+  let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, email: string, github?: string } = {
+    type: 'person',
+    role: 'pointOfContact',
+    name: '',
+    email: '',
+  }
+
   for (const { name, data, filename } of reqBody) {
     match(name)
       .with('title', () => {
@@ -125,15 +132,8 @@ export default defineEventHandler(async (event) => {
         }
       })
       .with(P.string.startsWith('contactDetails.'), (field) => {
-        const contactDetails: Required<ShowcasesCollectionItem>['contactDetails'] = showcase.de.contactDetails || {
-          name: '',
-          email: '',
-        }
-
-        const k = field.slice('contactDetails.'.length) as ContactDetailsField
-        contactDetails[k] = data.toString()
-
-        toAll(showcase, 'contactDetails', contactDetails)
+        const k = field.slice('contactDetails.'.length) as keyof typeof pointOfContact
+        pointOfContact = Object.assign(pointOfContact, { [k]: data.toString() })
       })
       .with(P.string.startsWith('more.'), (field) => {
         const more: Required<ShowcasesCollectionItem>['more'] = showcase.de.more || {}
@@ -149,6 +149,9 @@ export default defineEventHandler(async (event) => {
   }
 
   toAll(showcase, 'images', images)
+  toAll(showcase, 'relationships', (translation) => {
+    translation.relationships!.push(pointOfContact)
+  })
 
   const errors = validate(event, showcase)
     ?.filter(error => error.path[0] === language)

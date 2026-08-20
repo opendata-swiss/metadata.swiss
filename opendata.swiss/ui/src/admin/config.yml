@@ -341,21 +341,6 @@ collections:
         label: Created by
         widget: string
         i18n: duplicate
-      - name: contactDetails
-        label: Contact details
-        widget: object
-        summary: '{{fields.name}}'
-        i18n: false
-        fields:
-          - name: name
-            label: Name
-            widget: string
-          - name: email
-            label: Email
-            widget: string
-          - name: github
-            label: GitHub account
-            widget: string
       - name: more
         label: Additional submission details
         widget: object

@@ -4,6 +4,7 @@ import { APP_LANGUAGES } from '../../app/constants/langages.js'
 export const relationshipRole = z.enum([
   'author',
   'collaborator',
+  'pointOfContact',
 ])
 
 export const shape = {
@@ -20,11 +21,6 @@ export const shape = {
     label: z.string(),
   })).min(1),
   keywords: z.array(z.string()).optional(),
-  contactDetails: z.object({
-    name: z.string().nonempty(),
-    email: z.string().nonempty(),
-    github: z.string().optional(),
-  }),
   more: z.object({
     whoAreYou: z.string().optional(),
     goal: z.string().optional(),
@@ -40,20 +36,22 @@ export const shape = {
       z.object({
         type: z.literal('organization'),
         organization: z.array(z.object({
-          id: z.string(),
-          label: z.string(),
+          id: z.string().nonempty(),
+          label: z.string().nonempty(),
         })).nonempty(),
         role: relationshipRole,
       }),
       z.object({
         type: z.literal('organization-external'),
-        name: z.string(),
+        name: z.string().nonempty(),
         url: z.array(z.string()).optional(),
         role: relationshipRole,
       }),
       z.object({
         type: z.literal('person'),
-        name: z.string(),
+        name: z.string().nonempty(),
+        email: z.string().nonempty(),
+        github: z.string().optional(),
         role: relationshipRole,
       }),
     ]),
