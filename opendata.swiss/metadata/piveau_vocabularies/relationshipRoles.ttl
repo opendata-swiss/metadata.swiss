@@ -1,0 +1,67 @@
+PREFIX adms:  <http://www.w3.org/ns/adms#>
+PREFIX dc:    <http://purl.org/dc/elements/1.1/>
+PREFIX dcat:  <http://www.w3.org/ns/dcat#>
+PREFIX dct:   <http://purl.org/dc/terms/>
+PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
+PREFIX owl:   <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos:  <http://www.w3.org/2004/02/skos/core#>
+PREFIX vann:  <http://purl.org/vocab/vann/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX xsi:   <http://www.w3.org/2001/XMLSchema-instance>
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/user>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Utilisateur"@fr , "User"@en , "Nutzer"@de , "Utente"@it .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Resource Provider"@en , "Fournisseur de la ressource"@fr , "Ressourcenanbieter"@de , "Fornitore della risorsa"@it .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/originator>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Commanditaire"@fr , "Originator"@en , "Ideatore"@it , "Urheber"@de .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/publisher>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Editore"@it , "Publisher"@en , "Herausgeber"@de , "Éditeur"@fr .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/principalInvestigator>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Responsabile principale delle ricerche"@it , "Projektleitung"@de , "Principal Investigator"@en , "Maître d’œuvre"@fr .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/distributor>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Distributor"@en , "Distributeur"@fr , "Vertrieb"@de , "Distributore"@it .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/pointOfContact>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Point of Contact"@en , "Punto di contatto"@it , "Ansprechpartner"@de , "Point de contact"@fr .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/custodian>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Gestionnaire"@fr , "Custode"@it , "Verwalter"@de , "Custodian"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/processor>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Bearbeiter"@de , "Responsabile del trattamento"@it , "Processor"@en , "Intégrateur"@fr .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/owner>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Proprietario"@it , "Eigentümer"@de , "Propriétaire"@fr , "Owner"@en .
+
+<http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author>
+        rdf:type        skos:Concept;
+        skos:inScheme   <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole>;
+        skos:prefLabel  "Author"@en , "Autore"@it , "Auteur"@fr , "Autor"@de .
