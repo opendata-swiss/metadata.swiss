@@ -1,6 +1,10 @@
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX tuner: <https://api-tuner.described.at/>
+PREFIX resource: <https://api-tuner.described.at/resource#>
 PREFIX earl: <http://www.w3.org/ns/earl#>
 
 <#success>
@@ -20,7 +24,7 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
         tuner:form ( "themes" "http://publications.europa.eu/resource/authority/data-theme/INTR" ) ;
         tuner:form ( "createdBy" "John Doe" ) ;
         tuner:form ( "contactDetails.name" "John Doe" ) ;
-        tuner:form ( "contactDetails.email" "john@Doe.pro" ) ;
+        tuner:form ( "contactDetails.email" "test-complete@john.doe" ) ;
         tuner:form ( "contactDetails.github" "jd" ) ;
       ] ;
   ] ;
@@ -45,6 +49,11 @@ PREFIX earl: <http://www.w3.org/ns/earl#>
     ?res tuner:jsonPath ( "$.de.relationships.[0].email" "") . # email cannot be stored
     ?res tuner:jsonPath ( "$.de.relationships.[0].github" "jd") .
     ?res tuner:jsonPath ( "$.de.images.[0].image" "Rdf_logo.svg.png" string:endsWith ) .
+
+    ( <http://localhost:8025/api/v1/messages?query=from:test-complete@john.doe> ?messages ) resource:getIn [] .
+    ?messages tuner:jsonPath ( "$.total" ?total ) .
+    ( ?total xsd:integer ) log:dtlit ?totalInt .
+    { ?totalInt math:greaterThan 0 } tuner:assertThat "Notification email should have been sent" .
   } ;
 .
 
