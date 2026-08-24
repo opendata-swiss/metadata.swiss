@@ -435,7 +435,8 @@ dcatap:Dataset_Shape
           sh:path dct:publisher ;
           sh:severity sh:Violation ;
           pv:mappingClass "AgentMultiLang" ;
-          pv:mappingName "publisher"
+          pv:mappingName "publisher" ;
+          pv:nameFacetKeyLanguageSelectionOrder ( "de" "fr" "it" "en" )
       ], [
           sh:path dct:spatial ;
           sh:severity sh:Violation ;
