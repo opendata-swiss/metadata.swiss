@@ -199,7 +199,7 @@ export default defineEventHandler(async (event) => {
     from_email: email,
     subscriber_mode: 'external',
     data: {
-      decapUrl: `${runtimeConfig.appUrl}/admin/#/collections/Showcases/entries/${showcase.slug}`,
+      decapUrl: `${runtimeConfig.appUrl}admin/#/collections/Showcases/entries/${showcase.slug}`,
       submission: yaml.stringify(showcase[language]),
     },
   })
