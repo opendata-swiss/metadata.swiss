@@ -25,7 +25,7 @@ Each collection is a set of markdown files stored in the repository. Each collec
 
 ### Pages
 
-Pages are the static content of the website: home page, "about" pages, etc. They cannot be added or deleted via the CMS, only edited.
+Pages are the static content of the website: home page, "about" pages, etc.
 
 [Read more](cms/pages.md)
 
