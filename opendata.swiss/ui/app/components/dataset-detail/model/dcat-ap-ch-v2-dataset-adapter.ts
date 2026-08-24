@@ -6,7 +6,6 @@ import type { Catalog } from '~/piveau/get-ods-catalog-info'
 import type { TagItem } from '../../OdsTagItem.vue'
 import type { AppLanguage } from '~/constants/langages'
 import { APP_LANGUAGES } from '~/constants/langages'
-import type { } from '@piveau/sdk-core'
 
 export class DcatApChV2DatasetAdapter {
   #dataset: Dataset
