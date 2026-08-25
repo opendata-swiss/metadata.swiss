@@ -25,7 +25,7 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
     <#createShowcase> <#createCatalog> ?ccReq .
     ?ccReq tuner:response ?ccRes .
 
-    ?ccRes tuner:http_code 204 .
+    ?ccRes tuner:http_code 201 .
 
     <#createShowcase> <#request> ?csReq .
     ?csReq tuner:response ?res .
@@ -59,7 +59,7 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
     <#createDataset> <#createCatalog> ?catalogReq .
     ?catalogReq tuner:response ?catalogRes .
 
-    ?catalogRes tuner:http_code 204 .
+    ?catalogRes tuner:http_code 201 .
 
     <#createDataset> <#request> ?datasetReq .
     ?datasetReq tuner:response ?res .
