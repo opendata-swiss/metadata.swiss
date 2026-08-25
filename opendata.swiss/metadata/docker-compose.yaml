@@ -5,7 +5,7 @@ x-db-credentials: &db-credentials                             # Use the default 
 
 services:
   piveau-hub-repo:
-    image: piveau/hub-repo:4.1.1
+    image: piveau/hub-repo:4.2.0
     restart: unless-stopped
     logging:
       options:
@@ -38,7 +38,7 @@ services:
       - ./piveau_profile:/piv-profile:ro
 
   piveau-hub-search:
-    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.9
+    image: registry.gitlab.com/piveau/hub/piveau-hub-search:5.3.11
     restart: unless-stopped
     logging:
       options:

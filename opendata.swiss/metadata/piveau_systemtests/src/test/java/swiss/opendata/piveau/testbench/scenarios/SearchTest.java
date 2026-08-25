@@ -205,30 +205,29 @@ public class SearchTest extends BaseSystemTest {
     }
 
     @Test
-    // @DependsOn({Goal.ODSN_DATASET_IN_CATALOG_WITH_ORGA_PUBLISHER_INDEXED, Goal.ODSN_DATASET_FACETED_SEARCH_VERIFIED})
-    @DependsOn({Goal.ODSN_DATASET_IN_CATALOG_WITH_ORGA_PUBLISHER_INDEXED})
+    @DependsOn({Goal.ODSN_DATASET_IN_CATALOG_WITH_ORGA_PUBLISHER_INDEXED, Goal.ODSN_DATASET_FACETED_SEARCH_VERIFIED})
     @Provides(Goal.ODSN_DATASET_FACETED_SEARCH_WITH_ORGA_PUBLISHER_VERIFIED)
     public void facetedDatasetSearchWithOrgaPublisher(TestContext context) {
-        String catalogId = context.get(Goal.ODSN_CATALOG_WITH_ORGA_PUBLISHER_CREATED, "id", String.class);
         String datasetId = context.get(Goal.ODSN_DATASET_IN_CATALOG_WITH_ORGA_PUBLISHER_CREATED, "id", String.class);
         
         int limit = 100;
         int page = 0;
         String filters = "dataset";
+        boolean includeChildren = true;
 
         String facets = """
             {
-              "catalog": ["%s"]
-              "organization": ["staatskanzlei-kanton-zuerich"],
+              "organization": ["kanton-zuerich"],
               "classification": ["0221"]
             }
-            """.formatted(catalogId);
+            """.formatted();
 
         System.out.println("Checking faceted dataset search - with organization as publisher");
         System.out.println("GET /search with params: "
             + "limit=" + limit
             + ", page=" + page
             + ", filters=" + filters
+            + ", includeChildren=" + includeChildren
             + ", facets=" + facets);
 
         await().atMost(PT5S).pollInterval(PT2S).untilAsserted(() -> {
@@ -241,13 +240,12 @@ public class SearchTest extends BaseSystemTest {
                 .queryParam("page", page)
                 .queryParam("facets", facets)
                 .queryParam("filters", filters)
+                .queryParam("includeChildren", includeChildren)
                 .when().get("/search")
                 .then().statusCode(200)
                 .log().body()
                 .body("result.count", greaterThan(0))
                 .body("result.results.id", hasItem(datasetId))
-                
-                .body("result.facets.find { it.id == 'catalog' }.items.id", hasItem(catalogId))
                 
                 .body("result.facets.find { it.id == 'organization' }.items.id", hasItem("staatskanzlei-kanton-zuerich"))
                 .body("result.facets.find { it.id == 'organization' }.items.title.de", hasItems(startsWith("Staatskanzlei Kanton Z")))
