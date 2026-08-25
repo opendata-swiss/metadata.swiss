@@ -4,7 +4,7 @@
       <div class="card__body">
         <p class="meta-info">
           <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
-          <span class="meta-info__item">{{ props.dataset.publisher?.name }}</span>
+          <span class="meta-info__item">{{ props.dataset.catalog.publisher.name }}</span>
         </p>
         <div class="card__title">
           <h3>{{ props.dataset.title }}</h3>

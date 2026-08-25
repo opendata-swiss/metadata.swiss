@@ -216,7 +216,7 @@ await suspense()
             </div>
           </div>
           <address
-            v-if="dataset.publisher && dataset.publisher.name"
+            v-if="dataset.catalog.publisher && dataset.catalog.publisher.name"
             class="authors__names"
           >
             <a
@@ -224,9 +224,9 @@ await suspense()
               class="link author__name link--external"
               target="_blank"
               :href="dataset.publisher.resource"
-            >{{ dataset.publisher.name }}</a>
+            >{{ dataset.catalog.publisher.name }}</a>
             <div v-else>
-              {{ dataset.publisher.name }}
+              {{ dataset.catalog.publisher.name }}
             </div>
           </address>
         </template>

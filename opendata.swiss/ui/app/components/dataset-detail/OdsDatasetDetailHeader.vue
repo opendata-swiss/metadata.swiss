@@ -87,7 +87,7 @@
               target="_blank"
               class="publisher-link"
             >
-              {{ props.dataset.publisher.name }}
+              {{ props.dataset.catalog.publisher.name }}
               <SvgIcon
                 icon="External"
                 class="external-icon"
@@ -97,7 +97,7 @@
               v-else-if="props.dataset.publisher?.name"
               class="publisher-text"
             >
-              {{ props.dataset.publisher.name }}
+              {{ props.dataset.catalog.publisher.name }}
             </span>
             <span
               v-else

@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Home",
         "datasets": "Set di dati",
+        "organizations": "Organizzazioni",
         "blog": "Blog",
         "about": "Chi siamo",
         "contact": "Contatto",
@@ -51,6 +52,14 @@
         "title_asc": "per titolo (a-z)",
         "title_desc": "per titolo (z-a)"
       }
+    },
+    "organizations": {
+      "search_placeholder": "Cerca organizzazioni",
+      "show_datasets": "Mostra set di dati",
+      "datasets_count": "{count} set di dati",
+      "parent": "Organizzazione principale",
+      "empty": "Nessuna organizzazione trovata per questa ricerca.",
+      "load_error": "Al momento non e possibile caricare le organizzazioni."
     },
     "dataset_detail": {
       "dataset": "Set di dati",
