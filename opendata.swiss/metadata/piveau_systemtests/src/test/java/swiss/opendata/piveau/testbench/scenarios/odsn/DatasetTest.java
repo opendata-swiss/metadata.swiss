@@ -94,6 +94,7 @@ public class DatasetTest extends BaseSystemTest {
                 .body("result.identifier", hasItem(datasetId))
                 .body("result.title.de", equalTo("Waldbestand ABC"))
                 .body("result.title.en", equalTo("Forests of ABC"))
+                .body("result.catalog.title.fr", equalTo("Données ouvertes ABC"))
                 .body("result.title.it", equalTo("Foreste di ABC"))
 
                 .log().body()
