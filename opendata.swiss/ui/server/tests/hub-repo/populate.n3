@@ -30,7 +30,7 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
     <#createShowcase> <#request> ?csReq .
     ?csReq tuner:response ?res .
 
-    ?res tuner:http_code 200 .
+    ?res tuner:http_code 201 .
   } ;
 .
 
