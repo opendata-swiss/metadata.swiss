@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Home",
         "datasets": "Datasets",
+        "organizations": "Organizations",
         "blog": "Blog",
         "about": "About us",
         "contact": "Contact",
@@ -50,6 +51,14 @@
         "title_asc": "by title (a-z)",
         "title_desc": "by title (z-a)"
       }
+    },
+    "organizations": {
+      "search_placeholder": "Search organizations",
+      "show_datasets": "View datasets",
+      "datasets_count": "{count} datasets",
+      "parent": "Parent organization",
+      "empty": "No organizations found for this search.",
+      "load_error": "Organizations could not be loaded at the moment."
     },
     "dataset_detail": {
       "dataset": "Dataset",

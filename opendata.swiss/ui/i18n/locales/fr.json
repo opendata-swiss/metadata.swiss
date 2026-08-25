@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Accueil",
         "datasets": "Jeux de données",
+        "organizations": "Organisations",
         "blog": "Blog",
         "about": "À propos de nous",
         "contact": "Contact",
@@ -51,6 +52,14 @@
         "title_asc": "par titre (a-z)",
         "title_desc": "par titre (z-a)"
       }
+    },
+    "organizations": {
+      "search_placeholder": "Rechercher des organisations",
+      "show_datasets": "Voir les jeux de données",
+      "datasets_count": "{count} jeux de données",
+      "parent": "Organisation parente",
+      "empty": "Aucune organisation ne correspond à cette recherche.",
+      "load_error": "Les organisations ne peuvent pas être chargées pour le moment."
     },
     "dataset_detail": {
       "dataset": "Jeu de données",

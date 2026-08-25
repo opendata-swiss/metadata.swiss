@@ -8,7 +8,7 @@
     <template #top-meta>
       <div>
         <span class="meta-info__item">{{ t('message.dataset_detail.dataset') }}</span>
-        <span class="meta-info__item">{{ props.dataset.publisher?.name }}</span>
+        <span class="meta-info__item">{{ props.dataset.catalog.publisher.name }}</span>
       </div>
     </template>
     <div>

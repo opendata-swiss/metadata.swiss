@@ -8,6 +8,43 @@ import { getOdsLicenses } from './get-ods-licenses'
 
 export const facets = ['catalog', 'categories', 'publisher', 'format', 'license', 'keywords']
 
+interface SearchResponseFacetItem {
+  id: string
+  title?: string | Record<string, string>
+  count: number
+}
+
+interface SearchResponseFacetGroup {
+  id: string
+  title?: string | Record<string, string>
+  items: SearchResponseFacetItem[]
+}
+
+interface SearchResponseWithFacets {
+  result?: {
+    facets?: Array<{
+      id: string
+      title?: string | Record<string, string>
+      items?: Array<SearchResponseFacetItem | null | undefined>
+    }>
+  }
+}
+
+function getFacetInfoFromQueryResponse(context: { qc?: { getQueryData: (queryKey: readonly unknown[]) => unknown }, queryKey?: readonly unknown[] }): SearchResponseFacetGroup[] {
+  if (!context.qc || !context.queryKey) {
+    return []
+  }
+
+  const queryResponse = context.qc.getQueryData(context.queryKey) as SearchResponseWithFacets | undefined
+  const availableFacets = queryResponse?.result?.facets ?? []
+
+  return availableFacets.map(facet => ({
+    id: facet.id,
+    title: facet.title,
+    items: (facet.items ?? []).filter((item): item is SearchResponseFacetItem => item !== null && item !== undefined),
+  }))
+}
+
 /**
  * Returns a piveau hub-search query definition for DCAT-AP datasets
  */
@@ -20,13 +57,14 @@ export function useDatasetsSearch() {
     indexDetails: 'datasets',
     facets,
     schema: schemaDataset,
-  }, (dataset, localeInstance) => {
+  }, (dataset, context) => {
     const { setup: base } = dcatApDataset()
+    const facetInfo = getFacetInfoFromQueryResponse(context)
 
     return {
-      ...base(dataset, localeInstance),
-      getKeywords: getKeywords(dataset, localeInstance),
-      getOdsCatalogInfo: getOdsCatalogInfo(dataset, localeInstance),
+      ...base(dataset, context),
+      getKeywords: getKeywords(dataset, context),
+      getOdsCatalogInfo: getOdsCatalogInfo(dataset, context, facetInfo),
       getOdsFormats: getOdsFormats(dataset),
       getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
       getResource: dataset.resource,
