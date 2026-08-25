@@ -52,7 +52,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
   tuner:formula {
     <#ratingCreated> <#request> ?req .
     ?req tuner:response ?res .
-    ?res tuner:http_code 201 .
+    ?res tuner:http_code 204 .
 
     ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
@@ -76,7 +76,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
   tuner:formula {
     <#ratingUpdated> <#request> ?req .
     ?req tuner:response ?res .
-    ?res tuner:http_code 201 .
+    ?res tuner:http_code 204 .
 
     ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
