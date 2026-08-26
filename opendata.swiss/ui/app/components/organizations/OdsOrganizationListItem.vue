@@ -167,6 +167,7 @@ function toggleNode(nodeId: string) {
 }
 
 .org-list[data-level='0'] {
+  margin-top: 0;
   margin-left: 1.25rem;
   padding-left: 1.25rem;
   padding-bottom: 1.25rem;
