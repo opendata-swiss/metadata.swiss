@@ -15,10 +15,13 @@ interface OrganizationTreeNode {
   children: OrganizationTreeNode[]
 }
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   nodes: OrganizationTreeNode[]
   datasetCountByOrganizationId?: Record<string, number>
-}>()
+  level?: number
+}>(), {
+  level: 0,
+})
 
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
@@ -80,128 +83,105 @@ function toggleNode(nodeId: string) {
 </script>
 
 <template>
-  <ul class="organization-tree">
-    <li
-      v-for="node in props.nodes"
-      :key="node.id"
-      class="organization-tree__node"
-    >
-      <div class="column">
-        <div class="row">
-          <div class="avatar">
-            {{ organizationLabelShort(node.organization) }}
-          </div>
-          <div class="org-props">
-            <h2 class="h6 org-title">
-              {{ organizationLabel(node.organization) }}
-            </h2>
-            <div>
-              <NuxtLink
-                v-if="getDatasetCount(node.organization.id) > 0"
-                class="organization-tree__link"
-                :to="datasetsLink(node.organization)"
-                :title=" t('message.organizations.show_datasets')"
-              >
-                {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
-              </NuxtLink>
-              <p
-                v-else
-                class="org-dataset-count"
-              >
-                {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
-              </p>
-            </div>
-          </div>
+  <div
+    v-for="node in props.nodes"
+    :key="node.id"
+    class="org-list"
+    :data-level="props.level"
+  >
+    <div class="column">
+      <div class="row">
+        <div
+          class="avatar"
+          :data-level="props.level"
+        >
+          {{ organizationLabelShort(node.organization) }}
         </div>
-        <div class="buttons">
+        <div class="org-props">
+          <h2 class="h6 org-title">
+            {{ organizationLabel(node.organization) }}
+          </h2>
           <div>
-            <OdsButton
-              v-if="node.children.length > 0"
-              variant="link"
-              :title="isNodeExpanded(node.id) ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
-              :aria-label="isNodeExpanded(node.id) ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
-              size="sm"
-              @click="toggleNode(node.id)"
+            <NuxtLink
+              v-if="getDatasetCount(node.organization.id) > 0"
+              class="organization-tree__link"
+              :to="datasetsLink(node.organization)"
+              :title=" t('message.organizations.show_datasets')"
             >
-              <template #icon>
-                <SvgIcon
-                  icon="ChevronDown"
-                  role="btn"
-                  :class="{ rotated: isNodeExpanded(node.id) }"
-                />
-              </template>
-              {{ node.children.length + " " + t('message.organizations.sub_organizations') }}
-            </OdsButton>
+              {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
+            </NuxtLink>
+            <p
+              v-else
+              class="org-dataset-count"
+            >
+              {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
+            </p>
           </div>
         </div>
       </div>
-      <Transition name="expand">
-        <div
-          v-if="node.children.length > 0"
-          v-show="isNodeExpanded(node.id)"
-          class="organization-tree__children"
-        >
-          <OdsOrganizationListItem
-            :nodes="node.children"
-            :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
-          />
+      <div class="buttons">
+        <div>
+          <OdsButton
+            v-if="node.children.length > 0"
+            variant="link"
+            :title="isNodeExpanded(node.id) ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
+            :aria-label="isNodeExpanded(node.id) ? t('message.dataset_search.hide_filters') : t('message.dataset_search.show_filters')"
+            size="sm"
+            @click="toggleNode(node.id)"
+          >
+            <template #icon>
+              <SvgIcon
+                icon="ChevronDown"
+                role="btn"
+                :class="{ rotated: isNodeExpanded(node.id) }"
+              />
+            </template>
+            {{ node.children.length + " " + t('message.organizations.sub_organizations') }}
+          </OdsButton>
         </div>
-      </Transition>
-    </li>
-  </ul>
+      </div>
+    </div>
+    <Transition name="expand">
+      <div
+        v-if="node.children.length > 0"
+        v-show="isNodeExpanded(node.id)"
+        class="organization-tree__children"
+      >
+        <OdsOrganizationListItem
+          :nodes="node.children"
+          :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
+          :level="props.level + 1"
+        />
+      </div>
+    </Transition>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.organization-tree {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
+.org-list {
+  border-left: 2px solid var(--color-border, #d6d9dd);
+  margin-left: 2rem;
+  padding-left: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
-.organization-tree .organization-tree {
-  margin-top: 0.75rem;
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--color-border, #d6d9dd);
+.org-list[data-level='0'] {
+  margin-left: 1.25rem;
+  padding-left: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+.org-list[data-level='1'] {
+  margin-left: 5rem;
+  padding-left: rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
 
 .organization-tree__children {
   overflow: hidden;
-}
-
-.organization-tree__node {
-  border: 1px solid var(--color-border, #d6d9dd);
-  border-radius: 0.75rem;
-  padding: 0.85rem;
-  background-color: #fff;
-}
-
-.organization-tree__row {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.organization-tree__title {
-  margin: 0;
-}
-
-.organization-tree__meta {
-  margin: 0.25rem 0 0;
-  color: var(--color-text-muted, #5a6270);
-}
-
-.organization-tree__link {
-  font-weight: 600;
-  justify-self: start;
-}
-
-@media (min-width: 768px) {
-  .organization-tree__row {
-    grid-template-columns: 1fr auto;
-    align-items: center;
-  }
 }
 
 .column {
@@ -215,9 +195,6 @@ function toggleNode(nodeId: string) {
     align-items: center;
     gap: 12px;
     .avatar {
-      height: 48px;
-      width: 48px;
-      background-color: grey;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -226,6 +203,18 @@ function toggleNode(nodeId: string) {
     .org-props {
       display: flex;
       flex-direction: column;
+      gap: 0.25rem;
+      .org-level {
+        margin: 0;
+        font-size: 0.75rem;
+        line-height: 1.2;
+        color: #4b5563;
+        background: #eef2f7;
+        border: 1px solid #d9e0ea;
+        border-radius: 999px;
+        padding: 0.15rem 0.5rem;
+        width: fit-content;
+      }
     }
   }
   .buttons {
@@ -265,5 +254,18 @@ function toggleNode(nodeId: string) {
   .rotated {
     transition: none;
   }
+}
+
+.avatar[data-level='0'] {
+  background-color: lightgray;
+  height: 48px;
+  width: 48px;
+}
+
+.avatar[data-level='1'] {
+  background-color: lightblue;
+  height: 32px;
+  width: 32px;
+  font-size: smaller;
 }
 </style>
