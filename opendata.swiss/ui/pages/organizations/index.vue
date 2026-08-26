@@ -71,6 +71,14 @@ const { data: datasetFacets } = await useFetch<HubSearchDatasetFacetsResponse>((
   },
 })
 
+const { data: showcaseFacets } = await useFetch<HubSearchDatasetFacetsResponse>(() => `${baseUrl}search`, {
+  query: {
+    filter: 'resource',
+    resource: 'showcase',
+    limit: 0,
+  },
+})
+
 function getLocalizedValue(value?: Record<string, string>) {
   if (!value) {
     return ''
@@ -179,6 +187,21 @@ const datasetCountByOrganizationId = computed<Record<string, number>>(() => {
   return counts
 })
 
+const showcaseCountByOrganizationId = computed<Record<string, number>>(() => {
+  const counts: Record<string, number> = {}
+  const organizationFacet = showcaseFacets.value?.result?.facets?.find(facet => facet.id === 'organization')
+
+  if (!organizationFacet) {
+    return counts
+  }
+
+  for (const item of organizationFacet.items) {
+    counts[item.id] = item.count
+  }
+
+  return counts
+})
+
 const filteredOrganizations = computed(() => {
   const searchTerm = searchInput.value.trim().toLowerCase()
 
@@ -266,6 +289,7 @@ useSeoMeta({
           v-else-if="!pending && filteredOrganizations.length > 0"
           :nodes="filteredOrganizationTree"
           :dataset-count-by-organization-id="datasetCountByOrganizationId"
+          :showcase-count-by-organization-id="showcaseCountByOrganizationId"
         />
 
         <p

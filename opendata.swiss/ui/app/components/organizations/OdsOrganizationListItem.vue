@@ -18,6 +18,7 @@ interface OrganizationTreeNode {
 const props = withDefaults(defineProps<{
   nodes: OrganizationTreeNode[]
   datasetCountByOrganizationId?: Record<string, number>
+  showcaseCountByOrganizationId?: Record<string, number>
   level?: number
 }>(), {
   level: 0,
@@ -102,16 +103,7 @@ function toggleNode(nodeId: string) {
             {{ organizationLabel(node.organization) }}
           </h2>
           <div>
-            <NuxtLink
-              v-if="getDatasetCount(node.organization.id) > 0"
-              class="organization-tree__link"
-              :to="datasetsLink(node.organization)"
-              :title=" t('message.organizations.show_datasets')"
-            >
-              {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
-            </NuxtLink>
             <p
-              v-else
               class="org-dataset-count"
             >
               {{ t('message.organizations.datasets_count', { count: getDatasetCount(node.organization.id) }) }}
@@ -150,6 +142,7 @@ function toggleNode(nodeId: string) {
         <OdsOrganizationListItem
           :nodes="node.children"
           :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
+          :showcase-count-by-organization-id="props.showcaseCountByOrganizationId"
           :level="props.level + 1"
         />
       </div>

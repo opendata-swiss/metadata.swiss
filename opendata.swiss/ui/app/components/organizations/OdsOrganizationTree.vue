@@ -18,6 +18,7 @@ interface OrganizationTreeNode {
 const props = defineProps<{
   nodes: OrganizationTreeNode[]
   datasetCountByOrganizationId?: Record<string, number>
+  showcaseCountByOrganizationId?: Record<string, number>
 }>()
 
 const { t, locale } = useI18n()
@@ -46,6 +47,10 @@ function datasetsLink(organization: OrganizationItem) {
 
 function getDatasetCount(organizationId: string) {
   return props.datasetCountByOrganizationId?.[organizationId] || 0
+}
+
+function getShowcaseCount(organizationId: string) {
+  return props.showcaseCountByOrganizationId?.[organizationId] || 0
 }
 
 function organizationLabelShort(organization: OrganizationItem) {
@@ -95,7 +100,7 @@ function organizationLabelShort(organization: OrganizationItem) {
           <div class="dataset-and-showcases">
             <div class="item">
               <p class="value">
-                {{ getDatasetCount(node.organization.id) }}
+                {{ getShowcaseCount(node.organization.id) }}
               </p>
               <p class="text">
                 {{ t('message.header.navigation.showcases') }}
@@ -112,6 +117,7 @@ function organizationLabelShort(organization: OrganizationItem) {
           </div>
         </div>
       </template>
+      <!--
       <div class="organization-tree__row">
         <div>
           <p class="organization-tree__meta">
@@ -130,11 +136,13 @@ function organizationLabelShort(organization: OrganizationItem) {
           {{ t('message.organizations.show_datasets') }}
         </NuxtLink>
       </div>
+      -->
 
       <OdsOrganizationListItem
         v-if="node.children.length > 0"
         :nodes="node.children"
         :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
+        :showcase-count-by-organization-id="props.showcaseCountByOrganizationId"
       />
     </OdsCard>
   </div>
