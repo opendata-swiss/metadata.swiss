@@ -59,7 +59,8 @@
       "datasets_count": "{count} jeux de données",
       "parent": "Organisation parente",
       "empty": "Aucune organisation ne correspond à cette recherche.",
-      "load_error": "Les organisations ne peuvent pas être chargées pour le moment."
+      "load_error": "Les organisations ne peuvent pas être chargées pour le moment.",
+      "sub_organizations": "Sous-unités"
     },
     "dataset_detail": {
       "dataset": "Jeu de données",

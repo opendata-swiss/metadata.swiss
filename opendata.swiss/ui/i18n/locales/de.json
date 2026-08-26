@@ -59,7 +59,8 @@
       "datasets_count": "{count} Datensätze",
       "parent": "Übergeordnete Organisation",
       "empty": "Für diese Suche wurden keine Organisationen gefunden.",
-      "load_error": "Organisationen konnten momentan nicht geladen werden."
+      "load_error": "Organisationen konnten momentan nicht geladen werden.",
+      "sub_organizations": "Untereinheiten"
     },
     "dataset_detail": {
       "dataset": "Dataset",

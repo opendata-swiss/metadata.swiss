@@ -59,7 +59,8 @@
       "datasets_count": "{count} set di dati",
       "parent": "Organizzazione principale",
       "empty": "Nessuna organizzazione trovata per questa ricerca.",
-      "load_error": "Al momento non e possibile caricare le organizzazioni."
+      "load_error": "Al momento non e possibile caricare le organizzazioni.",
+      "sub_organizations": "Sottounità"
     },
     "dataset_detail": {
       "dataset": "Set di dati",

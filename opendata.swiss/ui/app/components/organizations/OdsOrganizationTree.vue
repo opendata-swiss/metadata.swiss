@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import OdsOrganizationListItem from './OdsOrganizationListItem.vue'
+
 interface OrganizationItem {
   id: string
   resource: string
@@ -36,7 +38,7 @@ function datasetsLink(organization: OrganizationItem) {
   return {
     path: localePath('/datasets'),
     query: {
-      publisher: organization.name ? organization.name.de : '',
+      organization: organization.id,
     },
   }
 }
@@ -67,6 +69,7 @@ function getDatasetCount(organizationId: string) {
         </div>
 
         <NuxtLink
+          v-if="getDatasetCount(node.organization.id) > 0"
           class="organization-tree__link"
           :to="datasetsLink(node.organization)"
         >
@@ -74,7 +77,7 @@ function getDatasetCount(organizationId: string) {
         </NuxtLink>
       </div>
 
-      <OdsOrganizationTree
+      <OdsOrganizationListItem
         v-if="node.children.length > 0"
         :nodes="node.children"
         :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
