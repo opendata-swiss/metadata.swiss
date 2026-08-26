@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import OdsOrganizationListItem from './OdsOrganizationListItem.vue'
+import OdsCard from '../content/OdsCard.vue'
 
 interface OrganizationItem {
   id: string
@@ -46,20 +47,73 @@ function datasetsLink(organization: OrganizationItem) {
 function getDatasetCount(organizationId: string) {
   return props.datasetCountByOrganizationId?.[organizationId] || 0
 }
+
+function organizationLabelShort(organization: OrganizationItem) {
+  const label = getLocalizedValue(organization.name) || getLocalizedValue(organization.pref_label) || organization.id
+  const parts = label
+    .split(/[\s-]+/)
+    .filter(Boolean)
+
+  const uppercaseInitials = parts
+    .filter(part => /^[A-ZÀ-ÖØ-Þ]/.test(part))
+    .map(part => part.charAt(0))
+
+  if (uppercaseInitials.length >= 2) {
+    return `${uppercaseInitials[0]}${uppercaseInitials[1]}`.toUpperCase()
+  }
+
+  if (parts.length >= 2) {
+    return `${parts[0]!.charAt(0)}${parts[1]!.charAt(0)}`.toUpperCase()
+  }
+
+  return label.replace(/\s+/g, '').slice(0, 2).toUpperCase()
+}
 </script>
 
 <template>
-  <ul class="organization-tree">
-    <li
+  <div class="list">
+    <OdsCard
       v-for="node in props.nodes"
       :key="node.id"
-      class="organization-tree__node"
+      :title="organizationLabel(node.organization)"
+      type="default"
     >
+      <template #title>
+        <div class="title">
+          <div class="row">
+            <div
+              class="avatar"
+            >
+              {{ organizationLabelShort(node.organization) }}
+            </div>
+            <div class="org-props">
+              <h2 class="h5 org-title">
+                {{ organizationLabel(node.organization) }}
+              </h2>
+            </div>
+          </div>
+          <div class="dataset-and-showcases">
+            <div class="item">
+              <p class="value">
+                {{ getDatasetCount(node.organization.id) }}
+              </p>
+              <p class="text">
+                {{ t('message.header.navigation.showcases') }}
+              </p>
+            </div>
+            <div class="item">
+              <p class="value">
+                {{ getDatasetCount(node.organization.id) }}
+              </p>
+              <p class="text">
+                {{ t('message.organizations.datasets_count') }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </template>
       <div class="organization-tree__row">
         <div>
-          <h2 class="h5 organization-tree__title">
-            {{ organizationLabel(node.organization) }}
-          </h2>
           <p class="organization-tree__meta">
             {{ node.organization.id }}
           </p>
@@ -82,56 +136,75 @@ function getDatasetCount(organizationId: string) {
         :nodes="node.children"
         :dataset-count-by-organization-id="props.datasetCountByOrganizationId"
       />
-    </li>
-  </ul>
+    </OdsCard>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.organization-tree {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.75rem;
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
-
-.organization-tree .organization-tree {
-  margin-top: 0.75rem;
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--color-border, #d6d9dd);
-}
-
-.organization-tree__node {
-  border: 1px solid var(--color-border, #d6d9dd);
-  border-radius: 0.75rem;
-  padding: 0.85rem;
-  background-color: #fff;
-}
-
-.organization-tree__row {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.organization-tree__title {
-  margin: 0;
-}
-
-.organization-tree__meta {
-  margin: 0.25rem 0 0;
-  color: var(--color-text-muted, #5a6270);
-}
-
-.organization-tree__link {
-  font-weight: 600;
-  justify-self: start;
-}
-
-@media (min-width: 768px) {
-  .organization-tree__row {
-    grid-template-columns: 1fr auto;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  .avatar {
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    height: 48px;
+    width: 48px;
+  }
+  .org-props {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    .org-level {
+      margin: 0;
+      font-size: 0.75rem;
+      line-height: 1.2;
+      color: #4b5563;
+      background: #eef2f7;
+      border: 1px solid #d9e0ea;
+      border-radius: 999px;
+      padding: 0.15rem 0.5rem;
+      width: fit-content;
+    }
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .org-props {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-start;
+    height: 100%;
+  }
+  .dataset-and-showcases {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    .item {
+      display: flex;
+      flex-direction: column;
+      .value {
+        text-align: right;
+        font-weight: bolder;
+      }
+      .text {
+        color: gray;
+      }
+    }
   }
 }
 </style>
