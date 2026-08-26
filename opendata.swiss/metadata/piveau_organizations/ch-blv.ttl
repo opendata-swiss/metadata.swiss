@@ -11,7 +11,7 @@
         "OSAV"@fr,
         "USAV"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.blv.admin.ch> ;
     foaf:name "Bundesamt für Lebensmittelsicherheit und Veterinärwesen (BLV)"@de,
         "Federal Food Safety and Veterinary Office (FSVO)"@en,

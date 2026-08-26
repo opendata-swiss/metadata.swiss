@@ -11,6 +11,7 @@
         "SG-DFJP"@fr,
         "SG-DFGP"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-ejpd> ;
     foaf:homepage <https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html> ;
     foaf:name "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)"@de,
         "General Secretariat Federal Department of Justice and Police (GS-FDJP)"@en,

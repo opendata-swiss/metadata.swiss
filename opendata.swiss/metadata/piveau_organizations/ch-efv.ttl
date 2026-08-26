@@ -11,7 +11,7 @@
         "AFF"@fr,
         "AFF"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:name "Eidgenössische Finanzverwaltung (EFV)"@de,
         "Federal Finance Administration (FFA)"@en,
         "Administration fédérale des finances (AFF)"@fr,

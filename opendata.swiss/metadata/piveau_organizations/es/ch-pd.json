@@ -1,0 +1,26 @@
+{
+  "id": "ch-pd",
+  "identifier": "CH_PD",
+  "resource": "https://opendata.swiss/id/organization/ch-pd",
+  "description": {
+    "de": "Die Parlamentsdienste sind die Stabsstelle der Bundesversammlung und ihrer Organe.\nSie unterstützen diese bei der Erfüllung ihrer Aufgaben. Sie sind die Drehscheibe zwischen der Bundesversammlung einerseits und dem Bundesrat, weiteren Behörden und der Öffentlichkeit andererseits. Sie wahren und fördern die Interessen und die Würde der Bundesversammlung und ihrer Organe. ",
+    "en": "The Parliamentary Services are the administrative services of the Federal Assembly and its bodies, which it supports in carrying out their tasks. They act as the interface between the Federal Assembly on the one hand and the Federal Council, other authorities and the public on the other. They protect and promote the interests and image of the Federal Assembly and its bodies.",
+    "fr": "Les Services du Parlement constituent l'état-major sur lequel s'appuient l'Assemblée fédérale et ses organes. \nIls les assistent dans l'exercice de leurs attributions.\nIls assurent la liaison entre l'Assemblée fédérale, d'une part, et le Conseil fédéral, d'autres autorités et le public, d'autre part.\nIls préservent et défendent les intérêts et la dignité de l'Assemblée fédérale et de ses organes.",
+    "it": "I Servizi del Parlamento sono servizi amministrativi centrali che assistono l’Assemblea federale e i suoi organi nell’adempimento dei loro compiti.\nFungono da piattaforma tra l’Assemblea federale e il Consiglio federale da un lato e tra le altre autorità e l’opinione pubblica dall’altro.\nTutelano e promuovono gli interessi e la dignità dell’Assemblea federale e dei suoi organi."
+  },
+  "name": {
+    "de": "Parlamentsdienste (PD)",
+    "en": "Parliamentary Services (PS)",
+    "fr": "Services du Parlement (SP)",
+    "it": "Servizi del Parlamento (SP)"
+  },
+  "pref_label": {
+    "de": "Parlamentsdienste (PD)",
+    "en": "Parliamentary Services (PS)",
+    "fr": "Services du Parlement (SP)",
+    "it": "Servizi del Parlamento (SP)"
+  },
+  "homepage": "https://www.parlament.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

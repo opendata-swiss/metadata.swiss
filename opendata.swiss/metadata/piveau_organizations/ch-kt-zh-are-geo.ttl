@@ -1,0 +1,28 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-are-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Abteilung Geoinformation ist das Kompetenzzentrum für räumliche Informationen im Kanton Zürich. Wir versorgen Gesellschaft, Wirtschaft und öffentliche Verwaltung mit qualitativ hochstehenden Geodaten und Informationen über den Kanton Zürich."@de,
+        """The department of geoinformation is the geospatial competency center of the Canton of Zurich. 
+We coordinate the acquisition of geodata within the cantonal territory and provide public, private, and government sectors with data of outstanding quality."""@en,
+        """Le département de géomatique est le centre de compétence du system d'information géographique du canton de Zurich.
+Nous coordinons l'aquisition des géodonnées d'intérêt commun sur le territoire cantonal et les mettons à disposition des
+secteurs public et privé et des particuliers."""@fr,
+        "La divisione della geoinformazione è il centro d'eccellenza del Cantone di Zurigo per dati georeferenziati. Mettiamo a disposizione dati geografici e informazioni di alta qualità per l'economia, la società e la pubblica amministrazione su tutto il cantone."@it ;
+    dcterms:identifier "CH_KT_ZH_ARE_GEO" ;
+    skos:prefLabel "Geoinformation Kanton Zürich"@de,
+        "Department of Geoinformation of the Canton of Zurich"@en,
+        "Département de Géoinformation du Canton de Zurich"@fr,
+        "Dipartimento della geoinformazione del Cantone di Zurigo"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh-bau-are> ;
+    foaf:homepage <https://www.zh.ch/gis> ;
+    foaf:name "Geoinformation Kanton Zürich"@de,
+        "Department of Geoinformation of the Canton of Zurich"@en,
+        "Département de Géoinformation du Canton de Zurich"@fr,
+        "Dipartimento della geoinformazione del Cantone di Zurigo"@it .
+
+<https://www.zh.ch/gis> a foaf:Document .
+

@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sz-umwelt-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schwyz als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt."@de ;
+    dcterms:identifier "CH_KT_SZ_UMWELT_GEO" ;
+    skos:prefLabel "Amt für Geoinformation (SZ)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-sz> ;
+    foaf:homepage <https://www.sz.ch/behoerden/verwaltung/umweltdepartement/amt-fuer-geoinformation.html> ;
+    foaf:name "Amt für Geoinformation (SZ)"@de .
+
+<https://www.sz.ch/behoerden/verwaltung/umweltdepartement/amt-fuer-geoinformation.html> a foaf:Document .
+

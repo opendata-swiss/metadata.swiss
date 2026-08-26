@@ -1,0 +1,44 @@
+{
+  "id": "ch-kt-fr-sda",
+  "identifier": "CH_KT_FR_SDA",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-fr-sda",
+  "description": {
+    "de": "Das Amt für Statistik und Daten ist das kantonale Kompetenzzentrum für die öffentliche Statistik. Es erhebt, analysiert und verbreitet statistische Daten über die Lage und die Entwicklung des Kantons, unterstützt die Dienststellen des Staats bei der Verwaltung ihrer Daten und koordiniert die Veröffentlichung der offenen Verwaltungsdaten. ",
+    "en": "The Statistics and Data Service is the cantonal competence center for public statistics. It collects, analyzes, and disseminates statistical data on the situation and development of the canton, supports state services in data management, and coordinates the dissemination of administrative data in open access.",
+    "fr": "Le Service de la statistique et de la donnée est le centre de compétence cantonal pour la statistique publique. Il collecte, analyse et diffuse des données statistiques sur la situation et l’évolution du canton, soutient les services de l’État dans la gestion des données et coordonne la diffusion des données administratives en libre accès.",
+    "it": "Il Servizio Statistiche e Dati è il centro di competenza cantonale per la statistica pubblica. Raccoglie, analizza e diffonde dati statistici sulla situazione e l'evoluzione del cantone, supporta i servizi statali nella gestione dei dati e coordina la diffusione dei dati amministrativi ad accesso aperto."
+  },
+  "name": {
+    "de": "Amt für Statistik und Daten Freiburg",
+    "en": "Statistics and Data Service Fribourg",
+    "fr": "Service de la statistique et de la donnée Fribourg",
+    "it": "Servizio Statistiche e Dati Friburgo"
+  },
+  "pref_label": {
+    "de": "Amt für Statistik und Daten Freiburg",
+    "en": "Statistics and Data Service Fribourg",
+    "fr": "Service de la statistique et de la donnée Fribourg",
+    "it": "Servizio Statistiche e Dati Friburgo"
+  },
+  "homepage": "https://www.fr.ch/de/vwbd/sda",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-fr",
+  "ancestors": [
+    {
+      "id": "ch-kt-fr",
+      "name": {
+        "de": "Kanton Freiburg",
+        "fr": "Canton de Fribourg",
+        "it": "Cantoni di Friburgo"
+      },
+      "pref_label": {
+        "de": "FR",
+        "en": "FR",
+        "fr": "FR",
+        "it": "FR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-fr",
+      "hierarchy_level": 0
+    }
+  ]
+}

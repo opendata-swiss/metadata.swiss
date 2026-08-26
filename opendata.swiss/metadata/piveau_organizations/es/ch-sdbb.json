@@ -2,20 +2,28 @@
   "id": "ch-sdbb",
   "identifier": "CH_SDBB",
   "resource": "https://opendata.swiss/id/organization/ch-sdbb",
+  "classification": {
+    "id": "0109",
+    "label": {
+      "de": "Verein",
+      "fr": "Association",
+      "it": "Associazione",
+      "en": "Association"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0109"
+  },
   "description": {
     "de": "Das SDBB ist eine Institution der Schweizerischen Konferenz der kantonalen Erziehungsdirektoren EDK. Es erbringt für die Kantone und Verbundpartner Dienstleistungen in der Berufsbildung und der Berufs-, Studien- und Laufbahnberatung."
   },
   "name": {
-    "de": "SDBB",
-    "en": "SDBB",
-    "fr": "SDBB",
-    "it": "SDBB"
+    "de": "Schweizerisches Dienstleistungszentrum Berufsbildung / Berufs-, Studien- und Laufbahnberatung (SDBB)",
+    "fr": "Centre suisse de services Formation professionnelle (CSFO)",
+    "it": "Centro svizzero di servizio Formazione professionale (CSFO)"
   },
   "pref_label": {
     "de": "SDBB",
-    "en": "SDBB",
-    "fr": "SDBB",
-    "it": "SDBB"
+    "fr": "CSFO",
+    "it": "CSFO"
   },
   "homepage": "https://www.sdbb.ch",
   "hierarchy_level": 0,

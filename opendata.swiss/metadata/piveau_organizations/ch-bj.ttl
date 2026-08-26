@@ -5,15 +5,22 @@
 
 <https://opendata.swiss/id/organization/ch-bj> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Das Bundesamt für Justiz wird oft als das rechtliche Gewissen der Bundesverwaltung bezeichnet. Unsere Themenbereiche sind vielfältig und gesellschaftlich relevant."@de,
+        "The Federal Office of Justice is often referred to as the legal conscience of the Federal Administration. The issues we deal with are wide-ranging and socially relevant."@en,
+        "L'Office fédéral de la justice est souvent décrit comme la conscience juridique de l'administration fédérale. Nous traitons un large éventail de sujets de société. "@fr,
+        "L’Ufficio federale di giustizia è definito la coscienza giuridica dell’Amministrazione federale. Affrontiamo molteplici temi importanti per la società."@it ;
     dcterms:identifier "CH_BJ" ;
     skos:prefLabel "BJ"@de,
         "FOI"@en,
         "OFJ"@fr,
         "UFG"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-ejpd> ;
+    foaf:homepage <https://bj.admin.ch> ;
     foaf:name "Bundesamt für Justiz (BJ)"@de,
         "Federal Office of Justice (FOI)"@en,
         "Office fédéral de la justice (OFJ)"@fr,
         "Ufficio federale di giustizia (UFG)"@it .
+
+<https://bj.admin.ch> a foaf:Document .
 

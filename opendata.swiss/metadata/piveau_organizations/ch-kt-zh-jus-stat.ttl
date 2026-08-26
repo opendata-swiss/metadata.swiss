@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-jus-stat> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Amt für Statistik und Daten umfasst das Kompetenzzentrum Daten des Kantons Zürich, organisiert, koordiniert und steuert die politische Teilhabe inkl. der Wahlen und Abstimmungen im Kanton und beobachtet die Entwicklung des Kantons mit statistischen Methoden. Wir versorgen Bevölkerung, Verwaltung, Politik, Gemeinden, Medien, Firmen und sonstige Organisationen mit qualitativ hochstehenden Daten, Information und Fakten zum Kanton Zürich. Inhaltlich arbeiten wir unabhängig und objektiv."@de ;
+    dcterms:identifier "CH_KT_ZH_JUS_STAT" ;
+    skos:prefLabel "Amt für Statistik und Daten Kanton Zürich"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh-dji> ;
+    foaf:homepage <https://www.zh.ch/amt-fuer-statistik-und-daten> ;
+    foaf:name "Amt für Statistik und Daten Kanton Zürich"@de .
+
+<https://www.zh.ch/amt-fuer-statistik-und-daten> a foaf:Document .
+

@@ -1,0 +1,33 @@
+{
+  "id": "ch-gde-lausanne",
+  "identifier": "CH_GDE_LAUSANNE",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-lausanne",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
+  "description": {
+    "fr": "Le service de la mobilité et de l’aménagement des espaces publics (MAP) de la Ville de Lausanne publie ses géodonnées sous forme de fichiers à télécharger. Toutes les géodonnées actuellement disponibles et soumises aux conditions générales d'aquisition et d'utilisation des géodonnées de base en libre accès sont listées ici.\n\n"
+  },
+  "name": {
+    "de": "Ville de Lausanne",
+    "en": "City of Lausanne",
+    "fr": "Ville de Lausanne",
+    "it": "Lausanne"
+  },
+  "pref_label": {
+    "de": "Lausanne",
+    "en": "Lausanne",
+    "fr": "Lausanne",
+    "it": "Lausanne"
+  },
+  "homepage": "https://www.lausanne.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

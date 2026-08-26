@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh-pol",
+  "identifier": "CH_KT_ZH_POL",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-pol",
+  "description": {
+    "de": "Im Auftrag der Regierung und damit der Bevölkerung übernimmt die Kantonspolizei Zürich Verantwortung für die Sicherheit im Kanton Zürich, indem sie vorausschauend handelt, entschlossen Hilfe leistet und Straftaten konsequent aufklärt. Dabei folgt sie den Grundsätzen der Verhältnismässigkeit und der Gesetzmässigkeit."
+  },
+  "name": {
+    "de": "Kantonspolizei Zürich"
+  },
+  "pref_label": {
+    "de": "Kantonspolizei Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/sicherheitsdirektion/kantonspolizei-zuerich.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

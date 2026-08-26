@@ -1,0 +1,45 @@
+{
+  "id": "ch-kt-gr-standeskanzlei",
+  "identifier": "CH_KT_GR_STANDESKANZLEI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-gr-standeskanzlei",
+  "description": {
+    "de": "Die Standeskanzlei liefert ausgewählte Open Government Daten aus den Bereichen Parlament, Regierung und Verwaltung, insbesondere zu Abstimmungen und Wahlen.",
+    "en": "The State Chancellery provides selected open government data from parliament, government and administration, particularly on votes and elections.",
+    "fr": "La Chancellerie d’État fournit des données publiques librement accessibles triées sur le volet, qui proviennent du Parlement, du gouvernement et de l’administration et qui portent notamment sur les votations et les élections.",
+    "it": "La Cancelleria fornisce dati selezionati dai settori Parlamento, Governo e Amministrazione, concernenti in particolare votazioni ed elezioni, come Open Government Data."
+  },
+  "name": {
+    "de": "Standeskanzlei Graubünden",
+    "en": "State Chancellery of Grisons",
+    "fr": "Chancellerie d’État des Grisons",
+    "it": "Cancelleria dello Stato dei Grigioni"
+  },
+  "pref_label": {
+    "de": "Standeskanzlei Graubünden",
+    "en": "State Chancellery of Grisons",
+    "fr": "Chancellerie d’État des Grisons",
+    "it": "Cancelleria dello Stato dei Grigioni"
+  },
+  "homepage": "https://www.gr.ch/DE/institutionen/verwaltung/staka/Seiten/home.aspx",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-gr",
+  "ancestors": [
+    {
+      "id": "ch-kt-gr",
+      "name": {
+        "de": "Kanton Graubünden",
+        "en": "Canton of Graubünden",
+        "fr": "Canton des Grisons",
+        "it": "Cantone dei Grigioni"
+      },
+      "pref_label": {
+        "de": "Kanton Graubünden",
+        "en": "Canton of Graubünden",
+        "fr": "Canton des Grisons",
+        "it": "Cantone dei Grigioni"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-gr",
+      "hierarchy_level": 0
+    }
+  ]
+}

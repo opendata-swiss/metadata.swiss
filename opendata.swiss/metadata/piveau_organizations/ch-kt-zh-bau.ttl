@@ -1,0 +1,23 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-bau> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Wir planen, bauen, bewirtschaften und erhalten – diese vier Grundtätigkeiten sind auf ein gemeinsames Ziel ausgerichtet: einen nachhaltig attraktiven Kanton Zürich zu schaffen!"@de ;
+    dcterms:identifier "CH_KT_ZH_BAU" ;
+    skos:prefLabel "Baudirektion (ZH)"@de,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@en,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@fr,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zh.ch/bd> ;
+    foaf:name "Baudirektion des Kantons Zürich, Generalsekretariat"@de,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@en,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@fr,
+        "Baudirektion des Kantons Zürich, Generalsekretariat"@it .
+
+<https://www.zh.ch/bd> a foaf:Document .
+

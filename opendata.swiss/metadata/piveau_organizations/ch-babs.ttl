@@ -11,7 +11,7 @@
         "OFPP"@fr,
         "UFPP"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
     foaf:homepage <https://www.babs.admin.ch> ;
     foaf:name "Bundesamt für Bevölkerungsschutz (BABS)"@de,
         "Federal Office for Civil Protection (FOCP)"@en,

@@ -32,25 +32,22 @@
   },
   "homepage": "https://bafu.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-uvek",
+  "sub_organization_of": "ch-uvek",
   "ancestors": [
     {
-      "id": "ch-gs-uvek",
+      "id": "ch-uvek",
       "name": {
-        "de": "Generalsekretariat des UVEK (GS-UVEK)",
-        "en": "General Secretariat DETEC (GS-DETEC)",
-        "fr": "Secrétariat général du DETEC (SG-DETEC)",
-        "it": "Segreteria generale del DATEC (SG-DATEC)",
-        "rm": ""
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
       },
       "pref_label": {
-        "de": "GS-UVEK",
-        "en": "GS-DETEC",
-        "fr": "SG-DETEC",
-        "it": "SG-DATEC",
-        "rm": ""
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
       "hierarchy_level": 0
     }
   ]

@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sh-v-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schaffhausen als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt."@de,
+        "The Office of Geoinformation manages and publishes the geodata of the Canton of Schaffhausen as OGC geodata services and as file downloads. All currently available geodata subject to OGD are listed here."@en,
+        "L'Office de la géoinformation gère et publie les géodonnées du canton de Schaffhouse sous forme de géoservices OGC et de fichiers à télécharger. Toutes les géodonnées actuellement disponibles et soumises à l'OGD sont listées ici."@fr,
+        "L'Ufficio di geoinformazione gestisce e pubblica i geodati del Cantone di Sciaffusa come geoservizi OGC e come file da scaricare. Tutti i geodati attualmente disponibili soggetti all'OGD sono elencati qui."@it ;
+    dcterms:identifier "CH_KT_SH_V_GEO" ;
+    skos:prefLabel "Amt für Geoinformation Kanton Schaffhausen"@de,
+        "Office for Geoinformation Canton Schaffhausen"@en,
+        "Office de la géoinformation du canton de Schaffhouse"@fr,
+        "Ufficio di geoinformazione del Cantone di Sciaffusa"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-sh-v> ;
+    foaf:homepage <https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Volkswirtschaftsdepartement/Amt-f-r-Geoinformation-3854-DE.html> ;
+    foaf:name "Amt für Geoinformation Kanton Schaffhausen"@de,
+        "Office for Geoinformation Canton Schaffhausen"@en,
+        "Office de la géoinformation du canton de Schaffhouse"@fr,
+        "Ufficio di geoinformazione del Cantone di Sciaffusa"@it .
+
+<https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Volkswirtschaftsdepartement/Amt-f-r-Geoinformation-3854-DE.html> a foaf:Document .
+

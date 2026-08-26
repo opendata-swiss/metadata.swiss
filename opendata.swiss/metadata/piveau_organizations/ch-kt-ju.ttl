@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-ju> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Kanton Jura veröffentlicht auf Open Data Swiss verschiedene Arten von Daten der kantonalen Verwaltung, die dem Prinzip von Open Government Data entsprechen."@de,
+        "The canton of Jura publishes on Open Data Swiss various types of data of the cantonal administration that meets the principle of Open Government Data."@en,
+        "Le canton du Jura publie sur Open Data Swiss différents types de données de l'administration cantonale qui répondent au principe de l'Open Government Data."@fr,
+        "Il Cantone del Giura pubblica su Open Data Swiss vari tipi di dati dell'amministrazione cantonale che soddisfano il principio degli Open Government Data."@it ;
+    dcterms:identifier "CH_KT_JU" ;
+    skos:prefLabel "Kanton Jura"@de,
+        "Canton of Jura"@en,
+        "Canton du Jura"@fr,
+        "Canton Giura"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://ju.ch> ;
+    foaf:name "République et Canton du Jura"@de,
+        "Canton of Jura"@en,
+        "Canton du Jura"@fr,
+        "Canton Giura"@it .
+
+<https://ju.ch> a foaf:Document .
+

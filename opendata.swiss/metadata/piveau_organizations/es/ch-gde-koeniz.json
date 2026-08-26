@@ -1,0 +1,33 @@
+{
+  "id": "ch-gde-koeniz",
+  "identifier": "CH_GDE_KOENIZ",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-koeniz",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
+  "description": {
+    "de": "Die Gemeinde Köniz ist mit 43'000 Einwohner die viertgrösste Gemeinde im Kanton Bern. Zurzeit stellt die Gemeinde nur Geodaten auf opendata.swiss zur Verfügung. Die Geodaten der Gemeinde Köniz welchen den Prinzipien der Open Government Data Strategie entsprechen, werden vom Dienstzweig Geomatik Schritt für Schritt auf opendata.swiss zur Verfügung gestellt."
+  },
+  "name": {
+    "de": "Gemeinde Köniz",
+    "en": "Gemeinde Köniz",
+    "fr": "Commune de Köniz",
+    "it": "Comune di Köniz"
+  },
+  "pref_label": {
+    "de": "Gemeinde Köniz",
+    "en": "Gemeinde Köniz",
+    "fr": "Commune de Köniz",
+    "it": "Comune di Köniz"
+  },
+  "homepage": "https://www.koeniz.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

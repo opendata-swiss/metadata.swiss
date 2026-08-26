@@ -1,0 +1,27 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-uster> a org:Organization,
+        foaf:Organization ;
+    dcterms:description """Uster, drittgrösste Stadt im Kanton Zürich, ist mit rund 35'000 Einwohnerinnen und Einwohnern eine dynamisch wachsende Stadt im Grossraum Zürich und bekannt als innovatives Regionalzentrum.
+
+Das [Geschäftsfeld Gesellschaft Stadt Uster](https://www.uster.ch/aemter/8157) fördert die gesellschaftliche Entwicklung der Stadt Uster. Es erarbeitet Grundlagen für Entscheidungsträger und die interessierte Öffentlichkeit, entwickelt Massnahmen im Leistungsbereich und stellt ein an die Bedürfnisse angepasstes Angebot sicher. Es ist für die folgenden Bereiche zuständig: Kindheit, Jugend und Familien / Migration und Integration / Quartier- und Gemeinwesenarbeit / Kulturförderung / Bibliothek / Archiv. 
+"""@de,
+        "Uster, the third largest city in the canton of Zurich, is a dynamically growing city in the greater Zurich area with around 35,000 inhabitants and is known as an innovative regional centre."@en,
+        "Uster, troisième ville du canton de Zurich, est une ville de l'agglomération zurichoise à la croissance dynamique, qui compte environ 35 000 habitants et est connue comme un centre régional innovant."@fr,
+        "Uster, la terza città più grande del cantone di Zurigo, è una città in crescita dinamica nella grande area di Zurigo con circa 35.000 abitanti ed è conosciuta come un centro regionale innovativo."@it ;
+    dcterms:identifier "CH_GDE_USTER" ;
+    skos:prefLabel "Stadt Uster"@de,
+        "City of Uster"@en,
+        "Ville de Uster"@fr,
+        "Cità di Uster"@it ;
+    foaf:homepage <https://uster.ch> ;
+    foaf:name "Stadt Uster"@de,
+        "City of Uster"@en,
+        "Ville de Uster"@fr,
+        "Cità di Uster"@it .
+
+<https://uster.ch> a foaf:Document .
+

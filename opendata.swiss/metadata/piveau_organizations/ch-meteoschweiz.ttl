@@ -11,7 +11,7 @@
         "MétéoSuisse"@fr,
         "MeteoSvizzera"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.meteoschweiz.admin.ch> ;
     foaf:name "MeteoSchweiz"@de,
         "MeteoSwiss"@en,

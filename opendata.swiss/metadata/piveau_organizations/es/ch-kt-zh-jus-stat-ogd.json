@@ -1,0 +1,68 @@
+{
+  "id": "ch-kt-zh-jus-stat-ogd",
+  "identifier": "CH_KT_ZH_JUS_STAT_OGD",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-jus-stat-ogd",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Die Fach- und Koordinationsstelle Open Government Data (OGD) ist das kantonale Kompetenzzentrum für offene Behördendaten im Statistischen Amt. Wir unterstützen die Organisationseinheiten und Organe des Kantons bei der Bereitstellung ihrer nicht schützenswerten Daten als Open Data."
+  },
+  "name": {
+    "de": "Fach- und Koordinationsstelle Open Government Data Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "OGD (ZH)"
+  },
+  "homepage": "https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/open-government-data.html",
+  "hierarchy_level": 3,
+  "sub_organization_of": "ch-kt-zh-jus-stat",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-jus-stat",
+      "name": {
+        "de": "Amt für Statistik und Daten Kanton Zürich"
+      },
+      "pref_label": {
+        "de": "Amt für Statistik und Daten Kanton Zürich"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-jus-stat",
+      "hierarchy_level": 2
+    },
+    {
+      "id": "ch-kt-zh-dji",
+      "name": {
+        "de": "Direktion der Justiz und des Innern (ZH)"
+      },
+      "pref_label": {
+        "de": "DJI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -13,6 +13,8 @@
         "KBOB"@en,
         "KBOB"@fr,
         "KBOB"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bbl> ;
     foaf:homepage <https://www.kbob.admin.ch> ;
     foaf:name "Koordinationskonferenz der Bau- und Liegenschaftsorgane der öffentlichen Bauherren (KBOB)"@de,
         "KBOB"@en,

@@ -1,0 +1,57 @@
+{
+  "id": "ch-kt-zh-edu-stat",
+  "identifier": "CH_KT_ZH_EDU_STAT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-edu-stat",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die Bildungsstatistik (BISTA) ist eine Abteilung der Bildungsplanung und damit ein Teil des Generalsekretariates der Bildungsdirektion Kanton Zürich. Sie hat den gesetzlichen Auftrag, statistische Daten aus dem Schulbereich zu erheben, auszuwerten und benutzergerecht aufzubereiten. Da die Bildungsstatistik Daten von öffentlichem Interesse erhebt, sind sie der Öffentlichkeit zugänglich."
+  },
+  "name": {
+    "de": "Bildungsstatistik Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Bildungsstatistik Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/bildungsdirektion.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-edu",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-edu",
+      "name": {
+        "de": "Bildungsdirektion (ZH)"
+      },
+      "pref_label": {
+        "de": "Bildungsdirektion (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-edu",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

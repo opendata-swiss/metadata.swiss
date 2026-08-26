@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-zb> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Zentralbibliothek Zürich (ZB) ist als öffentliche Stiftung seit über 100 Jahren die Kantons-, Stadt- und Universitätsbibliothek von Zürich. Mit 6,6 Millionen Objekten (Büchern, Zeitschriften, Handschriften, Bildern, Fotografien, Karten, Mikroformen, Musikalien, Tonträgern, DVDs usw.) und über 200 Mitarbeitenden gehört sie zu den grössten Bibliotheken der Schweiz. Dazu kommt ein breites Angebot an Datenbanken und über 200’000 elektronische Volltexte. Eine halbe Million Menschen pro Jahr besucht die ZB und nutzt ihre vielfältigen Angebote."@de ;
+    dcterms:identifier "CH_KT_ZH_ZB" ;
+    skos:prefLabel "Zentralbibliothek Zürich"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zb.uzh.ch> ;
+    foaf:name "Zentralbibliothek Zürich"@de .
+
+<https://www.zb.uzh.ch> a foaf:Document .
+

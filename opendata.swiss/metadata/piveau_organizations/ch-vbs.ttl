@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-vbs> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das VBS hat die Aufgabe, die Schweizer Sicherheitspolitik auszuarbeiten. Der Auftrag des VBS umfasst auch die Sportförderung sowie die Geoinformation."@de,
+        "The DDPS has the task of developing Switzerland's security policy. The role of the DDPS also involves promoting sport and producing geoinformation."@en,
+        "Le DDPS est chargé d'élaborer la politique de sécurité de la Suisse. La promotion du sport et la géoinformation font aussi partie du mandat du DDPS."@fr,
+        "Il DDPS è incaricato di elaborare la politica di sicurezza della Svizzera. Fanno parte del mandato del DDPS anche la promozione dello sport e la geoinformazione."@it ;
+    dcterms:identifier "CH_VBS" ;
+    skos:prefLabel "VBS"@de,
+        "VBS"@en,
+        "DDPS"@fr,
+        "DDPS"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <http://www.vbs.admin.ch> ;
+    foaf:name "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)"@de,
+        "Federals Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)"@en,
+        "Département fédéral de la défense, de la protection de la population et des sports (DDPS)"@fr,
+        "Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS)"@it .
+
+<http://www.vbs.admin.ch> a foaf:Document .
+

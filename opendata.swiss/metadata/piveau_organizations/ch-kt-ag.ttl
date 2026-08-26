@@ -11,8 +11,11 @@
         "AG"@fr,
         "AG"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.ag.ch> ;
     foaf:name "Kanton Aargau AG"@de,
         "Canton Aargau AG"@en,
         "Canton d'Argovie AG"@fr,
         "Canton Argovia AG"@it .
+
+<https://www.ag.ch> a foaf:Document .
 

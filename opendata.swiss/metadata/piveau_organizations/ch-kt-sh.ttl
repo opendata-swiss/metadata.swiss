@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sh> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Kanton Schaffhausen"@de ;
+    dcterms:identifier "CH_KT_SH" ;
+    skos:prefLabel "SH"@de,
+        "SH"@en,
+        "SH"@fr,
+        "SH"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://sh.ch> ;
+    foaf:name "Kanton Schaffhausen"@de,
+        "Kanton Schaffhausen"@en,
+        "Kanton Schaffhausen"@fr,
+        "Cantone die Sciaffusa"@it .
+
+<https://sh.ch> a foaf:Document .
+

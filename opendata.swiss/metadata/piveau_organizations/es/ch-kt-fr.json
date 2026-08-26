@@ -1,0 +1,35 @@
+{
+  "id": "ch-kt-fr",
+  "identifier": "CH_KT_FR",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-fr",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Offizielle Informationen, Themen und Leistungen der kantonalen Verwaltung. Organisation des Staates Freiburg.",
+    "en": "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg.",
+    "fr": "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg.",
+    "it": "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg."
+  },
+  "name": {
+    "de": "Kanton Freiburg",
+    "fr": "Canton de Fribourg",
+    "it": "Cantoni di Friburgo"
+  },
+  "pref_label": {
+    "de": "FR",
+    "en": "FR",
+    "fr": "FR",
+    "it": "FR"
+  },
+  "homepage": "https://fr.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -5,6 +5,10 @@
 
 <https://opendata.swiss/id/organization/ch-bit-sap> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Das BIT ist der grösste IT-Leistungserbringer der Bundesverwaltung. Es stellt rund 50 000 Arbeitsplatzsysteme zur Verfügung, entwickelt zusammen mit den Verwaltungseinheiten massgeschneiderte, sichere sowie benutzerfreundliche IT-Lösungen und betreibt über 1000 Fachanwendungen mehrheitlich in eigenen, modernen Rechenzentren."@de,
+        "The FOITT is the largest IT service provider in the Federal Administration. It provides around 50,000 workstation systems, develops customised, secure and user-friendly IT solutions together with the administrative units, and operates over 1,000 specialist applications, mainly in its own modern data centres."@en,
+        "L’OFIT est le plus important fournisseur de prestations informatiques de l’administration fédérale. Il met à disposition plus de 50 000 systèmes de postes de travail, développe des solutions informatiques sur mesure, sûres et conviviales en collaboration avec les unités administratives et exploite plus de 1000 applications spécialisées, principalement dans ses centres de calcul ultramodernes."@fr,
+        "L’UFIT è il maggiore fornitore di prestazioni informatiche della Confederazione. Mette a disposizione circa 50 000 postazioni di lavoro, insieme alle unità amministrative sviluppa soluzioni informatiche su misura, sicure e intuitive. Gestisce inoltre la maggior parte delle oltre 1000 applicazioni specialistiche nei propri centri di calcolo moderni."@it ;
     dcterms:identifier "CH_BIT_SAP" ;
     skos:prefLabel "BIT (SAP)"@de,
         "FOITT (SAP)"@en,
@@ -12,8 +16,11 @@
         "UFIT (SAP)"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
     org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bit> ;
+    foaf:homepage <https://bit.admin.ch> ;
     foaf:name "Bundesamt für Informatik und Telekommunikation (BIT), SAP"@de,
         "Federal Office of Information Technology, Systems and Telecommunication (FOITT), SAP"@en,
         "Office fédéral de l'informatique et de la télécommunication (OFIT), SAP"@fr,
         "Ufficio federale dell'informatica e della telecomunicazione (UFIT), SAP"@it .
+
+<https://bit.admin.ch> a foaf:Document .
 

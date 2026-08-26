@@ -1,0 +1,46 @@
+{
+  "id": "ch-kt-zh-ekz",
+  "identifier": "CH_KT_ZH_EKZ",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-ekz",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
+  "description": {
+    "de": "EKZ ist einer der grössten Energiedienstleister der Schweiz und versorgt rund eine Million Menschen mit Strom. Zu den Kunden von EKZ zählen Private, Unternehmen und andere Schweizer Energieversorger. EKZ versorgt von den 162 Gemeinden im Kanton Zürich 125 direkt, 35 über andere Endverteiler. Die Stadt Zürich und Winterthur versorgen sich komplett selbst."
+  },
+  "name": {
+    "de": "Elektrizitätswerke des Kantons Zürich (EKZ)"
+  },
+  "pref_label": {
+    "de": "EKZ"
+  },
+  "homepage": "https://www.ekz.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "ch-kt-zh-bau-tiefbau",
+  "identifier": "CH_KT_ZH_BAU_TIEFBAU",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-bau-tiefbau",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das Tiefbauamt plant, projektiert, realisiert und unterhält die Zürcher Staatsstrassen. Zudem betreibt es im Auftrag des Bundesamts für Strassen ASTRA die Nationalstrassen in der Gebietseinheit VII. Um den Verkehrsfluss und die Sicherheit zu optimieren, stellt es Steuerungs- und Regelungssysteme zur Verfügung. Weiter ist es für den Vollzug und die Überwachung der Umweltschutzgesetzgebung im Bereich Lärm zuständig."
+  },
+  "name": {
+    "de": "Tiefbauamt Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Tiefbauamt Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/baudirektion/tiefbauamt.html",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

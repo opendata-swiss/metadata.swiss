@@ -1,0 +1,47 @@
+{
+  "id": "ch-kt-zh-jus-staatsarchiv",
+  "identifier": "CH_KT_ZH_JUS_STAATSARCHIV",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-jus-staatsarchiv",
+  "description": {
+    "de": "Das Staatsarchiv ist das Archiv des Kantons Zürich und seiner Rechtsvorgänger. Es bewertet, übernimmt, erschliesst und konserviert Unterlagen aus über tausend Jahren Zürcher Geschichte. Durch die Aufbewahrung dieser Unterlagen macht es staatliches Handeln nachvollziehbar und ermöglicht historische Forschung. Das Staatsarchiv gewährt allen Interessierten Einsicht in diejenigen Bestände, die keinen Beschränkungen mehr unterliegen. Der grösste Teil der Findmittel zu den Archivbeständen kann online abgefragt werden."
+  },
+  "name": {
+    "de": "Staatsarchiv Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Staatsarchiv Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/direktion-der-justiz-und-des-innern/staatsarchiv.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-dji",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-dji",
+      "name": {
+        "de": "Direktion der Justiz und des Innern (ZH)"
+      },
+      "pref_label": {
+        "de": "DJI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

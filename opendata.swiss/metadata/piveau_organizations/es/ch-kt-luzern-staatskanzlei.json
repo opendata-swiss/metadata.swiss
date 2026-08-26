@@ -13,25 +13,19 @@
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
   },
   "description": {
-    "de": "Die Staatskanzlei unterstützt den Regierungsrat und den Kantonsrat in organisatorischer Hinsicht bei der Erfüllung der kantonalen Aufgaben und informiert die Öffentlichkeit über die Grundlagen, Organisation, Ziele und Tätigkeiten des Staates.",
-    "en": "",
-    "fr": "",
-    "it": "",
-    "rm": ""
+    "de": "Die Staatskanzlei unterstützt den Regierungsrat und den Kantonsrat in organisatorischer Hinsicht bei der Erfüllung der kantonalen Aufgaben und informiert die Öffentlichkeit über die Grundlagen, Organisation, Ziele und Tätigkeiten des Staates."
   },
   "name": {
     "de": "Staatskanzlei des Kantons Luzern",
     "en": "State Chancellery of the Canton of Lucerne",
     "fr": "Chancellerie d'État du canton de Lucerne",
-    "it": "Cancelleria di Stato del Cantone di Lucerna",
-    "rm": ""
+    "it": "Cancelleria di Stato del Cantone di Lucerna"
   },
   "pref_label": {
     "de": "Staatskanzlei (LU)",
     "en": "State Chancellery (LU)",
     "fr": "Chancellerie d'État (LU)",
-    "it": "Cancelleria di Stato (LU)",
-    "rm": ""
+    "it": "Cancelleria di Stato (LU)"
   },
   "homepage": "https://www.lu.ch/verwaltung/staatskanzlei",
   "hierarchy_level": 1,
@@ -43,15 +37,13 @@
         "de": "Kanton Luzern LU",
         "en": "Canton Luzern LU",
         "fr": "Canton de Lucerne LU",
-        "it": "Canton Lucerna LU",
-        "rm": ""
+        "it": "Canton Lucerna LU"
       },
       "pref_label": {
         "de": "LU",
         "en": "LU",
         "fr": "LU",
-        "it": "LU",
-        "rm": ""
+        "it": "LU"
       },
       "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
       "hierarchy_level": 0

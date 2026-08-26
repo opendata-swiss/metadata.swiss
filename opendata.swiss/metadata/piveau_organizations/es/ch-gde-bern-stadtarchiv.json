@@ -1,0 +1,36 @@
+{
+  "id": "ch-gde-bern-stadtarchiv",
+  "identifier": "CH_GDE_BERN_STADTARCHIV",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-stadtarchiv",
+  "description": {
+    "de": "Das Stadtarchiv ist das zuständige Archiv für Unterlagen aller städtischer Behörden und Verwaltungsstellen. Es bewahrt das schriftliche und audiovisuelle Erbe der Stadt Bern und sorgt für die dauerhafte Überlieferung von Unterlagen, die für die Einwohnergemeinde von rechtlicher, ökonomischer, gesellschaftlicher oder historischer Bedeutung sind."
+  },
+  "name": {
+    "de": "Stadtarchiv Bern"
+  },
+  "pref_label": {
+    "de": "Stadtarchiv Bern"
+  },
+  "homepage": "https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/sk/stadtarchiv",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}

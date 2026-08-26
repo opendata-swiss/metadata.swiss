@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-vbs-v-dma> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Zentrum digitale Medien der Armee DMA mit Standort in Bern ist das Kompetenzzentrum für Produkte und Dienstleistungen in den Bereichen der Ausbildung und der Kommunikation."@de,
+        "The Armed Forces Digital Media Centre AFDM, located in Bern, is the competence center for products and services in the fields of education and communication."@en,
+        "Sis à Berne, le Centre des médias numériques de l’armée MNA est le centre de compétences pour les produits et services dans les domaines de la formation et de la communication."@fr,
+        "Il Centro dei media digitali dell’esercito MDE, con sede a Berna, è il centro di competenza per i prodotti e le prestazioni nei settori dell'istruzione e della comunicazione."@it ;
+    dcterms:identifier "CH_VBS_V_DMA" ;
+    skos:prefLabel "Zentrum digitale Medien der Armee DMA"@de,
+        "Armed Forces Digital Media Centre AFDM"@en,
+        "Centre des médias numériques de l’armée MNA"@fr,
+        "Centro dei media digitali dell’esercito MDE"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vtg> ;
+    foaf:homepage <https://www.vtg.admin.ch/de/service/zem.html> ;
+    foaf:name "Zentrum digitale Medien der Armee DMA"@de,
+        "Armed Forces Digital Media Centre AFDM"@en,
+        "Centre des médias numériques de l’armée MNA"@fr,
+        "Centro dei media digitali dell’esercito MDE"@it .
+
+<https://www.vtg.admin.ch/de/service/zem.html> a foaf:Document .
+

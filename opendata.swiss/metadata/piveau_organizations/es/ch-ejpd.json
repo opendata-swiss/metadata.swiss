@@ -1,0 +1,30 @@
+{
+  "id": "ch-ejpd",
+  "identifier": "CH_EJPD",
+  "resource": "https://opendata.swiss/id/organization/ch-ejpd",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Eidgenössisches Justiz- und Polizeidepartement (EJPD)",
+    "en": "Federals Justiz- und Polizeidepartement (EJPD)",
+    "fr": "Département fédéral de justice et police (DFJP)",
+    "it": "Dipartimento federale di giustizia e polizia (DFGP)"
+  },
+  "pref_label": {
+    "de": "EJPD",
+    "en": "EJPD",
+    "fr": "DFJP",
+    "it": "DFGP"
+  },
+  "homepage": "https://ejpd.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

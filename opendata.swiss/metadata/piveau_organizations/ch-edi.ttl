@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-edi> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das EDI ist verantwortlich für die sozialen, kulturellen und gesundheitlichen Belange der Schweiz. Zudem ist das EDI zuständig für die Gleichstellung von Frau und Mann und von Menschen mit Behinderungen, die Rassismusbekämpfung, die Statistiken des Bundes und die Meteorologie."@de ;
+    dcterms:identifier "CH_EDI" ;
+    skos:prefLabel "EDI"@de,
+        "EDI"@en,
+        "DFI"@fr,
+        "DFI"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.edi.admin.ch> ;
+    foaf:name "Eidgenössisches Departement des Innern (EDI)"@de,
+        "Federals Departement des Innern (EDI)"@en,
+        "Département fédéral de l'intérieur (DFI)"@fr,
+        "Dipartimento federale dell'interno (DFI)"@it .
+
+<https://www.edi.admin.ch> a foaf:Document .
+

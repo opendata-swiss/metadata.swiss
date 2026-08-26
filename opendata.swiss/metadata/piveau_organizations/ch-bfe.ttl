@@ -15,7 +15,7 @@
         "OFEN"@fr,
         "UFE"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-uvek> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
     foaf:homepage <https://www.bfe.admin.ch> ;
     foaf:name "Bundesamt für Energie (BFE)"@de,
         "Swiss Federal Office of Energy (SFOE)"@en,

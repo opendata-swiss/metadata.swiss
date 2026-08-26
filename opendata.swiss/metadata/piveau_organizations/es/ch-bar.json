@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das Schweizerische Bundesarchiv sichert die Dokumentation staatlichen Handelns und macht diese zugänglich. Dadurch kann die Verwaltung Rechenschaft über ihre Tätigkeiten ablegen und effizienter arbeiten. Für Öffentlichkeit und Forschung ist Archivierung eine Voraussetzung, um sich im demokratischen Rechtsstaat eine eigene, kritische Meinung zu bilden. Recherchieren im Bundesarchiv ist online oder vor Ort möglich.",
+    "en": "The Swiss Federal Archives preserve the documentation of government actions and make it accessible. This enables the administration to account for its activities and work more efficiently. For the public and researchers alike, archiving is essential for the formation of independent, critical opinions in a democratic state under the rule of law. Research in the Federal Archives can be carried out online or on site.",
+    "fr": "Les Archives fédérales suisses garantissent la conservation des documents en lien avec les activités de l’Etat et permettent l'accès à ces derniers. L’administration peut ainsi assurer la traçabilité de ses activités et travailler de manière plus efficace. Pour les chercheurs, comme pour l’ensemble de la population, l’archivage est indispensable afin de se faire sa propre opinion et conserver un esprit critique dans un Etat de droit démocratique. Les recherches dans les fonds des Archives fédérales peuvent être effectuées en ligne ou sur place.",
+    "it": "L’Archivio federale svizzero assicura la conservazione dei documenti sull’operato dello Stato e li rende accessibili. In questo modo l’Amministrazione federale può rendere conto delle proprie attività e lavorare in maniera più efficiente. In uno Stato di diritto democratico l’archiviazione riveste un’importanza fondamentale perché consente alla popolazione e alla comunità scientifica di formarsi una propria opinione. È possibile effettuare ricerche nell’Archivio federale sia on-line che in loco."
+  },
   "name": {
     "de": "Schweizerisches Bundesarchiv (BAR)",
     "en": "Swiss Federal Archives (SFA)",
@@ -26,23 +32,23 @@
   },
   "homepage": "https://www.bar.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-edi",
+  "sub_organization_of": "ch-edi",
   "ancestors": [
     {
-      "id": "ch-gs-edi",
+      "id": "ch-edi",
       "name": {
-        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
-        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
-        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
-        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
       },
       "pref_label": {
-        "de": "GS-EDI",
-        "en": "GS-EDI",
-        "fr": "SG-DFI",
-        "it": "SG-DFI"
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
       "hierarchy_level": 0
     }
   ]

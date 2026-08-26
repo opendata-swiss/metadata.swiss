@@ -1,0 +1,36 @@
+{
+  "id": "ch-vbs",
+  "identifier": "CH_VBS",
+  "resource": "https://opendata.swiss/id/organization/ch-vbs",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das VBS hat die Aufgabe, die Schweizer Sicherheitspolitik auszuarbeiten. Der Auftrag des VBS umfasst auch die Sportförderung sowie die Geoinformation.",
+    "en": "The DDPS has the task of developing Switzerland's security policy. The role of the DDPS also involves promoting sport and producing geoinformation.",
+    "fr": "Le DDPS est chargé d'élaborer la politique de sécurité de la Suisse. La promotion du sport et la géoinformation font aussi partie du mandat du DDPS.",
+    "it": "Il DDPS è incaricato di elaborare la politica di sicurezza della Svizzera. Fanno parte del mandato del DDPS anche la promozione dello sport e la geoinformazione."
+  },
+  "name": {
+    "de": "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+    "en": "Federals Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+    "fr": "Département fédéral de la défense, de la protection de la population et des sports (DDPS)",
+    "it": "Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS)"
+  },
+  "pref_label": {
+    "de": "VBS",
+    "en": "VBS",
+    "fr": "DDPS",
+    "it": "DDPS"
+  },
+  "homepage": "http://www.vbs.admin.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

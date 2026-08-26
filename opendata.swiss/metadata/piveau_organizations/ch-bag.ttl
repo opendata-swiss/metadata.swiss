@@ -15,9 +15,9 @@
         "OFSP"@fr,
         "UFSP"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.bag.admin.ch> ;
-    foaf:name "Bundesamt für Gesundheit "@de,
+    foaf:name "Bundesamt für Gesundheit (BAG)"@de,
         "Federal Office of Public Health (FOPH)"@en,
         "Office fédéral de la santé publique (OFSP)"@fr,
         "Ufficio federale della sanità pubblica (UFSP)"@it .

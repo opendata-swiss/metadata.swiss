@@ -11,9 +11,12 @@
         "armasuisse"@fr,
         "armasuisse"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
+    foaf:homepage <https://armasuisse.ch> ;
     foaf:name "Bundesamt für Rüstung (armasuisse)"@de,
         "Federal Office for Defence Procurement (armasuisse)"@en,
         " Office fédéral de l'armement armasuisse (ar)"@fr,
         " Ufficio federale dell'armamento armasuisse (ar)"@it .
+
+<https://armasuisse.ch> a foaf:Document .
 

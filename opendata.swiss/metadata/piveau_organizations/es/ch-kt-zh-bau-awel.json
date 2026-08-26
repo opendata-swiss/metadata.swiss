@@ -1,0 +1,27 @@
+{
+  "id": "ch-kt-zh-bau-awel",
+  "identifier": "CH_KT_ZH_BAU_AWEL",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-bau-awel",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das Amt für Abfall, Wasser, Energie und Luft (AWEL) des Kantons Zürich hat den Auftrag, der Bevölkerung im Kanton Zürich eine gesunde, sichere und attraktive Umwelt zu bieten. Zu den Themen Abfall, Wasser, Energie und Luft stellt das AWEL Fachleuten und Interessierten Informationen zur Verfügung."
+  },
+  "name": {
+    "de": "Amt für Abfall, Wasser, Energie und Luft (ZH)"
+  },
+  "pref_label": {
+    "de": "AWEL (ZH)"
+  },
+  "homepage": "https://www.zh.ch/awel",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

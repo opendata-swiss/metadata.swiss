@@ -30,6 +30,40 @@
     "it": "CA"
   },
   "homepage": "https://www.bkb.admin.ch",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-bbl",
+  "ancestors": [
+    {
+      "id": "ch-bbl",
+      "name": {
+        "de": "Bundesamt für Bauten und Logistik (BBL)",
+        "en": "Federal Office of Construction and Logistics (BBL)",
+        "fr": " Office fédéral des constructions et de la logistique (OFCL)",
+        "it": "Ufficio federale delle costruzioni e della logistica (UFCL)"
+      },
+      "pref_label": {
+        "de": "BBL",
+        "en": "BBL",
+        "fr": "OFCL",
+        "it": "UFCL"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bbl",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-efd",
+      "name": {
+        "de": "Eidgenössisches Finanzdepartement (EFD)",
+        "fr": "Département fédéral des finances (DFF)",
+        "it": "Dipartimento federale delle finanze (DFF)"
+      },
+      "pref_label": {
+        "de": "EFD",
+        "fr": "DFF",
+        "it": "DFF"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-efd",
+      "hierarchy_level": 0
+    }
+  ]
 }

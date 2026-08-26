@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-jus-stat-ogd> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Fach- und Koordinationsstelle Open Government Data (OGD) ist das kantonale Kompetenzzentrum für offene Behördendaten im Statistischen Amt. Wir unterstützen die Organisationseinheiten und Organe des Kantons bei der Bereitstellung ihrer nicht schützenswerten Daten als Open Data."@de ;
+    dcterms:identifier "CH_KT_ZH_JUS_STAT_OGD" ;
+    skos:prefLabel "OGD (ZH)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh-jus-stat> ;
+    foaf:homepage <https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/open-government-data.html> ;
+    foaf:name "Fach- und Koordinationsstelle Open Government Data Kanton Zürich"@de .
+
+<https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/open-government-data.html> a foaf:Document .
+

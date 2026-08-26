@@ -1,0 +1,36 @@
+{
+  "id": "ch-gde-morges",
+  "identifier": "CH_GDE_MORGES",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-morges",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die von der Stadt Morges erstellten offenen Datensätze sind über diese Website zugänglich.",
+    "en": "The open data sets produced by the City of Morges are accessible via this website.",
+    "fr": "Les jeux de données ouvertes produits par la Ville de Morges sont accessibles via le présent site Internet.",
+    "it": "I set di dati aperti prodotti dalla Città di Morges sono accessibili tramite questo sito web."
+  },
+  "name": {
+    "de": "Stadt Morges",
+    "en": "City of Morges",
+    "fr": "Ville de Morges",
+    "it": "Città di Morges"
+  },
+  "pref_label": {
+    "de": "Morges",
+    "en": "Morges",
+    "fr": "Morges",
+    "it": "Morges"
+  },
+  "homepage": "https://www.morges.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

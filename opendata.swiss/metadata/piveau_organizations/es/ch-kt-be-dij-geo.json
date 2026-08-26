@@ -1,0 +1,45 @@
+{
+  "id": "ch-kt-be-dij-geo",
+  "identifier": "CH_KT_BE_DIJ_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-dij-geo",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das Amt für Geoinformation ist das Kompetenzzentrum für räumliche Informationen im Kanton Bern. Die kantonalen Geodaten sind unter Einhaltung der Nutzungsbedingungen kostenlos nutzbar. Das Geoportal des Kantons Bern ist der zentrale Einstiegspunkt für interaktive Karten, Geodaten und Geodienste der kantonalen Verwaltung.",
+    "fr": "L'Office de la géoinformation est le centre de compétence pour l'information spatiale dans le canton de Berne. Les géodonnées cantonales peuvent être utilisées gratuitement, sous réserve des conditions d'utilisation. Le Géoportail du canton de Berne est le point d'entrée central pour les cartes interactives, les géodonnées et les géoservices de l'administration cantonale."
+  },
+  "name": {
+    "de": "Amt für Geoinformation (BE)",
+    "fr": "Office de l'information géographique (BE)"
+  },
+  "pref_label": {
+    "de": "AGI (BE)",
+    "fr": "OIG (BE)"
+  },
+  "homepage": "https://www.agi.dij.be.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-be-dij",
+  "ancestors": [
+    {
+      "id": "ch-kt-be-dij",
+      "name": {
+        "de": "Direktion für Inneres und Justiz (BE)",
+        "fr": "Direction de l'intérieur et de la justice (BE)"
+      },
+      "pref_label": {
+        "de": "DIJ (BE)",
+        "fr": "DIJ (BE)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-be-dij",
+      "hierarchy_level": 0
+    }
+  ]
+}

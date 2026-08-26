@@ -1,0 +1,17 @@
+{
+  "id": "ch-kt-so",
+  "identifier": "CH_KT_SO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-so",
+  "description": {
+    "de": "Beginnend mit den Geodaten veröffentlicht der Kanton Solothurn hier nach und nach Datensätze der kantonalen Verwaltung, welche die Anforderungen zur Publikation als Open Government Data erfüllen."
+  },
+  "name": {
+    "de": "Kanton Solothurn"
+  },
+  "pref_label": {
+    "de": "Kanton Solothurn"
+  },
+  "homepage": "https://so.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

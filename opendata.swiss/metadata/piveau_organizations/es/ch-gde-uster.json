@@ -1,0 +1,26 @@
+{
+  "id": "ch-gde-uster",
+  "identifier": "CH_GDE_USTER",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-uster",
+  "description": {
+    "de": "Uster, drittgrösste Stadt im Kanton Zürich, ist mit rund 35'000 Einwohnerinnen und Einwohnern eine dynamisch wachsende Stadt im Grossraum Zürich und bekannt als innovatives Regionalzentrum.\n\nDas [Geschäftsfeld Gesellschaft Stadt Uster](https://www.uster.ch/aemter/8157) fördert die gesellschaftliche Entwicklung der Stadt Uster. Es erarbeitet Grundlagen für Entscheidungsträger und die interessierte Öffentlichkeit, entwickelt Massnahmen im Leistungsbereich und stellt ein an die Bedürfnisse angepasstes Angebot sicher. Es ist für die folgenden Bereiche zuständig: Kindheit, Jugend und Familien / Migration und Integration / Quartier- und Gemeinwesenarbeit / Kulturförderung / Bibliothek / Archiv. \n",
+    "en": "Uster, the third largest city in the canton of Zurich, is a dynamically growing city in the greater Zurich area with around 35,000 inhabitants and is known as an innovative regional centre.",
+    "fr": "Uster, troisième ville du canton de Zurich, est une ville de l'agglomération zurichoise à la croissance dynamique, qui compte environ 35 000 habitants et est connue comme un centre régional innovant.",
+    "it": "Uster, la terza città più grande del cantone di Zurigo, è una città in crescita dinamica nella grande area di Zurigo con circa 35.000 abitanti ed è conosciuta come un centro regionale innovativo."
+  },
+  "name": {
+    "de": "Stadt Uster",
+    "en": "City of Uster",
+    "fr": "Ville de Uster",
+    "it": "Cità di Uster"
+  },
+  "pref_label": {
+    "de": "Stadt Uster",
+    "en": "City of Uster",
+    "fr": "Ville de Uster",
+    "it": "Cità di Uster"
+  },
+  "homepage": "https://uster.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

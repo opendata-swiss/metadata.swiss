@@ -1,0 +1,47 @@
+{
+  "id": "ch-kt-zh-bildung-volksschule",
+  "identifier": "CH_KT_ZH_BILDUNG_VOLKSSCHULE",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-bildung-volksschule",
+  "description": {
+    "de": "Das Volksschulamt ist zuständig für schulorganisatorische Aufgaben und die Verwaltung des Lehrpersonals. Die Abteilungen unterstützen die Schulen in der Personaladministration, in Fragen zu Unterricht, Lehrplan und Lehrmitteln. Sie übernehmen Koordinations-, Aufsichts- und Beratungsaufgaben für den Sonderschulbereich. Sie beraten Behörden, Schulleitungen und Schulverwaltungen."
+  },
+  "name": {
+    "de": "Volksschulamt Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Volksschulamt Kanton Zürich"
+  },
+  "homepage": "https://zh.ch/vsa",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-edu",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-edu",
+      "name": {
+        "de": "Bildungsdirektion (ZH)"
+      },
+      "pref_label": {
+        "de": "Bildungsdirektion (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-edu",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

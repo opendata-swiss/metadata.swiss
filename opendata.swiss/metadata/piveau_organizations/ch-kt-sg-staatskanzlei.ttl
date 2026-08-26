@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sg-staatskanzlei> a org:Organization,
+        foaf:Organization ;
+    dcterms:description """Die Staatskanzlei ist als Stabsstelle von Kantonsrat und Regierung die zentrale Schaltstelle in der kantonalen Staatsverwaltung. Die Staatskanzlei nimmt vielfältige Unterstützungs- und Koordinationsaufgaben wahr und verbindet die verschiedenen Akteure miteinander. Ob beratend, koordinierend oder federführend in gewissen Sachbereichen, die Staatskanzlei muss in ihrer Rolle immer durch Qualität, Verlässlichkeit und dienstleistungsorientierte Zusammenarbeit überzeugen. Dies bringt die Vision der Staatskanzlei auf den Punkt:  
+
+«Wir verbinden und überzeugen. Ihre Staatskanzlei.»
+
+"""@de ;
+    dcterms:identifier "CH_KT_SG_STAATSKANZLEI" ;
+    skos:prefLabel "Staatskanzlei (SG)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-sg> ;
+    foaf:homepage <https://www.sg.ch/politik-verwaltung/departemente-und-staatskanzlei/staatskanzlei.html> ;
+    foaf:name "Staatskanzlei (SG)"@de .
+
+<https://www.sg.ch/politik-verwaltung/departemente-und-staatskanzlei/staatskanzlei.html> a foaf:Document .
+

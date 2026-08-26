@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe.",
+    "en": "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe.",
+    "fr": "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe.",
+    "it": "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe."
+  },
   "name": {
     "de": "Direktion für Entwicklung und Zusammenarbeit (DEZA)",
     "en": "Swiss Agency for Development and Cooperation (SDC)",

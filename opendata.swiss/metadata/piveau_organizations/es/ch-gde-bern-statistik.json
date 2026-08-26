@@ -1,0 +1,36 @@
+{
+  "id": "ch-gde-bern-statistik",
+  "identifier": "CH_GDE_BERN_STATISTIK",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-statistik",
+  "description": {
+    "de": "Statistik Stadt Bern stellt den politischen Behörden, der Verwaltung sowie der Öffentlichkeit statistische Informationen und Analysen über die Stadt Bern zur Verfügung. Der Bereich Statistik ist zuständig für die Durchführung statistischer Erhebungen in der Stadt Bern und für die Koordination der Statistik in der Stadtverwaltung."
+  },
+  "name": {
+    "de": "Statistik Stadt Bern"
+  },
+  "pref_label": {
+    "de": "Statistik Stadt Bern"
+  },
+  "homepage": "https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/prd/abteilung-aussenbeziehungen-und-statistik/statistik-stadt-bern",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-bern-finanzverwaltung> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Stadt Bern führt ihre Rechnung nach den Grundsätzen des «New Public Management». In der Schweiz steht dafür der Begriff «wirkungsorientiere Verwaltungsführung»: die Verwaltung wird an ihrer Wirkung gemessen. D.h. Rechnung und Budget werden primär nach Produktegruppen erstellt. Dadurch wird eine grössere Transparenz der Verwaltungstätigkeit erreicht. Für jedes Produkt und jede Dienststelle wird möglichst genau bestimmt, wie viel für welche Aufgaben und Leistungen ausgegeben bzw. wie viel eingenommen werden soll. Das Budget der Erfolgsrechnung ist verbindlich. In der Rechnung werden Ist und Soll gegenübergestellt."@de ;
+    dcterms:identifier "CH_GDE_BERN_FINANZVERWALTUNG" ;
+    skos:prefLabel "Finanzverwaltung der Stadt Bern"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gde-bern> ;
+    foaf:homepage <https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/fpi/finanzverwaltung> ;
+    foaf:name "Finanzverwaltung der Stadt Bern"@de .
+
+<https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/fpi/finanzverwaltung> a foaf:Document .
+

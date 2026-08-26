@@ -1,0 +1,49 @@
+{
+  "id": "ch-kt-luzern-lustat",
+  "identifier": "CH_KT_LUZERN_LUSTAT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-luzern-lustat",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Regionale statistische Informationen für den Kanton Luzern zu allen Bereichen der öffentlichen Statistik auf Kantons-, Regions- und Gemeindestufe."
+  },
+  "name": {
+    "de": "Lustat Statistik Luzern (LU)"
+  },
+  "pref_label": {
+    "de": "Lustat (LU)",
+    "en": "Lustat (LU)",
+    "fr": "Lustat (LU)",
+    "it": "Lustat (LU)"
+  },
+  "homepage": "https://lustat.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-luzern",
+  "ancestors": [
+    {
+      "id": "ch-kt-luzern",
+      "name": {
+        "de": "Kanton Luzern LU",
+        "en": "Canton Luzern LU",
+        "fr": "Canton de Lucerne LU",
+        "it": "Canton Lucerna LU"
+      },
+      "pref_label": {
+        "de": "LU",
+        "en": "LU",
+        "fr": "LU",
+        "it": "LU"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
+      "hierarchy_level": 0
+    }
+  ]
+}

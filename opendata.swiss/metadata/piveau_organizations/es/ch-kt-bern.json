@@ -12,26 +12,13 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
   },
-  "description": {
-    "de": "",
-    "en": "",
-    "fr": "",
-    "it": "",
-    "rm": ""
-  },
   "name": {
     "de": "Kanton Bern",
-    "en": "Kanton Bern",
-    "fr": "Canton Berne",
-    "it": "Kanton Bern",
-    "rm": ""
+    "fr": "Canton Berne"
   },
   "pref_label": {
     "de": "Kanton Bern",
-    "en": "Kanton Bern",
-    "fr": "Canton Berne",
-    "it": "Kanton Bern",
-    "rm": ""
+    "fr": "Canton Berne"
   },
   "homepage": "https://www.be.ch",
   "hierarchy_level": 0,

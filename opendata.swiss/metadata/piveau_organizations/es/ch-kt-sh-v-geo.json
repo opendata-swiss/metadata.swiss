@@ -1,0 +1,66 @@
+{
+  "id": "ch-kt-sh-v-geo",
+  "identifier": "CH_KT_SH_V_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sh-v-geo",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schaffhausen als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt.",
+    "en": "The Office of Geoinformation manages and publishes the geodata of the Canton of Schaffhausen as OGC geodata services and as file downloads. All currently available geodata subject to OGD are listed here.",
+    "fr": "L'Office de la géoinformation gère et publie les géodonnées du canton de Schaffhouse sous forme de géoservices OGC et de fichiers à télécharger. Toutes les géodonnées actuellement disponibles et soumises à l'OGD sont listées ici.",
+    "it": "L'Ufficio di geoinformazione gestisce e pubblica i geodati del Cantone di Sciaffusa come geoservizi OGC e come file da scaricare. Tutti i geodati attualmente disponibili soggetti all'OGD sono elencati qui."
+  },
+  "name": {
+    "de": "Amt für Geoinformation Kanton Schaffhausen",
+    "en": "Office for Geoinformation Canton Schaffhausen",
+    "fr": "Office de la géoinformation du canton de Schaffhouse",
+    "it": "Ufficio di geoinformazione del Cantone di Sciaffusa"
+  },
+  "pref_label": {
+    "de": "Amt für Geoinformation Kanton Schaffhausen",
+    "en": "Office for Geoinformation Canton Schaffhausen",
+    "fr": "Office de la géoinformation du canton de Schaffhouse",
+    "it": "Ufficio di geoinformazione del Cantone di Sciaffusa"
+  },
+  "homepage": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Volkswirtschaftsdepartement/Amt-f-r-Geoinformation-3854-DE.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-sh-v",
+  "ancestors": [
+    {
+      "id": "ch-kt-sh-v",
+      "name": {
+        "de": "Volkswirtschaftsdirektion des Kantons Schaffhausen"
+      },
+      "pref_label": {
+        "de": "Volkswirtschaftsdirektion (SH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sh-v",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-sh",
+      "name": {
+        "de": "Kanton Schaffhausen",
+        "en": "Kanton Schaffhausen",
+        "fr": "Kanton Schaffhausen",
+        "it": "Cantone die Sciaffusa"
+      },
+      "pref_label": {
+        "de": "SH",
+        "en": "SH",
+        "fr": "SH",
+        "it": "SH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sh",
+      "hierarchy_level": 0
+    }
+  ]
+}

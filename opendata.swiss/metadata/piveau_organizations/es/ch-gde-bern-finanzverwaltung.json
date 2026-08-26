@@ -1,0 +1,36 @@
+{
+  "id": "ch-gde-bern-finanzverwaltung",
+  "identifier": "CH_GDE_BERN_FINANZVERWALTUNG",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-finanzverwaltung",
+  "description": {
+    "de": "Die Stadt Bern führt ihre Rechnung nach den Grundsätzen des «New Public Management». In der Schweiz steht dafür der Begriff «wirkungsorientiere Verwaltungsführung»: die Verwaltung wird an ihrer Wirkung gemessen. D.h. Rechnung und Budget werden primär nach Produktegruppen erstellt. Dadurch wird eine grössere Transparenz der Verwaltungstätigkeit erreicht. Für jedes Produkt und jede Dienststelle wird möglichst genau bestimmt, wie viel für welche Aufgaben und Leistungen ausgegeben bzw. wie viel eingenommen werden soll. Das Budget der Erfolgsrechnung ist verbindlich. In der Rechnung werden Ist und Soll gegenübergestellt."
+  },
+  "name": {
+    "de": "Finanzverwaltung der Stadt Bern"
+  },
+  "pref_label": {
+    "de": "Finanzverwaltung der Stadt Bern"
+  },
+  "homepage": "https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/fpi/finanzverwaltung",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}

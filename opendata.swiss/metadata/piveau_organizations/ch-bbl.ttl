@@ -11,7 +11,7 @@
         "OFCL"@fr,
         "UFCL"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:homepage <https://www.bbl.admin.ch> ;
     foaf:name "Bundesamt für Bauten und Logistik (BBL)"@de,
         "Federal Office of Construction and Logistics (BBL)"@en,

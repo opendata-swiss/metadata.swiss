@@ -1,0 +1,49 @@
+{
+  "id": "ch-kt-vs-geo",
+  "identifier": "CH_KT_VS_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-vs-geo",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das CC GEO ist das Kompetenzzentrum für das kantonale Geoinformationssystem des Kantons Wallis. Es versorgt Gesellschaft, Wirtschaft und öffentliche Verwaltung mit Geodaten über den Kanton Wallis.",
+    "fr": "Le CC GEO est le centre de compétence du système d'information géographique du Canton du Valais ayant pour but de coordonner, centraliser et diffuser les géodonnées relatives au territoire cantonal."
+  },
+  "name": {
+    "de": "Kanton Wallis - CC GEO",
+    "fr": "Canton du Valais - CC GEO"
+  },
+  "pref_label": {
+    "de": "Kanton Wallis - CC GEO",
+    "fr": "Canton du Valais - CC GEO"
+  },
+  "homepage": "https://www.vs.ch/web/egeo",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-wallis",
+  "ancestors": [
+    {
+      "id": "ch-kt-wallis",
+      "name": {
+        "de": "Kanton Wallis",
+        "en": "Canton du Valais",
+        "fr": "Canton du Valais",
+        "it": "Cantone del Vallese"
+      },
+      "pref_label": {
+        "de": "Kanton Wallis",
+        "en": "Canton du Valais",
+        "fr": "Canton du Valais",
+        "it": "Cantone del Vallese"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-wallis",
+      "hierarchy_level": 0
+    }
+  ]
+}

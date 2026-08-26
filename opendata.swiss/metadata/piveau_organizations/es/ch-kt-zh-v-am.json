@@ -1,0 +1,57 @@
+{
+  "id": "ch-kt-zh-v-am",
+  "identifier": "CH_KT_ZH_V_AM",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-v-am",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Wir gestalten und steuern die Verkehrsentwicklung im Kanton Zürich und legen Wert darauf, dass diese nachhaltig ist. Dazu übernehmen wir die strategische Planung für alle Verkehrsmittel und wahren die Interessen des Kantons gegenüber dem Bund."
+  },
+  "name": {
+    "de": "Amt für Mobilität (ZH)"
+  },
+  "pref_label": {
+    "de": "Amt für Mobilität (ZH)"
+  },
+  "homepage": "https://www.zh.ch/de/volkswirtschaftsdirektion/amt-fuer-mobilitaet.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-v",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-v",
+      "name": {
+        "de": "Volkswirtschaftsdirektion (ZH)"
+      },
+      "pref_label": {
+        "de": "Volkswirtschaftsdirektion (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-v",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

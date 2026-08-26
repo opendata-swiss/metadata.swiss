@@ -1,0 +1,24 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-ejpd-isc> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das ISC-EJPD entwickelt, integriert und betreibt spezifische Fachanwendungen, die individuell, bedürfnis- und kundenorientiert konzipiert werden und die Erledigung der Kernaufgaben der Verwaltungskunden unterstützen."@de,
+        "The Post and Telecommunications Surveillance Service is an independent service in charge of lawful interception in Switzerland. The Surveillance Service is administratively affiliated to the IT of the Federal Department of Justice and Police."@en,
+        "Le CSI-DFJP développe, intègre et exploite des applications spécialisées conçues spécifiquement pour répondre aux besoins de ses clients, principalement des unités administratives, et qui soutiennent ceux-ci dans l’accomplissement de leurs tâches essentielles."@fr,
+        "l Servizio Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni (SCPT) è un servizio indipendente preposto alla sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni in Svizzera. Sul piano amministrativo, il Servizio SCPT è aggregato al Centro servizi informatici del Dipartimento federale di giustizia e polizia."@it ;
+    dcterms:identifier "CH_EJPD_ISC" ;
+    skos:prefLabel "ISC-EJPD"@de,
+        "CSI_DFJP"@fr,
+        "CSI-DFGP"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-ejpd> ;
+    foaf:homepage <https://www.isc-ejpd.admin.ch> ;
+    foaf:name "Informatik Service Center ISC-EJPD"@de,
+        "Centre de services informatiques (CSI-DFJP)"@fr,
+        "Centro servizi informatici (CSI-DFGP)"@it .
+
+<https://www.isc-ejpd.admin.ch> a foaf:Document .
+

@@ -1,0 +1,26 @@
+{
+  "id": "ch-kt-be-sta",
+  "identifier": "CH_KT_BE_STA",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-sta",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Staatskanzlei (BE)",
+    "fr": "Chancellerie d'État (BE)"
+  },
+  "pref_label": {
+    "de": "STA (BE)",
+    "fr": "CHA (BE)"
+  },
+  "homepage": "https://www.sta.be.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

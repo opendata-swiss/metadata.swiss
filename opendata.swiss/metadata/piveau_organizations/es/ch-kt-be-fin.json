@@ -1,0 +1,30 @@
+{
+  "id": "ch-kt-be-fin",
+  "identifier": "CH_KT_BE_FIN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-fin",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Die Finanzdirektion ist innerhalb der kantonalen Verwaltung das Kompetenzzentrum auf dem Gebiet des Finanzhaushalts, des Personalwesens, des Steuerwesens sowie der Informatik und Organisation.",
+    "fr": "Au sein de l'administration cantonale, la Direction des finances est le centre de compétences dans les domaines des finances publiques, des ressources humaines, de la fiscalité, ainsi que de l'informatique et de l'organisation."
+  },
+  "name": {
+    "de": "Finanzdirektion (BE)",
+    "fr": "Direction des finances (BE)"
+  },
+  "pref_label": {
+    "de": "FIN (BE)",
+    "fr": "FIN (BE)"
+  },
+  "homepage": "https://www.be.ch/fin",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

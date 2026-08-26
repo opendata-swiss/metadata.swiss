@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-pol> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Im Auftrag der Regierung und damit der Bevölkerung übernimmt die Kantonspolizei Zürich Verantwortung für die Sicherheit im Kanton Zürich, indem sie vorausschauend handelt, entschlossen Hilfe leistet und Straftaten konsequent aufklärt. Dabei folgt sie den Grundsätzen der Verhältnismässigkeit und der Gesetzmässigkeit."@de ;
+    dcterms:identifier "CH_KT_ZH_POL" ;
+    skos:prefLabel "Kantonspolizei Zürich"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zh.ch/de/sicherheitsdirektion/kantonspolizei-zuerich.html> ;
+    foaf:name "Kantonspolizei Zürich"@de .
+
+<https://www.zh.ch/de/sicherheitsdirektion/kantonspolizei-zuerich.html> a foaf:Document .
+

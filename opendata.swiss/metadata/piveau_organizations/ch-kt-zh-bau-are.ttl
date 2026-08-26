@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-bau-are> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Amt für Raumentwicklung ist die kantonale Fachstelle für Raumplanung, Geoinformation und Kulturgütererhaltung. Es trägt zur Förderung der Standortqualität des Lebens- und Wirtschaftsraums Zürich bei."@de ;
+    dcterms:identifier "CH_KT_ZH_BAU_ARE" ;
+    skos:prefLabel "Raumentwicklung (ZH)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.zh.ch/de/baudirektion/amt-fuer-raumentwicklung.html> ;
+    foaf:name "Amt für Raumentwickung (ZH)"@de .
+
+<https://www.zh.ch/de/baudirektion/amt-fuer-raumentwicklung.html> a foaf:Document .
+

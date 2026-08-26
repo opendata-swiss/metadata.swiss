@@ -1,0 +1,48 @@
+{
+  "id": "ch-gde-bern-parl",
+  "identifier": "CH_GDE_BERN_PARL",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-parl",
+  "classification": {
+    "id": "0223",
+    "label": {
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
+  },
+  "description": {
+    "de": "Das Stadtberner Parlament setzt Recht, entscheidet über das Budget und weitere bedeutende Ausgaben, beaufsichtigt den Gemeinderat und die Verwaltung und ist Wahlorgan für bestimmte Gremien."
+  },
+  "name": {
+    "de": "Parlamentsdienste der Stadt Bern",
+    "fr": "Secrétariat du parlement de la ville de Berne"
+  },
+  "pref_label": {
+    "de": "Parlamentsdienste Stadt Bern",
+    "fr": "Secrétariat du parlement de la ville de Berne"
+  },
+  "homepage": "https://stadtrat.bern.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}

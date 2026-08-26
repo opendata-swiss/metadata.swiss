@@ -2,6 +2,22 @@
   "id": "ch-ehealth",
   "identifier": "CH_eHealth",
   "resource": "https://opendata.swiss/id/organization/ch-ehealth",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die Geschäftsstelle von eHealth Suisse stellt sicher, dass die einzelnen Projekte für die Digitalisierung des Gesundheitswesens zielorientiert und gesetzeskonform sind und dass Synergien genutzt werden – auch international.",
+    "en": "Entdecken Sie die vielfaeltigen digitalen Gesundheitslösungen von eHealth Suisse. Wir gestalten die vernetzte Zukunft der Gesundheitsversorgung.",
+    "fr": "Le secrétariat d’eHealth Suisse s’assure que les différents projets pour la numérisation du système de santé sont bien axés sur les objectifs et conformes à la loi, et qu’ils profitent de synergies, aussi au niveau international.",
+    "it": "La segreteria di eHealth Suisse assicura che i singoli progetti per la digitalizzazione della sanità siano orientati agli obiettivi e siano conformi alla legge e che le sinergie esistenti vengano sfruttate anche a livello internazionale."
+  },
   "name": {
     "de": "eHealth Suisse",
     "en": "eHealth Suisse",
@@ -14,6 +30,7 @@
     "fr": "eHealth Suisse",
     "it": "eHealth Suisse"
   },
+  "homepage": "https://www.e-health-suisse.ch",
   "hierarchy_level": 0,
   "ancestors": []
 }

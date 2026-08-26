@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das BIT ist der grösste IT-Leistungserbringer der Bundesverwaltung. Es stellt rund 50 000 Arbeitsplatzsysteme zur Verfügung, entwickelt zusammen mit den Verwaltungseinheiten massgeschneiderte, sichere sowie benutzerfreundliche IT-Lösungen und betreibt über 1000 Fachanwendungen mehrheitlich in eigenen, modernen Rechenzentren.",
+    "en": "The FOITT is the largest IT service provider in the Federal Administration. It provides around 50,000 workstation systems, develops customised, secure and user-friendly IT solutions together with the administrative units, and operates over 1,000 specialist applications, mainly in its own modern data centres.",
+    "fr": "L’OFIT est le plus important fournisseur de prestations informatiques de l’administration fédérale. Il met à disposition plus de 50 000 systèmes de postes de travail, développe des solutions informatiques sur mesure, sûres et conviviales en collaboration avec les unités administratives et exploite plus de 1000 applications spécialisées, principalement dans ses centres de calcul ultramodernes.",
+    "it": "L’UFIT è il maggiore fornitore di prestazioni informatiche della Confederazione. Mette a disposizione circa 50 000 postazioni di lavoro, insieme alle unità amministrative sviluppa soluzioni informatiche su misura, sicure e intuitive. Gestisce inoltre la maggior parte delle oltre 1000 applicazioni specialistiche nei propri centri di calcolo moderni."
+  },
   "name": {
     "de": "Bundesamt für Informatik und Telekommunikation (BIT), SAP",
     "en": "Federal Office of Information Technology, Systems and Telecommunication (FOITT), SAP",
@@ -24,6 +30,7 @@
     "fr": "OFIT (SAP)",
     "it": "UFIT (SAP)"
   },
+  "homepage": "https://bit.admin.ch",
   "hierarchy_level": 2,
   "sub_organization_of": "ch-bit",
   "ancestors": [
@@ -45,20 +52,18 @@
       "hierarchy_level": 1
     },
     {
-      "id": "ch-gs-efd",
+      "id": "ch-efd",
       "name": {
-        "de": "Generalsekretariat EFD (GS-EFD)",
-        "en": "General Secretariat FDF (GS-FDF)",
-        "fr": "Secrétariat général DFF (SG-DFF)",
-        "it": "Segreteria generale DFF (SG-DFF)"
+        "de": "Eidgenössisches Finanzdepartement (EFD)",
+        "fr": "Département fédéral des finances (DFF)",
+        "it": "Dipartimento federale delle finanze (DFF)"
       },
       "pref_label": {
-        "de": "GS-EFD",
-        "en": "GS-FDF",
-        "fr": "SG-DFF",
-        "it": "SG-DFF"
+        "de": "EFD",
+        "fr": "DFF",
+        "it": "DFF"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-efd",
+      "resource": "https://opendata.swiss/id/organization/ch-efd",
       "hierarchy_level": 0
     }
   ]

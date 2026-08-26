@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-gr",
+  "identifier": "CH_KT_GR",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-gr",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Der Kanton Graubünden veröffentlicht nach und nach Open Government Datensätze von kantonalen Ämtern und Dienststellen.",
+    "en": "The Canton of Graubünden is gradually publishing open government datasets from cantonal offices and agencies.",
+    "fr": "Le canton des Grisons publie progressivement des données publiques en libre accès (Open Government Data) d’offices et de services cantonaux.",
+    "it": "Il Cantone dei Grigioni pubblica su base continua serie di dati di uffici e servizi cantonali come Open Government Data."
+  },
+  "name": {
+    "de": "Kanton Graubünden",
+    "en": "Canton of Graubünden",
+    "fr": "Canton des Grisons",
+    "it": "Cantone dei Grigioni"
+  },
+  "pref_label": {
+    "de": "Kanton Graubünden",
+    "en": "Canton of Graubünden",
+    "fr": "Canton des Grisons",
+    "it": "Cantone dei Grigioni"
+  },
+  "homepage": "https://gr.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

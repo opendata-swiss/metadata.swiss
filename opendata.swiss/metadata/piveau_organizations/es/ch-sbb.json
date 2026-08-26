@@ -1,0 +1,36 @@
+{
+  "id": "ch-sbb",
+  "identifier": "CH_SBB",
+  "resource": "https://opendata.swiss/id/organization/ch-sbb",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
+  "description": {
+    "de": "Die SBB ist das Rückgrat einer nachhaltigen Mobilität in der Schweiz. Täglich sind 1,18 Millionen Reisende und 210'000 Tonnen Güter mit der SBB sicher, pünktlich und umweltfreundlich unterwegs.\n\nDie Eisenbahn verbindet die Schweiz über alle sprachlichen, kulturellen und politischen Grenzen hinweg und leistet in wirtschaftlicher und gesellschaftlicher Hinsicht einen überaus wertvollen Beitrag an die Lebensqualität und Wettbewerbsfähigkeit unseres Landes. Die SBB ist aber weit mehr als ein modernes und leistungsfähiges Bahnunternehmen. Auch als Arbeits- und Auftraggeberin sowie als Immobilienbesitzerin und ‑bewirtschafterin übernimmt sie Verantwortung für die Schweiz, ihre Regionen und die Umwelt.",
+    "en": "SBB is the backbone of sustainable mobility in Switzerland. Every day, it safely transports 1.18 million passengers and 210,000 tonnes of freight on time and in an environmentally friendly manner. \n\n\nThe railway transcends all linguistic, cultural and political boundaries to bring Switzerland together, and in economic and social terms, it makes a vital contribution to the quality of life and competitiveness of our country. However, SBB is much more than just a modern, efficient railway company. As an employer and contractor, a property owner and a real estate manager, SBB takes responsibility for Switzerland, its regions and the environment. \n",
+    "fr": "Les CFF sont l’un des piliers d’une mobilité durable en Suisse. Chaque jour, les CFF acheminent 1,18 million de voyageurs et 210 000 tonnes de marchandises, de manière ponctuelle et respectueuse de l’environnement.\n\n\nLe chemin de fer crée des liens à travers toute la Suisse, par-delà les frontières linguistiques, culturelles et politiques. Du point de vue économique et social, il contribue ainsi à la qualité de vie et à la compétitivité de notre pays. Mais les CFF ne sont pas qu’une entreprise de chemin de fer moderne et performante. En leur qualité d’employeur, de commanditaire, de propriétaire et de gérant d’immeubles, ils sont responsables de la Suisse, de ses régions et de l’environnement.\n",
+    "it": "Le FFS assumono la loro responsabilità. \n\n \n\n\n\nConsigliare ad altri\n\n\nCondividere\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n \n\n\nLe FFS sono la colonna portante della mobilità sostenibile in Svizzera. Ogni giorno 1,18 milioni di viaggiatori e quasi 210 000 tonnellate di merci viaggiano con le FFS in modo sicuro, puntuale e rispettoso dell'ambiente.\n\n\nLa ferrovia unisce la Svizzera oltre i confini linguistici, culturali e politici e dal punto di vista economico e sociale assicura un contributo oltremodo prezioso alla qualità di vita e alla competitività del nostro Paese. Le FFS tuttavia sono ben più di un'impresa ferroviaria moderna e altamente performante. Esse assumono la loro responsalibità per la Svizzera, le sue regioni e l'ambiente anche come datore di lavoro, di committenti, così come di proprietarie e amministratrici di fondi e di immobili.\n"
+  },
+  "name": {
+    "de": "Schweizerische Bundesbahnen (SBB)",
+    "en": "Swiss Federal Railways (SFR)",
+    "fr": "Chemins de fer fédéraux suisses (CFF)",
+    "it": "Ferrovie federali svizzere (FFS)"
+  },
+  "pref_label": {
+    "de": "SBB",
+    "en": "SFR",
+    "fr": "CFF",
+    "it": "FFS"
+  },
+  "homepage": "https://sbb.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

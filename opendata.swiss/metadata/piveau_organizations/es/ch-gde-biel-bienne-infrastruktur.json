@@ -1,0 +1,50 @@
+{
+  "id": "ch-gde-biel-bienne-infrastruktur",
+  "identifier": "CH_GDE_BIEL-BIENNE_INFRASTRUKTUR",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-biel-bienne-infrastruktur",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Biel ist die grösste zweisprachige Stadt der Schweiz und Uhren-Weltmetropole. Sie zählt rund 56 000 Einwohnerinnen und Einwohner. Mit ihrer Weltoffenheit und dank ihrer zentralen Lage zwischen der deutschen und französischen Schweiz entwickelt sie sich stets dynamisch weiter. Am Bielersee und Jurasüdfuss gelegen bietet sie eine hohe Lebensqualität.",
+    "fr": "Bienne est la plus grande ville bilingue de Suisse et la métropole mondiale de l’horlogerie. Elle compte environ 56 000 habitantes et habitants. Grâce à son ouverture sur le monde et à sa situation centrale entre la Suisse alémanique et la Suisse romande, elle ne cesse de se développer de manière dynamique. Située au bord du lac de Bienne et au pied du Jura, elle jouit d’une qualité de vie remarquable.",
+    "it": "Bienne è la più grande città bilingue della Svizzera e la capitale mondiale dell’orologeria. Conta circa 56 000 abitanti. Grazie al suo cosmopolitismo e alla sua posizione centrale tra la Svizzera tedesca e quella francese, è in costante sviluppo dinamico. Situata sul lago di Bienne e ai piedi delle montagne del Giura, vanta un'elevata qualità di vita."
+  },
+  "name": {
+    "de": "Infrastruktur und Mobilität Stadt Biel",
+    "fr": "Infrastructures et mobilité Ville de Bienne"
+  },
+  "pref_label": {
+    "de": "Infrastruktur und Mobilität Stadt Biel",
+    "fr": "Infrastructures et mobilité Ville de Bienne"
+  },
+  "homepage": "https://www.biel-bienne.ch/de/infrastruktur.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-biel-bienne",
+  "ancestors": [
+    {
+      "id": "ch-gde-biel-bienne",
+      "name": {
+        "de": "Stadt Biel/Bienne",
+        "en": "City of Biel",
+        "fr": "Ville de Bienne",
+        "it": "citta di Bienne"
+      },
+      "pref_label": {
+        "de": "Stadt Biel",
+        "en": "City of Biel",
+        "fr": "Ville de Bienne",
+        "it": "citta di Bienne"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-biel-bienne",
+      "hierarchy_level": 0
+    }
+  ]
+}

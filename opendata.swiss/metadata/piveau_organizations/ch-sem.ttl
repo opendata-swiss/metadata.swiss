@@ -11,7 +11,7 @@
         "SEM"@fr,
         "SEM"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-ejpd> ;
     foaf:name "Staatssekretariat für Migration (SEM)"@de,
         "State Secretariat for Migration (SEM)"@en,
         "Secrétariat d'État à Migration (SEM)"@fr,

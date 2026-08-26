@@ -14,6 +14,7 @@
         "CA"@fr,
         "CA"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bbl> ;
     foaf:homepage <https://www.bkb.admin.ch> ;
     foaf:name "Beschaffungskonferenz des Bundes (BKB)"@de,
         "Federal Procurement Conference (BKB)"@en,

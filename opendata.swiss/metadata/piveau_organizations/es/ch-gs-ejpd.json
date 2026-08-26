@@ -25,6 +25,25 @@
     "it": "SG-DFGP"
   },
   "homepage": "https://www.ejpd.admin.ch/ejpd/de/home/das-ejpd/org/gs-ejpd.html",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-ejpd",
+  "ancestors": [
+    {
+      "id": "ch-ejpd",
+      "name": {
+        "de": "Eidgenössisches Justiz- und Polizeidepartement (EJPD)",
+        "en": "Federals Justiz- und Polizeidepartement (EJPD)",
+        "fr": "Département fédéral de justice et police (DFJP)",
+        "it": "Dipartimento federale di giustizia e polizia (DFGP)"
+      },
+      "pref_label": {
+        "de": "EJPD",
+        "en": "EJPD",
+        "fr": "DFJP",
+        "it": "DFGP"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-ejpd",
+      "hierarchy_level": 0
+    }
+  ]
 }

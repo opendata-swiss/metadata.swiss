@@ -1,0 +1,23 @@
+{
+  "id": "ch-kt-zug",
+  "identifier": "CH_KT_ZUG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zug",
+  "description": {
+    "de": "Hier veröffentlicht das Team von Open Data Zug von der kantonalen Fachstelle für Daten und Statistik schrittweise offene Behördendaten der kantonalen Verwaltung.\n\nWeitere Informationen unter https://zg.ch/opendata\n"
+  },
+  "name": {
+    "de": "Kanton Zug",
+    "en": "Canton of Zug",
+    "fr": "Canton de Zoug",
+    "it": "Cantone di Zugo"
+  },
+  "pref_label": {
+    "de": "Kanton Zug",
+    "en": "Canton of Zug",
+    "fr": "Canton de Zoug",
+    "it": "Cantone di Zugo"
+  },
+  "homepage": "https://zg.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

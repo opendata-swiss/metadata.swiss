@@ -5,13 +5,17 @@
 
 <https://opendata.swiss/id/organization/ch-bar> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Das Schweizerische Bundesarchiv sichert die Dokumentation staatlichen Handelns und macht diese zugänglich. Dadurch kann die Verwaltung Rechenschaft über ihre Tätigkeiten ablegen und effizienter arbeiten. Für Öffentlichkeit und Forschung ist Archivierung eine Voraussetzung, um sich im demokratischen Rechtsstaat eine eigene, kritische Meinung zu bilden. Recherchieren im Bundesarchiv ist online oder vor Ort möglich."@de,
+        "The Swiss Federal Archives preserve the documentation of government actions and make it accessible. This enables the administration to account for its activities and work more efficiently. For the public and researchers alike, archiving is essential for the formation of independent, critical opinions in a democratic state under the rule of law. Research in the Federal Archives can be carried out online or on site."@en,
+        "Les Archives fédérales suisses garantissent la conservation des documents en lien avec les activités de l’Etat et permettent l'accès à ces derniers. L’administration peut ainsi assurer la traçabilité de ses activités et travailler de manière plus efficace. Pour les chercheurs, comme pour l’ensemble de la population, l’archivage est indispensable afin de se faire sa propre opinion et conserver un esprit critique dans un Etat de droit démocratique. Les recherches dans les fonds des Archives fédérales peuvent être effectuées en ligne ou sur place."@fr,
+        "L’Archivio federale svizzero assicura la conservazione dei documenti sull’operato dello Stato e li rende accessibili. In questo modo l’Amministrazione federale può rendere conto delle proprie attività e lavorare in maniera più efficiente. In uno Stato di diritto democratico l’archiviazione riveste un’importanza fondamentale perché consente alla popolazione e alla comunità scientifica di formarsi una propria opinione. È possibile effettuare ricerche nell’Archivio federale sia on-line che in loco."@it ;
     dcterms:identifier "CH_BAR" ;
     skos:prefLabel "BAR"@de,
         "SFA"@en,
         "AFS"@fr,
         "AFS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.bar.admin.ch> ;
     foaf:name "Schweizerisches Bundesarchiv (BAR)"@de,
         "Swiss Federal Archives (SFA)"@en,

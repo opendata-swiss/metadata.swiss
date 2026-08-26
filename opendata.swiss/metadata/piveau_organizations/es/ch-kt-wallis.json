@@ -1,0 +1,34 @@
+{
+  "id": "ch-kt-wallis",
+  "identifier": "CH_KT_WALLIS",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-wallis",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Der Kanton Wallis verfolgt seit einigen Jahren eine „Open Data“-Strategie für seine Geodaten. Auf diesem Portal finden Sie die frei herunterladbaren Geodaten der Walliser Kantonsverwaltung.",
+    "fr": "Le canton du Valais s'est engagé dans une démarche d’ouverture des géodonnées publiques depuis plusieurs années. Sur ce portail, vous trouvez certaines géodonnées OpenData provenant de l'administration cantonale valaisanne."
+  },
+  "name": {
+    "de": "Kanton Wallis",
+    "en": "Canton du Valais",
+    "fr": "Canton du Valais",
+    "it": "Cantone del Vallese"
+  },
+  "pref_label": {
+    "de": "Kanton Wallis",
+    "en": "Canton du Valais",
+    "fr": "Canton du Valais",
+    "it": "Cantone del Vallese"
+  },
+  "homepage": "https://www.vs.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

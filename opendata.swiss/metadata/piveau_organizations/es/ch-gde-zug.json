@@ -1,0 +1,17 @@
+{
+  "id": "ch-gde-zug",
+  "identifier": "CH_GDE_ZUG",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-zug",
+  "description": {
+    "de": "Hier veröffentlicht das Team von Open Data Zug von der kantonalen Fachstelle für Daten und Statistik schrittweise offene Behördendaten der Zuger Verwaltung.\n\nWeitere Informationen unter https://zg.ch/opendata"
+  },
+  "name": {
+    "de": "Stadt Zug"
+  },
+  "pref_label": {
+    "de": "Stadt Zug"
+  },
+  "homepage": "https://zug.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

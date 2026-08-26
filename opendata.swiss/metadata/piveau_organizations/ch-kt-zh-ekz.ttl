@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-ekz> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "EKZ ist einer der grössten Energiedienstleister der Schweiz und versorgt rund eine Million Menschen mit Strom. Zu den Kunden von EKZ zählen Private, Unternehmen und andere Schweizer Energieversorger. EKZ versorgt von den 162 Gemeinden im Kanton Zürich 125 direkt, 35 über andere Endverteiler. Die Stadt Zürich und Winterthur versorgen sich komplett selbst."@de ;
+    dcterms:identifier "CH_KT_ZH_EKZ" ;
+    skos:prefLabel "EKZ"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0117> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.ekz.ch> ;
+    foaf:name "Elektrizitätswerke des Kantons Zürich (EKZ)"@de .
+
+<https://www.ekz.ch> a foaf:Document .
+

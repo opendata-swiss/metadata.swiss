@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-ju",
+  "identifier": "CH_KT_JU",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ju",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Der Kanton Jura veröffentlicht auf Open Data Swiss verschiedene Arten von Daten der kantonalen Verwaltung, die dem Prinzip von Open Government Data entsprechen.",
+    "en": "The canton of Jura publishes on Open Data Swiss various types of data of the cantonal administration that meets the principle of Open Government Data.",
+    "fr": "Le canton du Jura publie sur Open Data Swiss différents types de données de l'administration cantonale qui répondent au principe de l'Open Government Data.",
+    "it": "Il Cantone del Giura pubblica su Open Data Swiss vari tipi di dati dell'amministrazione cantonale che soddisfano il principio degli Open Government Data."
+  },
+  "name": {
+    "de": "République et Canton du Jura",
+    "en": "Canton of Jura",
+    "fr": "Canton du Jura",
+    "it": "Canton Giura"
+  },
+  "pref_label": {
+    "de": "Kanton Jura",
+    "en": "Canton of Jura",
+    "fr": "Canton du Jura",
+    "it": "Canton Giura"
+  },
+  "homepage": "https://ju.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

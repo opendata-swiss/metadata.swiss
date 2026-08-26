@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-luzern> a org:Organization,
+        foaf:Organization ;
+    dcterms:description """Die Stadt Luzern veröffentlicht hier schrittweise OGD-Datensätze der städtischen Dienstabteilungen. Mehr über «Open Government Data» bei der Stadt Luzern ist über den Link <www.ogd.stadtluzern.ch> zu erfahren.
+
+Die Geometadaten zu den einzelnen OGD-Daten sind unter "Zusätzliche Informationen" als Link aufgeführt.
+Zu beachten sind weitere Bestimmungen zum Datenschutz und Nutzungsbestimmungen gemäss OGD-Internetauftritt der Stadt Luzern."""@de ;
+    dcterms:identifier "CH_GDE_LUZERN" ;
+    skos:prefLabel "Stadt Luzern"@de,
+        "Stadt Luzern"@en,
+        "Stadt Luzern"@fr,
+        "Stadt Luzern"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://luzern.ch> ;
+    foaf:name "Stadt Luzern"@de,
+        "Stadt Luzern"@en,
+        "Stadt Luzern"@fr,
+        "Stadt Luzern"@it .
+
+<https://luzern.ch> a foaf:Document .
+

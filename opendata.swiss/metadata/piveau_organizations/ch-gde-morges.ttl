@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-morges> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die von der Stadt Morges erstellten offenen Datensätze sind über diese Website zugänglich."@de,
+        "The open data sets produced by the City of Morges are accessible via this website."@en,
+        "Les jeux de données ouvertes produits par la Ville de Morges sont accessibles via le présent site Internet."@fr,
+        "I set di dati aperti prodotti dalla Città di Morges sono accessibili tramite questo sito web."@it ;
+    dcterms:identifier "CH_GDE_MORGES" ;
+    skos:prefLabel "Morges"@de,
+        "Morges"@en,
+        "Morges"@fr,
+        "Morges"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.morges.ch> ;
+    foaf:name "Stadt Morges"@de,
+        "City of Morges"@en,
+        "Ville de Morges"@fr,
+        "Città di Morges"@it .
+
+<https://www.morges.ch> a foaf:Document .
+

@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-gl-bau-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Fachstelle Geoinformation des Kantons Glarus. Zuständig für die kantonale Geodaten-Infrastruktur inklusive Geoportal und Datenbereitstellung."@de ;
+    dcterms:identifier "CH_KT_GL_BAU_GEO" ;
+    skos:prefLabel "Fachstelle Geoinformation des Kantons Glarus"@de,
+        "Office of Geoinformation, Canton of Glarus"@en ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-glarus> ;
+    foaf:homepage <https://www.gl.ch/verwaltung/bau-und-umwelt/hochbau/raumentwicklung-und-geoinformation/geoinformation.html/811> ;
+    foaf:name "Fachstelle Geoinformation des Kantons Glarus"@de,
+        "Office of Geoinformation, Canton of Glarus"@en .
+
+<https://www.gl.ch/verwaltung/bau-und-umwelt/hochbau/raumentwicklung-und-geoinformation/geoinformation.html/811> a foaf:Document .
+

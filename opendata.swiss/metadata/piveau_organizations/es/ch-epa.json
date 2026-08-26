@@ -25,6 +25,23 @@
     "it": "UFPER"
   },
   "homepage": "https://www.epa.admin.ch",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-efd",
+  "ancestors": [
+    {
+      "id": "ch-efd",
+      "name": {
+        "de": "Eidgenössisches Finanzdepartement (EFD)",
+        "fr": "Département fédéral des finances (DFF)",
+        "it": "Dipartimento federale delle finanze (DFF)"
+      },
+      "pref_label": {
+        "de": "EFD",
+        "fr": "DFF",
+        "it": "DFF"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-efd",
+      "hierarchy_level": 0
+    }
+  ]
 }

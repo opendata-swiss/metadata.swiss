@@ -1,0 +1,36 @@
+{
+  "id": "ch-gde-st-gallen",
+  "identifier": "CH_GDE_ST-GALLEN",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-st-gallen",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "St.Gallen, die achtgrösste Stadt der Schweiz, ist mit 80'000 Einwohnern die wirtschaftliche, politische, soziale und kulturelle Metropole der Ostschweiz. Ihre 1400-jährige Geschichte verbindet sich mit urbaner Kreativität, einer innovativen Wirtschaft und einer intakten Landschaft.",
+    "en": "With a population of 80,000, St.Gallen, Switzerland’s eighth largest city, is the economic, political, social and cultural metropolis of eastern Switzerland. Its 1400 years of history blend with urban creativity, an innovative economy and an unspoilt landscape.",
+    "fr": "Avec une population de 80 000 habitants, Saint-Gall, huitième ville de Suisse, est la métropole économique, politique, sociale et culturelle de la Suisse orientale. Ses 1400 ans d'histoire se mêlent à la créativité urbaine, à une économie innovante et à un paysage préservé.",
+    "it": "Con una popolazione di 80.000 abitanti, San Gallo, l'ottava città più grande della Svizzera, è la metropoli economica, politica, sociale e culturale della Svizzera orientale. I suoi 1400 anni di storia si fondono con la creatività urbana, un'economia innovativa e un paesaggio incontaminato."
+  },
+  "name": {
+    "de": "Stadt St.Gallen",
+    "en": "City of St.Gallen",
+    "fr": "Ville de Saint-Gall",
+    "it": "Città di San Gallo"
+  },
+  "pref_label": {
+    "de": "Stadt St.Gallen",
+    "en": "City of St.Gallen",
+    "fr": "Ville de Saint-Gall",
+    "it": "Città di San Gallo"
+  },
+  "homepage": "https://www.stadt.sg.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

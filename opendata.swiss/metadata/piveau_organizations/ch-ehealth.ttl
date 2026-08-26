@@ -5,13 +5,21 @@
 
 <https://opendata.swiss/id/organization/ch-ehealth> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Die Geschäftsstelle von eHealth Suisse stellt sicher, dass die einzelnen Projekte für die Digitalisierung des Gesundheitswesens zielorientiert und gesetzeskonform sind und dass Synergien genutzt werden – auch international."@de,
+        "Entdecken Sie die vielfaeltigen digitalen Gesundheitslösungen von eHealth Suisse. Wir gestalten die vernetzte Zukunft der Gesundheitsversorgung."@en,
+        "Le secrétariat d’eHealth Suisse s’assure que les différents projets pour la numérisation du système de santé sont bien axés sur les objectifs et conformes à la loi, et qu’ils profitent de synergies, aussi au niveau international."@fr,
+        "La segreteria di eHealth Suisse assicura che i singoli progetti per la digitalizzazione della sanità siano orientati agli obiettivi e siano conformi alla legge e che le sinergie esistenti vengano sfruttate anche a livello internazionale."@it ;
     dcterms:identifier "CH_eHealth" ;
     skos:prefLabel "eHealth Suisse"@de,
         "eHealth Suisse"@en,
         "eHealth Suisse"@fr,
         "eHealth Suisse"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.e-health-suisse.ch> ;
     foaf:name "eHealth Suisse"@de,
         "eHealth Suisse"@en,
         "eHealth Suisse"@fr,
         "eHealth Suisse"@it .
+
+<https://www.e-health-suisse.ch> a foaf:Document .
 

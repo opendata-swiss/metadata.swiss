@@ -14,11 +14,12 @@
         "BERNMOBIL"@en,
         "BERNMOBIL"@fr,
         "BERNMOBIL"@it ;
-    foaf:homepage <https://ckan.opendata.swiss/uploads/group/logo.jpg> ;
-    foaf:name "BERNMOBIL"@de,
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://bernmobil.ch> ;
+    foaf:name "BERNMOBIL AG"@de,
         "BERNMOBIL"@en,
         "BERNMOBIL"@fr,
         "BERNMOBIL"@it .
 
-<https://ckan.opendata.swiss/uploads/group/logo.jpg> a foaf:Document .
+<https://bernmobil.ch> a foaf:Document .
 

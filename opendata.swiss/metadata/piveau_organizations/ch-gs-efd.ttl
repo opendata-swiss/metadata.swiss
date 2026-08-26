@@ -15,6 +15,7 @@
         "SG-DFF"@fr,
         "SG-DFF"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:homepage <https://www.efd.admin.ch> ;
     foaf:name "Generalsekretariat EFD (GS-EFD)"@de,
         "General Secretariat FDF (GS-FDF)"@en,

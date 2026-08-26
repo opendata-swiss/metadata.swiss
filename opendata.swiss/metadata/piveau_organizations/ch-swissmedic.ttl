@@ -10,7 +10,7 @@
         "Swiss Agency for Therapeutic Products Swissmedic"@en,
         "Institut suisse des produits thérapeutiques Swissmedic"@fr,
         "Istituto svizzero per gli agenti terapeutici Swissmedic"@it ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:name "Schweizerisches Heilmittelinstitut Swissmedic"@de,
         "Swiss Agency for Therapeutic Products Swissmedic"@en,
         "Institut suisse des produits thérapeutiques Swissmedic"@fr,

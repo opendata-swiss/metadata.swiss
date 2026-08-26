@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-gl-staatskanzlei> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Staatskanzlei steht dem Landrat und dem Regierungsrat des Kantons Glarus, deren Geschäftsverkehr sie organisiert und koordiniert, als Stabsstelle zur Verfügung. Sie unterstützt Landammann und Regierungsrat, Landratspräsident, Landrat und landrätliche Kommissionen bei der Führung, Planung, Koordination, Information und Dokumentation."@de ;
+    dcterms:identifier "CH_KT_GL_STAATSKANZLEI" ;
+    skos:prefLabel "Staatskanzlei Glarus"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-glarus> ;
+    foaf:homepage <https://www.gl.ch/verwaltung/staatskanzlei.html/1358> ;
+    foaf:name "Staatskanzlei Glarus"@de .
+
+<https://www.gl.ch/verwaltung/staatskanzlei.html/1358> a foaf:Document .
+

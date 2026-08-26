@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh",
+  "identifier": "CH_KT_ZH",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Zürich (Kürzel ZH; zürichdeutsch Züri, französisch Zurich, italienisch Zurigo, rätoromanisch ), volkstümlich auch Zürichbiet oder mundartlich Züripiet genannt, ist ein deutschsprachiger Kanton im Nordosten der Schweiz. Der Hauptort ist die gleichnamige Stadt Zürich. Der Kanton Zürich befindet sich flächenmässig im oberen Mittelfeld aller Kantone.\n\nQuelle: Wikipedia (https://de.wikipedia.org/wiki/Kanton_Z%C3%BCrich)",
+    "en": "The canton of Zurich is an administrative unit (canton) of Switzerland, situated in the northeastern part of the country. With a population of 1,553,423 (as of 31 December 2020), it is the most populous canton of Switzerland. Zurich is the de facto capital of the canton, but is not specifically mentioned in the constitution.\n\nSource: Wikipedia (https://en.wikipedia.org/wiki/Canton_of_Zurich)",
+    "fr": "Le canton de Zurich (ZH, en allemand : Kanton Zürich) est l'un des 26 cantons de la Suisse. Son chef-lieu est la ville de Zurich et les autres villes principales sont Winterthour, Uster et Dübendorf. Zurich est le canton le plus peuplé de Suisse avec 1 620 020 habitants répartis sur 1 729 km2.\n\nSource: Wikipédia (https://fr.wikipedia.org/wiki/Canton_de_Zurich)",
+    "it": "Il Canton Zurigo (in tedesco Kanton Zürich) è un cantone svizzero di 1 539 275 abitanti, con capitale Zurigo. Trovandosi nella parte nord-orientale della Svizzera, la lingua ufficiale è il tedesco, ma la popolazione parla il locale dialetto svizzero-tedesco, chiamato Züritüütsch.\n\nFonte: Wikipedia (https://it.wikipedia.org/wiki/Canton_Zurigo)"
+  },
+  "name": {
+    "de": "Kanton Zürich",
+    "en": "Canton Zurich",
+    "fr": "Canton Zurich",
+    "it": "Cantone Zurigo"
+  },
+  "pref_label": {
+    "de": "ZH",
+    "en": "ZH",
+    "fr": "ZH",
+    "it": "ZH"
+  },
+  "homepage": "https://www.zh.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

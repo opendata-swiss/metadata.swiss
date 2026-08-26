@@ -1,0 +1,23 @@
+{
+  "id": "ch-kt-tg",
+  "identifier": "CH_KT_TG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-tg",
+  "description": {
+    "de": "Der Kanton Thurgau veröffentlicht hier schrittweise OGD-Datensätze der kantonalen Verwaltung."
+  },
+  "name": {
+    "de": "Kanton Thurgau",
+    "en": "Canton of Thurgau",
+    "fr": "Canton de Thurgovie",
+    "it": "Cantone di Turgovia"
+  },
+  "pref_label": {
+    "de": "Kanton Thurgau",
+    "en": "Canton of Thurgau",
+    "fr": "Canton de Thurgovie",
+    "it": "Cantone di Turgovia"
+  },
+  "homepage": "https://tg.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

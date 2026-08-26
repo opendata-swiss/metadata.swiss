@@ -1,0 +1,29 @@
+{
+  "id": "ch-kt-be-bvd",
+  "identifier": "CH_KT_BE_BVD",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-bvd",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Öffentlicher Verkehr, Strassenbau, Verkehrsplanung, Wasserregulierung, Abfall, Hochbauprojekte."
+  },
+  "name": {
+    "de": "Bau- und Verkehrsdirektion (BE)",
+    "fr": "Direction des travaux publics et des transports (BE)"
+  },
+  "pref_label": {
+    "de": "BVD (BE)",
+    "fr": "DTT (BE)"
+  },
+  "homepage": "https://www.bvd.be.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -11,7 +11,7 @@
         "Def"@fr,
         "Dif"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
     foaf:homepage <https://www.vtg.admin.ch> ;
     foaf:name "Gruppe Verteidigung (Vtg)"@de,
         "Defence sector (Vtg)"@en,

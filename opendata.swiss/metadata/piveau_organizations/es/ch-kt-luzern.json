@@ -12,26 +12,17 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
   },
-  "description": {
-    "de": "",
-    "en": "",
-    "fr": "",
-    "it": "",
-    "rm": ""
-  },
   "name": {
     "de": "Kanton Luzern LU",
     "en": "Canton Luzern LU",
     "fr": "Canton de Lucerne LU",
-    "it": "Canton Lucerna LU",
-    "rm": ""
+    "it": "Canton Lucerna LU"
   },
   "pref_label": {
     "de": "LU",
     "en": "LU",
     "fr": "LU",
-    "it": "LU",
-    "rm": ""
+    "it": "LU"
   },
   "homepage": "https://www.lu.ch",
   "hierarchy_level": 0,

@@ -11,7 +11,7 @@
         "BASPO"@fr,
         "BASPO"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
     foaf:name "Bundesamt für Sport (BASPO)"@de,
         "Federal Office of Sport (BASPO)"@en,
         "Office fédéral de Sport (BASPO)"@fr,

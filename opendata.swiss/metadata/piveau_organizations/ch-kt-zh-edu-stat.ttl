@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-edu-stat> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Bildungsstatistik (BISTA) ist eine Abteilung der Bildungsplanung und damit ein Teil des Generalsekretariates der Bildungsdirektion Kanton Zürich. Sie hat den gesetzlichen Auftrag, statistische Daten aus dem Schulbereich zu erheben, auszuwerten und benutzergerecht aufzubereiten. Da die Bildungsstatistik Daten von öffentlichem Interesse erhebt, sind sie der Öffentlichkeit zugänglich."@de ;
+    dcterms:identifier "CH_KT_ZH_EDU_STAT" ;
+    skos:prefLabel "Bildungsstatistik Kanton Zürich"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh-edu> ;
+    foaf:homepage <https://www.zh.ch/de/bildungsdirektion.html> ;
+    foaf:name "Bildungsstatistik Kanton Zürich"@de .
+
+<https://www.zh.ch/de/bildungsdirektion.html> a foaf:Document .
+

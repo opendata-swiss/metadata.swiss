@@ -1,0 +1,48 @@
+{
+  "id": "ch-kt-sg-stat",
+  "identifier": "CH_KT_SG_STAT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sg-stat",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Amt für Daten und Statistik (SG)",
+    "en": "Amt für Daten und Statistik (SG)",
+    "fr": "Amt für Daten und Statistik (SG)",
+    "it": "Amt für Daten und Statistik (SG)"
+  },
+  "pref_label": {
+    "de": "CH_KT_SG_STAT (ZH)",
+    "en": "CH_KT_SG_STAT (ZH)",
+    "fr": "CH_KT_SG_STAT (ZH)",
+    "it": "CH_KT_SG_STAT (ZH)"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-sg",
+  "ancestors": [
+    {
+      "id": "ch-kt-sg",
+      "name": {
+        "de": "Kanton St. Gallen (SG)",
+        "en": "Kanton St. Gallen (SG)",
+        "fr": "Canton de Saint-Gall (SG)",
+        "it": "Cantone di San Gallo (SG)"
+      },
+      "pref_label": {
+        "de": "CH_KT_SG (ZH)",
+        "en": "CH_KT_SG (ZH)",
+        "fr": "CH_KT_SG (ZH)",
+        "it": "CH_KT_SG (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sg",
+      "hierarchy_level": 0
+    }
+  ]
+}

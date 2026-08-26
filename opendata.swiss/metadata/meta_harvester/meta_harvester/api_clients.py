@@ -191,6 +191,69 @@ class I14YClient:
         response.raise_for_status()
         organizations = response.json()
 
+        # `subAgentOf` is intentionally not populated anymore in the list response.
+        # Reconstruct inverse parent links from each parent's `subAgents` collection.
+        id_to_org = {
+            org.get("id"): org
+            for org in organizations
+            if isinstance(org, dict) and org.get("id")
+        }
+        inferred_edges = 0
+        unresolved_children = 0
+
+        for parent in organizations:
+            if not isinstance(parent, dict):
+                continue
+
+            parent_id = parent.get("id")
+            if not parent_id:
+                continue
+
+            sub_agents = parent.get("subAgents") or []
+            if not isinstance(sub_agents, list):
+                logger.warning(
+                    f"Organization '{parent_id}' has non-list 'subAgents': {type(sub_agents).__name__}"
+                )
+                continue
+
+            parent_ref = {"id": parent_id}
+            parent_name = parent.get("name")
+            if isinstance(parent_name, dict):
+                parent_ref["name"] = parent_name
+
+            for child_ref in sub_agents:
+                if not isinstance(child_ref, dict):
+                    continue
+
+                child_id = child_ref.get("id")
+                if not child_id:
+                    continue
+
+                child_org = id_to_org.get(child_id)
+                if not child_org:
+                    unresolved_children += 1
+                    continue
+
+                existing = child_org.get("subAgentOf")
+                if existing is None:
+                    normalized = []
+                elif isinstance(existing, list):
+                    normalized = [item for item in existing if isinstance(item, dict)]
+                elif isinstance(existing, dict):
+                    normalized = [existing]
+                else:
+                    normalized = []
+
+                if not any(item.get("id") == parent_id for item in normalized):
+                    normalized.append(parent_ref.copy())
+                    inferred_edges += 1
+
+                child_org["subAgentOf"] = normalized
+
+        logger.info(
+            f"Inferred {inferred_edges} parent link(s) from 'subAgents' ({unresolved_children} unresolved child reference(s))."
+        )
+
         # identifiers look like this: "CH_ZAS", "CHE-229.707.417", ...
         # we create a URL friendly slug for each identifier, e.g. "CH_ZAS" -> "ch-zas", "CHE-229.707.417" -> "che-229-707-417"
         # TODO: this is temporary solution until I14Y provides a slug field in the API response

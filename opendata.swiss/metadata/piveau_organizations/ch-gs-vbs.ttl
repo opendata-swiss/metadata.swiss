@@ -11,6 +11,7 @@
         "SG-DDPS"@fr,
         "SG-DDPS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
     foaf:homepage <https://www.vbs.admin.ch> ;
     foaf:name "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)"@de,
         "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)"@en,

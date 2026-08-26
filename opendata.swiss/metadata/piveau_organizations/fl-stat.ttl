@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/fl-stat> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "FL_STAT" ;
+    skos:prefLabel "FL_STAT (ZH)"@de,
+        "FL_STAT (ZH)"@en,
+        "FL_STAT (ZH)"@fr,
+        "FL_STAT (ZH)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/fl> ;
+    foaf:name "Amt für Statistik (FL)"@de,
+        "Amt für Statistik (FL)"@en,
+        "Amt für Statistik (FL)"@fr,
+        "Amt für Statistik (FL)"@it .
+

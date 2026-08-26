@@ -1,0 +1,31 @@
+{
+  "id": "ch-kt-ti",
+  "identifier": "CH_KT_TI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ti",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "it": "Il Canton Ticino pubblica qui progressivamente i dati dell'amministrazione cantonale che soddisfano i requisiti per la pubblicazione come Open Government Data."
+  },
+  "name": {
+    "de": "Kanton Tessin",
+    "it": "Cantone Ticino"
+  },
+  "pref_label": {
+    "de": "TI",
+    "en": "TI",
+    "fr": "TI",
+    "it": "TI"
+  },
+  "homepage": "https://www.ti.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

@@ -2,18 +2,70 @@
   "id": "ch-postcom",
   "identifier": "CH_POSTCOM",
   "resource": "https://opendata.swiss/id/organization/ch-postcom",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die PostCom ist eine unabhängige Behörde. Sie beaufsichtigt den schweizerischen Postmarkt, wacht über die Qualität der postalischen Grundversorgung. Die ihr übertragenen Aufgaben erfüllt sie gemäss den Vorgaben der Postgesetzgebung. Bei Verfahren prüft sie jeden Fall individuell und entsprechend ihrem gesetzlichen Auftrag sowie auf der Grundlage der von ihr entwickelten Praxis.Weiter informiert die PostCom die Bevölkerung über ihre Tätigkeit und schlägt dem Bundesrat konkrete Massnahmen vor, um ihre Aufgaben erfüllen zu können. Administrativ ist sie dem Departement UVEK angegliedert.",
+    "en": "The Federal Postal Services Commission (PostCom) is an independent authority that oversees the Swiss postal market and ensures the quality of the universal postal service. It fulfils the tasks assigned to it in accordance with the provisions of postal legislation. During administrative proceedings, PostCom considers each case individually in accordance with its statutory mandate and its own established practice.PostCom also keeps the public informed about its activities and proposes measures to the Federal Council that will support PostCom in fulfilling its tasks. It is administratively affiliated to the Federal Department of the Environment, Transport, Energy and Communications (DETEC).",
+    "fr": "Autorité indépendante, la PostCom veille à la qualité du service universel postal et à son financement. Elle observe les développements du marché et s’assure que les dispositions légales applicables sont respectées. Elle exécute les tâches qui lui sont confiées conformément à la législation postale. Lors des procédures, elle examine chaque cas individuellement, conformément à son mandat légal et à la pratique qu’elle a développée.La PostCom informe en outre la population sur ses activités et propose au Conseil fédéral des mesures concrètes en lien avec l’exécution de ses tâches. Sur le plan administratif, elle est rattachée au Département fédéral de l’environnement, des transports, de l’énergie et de la communication (DETEC).",
+    "it": "La PostCom è un’autorità indipendente. Essa sorveglia il mercato postale svizzero e vigila sulla qualità del servizio postale universale. La PostCom adempie ai mandati a essa affidati in conformità a quanto sancito dalla legislazione postale. Nell’ambito delle procedure, verifica ciascun caso individualmente, secondo il proprio mandato legale e sulla base della prassi sviluppata al suo interno.Inoltre, informa la popolazione in merito all’attività svolta e propone al Consiglio federale misure concrete per l’adempimento dei propri mandati. Dal punto di vista amministrativo è subordinata al Dipartimento federale dell’ambiente, dei trasporti, dell’energia e delle comunicazioni (DATEC)."
+  },
   "name": {
-    "de": "Eidgenössische Postkommission PostCom",
-    "en": "Federal Postal Services Commission PostCom",
-    "fr": "Commission fédérale de la poste PostCom",
-    "it": "Commissione federale delle poste PostCom"
+    "de": "Eidgenössische Postkommission (PostCom)",
+    "en": "Federal Postal Services Commission (PostCom)",
+    "fr": "Commission fédérale de la poste (PostCom)",
+    "it": "Commissione federale delle poste (PostCom)"
   },
   "pref_label": {
-    "de": "Eidgenössische Postkommission PostCom",
-    "en": "Federal Postal Services Commission PostCom",
-    "fr": "Commission fédérale de la poste PostCom",
-    "it": "Commissione federale delle poste PostCom"
+    "de": "PostCom",
+    "en": "PostCom",
+    "fr": "PostCom",
+    "it": "PostCom"
   },
-  "hierarchy_level": 0,
-  "ancestors": []
+  "homepage": "https://www.postcom.admin.ch",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-gs-uvek",
+  "ancestors": [
+    {
+      "id": "ch-gs-uvek",
+      "name": {
+        "de": "Generalsekretariat des UVEK (GS-UVEK)",
+        "en": "General Secretariat DETEC (GS-DETEC)",
+        "fr": "Secrétariat général du DETEC (SG-DETEC)",
+        "it": "Segreteria generale del DATEC (SG-DATEC)"
+      },
+      "pref_label": {
+        "de": "GS-UVEK",
+        "en": "GS-DETEC",
+        "fr": "SG-DETEC",
+        "it": "SG-DATEC"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-uvek",
+      "name": {
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
+      },
+      "pref_label": {
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
+      "hierarchy_level": 0
+    }
+  ]
 }

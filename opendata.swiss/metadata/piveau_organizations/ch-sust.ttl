@@ -10,6 +10,7 @@
         "STSB"@en,
         "SESE"@fr,
         "SISI"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
     foaf:name "Schweizerische Sicherheitsuntersuchungsstelle (SUST)"@de,
         "Swiss Transportation Safety Investigation Board (STSB)"@en,
         "Service suisse d'enquête de sécurité (SESE)"@fr,

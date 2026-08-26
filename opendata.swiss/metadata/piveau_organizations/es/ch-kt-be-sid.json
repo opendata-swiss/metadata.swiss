@@ -1,0 +1,30 @@
+{
+  "id": "ch-kt-be-sid",
+  "identifier": "CH_KT_BE_SID",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-sid",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Hier finden Sie alle Informationen zur Sicherheitsdirektion des Kantons Bern.",
+    "fr": "Vous trouverez ici toutes les informations concernant la Direction de la sécurité du canton de Berne."
+  },
+  "name": {
+    "de": "Sicherheitsdirektion (BE)",
+    "fr": "Direction de la sécurité (BE)"
+  },
+  "pref_label": {
+    "de": "SID (BE)",
+    "fr": "DSE (BE)"
+  },
+  "homepage": "https://www.sid.be.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

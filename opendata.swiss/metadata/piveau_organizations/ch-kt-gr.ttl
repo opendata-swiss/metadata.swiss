@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-gr> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Kanton Graubünden veröffentlicht nach und nach Open Government Datensätze von kantonalen Ämtern und Dienststellen."@de,
+        "The Canton of Graubünden is gradually publishing open government datasets from cantonal offices and agencies."@en,
+        "Le canton des Grisons publie progressivement des données publiques en libre accès (Open Government Data) d’offices et de services cantonaux."@fr,
+        "Il Cantone dei Grigioni pubblica su base continua serie di dati di uffici e servizi cantonali come Open Government Data."@it ;
+    dcterms:identifier "CH_KT_GR" ;
+    skos:prefLabel "Kanton Graubünden"@de,
+        "Canton of Graubünden"@en,
+        "Canton des Grisons"@fr,
+        "Cantone dei Grigioni"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://gr.ch> ;
+    foaf:name "Kanton Graubünden"@de,
+        "Canton of Graubünden"@en,
+        "Canton des Grisons"@fr,
+        "Cantone dei Grigioni"@it .
+
+<https://gr.ch> a foaf:Document .
+

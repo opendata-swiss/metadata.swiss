@@ -1,0 +1,71 @@
+{
+  "id": "ch-vbs-gs-vbs-big",
+  "identifier": "CH_VBS_GS-VBS_BIG",
+  "resource": "https://opendata.swiss/id/organization/ch-vbs-gs-vbs-big",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die Bibliothek am Guisanplatz BiG ist für die Informationsversorgung von Bundesverwaltung und Armee zuständig. Mit ihrem breitgefächerten Sammlungsprofil und ihren umfangreichen Dienstleistungen steht die BiG auch der breiten Öffentlichkeit zur Verfügung.",
+    "en": "The Library Am Guisanplatz BiG is responsible for providing the Federal Administration and Armed Forces with information. Its varied collections and wide range of services are also available to the public.",
+    "fr": "La Bibliothèque Am Guisanplatz BiG a pour rôle de fournir des informations à l’administration fédérale et à l’armée. Ses collections variées et ses nombreuses prestations sont toutefois également ouvertes au public.",
+    "it": "La Biblioteca Am Guisanplatz BiG è competente per la fornitura di informazioni all’Amministrazione federale e all’esercito. Con il suo profilo di collezioni molto diversificato e i suoi numerosi serivzi, la BiG è a disposizione anche del grande pubblico."
+  },
+  "name": {
+    "de": "Bibliothek am Guisanplatz (BiG)",
+    "fr": "Bibliothèque Am Guisanplatz (BiG)",
+    "it": "Biblioteca Am Guisanplatz (BiG)"
+  },
+  "pref_label": {
+    "de": "BiG",
+    "en": "BiG",
+    "fr": "BiG",
+    "it": "BiG"
+  },
+  "homepage": "https://www.big.admin.ch",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-gs-vbs",
+  "ancestors": [
+    {
+      "id": "ch-gs-vbs",
+      "name": {
+        "de": "Generalsekretariat Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport VBS (GS-VBS)",
+        "en": "General Secretariat Federal Department of Defence, Civil Protection and Sport (GS-DDPS)",
+        "fr": "Secrétariat général Département fédéral de la défense, de la protection de la population et de sports (SG-DDPS)",
+        "it": "Segreteria generale Dipartimento federale della difesa, della protezione della popolazione e dello sport (SG-DDPS)"
+      },
+      "pref_label": {
+        "de": "GS-VBS",
+        "en": "GS-DDPS",
+        "fr": "SG-DDPS",
+        "it": "SG-DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-vbs",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-vbs",
+      "name": {
+        "de": "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "en": "Federals Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "fr": "Département fédéral de la défense, de la protection de la population et des sports (DDPS)",
+        "it": "Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS)"
+      },
+      "pref_label": {
+        "de": "VBS",
+        "en": "VBS",
+        "fr": "DDPS",
+        "it": "DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-vbs",
+      "hierarchy_level": 0
+    }
+  ]
+}

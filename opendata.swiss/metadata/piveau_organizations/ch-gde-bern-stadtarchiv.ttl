@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-bern-stadtarchiv> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Stadtarchiv ist das zuständige Archiv für Unterlagen aller städtischer Behörden und Verwaltungsstellen. Es bewahrt das schriftliche und audiovisuelle Erbe der Stadt Bern und sorgt für die dauerhafte Überlieferung von Unterlagen, die für die Einwohnergemeinde von rechtlicher, ökonomischer, gesellschaftlicher oder historischer Bedeutung sind."@de ;
+    dcterms:identifier "CH_GDE_BERN_STADTARCHIV" ;
+    skos:prefLabel "Stadtarchiv Bern"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gde-bern> ;
+    foaf:homepage <https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/sk/stadtarchiv> ;
+    foaf:name "Stadtarchiv Bern"@de .
+
+<https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/sk/stadtarchiv> a foaf:Document .
+

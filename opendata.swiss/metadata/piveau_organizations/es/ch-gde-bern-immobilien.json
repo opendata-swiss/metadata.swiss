@@ -1,0 +1,46 @@
+{
+  "id": "ch-gde-bern-immobilien",
+  "identifier": "CH_GDE_BERN_IMMOBILIEN",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-immobilien",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Immobilien Stadt Bern (ISB) ist die Fachinstanz für Immobilienfragen in der Stadt Bern. Wir bewirtschaften als Eigentümervertreterin aller städtischen Liegenschaften die städtischen Wohnhäuser, Geschäftsliegenschaften, öffentlichen Gebäude, Areale und Baurechte. Dieses umfassende Immobilienportfolio bedarf einer weitsichtigen und vernetzten Bewirtschaftung. Die Ressource Immobilie soll für zukünftige Generationen bestmöglich nach den Gesichtspunkten der nachhaltigen Entwicklung erhalten bleiben. Dabei leistet die Stadt auch einen Beitrag zum Energiestadt-Gold-Label."
+  },
+  "name": {
+    "de": "Immobilien Stadt Bern"
+  },
+  "pref_label": {
+    "de": "Immobilien Stadt Bern"
+  },
+  "homepage": "https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/fpi/immobilien-stadt-bern",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}
