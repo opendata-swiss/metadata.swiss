@@ -342,9 +342,4 @@ export class DcatApChV2DatasetAdapter {
 
     return preferredLabel
   }
-
-  get organization(): string {
-    const org = this.#dataset.getOdsCatalogInfo
-    return ''
-  }
 }
