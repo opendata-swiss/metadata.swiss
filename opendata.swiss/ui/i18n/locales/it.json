@@ -58,6 +58,11 @@
       "show_datasets": "Mostra set di dati",
       "datasets_count": "{count} set di dati",
       "parent": "Organizzazione principale",
+      "homepage": "Homepage",
+      "classification": "Classificazione",
+      "description": "Descrizione",
+      "identifier": "Identificatore",
+      "hierarchy_level": "Livello gerarchico",
       "empty": "Nessuna organizzazione trovata per questa ricerca.",
       "load_error": "Al momento non e possibile caricare le organizzazioni.",
       "sub_organizations": "Sottounità"
