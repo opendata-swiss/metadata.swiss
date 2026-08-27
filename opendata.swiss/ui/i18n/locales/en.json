@@ -57,6 +57,11 @@
       "show_datasets": "View datasets",
       "datasets_count": "{count} datasets",
       "parent": "Parent organization",
+      "homepage": "Homepage",
+      "classification": "Classification",
+      "description": "Description",
+      "identifier": "Identifier",
+      "hierarchy_level": "Hierarchy level",
       "empty": "No organizations found for this search.",
       "load_error": "Organizations could not be loaded at the moment.",
       "sub_organizations": "Subunits"

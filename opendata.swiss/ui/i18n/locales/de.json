@@ -58,6 +58,11 @@
       "show_datasets": "Datensätze anzeigen",
       "datasets_count": "{count} Datensätze",
       "parent": "Übergeordnete Organisation",
+      "homepage": "Homepage",
+      "classification": "Klassifikation",
+      "description": "Beschreibung",
+      "identifier": "Identifier",
+      "hierarchy_level": "Hierarchiestufe",
       "empty": "Für diese Suche wurden keine Organisationen gefunden.",
       "load_error": "Organisationen konnten momentan nicht geladen werden.",
       "sub_organizations": "Untereinheiten"

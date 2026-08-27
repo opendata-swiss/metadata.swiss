@@ -36,13 +36,8 @@ function organizationLabel(organization: OrganizationItem) {
   return getLocalizedValue(organization.name) || getLocalizedValue(organization.pref_label) || organization.id
 }
 
-function datasetsLink(organization: OrganizationItem) {
-  return {
-    path: localePath('/datasets'),
-    query: {
-      organization: organization.id,
-    },
-  }
+function organizationLink(organization: OrganizationItem) {
+  return localePath(`/organizations/${encodeURIComponent(organization.id)}`)
 }
 
 function getDatasetCount(organizationId: string) {
@@ -93,7 +88,9 @@ function organizationLabelShort(organization: OrganizationItem) {
             </div>
             <div class="org-props">
               <h2 class="h5 org-title">
-                {{ organizationLabel(node.organization) }}
+                <NuxtLink :to="organizationLink(node.organization)">
+                  {{ organizationLabel(node.organization) }}
+                </NuxtLink>
               </h2>
             </div>
           </div>

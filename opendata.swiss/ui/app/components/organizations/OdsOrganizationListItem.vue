@@ -40,6 +40,10 @@ function organizationLabel(organization: OrganizationItem) {
   return getLocalizedValue(organization.name) || getLocalizedValue(organization.pref_label) || organization.id
 }
 
+function organizationLink(organization: OrganizationItem) {
+  return localePath(`/organizations/${encodeURIComponent(organization.id)}`)
+}
+
 function organizationLabelShort(organization: OrganizationItem) {
   const label = getLocalizedValue(organization.name) || getLocalizedValue(organization.pref_label) || organization.id
   const parts = label
@@ -59,15 +63,6 @@ function organizationLabelShort(organization: OrganizationItem) {
   }
 
   return label.replace(/\s+/g, '').slice(0, 2).toUpperCase()
-}
-
-function datasetsLink(organization: OrganizationItem) {
-  return {
-    path: localePath('/datasets'),
-    query: {
-      organization: organization.id,
-    },
-  }
 }
 
 function getDatasetCount(organizationId: string) {
@@ -100,7 +95,9 @@ function toggleNode(nodeId: string) {
         </div>
         <div class="org-props">
           <h2 class="h6 org-title">
-            {{ organizationLabel(node.organization) }}
+            <NuxtLink :to="organizationLink(node.organization)">
+              {{ organizationLabel(node.organization) }}
+            </NuxtLink>
           </h2>
           <div>
             <p
