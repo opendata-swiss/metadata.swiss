@@ -22,12 +22,13 @@ const { data: showcase } = await useAsyncData(route.path, async () => {
   const germanTranslation = await queryCollection('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
     .where('active', '=', true)
-    .select('submittedBy')
+    .select('relationships')
     .first()
 
   return {
     ...currentTranslation,
-    submittedBy: germanTranslation.submittedBy,
+    contactDetails: germanTranslation?.relationships
+      .find(relationship => relationship.type === 'pointOfContact'),
   }
 })
 
@@ -42,8 +43,8 @@ const breadcrumbs = [
   },
 ]
 
-const showcaseCategoriesRaw = await Promise.all(showcase.value?.categories.map(async (categoryId) => {
-  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: categoryId } })
+const showcaseCategoriesRaw = await Promise.all(showcase.value?.themes.map(async (themeId) => {
+  const { query, resultEnhanced } = useVocabularySearch().useResource('data-theme/vocable', { additionalParams: { resource: themeId } })
   await query.suspense()
   return resultEnhanced.value
 }))
@@ -54,7 +55,8 @@ const showcaseType = resultEnhanced.value
 
 const showcaseCategories = computed(() => showcaseCategoriesRaw.filter(Boolean))
 
-const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id }) => {
+const showcaseDatasetsRaw = await Promise.all(showcase.value.datasets.map(async ({ id: uri }) => {
+  const id = uri.split('/').pop()
   const { query, resultEnhanced } = useDatasetsSearch().useResource(id)
   await query.suspense()
   return resultEnhanced.value
@@ -128,26 +130,42 @@ useSeoMeta({
               <NuxtLinkLocale :to="{ name: 'datasets-datasetId', params: { datasetId: dataset.getId } }">
                 {{ dataset.getTitle }}
               </NuxtLinkLocale>
+              <template v-if="dataset.getPublisher">
+                {{ ` ${t('message.showcase.dataset_from')}` }}
+                <a
+                  v-if="dataset.getPublisher.homepage"
+                  :href="dataset.getPublisher.homepage"
+                  rel="noopener noreferrer"
+                  class="link--external"
+                  target="_blank"
+                >
+                  {{ dataset.getPublisher.name }}
+                </a>
+                <template v-else>
+                  {{ dataset.getPublisher.name }}
+                </template>
+              </template>
             </li>
           </ul>
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.tags.length > 0"
-          :title="t('message.showcase.tags')"
+          v-if="showcase.keywords?.length > 0"
+          :title="t('message.showcase.keywords')"
         >
           <OdsTagItem
-            v-for="tag in showcase.tags"
-            :key="tag"
-            :label="tag"
+            v-for="keyword in showcase.keywords"
+            :id="`keyword-${keyword}`"
+            :key="keyword"
+            :label="keyword"
           />
         </OdsInfoBlock>
         <OdsInfoBlock
-          v-if="showcase.submittedBy"
+          v-if="showcase.contactDetails"
           :title="t('message.showcase.submitted_by')"
         >
-          <p>{{ showcase.submittedBy.name }}</p>
+          <p>{{ showcase.contactDetails.name }}</p>
           <a
-            v-for="link in showcase.submittedBy.url"
+            v-for="link in showcase.contactDetails.url"
             :key="link"
             class="link--external"
             target="_blank"

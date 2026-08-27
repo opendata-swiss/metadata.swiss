@@ -31,6 +31,7 @@ export function useDatasetsSearch() {
       getOdsAccrualPeriodicity: getOdsAccrualPeriodicity(dataset),
       getResource: dataset.resource,
       getOdsLicenses: getOdsLicenses(dataset),
+      getPublisher: dataset.catalog.publisher,
     }
   })
 }

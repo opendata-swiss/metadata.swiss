@@ -7,29 +7,23 @@ import React from 'react'
 // filtered by the search endpoint, so no need to do it again.
 const filterBy = () => true
 
-export default class ShowcaseSearchComponent extends PiveauSearchComponent {
+export default class OrganizationSearchComponent extends PiveauSearchComponent {
   state = {
     options: toArray(this.props.value),
   }
 
   get filter() {
-    return 'resource'
+    return 'organization'
   }
 
   get labelProp() {
-    return 'title'
+    return 'name'
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.value !== this.props.value) {
       this.setState({ options: toArray(this.props.value) })
     }
-  }
-
-  prepareSearchUrl(searchParams) {
-    const url = super.prepareSearchUrl(searchParams)
-    url.searchParams.set('resource', 'showcase')
-    return url
   }
 
   handleSearch = async (q) => {

@@ -14,11 +14,11 @@ The image is displayed in the "lead" section of the showcase page.
 
 When unchecked, the showcase will not be displayed on the public website and is excluded from harvesting by piveau.
 
-### Type of content, Category
+### Type of content, Themes
 
 Select boxes populated from Piveau vocabularies.
 
-### Tags
+### Keywords
 
 Comma-separated list to be used for filtering in Piveau.
 

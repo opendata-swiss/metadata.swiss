@@ -1,0 +1,12 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+CONSTRUCT {
+    ?s a ?type ;
+        skos:prefLabel ?label ;
+        skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole> .
+} WHERE {
+    ?s
+        skos:inScheme <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole> ;
+        a ?type ;
+        skos:prefLabel ?label .
+}

@@ -2,23 +2,18 @@ import type { ShowcasesCollectionItem } from '@nuxt/content'
 import type { H3Event, MultiPartData } from 'h3'
 import slugify from 'slugify'
 import * as yaml from 'yaml'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import { visit } from 'unist-util-visit'
 import { submissionSchema } from '~~/src/schema/showcase'
-import remarkStringify from 'remark-stringify'
 import { match, P } from 'ts-pattern'
 import git from '~~/server/lib/git'
 import fs from '~~/server/lib/fs'
 import * as image from '~~/server/lib/images'
-import type { AppLanguage as Language } from '~/constants/langages'
-import { APP_LANGUAGES as languages } from '~/constants/langages'
+import type { AppLanguage, AppLanguage as Language } from '~/constants/langages'
+import { APP_LANGUAGES, APP_LANGUAGES as languages } from '~/constants/langages'
 import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
 
-type Translated<FieldName extends string> = `${FieldName}[${Language}]`
-type FormDataFieldNames = keyof ShowcasesCollectionItem | Translated<'title'> | Translated<'body'>
+type FormDataFieldNames = keyof ShowcasesCollectionItem | 'contactDetails'
 type ShowcaseTranslation = Omit<Partial<ShowcasesCollectionItem>, 'body'> & {
-  body?: string
+  body: ''
 }
 type Showcase = Record<Language, ShowcaseTranslation> & {
   slug: string
@@ -27,10 +22,15 @@ type PayloadData = Array<Omit<MultiPartData, 'name'> & { name: FormDataFieldName
 
 const empty = (): ShowcaseTranslation => ({
   active: true,
-  categories: [],
+  pinned: false,
+  themes: [],
   datasets: [],
-  tags: [],
+  keywords: [],
+  body: '',
+  relationships: [],
 })
+
+type MoreDetailsField = keyof Required<Required<ShowcasesCollectionItem>['more']>
 
 export default defineEventHandler(async (event) => {
   const logger = console
@@ -42,6 +42,18 @@ export default defineEventHandler(async (event) => {
 
   const uploads: Array<() => Promise<void>> = []
   const reqBody = await readMultipartFormData(event) as PayloadData
+  let language = getRequestHeader(event, 'accept-language') as AppLanguage | undefined
+  if (!language) {
+    return createError({
+      status: 400,
+      message: 'Accept-Language header is required',
+    })
+  }
+
+  if (!APP_LANGUAGES.includes(language)) {
+    language = 'de'
+  }
+
   const showcase: Showcase = {
     slug: '',
     it: empty(),
@@ -49,16 +61,6 @@ export default defineEventHandler(async (event) => {
     fr: empty(),
     en: empty(),
   }
-
-  const slug = createSlug(reqBody)!
-
-  if (!slug) {
-    event.node.res.statusCode = 400
-    return {
-      error: t('server.api.showcases.post.error.missing_content'),
-    }
-  }
-  showcase.slug = slug
 
   if (process.env.GITHUB_TOKEN || process.env.GITHUB_APP_ID) {
     storage = image.storage(git(showcase.slug), runtimeConfig.showcases)
@@ -77,14 +79,20 @@ export default defineEventHandler(async (event) => {
     logger.info('Initialized filesystem storage backend')
   }
 
-  const processedBodies: Array<Promise<void>> = []
-  const allImagePaths = new Map<string, string>()
+  const images: Array<{ image: string }> = []
+  let email: string | undefined
+  let pointOfContact: { type: 'person', role: 'pointOfContact', name: string, github?: string } = {
+    type: 'person',
+    role: 'pointOfContact',
+    name: '',
+  }
 
-  for (const { name, data } of reqBody) {
+  for (const { name, data, filename } of reqBody) {
     match(name)
-      .with(P.string.startsWith('title'), () => {
-        const language = /^title\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
-        showcase[language].title = data.toString()
+      .with('title', () => {
+        const showcaseTitle = data.toString()
+        showcase[language].title = showcaseTitle
+        showcase.slug = slugify(showcaseTitle, { lower: true, locale: language })
       })
       .with(P.union('url', 'type'), (urlOrType) => {
         const value = data.toString()
@@ -92,38 +100,27 @@ export default defineEventHandler(async (event) => {
           toAll(showcase, urlOrType, value)
         }
       })
-      .with(P.string.startsWith('body'), () => {
-        processedBodies.push((async () => {
-          const language = /^body\[(?<lang>\w\w)]$/.exec(name)?.groups?.lang as Language
-          const rawBody = data.toString()
-          const {
-            body,
-            images,
-          } = await extractDataImages(rawBody, `assets/${showcase.slug}-image-`, allImagePaths)
-          showcase[language].body = body
-          for (const image of images) {
-            uploads.push(storage.writeImage.bind(storage, image.path, image.data))
-          }
-        })())
-      })
-      .with('tags', () => {
-        const tags = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
-        if (tags.length > 0) {
-          toAll(showcase, 'tags', tags)
+      .with('keywords', () => {
+        const keywords = data.toString().split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+        if (keywords.length > 0) {
+          toAll(showcase, 'keywords', keywords)
         }
       })
-      .with('categories', () => {
-        toAll(showcase, 'categories', (translation) => {
-          const category = data.toString().trim()
-          if (category) {
-            translation.categories!.push(category)
+      .with('themes', () => {
+        toAll(showcase, 'themes', (translation) => {
+          const theme = data.toString().trim()
+          if (theme) {
+            translation.themes!.push(theme)
           }
         })
       })
-      .with('image', () => {
-        const imageFileName = `${showcase.slug}-image.jpg`
-        uploads.push(storage!.writeImage.bind(storage, `assets/${imageFileName}`, data))
-        toAll(showcase, 'image', `/cms/assets/${imageFileName}`)
+      .with('images', () => {
+        const imagePath = `assets/showcase-${showcase.slug}-${filename}`
+        uploads.push(storage!.writeImage.bind(storage, imagePath, data))
+        images.push({ image: `/cms/${imagePath}` })
+      })
+      .with('createdBy', () => {
+        toAll(showcase, 'createdBy', data.toString())
       })
       .with(P.string.startsWith('datasets'), () => {
         const { id } = /^datasets\[(?<id>.+)]$/.exec(name)?.groups || {}
@@ -134,32 +131,50 @@ export default defineEventHandler(async (event) => {
           })
         }
       })
-      .with(P.string.startsWith('submittedBy'), () => {
-        const submittedBy = showcase.de.submittedBy || {
-          name: undefined,
-          url: [],
-        } as unknown as Required<ShowcasesCollectionItem>['submittedBy']
+      .with(P.string.startsWith('contactDetails.'), (field) => {
+        const key = field.slice('contactDetails.'.length)
+        if (key === 'email') {
+          email = key
+          return
+        }
 
-        match(name as 'submittedBy.name' | 'submittedBy.url')
-          .with('submittedBy.name', () => {
-            submittedBy.name = data.toString()
-          })
-          .with('submittedBy.url', () => {
-            submittedBy.url!.push(data.toString())
-          })
+        pointOfContact = Object.assign(pointOfContact, { [key]: data.toString() })
+      })
+      .with(P.string.startsWith('more.'), (field) => {
+        const more: Required<ShowcasesCollectionItem>['more'] = showcase.de.more || {}
 
-        showcase.de.submittedBy = submittedBy
+        const k = field.slice('more.'.length) as MoreDetailsField
+        more[k] = data.toString()
+
+        toAll(showcase, 'more', more)
       })
       .otherwise(() => {
         console.warn(`Unknown field: ${name}`)
       })
   }
 
-  await Promise.all(processedBodies)
+  if (!email) {
+    setCookie(event, 'message', 'server.api.showcases.post.failure', { path: '/' })
+    return createError({ statusCode: 400, statusMessage: 'Email is required' })
+  }
 
-  const errors = validate(event, showcase, t)
+  toAll(showcase, 'images', images)
+  toAll(showcase, 'relationships', (translation) => {
+    translation.relationships!.push(pointOfContact)
+  })
 
-  if (errors) {
+  const errors = validate(event, showcase)
+    ?.filter(error => error.path[0] === language)
+    ?.map((error) => {
+      const path = error.path
+      path.shift()
+      return {
+        ...error,
+        path,
+      }
+    })
+
+  if (errors?.length) {
     logger.info('Validation failed. Reverting showcase submission.')
     await storage.rollback?.()
     return errors
@@ -173,9 +188,9 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  return {
-    message: t('server.api.showcases.post.success'),
-  }
+  event.node.res.statusCode = 200
+  setCookie(event, 'message', 'server.api.showcases.post.success', { path: '/' })
+  return showcase
 })
 
 async function save(showcase: Showcase, uploads: Array<() => Promise<void>>, storage: ShowcaseStorage) {
@@ -198,41 +213,6 @@ interface Setter {
   (showcase: ShowcaseTranslation): void
 }
 
-async function extractDataImages(rawBody: string, imagePathPrefix: string, previousImages: Map<string, string>) {
-  const processor = unified()
-    .use(remarkParse)
-    .use(remarkStringify)
-
-  const tree = processor.parse(rawBody)
-  const images = Array<{ path: string, data: Buffer }>()
-
-  visit(tree, 'image', (node) => {
-    if (node.url.startsWith('data:')) {
-      const match = /^data:(image\/(?<ext>\w+));base64,(?<data>.+)$/.exec(node.url)
-      if (match?.groups) {
-        const { ext, data } = match.groups
-        if (data && previousImages.has(data)) {
-          node.url = previousImages.get(data)!
-        }
-        else if (data) {
-          const path = `${imagePathPrefix}${previousImages.size}.${ext}`
-          images.push({
-            path,
-            data: Buffer.from(data, 'base64'),
-          })
-          previousImages.set(data, path)
-          node.url = path
-        }
-      }
-    }
-  })
-
-  return {
-    body: processor.stringify(tree),
-    images,
-  }
-}
-
 function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, value: ShowcaseTranslation[K] | Setter) {
   for (const language of languages) {
     if (typeof value === 'function') {
@@ -244,20 +224,8 @@ function toAll<K extends keyof ShowcaseTranslation>(showcase: Showcase, key: K, 
   }
 }
 
-function createSlug(showcase: PayloadData) {
-  for (const locale of languages) {
-    const titleField = `title[${locale}]`
-    const title = showcase.find(field => field.name === titleField)?.data.toString()
-    if (title) {
-      return slugify(title, { lower: true, locale })
-    }
-  }
-
-  return undefined
-}
-
-function validate(event: H3Event, showcase: Showcase, t: (key: string) => string) {
-  const { error } = submissionSchema(t).safeParse(showcase)
+function validate(event: H3Event, showcase: Showcase) {
+  const { error } = submissionSchema.safeParse(showcase)
   if (error) {
     event.node.res.statusCode = 400
     return error.issues

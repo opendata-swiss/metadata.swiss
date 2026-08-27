@@ -255,3 +255,98 @@ registerEditorComponent({
     options: layout,
   }],
 })
+
+CMS.registerEditorComponent({
+  id: 'uploaded-video',
+  label: 'Upload Video',
+  icon: 'video',
+  fields: [
+    {
+      label: 'Select or Upload Video File',
+      name: 'video_file',
+      widget: 'file',
+    },
+  ],
+  pattern: /^<video[^>]*src="([^"]+)"[^>]*>([\s\S]*?)<\/video>/,
+  fromBlock: function (match) {
+    return {
+      video_file: match[1],
+    }
+  },
+  toBlock: function (data) {
+    if (!data.video_file) return ''
+    return `<video controls width="100%" src="${data.video_file}"></video>`
+  },
+  toPreview: function (data) {
+    if (!data.video_file) return ''
+    return `<video controls width="100%" src="${data.video_file}"></video>`
+  },
+  isValid: function (data) {
+    return data.video_file && data.video_file.match(/\.(mov|mp4|webm)$/i)
+  },
+})
+
+CMS.registerEditorComponent({
+  id: 'youtube-video',
+  label: 'YouTube Video',
+  icon: 'video',
+  fields: [
+    {
+      label: 'YouTube Video ID',
+      name: 'id',
+      widget: 'string',
+    },
+  ],
+  pattern: /<iframe[^>]*src="https?:\/\/(?:www\.)?youtube\.com\/embed\/([A-Za-z0-9_-]{6,})[^"]*"[^>]*>[\s\S]*?<\/iframe>/,
+  fromBlock: function (match) {
+    return {
+      id: match[1],
+    }
+  },
+  toBlock: function (data) {
+    if (!data.id) return ''
+    const id = String(data.id).trim()
+    if (!/^[A-Za-z0-9_-]{6,}$/.test(id)) return ''
+    const embed = `https://www.youtube.com/embed/${id}`
+    return `<iframe width="100%" height="420" src="${embed}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+  },
+  toPreview: function (data) {
+    return this.toBlock(data)
+  },
+  isValid: function (data) {
+    return !!(data.id && /^[A-Za-z0-9_-]{6,}$/.test(String(data.id)))
+  },
+})
+
+CMS.registerEditorComponent({
+  id: 'vimeo-video',
+  label: 'Vimeo Video',
+  icon: 'video',
+  fields: [
+    {
+      label: 'Vimeo Video ID',
+      name: 'id',
+      widget: 'string',
+    },
+  ],
+  // Match previously generated Vimeo iframe embeds
+  pattern: /<iframe[^>]*src="https?:\/\/player\.vimeo\.com\/video\/(\d+)[^"]*"[^>]*>[\s\S]*?<\/iframe>/,
+  fromBlock: function (match) {
+    return {
+      id: match[1],
+    }
+  },
+  toBlock: function (data) {
+    if (!data.id) return ''
+    const id = String(data.id).trim()
+    if (!/^\d+$/.test(id)) return ''
+    const embed = `https://player.vimeo.com/video/${id}`
+    return `<iframe width="100%" height="420" src="${embed}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+  },
+  toPreview: function (data) {
+    return this.toBlock(data)
+  },
+  isValid: function (data) {
+    return !!(data.id && /^\d+$/.test(String(data.id)))
+  },
+})

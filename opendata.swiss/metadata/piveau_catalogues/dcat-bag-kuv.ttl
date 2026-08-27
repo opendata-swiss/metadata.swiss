@@ -1,0 +1,25 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.eu/id/catalogue/dcat-bag-kuv> a dcat:Catalog ;
+    dcterms:created "2026-08-13T08:09:51.262366"^^xsd:dateTime ;
+    dcterms:description "Der Direktionsbereich Kranken- und Unfallversicherung bereitet die Grundlagen für die Ausgestaltung und Weiterentwicklung von Kranken-, Unfall- und Militärversicherung sowie deren Umsetzung vor."@de,
+        "The Health and Accident Insurance Directorate is responsible for authorising services and service providers, setting tariffs and shaping health insurance systems to the legislative specifications of parliament and the Federal Council."@en,
+        "L'unité de direction Assurance maladie et accidents prépare les bases pour organiser, développer et mettre en œuvre les assurances maladie, accidents et militaire."@fr,
+        "L'Unità di direzione assicurazione malattia e infortunio predispone le basi per la definizione e lo sviluppo dell'assicurazione malattie, dell'assicurazione infortuni e dell'assicurazione militare, e la loro applicazione."@it ;
+    dcterms:modified "2026-08-13T13:29:02.359197"^^xsd:dateTime ;
+    dcterms:publisher [ a foaf:Agent ;
+            foaf:homepage <> ;
+            foaf:name "Direktionsbereich Kranken- und Unfallversicherung"@de,
+                "Health and Accident Insurance Directorate"@en,
+                "Unité de direction Assurance maladie et accidents"@fr,
+                "Unità di direzione assicurazione malattia e infortuni"@it ] ;
+    dcterms:spatial <http://publications.europa.eu/resource/authority/country/CHE> ;
+    dcterms:title "Direktionsbereich Kranken- und Unfallversicherung"@de,
+        "Health and Accident Insurance Directorate"@en,
+        "Unité de direction Assurance maladie et accidents"@fr,
+        "Unità di direzione assicurazione malattia e infortuni"@it ;
+    dcterms:type "ckan"^^xsd:string .
+

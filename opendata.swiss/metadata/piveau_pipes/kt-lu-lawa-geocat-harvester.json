@@ -18,7 +18,7 @@
         },
         "body": {
           "config": {
-            "address": "https://www.geocat.ch/geonetwork/lu-lawa/ger/csw?",
+            "address": "https://www.geocat.ch/geonetwork/lu-lawa/ger/csw",
             "catalogue": "kt-lu-lawa",
             "preProcessing": true,
             "org_name": "Department of Agriculture and Forestry"

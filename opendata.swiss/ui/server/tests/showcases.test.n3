@@ -1,3 +1,8 @@
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 prefix list: <http://www.w3.org/2000/10/swap/list#>
 PREFIX piveau: <https://piveau.eu/ns/voc#>
@@ -32,9 +37,9 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
   } ;
 .
 
-<#categories>
+<#themes>
   a earl:TestCase ;
-  rdfs:label "Categories are resources" ;
+  rdfs:label "Themes are resources" ;
   tuner:formula {
     (</api/showcases> ?res) resource:getIn [] .
 
@@ -42,6 +47,62 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
     {
       ?body log:includes {
         </showcase/showcase> dcat:theme theme:SOCI, theme:REGI.
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#organization-attribution>
+  a earl:TestCase ;
+  rdfs:label "Organzation attributions are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> prov:qualifiedAttribution ?qa .
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author> ;
+            prov:agent <https://opendata.swiss/id/organization/ch-bafu> .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#external-organization-attribution>
+  a earl:TestCase ;
+  rdfs:label "External Organzation attributions are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> prov:qualifiedAttribution ?qa .
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/resourceProvider> ;
+            prov:agent ?agent .
+        ?agent a foaf:Organization ;
+               foaf:name "Foobar" ;
+               foaf:homepage <http://example.com/foobar> .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#person-attribution>
+  a earl:TestCase ;
+  rdfs:label "Person attributions are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> prov:qualifiedAttribution ?qa .
+        ?qa dcat:hadRole <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/author> ;
+            prov:agent ?agent .
+         ?agent a foaf:Person ;
+                foaf:name "John Doe" .
       } .
     }!tuner:assertThat .
   } ;
@@ -112,6 +173,22 @@ prefix theme: <http://publications.europa.eu/resource/authority/data-theme/>
       ?body log:includes {
         </showcase/showcase> dcterms:references ?datset .
         ?datset dcterms:identifier "https://opendata.swiss/set/data/85787-bundesamt-fur-statistik-bfs" .
+      } .
+    }!tuner:assertThat .
+  } ;
+.
+
+<#images>
+  a earl:TestCase ;
+  rdfs:label "Images are exported" ;
+  tuner:formula {
+    (</api/showcases> ?res) resource:getIn [] .
+
+    ?res tuner:body ?body .
+    {
+      ?body log:includes {
+        </showcase/showcase> schema:image ?image .
+        ?image schema:url <http://localhost:3000/cms/92.png> .
       } .
     }!tuner:assertThat .
   } ;
