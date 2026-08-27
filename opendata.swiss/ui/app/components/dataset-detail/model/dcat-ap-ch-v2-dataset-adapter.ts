@@ -79,26 +79,24 @@ export class DcatApChV2DatasetAdapter {
    */
   getCategoriesForLanguage(lang: AppLanguage): TagItem[] {
     const categories = this.#dataset?.getCategories ?? []
-    const tagItems = categories.map((cat) => {
-      let preferredLabel = cat.label[lang]
-      if (!preferredLabel) {
-        // Try other APP_LANGUAGES
-        for (const fallbackLang of APP_LANGUAGES) {
-          if (cat.label[fallbackLang]) {
-            preferredLabel = cat.label[fallbackLang]
-            break
-          }
-        }
+    const tagItems = categories.flatMap((cat) => {
+      const categoryLabes = cat.label
+      if (!categoryLabes) {
+        // some datasets are using unknown vacabularies
+        // warn and drop them
+        console.warn(`No labels for category\ndataset title: ${this.#dataset.getTitle}\ndataset: ${this.#dataset.getId}\nid: ${cat.id}\nresource: <${cat.resource}>\nlabels: ${cat.label}`)
+        return []
       }
-      // If still undefined, take any available label
+      const preferredLabel = this.getLabelByLangagePrecedence(lang, cat)
       if (!preferredLabel) {
-        preferredLabel = Object.values(cat.label)[0] ?? ''
+        return []
       }
+
       const tagItem = {
         id: cat.id,
         label: preferredLabel,
       } as TagItem
-      return tagItem
+      return [tagItem]
     })
 
     return tagItems
@@ -278,6 +276,17 @@ export class DcatApChV2DatasetAdapter {
     return this.#dataset.getOdsAccrualPeriodicity
   }
 
+  frequencyForLanguage(lang: string) {
+    const frequencyResource = this.frequency
+    if (!frequencyResource) {
+      return undefined
+    }
+    if (!frequencyResource.label) {
+      return undefined
+    }
+    return this.getLabelByLangagePrecedence(lang, frequencyResource as unknown as { label?: Record<string, string | undefined> | undefined })
+  }
+
   get propertyTable() {
     const rootNode = this.#dataset.getPropertyTable
 
@@ -285,7 +294,7 @@ export class DcatApChV2DatasetAdapter {
       return []
     }
 
-    const ignoredNode = ['catalogRecord']
+    const ignoredNode = ['catalogRecord', 'accrualPeriodicity']
     const nodesToConsider = rootNode.filter(n => n.data).filter(n => !ignoredNode.includes(n.id))
 
     const newTableEntries: OdsTableEntry[] = []
@@ -300,5 +309,37 @@ export class DcatApChV2DatasetAdapter {
       newTableEntry.addPiveauPropertyTableEntry(node.data || [])
     }
     return newTableEntries.sort((a, b) => a.label.localeCompare(b.label))
+  }
+
+  /**
+   * Get the label with langage precedence.
+   * @param lang the langage
+   * @param resource  the available labels
+   * @returns a string of the best label candidate available
+   */
+  private getLabelByLangagePrecedence(
+    lang: string,
+    resource: { label?: Record<string, string | undefined> | undefined },
+  ): string {
+    const labels = resource.label
+    if (!labels) {
+      return ''
+    }
+
+    let preferredLabel = labels[lang]
+    if (!preferredLabel) {
+      for (const fallbackLang of APP_LANGUAGES) {
+        if (labels[fallbackLang]) {
+          preferredLabel = labels[fallbackLang]
+          break
+        }
+      }
+    }
+
+    if (!preferredLabel) {
+      preferredLabel = Object.values(labels)[0] ?? ''
+    }
+
+    return preferredLabel
   }
 }
