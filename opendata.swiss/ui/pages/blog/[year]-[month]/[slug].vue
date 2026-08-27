@@ -8,7 +8,7 @@ const { locale, t } = useI18n()
 const { year, month, slug } = route.params
 
 const { data: post } = await useAsyncData(route.path, () => {
-  return queryCollection('blog')
+  return queryPublishedContent('blog')
     .where('path', 'LIKE', `%${slug}.${locale.value}`)
     .where('date', '>', `${year}-${month.padStart(2, '0')}-01`)
     .where('date', '<', `${year}-${month.padStart(2, '0')}-32`)

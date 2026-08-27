@@ -13,7 +13,7 @@ const breadcrumbs = await useBreadcrumbs({
 })
 
 const { data: page } = await useAsyncData(route.path, () => {
-  return queryCollection('pages')
+  return queryPublishedContent('pages')
     .where('path', 'LIKE', `%handbook.${locale.value}`)
     .first()
 })

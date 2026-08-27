@@ -44,6 +44,9 @@ export default defineNuxtConfig({
   content: {
     experimental: { nativeSqlite: true },
     build: {
+      transformers: [
+        '~~/src/transformers/publication-date.ts',
+      ],
       markdown: {
         toc: {
           depth: 3,

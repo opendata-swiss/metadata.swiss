@@ -36,6 +36,7 @@ export default defineContentConfig({
         mainMenu: z.boolean().optional(),
         after: z.string().optional(),
         rawbody: z.string(),
+        publicationDate: z.string().optional(),
       }),
     }),
     handbook: defineCollection({
@@ -48,6 +49,7 @@ export default defineContentConfig({
         slug: z.string(),
         parent: z.string().optional(),
         after: z.string().optional(),
+        publicationDate: z.string().optional(),
       }),
     }),
     blog: defineCollection({
@@ -60,6 +62,7 @@ export default defineContentConfig({
         date: z.date().optional(),
         subHeading: z.string().optional(),
         image: z.string(),
+        publicationDate: z.string().optional(),
       }),
     }),
     showcases: defineCollection({

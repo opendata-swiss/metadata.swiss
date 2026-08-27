@@ -18,7 +18,7 @@ function getPathSegments(article: HandbookCollectionItem, articles: HandbookColl
 }
 
 export function queryHandbook() {
-  return queryCollection('handbook')
+  return queryPublishedContent('handbook')
     .orWhere(sub =>
       sub.where('active', 'IS NULL').where('active', '=', true),
     )

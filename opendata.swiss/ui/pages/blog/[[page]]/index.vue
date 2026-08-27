@@ -15,7 +15,7 @@ const PAGE_SIZE = 1 // Number of posts per page
 const page = parseInt(route.params.page) || 1
 
 const { data: posts } = await useAsyncData(route.path, () => {
-  return queryCollection('blog')
+  return queryPublishedContent('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
     .skip((page - 1) * PAGE_SIZE)
@@ -23,7 +23,7 @@ const { data: posts } = await useAsyncData(route.path, () => {
     .all()
 })
 const { data: pageCount } = await useAsyncData(route.path + '_pageCount', () => {
-  return queryCollection('blog')
+  return queryPublishedContent('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
     .count()

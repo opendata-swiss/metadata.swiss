@@ -5,7 +5,7 @@ import { dcat, dcterms, rdfs, schema, xsd, prov, foaf } from '@tpluscode/rdf-ns-
 import type { ShowcasesCollectionItem } from '@nuxt/content'
 import { execSync } from 'node:child_process'
 import { join } from 'node:path'
-import { queryCollection } from '@nuxt/content/server'
+import { queryPublishedContent } from '~~/app/composables/content'
 import $rdf from '@zazuko/env-node'
 
 const stemPattern = /showcases\/(?<stem>.*)\.(?<lang>\w\w)$/
@@ -102,7 +102,7 @@ const ldContext: Context = {
 
 export default defineEventHandler(async (event) => {
   const { public: { rootDir } } = useRuntimeConfig(event)
-  const showcases = await queryCollection(event, 'showcases')
+  const showcases = await queryPublishedContent(event, 'showcases')
     .select('title', 'themes', 'datasets', 'description', 'rawbody', 'stem', 'images', 'keywords', 'type', 'pinned', 'relationships')
     .where('active', '=', true)
     .all()

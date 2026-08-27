@@ -58,6 +58,7 @@ export const shape = {
     ]),
   ).optional(),
   rawbody: z.string().optional(),
+  publicationDate: z.string().optional(),
 }
 
 const submissionSchemaShape = APP_LANGUAGES.reduce((acc, lang) => {
