@@ -25,12 +25,12 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
     <#createShowcase> <#createCatalog> ?ccReq .
     ?ccReq tuner:response ?ccRes .
 
-    ?ccRes tuner:http_code 201 .
+    ?ccRes tuner:http_code 204 .
 
     <#createShowcase> <#request> ?csReq .
     ?csReq tuner:response ?res .
 
-    ?res tuner:http_code 201 .
+    ?res tuner:http_code 200 .
   } ;
 .
 
@@ -59,7 +59,7 @@ prefix math: <http://www.w3.org/2000/10/swap/math#>
     <#createDataset> <#createCatalog> ?catalogReq .
     ?catalogReq tuner:response ?catalogRes .
 
-    ?catalogRes tuner:http_code 201 .
+    ?catalogRes tuner:http_code 204 .
 
     <#createDataset> <#request> ?datasetReq .
     ?datasetReq tuner:response ?res .
