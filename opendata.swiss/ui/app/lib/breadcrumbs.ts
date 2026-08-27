@@ -1,5 +1,5 @@
 export const loadPageBreadcrumb = (locale: Ref<string>): LoadBreadcrumbContent => ({ path }) => {
-  return queryCollection('pages')
+  return queryPublishedContent('pages')
     .select('id', 'title')
     .where('path', 'LIKE', `%${path}.${locale.value}`)
 }
@@ -13,7 +13,7 @@ export const loadHandbookBreadcrumb = (locale: Ref<string>): LoadBreadcrumbConte
   if (segments[0] === 'handbook') segments.shift()
   const slug = segments[segments.length - 1]
 
-  return queryCollection('handbook')
+  return queryPublishedContent('handbook')
     .select('id', 'title', 'breadcrumb_title', 'slug', 'parent', 'path')
     .where('path', 'LIKE', `%.${locale.value}`)
     .where('slug', '=', slug)

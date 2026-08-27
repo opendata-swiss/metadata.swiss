@@ -35,7 +35,7 @@ export async function useBreadcrumbs({ route, locale, loadContent }: Options) {
 }
 
 export async function homePageBreadcrumb(locale: ReturnType<typeof useI18n>['locale']) {
-  const index = await queryCollection('pages')
+  const index = await queryPublishedContent('pages')
     .where('path', 'LIKE', `%/index.${locale.value}`)
     .first()
 

@@ -14,12 +14,12 @@ const { locale, t } = useI18n()
 const { id } = route.params
 
 const { data: showcase } = await useAsyncData(route.path, async () => {
-  const currentTranslation = await queryCollection('showcases')
+  const currentTranslation = await queryPublishedContent('showcases')
     .where('stem', 'LIKE', `%${id}.${locale.value}`)
     .where('active', '=', true)
     .first()
 
-  const germanTranslation = await queryCollection('showcases')
+  const germanTranslation = await queryPublishedContent('showcases')
     .where('stem', 'LIKE', `%${id}.de`)
     .where('active', '=', true)
     .select('relationships')

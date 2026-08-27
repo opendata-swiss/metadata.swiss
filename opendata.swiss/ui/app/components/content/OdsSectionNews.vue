@@ -12,7 +12,7 @@ const { max: limit } = defineProps<{
 const { locale } = useI18n()
 
 const { data: pinnedPosts } = await useAsyncData('blog-pinned', async () => {
-  return queryCollection('blog')
+  return queryPublishedContent('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .where('pinned', '=', true)
     .limit(limit)
@@ -20,7 +20,7 @@ const { data: pinnedPosts } = await useAsyncData('blog-pinned', async () => {
 })
 
 const { data: latestPosts } = await useAsyncData('blog-latest', async () => {
-  let query = queryCollection('blog')
+  let query = queryPublishedContent('blog')
     .where('path', 'LIKE', `%.${locale.value}`)
     .order('date', 'DESC')
 

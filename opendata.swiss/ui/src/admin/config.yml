@@ -82,6 +82,14 @@ collections:
           - "title"
         i18n: duplicate
         required: false
+      - &publicationDate
+        name: publicationDate
+        label: Publication date
+        widget: datetime
+        default: ""
+        i18n: duplicate
+        required: false
+        format: 'YYYY-MM-DDTHH:mm:ssZZ'
       - name: body
         label: Body
         widget: markdown
@@ -151,6 +159,7 @@ collections:
           - "title"
         i18n: duplicate
         required: false
+      - *publicationDate
       - name: body
         label: Body
         widget: markdown
@@ -191,6 +200,7 @@ collections:
         widget: datetime
         i18n: duplicate
         default: "{{now}}"
+      - *publicationDate
       - name: subHeading
         label: Subheading
         widget: markdown
@@ -245,6 +255,8 @@ collections:
         name: url
         widget: string
         i18n: duplicate
+        required: false
+      - *publicationDate
       - label: Relationships
         name: relationships
         i18n: false

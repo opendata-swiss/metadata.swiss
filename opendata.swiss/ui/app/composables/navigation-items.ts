@@ -9,7 +9,7 @@ export async function useNavigationItems(): Promise<OdsNavTabItem[]> {
   const { t, locale } = useI18n()
 
   const { data: pages } = await useAsyncData('navigation-pages', () => {
-    return queryCollection('pages')
+    return queryPublishedContent('pages')
       .where('path', 'LIKE', `%.${locale.value}`)
       .where('mainMenu', '=', true)
       .all()

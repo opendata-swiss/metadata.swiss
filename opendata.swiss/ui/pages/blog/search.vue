@@ -11,7 +11,7 @@ const { data: { value: [sections, blog] }, error } = await useAsyncData('blog-se
   let sections = await queryCollectionSearchSections('blog')
   sections = (sections || []).filter(section => currentLanguage.test(section.id))
 
-  const blog = await queryCollection('blog')
+  const blog = await queryPublishedContent('blog')
     .where('path', 'IN', sections.map(section => section.id))
     .all()
 

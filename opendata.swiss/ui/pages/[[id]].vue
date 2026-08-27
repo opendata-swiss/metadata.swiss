@@ -17,7 +17,7 @@ const breadcrumbs = await useBreadcrumbs({
 const { data: page } = await useAsyncData(route.path, () => {
   const slug = route.params.id || 'index'
 
-  return queryCollection('pages')
+  return queryPublishedContent('pages')
     .where('stem', 'LIKE', `%${slug}.${locale.value}`)
     .first()
 })
