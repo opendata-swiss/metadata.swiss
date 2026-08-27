@@ -56,151 +56,359 @@
           method="post"
           @submit="submit"
         >
-          <OdsTabs>
-            <OdsTab :title="`${t('group_german')}`">
-              <div class="form__group">
-                <OdsInput
-                  id="title[de]"
-                  :label="t('field_title')"
-                />
-                <ToastMarkdownEditor
-                  id="body[de]"
-                  :label="t('field_body')"
-                />
-              </div>
-            </OdsTab>
-            <OdsTab :title="`${t('group_french')}`">
-              <div class="form__group">
-                <OdsInput
-                  id="title[fr]"
-                  :label="t('field_title')"
-                />
-                <ToastMarkdownEditor
-                  id="body[fr]"
-                  :label="t('field_body')"
-                />
-              </div>
-            </OdsTab>
-            <OdsTab :title="`${t('group_italian')}`">
-              <div class="form__group">
-                <OdsInput
-                  id="title[it]"
-                  :label="t('field_title')"
-                />
-                <ToastMarkdownEditor
-                  id="body[it]"
-                  :label="t('field_body')"
-                />
-              </div>
-            </OdsTab>
-            <OdsTab :title="`${t('group_english')}`">
-              <div class="form__group">
-                <OdsInput
-                  id="title[en]"
-                  :label="t('field_title')"
-                />
-                <ToastMarkdownEditor
-                  id="body[en]"
-                  :label="t('field_body')"
-                />
-              </div>
-            </OdsTab>
-            <OdsTab :title="`${t('group_general')} *`">
-              <div class="form__group">
-                <OdsSelect
-                  id="type"
-                  name="type"
-                  :label="t('field_type')"
-                  required
-                >
-                  <option
-                    v-for="type in showcaseType"
-                    :key="type.id"
-                    :value="type.id"
+          <section class="preline">
+            {{ t('paragraph.top') }}
+          </section>
+          <h2 class="h2">
+            {{ t('header.showcase_information') }}
+          </h2>
+          <div class="form__group">
+            <OdsInput
+              id="title"
+              :label="t('field.title')"
+              required
+            />
+            <OdsInput
+              id="url"
+              :label="t('field.url')"
+              required
+            />
+          </div>
+          <div class="form__group">
+            <OdsSelect
+              id="type"
+              name="type"
+              :label="t('field.type')"
+              required
+            >
+              <option
+                v-for="type in showcaseType"
+                :key="type.id"
+                :value="type.id"
+              >
+                {{ type.title }}
+              </option>
+            </OdsSelect>
+            <div class="form__group">
+              <OdsInput
+                id="images"
+                type="file"
+                :label="t('field.images')"
+                accept="image/*"
+                required
+                multiple
+              />
+            </div>
+            <div class="form__group">
+              <OdsMultiSelect
+                id="dataset"
+                :label="t('field.datasets.label')"
+                :load-options="searchDatasets"
+                :close-on-select="false"
+                :options="datasets"
+              >
+                <template #no-options>
+                  {{ t('field.datasets.prompt') }}
+                </template>
+                <template #selected-option="option">
+                  {{ option.title }}
+                  <input
+                    type="hidden"
+                    :name="`datasets[${option.id}]`"
+                    :value="option.title"
                   >
-                    {{ type.title }}
-                  </option>
-                </OdsSelect>
-                <div class="form__group">
-                  <OdsInput
-                    id="image"
-                    type="file"
-                    :label="t('field_image')"
-                    accept="image/*"
-                    required
-                  />
-                </div>
-                <OdsInput
-                  id="url"
-                  :label="t('field_url')"
-                />
-                <div class="form__group">
-                  <OdsMultiSelect
-                    id="datasets"
-                    :label="t('field_datasets.label')"
-                    :load-options="searchDatasets"
-                    :close-on-select="false"
-                    :options="datasets"
-                  >
-                    <template #no-options>
-                      {{ t('field_datasets.prompt') }}
-                    </template>
-                    <template #selected-option="option">
-                      {{ option.title }}
-                      <input
-                        type="hidden"
-                        :name="`datasets[${option.id}]`"
-                        :value="option.title"
-                      >
-                    </template>
-                  </OdsMultiSelect>
-                </div>
-                <OdsMultiSelect
-                  :label="t('field_categories.label')"
-                  :options="dataThemes"
-                  :close-on-select="false"
+                </template>
+              </OdsMultiSelect>
+            </div>
+            <OdsMultiSelect
+              :label="t('field.themes.label')"
+              :options="dataThemes"
+              :close-on-select="false"
+              required
+            >
+              <template #no-options>
+                {{ t('field.themes.prompt') }}
+              </template>
+              <template #selected-option="option">
+                {{ option.title }}
+                <input
+                  type="hidden"
+                  name="themes"
+                  :value="option.id"
                 >
-                  <template #no-options>
-                    {{ t('field_categories.prompt') }}
-                  </template>
-                  <template #selected-option="option">
-                    {{ option.title }}
-                    <input
-                      type="hidden"
-                      name="categories"
-                      :value="option.id"
+              </template>
+            </OdsMultiSelect>
+            <OdsInput
+              id="keywords"
+              :label="t('field.keywords.label')"
+              :placeholder="t('field.keywords.prompt')"
+            />
+            <OdsInput
+              id="createdBy"
+              :label="t('field.created_by')"
+              required
+            />
+          </div>
+
+          <h2 class="h2">
+            {{ t('header.contact') }}
+          </h2>
+          <div class="form__group">
+            <div class="form__group">
+              <OdsInput
+                id="contactDetails.name"
+                :label="t('field.contact_details.name')"
+                required
+              />
+            </div>
+            <div class="form__group">
+              <OdsInput
+                id="contactDetails.email"
+                :label="t('field.contact_details.email')"
+                type="email"
+                required
+              />
+            </div>
+            <div class="form__group">
+              <OdsInput
+                id="contactDetails.github"
+                :label="t('field.contact_details.github')"
+              />
+            </div>
+          </div>
+
+          <h2 class="h2">
+            {{ t('header.more') }}
+          </h2>
+          <div>
+            <p class="preline">
+              {{ t('paragraph.more') }}
+            </p>
+          </div>
+
+          <div class="form__group">
+            <div class="form__group">
+              <OdsTextarea
+                id="more.whoAreYou"
+                :label="t('field.more.who_are_you.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <li>
+                      <I18nT
+                        keypath="message.showcase.submission_form.field.more.who_are_you.organization"
+                        tag="b"
+                      />
+                    </li>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.who_are_you.mission"
+                      tag="li"
                     >
-                  </template>
-                </OdsMultiSelect>
-                <OdsInput
-                  id="tags"
-                  :label="t('field_tags.label')"
-                  :placeholder="t('field_tags.prompt')"
-                />
-                <div class="form__group">
-                  <OdsInput
-                    id="submittedBy.name"
-                    :label="t('field_submitted_by.name')"
-                  />
-                  <OdsMultiSelect
-                    ref="urlInputRef"
-                    :label="t('field_submitted_by.url')"
-                    :close-on-select="true"
-                    taggable
-                  >
-                    <template #selected-option="option">
-                      {{ option.title }}
-                      <input
-                        type="hidden"
-                        name="submittedBy.url"
-                        :value="option.title"
+                      <template #mainObjective>
+                        <b>{{ t('field.more.who_are_you.mainObjective') }}</b>
+                      </template>
+                    </I18nT>
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.goal"
+                :label="t('field.more.goal.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <li>
+                      <I18nT
+                        keypath="message.showcase.submission_form.field.more.goal.hint"
+                        tag="b"
+                      />
+                    </li>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.goal.help"
+                      tag="li"
+                    />
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.why"
+                :label="t('field.more.why.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.why.hint"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.why.what"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.why.challenges"
+                      tag="li"
+                    />
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.users"
+                :label="t('field.more.users.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.users.how"
+                      tag="li"
+                    >
+                      <template #usefulness>
+                        <b>{{ t('field.more.users.usefulness') }}</b>
+                      </template>
+                    </I18nT>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.users.benefits"
+                      tag="li"
+                    >
+                      <template #whichFields>
+                        <b>{{ t('field.more.users.whichFields') }}</b>
+                      </template>
+                    </I18nT>
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.challengesBefore"
+                :label="t('field.more.challengesBefore.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesBefore.hint"
+                      tag="li"
+                    >
+                      <template #majorChallenges>
+                        <b>{{ t('field.more.challengesBefore.majorChallenges') }}</b>
+                      </template>
+                    </I18nT>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesBefore.overcome"
+                      tag="li"
+                    >
+                      <template #overcomeHow>
+                        <b>{{ t('field.more.challengesBefore.overcomeHow') }}</b>
+                      </template>
+                    </I18nT>
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.challengesCreating"
+                :label="t('field.more.challengesCreating.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesCreating.preparing"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesCreating.finding"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesCreating.identifying"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesCreating.accessing"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.challengesCreating.preparing"
+                      tag="li"
+                    />
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.getMost"
+                :label="t('field.more.getMost.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.getMost.access"
+                      tag="li"
+                    />
+                    <I18nT
+                      keypath="message.showcase.submission_form.field.more.getMost.conditions"
+                      tag="li"
+                    />
+                    <li>
+                      <I18nT
+                        keypath="message.showcase.submission_form.field.more.getMost.tips"
+                        tag="b"
+                      />
+                    </li>
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+            <div class="form__group">
+              <OdsTextarea
+                id="more.anythingElse"
+                :label="t('field.more.anythingElse.label')"
+                message-type="info"
+              >
+                <template #message>
+                  <ul>
+                    <li>
+                      <I18nT
+                        keypath="message.showcase.submission_form.field.more.anythingElse.mentionHint"
                       >
-                    </template>
-                  </OdsMultiSelect>
-                </div>
-              </div>
-            </OdsTab>
-          </OdsTabs>
+                        <template #hashtags>
+                          <b>{{ t('field.more.anythingElse.hashtags') }}</b>
+                        </template>
+                        <template #people>
+                          <b>{{ t('field.more.anythingElse.people') }}</b>
+                        </template>
+                      </I18nT>
+                    </li>
+                    <li>
+                      <I18nT
+                        keypath="message.showcase.submission_form.field.more.anythingElse.visualsHint"
+                        tag="b"
+                      >
+                        <template #visuals>
+                          <b>{{ t('field.more.anythingElse.visuals') }}</b>
+                        </template>
+                      </I18nT>
+                    </li>
+                  </ul>
+                </template>
+              </OdsTextarea>
+            </div>
+          </div>
+
           <div class="form__group">
             <OdsButton
               submit
@@ -243,13 +451,8 @@ import OdsInput from '../../app/components/OdsInput.vue'
 import OdsSelect from '../../app/components/OdsSelect.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
 import SvgIcon from '../../app/components/SvgIcon.vue'
-import ToastMarkdownEditor from '../../app/components/ToastMarkdownEditor.vue'
-import OdsTabs from '../../app/components/OdsTabs.vue'
-import OdsTab from '../../app/components/OdsTab.vue'
-
-definePageMeta({
-  middleware: 'require-auth',
-})
+import OdsTextarea from '../../app/components/OdsTextarea.vue'
+import { I18nT } from 'vue-i18n'
 
 const i18n = useI18n()
 const { locale } = i18n
@@ -283,7 +486,7 @@ const showcaseType = computed(() => {
   }))
 })
 
-const title = 'New Showcase'
+const title = t('title')
 useSeoMeta({ title: `${title} | opendata.swiss` })
 
 const submitting = ref(false)
@@ -292,6 +495,7 @@ const submissionError = ref<string | null>(null)
 const submissionValidationIssues = ref<{ error: string } | ZodIssue[]>([])
 
 const newShowcaseForm = ref<HTMLFormElement | null>(null)
+
 async function submit(e: Event) {
   e.preventDefault()
 
@@ -369,8 +573,17 @@ const searchDatasets = debounce(async function (arg: string, loading: (arg: bool
 .btn__icon--spin {
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.preline {
+  white-space: pre-line;
 }
 </style>
