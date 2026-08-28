@@ -58,7 +58,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
 
     ?hubRes tuner:body ?showcase .
     ?showcase log:includes {
-      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue [] .
+      ?s ?p ?o .
     } .
  } ;
 .
@@ -82,7 +82,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
 
     ?hubRes tuner:body ?showcase .
     ?showcase log:includes {
-      <https://opendata.swiss/set/resource/showcase/showcase> [] [] .
+      ?s ?p ?o .
     } .
  } ;
 .
