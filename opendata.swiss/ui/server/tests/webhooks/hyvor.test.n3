@@ -1,3 +1,4 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX schema: <http://schema.org/>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
@@ -59,7 +60,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?hubRes tuner:body ?showcase .
     ?showcase^tuner:info .
     ?showcase log:includes {
-      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 5
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue "5"^^xsd:int
     } .
  } ;
 .
@@ -84,7 +85,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?hubRes tuner:body ?showcase .
     ?showcase^tuner:info .
     ?showcase log:includes {
-      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 3.8
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue "3.8"^^xsd:decimal
     } .
  } ;
 .
