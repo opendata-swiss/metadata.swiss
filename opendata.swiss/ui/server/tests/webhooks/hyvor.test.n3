@@ -59,7 +59,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?hubRes tuner:body ?showcase .
     ?showcase^tuner:info .
     ?showcase log:includes {
-      ?s schema:ratingValue ?o
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 5
     } .
  } ;
 .
@@ -84,7 +84,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ?hubRes tuner:body ?showcase .
     ?showcase^tuner:info .
     ?showcase log:includes {
-      ?s schema:ratingValue ?o
+      <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue 3.8
     } .
  } ;
 .
