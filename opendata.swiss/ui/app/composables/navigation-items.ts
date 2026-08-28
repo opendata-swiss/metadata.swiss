@@ -30,6 +30,10 @@ export async function useNavigationItems(): Promise<OdsNavTabItem[]> {
       to: '/datasets',
     },
     {
+      label: t('message.header.navigation.organizations'),
+      to: '/organizations',
+    },
+    {
       label: t('message.header.navigation.showcases'),
       to: '/showcases',
     },

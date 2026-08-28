@@ -7,8 +7,14 @@ export interface Catalog {
   modified: string
   issued: string
   title: string
+  publisher: CatalogPublisher
   description: string
   record: CatalogRecord
+}
+
+interface CatalogPublisher {
+  id: string
+  name: string
 }
 
 interface CatalogRecord {
@@ -30,9 +36,11 @@ export function getOdsCatalogInfo(dataset: Dataset, localeInstance: LocaleInstan
   const locale = toValue(localeInstance.currentLocale)
   const availableLocalesForTitle = Object.keys(catalogInfo?.title || {})
   const availableLocalesForDescription = Object.keys(catalogInfo?.description || {})
+  const availableLocalesForPublisher = Object.keys(catalogInfo?.publisher?.name || {})
 
   let title = ''
   let description = ''
+  let publisher = ''
 
   if (availableLocalesForTitle.includes(locale)) {
     title = catalogInfo?.title?.[locale] ?? ''
@@ -48,11 +56,24 @@ export function getOdsCatalogInfo(dataset: Dataset, localeInstance: LocaleInstan
     description = catalogInfo?.description?.[availableLocalesForDescription[0] as string] ?? ''
   }
 
+  if (availableLocalesForPublisher.includes(locale)) {
+    const publisherNameByLocale = catalogInfo?.publisher?.name as Record<string, string> | undefined
+    publisher = publisherNameByLocale?.[String(locale)] ?? ''
+  }
+  else if (availableLocalesForPublisher.length > 0 && availableLocalesForPublisher[0] !== undefined) {
+    const publisherNameByLocale = catalogInfo?.publisher?.name as Record<string, string> | undefined
+    publisher = publisherNameByLocale?.[availableLocalesForPublisher[0]] ?? ''
+  }
+
   return {
     id: catalogInfo.id,
     modified: catalogInfo.modified ?? '',
     issued: catalogInfo.issued ?? '',
     title,
+    publisher: {
+      id: 'currently not provided by api',
+      name: publisher,
+    },
     description,
     record: {
       modified: recordInfo?.modified ?? '',
