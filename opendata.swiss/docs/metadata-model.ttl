@@ -1,0 +1,657 @@
+# =============================================================================
+# opendata.swiss (ODSn) — RDF metadata model, as an example instance graph
+# =============================================================================
+#
+# Purpose
+#   A single, connected, realistic example of every resource type that the
+#   opendata.swiss piveau installation stores in its triplestore. Load it into
+#   SPEX (https://spex.zazuko.com) — or any RDF tool — to see the classes, the
+#   properties, and how they link to each other.
+#
+#   This is INSTANCE data, not a schema. Every class in the model is present at
+#   least once, and every property that the ODSn profile allows is used at least
+#   once, so that a structural analysis of this file reproduces the full model.
+#
+# What it covers
+#   - Core DCAT-AP CH: Catalog, CatalogRecord, Dataset, Distribution,
+#     DataService, Agent, contact points, Location, PeriodOfTime, Checksum,
+#     LicenseDocument, Relationship, Attribution
+#   - Organizations: the org: hierarchy used by the hub and the search index
+#   - Showcases: the ODSn-only resource type, as stored after import
+#
+#   Native piveau structures and ODSn/ETL modifications are shown together as
+#   one model — this is the state of the data AFTER the pipelines have run.
+#   Where a value only exists because of an ODSn pipe module or a harvester
+#   transformation, an inline comment says so.
+#
+# Derived from
+#   - opendata.swiss/metadata/piveau_profile/dcat-ap-ch.hub.shapes.ttl
+#       (ODSn fork of piveau-indexing dcat-ap.shapes.ttl @ 8ab8d108, DCAT-AP 2.1.1)
+#   - opendata.swiss/metadata/piveau_profile/organization.ttl
+#   - opendata.swiss/metadata/piveau_profile/showcase.hub.shapes.ttl
+#   - opendata.swiss/metadata/piveau_profile/piveau.json
+#   - opendata.swiss/piveau_modules/piveau-consus-filter        (license/identifier/spatial normalisation)
+#   - opendata.swiss/piveau_modules/piveau-consus-patching      (showcase de-cloaking, reference unwrapping)
+#   - opendata.swiss/piveau_modules/piveau-consus-importing-showcases
+#   - opendata.swiss/metadata/piveau_scripts/geocat-transform.js (CSW → DCAT)
+#   - opendata.swiss/metadata/piveau_systemtests/src/test/resources/*.ttl
+#   - opendata.swiss/docs/systemarchitektur-piveau.md
+#   - upstream https://gitlab.com/piveau/utilities/piveau-indexing (dcat-ap.shapes.ttl)
+#
+# Storage layout (not expressible in a single Turtle file, noted here instead)
+#   piveau-hub-repo stores each dataset in its own named graph whose IRI equals
+#   the dataset IRI, e.g. GRAPH <https://opendata.swiss/set/data/{id}>.
+#   Catalogues, organizations and vocabularies live in their own graphs.
+#   Base URI of the installation: https://opendata.swiss/
+#
+# Out of scope here (deliberately)
+#   Controlled vocabularies (EU/ODSn SKOS concept schemes) and the DQV quality
+#   measurements written back by the `metrics` system pipe. Vocabulary concepts
+#   appear below only as stubs, so that property ranges are visible.
+#
+# Verified against production (REF)
+#   Cross-checked on 2026-08-12 against the live SPARQL endpoint
+#   https://trifid.ref.ods.zazukoians.org/query — all IRI patterns, classes and
+#   per-class predicates below reflect what that instance actually stores.
+#   Properties that the SHACL profile ALLOWS but that no resource in REF
+#   currently USES are kept as commented-out triples, so the file stays an
+#   accurate picture of the data while still documenting the full profile.
+#   Note: harvested pass-through triples that are outside the profile (e.g.
+#   rdfs:seeAlso, owl:versionInfo, schema:diagram on datasets) also exist in
+#   production; they are noise, not model, and are not reproduced here.
+# =============================================================================
+
+@prefix adms:   <http://www.w3.org/ns/adms#> .
+@prefix dcat:   <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix locn:   <http://www.w3.org/ns/locn#> .
+@prefix org:    <http://www.w3.org/ns/org#> .
+@prefix prov:   <http://www.w3.org/ns/prov#> .
+@prefix pv:     <https://piveau.eu/ns/voc#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix spdx:   <http://spdx.org/rdf/terms#> .
+@prefix time:   <http://www.w3.org/2006/time#> .
+@prefix vcard:  <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+# The showcase class IRI is literally https://example.org/Showcase in the
+# production profile (piveau_profile/piveau.json → resources[].typeUri).
+@prefix ex:     <https://example.org/> .
+
+
+# =============================================================================
+# 1. CATALOGUE
+# -----------------------------------------------------------------------------
+# One catalogue per harvester. Catalogue metadata is versioned in the repository
+# under metadata/piveau_catalogues/ and generated by the `meta_harvester` tool
+# from the legacy CKAN instance.
+# =============================================================================
+
+<https://opendata.swiss/id/catalogue/bfs-dcat-harvester>
+    a                    dcat:Catalog ;
+
+    # --- mandatory (DCAT-AP CH) -------------------------------------------
+    dct:title            "Bundesamt für Statistik BFS"@de ,
+                         "Office fédéral de la statistique OFS"@fr ,
+                         "Ufficio federale di statistica UST"@it ,
+                         "Federal Statistical Office FSO"@en ;
+    dct:description      "Das BFS ist das nationale Kompetenzzentrum der öffentlichen Statistik der Schweiz."@de ,
+                         "L'OFS est le centre de compétence de la statistique publique suisse."@fr ,
+                         "L'UST è il centro di competenza nazionale per la statistica pubblica della Svizzera."@it ,
+                         "The FSO is Switzerland's national competence centre for official statistics."@en ;
+    # Points at an org:Organization, not a bare foaf:Agent — an ODSn convention
+    # so that the search index can resolve the organization hierarchy.
+    dct:publisher        <https://opendata.swiss/id/organization/bundesamt-fur-statistik-bfs> ;
+
+    # --- recommended / optional -------------------------------------------
+    dct:language         <http://publications.europa.eu/resource/authority/language/DEU> ,
+                         <http://publications.europa.eu/resource/authority/language/FRA> ,
+                         <http://publications.europa.eu/resource/authority/language/ITA> ,
+                         <http://publications.europa.eu/resource/authority/language/ENG> ;
+    dct:spatial          <http://publications.europa.eu/resource/authority/country/CHE> ;
+    # dct:created is written by meta_harvester alongside issued/modified.
+    dct:created          "2018-02-02T10:14:39.450482"^^xsd:dateTime ;
+    dct:issued           "2018-02-02T10:14:39.450482"^^xsd:dateTime ;
+    dct:modified         "2026-01-29T09:15:46.038610"^^xsd:dateTime ;
+    # dct:type carries the harvester kind; written by `meta_harvester`.
+    dct:type             "ckan"^^xsd:string ;
+    foaf:homepage        <https://www.bfs.admin.ch/> ;
+
+    dcat:dataset         <https://opendata.swiss/set/data/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs> ,
+                         <https://opendata.swiss/set/data/waldbestand-bundesamt-fur-statistik-bfs> ;
+    dcat:service         <https://opendata.swiss/set/data-service/stats-swiss-sdmx> ;
+    dcat:record          <https://opendata.swiss/set/record/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs> .
+
+    # Allowed by the profile but not used by any catalogue in production:
+    #   dct:license, dct:rights, dcat:themeTaxonomy, dct:creator,
+    #   dct:hasPart / dct:isPartOf / dcat:catalog (no catalogue nesting exists;
+    #   the ~148 harvester catalogues are flat siblings).
+
+
+# The showcases catalogue: showcases are configured as an in-catalogue custom
+# resource type (piveau.json → resources[0].inCatalogue = true). The hub links
+# catalogue → showcase with BOTH dcat:resource and pv:resource (verified in
+# production; the catalogue slug there is `showcases-ods`).
+<https://opendata.swiss/id/catalogue/showcases-ods>
+    a                    dcat:Catalog ;
+    dct:title            "Showcases"@de , "Showcases"@fr , "Showcases"@it , "Showcases"@en ;
+    dct:description      "Anwendungen und Auswertungen, die auf offenen Behördendaten basieren."@de ;
+    dct:publisher        <https://opendata.swiss/id/organization/ch1> ;
+    dcat:resource        <https://opendata.swiss/set/resource/showcase/mietpreisentwicklung-in-bern> ;
+    pv:resource          <https://opendata.swiss/set/resource/showcase/mietpreisentwicklung-in-bern> .
+
+
+# =============================================================================
+# 2. CATALOG RECORD
+# -----------------------------------------------------------------------------
+# Provenance envelope minted by piveau-hub-repo for every resource it stores.
+# It records when the hub saw the resource, which is distinct from the
+# dct:issued / dct:modified of the dataset itself.
+#
+# Verified against production: record IRIs are …/set/record/{id}, where {id} is
+# the dataset slug or a UUID. The hub writes exactly the properties below —
+# including the piveau-internal pv:originalId / pv:originalURIRef (the id and
+# IRI the resource had in the source system before the hub re-minted it) and an
+# MD5 checksum of the stored payload used for change detection. The shape's
+# dct:conformsTo / dct:source / dct:language / dct:title / dct:description /
+# adms:status are allowed but never populated in production.
+# =============================================================================
+
+<https://opendata.swiss/set/record/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs>
+    a                    dcat:CatalogRecord ;
+    foaf:primaryTopic    <https://opendata.swiss/set/data/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs> ;
+    dct:identifier       "arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs" ;
+    dct:issued           "2026-04-28T09:12:03Z"^^xsd:dateTime ;
+    dct:modified         "2026-04-28T09:12:03Z"^^xsd:dateTime ;
+    # Always the literal IRI http://piveau.io in production.
+    dct:creator          <http://piveau.io> ;
+    pv:originalId        "36503351@bundesamt-fur-statistik-bfs" ;
+    pv:originalURIRef    <https://dam-api.bfs.admin.ch/hub/api/ogd/harvest#36503351> ;
+    spdx:checksum        _:checksumRecord .
+
+_:checksumRecord
+    a                    spdx:Checksum ;
+    spdx:algorithm       <http://spdx.org/rdf/terms#checksumAlgorithm_md5> ;
+    spdx:checksumValue   "fc049e74a2abd4e97c690a36f4a0e84a"^^xsd:hexBinary .
+
+
+# =============================================================================
+# 3. DATASET — full example
+# -----------------------------------------------------------------------------
+# Everything DCAT-AP CH allows on a dcat:Dataset in the ODSn profile, plus the
+# ODSn-only property schema:image.
+#
+# Note: piveau-consus-filter also lets dcat:DatasetSeries through the pipe (it
+# accepts exactly one of dcat:Dataset / dcat:DatasetSeries / dcat:DataService
+# per payload), but the ODSn SHACL profile defines no shape for it, so no
+# series example is modelled here.
+# =============================================================================
+
+<https://opendata.swiss/set/data/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs>
+    a                    dcat:Dataset ;
+
+    # --- mandatory --------------------------------------------------------
+    # Identifier convention enforced by piveau-consus-filter:
+    #   [Source-Dataset-ID]@[Source-Organisation-ID]
+    # where the org part is the opendata.swiss organization slug. A dataset
+    # with a missing, multiple or malformed identifier is rejected by the pipe.
+    dct:identifier       "36503351@bundesamt-fur-statistik-bfs" ;
+    dct:title            "Arbeitswegzeit und Arbeitswegdistanz"@de ,
+                         "Durée et longueur du trajet des pendulaires"@fr ,
+                         "Durata e lunghezza del tragitto casa-lavoro"@it ,
+                         "Commuting time and distance"@en ;
+    dct:description      "Dieses Dataset präsentiert die jährlichen Zahlen der Statistik der Schweizer Städte 2026."@de ,
+                         "Ce dataset présente les chiffres annuels des Statistiques des villes suisses 2026."@fr ,
+                         "Questo set di dati presenta le cifre annuali della Statistica delle città svizzere 2026."@it ,
+                         "This dataset presents the annual figures of the Statistics on Swiss Cities and Towns 2026."@en ;
+    dct:publisher        <https://opendata.swiss/id/organization/bundesamt-fur-statistik-bfs> ;
+    dcat:contactPoint    _:contactPointBfsOrg , _:contactPointBfsIndividual ;
+
+    # --- recommended ------------------------------------------------------
+    dcat:distribution    <https://opendata.swiss/set/distribution/36503367-de-bundesamt-fur-statistik-bfs> ,
+                         <https://opendata.swiss/set/distribution/link-36503376-de-bundesamt-fur-statistik-bfs> ;
+    dcat:keyword         "arbeitsweg"@de , "pendler"@de ,
+                         "pendulaires"@fr ,
+                         "pendolari"@it ,
+                         "commuting"@en ;
+    dcat:landingPage     <https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08> ;
+    dcat:theme           <http://publications.europa.eu/resource/authority/data-theme/TRAN> ,
+                         <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+    dct:issued           "2026-04-28T07:00:00Z"^^xsd:dateTime ;
+    dct:modified         "2026-04-28T07:00:00Z"^^xsd:dateTime ;
+    # piveau-consus-filter drops dct:spatial values that are plain literals
+    # (legacy CKAN wrote e.g. "Politische Gemeinden"); only IRIs and
+    # dct:Location nodes survive the pipe.
+    dct:spatial          <http://publications.europa.eu/resource/authority/country/CHE> ,
+                         _:locationBern ;
+    dct:temporal         _:periodOfTime2023 ;
+
+    # --- optional ---------------------------------------------------------
+    dct:accessRights     <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+    dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/ANNUAL> ;
+    # Validated by piveau-consus-filter: must be an IRI, otherwise the dataset
+    # is not imported.
+    dct:conformsTo       <https://dcat-ap.ch/releases/2.0/dcat-ap-ch.html> ;
+    dct:language         <http://publications.europa.eu/resource/authority/language/DEU> ,
+                         <http://publications.europa.eu/resource/authority/language/FRA> ;
+    dct:relation         <https://www.admin.ch/opc/de/classified-compilation/19920252/index.html> ;
+    dct:isReferencedBy   <https://opendata.swiss/set/data/waldbestand-bundesamt-fur-statistik-bfs> ;
+    foaf:page            <https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08/about> ;
+    # Shape-allowed; no dataset in production currently carries a
+    # prov:qualifiedAttribution (dcat:qualifiedRelation does occur).
+    prov:qualifiedAttribution _:attributionBfs ;
+    dcat:qualifiedRelation    _:relationshipOriginal ;
+
+    # --- ODSn extension ---------------------------------------------------
+    # schema:image is not part of upstream piveau's Dataset shape; added for
+    # opendata.swiss so the UI can show a teaser image.
+    schema:image         <https://opendata.swiss/images/logo_horizontal.png> .
+
+
+# --- Contact points ---------------------------------------------------------
+# vcard:Kind subclasses; both Organization and Individual occur in production.
+
+_:contactPointBfsOrg
+    a                    vcard:Organization ;
+    vcard:fn             "Auskunftsdienst BFS" ;
+    vcard:hasEmail       <mailto:auskunftsdienst@bfs.admin.ch> ;
+    vcard:hasURL         <https://www.bfs.admin.ch/kontakt> ;
+    vcard:hasTelephone   <tel:+41584631111> .
+
+_:contactPointBfsIndividual
+    a                    vcard:Individual ;
+    vcard:fn             "Sekretariat Statistik" ;
+    vcard:hasEmail       <mailto:info@bfs.admin.ch> .
+
+
+# --- Qualified attribution (prov) -------------------------------------------
+
+_:attributionBfs
+    a                    prov:Attribution ;
+    dcat:hadRole         <http://inspire.ec.europa.eu/metadata-codelist/ResponsiblePartyRole/pointOfContact> ;
+    prov:agent           _:agentBfsSection .
+
+# The generic Agent shape (foaf:Agent) applies here: foaf:name is mandatory,
+# dct:type optional. Publishers on catalogues and datasets are the more
+# specific org:Organization instead — an ODSn convention, see section 7.
+_:agentBfsSection
+    a                    foaf:Agent , foaf:Organization ;
+    foaf:name            "Sektion Mobilität BFS" ;
+    dct:type             <http://purl.org/adms/publishertype/NationalAuthority> ;
+    foaf:homepage        <https://www.bfs.admin.ch/mobilitaet> ;
+    foaf:mbox            <mailto:mobilitaet@bfs.admin.ch> .
+
+
+# --- Qualified relation (dcat) ----------------------------------------------
+
+_:relationshipOriginal
+    a                    dcat:Relationship ;
+    dct:relation         <https://opendata.swiss/set/data/waldbestand-bundesamt-fur-statistik-bfs> ;
+    dcat:hadRole         <http://www.iana.org/assignments/relation/original> .
+
+
+# --- Temporal coverage ------------------------------------------------------
+# The profile's PeriodOfTime shape accepts dcat:startDate/dcat:endDate and the
+# OWL-Time properties. Some source systems deliver schema:startDate instead;
+# both reach the triplestore.
+
+_:periodOfTime2023
+    a                    dct:PeriodOfTime ;
+    dcat:startDate       "2023-01-01"^^xsd:date ;
+    dcat:endDate         "2023-12-31"^^xsd:date ;
+    time:hasBeginning    _:instant2023Start ;
+    time:hasEnd          _:instant2023End .
+
+_:instant2023Start  a time:Instant ; time:inXSDDate "2023-01-01"^^xsd:date .
+_:instant2023End    a time:Instant ; time:inXSDDate "2023-12-31"^^xsd:date .
+
+
+# --- Spatial coverage -------------------------------------------------------
+# Produced by the geocat.ch / CSW harvesting path: geocat-transform.js turns the
+# ows:BoundingBox of a CSW record into a GeoJSON polygon on locn:geometry.
+# The datatype IRI is written by the transform as https://replacement.io/... and
+# rewritten to the IANA namespace by piveau before storage.
+
+_:locationBern
+    a                    dct:Location ;
+    locn:geometry        "{\"type\": \"Polygon\", \"coordinates\": [[[7.29,46.87],[7.72,46.87],[7.72,47.05],[7.29,47.05],[7.29,46.87]]]}"^^<https://www.iana.org/assignments/media-types/application/vnd.geo+json> ;
+    dcat:bbox            "POLYGON((7.29 46.87, 7.72 46.87, 7.72 47.05, 7.29 47.05, 7.29 46.87))"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
+    dcat:centroid        "POINT(7.50 46.96)"^^<http://www.opengis.net/ont/geosparql#wktLiteral> ;
+    skos:prefLabel       "Kanton Bern"@de .
+
+
+# =============================================================================
+# 4. DISTRIBUTION
+# -----------------------------------------------------------------------------
+# Two distributions: a downloadable CSV (checksum, byte size, package format)
+# and an access-only HTML view that resolves to a DataService.
+# =============================================================================
+
+<https://opendata.swiss/set/distribution/36503367-de-bundesamt-fur-statistik-bfs>
+    a                    dcat:Distribution ;
+
+    # --- mandatory --------------------------------------------------------
+    dcat:accessURL       <https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08> ;
+    # piveau-consus-filter requires dct:license on EVERY distribution, requires
+    # it to be one of the four dcat-ap.ch "Terms of use" IRIs, and requires all
+    # distributions of a dataset to carry the SAME value. Legacy CKAN strings
+    # such as "NonCommercialAllowed-CommercialAllowed-ReferenceRequired" are
+    # rewritten to the matching IRI by the pipe.
+    dct:license          <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+
+    # --- recommended / optional -------------------------------------------
+    dct:title            "Arbeitswegzeit und Arbeitswegdistanz (CSV)"@de ,
+                         "Durée et longueur du trajet des pendulaires (CSV)"@fr ;
+    dct:description      "Jahreswerte als kommaseparierte Datei."@de ;
+    dct:format           <http://publications.europa.eu/resource/authority/file-type/CSV> ;
+    dcat:mediaType       <https://www.iana.org/assignments/media-types/text/csv> ;
+    dcat:packageFormat   <https://www.iana.org/assignments/media-types/application/zip> ;
+    dcat:downloadURL     <https://dam-api.bfs.admin.ch/hub/api/dam/assets/36503367/master.csv> ;
+    dcat:byteSize        646458 ;
+    dct:issued           "2026-04-28T07:00:00Z"^^xsd:dateTime ;
+    dct:modified         "2026-04-28T07:00:00Z"^^xsd:dateTime ;
+    dct:language         <http://publications.europa.eu/resource/authority/language/DEU> ,
+                         <http://publications.europa.eu/resource/authority/language/FRA> ;
+    dct:rights           <https://opendata.swiss/id/rights/bfs-terms> ;
+    dct:conformsTo       <https://dcat-ap.ch/releases/2.0/dcat-ap-ch.html> ;
+    dcat:temporalResolution "P1Y"^^xsd:duration ;
+    dcatap:availability  <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> ;
+    foaf:page            <https://www.bfs.admin.ch/asset/de/DF_SSV_LABMAR_08/about> ;
+    spdx:checksum        _:checksumCsv ;
+
+    # --- ODSn extensions --------------------------------------------------
+    # dct:identifier, dct:coverage and schema:image are not in upstream
+    # piveau's Distribution shape; added for opendata.swiss. In production,
+    # identifier (~26k) and coverage (~94) occur; schema:image does not (yet).
+    dct:identifier       "36503367-de@bundesamt-fur-statistik-bfs" ;
+    dct:coverage         "2023" ;
+    schema:image         <https://opendata.swiss/images/logo_default.png> .
+
+
+<https://opendata.swiss/set/distribution/link-36503376-de-bundesamt-fur-statistik-bfs>
+    a                    dcat:Distribution ;
+    dcat:accessURL       <https://stats.swiss/vis?lc=de&dfds=disseminate&dfid=DF_SSV_LABMAR_08> ;
+    dct:license          <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+    dct:title            "Daten im Browser anschauen"@de ;
+    dct:language         <http://publications.europa.eu/resource/authority/language/DEU> ;
+    dcat:mediaType       <https://www.iana.org/assignments/media-types/text/html> ;
+    dct:issued           "2026-04-28T07:00:00Z"^^xsd:dateTime ;
+    dct:identifier       "link-36503376-de@bundesamt-fur-statistik-bfs" ;
+    # Links a distribution to the service that delivers it.
+    dcat:accessService   <https://opendata.swiss/set/data-service/stats-swiss-sdmx> .
+
+
+_:checksumCsv
+    a                    spdx:Checksum ;
+    spdx:algorithm       <http://spdx.org/rdf/terms#checksumAlgorithm_sha1> ;
+    spdx:checksumValue   "5bcc814127be171c75595d419f371c74c9cf0414"^^xsd:hexBinary .
+
+
+# =============================================================================
+# 5. DATA SERVICE
+# -----------------------------------------------------------------------------
+# ODSn adds dct:publisher, dcat:keyword and dcat:landingPage to piveau's
+# DataService shape; the HVD/legislation/availability properties of upstream
+# DCAT-AP 2.1.1 are switched off because DCAT-AP CH 2.0 does not define them.
+# Production holds 3 data services; their predicates match this example
+# (some additionally carry pass-through dct:type / dcat:theme).
+# =============================================================================
+
+<https://opendata.swiss/set/data-service/stats-swiss-sdmx>
+    a                    dcat:DataService ;
+    dct:title            "STATS.swiss SDMX API"@de , "STATS.swiss SDMX API"@en ;
+    dct:description      "SDMX-REST-Schnittstelle auf die Datenwürfel des BFS."@de ,
+                         "SDMX REST interface to the FSO data cubes."@en ;
+    dcat:endpointURL     <https://stats.swiss/rest> ;
+    dcat:endpointDescription <https://stats.swiss/rest/openapi.json> ;
+    dcat:servesDataset   <https://opendata.swiss/set/data/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs> ;
+    dct:license          <http://dcat-ap.ch/vocabulary/licenses/terms_by_ask> ;
+    dct:accessRights     <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+    dcat:contactPoint    _:contactPointBfsOrg ;
+    foaf:page            <https://www.bfs.admin.ch/stats-swiss/api> ;
+
+    # --- ODSn extensions --------------------------------------------------
+    dct:publisher        <https://opendata.swiss/id/organization/bundesamt-fur-statistik-bfs> ;
+    dcat:keyword         "sdmx"@de , "api"@de ;
+    dcat:landingPage     <https://stats.swiss/> .
+
+
+# =============================================================================
+# 6. SECOND DATASET — geocat.ch / CSW path
+# -----------------------------------------------------------------------------
+# Minimal shape of what piveau-consus-importing-csw plus geocat-transform.js
+# produce: title/description/keywords in the record language, a bounding-box
+# Location, and one distribution carrying the source identifier and format.
+# =============================================================================
+
+<https://opendata.swiss/set/data/waldbestand-bundesamt-fur-statistik-bfs>
+    a                    dcat:Dataset ;
+    dct:identifier       "0b254869-1783-edd3-e063-5015630add48@bundesamt-fur-statistik-bfs" ;
+    dct:title            "Waldbestand"@de ;
+    dct:description      "Beschreibung des Waldbestands."@de ;
+    dct:publisher        <https://opendata.swiss/id/organization/bundesamt-fur-statistik-bfs> ;
+    dcat:contactPoint    _:contactPointBfsOrg ;
+    dcat:keyword         "wald"@de , "bauwerke"@de ;
+    dcat:theme           <http://publications.europa.eu/resource/authority/data-theme/ENVI> ;
+    # geocat-transform.js writes the same value to dct:issued and dct:modified,
+    # derived from the CSW record's dct:modified.
+    dct:issued           "2025-09-23T00:00:00"^^xsd:dateTime ;
+    dct:modified         "2025-09-23T00:00:00"^^xsd:dateTime ;
+    dct:spatial          _:locationBern ;
+    dcat:distribution    <https://opendata.swiss/set/distribution/0b254869-1783-edd3-e063-5015630add48> .
+
+<https://opendata.swiss/set/distribution/0b254869-1783-edd3-e063-5015630add48>
+    a                    dcat:Distribution ;
+    dcat:accessURL       <https://www.geocat.ch/geonetwork/srv/ger/catalog.search#/metadata/0b254869> ;
+    dct:license          <http://dcat-ap.ch/vocabulary/licenses/terms_by> ;
+    dct:title            "Waldbestand"@de ;
+    dct:format           <http://publications.europa.eu/resource/authority/file-type/SHP> ;
+    dct:language         <http://publications.europa.eu/resource/authority/language/DEU> ;
+    dct:identifier       "0b254869-1783-edd3-e063-5015630add48@bundesamt-fur-statistik-bfs" .
+
+
+# =============================================================================
+# 7. ORGANIZATIONS
+# -----------------------------------------------------------------------------
+# Typed as both org:Organization and foaf:Organization. Versioned in the
+# repository under metadata/piveau_organizations/. The hierarchy is flattened
+# into the search index as hierarchy_level + ancestors; in RDF it is expressed
+# purely through org:subOrganizationOf.
+#
+# Production uses exactly: dct:identifier, foaf:name, skos:prefLabel,
+# dct:description, org:classification, org:subOrganizationOf, foaf:homepage.
+# The shape additionally allows foaf:mbox ("email") and the systemtest fixtures
+# carry schema:image, but neither occurs on any organization in production.
+# =============================================================================
+
+# Level 0 — the top-level publisher
+<https://opendata.swiss/id/organization/ch1>
+    a                    org:Organization , foaf:Organization ;
+    dct:identifier       "ch1" ;
+    foaf:name            "Schweizerische Eidgenossenschaft"@de ,
+                         "Confédération suisse"@fr ,
+                         "Confederazione Svizzera"@it ,
+                         "Swiss Confederation"@en ;
+    skos:prefLabel       "Bund"@de , "Confédération"@fr , "Confederazione"@it , "Confederation"@en ;
+    dct:description      "Bundesverwaltung der Schweizerischen Eidgenossenschaft."@de ,
+                         "Federal administration of the Swiss Confederation."@en ;
+    org:classification   <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage        <https://www.admin.ch/> .
+    # foaf:mbox / schema:image: shape-allowed, unused in production.
+
+# Level 1 — sub-organization
+<https://opendata.swiss/id/organization/bundesamt-fur-statistik-bfs>
+    a                    org:Organization , foaf:Organization ;
+    dct:identifier       "bundesamt-fur-statistik-bfs" ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch1> ;
+    org:classification   <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:name            "Bundesamt für Statistik BFS"@de ,
+                         "Office fédéral de la statistique OFS"@fr ,
+                         "Ufficio federale di statistica UST"@it ,
+                         "Federal Statistical Office FSO"@en ;
+    skos:prefLabel       "BFS"@de , "OFS"@fr , "UST"@it , "FSO"@en ;
+    dct:description      "Nationales Kompetenzzentrum der öffentlichen Statistik der Schweiz."@de ;
+    foaf:homepage        <https://www.bfs.admin.ch/> .
+
+# Level 2 — cantonal example, showing that the hierarchy is not federal-only
+<https://opendata.swiss/id/organization/staatskanzlei-kanton-zuerich>
+    a                    org:Organization , foaf:Organization ;
+    dct:identifier       "staatskanzlei-kanton-zuerich" ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/kanton-zuerich> ;
+    org:classification   <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:name            "Staatskanzlei Kanton Zürich"@de ;
+    skos:prefLabel       "Staatskanzlei ZH"@de ;
+    dct:description      "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat."@de ;
+    foaf:homepage        <https://www.zh.ch/de/staatskanzlei.html> .
+
+<https://opendata.swiss/id/organization/kanton-zuerich>
+    a                    org:Organization , foaf:Organization ;
+    dct:identifier       "kanton-zuerich" ;
+    org:classification   <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:name            "Kanton Zürich"@de , "Canton of Zurich"@en ;
+    skos:prefLabel       "Kanton Zürich"@de ;
+    dct:description      "Der Kanton Zürich veröffentlicht offene Behördendaten."@de ;
+    foaf:homepage        <https://www.zh.ch/opendata> .
+
+# foaf:homepage values are typed as foaf:Document in the organization files.
+<https://www.admin.ch/>                      a foaf:Document .
+<https://www.bfs.admin.ch/>                  a foaf:Document .
+<https://www.zh.ch/opendata>                 a foaf:Document .
+<https://www.zh.ch/de/staatskanzlei.html>    a foaf:Document .
+
+
+# =============================================================================
+# 8. SHOWCASE
+# -----------------------------------------------------------------------------
+# ODSn-only resource type; does not exist in the piveau standard. Authored in
+# the UI, pulled in by piveau-consus-importing-showcases, then rewritten by the
+# patching module before storage:
+#   - the `dcat:Dataset` cloak type the source emits is REMOVED
+#     ("remove-dataset-cloak")
+#   - the source type http://localhost:3000/Showcase becomes
+#     https://example.org/Showcase
+#   - dct:references blank nodes are UNWRAPPED to the plain dataset IRI
+#     they carried in dct:identifier ("unwrap-references")
+# What is shown below is the post-patch state, i.e. what is in the triplestore.
+# =============================================================================
+
+# IRI pattern verified in production: …/set/resource/showcase/{slug}.
+<https://opendata.swiss/set/resource/showcase/mietpreisentwicklung-in-bern>
+    a                    ex:Showcase , pv:CustomResource ;
+    dct:identifier       "mietpreisentwicklung-in-bern" ;
+    dct:type             <https://opendata.swiss/vocabulary/showcase-type/application> ;
+
+    # The showcase shape requires all four national languages on dct:title.
+    dct:title            "Mietpreisentwicklung in Bern"@de ,
+                         "Évolution des loyers à Berne"@fr ,
+                         "Andamento degli affitti a Berna"@it ,
+                         "Rent price development in Bern"@en ;
+    dct:abstract         "Dieses interaktive Dashboard zeigt die Entwicklung der Mietpreise."@de ,
+                         "Ce tableau de bord interactif montre l'évolution des loyers."@fr ;
+    schema:text          "Ausführliche Beschreibung der Anwendung, als Fliesstext im CMS erfasst."@de ,
+                         "Description détaillée de l'application."@fr ;
+    # A literal URL string in production (sometimes a relative CMS path like
+    # "/cms/92.png"), NOT an IRI node.
+    schema:image         "https://opendata.swiss/images/showcase/mietpreisentwicklung.jpg" ;
+
+    dcat:theme           <http://publications.europa.eu/resource/authority/data-theme/SOCI> ;
+    dcat:keyword         "bern"@de , "mietpreise"@de ;
+
+    # Post-unwrap: a direct IRI reference to the dataset the showcase uses.
+    dct:references       <https://opendata.swiss/set/data/arbeitswegzeit-und-arbeitswegdistanz-bundesamt-fur-statistik-bfs> ;
+
+    # piveau-internal flag driving the "featured" slot in the UI; on every
+    # showcase in production, not declared in the SHACL shape.
+    pv:pinned            false ;
+
+    dct:issued           "2026-02-11T08:00:00Z"^^xsd:dateTime ;
+    dct:modified         "2026-05-03T14:22:00Z"^^xsd:dateTime .
+
+    # Allowed by the showcase shape but not used by any showcase in production:
+    #   dcat:landingPage ("website"), dcat:contactPoint ("publisher"),
+    #   schema:ratingValue ("rating").
+
+
+# =============================================================================
+# 9. REFERENCED VALUE NODES
+# -----------------------------------------------------------------------------
+# In production these live in the vocabulary graphs, not with the datasets.
+# They are stubbed here so the property ranges of the model are visible.
+# =============================================================================
+
+# --- Rights and licences ----------------------------------------------------
+<https://opendata.swiss/id/rights/bfs-terms>
+    a                    dct:RightsStatement ;
+    rdfs:label           "Nutzungsbedingungen BFS"@de .
+
+# The four DCAT-AP CH "Terms of use" accepted by piveau-consus-filter.
+<http://dcat-ap.ch/vocabulary/licenses/terms_open>
+    a dct:LicenseDocument ; skos:prefLabel "Freie Nutzung"@de ;
+    dct:type <http://purl.org/adms/licencetype/PublicDomain> .
+<http://dcat-ap.ch/vocabulary/licenses/terms_by>
+    a dct:LicenseDocument ; skos:prefLabel "Freie Nutzung. Quellenangabe ist Pflicht."@de ;
+    dct:type <http://purl.org/adms/licencetype/Attribution> .
+<http://dcat-ap.ch/vocabulary/licenses/terms_ask>
+    a dct:LicenseDocument ; skos:prefLabel "Freie Nutzung. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig."@de ;
+    dct:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> .
+<http://dcat-ap.ch/vocabulary/licenses/terms_by_ask>
+    a dct:LicenseDocument ; skos:prefLabel "Freie Nutzung. Quellenangabe ist Pflicht. Kommerzielle Nutzung nur mit Bewilligung des Datenlieferanten zulässig."@de ;
+    dct:type <http://purl.org/adms/licencetype/NonCommercialUseOnly> .
+
+# --- Concept schemes and concepts -------------------------------------------
+<http://publications.europa.eu/resource/authority/data-theme>
+    a skos:ConceptScheme ; dct:title "Data theme"@en .
+
+<http://publications.europa.eu/resource/authority/data-theme/TRAN>
+    a skos:Concept ; skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+    skos:prefLabel "Verkehr"@de , "Transport"@en .
+<http://publications.europa.eu/resource/authority/data-theme/SOCI>
+    a skos:Concept ; skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+    skos:prefLabel "Bevölkerung und Gesellschaft"@de , "Population and society"@en .
+<http://publications.europa.eu/resource/authority/data-theme/ENVI>
+    a skos:Concept ; skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+    skos:prefLabel "Umwelt"@de , "Environment"@en .
+
+# ODSn-specific vocabulary: showcase types.
+<https://opendata.swiss/vocabulary/showcase-type/application>
+    a skos:Concept ; skos:prefLabel "Anwendung"@de , "Application"@en .
+
+# Legal form, from the I14Y register — used on org:classification.
+<https://register.ld.admin.ch/i14y/concept/legalForm/0221>
+    a skos:Concept ; skos:prefLabel "Bundesverwaltung"@de .
+
+<http://publications.europa.eu/resource/authority/language/DEU>
+    a dct:LinguisticSystem ; skos:prefLabel "Deutsch"@de .
+<http://publications.europa.eu/resource/authority/language/FRA>
+    a dct:LinguisticSystem ; skos:prefLabel "Französisch"@de .
+<http://publications.europa.eu/resource/authority/language/ITA>
+    a dct:LinguisticSystem ; skos:prefLabel "Italienisch"@de .
+<http://publications.europa.eu/resource/authority/language/ENG>
+    a dct:LinguisticSystem ; skos:prefLabel "Englisch"@de .
+
+<http://publications.europa.eu/resource/authority/frequency/ANNUAL>
+    a dct:Frequency ; skos:prefLabel "jährlich"@de .
+
+<http://publications.europa.eu/resource/authority/file-type/CSV>
+    a dct:MediaTypeOrExtent ; skos:prefLabel "CSV"@en .
+<http://publications.europa.eu/resource/authority/file-type/SHP>
+    a dct:MediaTypeOrExtent ; skos:prefLabel "ESRI Shapefile"@en .
+<https://www.iana.org/assignments/media-types/text/csv>
+    a dct:MediaTypeOrExtent ; skos:prefLabel "text/csv"@en .
+<https://www.iana.org/assignments/media-types/text/html>
+    a dct:MediaTypeOrExtent ; skos:prefLabel "text/html"@en .
+<https://www.iana.org/assignments/media-types/application/zip>
+    a dct:MediaTypeOrExtent ; skos:prefLabel "application/zip"@en .
+
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC>
+    a dct:RightsStatement ; skos:prefLabel "öffentlich"@de .
+
+<http://publications.europa.eu/resource/authority/country/CHE>
+    a dct:Location ; skos:prefLabel "Schweiz"@de .
+
+<https://dcat-ap.ch/releases/2.0/dcat-ap-ch.html>
+    a dct:Standard ; dct:title "DCAT-AP CH 2.0"@de .
