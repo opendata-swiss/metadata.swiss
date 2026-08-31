@@ -58,7 +58,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
     ?hubRes tuner:body ?showcase .
-    ?showcase^tuner:info .
+    # ?showcase^tuner:info .
     ?showcase log:includes {
       <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue "5"^^xsd:int
     } .
@@ -83,7 +83,7 @@ PREFIX resource: <https://api-tuner.described.at/resource#>
     ( <http://localhost:8081/customresources/showcase/showcase?catalogId=showcases-ods> ?hubRes ) resource:getIn [] .
 
     ?hubRes tuner:body ?showcase .
-    ?showcase^tuner:info .
+    # ?showcase^tuner:info .
     ?showcase log:includes {
       <https://opendata.swiss/set/resource/showcase/showcase> schema:ratingValue "3.8"^^xsd:decimal
     } .

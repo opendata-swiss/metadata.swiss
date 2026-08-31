@@ -83,7 +83,7 @@ public class SideEffectUtils {
             try (var conn = repo.getConnection()) {
                 var tupleQuery = conn.prepareTupleQuery("SELECT * WHERE { GRAPH ?g { ?s ?p ?o } } LIMIT 20");
                 try (var result = tupleQuery.evaluate()) {
-                    LOG.info("--- GRAPHDB DUMP (Limit 20) ---");
+                    LOG.info("--- TRIPLESTORE DUMP (Limit 20) ---");
                     while (result.hasNext()) {
                         LOG.info("Triple: {}", result.next());
                     }

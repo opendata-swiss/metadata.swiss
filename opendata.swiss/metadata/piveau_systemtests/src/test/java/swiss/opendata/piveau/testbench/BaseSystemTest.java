@@ -57,7 +57,7 @@ public abstract class BaseSystemTest {
                 // Example of exposing services (ports are usually auto-mapped but we can follow compose)
                 .withExposedService("piveau-hub-repo", 8080).withExposedService("piveau-hub-repo", 5000) // Vert.x shell telnet
                 .withExposedService("piveau-hub-search", 8080).withExposedService("piveau-hub-search", 5000) // Vert.x shell telnet
-                .withExposedService("graphdb", 7200) // Expose GraphDB for verification
+                .withExposedService("qlever", 7001)
                 // Disable OTEL to avoid dependency on collector in minimal test setups
                 .withEnv("OTEL_SDK_DISABLED", "true").withLogConsumer("piveau-hub-repo", new Slf4jLogConsumer(LOG).withPrefix("HUB-REPO")).withLogConsumer("piveau-hub-repo", HUB_REPO_LOGS).withLogConsumer("piveau-hub-search", new Slf4jLogConsumer(LOG).withPrefix("HUB-SEARCH")).withLogConsumer("piveau-hub-search", HUB_SEARCH_LOGS)
                 // Wait strategies - essential for stability
@@ -89,11 +89,11 @@ public abstract class BaseSystemTest {
     }
 
     public static String getSparqlEndpoint() {
-        // GraphDB is exposed on 7200. We need to find the mapped port.
-        // Container name in compose is "graphdb", but we removed the fixed name.
+        // qlever is exposed on 7001. We need to find the mapped port.
+        // Container name in compose is "qlever", but we removed the fixed name.
         // DockerComposeContainer uses the service name.
-        String host = PIVEAU_ENV.getServiceHost("graphdb", 7200);
-        Integer port = PIVEAU_ENV.getServicePort("graphdb", 7200);
+        String host = PIVEAU_ENV.getServiceHost("qlever", 7001);
+        Integer port = PIVEAU_ENV.getServicePort("qlever", 7001);
         return "http://" + host + ":" + port + "/repositories/piveau";
     }
 
@@ -131,7 +131,7 @@ public abstract class BaseSystemTest {
             if (volumesDir.exists()) {
                 LOG.info("Deleting persistent data volumes via Docker at: {}", volumesDir.getAbsolutePath());
                 ProcessBuilder pbCleanup = new ProcessBuilder(
-                        "docker", "run", "--rm", "-v", volumesDir.getAbsolutePath() + ":/clean_target", "alpine", "sh", "-c", "rm -rf /clean_target/* && mkdir -p /clean_target/elasticsearch-data && mkdir -p /clean_target/graphdb-data && chmod -R 777 /clean_target"
+                        "docker", "run", "--rm", "-v", volumesDir.getAbsolutePath() + ":/clean_target", "alpine", "sh", "-c", "rm -rf /clean_target/* && mkdir -p /clean_target/elasticsearch-data && mkdir -p /clean_target/qlever-data && chmod -R 777 /clean_target"
                 );
                 pbCleanup.inheritIO();
                 Process pCleanup = pbCleanup.start();
