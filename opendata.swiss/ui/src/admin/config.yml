@@ -117,7 +117,7 @@ collections:
         widget: string
         i18n: true
         required: false
-      - label: Sub-heading
+      - label: Subheading
         name: subHeading
         widget: markdown
         i18n: true
