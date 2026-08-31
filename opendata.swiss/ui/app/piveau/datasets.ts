@@ -6,7 +6,7 @@ import { getOdsCatalogInfo } from './get-ods-catalog-info'
 import { getOdsAccrualPeriodicity } from './get-ods-accrual-periodicity'
 import { getOdsLicenses } from './get-ods-licenses'
 
-export const facets = ['catalog', 'categories', 'publisher', 'format', 'license', 'keywords']
+export const facets = ['catalog', 'categories', 'organization', 'format', 'license', 'keywords']
 
 /**
  * Returns a piveau hub-search query definition for DCAT-AP datasets

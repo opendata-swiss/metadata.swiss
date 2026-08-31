@@ -78,23 +78,11 @@
       </div>
       <div class="col-content">
         <div class="publisher-wrapper">
-          <a
-            v-if="props.distribution.dataset.publisher?.resource"
-            :href="props.distribution.dataset.publisher.resource"
-            target="_blank"
-            class="publisher-link"
-          >
-            {{ props.distribution.dataset.publisher.name }}
-            <SvgIcon
-              icon="External"
-              class="external-icon"
-            />
-          </a>
           <span
-            v-else-if="props.distribution.dataset.publisher?.name"
+            v-if="props.distribution.dataset.catalog.publisher"
             class="publisher-text"
           >
-            {{ props.distribution.dataset.publisher.name }}
+            {{ props.distribution.dataset.catalog.publisher.name }}
           </span>
           <span
             v-else

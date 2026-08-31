@@ -10,6 +10,7 @@
       "navigation": {
         "home": "Accueil",
         "datasets": "Jeux de données",
+        "organizations": "Organisations",
         "blog": "Blog",
         "about": "À propos de nous",
         "contact": "Contact",
@@ -51,6 +52,20 @@
         "title_asc": "par titre (a-z)",
         "title_desc": "par titre (z-a)"
       }
+    },
+    "organizations": {
+      "search_placeholder": "Rechercher des organisations",
+      "show_datasets": "Voir les jeux de données",
+      "datasets_count": "{count} jeux de données",
+      "parent": "Organisation parente",
+      "homepage": "Page d'accueil",
+      "classification": "Classification",
+      "description": "Description",
+      "identifier": "Identifiant",
+      "hierarchy_level": "Niveau hiérarchique",
+      "empty": "Aucune organisation ne correspond à cette recherche.",
+      "load_error": "Les organisations ne peuvent pas être chargées pour le moment.",
+      "sub_organizations": "Sous-unités"
     },
     "dataset_detail": {
       "dataset": "Jeu de données",
@@ -195,16 +210,13 @@
               "hint": "A quelle question répond votre showcase ? Quel besoin ou problème adresse-t-il ?",
               "help": "Pour vous aider, vous pouvez formuler votre réponse ainsi : « Grâce à ce showcase, l’utilisateur peut…»"
             },
-            "why": {
-
-            },
+            "why": {},
             "users": {
               "label": "Qui sont les utilisateurs finaux (end-users) ?",
               "hint": "{usefulness} (Exemple : simplification d’un service, résolution d’un problème.)",
               "usefulness": "En quoi ce showcase leur est utile ?",
               "benefits": "{whichFields} Pouvez-vous donner des exemples concrets d’application ? Votre showcase est-il déjà utilisé dans ces domaines ?",
               "whichFields": "Quels domaines bénéficient de la réutilisation de ces données ?"
-
             },
             "challengesBefore": {
               "label": "Quels défis rencontraient les utilisateurs finaux (end-users) AVANT d'utiliser votre showcase ?",
