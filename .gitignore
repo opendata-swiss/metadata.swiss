@@ -13,3 +13,5 @@ opendata.swiss/archimate/odsn.archimate.bak
 __pycache__/
 
 opendata.swiss/metatadata/meta_harvester/meta_harvester/__pycache__/
+
+node_modules/

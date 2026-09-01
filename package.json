@@ -1,0 +1,11 @@
+{
+  "name": "opendata.swiss",
+  "private": "true",
+  "workspaces": [
+    "opendata.swiss/ui",
+    "opendata.swiss/piveau_modules/*"
+  ],
+  "dependencies": {
+    "@changesets/cli": "^3.0.1"
+  }
+}
