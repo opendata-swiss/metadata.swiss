@@ -3,6 +3,7 @@
   "private": "true",
   "workspaces": [
     "opendata.swiss/ui",
+    "opendata.swiss/metadata",
     "opendata.swiss/piveau_modules/*"
   ],
   "dependencies": {
