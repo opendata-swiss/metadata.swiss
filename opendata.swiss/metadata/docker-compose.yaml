@@ -81,7 +81,9 @@ services:
       - VITE_ROUTING_ROUTER_OPTIONS_BASE=/
 
   piveau-ui:
-    build: ../ui
+    build:
+      context: ../..
+      dockerfile: opendata.swiss/ui/Dockerfile
     restart: unless-stopped
     ports:
       - 8008:80
