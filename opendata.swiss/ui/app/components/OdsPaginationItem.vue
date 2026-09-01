@@ -6,8 +6,15 @@
     :aria-label="label"
     :disabled="disabled ? 'disabled' : undefined"
   >
-    <SvgIcon v-if="icon" :icon="icon" class="btn__icon" />
-    <span v-if="label" class="btn__text">
+    <SvgIcon
+      v-if="icon"
+      :icon="icon"
+      class="btn__icon"
+    />
+    <span
+      v-if="label"
+      class="btn__text"
+    >
       {{ label }}
     </span>
   </NuxtLinkLocale>
@@ -30,7 +37,7 @@ const props = defineProps({
     default: () => '',
   },
   link: {
-    type: [Object, String] as PropType<RouteLocationNamedI18n<string | number | symbol>>,
+    type: [Object, String] as PropType<RouteLocationNamedI18n<string | symbol>>,
     required: true,
   },
   label: {

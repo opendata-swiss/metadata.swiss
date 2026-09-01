@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type RouteLocationRaw, useRouter } from 'vue-router'
+import { type RouteLocationNamedI18n, useRouter } from 'vue-router'
 import MiniSearch, { type SearchResult } from 'minisearch'
 import OdsBreadcrumbs from '../../app/components/OdsBreadcrumbs.vue'
 import OdsPage from '../../app/components/OdsPage.vue'
@@ -38,7 +38,7 @@ const { data } = defineProps<{
   searchPrompt: string
   data: SearchData[]
   breadcrumbs: BreadcrumbItem[]
-  searchResultToLink: (result: SearchResult) => RouteLocationRaw
+  searchResultToLink: (result: SearchResult) => RouteLocationNamedI18n
   searchResultToImage?: (result: SearchResult) => string
 }>()
 

@@ -1,6 +1,12 @@
 <template>
-  <div class="pagination" :class="!field ? 'pagination--extended' : ''">
-    <div v-if="field" class="pagination__text">
+  <div
+    class="pagination"
+    :class="!field ? 'pagination--extended' : ''"
+  >
+    <div
+      v-if="field"
+      class="pagination__text"
+    >
       {{ pageLabel }}
     </div>
     <input
@@ -14,11 +20,17 @@
       type="text"
       @keyup.enter="checkBoundariesAndEmit($event)"
     >
-    <div v-if="field" class="pagination__text">
+    <div
+      v-if="field"
+      class="pagination__text"
+    >
       {{ totalPagesLabel }}
     </div>
     <ul class="pagination_items">
-      <li v-for="(item, index) in paginationItems" :key="`item-${index}`">
+      <li
+        v-for="(item, index) in paginationItems"
+        :key="`item-${index}`"
+      >
         <PaginationItem
           :icon="item.icon"
           :label="item.label"
@@ -73,7 +85,7 @@ const props = defineProps({
     default: () => '',
   },
   paginationItems: {
-    type: Array<{ icon?: string, label?: string, link: RouteLocationNamedI18n<string | number | symbol> }>,
+    type: Array<{ icon?: string, label?: string, link: RouteLocationNamedI18n<string | symbol> }>,
     default: () => [],
   },
 })

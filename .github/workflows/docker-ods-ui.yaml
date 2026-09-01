@@ -52,7 +52,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v7
         with:
-          context: ./opendata.swiss/ui
+          context: .
           file: ./opendata.swiss/ui/Dockerfile
           push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
