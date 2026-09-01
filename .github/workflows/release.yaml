@@ -26,6 +26,8 @@ jobs:
         with:
           node-version: lts/*
           package-manager-cache: false
+          
+      - runs: npm ci
 
       - name: Version packages
         uses: changesets/action@v2
