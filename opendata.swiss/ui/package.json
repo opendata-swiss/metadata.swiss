@@ -1,6 +1,7 @@
 {
   "name": "piveau-opendata-swiss",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "prepare": "if [ -d node_modules/husky ]; then cd ../.. && husky; fi",
