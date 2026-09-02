@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "piveau-consus-patching@*"
     paths:
       - "opendata.swiss/piveau_modules/piveau-consus-patching/**" # Only trigger if files in the module directory change
       - ".github/workflows/docker-ods-consus-patching.yaml" # Trigger also if this workflow file is changed
@@ -46,8 +48,9 @@ jobs:
           tags: |
             type=ref,event=branch
             type=sha
-            type=raw,value={{branch}}-${{ github.run_id }}
+            type=raw,value={{branch}}-${{ github.run_id }},enable=${{ github.ref_type == 'branch' }}
             type=raw,value=latest,enable={{is_default_branch}}
+            type=match,pattern=piveau-consus-patching@(.*),group=1,prefix=v
 
       - name: Build and push Docker images
         id: docker_build
