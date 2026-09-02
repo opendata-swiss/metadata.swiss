@@ -1,5 +1,11 @@
 # piveau-opendata-swiss
 
+## 0.1.1
+
+### Patch Changes
+
+- [#364](https://github.com/opendata-swiss/metadata.swiss/pull/364) [`f81fbf3`](https://github.com/opendata-swiss/metadata.swiss/commit/f81fbf3a9f4e2df68e18651551e34aebcf472f01) Thanks [@tpluscode](https://github.com/tpluscode)! - Maintanace release - fixing docker publishing process
+
 ## 0.1.0
 
 ### Minor Changes
