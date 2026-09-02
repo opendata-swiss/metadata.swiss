@@ -51,6 +51,31 @@
               "path": "type"
             }
         ],
+        "materializations": [
+          {
+            "targetField": "user_engagement",
+            "sourceResourceType": "user-engagement",
+            "sourceReferenceField": "showcase_id",
+            "projection": [
+              "id",
+              "average_rating",
+              "favorite_users"
+            ]
+          }
+        ],
+        "searchParams": []
+      }
+    },
+    {
+      "id": "user-engagement",
+      "description": "User engagement metadata for a parent resource",
+      "path": "user-engagement.hub.shapes.ttl",
+      "name": "user-engagement",
+      "inCatalogue": false,
+      "typeUri": "https://example.org/UserEngagement",
+      "shapeUri": "https://example.org/UserEngagement_Shape",
+      "searchSettings": {
+        "facets": [],
         "searchParams": []
       }
     }
