@@ -68,16 +68,17 @@ jobs:
         working-directory: opendata.swiss/metadata
         run: |
           sudo sysctl -w vm.max_map_count=262144
-          mkdir -p volumes/{graphdb,elasticsearch}-data
+          mkdir -p volumes/{qlever,elasticsearch}-data
           sudo chown -R 1000:1000 ./volumes/elasticsearch-data
           sudo chmod -R 755 ./volumes/elasticsearch-data
+          sudo chown -R 65534:0 volumes/qlever-data
 
       - name: Start elasticsearch
         run: docker compose up -d elasticsearch
         working-directory: opendata.swiss/metadata
 
       - name: Start other services
-        run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo graphdb graphdb-create-repo piveau-metrics-validating-shacl piveau-hub-search
+        run: docker compose up -d listmonk-app listmonk-init mailpit piveau-hub-repo qlever mitmproxy piveau-metrics-validating-shacl piveau-hub-search
         working-directory: opendata.swiss/metadata
         env:
           PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA: ${{ secrets.PIVEAU_HUB_AUTHORIZATION_PROCESS_DATA }}
