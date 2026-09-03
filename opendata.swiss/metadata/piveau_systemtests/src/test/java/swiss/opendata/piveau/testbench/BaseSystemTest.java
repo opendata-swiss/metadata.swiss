@@ -1,5 +1,9 @@
 package swiss.opendata.piveau.testbench;
 
+import io.restassured.RestAssured;
+import io.restassured.config.DecoderConfig;
+import io.restassured.config.EncoderConfig;
+import io.restassured.config.RestAssuredConfig;
 import org.junit.jupiter.api.BeforeAll;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +42,13 @@ public abstract class BaseSystemTest {
 
     @BeforeAll
     public static void setupEnvironment() {
+        RestAssured.config = RestAssuredConfig.config()
+            .encoderConfig(EncoderConfig.encoderConfig()
+                .defaultContentCharset("UTF-8"))
+            .decoderConfig(DecoderConfig.decoderConfig()
+                .defaultCharsetForContentType("UTF-8", "application/json")
+                .defaultCharsetForContentType("UTF-8", "text/turtle"));
+
         if (PIVEAU_ENV == null) {
             startEnvironment();
         }
