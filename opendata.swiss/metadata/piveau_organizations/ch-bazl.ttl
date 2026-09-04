@@ -5,15 +5,22 @@
 
 <https://opendata.swiss/id/organization/ch-bazl> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Die Schweiz nimmt in der Zivilluftfahrt international eine führende Rolle ein, dies in der Forschung und Entwicklung von innovativen Technologien. Für die Wettbewerbsfähigkeit des Wirtschaftsstandorts und die internationale Anbindung der Schweiz ist die Luftfahrt unverzichtbar."@de,
+        "Switzerland plays a leading role in international civil aviation, particularly in the research and development of cutting-edge technologies. Aviation is essential for the competitiveness of the Swiss economy and for Switzerland’s international connectivity."@en,
+        "La Suisse joue les premiers rôles dans l'aviation civile internationale, notamment dans la recherche et le développement de technologies de pointe. L'aviation est essentielle pour la compétitivité de la place économique suisse et la desserte internationale de la Suisse."@fr,
+        "La Svizzera ricopre un ruolo di primo piano a livello internazionale nella ricerca e nello sviluppo di tecnologie innovative per l’aviazione civile. L’aviazione è indispensabile per la competitività della piazza economica svizzera e per il collegamento del Paese con il resto del mondo."@it ;
     dcterms:identifier "CH_BAZL" ;
     skos:prefLabel "BAZL"@de,
         "FOCA"@en,
         "OFAC"@fr,
         "UFAC"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-uvek> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
+    foaf:homepage <https://bazl.admin.ch> ;
     foaf:name "Bundesamt für Zivilluftfahrt (BAZL)"@de,
         "Federal Office of Civil Aviation (FOCA)"@en,
         "Office fédéral de l'aviation civile (OFAC)"@fr,
         "Ufficio federale dell'aviazione civile (UFAC)"@it .
+
+<https://bazl.admin.ch> a foaf:Document .
 

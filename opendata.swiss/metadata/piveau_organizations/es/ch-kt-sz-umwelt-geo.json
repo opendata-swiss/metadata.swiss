@@ -1,0 +1,44 @@
+{
+  "id": "ch-kt-sz-umwelt-geo",
+  "identifier": "CH_KT_SZ_UMWELT_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sz-umwelt-geo",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das Amt für Geoinformation verwaltet und veröffentlicht die Geodaten des Kantons Schwyz als OGC-Geodienste und als Datei-Download. Alle aktuell verfügbaren Geodaten, welche dem OGD unterliegen, sind hier aufgeführt."
+  },
+  "name": {
+    "de": "Amt für Geoinformation (SZ)"
+  },
+  "pref_label": {
+    "de": "Amt für Geoinformation (SZ)"
+  },
+  "homepage": "https://www.sz.ch/behoerden/verwaltung/umweltdepartement/amt-fuer-geoinformation.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-sz",
+  "ancestors": [
+    {
+      "id": "ch-kt-sz",
+      "name": {
+        "de": "Kanton Schwyz",
+        "it": "SZ"
+      },
+      "pref_label": {
+        "de": "SZ",
+        "en": "SZ",
+        "fr": "SZ",
+        "it": "SZ"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sz",
+      "hierarchy_level": 0
+    }
+  ]
+}

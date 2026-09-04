@@ -1,0 +1,47 @@
+{
+  "id": "ch-kt-ag-fin",
+  "identifier": "CH_KT_AG_FIN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ag-fin",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das Departement Finanzen und Ressourcen beschafft und betreut wichtige Ressourcen, damit der Kanton seine Aufgaben effizient erfÃ¼llen kann.",
+    "en": "Das Departement Finanzen und Ressourcen beschafft und betreut wichtige Ressourcen, damit der Kanton seine Aufgaben effizient erfÃ¼llen kann."
+  },
+  "name": {
+    "de": "Departement Finanzen und Ressourcen (AG)"
+  },
+  "pref_label": {
+    "de": "Finanzdepartement (AG)"
+  },
+  "homepage": "https://www.ag.ch/de/ueber-uns/kantonale-verwaltung/dfr",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-ag",
+  "ancestors": [
+    {
+      "id": "ch-kt-ag",
+      "name": {
+        "de": "Kanton Aargau AG",
+        "en": "Canton Aargau AG",
+        "fr": "Canton d'Argovie AG",
+        "it": "Canton Argovia AG"
+      },
+      "pref_label": {
+        "de": "AG",
+        "en": "AG",
+        "fr": "AG",
+        "it": "AG"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-ag",
+      "hierarchy_level": 0
+    }
+  ]
+}

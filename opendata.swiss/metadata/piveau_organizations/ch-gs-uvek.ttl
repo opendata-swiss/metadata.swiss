@@ -15,6 +15,7 @@
         "SG-DETEC"@fr,
         "SG-DATEC"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
     foaf:homepage <https://www.uvek.admin.ch> ;
     foaf:name "Generalsekretariat des UVEK (GS-UVEK)"@de,
         "General Secretariat DETEC (GS-DETEC)"@en,

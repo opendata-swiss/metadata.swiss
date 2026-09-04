@@ -1,0 +1,25 @@
+{
+  "id": "ch-kt-be-bkd",
+  "identifier": "CH_KT_BE_BKD",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-bkd",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Bildungs- und Kulturdirektion (BE)",
+    "fr": "Direction de l'Instruction publique et de la culture (BE)"
+  },
+  "pref_label": {
+    "de": "BKD (BE)",
+    "fr": "INC (BE)"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

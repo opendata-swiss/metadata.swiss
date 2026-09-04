@@ -11,6 +11,7 @@
         "SG-DFI"@fr,
         "SG-DFI"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:name "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)"@de,
         "General Secretariat of the Federal Department of Home Affairs (GS-EDI)"@en,
         "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)"@fr,

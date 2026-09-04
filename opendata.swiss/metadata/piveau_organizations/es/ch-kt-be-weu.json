@@ -1,0 +1,25 @@
+{
+  "id": "ch-kt-be-weu",
+  "identifier": "CH_KT_BE_WEU",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-be-weu",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Wirtschafts-, Energie- & Umweltdirektion (BE)",
+    "fr": "Direction de l'économie, de l'énergie et et de l'environnement (BE)"
+  },
+  "pref_label": {
+    "de": "WEU (BE)",
+    "fr": "DEEE (BE)"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

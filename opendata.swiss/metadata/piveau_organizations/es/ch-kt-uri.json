@@ -1,0 +1,24 @@
+{
+  "id": "ch-kt-uri",
+  "identifier": "CH_KT_URI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-uri",
+  "description": {
+    "de": "Der Kanton Uri wird hier nach und nach Datensätze der kantonalen Verwaltung veröffentlichen, welche die Anforderungen zur Publikation als Open Government Data erfüllen.",
+    "en": "The canton of Uri will gradually publish datasets of the cantonal administration here that meet the requirements for publication as open government data.",
+    "fr": "Le canton d'Uri publiera progressivement sur cette plateforme les ensembles de données de l'administration cantonale qui répondent aux exigences de publication en tant que Open Government Data.",
+    "it": "Il Cantone de Uri pubblicherà gradualmente su questa piattaforma i dataset dell'amministrazione cantonale che soddisfano i requisiti per la pubblicazione come Open Government Data."
+  },
+  "name": {
+    "de": "Kanton Uri",
+    "fr": "Canton d'Uri",
+    "it": "Cantone di Uri"
+  },
+  "pref_label": {
+    "de": "Kanton Uri",
+    "fr": "Canton d'Uri",
+    "it": "Cantone di Uri"
+  },
+  "homepage": "https://www.ur.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

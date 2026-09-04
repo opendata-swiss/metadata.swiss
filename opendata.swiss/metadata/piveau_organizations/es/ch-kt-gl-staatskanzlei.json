@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-gl-staatskanzlei",
+  "identifier": "CH_KT_GL_STAATSKANZLEI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-gl-staatskanzlei",
+  "description": {
+    "de": "Die Staatskanzlei steht dem Landrat und dem Regierungsrat des Kantons Glarus, deren Geschäftsverkehr sie organisiert und koordiniert, als Stabsstelle zur Verfügung. Sie unterstützt Landammann und Regierungsrat, Landratspräsident, Landrat und landrätliche Kommissionen bei der Führung, Planung, Koordination, Information und Dokumentation."
+  },
+  "name": {
+    "de": "Staatskanzlei Glarus"
+  },
+  "pref_label": {
+    "de": "Staatskanzlei Glarus"
+  },
+  "homepage": "https://www.gl.ch/verwaltung/staatskanzlei.html/1358",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-glarus",
+  "ancestors": [
+    {
+      "id": "ch-kt-glarus",
+      "name": {
+        "de": "Kanton Glarus GL",
+        "en": "Canton Glarus GL",
+        "fr": "Canton de Glaris GL",
+        "it": "Canton Glarona GL"
+      },
+      "pref_label": {
+        "de": "GL",
+        "en": "GL",
+        "fr": "GL",
+        "it": "GL"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-glarus",
+      "hierarchy_level": 0
+    }
+  ]
+}

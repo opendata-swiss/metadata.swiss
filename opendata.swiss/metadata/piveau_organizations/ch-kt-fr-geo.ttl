@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-fr-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die öffentlichen Geodaten des Kantons Freiburg werden durch das GIS-Kompetenzzentrum des Amtes für Geoinformation GeoA verwaltet und über das kantonale Geoportal als Webservices und zum Download bereitgestellt. "@de,
+        "The public geodata of the Canton of Fribourg are managed by the GIS Competence Center of the Geoinformation Office GeoA and made available as web services and for download via the cantonal geoportal. "@en,
+        "Les géodonnées publiques du Canton Fribourg sont gérées par le Centre de compétence SIT du Service de la géoinformation SGéo et mises à disposition sous forme de services web et de téléchargement via le géoportail cantonal. "@fr,
+        "I geodati pubblici del Cantone di Friburgo sono gestiti dal Centro di Competenza GIS dell'Ufficio di Geoinformazione GeoA e resi disponibili come servizi web e per il download attraverso il geoportale cantonale. "@it ;
+    dcterms:identifier "CH_KT_FR_GEO" ;
+    skos:prefLabel "Geoinformation Kanton Freiburg"@de,
+        "Geoinformation Canton Fribourg"@en,
+        "Geoinformation Canton Fribourg"@fr,
+        "Geoinformazione Canton Friburgo"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-fr> ;
+    foaf:homepage <https://www.fr.ch/de/find/geoa> ;
+    foaf:name "Geoinformation Kanton Freiburg"@de,
+        "Geoinformation Canton Fribourg"@en,
+        "Geoinformation Canton Fribourg"@fr,
+        "Geoinformazione Canton Friburgo"@it .
+
+<https://www.fr.ch/de/find/geoa> a foaf:Document .
+

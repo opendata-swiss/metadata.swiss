@@ -32,23 +32,23 @@
   },
   "homepage": "https://www.esbk.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-ejpd",
+  "sub_organization_of": "ch-ejpd",
   "ancestors": [
     {
-      "id": "ch-gs-ejpd",
+      "id": "ch-ejpd",
       "name": {
-        "de": "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)",
-        "en": "General Secretariat Federal Department of Justice and Police (GS-FDJP)",
-        "fr": "Secrétariat général Département fédéral de justice et police (SG-DFJP)",
-        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)"
+        "de": "Eidgenössisches Justiz- und Polizeidepartement (EJPD)",
+        "en": "Federals Justiz- und Polizeidepartement (EJPD)",
+        "fr": "Département fédéral de justice et police (DFJP)",
+        "it": "Dipartimento federale di giustizia e polizia (DFGP)"
       },
       "pref_label": {
-        "de": "GS-EJPD",
-        "en": "GS-FDJP",
-        "fr": "SG-DFJP",
-        "it": "SG-DFGP"
+        "de": "EJPD",
+        "en": "EJPD",
+        "fr": "DFJP",
+        "it": "DFGP"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-ejpd",
+      "resource": "https://opendata.swiss/id/organization/ch-ejpd",
       "hierarchy_level": 0
     }
   ]

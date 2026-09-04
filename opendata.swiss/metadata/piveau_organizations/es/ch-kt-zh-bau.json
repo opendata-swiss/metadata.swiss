@@ -1,0 +1,52 @@
+{
+  "id": "ch-kt-zh-bau",
+  "identifier": "CH_KT_ZH_BAU",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-bau",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Wir planen, bauen, bewirtschaften und erhalten – diese vier Grundtätigkeiten sind auf ein gemeinsames Ziel ausgerichtet: einen nachhaltig attraktiven Kanton Zürich zu schaffen!"
+  },
+  "name": {
+    "de": "Baudirektion des Kantons Zürich, Generalsekretariat",
+    "en": "Baudirektion des Kantons Zürich, Generalsekretariat",
+    "fr": "Baudirektion des Kantons Zürich, Generalsekretariat",
+    "it": "Baudirektion des Kantons Zürich, Generalsekretariat"
+  },
+  "pref_label": {
+    "de": "Baudirektion (ZH)",
+    "en": "Baudirektion des Kantons Zürich, Generalsekretariat",
+    "fr": "Baudirektion des Kantons Zürich, Generalsekretariat",
+    "it": "Baudirektion des Kantons Zürich, Generalsekretariat"
+  },
+  "homepage": "https://www.zh.ch/bd",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

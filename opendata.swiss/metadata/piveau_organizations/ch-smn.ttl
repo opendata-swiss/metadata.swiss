@@ -11,6 +11,7 @@
         "MNS"@fr,
         "MNS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.nationalmuseum.ch> ;
     foaf:name "Schweizerisches Nationalmuseum (SNM)"@de,
         "Swiss National Museum (SNM)"@en,

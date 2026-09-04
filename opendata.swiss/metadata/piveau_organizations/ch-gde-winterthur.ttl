@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-winterthur> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Stadt Winterthur als intelligente, vernetzte und sichere Stadt nutzt städtische Daten als Basis für effiziente und nutzerfreundliche Lösungen und stellt sie der Allgemeinheit unter Gewährleistung des Datenschutzes als 'Open Data' zur freien Wiederverwendung zur Verfügung. Die Publikation der OGD-Datensätze ist in Erarbeitung, das Angebot wird laufend ausgebaut."@de ;
+    dcterms:identifier "CH_GDE_WINTERTHUR" ;
+    skos:prefLabel "Stadt Winterthur"@de ;
+    foaf:homepage <https://winterthur.ch> ;
+    foaf:name "Stadt Winterthur"@de .
+
+<https://winterthur.ch> a foaf:Document .
+

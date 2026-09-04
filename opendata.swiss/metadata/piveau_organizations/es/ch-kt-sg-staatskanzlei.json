@@ -1,0 +1,46 @@
+{
+  "id": "ch-kt-sg-staatskanzlei",
+  "identifier": "CH_KT_SG_STAATSKANZLEI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sg-staatskanzlei",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die Staatskanzlei ist als Stabsstelle von Kantonsrat und Regierung die zentrale Schaltstelle in der kantonalen Staatsverwaltung. Die Staatskanzlei nimmt vielfältige Unterstützungs- und Koordinationsaufgaben wahr und verbindet die verschiedenen Akteure miteinander. Ob beratend, koordinierend oder federführend in gewissen Sachbereichen, die Staatskanzlei muss in ihrer Rolle immer durch Qualität, Verlässlichkeit und dienstleistungsorientierte Zusammenarbeit überzeugen. Dies bringt die Vision der Staatskanzlei auf den Punkt:  \n\n«Wir verbinden und überzeugen. Ihre Staatskanzlei.»\n\n"
+  },
+  "name": {
+    "de": "Staatskanzlei (SG)"
+  },
+  "pref_label": {
+    "de": "Staatskanzlei (SG)"
+  },
+  "homepage": "https://www.sg.ch/politik-verwaltung/departemente-und-staatskanzlei/staatskanzlei.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-sg",
+  "ancestors": [
+    {
+      "id": "ch-kt-sg",
+      "name": {
+        "de": "Kanton St. Gallen (SG)",
+        "en": "Kanton St. Gallen (SG)",
+        "fr": "Canton de Saint-Gall (SG)",
+        "it": "Cantone di San Gallo (SG)"
+      },
+      "pref_label": {
+        "de": "CH_KT_SG (ZH)",
+        "en": "CH_KT_SG (ZH)",
+        "fr": "CH_KT_SG (ZH)",
+        "it": "CH_KT_SG (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sg",
+      "hierarchy_level": 0
+    }
+  ]
+}

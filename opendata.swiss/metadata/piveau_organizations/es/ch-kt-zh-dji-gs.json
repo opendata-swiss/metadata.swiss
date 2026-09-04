@@ -1,0 +1,53 @@
+{
+  "id": "ch-kt-zh-dji-gs",
+  "identifier": "CH_KT_ZH_DJI_GS",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji-gs",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Generalsekretariat der Direktion der Justiz und des Innern (ZH)"
+  },
+  "pref_label": {
+    "de": "Generalsekretariat der Direktion der Justiz und des Innern (ZH)"
+  },
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-dji",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-dji",
+      "name": {
+        "de": "Direktion der Justiz und des Innern (ZH)"
+      },
+      "pref_label": {
+        "de": "DJI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

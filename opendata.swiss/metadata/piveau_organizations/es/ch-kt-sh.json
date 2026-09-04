@@ -1,0 +1,33 @@
+{
+  "id": "ch-kt-sh",
+  "identifier": "CH_KT_SH",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sh",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Kanton Schaffhausen"
+  },
+  "name": {
+    "de": "Kanton Schaffhausen",
+    "en": "Kanton Schaffhausen",
+    "fr": "Kanton Schaffhausen",
+    "it": "Cantone die Sciaffusa"
+  },
+  "pref_label": {
+    "de": "SH",
+    "en": "SH",
+    "fr": "SH",
+    "it": "SH"
+  },
+  "homepage": "https://sh.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

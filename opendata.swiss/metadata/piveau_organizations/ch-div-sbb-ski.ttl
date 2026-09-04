@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-div-sbb-ski> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz"@de,
+        "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland"@en,
+        "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse."@fr,
+        "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."@it ;
+    dcterms:identifier "CH_DIV_SBB_SKI" ;
+    skos:prefLabel "Geschäftsstelle Systemaufgaben Kundeninformation (SBB)"@de,
+        "Business office of Customer Information System Tasks (SFR)"@en,
+        "Secrétariat des tâches du système d’information à la clientèle (CFF)"@fr,
+        "Servizio commerciale Attività di sistema Informazione alla clientela (FFS)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0117> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-sbb> ;
+    foaf:homepage <https://www.oev-info.ch/de/datenmanagement/ski/mobilitaetsdaten-und-dienste-von-ski> ;
+    foaf:name "Geschäftsstelle Systemaufgaben Kundeninformation (SBB)"@de,
+        "Business office of Customer Information System Tasks (SFR)"@en,
+        "Secrétariat des tâches du système d’information à la clientèle (CFF)"@fr,
+        "Servizio commerciale Attività di sistema Informazione alla clientela (FFS)"@it .
+
+<https://www.oev-info.ch/de/datenmanagement/ski/mobilitaetsdaten-und-dienste-von-ski> a foaf:Document .
+

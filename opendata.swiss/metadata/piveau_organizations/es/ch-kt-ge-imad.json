@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-ge-imad",
+  "identifier": "CH_KT_GE_IMAD",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ge-imad",
+  "description": {
+    "fr": "L’institution genevoise de maintien à domicile – imad assure des prestations de soins, d’aide, d’accompagnement et de répit favorisant le maintien à domicile des personnes, tout en préservant leur autonomie."
+  },
+  "name": {
+    "de": "Institution genevoise de maintien à domicile IMAD",
+    "fr": "Institution genevoise de maintien à domicile IMAD"
+  },
+  "pref_label": {
+    "de": "Institution genevoise de maintien à domicile IMAD",
+    "fr": "Institution genevoise de maintien à domicile IMAD"
+  },
+  "homepage": "https://www.imad-ge.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

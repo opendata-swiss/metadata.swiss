@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh-personalamt",
+  "identifier": "CH_KT_ZH_PERSONALAMT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-personalamt",
+  "description": {
+    "de": "Das Personalamt erarbeitet in Zusammenarbeit mit den Direktionen und der Staatskanzlei die kantonale Personalstrategie zu Handen des Regierungsrates und führt die direktionsübergreifenden Projekte zu deren Umsetzung. Es stellt die Lohnverarbeitung und -auszahlung sowie Abrechnung mit den Sozialversicherungen sicher und sorgt für attraktive Weiterbildungs- und Beratungsangebote für Mitarbeitende und Führungskräfte sowie für die Betreuung der Lernenden und Berufsbildenden in den beruflichen Grundbildungen KV, Informatik und Mediamatik."
+  },
+  "name": {
+    "de": "Personalamt Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Personalamt Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/finanzdirektion/personalamt.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

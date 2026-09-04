@@ -15,7 +15,7 @@
         "OFDF"@fr,
         "UDSC"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:homepage <https://www.bazg.admin.ch/> ;
     foaf:name "Bundesamt für Zoll und Grenzsicherheit (BAZG)"@de,
         "Federal Office for Customs and Border Security (FOCBS)"@en,

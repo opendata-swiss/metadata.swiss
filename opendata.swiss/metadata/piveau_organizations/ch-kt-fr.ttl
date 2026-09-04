@@ -1,0 +1,24 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-fr> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Offizielle Informationen, Themen und Leistungen der kantonalen Verwaltung. Organisation des Staates Freiburg."@de,
+        "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg."@en,
+        "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg."@fr,
+        "Informations officielles, thèmes et prestations de l'administration cantonale. Organisation de l'Etat de Fribourg."@it ;
+    dcterms:identifier "CH_KT_FR" ;
+    skos:prefLabel "FR"@de,
+        "FR"@en,
+        "FR"@fr,
+        "FR"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://fr.ch> ;
+    foaf:name "Kanton Freiburg"@de,
+        "Canton de Fribourg"@fr,
+        "Cantoni di Friburgo"@it .
+
+<https://fr.ch> a foaf:Document .
+

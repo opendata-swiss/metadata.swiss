@@ -15,6 +15,7 @@
         "OFCOM"@fr,
         "UFCOM"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
     foaf:homepage <https://www.bakom.admin.ch> ;
     foaf:name "Bundesamt für Kommunikation (BAKOM)"@de,
         "Federal Office of Communications (OFCOM)"@en,

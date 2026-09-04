@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das Bundesamt für Justiz wird oft als das rechtliche Gewissen der Bundesverwaltung bezeichnet. Unsere Themenbereiche sind vielfältig und gesellschaftlich relevant.",
+    "en": "The Federal Office of Justice is often referred to as the legal conscience of the Federal Administration. The issues we deal with are wide-ranging and socially relevant.",
+    "fr": "L'Office fédéral de la justice est souvent décrit comme la conscience juridique de l'administration fédérale. Nous traitons un large éventail de sujets de société. ",
+    "it": "L’Ufficio federale di giustizia è definito la coscienza giuridica dell’Amministrazione federale. Affrontiamo molteplici temi importanti per la società."
+  },
   "name": {
     "de": "Bundesamt für Justiz (BJ)",
     "en": "Federal Office of Justice (FOI)",
@@ -24,24 +30,25 @@
     "fr": "OFJ",
     "it": "UFG"
   },
+  "homepage": "https://bj.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-ejpd",
+  "sub_organization_of": "ch-ejpd",
   "ancestors": [
     {
-      "id": "ch-gs-ejpd",
+      "id": "ch-ejpd",
       "name": {
-        "de": "Generalsekretariat Eidgenössisches Justiz- und Polizeidepartement (GS-EJPD)",
-        "en": "General Secretariat Federal Department of Justice and Police (GS-FDJP)",
-        "fr": "Secrétariat général Département fédéral de justice et police (SG-DFJP)",
-        "it": "Segreteria generale Dipartimento federale di giustizia e polizia (SG-DFGP)"
+        "de": "Eidgenössisches Justiz- und Polizeidepartement (EJPD)",
+        "en": "Federals Justiz- und Polizeidepartement (EJPD)",
+        "fr": "Département fédéral de justice et police (DFJP)",
+        "it": "Dipartimento federale di giustizia e polizia (DFGP)"
       },
       "pref_label": {
-        "de": "GS-EJPD",
-        "en": "GS-FDJP",
-        "fr": "SG-DFJP",
-        "it": "SG-DFGP"
+        "de": "EJPD",
+        "en": "EJPD",
+        "fr": "DFJP",
+        "it": "DFGP"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-ejpd",
+      "resource": "https://opendata.swiss/id/organization/ch-ejpd",
       "hierarchy_level": 0
     }
   ]

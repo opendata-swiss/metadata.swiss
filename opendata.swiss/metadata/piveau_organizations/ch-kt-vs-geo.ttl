@@ -1,0 +1,20 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-vs-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das CC GEO ist das Kompetenzzentrum für das kantonale Geoinformationssystem des Kantons Wallis. Es versorgt Gesellschaft, Wirtschaft und öffentliche Verwaltung mit Geodaten über den Kanton Wallis."@de,
+        "Le CC GEO est le centre de compétence du système d'information géographique du Canton du Valais ayant pour but de coordonner, centraliser et diffuser les géodonnées relatives au territoire cantonal."@fr ;
+    dcterms:identifier "CH_KT_VS_GEO" ;
+    skos:prefLabel "Kanton Wallis - CC GEO"@de,
+        "Canton du Valais - CC GEO"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-wallis> ;
+    foaf:homepage <https://www.vs.ch/web/egeo> ;
+    foaf:name "Kanton Wallis - CC GEO"@de,
+        "Canton du Valais - CC GEO"@fr .
+
+<https://www.vs.ch/web/egeo> a foaf:Document .
+

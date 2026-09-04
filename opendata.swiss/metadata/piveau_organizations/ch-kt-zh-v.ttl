@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-v> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Wir fördern und entwickeln den Kanton Zürich als attraktiven Wirtschafts- und Lebensraum und engagieren sich für einen starken Standort mit guten Rahmenbedingungen."@de,
+        "Wir fördern und entwickeln den Kanton Zürich als attraktiven Wirtschafts- und Lebensraum und engagieren sich für einen starken Standort mit guten Rahmenbedingungen."@en ;
+    dcterms:identifier "CH_KT_ZH_V" ;
+    skos:prefLabel "Volkswirtschaftsdirektion (ZH)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zh.ch/de/volkswirtschaftsdirektion.html> ;
+    foaf:name "Volkswirtschaftsdirektion (ZH)"@de .
+
+<https://www.zh.ch/de/volkswirtschaftsdirektion.html> a foaf:Document .
+

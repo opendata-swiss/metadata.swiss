@@ -1,0 +1,47 @@
+{
+  "id": "ch-kt-zh-v",
+  "identifier": "CH_KT_ZH_V",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-v",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Wir fördern und entwickeln den Kanton Zürich als attraktiven Wirtschafts- und Lebensraum und engagieren sich für einen starken Standort mit guten Rahmenbedingungen.",
+    "en": "Wir fördern und entwickeln den Kanton Zürich als attraktiven Wirtschafts- und Lebensraum und engagieren sich für einen starken Standort mit guten Rahmenbedingungen."
+  },
+  "name": {
+    "de": "Volkswirtschaftsdirektion (ZH)"
+  },
+  "pref_label": {
+    "de": "Volkswirtschaftsdirektion (ZH)"
+  },
+  "homepage": "https://www.zh.ch/de/volkswirtschaftsdirektion.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

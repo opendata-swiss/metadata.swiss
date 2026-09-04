@@ -3,14 +3,14 @@
   "identifier": "CH_ESTV",
   "resource": "https://opendata.swiss/id/organization/ch-estv",
   "classification": {
-    "id": "0220",
+    "id": "0223",
     "label": {
-      "de": "Verwaltungseinheit des Bundes",
-      "en": "Administrative unit of the Confederation",
-      "it": "Unità amministrativa della Confederazione",
-      "fr": "Unité de l'administration fédérale"
+      "de": "Verwaltungseinheit der Gemeinde",
+      "en": "Administrative unit of the commune",
+      "it": "Unità amministrativa del comune",
+      "fr": "Unité de l'administration communale"
     },
-    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0223"
   },
   "name": {
     "de": "Eidgenössische Steuerverwaltung (ESTV)",
@@ -25,23 +25,21 @@
     "it": "FTA"
   },
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-efd",
+  "sub_organization_of": "ch-efd",
   "ancestors": [
     {
-      "id": "ch-gs-efd",
+      "id": "ch-efd",
       "name": {
-        "de": "Generalsekretariat EFD (GS-EFD)",
-        "en": "General Secretariat FDF (GS-FDF)",
-        "fr": "Secrétariat général DFF (SG-DFF)",
-        "it": "Segreteria generale DFF (SG-DFF)"
+        "de": "Eidgenössisches Finanzdepartement (EFD)",
+        "fr": "Département fédéral des finances (DFF)",
+        "it": "Dipartimento federale delle finanze (DFF)"
       },
       "pref_label": {
-        "de": "GS-EFD",
-        "en": "GS-FDF",
-        "fr": "SG-DFF",
-        "it": "SG-DFF"
+        "de": "EFD",
+        "fr": "DFF",
+        "it": "DFF"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-efd",
+      "resource": "https://opendata.swiss/id/organization/ch-efd",
       "hierarchy_level": 0
     }
   ]

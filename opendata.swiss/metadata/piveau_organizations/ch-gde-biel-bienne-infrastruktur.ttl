@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-biel-bienne-infrastruktur> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Biel ist die grösste zweisprachige Stadt der Schweiz und Uhren-Weltmetropole. Sie zählt rund 56 000 Einwohnerinnen und Einwohner. Mit ihrer Weltoffenheit und dank ihrer zentralen Lage zwischen der deutschen und französischen Schweiz entwickelt sie sich stets dynamisch weiter. Am Bielersee und Jurasüdfuss gelegen bietet sie eine hohe Lebensqualität."@de,
+        "Bienne est la plus grande ville bilingue de Suisse et la métropole mondiale de l’horlogerie. Elle compte environ 56 000 habitantes et habitants. Grâce à son ouverture sur le monde et à sa situation centrale entre la Suisse alémanique et la Suisse romande, elle ne cesse de se développer de manière dynamique. Située au bord du lac de Bienne et au pied du Jura, elle jouit d’une qualité de vie remarquable."@fr,
+        "Bienne è la più grande città bilingue della Svizzera e la capitale mondiale dell’orologeria. Conta circa 56 000 abitanti. Grazie al suo cosmopolitismo e alla sua posizione centrale tra la Svizzera tedesca e quella francese, è in costante sviluppo dinamico. Situata sul lago di Bienne e ai piedi delle montagne del Giura, vanta un'elevata qualità di vita."@it ;
+    dcterms:identifier "CH_GDE_BIEL-BIENNE_INFRASTRUKTUR" ;
+    skos:prefLabel "Infrastruktur und Mobilität Stadt Biel"@de,
+        "Infrastructures et mobilité Ville de Bienne"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gde-biel-bienne> ;
+    foaf:homepage <https://www.biel-bienne.ch/de/infrastruktur.html> ;
+    foaf:name "Infrastruktur und Mobilität Stadt Biel"@de,
+        "Infrastructures et mobilité Ville de Bienne"@fr .
+
+<https://www.biel-bienne.ch/de/infrastruktur.html> a foaf:Document .
+

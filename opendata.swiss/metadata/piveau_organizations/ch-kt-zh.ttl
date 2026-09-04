@@ -1,0 +1,33 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh> a org:Organization,
+        foaf:Organization ;
+    dcterms:description """Zürich (Kürzel ZH; zürichdeutsch Züri, französisch Zurich, italienisch Zurigo, rätoromanisch ), volkstümlich auch Zürichbiet oder mundartlich Züripiet genannt, ist ein deutschsprachiger Kanton im Nordosten der Schweiz. Der Hauptort ist die gleichnamige Stadt Zürich. Der Kanton Zürich befindet sich flächenmässig im oberen Mittelfeld aller Kantone.
+
+Quelle: Wikipedia (https://de.wikipedia.org/wiki/Kanton_Z%C3%BCrich)"""@de,
+        """The canton of Zurich is an administrative unit (canton) of Switzerland, situated in the northeastern part of the country. With a population of 1,553,423 (as of 31 December 2020), it is the most populous canton of Switzerland. Zurich is the de facto capital of the canton, but is not specifically mentioned in the constitution.
+
+Source: Wikipedia (https://en.wikipedia.org/wiki/Canton_of_Zurich)"""@en,
+        """Le canton de Zurich (ZH, en allemand : Kanton Zürich) est l'un des 26 cantons de la Suisse. Son chef-lieu est la ville de Zurich et les autres villes principales sont Winterthour, Uster et Dübendorf. Zurich est le canton le plus peuplé de Suisse avec 1 620 020 habitants répartis sur 1 729 km2.
+
+Source: Wikipédia (https://fr.wikipedia.org/wiki/Canton_de_Zurich)"""@fr,
+        """Il Canton Zurigo (in tedesco Kanton Zürich) è un cantone svizzero di 1 539 275 abitanti, con capitale Zurigo. Trovandosi nella parte nord-orientale della Svizzera, la lingua ufficiale è il tedesco, ma la popolazione parla il locale dialetto svizzero-tedesco, chiamato Züritüütsch.
+
+Fonte: Wikipedia (https://it.wikipedia.org/wiki/Canton_Zurigo)"""@it ;
+    dcterms:identifier "CH_KT_ZH" ;
+    skos:prefLabel "ZH"@de,
+        "ZH"@en,
+        "ZH"@fr,
+        "ZH"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.zh.ch> ;
+    foaf:name "Kanton Zürich"@de,
+        "Canton Zurich"@en,
+        "Canton Zurich"@fr,
+        "Cantone Zurigo"@it .
+
+<https://www.zh.ch> a foaf:Document .
+

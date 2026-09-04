@@ -5,13 +5,17 @@
 
 <https://opendata.swiss/id/organization/ch-bsv> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Das BSV sorgt dafür, dass das Netz der sozialen Sicherheit funktioniert und laufend an neue Herausforderungen sowie gesellschaftliche Entwicklungen angepasst wird. Zudem koordiniert es die Arbeiten des Bundes in den Bereichen Armutsprävention und -bekämpfung. Darüber hinaus ist es das bundespolitische Kompetenzzentrum für allgemeine sozialpolitische Fragen sowie für die Themen Familie, Kinder, Jugend, Alter und das Zusammenleben der Generationen."@de,
+        "The Federal Social Insurance Office (FSIO) ensures that the social security network functions properly and is continuously adapted to new challenges and social developments. It also coordinates the federal government's work in the areas of poverty prevention and combating poverty. In addition, it is the federal policy centre of expertise for general social policy issues and for matters relating to families, children, young people, older people and intergenerational coexistence. The FSIO also initiates and coordinates reciprocal social security agreements with other countries."@en,
+        "L'OFAS veille à ce que le système de sécurité sociale fonctionne bien et qu'il s'adapte aux nouveaux défis et changements de la société. Il coordonne par ailleurs au niveau national les activités dans le domaine de la prévention et de la lutte contre la pauvreté. Il est aussi le centre de compétence de la Confédération pour les questions générales de politique sociale, ainsi que pour les thèmes liés à la famille, à l'enfance, à la jeunesse, à la vieillesse et à la cohabitation entre générations."@fr,
+        "L’UFAS provvede al buon funzionamento della rete di sicurezza sociale e al suo costante adeguamento alle nuove sfide e agli sviluppi sociali. Inoltre coordina le attività della Confederazione nei settori della prevenzione e della lotta contro la povertà. È anche il centro di competenza federale per le questioni generali di politica sociale e per i temi concernenti famiglia, infanzia, gioventù, vecchiaia e relazioni intergenerazionali."@it ;
     dcterms:identifier "CH_BSV" ;
     skos:prefLabel "BSV"@de,
         "FSIO"@en,
         "OFAS"@fr,
         "UFAS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-edi> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://www.bsv.admin.ch/> ;
     foaf:name "Bundesamt für Sozialversicherungen (BSV)"@de,
         "Federal Social Insurance Office (FSIO)"@en,

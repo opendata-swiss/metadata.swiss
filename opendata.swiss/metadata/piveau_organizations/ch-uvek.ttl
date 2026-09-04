@@ -1,0 +1,24 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-uvek> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das UVEK kümmert sich um die Stromversorgung, die Verkehrs- und Kommunikationsinfrastruktur, die Raumentwicklung und den Umweltschutz."@de,
+        "Across its seven federal offices, DETEC is responsible for a wide range of tasks, from ensuring a secure electricity supply through maintaining the transport and communications infrastructure, coordinating spatial development and protecting the environment."@en,
+        "Le DETEC s’occupe de différents thèmes : l’électricité, les transports, la communication, l’aménagement du territoire et l’environnement."@fr,
+        "Il DATEC si occupa di approvvigionamento elettrico, infrastrutture dei trasporti e della comunicazione, sviluppo territoriale e protezione dell’ambiente."@it ;
+    dcterms:identifier "CH_UVEK" ;
+    skos:prefLabel "UVEK"@de,
+        "DETEC"@fr,
+        "DATEC"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://uvek.admin.ch> ;
+    foaf:name "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)"@de,
+        "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)"@en,
+        "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)"@fr,
+        "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"@it .
+
+<https://uvek.admin.ch> a foaf:Document .
+

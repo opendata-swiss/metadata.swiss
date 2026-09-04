@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das Bundesamt für Verkehr gestaltet den öffentlichen Personen- und den Güterverkehr in der Schweiz – sicher, effizient, kundenfreundlich und umweltverträglich. Es beaufsichtigt und reguliert Eisenbahn, Tram, Bus, Schifffahrt, Seilbahnen, Strassentransport und unterirdischen Gütertransport. Das BAV entwickelt die Grundlagen für eine moderne Bahninfrastruktur und sorgt für eine nachhaltige Finanzierung des öffentlichen Verkehrs.",
+    "en": "The Federal Office of Transport (FOT) is responsible for public passenger and freight transport in Switzerland, ensuring it is safe, efficient, customer-friendly and sustainable. The FOT oversees and regulates railways, trams, buses, shipping, cableways, road transport and underground freight transport. It lays the foundations for a modern rail infrastructure and ensures long-term financing for public transport.",
+    "fr": "L’Office fédéral des transports (OFT) organise les transports publics de voyageurs et de marchandises en Suisse, de manière sûre, efficiente, conviviale et respectueuse de l’environnement. Il supervise et réglemente les chemins de fer, les trams, les bus, la navigation, les téléphériques, les transports routiers et le transport souterrain de marchandises. Il développe les bases d’une infrastructure ferroviaire moderne et veille à un financement durable des transports publics.",
+    "it": "L’Ufficio federale dei trasporti (UFT) struttura il trasporto pubblico di viaggiatori e il traffico merci in Svizzera in modo che siano sicuri, efficienti, a misura di cliente ed ecologici. Vigila e regola ferrovie, tram, autobus, battelli e impianti a fune così come il trasporto di merci su strada e sotterraneo. L’UFT sviluppa le basi per un’infrastruttura ferroviaria moderna e s’impegna per un finanziamento sostenibile dei trasporti pubblici."
+  },
   "name": {
     "de": "Bundesamt für Verkehr (BAV)",
     "en": "Federal Office of Transport (FOT)",
@@ -26,25 +32,22 @@
   },
   "homepage": "https://www.bav.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-uvek",
+  "sub_organization_of": "ch-uvek",
   "ancestors": [
     {
-      "id": "ch-gs-uvek",
+      "id": "ch-uvek",
       "name": {
-        "de": "Generalsekretariat des UVEK (GS-UVEK)",
-        "en": "General Secretariat DETEC (GS-DETEC)",
-        "fr": "Secrétariat général du DETEC (SG-DETEC)",
-        "it": "Segreteria generale del DATEC (SG-DATEC)",
-        "rm": ""
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
       },
       "pref_label": {
-        "de": "GS-UVEK",
-        "en": "GS-DETEC",
-        "fr": "SG-DETEC",
-        "it": "SG-DATEC",
-        "rm": ""
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
       "hierarchy_level": 0
     }
   ]

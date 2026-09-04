@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sg-stat> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_KT_SG_STAT" ;
+    skos:prefLabel "CH_KT_SG_STAT (ZH)"@de,
+        "CH_KT_SG_STAT (ZH)"@en,
+        "CH_KT_SG_STAT (ZH)"@fr,
+        "CH_KT_SG_STAT (ZH)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-sg> ;
+    foaf:name "Amt für Daten und Statistik (SG)"@de,
+        "Amt für Daten und Statistik (SG)"@en,
+        "Amt für Daten und Statistik (SG)"@fr,
+        "Amt für Daten und Statistik (SG)"@it .
+

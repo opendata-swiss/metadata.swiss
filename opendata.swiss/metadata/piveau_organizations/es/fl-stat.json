@@ -1,0 +1,48 @@
+{
+  "id": "fl-stat",
+  "identifier": "FL_STAT",
+  "resource": "https://opendata.swiss/id/organization/fl-stat",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Amt für Statistik (FL)",
+    "en": "Amt für Statistik (FL)",
+    "fr": "Amt für Statistik (FL)",
+    "it": "Amt für Statistik (FL)"
+  },
+  "pref_label": {
+    "de": "FL_STAT (ZH)",
+    "en": "FL_STAT (ZH)",
+    "fr": "FL_STAT (ZH)",
+    "it": "FL_STAT (ZH)"
+  },
+  "hierarchy_level": 1,
+  "sub_organization_of": "fl",
+  "ancestors": [
+    {
+      "id": "fl",
+      "name": {
+        "de": "Fürstentum Liechtenstein",
+        "en": "Fürstentum Liechtenstein",
+        "fr": "Fürstentum Liechtenstein",
+        "it": "Fürstentum Liechtenstein"
+      },
+      "pref_label": {
+        "de": "FL (ZH)",
+        "en": "FL (ZH)",
+        "fr": "FL (ZH)",
+        "it": "FL (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/fl",
+      "hierarchy_level": 0
+    }
+  ]
+}

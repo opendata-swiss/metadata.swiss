@@ -1,0 +1,19 @@
+{
+  "id": "ch-kt-sg",
+  "identifier": "CH_KT_SG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sg",
+  "name": {
+    "de": "Kanton St. Gallen (SG)",
+    "en": "Kanton St. Gallen (SG)",
+    "fr": "Canton de Saint-Gall (SG)",
+    "it": "Cantone di San Gallo (SG)"
+  },
+  "pref_label": {
+    "de": "CH_KT_SG (ZH)",
+    "en": "CH_KT_SG (ZH)",
+    "fr": "CH_KT_SG (ZH)",
+    "it": "CH_KT_SG (ZH)"
+  },
+  "hierarchy_level": 0,
+  "ancestors": []
+}

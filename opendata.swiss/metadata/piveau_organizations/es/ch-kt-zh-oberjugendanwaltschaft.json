@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh-oberjugendanwaltschaft",
+  "identifier": "CH_KT_ZH_OBERJUGENDANWALTSCHAFT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-oberjugendanwaltschaft",
+  "description": {
+    "de": "Die Jugendstrafrechtspflege des Kantons Zürich besteht aus der Oberjugendanwaltschaft, fünf Jugendanwaltschaften sowie der Stelle für Mediation. Die Jugendanwaltschaften untersuchen und beurteilen sämtliche von Jugendlichen zwischen zehn und achtzehn Jahren begangenen Straftaten und sind für den Vollzug jugendstrafrechtlicher Schutzmassnahmen und Strafen verantwortlich."
+  },
+  "name": {
+    "de": "Oberjugendanwaltschaft Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Oberjugendanwaltschaft Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/direktion-der-justiz-und-des-innern/jugendstrafrechtspflege/oberjugendanwaltschaft.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

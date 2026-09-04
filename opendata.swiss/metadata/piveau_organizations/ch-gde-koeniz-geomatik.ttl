@@ -1,0 +1,22 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-koeniz-geomatik> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Dienstzweig Geomatik ist in Zusammenarbeit mit den Fachabteilungen für die Bewirtschaftung und Publikation der Geodaten sowie in Zusammenarbeit mit dem Informatikdienst für die GIS-Infrastruktur der Gemeinde Köniz zuständig. Hinzu kommen Aufgaben im Bereich Leitungskataster und die Integration der Daten der amtlichen Vermessung ins GIS der Gemeinde. Die Geodaten der Gemeinde Köniz welche den Prinzipien der Open Government Data Strategie entsprechen, werden vom Dienstzweig Geomatik Schritt für Schritt auf opendata.swiss zur Verfügung gestellt."@de ;
+    dcterms:identifier "CH_GDE_KOENIZ_GEOMATIK" ;
+    skos:prefLabel "Geomatik (Köniz)"@de,
+        "Section de la géomatique (Köniz)"@fr,
+        "Ufficio della geomatica (Köniz)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0223> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gde-koeniz> ;
+    foaf:homepage <https://www.koeniz.ch/geoportal> ;
+    foaf:name "Dienstzweig Geomatik Gemeinde Köniz"@de,
+        "Dienstzweig Geomatik Gemeinde Köniz"@en,
+        "Section de la géomatique Commune de Köniz"@fr,
+        "Ufficio della geomatica Comune di Köniz"@it .
+
+<https://www.koeniz.ch/geoportal> a foaf:Document .
+

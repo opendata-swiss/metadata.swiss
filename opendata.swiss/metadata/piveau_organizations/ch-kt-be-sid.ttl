@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-be-sid> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Hier finden Sie alle Informationen zur Sicherheitsdirektion des Kantons Bern."@de,
+        "Vous trouverez ici toutes les informations concernant la Direction de la sécurité du canton de Berne."@fr ;
+    dcterms:identifier "CH_KT_BE_SID" ;
+    skos:prefLabel "SID (BE)"@de,
+        "DSE (BE)"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.sid.be.ch> ;
+    foaf:name "Sicherheitsdirektion (BE)"@de,
+        "Direction de la sécurité (BE)"@fr .
+
+<https://www.sid.be.ch> a foaf:Document .
+

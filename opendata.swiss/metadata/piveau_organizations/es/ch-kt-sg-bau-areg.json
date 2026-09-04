@@ -1,0 +1,49 @@
+{
+  "id": "ch-kt-sg-bau-areg",
+  "identifier": "CH_KT_SG_BAU_AREG",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-sg-bau-areg",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das Amt für Raumentwicklung und Geoinformation des Kantons St.Gallen (AREG) ist verantwortlich für die Raumentwicklungspolitik, die amtliche Vermessung und die Bereitstellung von Geoinformationen. Die Abteilung Geoinformation erbringt als Kompetenzzentrum  digitale Leistungen für die gemeinsame Geodateninfrastruktur des Kantons St.Gallen und der St.Galler Gemeinden und stellt Geodaten für Nutzer ausserhalb der Kantonsverwaltung zur Verfügung.",
+    "fr": "L'Office d'aménagement du territoire et d'information géographique (AREG) du canton de Saint-Gall est responsable de la politique d'aménagement du territoire, de la mensuration officielle et de la mise à disposition d'informations géographiques. En tant que centre de compétence, le département de géoinformation offre des services numériques pour l'infrastructure de géodonnées et propose des géodonnées aux utilisateurs des secteurs public et privé et des particuliers."
+  },
+  "name": {
+    "de": "Amt für Raumentwicklung und Geoinformation (SG)",
+    "fr": "Office d'aménagement du territoire et d'information géographique (SG)"
+  },
+  "pref_label": {
+    "de": "AREG (SG)",
+    "fr": "AREG (SG)"
+  },
+  "homepage": "https://www.sg.ch/bauen/raumentwicklung.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-sg",
+  "ancestors": [
+    {
+      "id": "ch-kt-sg",
+      "name": {
+        "de": "Kanton St. Gallen (SG)",
+        "en": "Kanton St. Gallen (SG)",
+        "fr": "Canton de Saint-Gall (SG)",
+        "it": "Cantone di San Gallo (SG)"
+      },
+      "pref_label": {
+        "de": "CH_KT_SG (ZH)",
+        "en": "CH_KT_SG (ZH)",
+        "fr": "CH_KT_SG (ZH)",
+        "it": "CH_KT_SG (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-sg",
+      "hierarchy_level": 0
+    }
+  ]
+}

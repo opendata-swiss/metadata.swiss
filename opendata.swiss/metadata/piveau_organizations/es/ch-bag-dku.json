@@ -1,0 +1,65 @@
+{
+  "id": "ch-bag-dku",
+  "identifier": "CH_BAG_DKU",
+  "resource": "https://opendata.swiss/id/organization/ch-bag-dku",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "name": {
+    "de": "Direktionsbereich Kranken- und Unfallversicherung",
+    "en": "Direktionsbereich Kranken- und Unfallversicherung",
+    "fr": "Unité de direction Assurance maladie et accidents",
+    "it": "Unità di direzione Assicurazione malattia e infortunio"
+  },
+  "pref_label": {
+    "de": "CH_BAG_DKU (ZH)",
+    "en": "CH_BAG_DKU (ZH)",
+    "fr": "CH_BAG_DKU (ZH)",
+    "it": "CH_BAG_DKU (ZH)"
+  },
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-bag",
+  "ancestors": [
+    {
+      "id": "ch-bag",
+      "name": {
+        "de": "Bundesamt für Gesundheit (BAG)",
+        "en": "Federal Office of Public Health (FOPH)",
+        "fr": "Office fédéral de la santé publique (OFSP)",
+        "it": "Ufficio federale della sanità pubblica (UFSP)"
+      },
+      "pref_label": {
+        "de": "BAG",
+        "en": "FOPH",
+        "fr": "OFSP",
+        "it": "UFSP"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bag",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-edi",
+      "name": {
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
+      },
+      "pref_label": {
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
+      "hierarchy_level": 0
+    }
+  ]
+}

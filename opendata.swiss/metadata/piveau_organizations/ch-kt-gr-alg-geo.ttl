@@ -1,0 +1,20 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-gr-alg-geo> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das GIS-Kompetenzzentrum (eine Abteilung des Amtes für Landwirtschaft und Geoinformation) ist das zentrale Geoinformationssystems-Kompetenzzentrum des Kantons Graubünden. Es stellt die technischen Systeme des Geographischen Informationssystems (GIS) bereit, erbringt Dienstleistungen zugunsten der kantonalen Dienststellen und legt Rahmenbedingungen fest, so dass diese ihren gesetzlichen Auftrag erfüllen können. Es ermöglicht der Bevölkerung und der Wirtschaft einen möglichst einfachen und effizienten Zugang zu Geodaten und Geoinformationen."@de ;
+    dcterms:identifier "CH_KT_GR_ALG_GEO" ;
+    skos:prefLabel "Geoinformation Kanton Graubünden"@de,
+        "Geoinformation Canton Grisons"@fr,
+        "Geoinformazione Canton Grigioni"@it ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-gr> ;
+    foaf:homepage <https://map.geo.gr.ch> ;
+    foaf:name "Geoinformation Kanton Graubünden"@de,
+        "Geoinformation Canton Grisons"@fr,
+        "Geoinformazione Canton Grigioni"@it .
+
+<https://map.geo.gr.ch> a foaf:Document .
+

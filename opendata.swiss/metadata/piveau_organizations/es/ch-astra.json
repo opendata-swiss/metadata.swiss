@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Seit seiner Gründung 1998 ist das Bundesamt für Strassen (ASTRA) die Schweizer Fachbehörde für die Strasseninfrastruktur und den individuellen Strassenverkehr. Im Verantwortungsbereich des eidgenössischen Departements für Umwelt, Verkehr, Energie und Kommunikation (UVEK) wirkt es für eine nachhaltige und sichere Mobilität auf der Strasse.",
+    "en": "The Federal Roads Office (FEDRO) was established in 1998 as Switzerland's federal authority responsible for road infrastructure and private road transport. It belongs to the Federal Department of the Environment, Transport, Energy and Communications (DETEC), and focuses on securing sustainable and safe mobility on the country's roads.",
+    "fr": "Depuis sa création en 1998, l'Office fédéral des routes (OFROU) est l'autorité suisse compétente pour l'infrastructure routière et le trafic individuel. Chapeauté par le Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC), il oeuvre en faveur d'une mobilité routière durable et sûre.",
+    "it": "Dalla sua creazione nel 1998, l'Ufficio federale delle strade (USTRA) è l'autorità svizzera competente in materia di infrastruttura stradale e traffico stradale privato. Parte integrante del Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle  comunicazioni (DATEC), l'Ufficio è impegnato nella realizzazione di una mobilità sostenibile e sicura sulla strada."
+  },
   "name": {
     "de": "Bundesamt für Strassen (ASTRA)",
     "en": "Federal Roads Office (FEDRO)",
@@ -24,26 +30,24 @@
     "fr": "OFROU",
     "it": "USTRA"
   },
+  "homepage": "https://astra.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-uvek",
+  "sub_organization_of": "ch-uvek",
   "ancestors": [
     {
-      "id": "ch-gs-uvek",
+      "id": "ch-uvek",
       "name": {
-        "de": "Generalsekretariat des UVEK (GS-UVEK)",
-        "en": "General Secretariat DETEC (GS-DETEC)",
-        "fr": "Secrétariat général du DETEC (SG-DETEC)",
-        "it": "Segreteria generale del DATEC (SG-DATEC)",
-        "rm": ""
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
       },
       "pref_label": {
-        "de": "GS-UVEK",
-        "en": "GS-DETEC",
-        "fr": "SG-DETEC",
-        "it": "SG-DATEC",
-        "rm": ""
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
       "hierarchy_level": 0
     }
   ]

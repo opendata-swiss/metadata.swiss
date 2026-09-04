@@ -1,0 +1,24 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-gde-lausanne> a org:Organization,
+        foaf:Organization ;
+    dcterms:description """Le service de la mobilité et de l’aménagement des espaces publics (MAP) de la Ville de Lausanne publie ses géodonnées sous forme de fichiers à télécharger. Toutes les géodonnées actuellement disponibles et soumises aux conditions générales d'aquisition et d'utilisation des géodonnées de base en libre accès sont listées ici.
+
+"""@fr ;
+    dcterms:identifier "CH_GDE_LAUSANNE" ;
+    skos:prefLabel "Lausanne"@de,
+        "Lausanne"@en,
+        "Lausanne"@fr,
+        "Lausanne"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0223> ;
+    foaf:homepage <https://www.lausanne.ch> ;
+    foaf:name "Ville de Lausanne"@de,
+        "City of Lausanne"@en,
+        "Ville de Lausanne"@fr,
+        "Lausanne"@it .
+
+<https://www.lausanne.ch> a foaf:Document .
+

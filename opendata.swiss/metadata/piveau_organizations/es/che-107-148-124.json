@@ -2,14 +2,24 @@
   "id": "che-107-148-124",
   "identifier": "CHE-107.148.124",
   "resource": "https://opendata.swiss/id/organization/che-107-148-124",
+  "classification": {
+    "id": "0302",
+    "label": {
+      "fr": "Société simple",
+      "de": "Einfache Gesellschaft",
+      "it": "Società semplice",
+      "en": "Simple partnership"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0302"
+  },
   "description": {
-    "en": "Kinder und Jugendmedizin Koniz"
+    "de": "Medizinische Versorgung vom Neugeborenen bis ins Jugendalter. Behandlung bei akuter und chronischer Krankheit sowie bei Unfällen von Kindern und Jugendlichen. Psychotherapeutische Behandlung von Kindern- und Jugendlichen, jungen Erwachsenen."
   },
   "name": {
-    "en": "Kinder und Jugendmedizin Koniz"
+    "de": "Kinder- & Jugendmedizin Köniz"
   },
   "pref_label": {
-    "en": "Kinder und Jugendmedizin Koniz"
+    "de": "Kinder- & Jugendmedizin Köniz"
   },
   "homepage": "https://www.kjmk.ch",
   "hierarchy_level": 0,

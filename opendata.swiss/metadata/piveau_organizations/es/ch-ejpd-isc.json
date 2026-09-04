@@ -1,0 +1,53 @@
+{
+  "id": "ch-ejpd-isc",
+  "identifier": "CH_EJPD_ISC",
+  "resource": "https://opendata.swiss/id/organization/ch-ejpd-isc",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das ISC-EJPD entwickelt, integriert und betreibt spezifische Fachanwendungen, die individuell, bedürfnis- und kundenorientiert konzipiert werden und die Erledigung der Kernaufgaben der Verwaltungskunden unterstützen.",
+    "en": "The Post and Telecommunications Surveillance Service is an independent service in charge of lawful interception in Switzerland. The Surveillance Service is administratively affiliated to the IT of the Federal Department of Justice and Police.",
+    "fr": "Le CSI-DFJP développe, intègre et exploite des applications spécialisées conçues spécifiquement pour répondre aux besoins de ses clients, principalement des unités administratives, et qui soutiennent ceux-ci dans l’accomplissement de leurs tâches essentielles.",
+    "it": "l Servizio Servizio Sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni (SCPT) è un servizio indipendente preposto alla sorveglianza della corrispondenza postale e del traffico delle telecomunicazioni in Svizzera. Sul piano amministrativo, il Servizio SCPT è aggregato al Centro servizi informatici del Dipartimento federale di giustizia e polizia."
+  },
+  "name": {
+    "de": "Informatik Service Center ISC-EJPD",
+    "fr": "Centre de services informatiques (CSI-DFJP)",
+    "it": "Centro servizi informatici (CSI-DFGP)"
+  },
+  "pref_label": {
+    "de": "ISC-EJPD",
+    "fr": "CSI_DFJP",
+    "it": "CSI-DFGP"
+  },
+  "homepage": "https://www.isc-ejpd.admin.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-ejpd",
+  "ancestors": [
+    {
+      "id": "ch-ejpd",
+      "name": {
+        "de": "Eidgenössisches Justiz- und Polizeidepartement (EJPD)",
+        "en": "Federals Justiz- und Polizeidepartement (EJPD)",
+        "fr": "Département fédéral de justice et police (DFJP)",
+        "it": "Dipartimento federale di giustizia e polizia (DFGP)"
+      },
+      "pref_label": {
+        "de": "EJPD",
+        "en": "EJPD",
+        "fr": "DFJP",
+        "it": "DFGP"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-ejpd",
+      "hierarchy_level": 0
+    }
+  ]
+}

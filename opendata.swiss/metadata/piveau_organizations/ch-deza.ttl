@@ -5,6 +5,10 @@
 
 <https://opendata.swiss/id/organization/ch-deza> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe."@de,
+        "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe."@en,
+        "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe."@fr,
+        "Weltweit Not und Armut lindern, Frieden und Sicherheit fördern und die Umwelt schonen. Das sind die Wirkungsziele der internationalen Zusammenarbeit als fester Bestandteil der Aussenpolitik der Schweiz. Die DEZA übernimmt die Gesamtkoordination und verantwortet die humanitäre Hilfe."@it ;
     dcterms:identifier "CH_DEZA" ;
     skos:prefLabel "DEZA"@de,
         "SDC"@en,

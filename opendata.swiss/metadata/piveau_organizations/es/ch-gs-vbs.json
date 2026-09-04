@@ -25,6 +25,25 @@
     "it": "SG-DDPS"
   },
   "homepage": "https://www.vbs.admin.ch",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-vbs",
+  "ancestors": [
+    {
+      "id": "ch-vbs",
+      "name": {
+        "de": "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "en": "Federals Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "fr": "Département fédéral de la défense, de la protection de la population et des sports (DDPS)",
+        "it": "Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS)"
+      },
+      "pref_label": {
+        "de": "VBS",
+        "en": "VBS",
+        "fr": "DDPS",
+        "it": "DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-vbs",
+      "hierarchy_level": 0
+    }
+  ]
 }

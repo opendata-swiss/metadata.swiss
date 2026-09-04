@@ -2,25 +2,38 @@
   "id": "bernmobil",
   "identifier": "bernmobil",
   "resource": "https://opendata.swiss/id/organization/bernmobil",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Öffentlicher Verkehr in Bern und Umgebung",
     "en": "Public transport in and around the city of Bern, Switzerland",
     "fr": "Transports publics dans et autour de la ville de Berne",
-    "it": "Trasporto pubblico nella città di Berna e dintorni"
+    "it": "Trasporto pubblico nella città di Berna e dintorni",
+    "rm": ""
   },
   "name": {
-    "de": "BERNMOBIL",
+    "de": "BERNMOBIL AG",
     "en": "BERNMOBIL",
     "fr": "BERNMOBIL",
-    "it": "BERNMOBIL"
+    "it": "BERNMOBIL",
+    "rm": ""
   },
   "pref_label": {
     "de": "BERNMOBIL",
     "en": "BERNMOBIL",
     "fr": "BERNMOBIL",
-    "it": "BERNMOBIL"
+    "it": "BERNMOBIL",
+    "rm": ""
   },
-  "homepage": "https://ckan.opendata.swiss/uploads/group/logo.jpg",
+  "homepage": "https://bernmobil.ch",
   "hierarchy_level": 0,
   "ancestors": []
 }

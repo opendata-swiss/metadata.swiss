@@ -11,6 +11,7 @@
         "ElCom"@fr,
         "ElCom"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
     foaf:homepage <https://www.elcom.admin.ch/> ;
     foaf:name "Eidgenössische Elektrizitätskommission (ElCom)"@de,
         "Federal Electricity Commission (ElCom)"@en,

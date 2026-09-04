@@ -2,14 +2,25 @@
   "id": "che-105-834-378",
   "identifier": "CHE-105.834.378",
   "resource": "https://opendata.swiss/id/organization/che-105-834-378",
+  "classification": {
+    "id": "0110",
+    "label": {
+      "de": "Stiftung",
+      "fr": "Fondation",
+      "it": "Fondazione",
+      "en": "Foundation"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0110"
+  },
   "description": {
-    "en": "Universitats-Kinderspital Zurich"
+    "de": "Das Universitäts-Kinderspital Zürich gehört zu den weltweit führenden Kinderspitälern. Das Wohl der Kinder und Jugendlichen ist unsere höchste Priorität."
   },
   "name": {
+    "de": "Universitäts-Kinderspital Zürich - Eleonorenstiftung",
     "en": "Universitats-Kinderspital Zurich"
   },
   "pref_label": {
-    "en": "Universitats-Kinderspital Zurich"
+    "de": "Unispital Zürich"
   },
   "homepage": "https://www.kispi.uzh.ch",
   "hierarchy_level": 0,

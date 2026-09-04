@@ -11,6 +11,7 @@
         "SNS"@fr,
         "SDS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bk-dti> ;
     foaf:name "Digitale Standardleistungen (DS)"@de,
         "Digitale Standardleistungen DS"@en,
         "Services numériques standards (SNS)"@fr,

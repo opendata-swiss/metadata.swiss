@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-wsl> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Eidgenössische Forschungsanstalt für Wald, Schnee und Landschaft WSL befasst sich mit der Nutzung und Gestaltung sowie dem Schutz von naturnahen und urbanen Lebensräumen. Sie erarbeitet Beiträge und Lösungen, damit der Mensch Landschaften und Wälder verantwortungsvoll nutzen und mit Naturgefahren, wie sie insbesondere in Gebirgsländern auftreten, umsichtig umgehen kann. Die WSL nimmt in diesen Forschungsgebieten einen internationalen Spitzenplatz ein und liefert Grundlagen für eine nachhaltige Umweltpolitik in der Schweiz."@de,
+        "The Swiss Federal Institute for Forest, Snow and Landscape Research is concerned with the use, development and protection of natural and urban spaces. The focus of our research is on solving problems to do with the responsible use of landscapes and forests and a prudent approach to natural hazards, especially those common in mountainous countries. WSL occupies a leading position internationally in these research areas. We also provide groundwork for sustainable environmental policies in Switzerland. "@en,
+        "L'Institut fédéral de recherches sur la forêt, la neige et le paysage WSL s'occupe de l'utilisation et de la protection des milieux naturels et urbains. Il propose des contributions et des solutions pour l'aménagement responsable des paysages et des forêts et pour la protection contre les dangers naturels typiques des régions montagneuses. A l'échelle internationale, le WSL est à la pointe de la recherche et élabore les bases d'une politique environnementale durable en Suisse."@fr,
+        "L’Istituto federale di ricerca per la foresta, la neve e il paesaggio WSL si occupa di problemi legati alla strutturazione, utilizzo e protezione di habitat naturali e urbani. Il WSL elabora soluzioni per un utilizzo responsabile del paesaggio e delle foreste e per una gestione oculata dei pericoli naturali particolarmente frequenti nei paesi di montagna. In questo ambito il WSL assume una posizione di eccellenza a livello internazionale e fornisce solide basi per una politica ambientale sostenibile in Svizzera."@it ;
+    dcterms:identifier "CH_WSL" ;
+    skos:prefLabel "Eidgenössische Forschungsanstalt für Wald, Schnee und Landschaft (WSL)"@de,
+        "WSL"@en,
+        "WSL"@fr,
+        "WSL"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0224> ;
+    foaf:homepage <https://wsl.ch> ;
+    foaf:name "Eidgenössische Forschungsanstalt für Wald, Schnee und Landschaft (WSL)"@de,
+        "Swiss Federal Institute for Forest, Snow and Landscape Research (WSL)"@en,
+        "L'Institut fédéral de recherches sur la forêt, la neige et le paysage (WSL)"@fr,
+        "L’Istituto federale di ricerca per la foresta, la neve e il paesaggio (WSL)"@it .
+
+<https://wsl.ch> a foaf:Document .
+

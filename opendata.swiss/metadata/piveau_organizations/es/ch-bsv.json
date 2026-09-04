@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das BSV sorgt dafür, dass das Netz der sozialen Sicherheit funktioniert und laufend an neue Herausforderungen sowie gesellschaftliche Entwicklungen angepasst wird. Zudem koordiniert es die Arbeiten des Bundes in den Bereichen Armutsprävention und -bekämpfung. Darüber hinaus ist es das bundespolitische Kompetenzzentrum für allgemeine sozialpolitische Fragen sowie für die Themen Familie, Kinder, Jugend, Alter und das Zusammenleben der Generationen.",
+    "en": "The Federal Social Insurance Office (FSIO) ensures that the social security network functions properly and is continuously adapted to new challenges and social developments. It also coordinates the federal government's work in the areas of poverty prevention and combating poverty. In addition, it is the federal policy centre of expertise for general social policy issues and for matters relating to families, children, young people, older people and intergenerational coexistence. The FSIO also initiates and coordinates reciprocal social security agreements with other countries.",
+    "fr": "L'OFAS veille à ce que le système de sécurité sociale fonctionne bien et qu'il s'adapte aux nouveaux défis et changements de la société. Il coordonne par ailleurs au niveau national les activités dans le domaine de la prévention et de la lutte contre la pauvreté. Il est aussi le centre de compétence de la Confédération pour les questions générales de politique sociale, ainsi que pour les thèmes liés à la famille, à l'enfance, à la jeunesse, à la vieillesse et à la cohabitation entre générations.",
+    "it": "L’UFAS provvede al buon funzionamento della rete di sicurezza sociale e al suo costante adeguamento alle nuove sfide e agli sviluppi sociali. Inoltre coordina le attività della Confederazione nei settori della prevenzione e della lotta contro la povertà. È anche il centro di competenza federale per le questioni generali di politica sociale e per i temi concernenti famiglia, infanzia, gioventù, vecchiaia e relazioni intergenerazionali."
+  },
   "name": {
     "de": "Bundesamt für Sozialversicherungen (BSV)",
     "en": "Federal Social Insurance Office (FSIO)",
@@ -26,23 +32,23 @@
   },
   "homepage": "https://www.bsv.admin.ch/",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-edi",
+  "sub_organization_of": "ch-edi",
   "ancestors": [
     {
-      "id": "ch-gs-edi",
+      "id": "ch-edi",
       "name": {
-        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
-        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
-        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
-        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
       },
       "pref_label": {
-        "de": "GS-EDI",
-        "en": "GS-EDI",
-        "fr": "SG-DFI",
-        "it": "SG-DFI"
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
       "hierarchy_level": 0
     }
   ]

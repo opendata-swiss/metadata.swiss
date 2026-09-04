@@ -15,6 +15,7 @@
         "OFS"@fr,
         "UFS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-edi> ;
     foaf:homepage <https://bfs.admin.ch> ;
     foaf:name "Bundesamt für Statistik (BFS)"@de,
         "Federal Statistical Office (FSO)"@en,

@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-staatskanzlei> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat in administrativen und juristischen Tätigkeiten für verschiedene Dialoggruppen. Zudem ist sie eine Schnittstelle zwischen den Direktionen des Kantons und arbeitet mit den Gemeinden, dem Bund und den Nachbarkantonen zusammen."@de ;
+    dcterms:identifier "CH_KT_ZH_STAATSKANZLEI" ;
+    skos:prefLabel "Staatskanzlei Kanton Zürich"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zh.ch/de/staatskanzlei.html> ;
+    foaf:name "Staatskanzlei Kanton Zürich"@de .
+
+<https://www.zh.ch/de/staatskanzlei.html> a foaf:Document .
+

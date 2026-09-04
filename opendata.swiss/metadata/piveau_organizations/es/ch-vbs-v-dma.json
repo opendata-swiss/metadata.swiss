@@ -1,0 +1,72 @@
+{
+  "id": "ch-vbs-v-dma",
+  "identifier": "CH_VBS_V_DMA",
+  "resource": "https://opendata.swiss/id/organization/ch-vbs-v-dma",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Das Zentrum digitale Medien der Armee DMA mit Standort in Bern ist das Kompetenzzentrum für Produkte und Dienstleistungen in den Bereichen der Ausbildung und der Kommunikation.",
+    "en": "The Armed Forces Digital Media Centre AFDM, located in Bern, is the competence center for products and services in the fields of education and communication.",
+    "fr": "Sis à Berne, le Centre des médias numériques de l’armée MNA est le centre de compétences pour les produits et services dans les domaines de la formation et de la communication.",
+    "it": "Il Centro dei media digitali dell’esercito MDE, con sede a Berna, è il centro di competenza per i prodotti e le prestazioni nei settori dell'istruzione e della comunicazione."
+  },
+  "name": {
+    "de": "Zentrum digitale Medien der Armee DMA",
+    "en": "Armed Forces Digital Media Centre AFDM",
+    "fr": "Centre des médias numériques de l’armée MNA",
+    "it": "Centro dei media digitali dell’esercito MDE"
+  },
+  "pref_label": {
+    "de": "Zentrum digitale Medien der Armee DMA",
+    "en": "Armed Forces Digital Media Centre AFDM",
+    "fr": "Centre des médias numériques de l’armée MNA",
+    "it": "Centro dei media digitali dell’esercito MDE"
+  },
+  "homepage": "https://www.vtg.admin.ch/de/service/zem.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-vtg",
+  "ancestors": [
+    {
+      "id": "ch-vtg",
+      "name": {
+        "de": "Gruppe Verteidigung (Vtg)",
+        "en": "Defence sector (Vtg)",
+        "fr": "Groupement Défense (Def)",
+        "it": "Aggruppamento Difesa (Dif)"
+      },
+      "pref_label": {
+        "de": "Vtg",
+        "en": "Vtg",
+        "fr": "Def",
+        "it": "Dif"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-vtg",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-vbs",
+      "name": {
+        "de": "Eidgenössisches Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "en": "Federals Departement für Verteidigung, Bevölkerungsschutz und Sport (VBS)",
+        "fr": "Département fédéral de la défense, de la protection de la population et des sports (DDPS)",
+        "it": "Dipartimento federale della difesa, della protezione della popolazione e dello sport (DDPS)"
+      },
+      "pref_label": {
+        "de": "VBS",
+        "en": "VBS",
+        "fr": "DDPS",
+        "it": "DDPS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-vbs",
+      "hierarchy_level": 0
+    }
+  ]
+}

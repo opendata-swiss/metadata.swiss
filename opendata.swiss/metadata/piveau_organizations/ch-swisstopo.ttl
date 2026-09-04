@@ -11,7 +11,7 @@
         "swisstopo"@fr,
         "swisstopo"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-vbs> ;
     foaf:homepage <https://www.swisstopo.ch> ;
     foaf:name "Bundesamt für Landestopografie (swisstopo)"@de,
         "Federal Office of Topography (swisstopo)"@en,

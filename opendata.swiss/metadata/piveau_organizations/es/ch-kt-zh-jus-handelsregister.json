@@ -1,0 +1,57 @@
+{
+  "id": "ch-kt-zh-jus-handelsregister",
+  "identifier": "CH_KT_ZH_JUS_HANDELSREGISTER",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-jus-handelsregister",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Das Handelsregisteramt ist zuständig für sämtliche Eintragungen betreffend Unternehmen mit Sitz im Kanton Zürich. Durch die Identifikation von Unternehmen und die Offenlegung von rechtlich relevanten Tatsachen gewährleistet es die Transparenz und Rechtssicherheit im Geschäftsverkehr."
+  },
+  "name": {
+    "de": "Handelsregisteramt Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Handelsregisteramt Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/direktion-der-justiz-und-des-innern/handelsregisteramt.html",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-dji",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-dji",
+      "name": {
+        "de": "Direktion der Justiz und des Innern (ZH)"
+      },
+      "pref_label": {
+        "de": "DJI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

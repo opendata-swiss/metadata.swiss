@@ -1,0 +1,55 @@
+{
+  "id": "ch-kt-luzern-finanzen",
+  "identifier": "CH_KT_LUZERN_FINANZEN",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-luzern-finanzen",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die Dienststelle Finanzen ist das Kompetenzzentrum der kantonalen Verwaltung für Finanz- und Controlling-Fragen. Sie sorgt dafür, dass die öffentlichen Gelder zuverlässig verwaltet werden. Sie organisiert das Rechnungswesen inklusive Betrieb des Buchungszentrums und stellt sicher, dass der Kanton Luzern jederzeit zahlungsfähig bleibt.",
+    "en": "The Finance Department is the cantonal administration's center of expertise for financial and controlling matters. It ensures the reliable management of public funds. It organizes the accounting system, including the operation of the accounting center, and ensures that the Canton of Lucerne remains solvent at all times.",
+    "fr": "Le service des Finances est le centre d'expertise de l'administration cantonale en matière financière et de contrôle. Il garantit la gestion rigoureuse des fonds publics. Il organise le système comptable, notamment le fonctionnement du centre de comptabilité, et veille à la solvabilité du canton de Lucerne en toutes circonstances.",
+    "it": "Il Dipartimento delle Finanze è il centro di competenza dell'amministrazione cantonale per le questioni finanziarie e di controllo. Assicura la gestione affidabile dei fondi pubblici, organizza il sistema contabile, compreso il funzionamento del centro contabile, e garantisce che il Cantone di Lucerna rimanga solvibile in ogni momento."
+  },
+  "name": {
+    "de": "Dienststelle Finanzen (LU)",
+    "en": "Finance Department (LU)",
+    "fr": "Service des Finances (LU)",
+    "it": "Dipartimento delle Finanze (LU)"
+  },
+  "pref_label": {
+    "de": "Finanzen (LU)",
+    "en": "Finances (LU)",
+    "fr": "Finances (LU)",
+    "it": "Finanze (LU)"
+  },
+  "homepage": "https://finanzen.lu.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-luzern",
+  "ancestors": [
+    {
+      "id": "ch-kt-luzern",
+      "name": {
+        "de": "Kanton Luzern LU",
+        "en": "Canton Luzern LU",
+        "fr": "Canton de Lucerne LU",
+        "it": "Canton Lucerna LU"
+      },
+      "pref_label": {
+        "de": "LU",
+        "en": "LU",
+        "fr": "LU",
+        "it": "LU"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -5,11 +5,13 @@
 
 <https://opendata.swiss/id/organization/che-105-834-378> a org:Organization,
         foaf:Organization ;
-    dcterms:description "Universitats-Kinderspital Zurich"@en ;
+    dcterms:description "Das Universitäts-Kinderspital Zürich gehört zu den weltweit führenden Kinderspitälern. Das Wohl der Kinder und Jugendlichen ist unsere höchste Priorität."@de ;
     dcterms:identifier "CHE-105.834.378" ;
-    skos:prefLabel "Universitats-Kinderspital Zurich"@en ;
+    skos:prefLabel "Unispital Zürich"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0110> ;
     foaf:homepage <https://www.kispi.uzh.ch> ;
-    foaf:name "Universitats-Kinderspital Zurich"@en .
+    foaf:name "Universitäts-Kinderspital Zürich - Eleonorenstiftung"@de,
+        "Universitats-Kinderspital Zurich"@en .
 
 <https://www.kispi.uzh.ch> a foaf:Document .
 

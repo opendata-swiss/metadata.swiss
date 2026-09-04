@@ -2,6 +2,16 @@
   "id": "ch-kbob",
   "identifier": "CH_KBOB",
   "resource": "https://opendata.swiss/id/organization/ch-kbob",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
   "description": {
     "de": "Ressourcen sparen und Qualität steigernDies ist die übergeordnete Zielsetzung der KBOB.Die KBOB wahrt die Interessen ihrer Mitglieder als Bauherren sowie Liegenschaftseigentümer und -besitzer, -bewirtschafter und -betreiber.Als Mitglieder gehören der KBOB die Bau- und Liegenschaftsorgane des Bundes, der Kantone sowie der Städte und Gemeinden an.Die KBOB nimmt insbesondere Koordinationsaufgaben in folgenden Bereichen wahr: Beschaffungs- und Vertragswesen, Planer- und Werkleistungen, Nachhaltigkeit, Digitalisierung und BIM, Bewirtschaftung von Immobilien, Preisänderungsfragen sowie Normen und Standards.",
     "fr": "Économiser les ressources tout en améliorant la qualitéTel est l'objectif général de la KBOB.La KBOB défend les intérêts de ses membres en tant que maîtres d'ouvrage, propriétaires, gérants et exploitants d'immeubles.Les membres de la KBOB sont les services de la construction et des immeubles de la Confédération, des cantons ainsi que des villes et des communes.La KBOB assume notamment des tâches de coordination dans les domaines suivants : marchés publics et contrats, prestations de mandataire et travaux de construction, durabilité, numérisation et BIM, exploitation des biens immobiliers, variations de prix ainsi que normes et standards.",
@@ -20,6 +30,40 @@
     "it": "KBOB"
   },
   "homepage": "https://www.kbob.admin.ch",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-bbl",
+  "ancestors": [
+    {
+      "id": "ch-bbl",
+      "name": {
+        "de": "Bundesamt für Bauten und Logistik (BBL)",
+        "en": "Federal Office of Construction and Logistics (BBL)",
+        "fr": " Office fédéral des constructions et de la logistique (OFCL)",
+        "it": "Ufficio federale delle costruzioni e della logistica (UFCL)"
+      },
+      "pref_label": {
+        "de": "BBL",
+        "en": "BBL",
+        "fr": "OFCL",
+        "it": "UFCL"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bbl",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-efd",
+      "name": {
+        "de": "Eidgenössisches Finanzdepartement (EFD)",
+        "fr": "Département fédéral des finances (DFF)",
+        "it": "Dipartimento federale delle finanze (DFF)"
+      },
+      "pref_label": {
+        "de": "EFD",
+        "fr": "DFF",
+        "it": "DFF"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-efd",
+      "hierarchy_level": 0
+    }
+  ]
 }

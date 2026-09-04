@@ -15,11 +15,11 @@
         "FNS"@fr,
         "FNS"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0110> ;
-    foaf:homepage <https://www.fns-it.ch> ;
+    foaf:homepage <https://www.snf.ch> ;
     foaf:name "Schweizerischer Nationalfonds zur Förderung der wissenschaftlichen Forschung (SNF)"@de,
         "Swiss National Science Foundation (SNSF)"@en,
         "Fonds national suisse de la recherche scientifique (FNS)"@fr,
         "Fondo nazionale svizzero per la ricerca scientifica (FNS)"@it .
 
-<https://www.fns-it.ch> a foaf:Document .
+<https://www.snf.ch> a foaf:Document .
 

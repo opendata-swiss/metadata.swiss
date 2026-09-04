@@ -1,0 +1,17 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-sg> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_KT_SG" ;
+    skos:prefLabel "CH_KT_SG (ZH)"@de,
+        "CH_KT_SG (ZH)"@en,
+        "CH_KT_SG (ZH)"@fr,
+        "CH_KT_SG (ZH)"@it ;
+    foaf:name "Kanton St. Gallen (SG)"@de,
+        "Kanton St. Gallen (SG)"@en,
+        "Canton de Saint-Gall (SG)"@fr,
+        "Cantone di San Gallo (SG)"@it .
+

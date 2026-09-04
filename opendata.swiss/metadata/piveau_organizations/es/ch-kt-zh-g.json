@@ -1,0 +1,46 @@
+{
+  "id": "ch-kt-zh-g",
+  "identifier": "CH_KT_ZH_G",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-g",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "de": "Die Bevölkerung im Kanton Zürich kann sich auf ein umfassendes Gesundheitswesen verlassen. Es beinhaltet weit mehr als eine hochwertige Spitalversorgung: Wirksame Heilmittel, gesunde Tiere, einwandfreie Lebensmittel und die Qualitätssicherung von Gebrauchsgegenständen gehören ebenso dazu."
+  },
+  "name": {
+    "de": "Gesundheitsdirektion (ZH)"
+  },
+  "pref_label": {
+    "de": "Gesundheitsdirektion (ZH)"
+  },
+  "homepage": "https://www.zh.ch/de/gesundheitsdirektion.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

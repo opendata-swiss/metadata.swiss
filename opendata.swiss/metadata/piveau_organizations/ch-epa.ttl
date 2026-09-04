@@ -11,6 +11,7 @@
         "OFPER"@fr,
         "UFPER"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:homepage <https://www.epa.admin.ch> ;
     foaf:name "Eidgenössisches Personalamt EPA"@de,
         "Eidgenössisches Personalamt EPA"@en,

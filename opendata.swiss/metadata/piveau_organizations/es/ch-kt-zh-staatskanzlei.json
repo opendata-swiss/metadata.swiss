@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh-staatskanzlei",
+  "identifier": "CH_KT_ZH_STAATSKANZLEI",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-staatskanzlei",
+  "description": {
+    "de": "Die Staatskanzlei des Kantons Zürich unterstützt den Regierungsrat in administrativen und juristischen Tätigkeiten für verschiedene Dialoggruppen. Zudem ist sie eine Schnittstelle zwischen den Direktionen des Kantons und arbeitet mit den Gemeinden, dem Bund und den Nachbarkantonen zusammen."
+  },
+  "name": {
+    "de": "Staatskanzlei Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Staatskanzlei Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/de/staatskanzlei.html",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

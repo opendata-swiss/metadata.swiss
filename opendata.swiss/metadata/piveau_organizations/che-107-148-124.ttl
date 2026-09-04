@@ -5,11 +5,12 @@
 
 <https://opendata.swiss/id/organization/che-107-148-124> a org:Organization,
         foaf:Organization ;
-    dcterms:description "Kinder und Jugendmedizin Koniz"@en ;
+    dcterms:description "Medizinische Versorgung vom Neugeborenen bis ins Jugendalter. Behandlung bei akuter und chronischer Krankheit sowie bei Unfällen von Kindern und Jugendlichen. Psychotherapeutische Behandlung von Kindern- und Jugendlichen, jungen Erwachsenen."@de ;
     dcterms:identifier "CHE-107.148.124" ;
-    skos:prefLabel "Kinder und Jugendmedizin Koniz"@en ;
+    skos:prefLabel "Kinder- & Jugendmedizin Köniz"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0302> ;
     foaf:homepage <https://www.kjmk.ch> ;
-    foaf:name "Kinder und Jugendmedizin Koniz"@en .
+    foaf:name "Kinder- & Jugendmedizin Köniz"@de .
 
 <https://www.kjmk.ch> a foaf:Document .
 

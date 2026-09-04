@@ -1,0 +1,29 @@
+{
+  "id": "ch-edu-ge-hes",
+  "identifier": "CH_EDU_GE_HES",
+  "resource": "https://opendata.swiss/id/organization/ch-edu-ge-hes",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "fr": "Avec plus de 6'000 étudiantes et étudiants, la HES-SO Genève représente un pôle de compétences riche. Véritable université des métiers, elle délivre des bachelors et des masters. Elle forme des professionnel-le-s des sciences de l'ingénierie, de l'architecture et du paysage, de l’économie et des services, du design et des arts visuels, de la santé, du travail social et de la musique."
+  },
+  "name": {
+    "de": "Haute école spécialisée de Suisse occidentale HES-SO Genève",
+    "fr": "Haute école spécialisée de Suisse occidentale HES-SO Genève"
+  },
+  "pref_label": {
+    "de": "Haute école spécialisée de Suisse occidentale HES-SO Genève",
+    "fr": "Haute école spécialisée de Suisse occidentale HES-SO Genève"
+  },
+  "homepage": "https://www.hesge.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

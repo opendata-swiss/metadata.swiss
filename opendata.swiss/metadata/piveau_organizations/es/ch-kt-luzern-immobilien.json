@@ -37,15 +37,13 @@
         "de": "Kanton Luzern LU",
         "en": "Canton Luzern LU",
         "fr": "Canton de Lucerne LU",
-        "it": "Canton Lucerna LU",
-        "rm": ""
+        "it": "Canton Lucerna LU"
       },
       "pref_label": {
         "de": "LU",
         "en": "LU",
         "fr": "LU",
-        "it": "LU",
-        "rm": ""
+        "it": "LU"
       },
       "resource": "https://opendata.swiss/id/organization/ch-kt-luzern",
       "hierarchy_level": 0

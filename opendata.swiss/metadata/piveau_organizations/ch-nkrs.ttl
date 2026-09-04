@@ -10,6 +10,7 @@
         "National Agency for Cancer Registration (NACR)"@en,
         "Organe national d'enregistrement du cancer (ONEC)"@fr,
         "Servizio nazionale di registrazione dei tumori (SNRT)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
     foaf:name "Nationale Krebsregistrierungsstelle (NKRS)"@de,
         "National Agency for Cancer Registration (NACR)"@en,
         "Organe national d'enregistrement du cancer (ONEC)"@fr,

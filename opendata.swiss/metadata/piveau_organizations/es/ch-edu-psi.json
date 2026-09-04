@@ -1,0 +1,26 @@
+{
+  "id": "ch-edu-psi",
+  "identifier": "CH_EDU_PSI",
+  "resource": "https://opendata.swiss/id/organization/ch-edu-psi",
+  "description": {
+    "de": "Das PSI betreibt international anerkannte Spitzenforschung in Natur- und Ingenieurswissenschaften. Wissenschaftlerinnen und Wissenschaftler aus der ganzen Welt forschen an unseren Grossforschungsanlagen.",
+    "en": "PSI conducts internationally recognised cutting-edge research in the natural and engineering sciences. Scientists from all over the world carry out experiments at our large research facilities.",
+    "fr": "Le PSI effectue de la recherche de pointe reconnue au niveau international dans les sciences naturelles et les sciences de l’ingénierie.",
+    "it": "Il PSI conduce ricerche all'avanguardia, riconosciute a livello internazionale, nel campo delle scienze naturali e dell'ingegneria. Scienziati provenienti da tutto il mondo conducono ricerche presso le nostre strutture di ricerca su larga scala."
+  },
+  "name": {
+    "de": "Paul Scherrer Institut PSI",
+    "en": "Paul Scherrer Institute PSI",
+    "fr": "Institut Paul Scherrer PSI",
+    "it": "Istituto Paul Scherrer PSI"
+  },
+  "pref_label": {
+    "de": "Paul Scherrer Institut PSI",
+    "en": "Paul Scherrer Institute PSI",
+    "fr": "Institut Paul Scherrer PSI",
+    "it": "Istituto Paul Scherrer PSI"
+  },
+  "homepage": "https://www.psi.ch",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

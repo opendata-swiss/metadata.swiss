@@ -11,7 +11,7 @@
         "OFIT"@fr,
         "UFIT"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:name "Bundesamt für Informatik und Telekommunikation (BIT)"@de,
         "Federal Office of Information Technology, Systems and Telecommunication (FOITT)"@en,
         "Office fédéral de l'informatique et de la télécommunication (OFIT)"@fr,

@@ -1,0 +1,53 @@
+{
+  "id": "ch-kt-ag-fin-inf",
+  "identifier": "CH_KT_AG_FIN_INF",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ag-fin-inf",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Informatik (AG)"
+  },
+  "pref_label": {
+    "de": "Informatik (AG)"
+  },
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-ag-fin",
+  "ancestors": [
+    {
+      "id": "ch-kt-ag-fin",
+      "name": {
+        "de": "Departement Finanzen und Ressourcen (AG)"
+      },
+      "pref_label": {
+        "de": "Finanzdepartement (AG)"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-ag-fin",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-ag",
+      "name": {
+        "de": "Kanton Aargau AG",
+        "en": "Canton Aargau AG",
+        "fr": "Canton d'Argovie AG",
+        "it": "Canton Argovia AG"
+      },
+      "pref_label": {
+        "de": "AG",
+        "en": "AG",
+        "fr": "AG",
+        "it": "AG"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-ag",
+      "hierarchy_level": 0
+    }
+  ]
+}

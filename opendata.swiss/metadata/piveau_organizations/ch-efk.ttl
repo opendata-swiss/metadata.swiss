@@ -15,7 +15,7 @@
         "CDF"@fr,
         "CDF"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-efd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-efd> ;
     foaf:homepage <https://www.efk.admin.ch> ;
     foaf:name "Eidgenössische Finanzkontrolle (EFK)"@de,
         "Swiss Federal Audit Office (SFAO)"@en,

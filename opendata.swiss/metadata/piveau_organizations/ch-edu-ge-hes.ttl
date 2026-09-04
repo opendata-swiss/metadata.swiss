@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-edu-ge-hes> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Avec plus de 6'000 étudiantes et étudiants, la HES-SO Genève représente un pôle de compétences riche. Véritable université des métiers, elle délivre des bachelors et des masters. Elle forme des professionnel-le-s des sciences de l'ingénierie, de l'architecture et du paysage, de l’économie et des services, du design et des arts visuels, de la santé, du travail social et de la musique."@fr ;
+    dcterms:identifier "CH_EDU_GE_HES" ;
+    skos:prefLabel "Haute école spécialisée de Suisse occidentale HES-SO Genève"@de,
+        "Haute école spécialisée de Suisse occidentale HES-SO Genève"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.hesge.ch> ;
+    foaf:name "Haute école spécialisée de Suisse occidentale HES-SO Genève"@de,
+        "Haute école spécialisée de Suisse occidentale HES-SO Genève"@fr .
+
+<https://www.hesge.ch> a foaf:Document .
+

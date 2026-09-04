@@ -1,0 +1,38 @@
+{
+  "id": "ch-kt-gl-bau-geo",
+  "identifier": "CH_KT_GL_BAU_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-gl-bau-geo",
+  "description": {
+    "de": "Fachstelle Geoinformation des Kantons Glarus. Zuständig für die kantonale Geodaten-Infrastruktur inklusive Geoportal und Datenbereitstellung."
+  },
+  "name": {
+    "de": "Fachstelle Geoinformation des Kantons Glarus",
+    "en": "Office of Geoinformation, Canton of Glarus"
+  },
+  "pref_label": {
+    "de": "Fachstelle Geoinformation des Kantons Glarus",
+    "en": "Office of Geoinformation, Canton of Glarus"
+  },
+  "homepage": "https://www.gl.ch/verwaltung/bau-und-umwelt/hochbau/raumentwicklung-und-geoinformation/geoinformation.html/811",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-glarus",
+  "ancestors": [
+    {
+      "id": "ch-kt-glarus",
+      "name": {
+        "de": "Kanton Glarus GL",
+        "en": "Canton Glarus GL",
+        "fr": "Canton de Glaris GL",
+        "it": "Canton Glarona GL"
+      },
+      "pref_label": {
+        "de": "GL",
+        "en": "GL",
+        "fr": "GL",
+        "it": "GL"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-glarus",
+      "hierarchy_level": 0
+    }
+  ]
+}

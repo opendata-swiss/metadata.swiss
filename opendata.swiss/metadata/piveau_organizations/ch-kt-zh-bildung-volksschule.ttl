@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-bildung-volksschule> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Volksschulamt ist zuständig für schulorganisatorische Aufgaben und die Verwaltung des Lehrpersonals. Die Abteilungen unterstützen die Schulen in der Personaladministration, in Fragen zu Unterricht, Lehrplan und Lehrmitteln. Sie übernehmen Koordinations-, Aufsichts- und Beratungsaufgaben für den Sonderschulbereich. Sie beraten Behörden, Schulleitungen und Schulverwaltungen."@de ;
+    dcterms:identifier "CH_KT_ZH_BILDUNG_VOLKSSCHULE" ;
+    skos:prefLabel "Volksschulamt Kanton Zürich"@de ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh-edu> ;
+    foaf:homepage <https://zh.ch/vsa> ;
+    foaf:name "Volksschulamt Kanton Zürich"@de .
+
+<https://zh.ch/vsa> a foaf:Document .
+

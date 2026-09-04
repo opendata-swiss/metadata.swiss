@@ -1,0 +1,49 @@
+{
+  "id": "ch-kt-zh-s",
+  "identifier": "CH_KT_ZH_S",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-s",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Sicher, sozial, sportlich. Wir sorgen für die öffentliche Sicherheit. Wir verfolgen eine Sozial- und Ausländerpolitik, die für alle Beteiligten fair ist. Und nicht zuletzt setzen wir uns dafür ein, dass sich möglichst viele Zürcherinnen und Zürcher sportlich aktiv betätigen."
+  },
+  "name": {
+    "de": "Sicherheitsdirektion (ZH)"
+  },
+  "pref_label": {
+    "de": "S (ZH)",
+    "en": "S (ZH)",
+    "fr": "S (ZH)",
+    "it": "S (ZH)"
+  },
+  "homepage": "https://www.zh.ch/ds",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

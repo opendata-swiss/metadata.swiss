@@ -1,0 +1,14 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-be-dij> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_KT_BE_DIJ" ;
+    skos:prefLabel "DIJ (BE)"@de,
+        "DIJ (BE)"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:name "Direktion für Inneres und Justiz (BE)"@de,
+        "Direction de l'intérieur et de la justice (BE)"@fr .
+

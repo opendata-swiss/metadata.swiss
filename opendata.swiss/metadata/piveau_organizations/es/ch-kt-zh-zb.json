@@ -1,0 +1,36 @@
+{
+  "id": "ch-kt-zh-zb",
+  "identifier": "CH_KT_ZH_ZB",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-zb",
+  "description": {
+    "de": "Die Zentralbibliothek Zürich (ZB) ist als öffentliche Stiftung seit über 100 Jahren die Kantons-, Stadt- und Universitätsbibliothek von Zürich. Mit 6,6 Millionen Objekten (Büchern, Zeitschriften, Handschriften, Bildern, Fotografien, Karten, Mikroformen, Musikalien, Tonträgern, DVDs usw.) und über 200 Mitarbeitenden gehört sie zu den grössten Bibliotheken der Schweiz. Dazu kommt ein breites Angebot an Datenbanken und über 200’000 elektronische Volltexte. Eine halbe Million Menschen pro Jahr besucht die ZB und nutzt ihre vielfältigen Angebote."
+  },
+  "name": {
+    "de": "Zentralbibliothek Zürich"
+  },
+  "pref_label": {
+    "de": "Zentralbibliothek Zürich"
+  },
+  "homepage": "https://www.zb.uzh.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-zh",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

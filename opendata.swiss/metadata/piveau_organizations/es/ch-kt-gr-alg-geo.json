@@ -1,0 +1,40 @@
+{
+  "id": "ch-kt-gr-alg-geo",
+  "identifier": "CH_KT_GR_ALG_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-gr-alg-geo",
+  "description": {
+    "de": "Das GIS-Kompetenzzentrum (eine Abteilung des Amtes für Landwirtschaft und Geoinformation) ist das zentrale Geoinformationssystems-Kompetenzzentrum des Kantons Graubünden. Es stellt die technischen Systeme des Geographischen Informationssystems (GIS) bereit, erbringt Dienstleistungen zugunsten der kantonalen Dienststellen und legt Rahmenbedingungen fest, so dass diese ihren gesetzlichen Auftrag erfüllen können. Es ermöglicht der Bevölkerung und der Wirtschaft einen möglichst einfachen und effizienten Zugang zu Geodaten und Geoinformationen."
+  },
+  "name": {
+    "de": "Geoinformation Kanton Graubünden",
+    "fr": "Geoinformation Canton Grisons",
+    "it": "Geoinformazione Canton Grigioni"
+  },
+  "pref_label": {
+    "de": "Geoinformation Kanton Graubünden",
+    "fr": "Geoinformation Canton Grisons",
+    "it": "Geoinformazione Canton Grigioni"
+  },
+  "homepage": "https://map.geo.gr.ch",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-gr",
+  "ancestors": [
+    {
+      "id": "ch-kt-gr",
+      "name": {
+        "de": "Kanton Graubünden",
+        "en": "Canton of Graubünden",
+        "fr": "Canton des Grisons",
+        "it": "Cantone dei Grigioni"
+      },
+      "pref_label": {
+        "de": "Kanton Graubünden",
+        "en": "Canton of Graubünden",
+        "fr": "Canton des Grisons",
+        "it": "Cantone dei Grigioni"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-gr",
+      "hierarchy_level": 0
+    }
+  ]
+}

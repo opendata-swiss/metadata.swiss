@@ -1,0 +1,16 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-bd-ima> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Kanton Zürich verfügt über eines der grössten Immobilienportfolios der öffentlichen Hand in der Schweiz. Das Immobilienamt ist als Eigentümervertretung des Kantons mit der Steuerung, Entwicklung und Bewirtschaftung dieses Portfolios betraut."@de ;
+    dcterms:identifier "CH_KT_ZH_BD_IMA" ;
+    skos:prefLabel "Immobilienamt des Kantons Zürich"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    foaf:homepage <https://www.zh.ch/ima> ;
+    foaf:name "Immobilienamt des Kantons Zürich"@de .
+
+<https://www.zh.ch/ima> a foaf:Document .
+

@@ -24,6 +24,25 @@
     "fr": "SG-DFI",
     "it": "SG-DFI"
   },
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-edi",
+  "ancestors": [
+    {
+      "id": "ch-edi",
+      "name": {
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
+      },
+      "pref_label": {
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
+      "hierarchy_level": 0
+    }
+  ]
 }

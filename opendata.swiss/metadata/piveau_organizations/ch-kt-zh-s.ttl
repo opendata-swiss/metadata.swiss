@@ -1,0 +1,20 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-zh-s> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Sicher, sozial, sportlich. Wir sorgen für die öffentliche Sicherheit. Wir verfolgen eine Sozial- und Ausländerpolitik, die für alle Beteiligten fair ist. Und nicht zuletzt setzen wir uns dafür ein, dass sich möglichst viele Zürcherinnen und Zürcher sportlich aktiv betätigen."@de ;
+    dcterms:identifier "CH_KT_ZH_S" ;
+    skos:prefLabel "S (ZH)"@de,
+        "S (ZH)"@en,
+        "S (ZH)"@fr,
+        "S (ZH)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-zh> ;
+    foaf:homepage <https://www.zh.ch/ds> ;
+    foaf:name "Sicherheitsdirektion (ZH)"@de .
+
+<https://www.zh.ch/ds> a foaf:Document .
+

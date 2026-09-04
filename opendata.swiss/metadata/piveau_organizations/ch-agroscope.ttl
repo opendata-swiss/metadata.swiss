@@ -11,7 +11,7 @@
         "Agroscope"@fr,
         "Agroscope"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-wbf> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-blw> ;
     foaf:homepage <https://www.agroscope.admin.ch> ;
     foaf:name "Agroscope"@de,
         "Agroscope"@en,

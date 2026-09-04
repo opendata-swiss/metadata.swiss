@@ -12,19 +12,58 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Die Rechtsform der Stiftung kennt weder Eigentümer noch Mitglieder. Mit der Stiftungsaufsicht hat der Gesetzgeber ein Korrektiv bzw. eine Kontrollinstanz zu den fehlenden Eigentümerinteressen und -kontrollen geschaffen. Die ESA beaufsichtigt rund 5'500 Stiftungen, total gibt es derzeit knapp 14'000 klassische Stiftungen mit Sitz in der Schweiz.Die Eidgenössische Stiftungsaufsicht ESA sorgt dafür, dass die ihr unterstellten Stiftungen ihr Vermögen so verwenden, wie es der in den Stiftungsstatuten festgehaltene Zweck definiert. Sie ist für national und/oder international tätige klassische Stiftungen zuständig.",
+    "fr": "La forme juridique de la fondation ne connaît ni propriétaires ni membres. En instituant la surveillance des fondations, le législateur a créé une instance de contrôle qui pallie l’absence de propriétaires veillant à leurs intérêts et exerçant un contrôle. L’ASF surveille environ 5'500 fondations. Au total, la Suisse compte actuellement environ 14'000 fondations classiques.L’Autorité fédérale de surveillance des fondations ASF a pour tâche de veiller à ce que les fondations qui lui sont assujetties utilisent leur fortune conformément au but défini dans leurs statuts. L’ASF est l’autorité de surveillance des fondations classiques œuvrant à l’échelle nationale et/ou internationale qui ont leur siège en Suisse.",
+    "it": "La forma giuridica della fondazione non prevede né proprietari né membri. Con l’Autorità di vigilanza sulle fondazioni AVF, il legislatore ha istituito nel 1912 un organo correttivo e di controllo per ovviare all’assenza di proprietari che vigilano sui propri interessi ed esercitano il controllo. Sono assoggettate all’AVF circa 5500 fondazioni. Attualmente all’incirca 14 000 fondazioni di tipo «classico» hanno sede in Svizzera.L’AVF provvede affinché le fondazioni che le sono assoggettate impieghino i loro beni conformemente agli scopi previsti dai loro statuti. L’AVF esercita la vigilanza sulle fondazioni di tipo «classico» con sede in Svizzera attive a livello nazionale e/o internazionale."
+  },
   "name": {
-    "de": "Eidgenössische Stiftungsaufsicht ESA",
-    "en": "Eidgenössische Stiftungsaufsicht ESA",
-    "fr": "Surveillance fédérale des fondations SFF",
-    "it": "Vigilanza federale sulle fondazioni VFF"
+    "de": "Eidgenössische Stiftungsaufsicht (ESA)",
+    "fr": "Surveillance fédérale des fondations (SFF)",
+    "it": "Vigilanza federale sulle fondazioni (VFF)"
   },
   "pref_label": {
     "de": "ESA",
-    "en": "ESA",
     "fr": "SFF",
     "it": "VFF"
   },
-  "homepage": "https://www.esa.admin.ch/",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "homepage": "https://www.esa.admin.ch",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-gs-edi",
+  "ancestors": [
+    {
+      "id": "ch-gs-edi",
+      "name": {
+        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
+        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
+        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
+        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+      },
+      "pref_label": {
+        "de": "GS-EDI",
+        "en": "GS-EDI",
+        "fr": "SG-DFI",
+        "it": "SG-DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-edi",
+      "name": {
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
+      },
+      "pref_label": {
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
+      "hierarchy_level": 0
+    }
+  ]
 }

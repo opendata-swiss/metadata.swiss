@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-be-bvd> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Öffentlicher Verkehr, Strassenbau, Verkehrsplanung, Wasserregulierung, Abfall, Hochbauprojekte."@de ;
+    dcterms:identifier "CH_KT_BE_BVD" ;
+    skos:prefLabel "BVD (BE)"@de,
+        "DTT (BE)"@fr ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    foaf:homepage <https://www.bvd.be.ch> ;
+    foaf:name "Bau- und Verkehrsdirektion (BE)"@de,
+        "Direction des travaux publics et des transports (BE)"@fr .
+
+<https://www.bvd.be.ch> a foaf:Document .
+

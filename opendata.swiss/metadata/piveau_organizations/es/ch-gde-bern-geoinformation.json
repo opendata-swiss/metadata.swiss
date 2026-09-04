@@ -1,0 +1,45 @@
+{
+  "id": "ch-gde-bern-geoinformation",
+  "identifier": "CH_GDE_BERN_GEOINFORMATION",
+  "resource": "https://opendata.swiss/id/organization/ch-gde-bern-geoinformation",
+  "description": {
+    "de": "Geoinformation Stadt Bern (ehemals Vermessungsamt) ist die Kompetenzstelle für die Beschaffung, den Zugang und die Verbreitung von Geoinformationen in der Stadt Bern.",
+    "en": "The Surveying Office (Geoinformation Stadt Bern) is the centre of competence in the City of Bern for the procurement of, access to and dissemination of geographic information.",
+    "fr": "L’Office du cadastre (Geoinformation Stadt Bern) est l’organisme compétent pour la collecte, l’accès et la diffusion d’informations géographiques dans la ville de Berne.",
+    "it": "L'ufficio del catasto (Geoinformation Stadt Bern) è il centro di competenza per il reperimento, l'accesso e la diffusione di geoinformazioni nella Città di Berna."
+  },
+  "name": {
+    "de": "Geoinformation Stadt Bern",
+    "en": "The Land Surveying Office of the City of Bern",
+    "fr": "L’Office du cadastre de la ville de Berne",
+    "it": "L'ufficio del catasto nella Città di Berna"
+  },
+  "pref_label": {
+    "de": "Geoinformation Stadt Bern",
+    "en": "The Land Surveying Office of the City of Bern",
+    "fr": "L’Office du cadastre de la ville de Berne",
+    "it": "L'ufficio del catasto nella Città di Berna"
+  },
+  "homepage": "https://www.bern.ch/politik-und-verwaltung/stadtverwaltung/tvs/geoinformation",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-gde-bern",
+  "ancestors": [
+    {
+      "id": "ch-gde-bern",
+      "name": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "pref_label": {
+        "de": "Stadt Bern",
+        "en": "City of Bern",
+        "fr": "Ville de Berne",
+        "it": "Città di Berna"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-gde-bern",
+      "hierarchy_level": 0
+    }
+  ]
+}

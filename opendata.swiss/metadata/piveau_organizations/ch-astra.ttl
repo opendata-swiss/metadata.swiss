@@ -5,15 +5,22 @@
 
 <https://opendata.swiss/id/organization/ch-astra> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Seit seiner Gründung 1998 ist das Bundesamt für Strassen (ASTRA) die Schweizer Fachbehörde für die Strasseninfrastruktur und den individuellen Strassenverkehr. Im Verantwortungsbereich des eidgenössischen Departements für Umwelt, Verkehr, Energie und Kommunikation (UVEK) wirkt es für eine nachhaltige und sichere Mobilität auf der Strasse."@de,
+        "The Federal Roads Office (FEDRO) was established in 1998 as Switzerland's federal authority responsible for road infrastructure and private road transport. It belongs to the Federal Department of the Environment, Transport, Energy and Communications (DETEC), and focuses on securing sustainable and safe mobility on the country's roads."@en,
+        "Depuis sa création en 1998, l'Office fédéral des routes (OFROU) est l'autorité suisse compétente pour l'infrastructure routière et le trafic individuel. Chapeauté par le Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC), il oeuvre en faveur d'une mobilité routière durable et sûre."@fr,
+        "Dalla sua creazione nel 1998, l'Ufficio federale delle strade (USTRA) è l'autorità svizzera competente in materia di infrastruttura stradale e traffico stradale privato. Parte integrante del Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle  comunicazioni (DATEC), l'Ufficio è impegnato nella realizzazione di una mobilità sostenibile e sicura sulla strada."@it ;
     dcterms:identifier "CH_ASTRA" ;
     skos:prefLabel "ASTRA"@de,
         "FEDRO"@en,
         "OFROU"@fr,
         "USTRA"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-uvek> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-uvek> ;
+    foaf:homepage <https://astra.admin.ch> ;
     foaf:name "Bundesamt für Strassen (ASTRA)"@de,
         "Federal Roads Office (FEDRO)"@en,
         "Office fédéral des routes (OFROU)"@fr,
         "Ufficio federale delle strade (USTRA)"@it .
+
+<https://astra.admin.ch> a foaf:Document .
 

@@ -1,0 +1,24 @@
+{
+  "id": "ch-kt-ag-fin-inf-tl",
+  "identifier": "CH_KT_AG_FIN_INF_TL",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ag-fin-inf-tl",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "name": {
+    "de": "Technologie- & Lösungsentwicklung (AG)"
+  },
+  "pref_label": {
+    "de": "Technologie- & Lösungsentwicklung (AG)"
+  },
+  "homepage": "https://www.ag.ch/geoportal",
+  "hierarchy_level": 0,
+  "ancestors": []
+}

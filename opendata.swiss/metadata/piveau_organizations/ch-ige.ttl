@@ -11,7 +11,7 @@
         "IPI"@fr,
         "IPI"@it ;
     org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
-    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-ejpd> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-ejpd> ;
     foaf:name "Eidgenössisches Institut für Geistiges Eigentum (IGE)"@de,
         "Swiss Federal Institute of Intellectual Property (IPI)"@en,
         "Institut Fédéral de la Propriété Intellectuelle (IPI)"@fr,

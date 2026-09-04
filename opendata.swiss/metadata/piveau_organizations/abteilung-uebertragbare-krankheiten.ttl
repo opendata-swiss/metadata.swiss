@@ -1,0 +1,26 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/abteilung-uebertragbare-krankheiten> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Übertragbare Krankheiten gefährden die öffentliche Gesundheit. Die Abteilung überwacht diese Krankheiten, publiziert regelmässig Berichte zur epidemiologischen Situation, legt Präventions- und Kontrollstrategien fest und setzt sie um."@de,
+        "Communicable diseases pose a risk to public health. The division monitors these diseases, publishing regular reports on the epidemiological situation, laying down and implementing prevention and control strategies."@en,
+        "Les maladies transmissibles constituent une menace pour la santé publique. La division les surveille, publie régulièrement des rapports sur la situation épidémiologique, définit des stratégies de prévention et de contrôle, et les met en œuvre."@fr,
+        "Le malattie trasmissibili mettono in pericolo la salute pubblica. La divisione Malattie trasmissibili le monitora, pubblica regolarmente rapporti sulla situazione epidemiologica, stabilisce strategie di prevenzione e di controllo e le attua."@it ;
+    dcterms:identifier "abteilung-uebertragbare-krankheiten" ;
+    skos:prefLabel "Abteilung Übertragbare Krankheiten"@de,
+        "Communicable Diseases Division"@en,
+        "Division Maladies transmissibles"@fr,
+        "Divisione Malattie trasmissibili"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bag> ;
+    foaf:homepage <https://www.bag.admin.ch/de/abteilung-ubertragbare-krankheiten> ;
+    foaf:name "Abteilung Übertragbare Krankheiten"@de,
+        "Communicable Diseases Division"@en,
+        "Division Maladies transmissibles"@fr,
+        "Divisione Malattie trasmissibili"@it .
+
+<https://www.bag.admin.ch/de/abteilung-ubertragbare-krankheiten> a foaf:Document .
+

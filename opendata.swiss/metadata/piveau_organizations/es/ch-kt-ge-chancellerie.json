@@ -1,0 +1,45 @@
+{
+  "id": "ch-kt-ge-chancellerie",
+  "identifier": "CH_KT_GE_CHANCELLERIE",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-ge-chancellerie",
+  "classification": {
+    "id": "0221",
+    "label": {
+      "de": "Verwaltungseinheit des Kantons",
+      "en": "Administrative unit of the canton",
+      "it": "Unità amministrativa del cantone",
+      "fr": "Unité de l'administration cantonale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0221"
+  },
+  "description": {
+    "fr": "La chancellerie d'Etat assume les fonctions d'état-major du gouvernement cantonal."
+  },
+  "name": {
+    "de": "Staatskanzlei Kanton Genf",
+    "fr": "Chancellerie d’État de Genève"
+  },
+  "pref_label": {
+    "de": "Staatskanzlei (GE)",
+    "fr": "Chancellerie d’État (GE)"
+  },
+  "homepage": "https://www.ge.ch/organisation/chancellerie-etat",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-ge",
+  "ancestors": [
+    {
+      "id": "ch-kt-ge",
+      "name": {
+        "de": "République et Canton de Genève",
+        "en": "Kanton Genf",
+        "fr": "Canton de Genève"
+      },
+      "pref_label": {
+        "de": "Kanton Genf",
+        "fr": "Canton de Genève"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-ge",
+      "hierarchy_level": 0
+    }
+  ]
+}

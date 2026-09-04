@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Die Schweiz nimmt in der Zivilluftfahrt international eine führende Rolle ein, dies in der Forschung und Entwicklung von innovativen Technologien. Für die Wettbewerbsfähigkeit des Wirtschaftsstandorts und die internationale Anbindung der Schweiz ist die Luftfahrt unverzichtbar.",
+    "en": "Switzerland plays a leading role in international civil aviation, particularly in the research and development of cutting-edge technologies. Aviation is essential for the competitiveness of the Swiss economy and for Switzerland’s international connectivity.",
+    "fr": "La Suisse joue les premiers rôles dans l'aviation civile internationale, notamment dans la recherche et le développement de technologies de pointe. L'aviation est essentielle pour la compétitivité de la place économique suisse et la desserte internationale de la Suisse.",
+    "it": "La Svizzera ricopre un ruolo di primo piano a livello internazionale nella ricerca e nello sviluppo di tecnologie innovative per l’aviazione civile. L’aviazione è indispensabile per la competitività della piazza economica svizzera e per il collegamento del Paese con il resto del mondo."
+  },
   "name": {
     "de": "Bundesamt für Zivilluftfahrt (BAZL)",
     "en": "Federal Office of Civil Aviation (FOCA)",
@@ -24,26 +30,24 @@
     "fr": "OFAC",
     "it": "UFAC"
   },
+  "homepage": "https://bazl.admin.ch",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-uvek",
+  "sub_organization_of": "ch-uvek",
   "ancestors": [
     {
-      "id": "ch-gs-uvek",
+      "id": "ch-uvek",
       "name": {
-        "de": "Generalsekretariat des UVEK (GS-UVEK)",
-        "en": "General Secretariat DETEC (GS-DETEC)",
-        "fr": "Secrétariat général du DETEC (SG-DETEC)",
-        "it": "Segreteria generale del DATEC (SG-DATEC)",
-        "rm": ""
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
       },
       "pref_label": {
-        "de": "GS-UVEK",
-        "en": "GS-DETEC",
-        "fr": "SG-DETEC",
-        "it": "SG-DATEC",
-        "rm": ""
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-uvek",
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
       "hierarchy_level": 0
     }
   ]

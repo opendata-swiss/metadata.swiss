@@ -1,0 +1,72 @@
+{
+  "id": "abteilung-uebertragbare-krankheiten",
+  "identifier": "abteilung-uebertragbare-krankheiten",
+  "resource": "https://opendata.swiss/id/organization/abteilung-uebertragbare-krankheiten",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Übertragbare Krankheiten gefährden die öffentliche Gesundheit. Die Abteilung überwacht diese Krankheiten, publiziert regelmässig Berichte zur epidemiologischen Situation, legt Präventions- und Kontrollstrategien fest und setzt sie um.",
+    "en": "Communicable diseases pose a risk to public health. The division monitors these diseases, publishing regular reports on the epidemiological situation, laying down and implementing prevention and control strategies.",
+    "fr": "Les maladies transmissibles constituent une menace pour la santé publique. La division les surveille, publie régulièrement des rapports sur la situation épidémiologique, définit des stratégies de prévention et de contrôle, et les met en œuvre.",
+    "it": "Le malattie trasmissibili mettono in pericolo la salute pubblica. La divisione Malattie trasmissibili le monitora, pubblica regolarmente rapporti sulla situazione epidemiologica, stabilisce strategie di prevenzione e di controllo e le attua."
+  },
+  "name": {
+    "de": "Abteilung Übertragbare Krankheiten",
+    "en": "Communicable Diseases Division",
+    "fr": "Division Maladies transmissibles",
+    "it": "Divisione Malattie trasmissibili"
+  },
+  "pref_label": {
+    "de": "Abteilung Übertragbare Krankheiten",
+    "en": "Communicable Diseases Division",
+    "fr": "Division Maladies transmissibles",
+    "it": "Divisione Malattie trasmissibili"
+  },
+  "homepage": "https://www.bag.admin.ch/de/abteilung-ubertragbare-krankheiten",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-bag",
+  "ancestors": [
+    {
+      "id": "ch-bag",
+      "name": {
+        "de": "Bundesamt für Gesundheit (BAG)",
+        "en": "Federal Office of Public Health (FOPH)",
+        "fr": "Office fédéral de la santé publique (OFSP)",
+        "it": "Ufficio federale della sanità pubblica (UFSP)"
+      },
+      "pref_label": {
+        "de": "BAG",
+        "en": "FOPH",
+        "fr": "OFSP",
+        "it": "UFSP"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-bag",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-edi",
+      "name": {
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
+      },
+      "pref_label": {
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
+      "hierarchy_level": 0
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "ch-kt-fr-geo",
+  "identifier": "CH_KT_FR_GEO",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-fr-geo",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Die öffentlichen Geodaten des Kantons Freiburg werden durch das GIS-Kompetenzzentrum des Amtes für Geoinformation GeoA verwaltet und über das kantonale Geoportal als Webservices und zum Download bereitgestellt. ",
+    "en": "The public geodata of the Canton of Fribourg are managed by the GIS Competence Center of the Geoinformation Office GeoA and made available as web services and for download via the cantonal geoportal. ",
+    "fr": "Les géodonnées publiques du Canton Fribourg sont gérées par le Centre de compétence SIT du Service de la géoinformation SGéo et mises à disposition sous forme de services web et de téléchargement via le géoportail cantonal. ",
+    "it": "I geodati pubblici del Cantone di Friburgo sono gestiti dal Centro di Competenza GIS dell'Ufficio di Geoinformazione GeoA e resi disponibili come servizi web e per il download attraverso il geoportale cantonale. "
+  },
+  "name": {
+    "de": "Geoinformation Kanton Freiburg",
+    "en": "Geoinformation Canton Fribourg",
+    "fr": "Geoinformation Canton Fribourg",
+    "it": "Geoinformazione Canton Friburgo"
+  },
+  "pref_label": {
+    "de": "Geoinformation Kanton Freiburg",
+    "en": "Geoinformation Canton Fribourg",
+    "fr": "Geoinformation Canton Fribourg",
+    "it": "Geoinformazione Canton Friburgo"
+  },
+  "homepage": "https://www.fr.ch/de/find/geoa",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-kt-fr",
+  "ancestors": [
+    {
+      "id": "ch-kt-fr",
+      "name": {
+        "de": "Kanton Freiburg",
+        "fr": "Canton de Fribourg",
+        "it": "Cantoni di Friburgo"
+      },
+      "pref_label": {
+        "de": "FR",
+        "en": "FR",
+        "fr": "FR",
+        "it": "FR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-fr",
+      "hierarchy_level": 0
+    }
+  ]
+}

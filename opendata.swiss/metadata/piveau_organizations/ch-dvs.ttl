@@ -5,6 +5,10 @@
 
 <https://opendata.swiss/id/organization/ch-dvs> a org:Organization,
         foaf:Organization ;
+    dcterms:description "Die Digitale Verwaltung Schweiz (DVS) gestaltet die strategische Steuerung und Koordination der Digitalisierungsaktivitäten von Bund, Kantonen und Gemeinden."@de,
+        "The objective of Digital Public Services Switzerland (DPSS) is to ensure effective strategic steering and coordination of federal, cantonal and communal digitalisation activities."@en,
+        "L'Administration numérique suisse (ANS) vise à assurer l'efficacité du pilotage et de la coordination stratégiques des activités menées par la Confédération, les cantons et les communes en lien avec la transformation numérique."@fr,
+        "L’Amministrazione digitale Svizzera (ADS) intende definire in modo efficace la gestione e il coordinamento strategici delle attività relative alla digitalizzazione della Confederazione, dei Cantoni e dei Comuni."@it ;
     dcterms:identifier "CH_DVS" ;
     skos:prefLabel "DVS"@de,
         "DPS"@en,

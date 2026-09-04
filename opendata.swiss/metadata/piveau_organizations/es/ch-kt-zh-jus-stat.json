@@ -1,0 +1,47 @@
+{
+  "id": "ch-kt-zh-jus-stat",
+  "identifier": "CH_KT_ZH_JUS_STAT",
+  "resource": "https://opendata.swiss/id/organization/ch-kt-zh-jus-stat",
+  "description": {
+    "de": "Das Amt für Statistik und Daten umfasst das Kompetenzzentrum Daten des Kantons Zürich, organisiert, koordiniert und steuert die politische Teilhabe inkl. der Wahlen und Abstimmungen im Kanton und beobachtet die Entwicklung des Kantons mit statistischen Methoden. Wir versorgen Bevölkerung, Verwaltung, Politik, Gemeinden, Medien, Firmen und sonstige Organisationen mit qualitativ hochstehenden Daten, Information und Fakten zum Kanton Zürich. Inhaltlich arbeiten wir unabhängig und objektiv."
+  },
+  "name": {
+    "de": "Amt für Statistik und Daten Kanton Zürich"
+  },
+  "pref_label": {
+    "de": "Amt für Statistik und Daten Kanton Zürich"
+  },
+  "homepage": "https://www.zh.ch/amt-fuer-statistik-und-daten",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-kt-zh-dji",
+  "ancestors": [
+    {
+      "id": "ch-kt-zh-dji",
+      "name": {
+        "de": "Direktion der Justiz und des Innern (ZH)"
+      },
+      "pref_label": {
+        "de": "DJI"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh-dji",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-kt-zh",
+      "name": {
+        "de": "Kanton Zürich",
+        "en": "Canton Zurich",
+        "fr": "Canton Zurich",
+        "it": "Cantone Zurigo"
+      },
+      "pref_label": {
+        "de": "ZH",
+        "en": "ZH",
+        "fr": "ZH",
+        "it": "ZH"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-kt-zh",
+      "hierarchy_level": 0
+    }
+  ]
+}

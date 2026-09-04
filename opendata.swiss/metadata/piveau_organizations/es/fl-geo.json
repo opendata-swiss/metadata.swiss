@@ -1,0 +1,49 @@
+{
+  "id": "fl-geo",
+  "identifier": "FL_GEO",
+  "resource": "https://opendata.swiss/id/organization/fl-geo",
+  "classification": {
+    "id": "0328",
+    "label": {
+      "de": "Ausländische öffentliche Verwaltung",
+      "fr": "Administration publique étrangère",
+      "en": "Foreign public administration",
+      "it": "Amministrazione pubblica estera"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0328"
+  },
+  "description": {
+    "de": "Das Amt für Tiefbau und Geoinformation ist zuständig für den Bau,  Betrieb und Unterhalt der Landstrassen, die Koordination der Geodateninfrastrukur, die Amtliche Vermessung und den ÖREB-Kataster.",
+    "en": "The Civil Engineering and Geoinformation Office is responsible for the construction,  operation and maintenance of main roads, the coordination of geodata infrastructure, official surveying and the catastre of Public Law Restrictions on Landownership (PLR-cadastre)."
+  },
+  "name": {
+    "de": "Amt für Tiefbau und Geoinformation (FL)",
+    "en": "Civil Engineering and Geoinformation Office (FL)"
+  },
+  "pref_label": {
+    "de": "Amt für Tiefbau und Geoinformation (FL)",
+    "en": "Civil Engineering and Geoinformation Office (FL)"
+  },
+  "homepage": "https://www.llv.li/de/landesverwaltung/amt-fuer-tiefbau-und-geoinformation",
+  "hierarchy_level": 1,
+  "sub_organization_of": "fl",
+  "ancestors": [
+    {
+      "id": "fl",
+      "name": {
+        "de": "Fürstentum Liechtenstein",
+        "en": "Fürstentum Liechtenstein",
+        "fr": "Fürstentum Liechtenstein",
+        "it": "Fürstentum Liechtenstein"
+      },
+      "pref_label": {
+        "de": "FL (ZH)",
+        "en": "FL (ZH)",
+        "fr": "FL (ZH)",
+        "it": "FL (ZH)"
+      },
+      "resource": "https://opendata.swiss/id/organization/fl",
+      "hierarchy_level": 0
+    }
+  ]
+}

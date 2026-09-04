@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-bag-dku> a org:Organization,
+        foaf:Organization ;
+    dcterms:identifier "CH_BAG_DKU" ;
+    skos:prefLabel "CH_BAG_DKU (ZH)"@de,
+        "CH_BAG_DKU (ZH)"@en,
+        "CH_BAG_DKU (ZH)"@fr,
+        "CH_BAG_DKU (ZH)"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-bag> ;
+    foaf:name "Direktionsbereich Kranken- und Unfallversicherung"@de,
+        "Direktionsbereich Kranken- und Unfallversicherung"@en,
+        "Unité de direction Assurance maladie et accidents"@fr,
+        "Unità di direzione Assicurazione malattia e infortunio"@it .
+

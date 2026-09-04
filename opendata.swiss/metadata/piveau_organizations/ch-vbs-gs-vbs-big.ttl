@@ -1,0 +1,25 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-vbs-gs-vbs-big> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die Bibliothek am Guisanplatz BiG ist für die Informationsversorgung von Bundesverwaltung und Armee zuständig. Mit ihrem breitgefächerten Sammlungsprofil und ihren umfangreichen Dienstleistungen steht die BiG auch der breiten Öffentlichkeit zur Verfügung."@de,
+        "The Library Am Guisanplatz BiG is responsible for providing the Federal Administration and Armed Forces with information. Its varied collections and wide range of services are also available to the public."@en,
+        "La Bibliothèque Am Guisanplatz BiG a pour rôle de fournir des informations à l’administration fédérale et à l’armée. Ses collections variées et ses nombreuses prestations sont toutefois également ouvertes au public."@fr,
+        "La Biblioteca Am Guisanplatz BiG è competente per la fornitura di informazioni all’Amministrazione federale e all’esercito. Con il suo profilo di collezioni molto diversificato e i suoi numerosi serivzi, la BiG è a disposizione anche del grande pubblico."@it ;
+    dcterms:identifier "CH_VBS_GS-VBS_BIG" ;
+    skos:prefLabel "BiG"@de,
+        "BiG"@en,
+        "BiG"@fr,
+        "BiG"@it ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-gs-vbs> ;
+    foaf:homepage <https://www.big.admin.ch> ;
+    foaf:name "Bibliothek am Guisanplatz (BiG)"@de,
+        "Bibliothèque Am Guisanplatz (BiG)"@fr,
+        "Biblioteca Am Guisanplatz (BiG)"@it .
+
+<https://www.big.admin.ch> a foaf:Document .
+

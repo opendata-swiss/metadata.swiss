@@ -1,0 +1,18 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-ag-fin> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Das Departement Finanzen und Ressourcen beschafft und betreut wichtige Ressourcen, damit der Kanton seine Aufgaben effizient erfÃ¼llen kann."@de,
+        "Das Departement Finanzen und Ressourcen beschafft und betreut wichtige Ressourcen, damit der Kanton seine Aufgaben effizient erfÃ¼llen kann."@en ;
+    dcterms:identifier "CH_KT_AG_FIN" ;
+    skos:prefLabel "Finanzdepartement (AG)"@de ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0221> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/ch-kt-ag> ;
+    foaf:homepage <https://www.ag.ch/de/ueber-uns/kantonale-verwaltung/dfr> ;
+    foaf:name "Departement Finanzen und Ressourcen (AG)"@de .
+
+<https://www.ag.ch/de/ueber-uns/kantonale-verwaltung/dfr> a foaf:Document .
+

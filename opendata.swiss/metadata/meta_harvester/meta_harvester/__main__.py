@@ -65,6 +65,20 @@ def organization_uri(slug: str) -> str:
     return f"{ORGANIZATION_BASE_IRI}{slug}"
 
 
+def get_parent_orgs(value) -> list[dict]:
+    """
+    Normalizes `subAgentOf` values to a list of parent objects.
+    Supports None, a single object, or a list of objects.
+    """
+    if value is None:
+        return []
+    if isinstance(value, dict):
+        return [value]
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    return []
+
+
 def clean_output_payload(value):
     """
     Recursively removes nulls and empty objects from JSON payloads.
@@ -587,7 +601,7 @@ def generate_organizations() -> None:
                 }
             )
 
-            parent_orgs = current_org.get("subAgentOf", [])
+            parent_orgs = get_parent_orgs(current_org.get("subAgentOf"))
             if len(parent_orgs) > 1:
                 logger.warning(
                     f"Ancestor organization '{current_slug}' has multiple parents. Stopping chain at this level."
@@ -613,7 +627,7 @@ def generate_organizations() -> None:
         logging.info(f"({i+1}/{len(organizations)}) Processing organization '{slug}'...")
 
         # expect only one parent organization. error if more than one.
-        parent_orgs = organization.get("subAgentOf", [])
+        parent_orgs = get_parent_orgs(organization.get("subAgentOf"))
         subAgentOf_slug = None
         if len(parent_orgs) > 1:
             logging.error(f"Organization '{slug}' ({organization['identifier']}) has more than one parent organization: {parent_orgs}. Skipping.")

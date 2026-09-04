@@ -1,0 +1,15 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-so> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Beginnend mit den Geodaten veröffentlicht der Kanton Solothurn hier nach und nach Datensätze der kantonalen Verwaltung, welche die Anforderungen zur Publikation als Open Government Data erfüllen."@de ;
+    dcterms:identifier "CH_KT_SO" ;
+    skos:prefLabel "Kanton Solothurn"@de ;
+    foaf:homepage <https://so.ch> ;
+    foaf:name "Kanton Solothurn"@de .
+
+<https://so.ch> a foaf:Document .
+

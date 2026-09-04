@@ -1,0 +1,71 @@
+{
+  "id": "ch-wbf-gs-wbf-isceco",
+  "identifier": "CH_WBF_GS_WBF_ISCECO",
+  "resource": "https://opendata.swiss/id/organization/ch-wbf-gs-wbf-isceco",
+  "classification": {
+    "id": "0220",
+    "label": {
+      "de": "Verwaltungseinheit des Bundes",
+      "en": "Administrative unit of the Confederation",
+      "it": "Unità amministrativa della Confederazione",
+      "fr": "Unité de l'administration fédérale"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
+  },
+  "description": {
+    "de": "Als Informatik-Leistungserbringer des Eidgenössischen Departements für Wirtschaft, Bildung und Forschung WBF entwickeln wir Fachanwendungen, unterstützten als Partner für die digitale Transformation die Ämter des WBF und betreiben die bundesweite Geschäftsverwaltungslösung GEVER.",
+    "en": "As the IT service provider of the Federal Department of Economic Affairs, Education and Research (EAER), we develop specialized applications, support the EAER offices as partners in their digital transformation, and operate the federal business management solution GEVER.",
+    "fr": "En tant que prestataire de services informatiques du Département fédéral de l’économie, de la formation et de la recherche (DEFR), nous développons des applications métiers, accompagnons comme partenaire la transformation numérique des offices du DEFR et gérons la solution fédérale de gestion électronique des affaires (GEVER).",
+    "it": "Come fornitore di servizi informatici del Dipartimento federale dell’economia, della formazione e della ricerca (DEFR) sviluppiamo applicazioni specialistiche, supportiamo gli uffici del DEFR come partner per la trasformazione digitale e gestiamo la soluzione di gestione aziendale GEVER a livello nazionale."
+  },
+  "name": {
+    "de": "Information Service Center WBF (ISCeco)",
+    "en": "Information Service Center WBF (ISCeco)",
+    "fr": "Centre de services informatiques du DEFR (ISCeco)",
+    "it": "Centro servizi informatici DEFR (ISCeco)"
+  },
+  "pref_label": {
+    "de": "ISCeco",
+    "en": "ISCeco",
+    "fr": "ISCeco",
+    "it": "ISCeco"
+  },
+  "homepage": "https://isceco.admin.ch",
+  "hierarchy_level": 2,
+  "sub_organization_of": "ch-wbf-gs-wbf",
+  "ancestors": [
+    {
+      "id": "ch-wbf-gs-wbf",
+      "name": {
+        "de": "Generalsekretariat WBF",
+        "fr": "Secrétariat général du DEFR",
+        "it": "Segreteria generale DEFR"
+      },
+      "pref_label": {
+        "de": "GS-WBF",
+        "en": "GS-WBF",
+        "fr": "GS-WBF",
+        "it": "GS-WBF"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf-gs-wbf",
+      "hierarchy_level": 1
+    },
+    {
+      "id": "ch-wbf",
+      "name": {
+        "de": "Eidgenössisches Departement für Wirtschaft, Bildung und Forschung (WBF)",
+        "en": "Federal Department of Economic Affairs, Education and Research (EAER)",
+        "fr": "Département fédéral de l'économie, de la formation et de la recherche (DEFR)",
+        "it": "Dipartimento federale dell'economia, della formazione e della ricerca (DEFR)"
+      },
+      "pref_label": {
+        "de": "WBF",
+        "en": "EAR",
+        "fr": "DEFR",
+        "it": "DEFR"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-wbf",
+      "hierarchy_level": 0
+    }
+  ]
+}

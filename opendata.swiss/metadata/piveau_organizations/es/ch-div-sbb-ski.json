@@ -1,0 +1,55 @@
+{
+  "id": "ch-div-sbb-ski",
+  "identifier": "CH_DIV_SBB_SKI",
+  "resource": "https://opendata.swiss/id/organization/ch-div-sbb-ski",
+  "classification": {
+    "id": "0117",
+    "label": {
+      "it": "Istituto di diritto pubblico",
+      "de": "Institut des öffentlichen Rechts",
+      "fr": "Institut de droit public",
+      "en": "Public-law institution"
+    },
+    "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0117"
+  },
+  "description": {
+    "de": "Die Geschäftsstelle Systemaufgaben Kundeninformation (SKI) veröffentlicht im Auftrag des BAV die Daten des gesamten öffentlichen Verkehrs der Schweiz",
+    "en": "Working on behalf of the Swiss Federal Office of Transport (FOT), the Customer Information System Tasks (SKI) business office publishes data on all public transport in Switzerland",
+    "fr": "Le Secrétariat des tâches du système d’information à la clientèle (SKI) publie pour le compte de l’OFT les données de l’ensemble des transports publics de Suisse.",
+    "it": "Il servizio commerciale Attività di sistema Informazione alla clientela (SKI) pubblica, per conto dell’UFT, i dati di tutto il trasporto pubblico in Svizzera."
+  },
+  "name": {
+    "de": "Geschäftsstelle Systemaufgaben Kundeninformation (SBB)",
+    "en": "Business office of Customer Information System Tasks (SFR)",
+    "fr": "Secrétariat des tâches du système d’information à la clientèle (CFF)",
+    "it": "Servizio commerciale Attività di sistema Informazione alla clientela (FFS)"
+  },
+  "pref_label": {
+    "de": "Geschäftsstelle Systemaufgaben Kundeninformation (SBB)",
+    "en": "Business office of Customer Information System Tasks (SFR)",
+    "fr": "Secrétariat des tâches du système d’information à la clientèle (CFF)",
+    "it": "Servizio commerciale Attività di sistema Informazione alla clientela (FFS)"
+  },
+  "homepage": "https://www.oev-info.ch/de/datenmanagement/ski/mobilitaetsdaten-und-dienste-von-ski",
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-sbb",
+  "ancestors": [
+    {
+      "id": "ch-sbb",
+      "name": {
+        "de": "Schweizerische Bundesbahnen (SBB)",
+        "en": "Swiss Federal Railways (SFR)",
+        "fr": "Chemins de fer fédéraux suisses (CFF)",
+        "it": "Ferrovie federali svizzere (FFS)"
+      },
+      "pref_label": {
+        "de": "SBB",
+        "en": "SFR",
+        "fr": "CFF",
+        "it": "FFS"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-sbb",
+      "hierarchy_level": 0
+    }
+  ]
+}

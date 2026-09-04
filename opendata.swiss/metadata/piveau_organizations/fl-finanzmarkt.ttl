@@ -1,0 +1,20 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/fl-finanzmarkt> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Die FMA Liechtenstein ist die zuständige Behörde für die Erteilung von Bewilligungen und Zulassungen für Finanzdienstleister. "@de,
+        "The Liechtenstein FMA is the competent authority for licensing and admission of financial service providers."@en ;
+    dcterms:identifier "FL_FINANZMARKT" ;
+    skos:prefLabel "Finanzmarktaufsicht Liechtenstein"@de,
+        "Financial Market Authority Liechtenstein"@en ;
+    org:classification <https://register.ld.admin.ch/i14y/concept/legalForm/0220> ;
+    org:subOrganizationOf <https://opendata.swiss/id/organization/fl> ;
+    foaf:homepage <https://www.fma-li.li/> ;
+    foaf:name "Finanzmarktaufsicht Liechtenstein"@de,
+        "Financial Market Authority Liechtenstein"@en .
+
+<https://www.fma-li.li/> a foaf:Document .
+

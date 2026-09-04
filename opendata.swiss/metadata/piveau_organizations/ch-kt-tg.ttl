@@ -1,0 +1,21 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://opendata.swiss/id/organization/ch-kt-tg> a org:Organization,
+        foaf:Organization ;
+    dcterms:description "Der Kanton Thurgau veröffentlicht hier schrittweise OGD-Datensätze der kantonalen Verwaltung."@de ;
+    dcterms:identifier "CH_KT_TG" ;
+    skos:prefLabel "Kanton Thurgau"@de,
+        "Canton of Thurgau"@en,
+        "Canton de Thurgovie"@fr,
+        "Cantone di Turgovia"@it ;
+    foaf:homepage <https://tg.ch> ;
+    foaf:name "Kanton Thurgau"@de,
+        "Canton of Thurgau"@en,
+        "Canton de Thurgovie"@fr,
+        "Cantone di Turgovia"@it .
+
+<https://tg.ch> a foaf:Document .
+

@@ -12,6 +12,12 @@
     },
     "resource": "https://register.ld.admin.ch/i14y/concept/legalForm/0220"
   },
+  "description": {
+    "de": "Das Bundesamt für Kultur fördert das Kulturschaffen in seiner Vielfalt und Qualität und stärkt die Teilhabe der Bevölkerung am kulturellen Leben. Es trägt zur Bewahrung des Kulturerbes und zu dessen gesellschaftlicher Bedeutung bei und setzt sich für eine nachhaltige und qualitätsvolle Baukultur ein. Zudem unterstützt es die Amateurkultur, lebendige Traditionen und traditionelles Handwerk sowie die Mehrsprachigkeit und die Verständigung zwischen den Sprach- und Kulturräumen. Auf internationaler Ebene engagiert sich das Bundesamt für Kultur für den Schutz des Kulturerbes und der kulturellen Vielfalt. Es ist für mehrere kulturelle Institutionen verantwortlich, darunter die Schweizerische Nationalbibliothek.",
+    "en": "The Federal Office of Culture supports cultural creativity in all its diversity and quality and fosters inclusive cultural participation. It contributes to the preservation and social relevance of cultural heritage and works to promote a sustainable and high-quality Baukultur. It also supports amateur culture, living traditions and traditional craftsmanship, and promotes plurilingualism and understanding between linguistic and cultural areas. At the international level, the Federal Office of Culture works to safeguard cultural heritage and cultural diversity. It is responsible for a number of institutions, including the Swiss National Library.",
+    "fr": "L’Office fédéral de la culture encourage la création culturelle dans sa diversité et sa qualité et il renforce la participation de la population à la vie culturelle. Il contribue à la préservation et au renforcement de la dimension sociale du patrimoine culturel et s’engage en faveur d’une culture du bâti de qualité et durable. L’Office fédéral de la culture soutient la culture amateur, les traditions vivantes et l’artisanat traditionnel et il promeut le plurilinguisme et la compréhension entre les espaces linguistiques et culturels. Au niveau international, il s’engage en faveur de la protection du patrimoine culturel et de la diversité culturelle. Il est responsable de plusieurs institutions culturelles, dont la Bibliothèque nationale suisse.",
+    "it": "L’Ufficio federale della cultura promuove la creazione culturale in tutta la sua diversità e qualità. Si impegna per un’ampia partecipazione della popolazione alla vita culturale. Si adopera per una cultura della costruzione sostenibile e di qualità. Sostiene la cultura amatoriale, le tradizioni viventi e l’artigianato tradizionale. Promuove il plurilinguismo e la comprensione tra le diverse regioni linguistiche e culturali. Si impegna a livello internazionale per la protezione del patrimonio e della diversità culturali. È responsabile per diverse istituzioni culturali, tra cui la Biblioteca nazionale svizzera."
+  },
   "name": {
     "de": "Bundesamt für Kultur (BAK)",
     "en": "Federal Office of Culture (FOC)",
@@ -26,23 +32,23 @@
   },
   "homepage": "https://www.bak.admin.ch/",
   "hierarchy_level": 1,
-  "sub_organization_of": "ch-gs-edi",
+  "sub_organization_of": "ch-edi",
   "ancestors": [
     {
-      "id": "ch-gs-edi",
+      "id": "ch-edi",
       "name": {
-        "de": "Generalsekretariat des Eidgenössischen Departements des Innern (GS-EDI)",
-        "en": "General Secretariat of the Federal Department of Home Affairs (GS-EDI)",
-        "fr": "Secrétariat général du Département fédéral de l'intérieur (SG-DFI)",
-        "it": "Segreteria generale del Dipartimento federale dell'interno (SG-DFI)"
+        "de": "Eidgenössisches Departement des Innern (EDI)",
+        "en": "Federals Departement des Innern (EDI)",
+        "fr": "Département fédéral de l'intérieur (DFI)",
+        "it": "Dipartimento federale dell'interno (DFI)"
       },
       "pref_label": {
-        "de": "GS-EDI",
-        "en": "GS-EDI",
-        "fr": "SG-DFI",
-        "it": "SG-DFI"
+        "de": "EDI",
+        "en": "EDI",
+        "fr": "DFI",
+        "it": "DFI"
       },
-      "resource": "https://opendata.swiss/id/organization/ch-gs-edi",
+      "resource": "https://opendata.swiss/id/organization/ch-edi",
       "hierarchy_level": 0
     }
   ]

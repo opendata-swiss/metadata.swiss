@@ -31,6 +31,24 @@
     "it": "ARE"
   },
   "homepage": "https://www.are.admin.ch",
-  "hierarchy_level": 0,
-  "ancestors": []
+  "hierarchy_level": 1,
+  "sub_organization_of": "ch-uvek",
+  "ancestors": [
+    {
+      "id": "ch-uvek",
+      "name": {
+        "de": "Eidgenössisches Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "en": "Federals Departement für Umwelt, Verkehr, Energie und Kommunikation (UVEK)",
+        "fr": "Département fédéral de l'environnement, des transports, de l'énergie et de la communication (DETEC)",
+        "it": "Dipartimento federale dell'ambiente, dei trasporti, dell'energia e delle comunicazioni (DATEC)"
+      },
+      "pref_label": {
+        "de": "UVEK",
+        "fr": "DETEC",
+        "it": "DATEC"
+      },
+      "resource": "https://opendata.swiss/id/organization/ch-uvek",
+      "hierarchy_level": 0
+    }
+  ]
 }
