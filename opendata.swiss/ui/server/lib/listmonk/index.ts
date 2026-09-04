@@ -32,6 +32,8 @@ interface TransactionBase {
   template_id: number
   data: unknown
   subscriber_mode?: 'external' | 'fallback' | 'default'
+  from_email?: string
+  subject?: string
 }
 
 interface SubscriberById {

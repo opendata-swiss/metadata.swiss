@@ -10,6 +10,7 @@ import * as image from '~~/server/lib/images'
 import type { AppLanguage, AppLanguage as Language } from '~/constants/langages'
 import { APP_LANGUAGES, APP_LANGUAGES as languages } from '~/constants/langages'
 import type { ShowcaseStorage } from '~~/server/lib/showcaseStorage'
+import Listmonk from '#server/lib/listmonk'
 
 type FormDataFieldNames = keyof ShowcasesCollectionItem | 'contactDetails'
 type ShowcaseTranslation = Omit<Partial<ShowcasesCollectionItem>, 'body'> & {
@@ -134,7 +135,7 @@ export default defineEventHandler(async (event) => {
       .with(P.string.startsWith('contactDetails.'), (field) => {
         const key = field.slice('contactDetails.'.length)
         if (key === 'email') {
-          email = key
+          email = data.toString()
           return
         }
 
@@ -186,6 +187,28 @@ export default defineEventHandler(async (event) => {
     return {
       error: t('server.api.showcases.post.error.unspecified_error'),
     }
+  }
+
+  logger.info(`Showcase submission from ${email} saved`)
+
+  const listmonk = new Listmonk(runtimeConfig.listmonk)
+  const notificationSent = await listmonk.transactional.send({
+    subscriber_email: runtimeConfig.showcases.submissionNotification.sendTo,
+    template_id: runtimeConfig.showcases.submissionNotification.templateId,
+    subject: `New Showcase submission: ${showcase[language].title}`,
+    from_email: email,
+    subscriber_mode: 'external',
+    data: {
+      decapUrl: `${runtimeConfig.appUrl}admin/#/collections/Showcases/entries/${showcase.slug}`,
+      submission: yaml.stringify(showcase[language]),
+    },
+  })
+
+  if (!notificationSent.ok) {
+    logger.warn('Failed to send notification', notificationSent.statusText, await notificationSent.text())
+  }
+  else {
+    logger.info('Notification sent')
   }
 
   event.node.res.statusCode = 200

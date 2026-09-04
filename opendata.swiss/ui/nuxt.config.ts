@@ -83,6 +83,10 @@ export default defineNuxtConfig({
       maxImageWidth: 900,
       catalogId: 'showcases-ods',
       resourceType: 'showcase',
+      submissionNotification: {
+        templateId: 10,
+        sendTo: 'noreply@zazuko.com',
+      },
     },
     oauth: {
       keycloak: {
